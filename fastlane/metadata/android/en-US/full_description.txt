@@ -1,0 +1,8 @@
+OpenBoard is a 100% foss keyboard based on AOSP, with no dependency on Google binaries, that respects your privacy.
+
+Features:
+ - Spell correction
+ - Themes
+ - Emojis
+
+This app is opensource, the code is available here: https://github.com/dslul/openboard
