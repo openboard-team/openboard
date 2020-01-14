@@ -103,7 +103,7 @@
 
     <!-- Common key top visual configuration. -->
     <dimen name="config_key_popup_hint_letter_padding">2dp</dimen>
-
+z
     <!-- Common suggestion strip configuration. -->
     <integer name="config_suggestions_count_in_strip">3</integer>
     <fraction name="config_center_suggestion_percentile">36%</fraction>

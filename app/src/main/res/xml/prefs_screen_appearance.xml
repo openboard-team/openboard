@@ -16,6 +16,7 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:latin="http://schemas.android.com/apk/res/org.dslul.openboard.inputmethod.latin"
     android:key="screen_appearance"
     android:title="@string/settings_screen_appearance">
     <PreferenceScreen
@@ -31,4 +32,15 @@
         android:title="@string/enable_split_keyboard"
         android:persistent="true"
         android:defaultValue="false" />
+    <CheckBoxPreference
+        android:key="pref_resize_keyboard"
+        android:title="@string/prefs_resize_keyboard"
+        android:defaultValue="false"
+        android:persistent="true" />
+    <org.dslul.openboard.inputmethod.latin.settings.SeekBarDialogPreference
+        android:dependency="pref_resize_keyboard"
+        android:key="pref_keyboard_height_scale"
+        android:title="@string/prefs_keyboard_height_scale"
+        latin:minValue="50"
+        latin:maxValue="120" /> <!-- percentage -->
 </PreferenceScreen>
