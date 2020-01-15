@@ -64,7 +64,7 @@ public final class DictionarySettingsFragment extends PreferenceFragment
 
     private View mLoadingView;
     private String mClientId;
-    private ConnectivityManager mConnectivityManager;
+    //private ConnectivityManager mConnectivityManager;
     private MenuItem mUpdateNowMenu;
     private boolean mChangedSettings;
     private DictionaryListInterfaceState mDictionaryListInterfaceState =
@@ -98,8 +98,8 @@ public final class DictionarySettingsFragment extends PreferenceFragment
         super.onActivityCreated(savedInstanceState);
         final Activity activity = getActivity();
         mClientId = activity.getIntent().getStringExtra(DICT_SETTINGS_FRAGMENT_CLIENT_ID_ARGUMENT);
-        mConnectivityManager =
-                (ConnectivityManager)activity.getSystemService(Context.CONNECTIVITY_SERVICE);
+        /*mConnectivityManager =
+                (ConnectivityManager)activity.getSystemService(Context.CONNECTIVITY_SERVICE);*/
         addPreferencesFromResource(R.xml.dictionary_settings);
         refreshInterface();
         setHasOptionsMenu(true);
@@ -224,9 +224,11 @@ public final class DictionarySettingsFragment extends PreferenceFragment
     public void updateCycleCompleted() {}
 
     void refreshNetworkState() {
+        /*
         NetworkInfo info = mConnectivityManager.getActiveNetworkInfo();
         boolean isConnected = null == info ? false : info.isConnected();
-        if (null != mUpdateNowMenu) mUpdateNowMenu.setEnabled(isConnected);
+         */
+        if (null != mUpdateNowMenu) mUpdateNowMenu.setEnabled(false);
     }
 
     void refreshInterface() {
