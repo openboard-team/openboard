@@ -223,6 +223,11 @@
     <!-- Title of the item to change the keyboard theme [CHAR LIMIT=20]-->
     <string name="keyboard_layout">Keyboard theme</string>
 
+    <!-- Title of the settings to enable keyboard resizing -->
+    <string name="prefs_resize_keyboard">Enable keyboard resizing</string>
+    <!-- Title of the settings for setting keyboard height -->
+    <string name="prefs_keyboard_height_scale">Keyboard height scale</string>
+
     <!-- Title of the preference item for switching accounts [CHAR LIMIT=30] -->
     <string name="switch_accounts">Switch accounts</string>
     <!-- Summary of the preference item for switching accounts when no accounts

@@ -41,10 +41,6 @@
     <string name="prefs_key_popup_dismiss_end_x_scale_settings">Key popup dismiss end X scale</string>
     <!-- Title of the settings for key popup dismiss animation end Y-scale (in percentile) [CHAR LIMIT=35] -->
     <string name="prefs_key_popup_dismiss_end_y_scale_settings">Key popup dismiss end Y scale</string>
-    <!-- Title of the settings to enable keyboard resizing -->
-    <string name="prefs_resize_keyboard">Enable keyboard resizing</string>
-    <!-- Title of the settings for setting keyboard height -->
-    <string name="prefs_keyboard_height_scale">Keyboard height scale</string>
     <!-- Title of the settings group for dumpping dictionary files that have been created on the device [CHAR LIMIT=35] -->
     <string name="prefs_dump_dynamic_dicts">Dump dictionary</string>
 </resources>
