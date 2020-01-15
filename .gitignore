@@ -3,7 +3,9 @@
 .gradle
 local.properties
 .DS_Store
+Gemfile
 build
 app/build
 app/release
 app/.cxx
+fastlane/Appfile
