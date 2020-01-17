@@ -39,20 +39,4 @@ public final class ProductionFlags {
      */
     public static final boolean IS_SPLIT_KEYBOARD_SUPPORTED = true;
 
-    /**
-     * When {@code false}, account sign-in in keyboard is not yet ready to be enabled.
-     */
-    public static final boolean ENABLE_ACCOUNT_SIGN_IN = false;
-
-    /**
-     * When {@code true}, user history dictionary sync feature is ready to be enabled.
-     */
-    public static final boolean ENABLE_USER_HISTORY_DICTIONARY_SYNC =
-            ENABLE_ACCOUNT_SIGN_IN && false;
-
-    /**
-     * When {@code true}, the IME maintains per account {@link UserHistoryDictionary}.
-     */
-    public static final boolean ENABLE_PER_ACCOUNT_USER_HISTORY_DICTIONARY =
-            ENABLE_ACCOUNT_SIGN_IN && false;
 }

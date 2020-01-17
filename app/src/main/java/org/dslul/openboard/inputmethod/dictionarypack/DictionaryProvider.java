@@ -246,7 +246,6 @@ public final class DictionaryProvider extends ContentProvider {
                 final Collection<WordListInfo> dictFiles =
                         getDictionaryWordListsForLocale(clientId, locale);
                 // TODO: pass clientId to the following function
-                DictionaryService.updateNowIfNotUpdatedInAVeryLongTime(getContext());
                 if (null != dictFiles && dictFiles.size() > 0) {
                     PrivateLog.log("Returned " + dictFiles.size() + " files");
                     return new ResourcePathCursor(dictFiles);
@@ -364,18 +363,8 @@ public final class DictionaryProvider extends ContentProvider {
                     final String[] wordListIdArray =
                             TextUtils.split(wordListId, ID_CATEGORY_SEPARATOR);
                     final String wordListCategory;
-                    if (2 == wordListIdArray.length) {
-                        // This is at the category:manual_id format.
-                        wordListCategory = wordListIdArray[0];
-                        // We don't need to read wordListIdArray[1] here, because it's irrelevant to
-                        // word list selection - it's just a name we use to identify which data file
-                        // is a newer version of which word list. We do however return the full id
-                        // string for each selected word list, so in this sense we are 'using' it.
-                    } else {
-                        // This does not contain a colon, like the old format does. Old-format IDs
-                        // always point to main dictionaries, so we force the main category upon it.
-                        wordListCategory = UpdateHandler.MAIN_DICTIONARY_CATEGORY;
-                    }
+                    // This is at the category:manual_id format.
+                    wordListCategory = wordListIdArray[0];
                     final String wordListLocale = results.getString(localeIndex);
                     final String wordListLocalFilename = results.getString(localFileNameIndex);
                     final String wordListRawChecksum = results.getString(rawChecksumIndex);
@@ -403,10 +392,6 @@ public final class DictionaryProvider extends ContentProvider {
                         if (!f.isFile()) {
                             continue;
                         }
-                    } else if (MetadataDbHelper.STATUS_AVAILABLE == wordListStatus) {
-                        // The locale is the id for the main dictionary.
-                        UpdateHandler.installIfNeverRequested(context, clientId, wordListId);
-                        continue;
                     }
                     final WordListInfo currentBestMatch = dicts.get(wordListCategory);
                     if (null == currentBestMatch
@@ -457,26 +442,6 @@ public final class DictionaryProvider extends ContentProvider {
         }
         final int status = wordList.getAsInteger(MetadataDbHelper.STATUS_COLUMN);
         final int version = wordList.getAsInteger(MetadataDbHelper.VERSION_COLUMN);
-        if (MetadataDbHelper.STATUS_DELETING == status) {
-            UpdateHandler.markAsDeleted(getContext(), clientId, wordlistId, version, status);
-            return 1;
-        }
-        if (MetadataDbHelper.STATUS_INSTALLED == status) {
-            final String result = uri.getQueryParameter(QUERY_PARAMETER_DELETE_RESULT);
-            if (QUERY_PARAMETER_FAILURE.equals(result)) {
-                if (DEBUG) {
-                    Log.d(TAG,
-                            "Dictionary is broken, attempting to retry download & installation.");
-                }
-                UpdateHandler.markAsBrokenOrRetrying(getContext(), clientId, wordlistId, version);
-            }
-            final String localFilename =
-                    wordList.getAsString(MetadataDbHelper.LOCAL_FILENAME_COLUMN);
-            final File f = getContext().getFileStreamPath(localFilename);
-            // f.delete() returns true if the file was successfully deleted, false otherwise
-            return f.delete() ? 1 : 0;
-        }
-        Log.e(TAG, "Attempt to delete a file whose status is " + status);
         return 0;
     }
 
@@ -512,11 +477,6 @@ public final class DictionaryProvider extends ContentProvider {
                 } catch (final BadFormatException e) {
                     Log.w(TAG, "Not enough information to insert this dictionary " + values, e);
                 }
-                // We just received new information about the list of dictionary for this client.
-                // For all intents and purposes, this is new metadata, so we should publish it
-                // so that any listeners (like the Settings interface for example) can update
-                // themselves.
-                UpdateHandler.publishUpdateMetadataCompleted(getContext(), true);
                 break;
             case DICTIONARY_V1_WHOLE_LIST:
             case DICTIONARY_V1_DICT_INFO:

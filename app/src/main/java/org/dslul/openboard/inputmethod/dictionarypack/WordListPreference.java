@@ -169,7 +169,6 @@ public final class WordListPreference extends Preference {
         final Context context = getContext();
         final SharedPreferences prefs = CommonPreferences.getCommonPreferences(context);
         CommonPreferences.disable(prefs, mWordlistId);
-        UpdateHandler.markAsUnused(context, mClientId, mWordlistId, mVersion, mStatus);
         if (MetadataDbHelper.STATUS_DOWNLOADING == mStatus) {
             setStatus(MetadataDbHelper.STATUS_AVAILABLE);
         } else if (MetadataDbHelper.STATUS_INSTALLED == mStatus) {
@@ -185,8 +184,6 @@ public final class WordListPreference extends Preference {
         final Context context = getContext();
         final SharedPreferences prefs = CommonPreferences.getCommonPreferences(context);
         CommonPreferences.enable(prefs, mWordlistId);
-        // Explicit enabling by the user : allow downloading on metered data connection.
-        UpdateHandler.markAsUsed(context, mClientId, mWordlistId, mVersion, mStatus, true);
         if (MetadataDbHelper.STATUS_AVAILABLE == mStatus) {
             setStatus(MetadataDbHelper.STATUS_DOWNLOADING);
         } else if (MetadataDbHelper.STATUS_DISABLED == mStatus
@@ -207,23 +204,12 @@ public final class WordListPreference extends Preference {
         final SharedPreferences prefs = CommonPreferences.getCommonPreferences(context);
         CommonPreferences.disable(prefs, mWordlistId);
         setStatus(MetadataDbHelper.STATUS_DELETING);
-        UpdateHandler.markAsDeleting(context, mClientId, mWordlistId, mVersion, mStatus);
     }
 
     @Override
     protected void onBindView(final View view) {
         super.onBindView(view);
         ((ViewGroup)view).setLayoutTransition(null);
-
-        final DictionaryDownloadProgressBar progressBar =
-                (DictionaryDownloadProgressBar)view.findViewById(R.id.dictionary_line_progress_bar);
-        final TextView status = (TextView)view.findViewById(android.R.id.summary);
-        progressBar.setIds(mClientId, mWordlistId);
-        progressBar.setMax(mFilesize);
-        final boolean showProgressBar = (MetadataDbHelper.STATUS_DOWNLOADING == mStatus);
-        setSummary(getSummary(mStatus));
-        status.setVisibility(showProgressBar ? View.INVISIBLE : View.VISIBLE);
-        progressBar.setVisibility(showProgressBar ? View.VISIBLE : View.INVISIBLE);
 
         final ButtonSwitcher buttonSwitcher = (ButtonSwitcher)view.findViewById(
                 R.id.wordlist_button_switcher);

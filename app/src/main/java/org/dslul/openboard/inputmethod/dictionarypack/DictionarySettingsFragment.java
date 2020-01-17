@@ -53,8 +53,7 @@ import java.util.TreeMap;
 /**
  * Preference screen.
  */
-public final class DictionarySettingsFragment extends PreferenceFragment
-        implements UpdateHandler.UpdateEventListener {
+public final class DictionarySettingsFragment extends PreferenceFragment {
     private static final String TAG = DictionarySettingsFragment.class.getSimpleName();
 
     static final private String DICT_LIST_ID = "list";
@@ -71,13 +70,6 @@ public final class DictionarySettingsFragment extends PreferenceFragment
             new DictionaryListInterfaceState();
     // never null
     private TreeMap<String, WordListPreference> mCurrentPreferenceMap = new TreeMap<>();
-
-    private final BroadcastReceiver mConnectivityChangedReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(final Context context, final Intent intent) {
-                refreshNetworkState();
-            }
-        };
 
     /**
      * Empty constructor for fragment generation.
@@ -106,40 +98,11 @@ public final class DictionarySettingsFragment extends PreferenceFragment
     }
 
     @Override
-    public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
-        new AsyncTask<Void, Void, String>() {
-            @Override
-            protected String doInBackground(Void... params) {
-                return MetadataDbHelper.getMetadataUriAsString(getActivity(), mClientId);
-            }
-
-            @Override
-            protected void onPostExecute(String metadataUri) {
-                // We only add the "Refresh" button if we have a non-empty URL to refresh from. If
-                // the URL is empty, of course we can't refresh so it makes no sense to display
-                // this.
-                if (!TextUtils.isEmpty(metadataUri)) {
-                    if (mUpdateNowMenu == null) {
-                        mUpdateNowMenu = menu.add(Menu.NONE, MENU_UPDATE_NOW, 0,
-                                        R.string.check_for_updates_now);
-                        mUpdateNowMenu.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-                    }
-                    refreshNetworkState();
-                }
-            }
-        }.execute();
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         mChangedSettings = false;
-        UpdateHandler.registerUpdateEventListener(this);
         final Activity activity = getActivity();
         final IntentFilter filter = new IntentFilter();
-        filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        getActivity().registerReceiver(mConnectivityChangedReceiver, filter);
-        refreshNetworkState();
 
         new Thread("onResume") {
             @Override
@@ -161,44 +124,12 @@ public final class DictionarySettingsFragment extends PreferenceFragment
     public void onPause() {
         super.onPause();
         final Activity activity = getActivity();
-        UpdateHandler.unregisterUpdateEventListener(this);
-        activity.unregisterReceiver(mConnectivityChangedReceiver);
         if (mChangedSettings) {
             final Intent newDictBroadcast =
                     new Intent(DictionaryPackConstants.NEW_DICTIONARY_INTENT_ACTION);
             activity.sendBroadcast(newDictBroadcast);
             mChangedSettings = false;
         }
-    }
-
-    @Override
-    public void downloadedMetadata(final boolean succeeded) {
-        stopLoadingAnimation();
-        if (!succeeded) return; // If the download failed nothing changed, so no need to refresh
-        new Thread("refreshInterface") {
-            @Override
-            public void run() {
-                refreshInterface();
-            }
-        }.start();
-    }
-
-    @Override
-    public void wordListDownloadFinished(final String wordListId, final boolean succeeded) {
-        final WordListPreference pref = findWordListPreference(wordListId);
-        if (null == pref) return;
-        // TODO: Report to the user if !succeeded
-        final Activity activity = getActivity();
-        if (null == activity) return;
-        activity.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    // We have to re-read the db in case the description has changed, and to
-                    // find out what state it ended up if the download wasn't successful
-                    // TODO: don't redo everything, only re-read and set this word list status
-                    refreshInterface();
-                }
-            });
     }
 
     private WordListPreference findWordListPreference(final String id) {
@@ -220,17 +151,6 @@ public final class DictionarySettingsFragment extends PreferenceFragment
         return null;
     }
 
-    @Override
-    public void updateCycleCompleted() {}
-
-    void refreshNetworkState() {
-        /*
-        NetworkInfo info = mConnectivityManager.getActiveNetworkInfo();
-        boolean isConnected = null == info ? false : info.isConnected();
-         */
-        if (null != mUpdateNowMenu) mUpdateNowMenu.setEnabled(false);
-    }
-
     void refreshInterface() {
         final Activity activity = getActivity();
         if (null == activity) return;
@@ -243,8 +163,6 @@ public final class DictionarySettingsFragment extends PreferenceFragment
                 public void run() {
                     // TODO: display this somewhere
                     // if (0 != lastUpdate) mUpdateNowPreference.setSummary(updateNowSummary);
-                    refreshNetworkState();
-
                     removeAnyDictSettings(prefScreen);
                     int i = 0;
                     for (Preference preference : prefList) {
@@ -361,80 +279,4 @@ public final class DictionarySettingsFragment extends PreferenceFragment
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(final MenuItem item) {
-        switch (item.getItemId()) {
-        case MENU_UPDATE_NOW:
-            if (View.GONE == mLoadingView.getVisibility()) {
-                startRefresh();
-            } else {
-                cancelRefresh();
-            }
-            return true;
-        }
-        return false;
-    }
-
-    private void startRefresh() {
-        startLoadingAnimation();
-        mChangedSettings = true;
-        UpdateHandler.registerUpdateEventListener(this);
-        final Activity activity = getActivity();
-        new Thread("updateByHand") {
-            @Override
-            public void run() {
-                // We call tryUpdate(), which returns whether we could successfully start an update.
-                // If we couldn't, we'll never receive the end callback, so we stop the loading
-                // animation and return to the previous screen.
-                if (!UpdateHandler.tryUpdate(activity)) {
-                    stopLoadingAnimation();
-                }
-            }
-        }.start();
-    }
-
-    private void cancelRefresh() {
-        UpdateHandler.unregisterUpdateEventListener(this);
-        final Context context = getActivity();
-        new Thread("cancelByHand") {
-            @Override
-            public void run() {
-                UpdateHandler.cancelUpdate(context, mClientId);
-                stopLoadingAnimation();
-            }
-        }.start();
-    }
-
-    private void startLoadingAnimation() {
-        mLoadingView.setVisibility(View.VISIBLE);
-        getView().setVisibility(View.GONE);
-        // We come here when the menu element is pressed so presumably it can't be null. But
-        // better safe than sorry.
-        if (null != mUpdateNowMenu) mUpdateNowMenu.setTitle(R.string.cancel);
-    }
-
-    void stopLoadingAnimation() {
-        final View preferenceView = getView();
-        final Activity activity = getActivity();
-        if (null == activity) return;
-        final View loadingView = mLoadingView;
-        final MenuItem updateNowMenu = mUpdateNowMenu;
-        activity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                loadingView.setVisibility(View.GONE);
-                preferenceView.setVisibility(View.VISIBLE);
-                loadingView.startAnimation(AnimationUtils.loadAnimation(
-                        activity, android.R.anim.fade_out));
-                preferenceView.startAnimation(AnimationUtils.loadAnimation(
-                        activity, android.R.anim.fade_in));
-                // The menu is created by the framework asynchronously after the activity,
-                // which means it's possible to have the activity running but the menu not
-                // created yet - hence the necessity for a null check here.
-                if (null != updateNowMenu) {
-                    updateNowMenu.setTitle(R.string.check_for_updates_now);
-                }
-            }
-        });
-    }
 }

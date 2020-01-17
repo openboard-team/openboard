@@ -25,7 +25,6 @@ import android.util.Log;
 import android.view.inputmethod.InputMethodSubtype;
 
 import org.dslul.openboard.inputmethod.annotations.UsedForTesting;
-import org.dslul.openboard.inputmethod.dictionarypack.UpdateHandler;
 import org.dslul.openboard.inputmethod.latin.AssetFileAddress;
 import org.dslul.openboard.inputmethod.latin.BinaryDictionaryGetter;
 import org.dslul.openboard.inputmethod.latin.R;
@@ -60,8 +59,6 @@ public class DictionaryInfoUtils {
     private static final String DECODER_DICT_SUFFIX = DecoderSpecificConstants.DECODER_DICT_SUFFIX;
     // 6 digits - unicode is limited to 21 bits
     private static final int MAX_HEX_DIGITS_FOR_CODEPOINT = 6;
-
-    private static final String TEMP_DICT_FILE_SUB = UpdateHandler.TEMP_DICT_FILE_SUB;
 
     public static class DictionaryInfo {
         private static final String LOCALE_COLUMN = "locale";
@@ -207,17 +204,6 @@ public class DictionaryInfoUtils {
         return new File(DictionaryInfoUtils.getWordListStagingDirectory(context)).listFiles();
     }
 
-    @Nullable
-    public static File[] getUnusedDictionaryList(final Context context) {
-        return context.getFilesDir().listFiles(new FilenameFilter() {
-            @Override
-            public boolean accept(File dir, String filename) {
-                return !TextUtils.isEmpty(filename) && filename.endsWith(".dict")
-                        && filename.contains(TEMP_DICT_FILE_SUB);
-            }
-        });
-    }
-
     /**
      * Returns the category for a given file name.
      *
@@ -251,75 +237,6 @@ public class DictionaryInfoUtils {
             }
         }
         return absoluteDirectoryName;
-    }
-
-    /**
-     * Generates a file name for the id and locale passed as an argument.
-     *
-     * In the current implementation the file name returned will always be unique for
-     * any id/locale pair, but please do not expect that the id can be the same for
-     * different dictionaries with different locales. An id should be unique for any
-     * dictionary.
-     * The file name is pretty much an URL-encoded version of the id inside a directory
-     * named like the locale, except it will also escape characters that look dangerous
-     * to some file systems.
-     * @param id the id of the dictionary for which to get a file name
-     * @param locale the locale for which to get the file name as a string
-     * @param context the context to use for getting the directory
-     * @return the name of the file to be created
-     */
-    public static String getCacheFileName(String id, String locale, Context context) {
-        final String fileName = replaceFileNameDangerousCharacters(id);
-        return getCacheDirectoryForLocale(locale, context) + File.separator + fileName;
-    }
-
-    public static String getStagingFileName(String id, String locale, Context context) {
-        final String stagingDirectory = getWordListStagingDirectory(context);
-        // create the directory if it does not exist.
-        final File directory = new File(stagingDirectory);
-        if (!directory.exists()) {
-            if (!directory.mkdirs()) {
-                Log.e(TAG, "Could not create the staging directory.");
-            }
-        }
-        // e.g. id="main:en_in", locale ="en_IN"
-        final String fileName = replaceFileNameDangerousCharacters(
-                locale + TEMP_DICT_FILE_SUB + id);
-        return stagingDirectory + File.separator + fileName;
-    }
-
-    public static void moveStagingFilesIfExists(Context context) {
-        final File[] stagingFiles = DictionaryInfoUtils.getStagingDirectoryList(context);
-        if (stagingFiles != null && stagingFiles.length > 0) {
-            for (final File stagingFile : stagingFiles) {
-                final String fileName = stagingFile.getName();
-                final int index = fileName.indexOf(TEMP_DICT_FILE_SUB);
-                if (index == -1) {
-                    // This should never happen.
-                    Log.e(TAG, "Staging file does not have ___ substring.");
-                    continue;
-                }
-                final String[] localeAndFileId = fileName.split(TEMP_DICT_FILE_SUB);
-                if (localeAndFileId.length != 2) {
-                    Log.e(TAG, String.format("malformed staging file %s. Deleting.",
-                            stagingFile.getAbsoluteFile()));
-                    stagingFile.delete();
-                    continue;
-                }
-
-                final String locale = localeAndFileId[0];
-                // already escaped while moving to staging.
-                final String fileId = localeAndFileId[1];
-                final String cacheDirectoryForLocale = getCacheDirectoryForLocale(locale, context);
-                final String cacheFilename = cacheDirectoryForLocale + File.separator + fileId;
-                final File cacheFile = new File(cacheFilename);
-                // move the staging file to cache file.
-                if (!FileUtils.renameTo(stagingFile, cacheFile)) {
-                    Log.e(TAG, String.format("Failed to rename from %s to %s.",
-                            stagingFile.getAbsoluteFile(), cacheFile.getAbsoluteFile()));
-                }
-            }
-        }
     }
 
     public static boolean isMainWordListId(final String id) {
@@ -516,25 +433,6 @@ public class DictionaryInfoUtils {
                     if (dictionaryInfo == null || !dictionaryInfo.mLocale.equals(locale)) {
                         continue;
                     }
-                    addOrUpdateDictInfo(dictList, dictionaryInfo);
-                }
-            }
-        }
-
-        // Retrieve downloaded dictionaries from the unused dictionaries.
-        File[] unusedDictionaryList = getUnusedDictionaryList(context);
-        if (unusedDictionaryList != null) {
-            for (File dictionaryFile : unusedDictionaryList) {
-                String fileName = dictionaryFile.getName();
-                int index = fileName.indexOf(TEMP_DICT_FILE_SUB);
-                if (index == -1) {
-                    continue;
-                }
-                String locale = fileName.substring(0, index);
-                DictionaryInfo dictionaryInfo = createDictionaryInfoForUnCachedFile(
-                        AssetFileAddress.makeFromFile(dictionaryFile),
-                        LocaleUtils.constructLocaleFromString(locale));
-                if (dictionaryInfo != null) {
                     addOrUpdateDictInfo(dictList, dictionaryInfo);
                 }
             }

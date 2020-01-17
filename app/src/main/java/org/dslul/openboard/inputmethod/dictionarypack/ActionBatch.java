@@ -88,116 +88,6 @@ public final class ActionBatch {
         void execute(final Context context);
     }
 
-    /**
-     * An action that starts downloading an available word list.
-     */
-    public static final class StartDownloadAction implements Action {
-        static final String TAG = "DictionaryProvider:" + StartDownloadAction.class.getSimpleName();
-
-        private final String mClientId;
-        // The data to download. May not be null.
-        final WordListMetadata mWordList;
-        public StartDownloadAction(final String clientId, final WordListMetadata wordList) {
-            DebugLogUtils.l("New download action for client ", clientId, " : ", wordList);
-            mClientId = clientId;
-            mWordList = wordList;
-        }
-
-        @Override
-        public void execute(final Context context) {
-            if (null == mWordList) { // This should never happen
-                Log.e(TAG, "UpdateAction with a null parameter!");
-                return;
-            }
-            DebugLogUtils.l("Downloading word list");
-            final SQLiteDatabase db = MetadataDbHelper.getDb(context, mClientId);
-            final ContentValues values = MetadataDbHelper.getContentValuesByWordListId(db,
-                    mWordList.mId, mWordList.mVersion);
-            final int status = values.getAsInteger(MetadataDbHelper.STATUS_COLUMN);
-            final DownloadManagerWrapper manager = new DownloadManagerWrapper(context);
-            if (MetadataDbHelper.STATUS_DOWNLOADING == status) {
-                // The word list is still downloading. Cancel the download and revert the
-                // word list status to "available".
-                manager.remove(values.getAsLong(MetadataDbHelper.PENDINGID_COLUMN));
-                MetadataDbHelper.markEntryAsAvailable(db, mWordList.mId, mWordList.mVersion);
-            } else if (MetadataDbHelper.STATUS_AVAILABLE != status
-                    && MetadataDbHelper.STATUS_RETRYING != status) {
-                // Should never happen
-                Log.e(TAG, "Unexpected state of the word list '" + mWordList.mId + "' : " + status
-                        + " for an upgrade action. Fall back to download.");
-            }
-            // Download it.
-            DebugLogUtils.l("Upgrade word list, downloading", mWordList.mRemoteFilename);
-
-            // This is an upgraded word list: we should download it.
-            // Adding a disambiguator to circumvent a bug in older versions of DownloadManager.
-            // DownloadManager also stupidly cuts the extension to replace with its own that it
-            // gets from the content-type. We need to circumvent this.
-            final String disambiguator = "#" + System.currentTimeMillis()
-                    + ApplicationUtils.getVersionName(context) + ".dict";
-            final Uri uri = Uri.parse(mWordList.mRemoteFilename + disambiguator);
-            final Request request = new Request(uri);
-
-            final Resources res = context.getResources();
-            request.setAllowedNetworkTypes(Request.NETWORK_WIFI | Request.NETWORK_MOBILE);
-            request.setTitle(mWordList.mDescription);
-            request.setNotificationVisibility(Request.VISIBILITY_HIDDEN);
-            request.setVisibleInDownloadsUi(
-                    res.getBoolean(R.bool.dict_downloads_visible_in_download_UI));
-
-            final long downloadId = UpdateHandler.registerDownloadRequest(manager, request, db,
-                    mWordList.mId, mWordList.mVersion);
-            Log.i(TAG, String.format("Starting the dictionary download with version:"
-                            + " %d and Url: %s", mWordList.mVersion, uri));
-            DebugLogUtils.l("Starting download of", uri, "with id", downloadId);
-            PrivateLog.log("Starting download of " + uri + ", id : " + downloadId);
-        }
-    }
-
-    /**
-     * An action that updates the database to reflect the status of a newly installed word list.
-     */
-    public static final class InstallAfterDownloadAction implements Action {
-        static final String TAG = "DictionaryProvider:"
-                + InstallAfterDownloadAction.class.getSimpleName();
-        private final String mClientId;
-        // The state to upgrade from. May not be null.
-        final ContentValues mWordListValues;
-
-        public InstallAfterDownloadAction(final String clientId,
-                final ContentValues wordListValues) {
-            DebugLogUtils.l("New InstallAfterDownloadAction for client ", clientId, " : ",
-                    wordListValues);
-            mClientId = clientId;
-            mWordListValues = wordListValues;
-        }
-
-        @Override
-        public void execute(final Context context) {
-            if (null == mWordListValues) {
-                Log.e(TAG, "InstallAfterDownloadAction with a null parameter!");
-                return;
-            }
-            final int status = mWordListValues.getAsInteger(MetadataDbHelper.STATUS_COLUMN);
-            if (MetadataDbHelper.STATUS_DOWNLOADING != status) {
-                final String id = mWordListValues.getAsString(MetadataDbHelper.WORDLISTID_COLUMN);
-                Log.e(TAG, "Unexpected state of the word list '" + id + "' : " + status
-                        + " for an InstallAfterDownload action. Bailing out.");
-                return;
-            }
-
-            DebugLogUtils.l("Setting word list as installed");
-            final SQLiteDatabase db = MetadataDbHelper.getDb(context, mClientId);
-            MetadataDbHelper.markEntryAsFinishedDownloadingAndInstalled(db, mWordListValues);
-
-            // Install the downloaded file by un-compressing and moving it to the staging
-            // directory. Ideally, we should do this before updating the DB, but the
-            // installDictToStagingFromContentProvider() relies on the db being updated.
-            final String localeString = mWordListValues.getAsString(MetadataDbHelper.LOCALE_COLUMN);
-            BinaryDictionaryFileDumper.installDictToStagingFromContentProvider(
-                    LocaleUtils.constructLocaleFromString(localeString), context, false);
-        }
-    }
 
     /**
      * An action that enables an existing word list.
@@ -270,9 +160,6 @@ public final class ActionBatch {
                 }
                 // The word list is still downloading. Cancel the download and revert the
                 // word list status to "available".
-                final DownloadManagerWrapper manager = new DownloadManagerWrapper(context);
-                manager.remove(values.getAsLong(MetadataDbHelper.PENDINGID_COLUMN));
-                MetadataDbHelper.markEntryAsAvailable(db, mWordList.mId, mWordList.mVersion);
             }
         }
     }

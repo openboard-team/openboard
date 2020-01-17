@@ -46,7 +46,6 @@ import javax.annotation.Nonnull;
 public final class Settings implements SharedPreferences.OnSharedPreferenceChangeListener {
     private static final String TAG = Settings.class.getSimpleName();
     // Settings screens
-    public static final String SCREEN_ACCOUNTS = "screen_accounts";
     public static final String SCREEN_THEME = "screen_theme";
     public static final String SCREEN_DEBUG = "screen_debug";
     public static final String SCREEN_GESTURE = "screen_gesture";

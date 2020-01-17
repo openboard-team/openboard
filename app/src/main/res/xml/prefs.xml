@@ -23,10 +23,6 @@
         android:title="@string/settings_screen_preferences"
         android:key="screen_preferences" />
     <PreferenceScreen
-        android:fragment="org.dslul.openboard.inputmethod.latin.settings.AccountsSettingsFragment"
-        android:title="@string/settings_screen_accounts"
-        android:key="screen_accounts" />
-    <PreferenceScreen
         android:fragment="org.dslul.openboard.inputmethod.latin.settings.AppearanceSettingsFragment"
         android:title="@string/settings_screen_appearance"
         android:key="screen_appearance" />

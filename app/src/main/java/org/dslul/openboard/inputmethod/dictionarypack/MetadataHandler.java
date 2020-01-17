@@ -161,7 +161,6 @@ public class MetadataHandler {
         int bestFormatVersion = Integer.MIN_VALUE; // To be sure we can't be inadvertently smaller
         for (WordListMetadata wordList : metadata) {
             if (id.equals(wordList.mId)
-                    && wordList.mFormatVersion <= UpdateHandler.MAXIMUM_SUPPORTED_FORMAT_VERSION
                     && wordList.mFormatVersion > bestFormatVersion) {
                 bestWordList = wordList;
                 bestFormatVersion = wordList.mFormatVersion;

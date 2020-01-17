@@ -29,7 +29,6 @@ import android.util.Log;
 
 import org.dslul.openboard.inputmethod.dictionarypack.DictionaryPackConstants;
 import org.dslul.openboard.inputmethod.dictionarypack.MD5Calculator;
-import org.dslul.openboard.inputmethod.dictionarypack.UpdateHandler;
 import org.dslul.openboard.inputmethod.latin.common.FileUtils;
 import org.dslul.openboard.inputmethod.latin.define.DecoderSpecificConstants;
 import org.dslul.openboard.inputmethod.latin.utils.DictionaryInfoUtils;
@@ -221,152 +220,6 @@ public final class BinaryDictionaryFileDumper {
         }
     }
 
-    /**
-     * Stages a word list the id of which is passed as an argument. This will write the file
-     * to the cache file name designated by its id and locale, overwriting it if already present
-     * and creating it (and its containing directory) if necessary.
-     */
-    private static void installWordListToStaging(final String wordlistId, final String locale,
-            final String rawChecksum, final ContentProviderClient providerClient,
-            final Context context) {
-        final int COMPRESSED_CRYPTED_COMPRESSED = 0;
-        final int CRYPTED_COMPRESSED = 1;
-        final int COMPRESSED_CRYPTED = 2;
-        final int COMPRESSED_ONLY = 3;
-        final int CRYPTED_ONLY = 4;
-        final int NONE = 5;
-        final int MODE_MIN = COMPRESSED_CRYPTED_COMPRESSED;
-        final int MODE_MAX = NONE;
-
-        final String clientId = context.getString(R.string.dictionary_pack_client_id);
-        final Uri.Builder wordListUriBuilder;
-        try {
-            wordListUriBuilder = getContentUriBuilderForType(clientId,
-                    providerClient, QUERY_PATH_DATAFILE, wordlistId /* extraPath */);
-        } catch (RemoteException e) {
-            Log.e(TAG, "Can't communicate with the dictionary pack", e);
-            return;
-        }
-        final String finalFileName =
-                DictionaryInfoUtils.getStagingFileName(wordlistId, locale, context);
-        String tempFileName;
-        try {
-            tempFileName = BinaryDictionaryGetter.getTempFileName(wordlistId, context);
-        } catch (IOException e) {
-            Log.e(TAG, "Can't open the temporary file", e);
-            return;
-        }
-
-        for (int mode = MODE_MIN; mode <= MODE_MAX; ++mode) {
-            final InputStream originalSourceStream;
-            InputStream inputStream = null;
-            InputStream uncompressedStream = null;
-            InputStream decryptedStream = null;
-            BufferedInputStream bufferedInputStream = null;
-            File outputFile = null;
-            BufferedOutputStream bufferedOutputStream = null;
-            AssetFileDescriptor afd = null;
-            final Uri wordListUri = wordListUriBuilder.build();
-            try {
-                // Open input.
-                afd = openAssetFileDescriptor(providerClient, wordListUri);
-                // If we can't open it at all, don't even try a number of times.
-                if (null == afd) return;
-                originalSourceStream = afd.createInputStream();
-                // Open output.
-                outputFile = new File(tempFileName);
-                // Just to be sure, delete the file. This may fail silently, and return false: this
-                // is the right thing to do, as we just want to continue anyway.
-                outputFile.delete();
-                // Get the appropriate decryption method for this try
-                switch (mode) {
-                    case COMPRESSED_CRYPTED_COMPRESSED:
-                        uncompressedStream =
-                                FileTransforms.getUncompressedStream(originalSourceStream);
-                        decryptedStream = FileTransforms.getDecryptedStream(uncompressedStream);
-                        inputStream = FileTransforms.getUncompressedStream(decryptedStream);
-                        break;
-                    case CRYPTED_COMPRESSED:
-                        decryptedStream = FileTransforms.getDecryptedStream(originalSourceStream);
-                        inputStream = FileTransforms.getUncompressedStream(decryptedStream);
-                        break;
-                    case COMPRESSED_CRYPTED:
-                        uncompressedStream =
-                                FileTransforms.getUncompressedStream(originalSourceStream);
-                        inputStream = FileTransforms.getDecryptedStream(uncompressedStream);
-                        break;
-                    case COMPRESSED_ONLY:
-                        inputStream = FileTransforms.getUncompressedStream(originalSourceStream);
-                        break;
-                    case CRYPTED_ONLY:
-                        inputStream = FileTransforms.getDecryptedStream(originalSourceStream);
-                        break;
-                    case NONE:
-                        inputStream = originalSourceStream;
-                        break;
-                }
-                bufferedInputStream = new BufferedInputStream(inputStream);
-                bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(outputFile));
-                checkMagicAndCopyFileTo(bufferedInputStream, bufferedOutputStream);
-                bufferedOutputStream.flush();
-                bufferedOutputStream.close();
-
-                if (SHOULD_VERIFY_CHECKSUM) {
-                    final String actualRawChecksum = MD5Calculator.checksum(
-                            new BufferedInputStream(new FileInputStream(outputFile)));
-                    Log.i(TAG, "Computed checksum for downloaded dictionary. Expected = "
-                            + rawChecksum + " ; actual = " + actualRawChecksum);
-                    if (!TextUtils.isEmpty(rawChecksum) && !rawChecksum.equals(actualRawChecksum)) {
-                        throw new IOException(
-                                "Could not decode the file correctly : checksum differs");
-                    }
-                }
-
-                // move the output file to the final staging file.
-                final File finalFile = new File(finalFileName);
-                if (!FileUtils.renameTo(outputFile, finalFile)) {
-                    Log.e(TAG, String.format("Failed to rename from %s to %s.",
-                            outputFile.getAbsoluteFile(), finalFile.getAbsoluteFile()));
-                }
-
-                wordListUriBuilder.appendQueryParameter(QUERY_PARAMETER_DELETE_RESULT,
-                        QUERY_PARAMETER_SUCCESS);
-                if (0 >= providerClient.delete(wordListUriBuilder.build(), null, null)) {
-                    Log.e(TAG, "Could not have the dictionary pack delete a word list");
-                }
-                Log.d(TAG, "Successfully copied file for wordlist ID " + wordlistId);
-                // Success! Close files (through the finally{} clause) and return.
-                return;
-            } catch (Exception e) {
-                if (DEBUG) {
-                    Log.e(TAG, "Can't open word list in mode " + mode, e);
-                }
-                if (null != outputFile) {
-                    // This may or may not fail. The file may not have been created if the
-                    // exception was thrown before it could be. Hence, both failure and
-                    // success are expected outcomes, so we don't check the return value.
-                    outputFile.delete();
-                }
-                // Try the next method.
-            } finally {
-                // Ignore exceptions while closing files.
-                closeAssetFileDescriptorAndReportAnyException(afd);
-                closeCloseableAndReportAnyException(inputStream);
-                closeCloseableAndReportAnyException(uncompressedStream);
-                closeCloseableAndReportAnyException(decryptedStream);
-                closeCloseableAndReportAnyException(bufferedInputStream);
-                closeCloseableAndReportAnyException(bufferedOutputStream);
-            }
-        }
-
-        // We could not copy the file at all. This is very unexpected.
-        // I'd rather not print the word list ID to the log out of security concerns
-        Log.e(TAG, "Could not copy a word list. Will not be able to use it.");
-        // If we can't copy it we should warn the dictionary provider so that it can mark it
-        // as invalid.
-        reportBrokenFileToDictionaryProvider(providerClient, clientId, wordlistId);
-    }
-
     public static boolean reportBrokenFileToDictionaryProvider(
             final ContentProviderClient providerClient, final String clientId,
             final String wordlistId) {
@@ -403,53 +256,6 @@ public final class BinaryDictionaryFileDumper {
         } catch (Exception e) {
             Log.e(TAG, "Exception while closing a file", e);
         }
-    }
-
-    /**
-     * Queries a content provider for word list data for some locale and stage the returned files
-     *
-     * This will query a content provider for word list data for a given locale, and copy the
-     * files locally so that they can be mmap'ed. This may overwrite previously cached word lists
-     * with newer versions if a newer version is made available by the content provider.
-     * @throw FileNotFoundException if the provider returns non-existent data.
-     * @throw IOException if the provider-returned data could not be read.
-     */
-    public static void installDictToStagingFromContentProvider(final Locale locale,
-            final Context context, final boolean hasDefaultWordList) {
-        final ContentProviderClient providerClient;
-        try {
-            providerClient = context.getContentResolver().
-                acquireContentProviderClient(getProviderUriBuilder("").build());
-        } catch (final SecurityException e) {
-            Log.e(TAG, "No permission to communicate with the dictionary provider", e);
-            return;
-        }
-        if (null == providerClient) {
-            Log.e(TAG, "Can't establish communication with the dictionary provider");
-            return;
-        }
-        try {
-            final List<WordListInfo> idList = getWordListWordListInfos(locale, context,
-                    hasDefaultWordList);
-            for (WordListInfo id : idList) {
-                installWordListToStaging(id.mId, id.mLocale, id.mRawChecksum, providerClient,
-                        context);
-            }
-        } finally {
-            providerClient.release();
-        }
-    }
-
-    /**
-     * Downloads the dictionary if it was never requested/used.
-     *
-     * @param locale locale to download
-     * @param context the context for resources and providers.
-     * @param hasDefaultWordList whether the default wordlist exists in the resources.
-     */
-    public static void downloadDictIfNeverRequested(final Locale locale,
-            final Context context, final boolean hasDefaultWordList) {
-        getWordListWordListInfos(locale, context, hasDefaultWordList);
     }
 
     /**
@@ -533,7 +339,6 @@ public final class BinaryDictionaryFileDumper {
         InputStream inputStream = null;
         try {
             inputStream = context.getResources().openRawResource(metadataResourceId);
-            UpdateHandler.handleMetadata(context, inputStream, clientId);
         } catch (Exception e) {
             Log.w(TAG, "Failed to read metadata.json from resources", e);
         } finally {

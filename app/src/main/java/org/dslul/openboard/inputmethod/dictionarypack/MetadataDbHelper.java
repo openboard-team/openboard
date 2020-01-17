@@ -211,7 +211,6 @@ public class MetadataDbHelper extends SQLiteOpenHelper {
             final ContentValues defaultMetadataValues = new ContentValues();
             defaultMetadataValues.put(CLIENT_CLIENT_ID_COLUMN, "");
             defaultMetadataValues.put(CLIENT_METADATA_URI_COLUMN, defaultMetadataUri);
-            defaultMetadataValues.put(CLIENT_PENDINGID_COLUMN, UpdateHandler.NOT_AN_ID);
             db.insert(CLIENT_TABLE_NAME, null, defaultMetadataValues);
         }
     }
@@ -429,31 +428,6 @@ public class MetadataDbHelper extends SQLiteOpenHelper {
         }
     }
 
-    /**
-     * Get the metadata download ID for a metadata URI.
-     *
-     * This will retrieve the download ID for the metadata file that has the passed URI.
-     * If this URI is not being downloaded right now, it will return NOT_AN_ID.
-     *
-     * @param context a context instance to open the database on
-     * @param uri the URI to retrieve the metadata download ID of
-     * @return the download id and start date, or null if the URL is not known
-     */
-    public static DownloadIdAndStartDate getMetadataDownloadIdAndStartDateForURI(
-            final Context context, final String uri) {
-        SQLiteDatabase defaultDb = getDb(context, null);
-        final Cursor cursor = defaultDb.query(CLIENT_TABLE_NAME,
-                new String[] { CLIENT_PENDINGID_COLUMN, CLIENT_LAST_UPDATE_DATE_COLUMN },
-                CLIENT_METADATA_URI_COLUMN + " = ?", new String[] { uri },
-                null, null, null, null);
-        try {
-            if (!cursor.moveToFirst()) return null;
-            return new DownloadIdAndStartDate(cursor.getInt(0), cursor.getLong(1));
-        } finally {
-            cursor.close();
-        }
-    }
-
     public static long getOldestUpdateTime(final Context context) {
         SQLiteDatabase defaultDb = getDb(context, null);
         final Cursor cursor = defaultDb.query(CLIENT_TABLE_NAME,
@@ -541,9 +515,6 @@ public class MetadataDbHelper extends SQLiteOpenHelper {
         if (null == result.get(FILESIZE_COLUMN)) result.put(FILESIZE_COLUMN, 0);
         // Smallest possible version unless specified
         if (null == result.get(VERSION_COLUMN)) result.put(VERSION_COLUMN, 1);
-        // Assume current format unless specified
-        if (null == result.get(FORMATVERSION_COLUMN))
-            result.put(FORMATVERSION_COLUMN, UpdateHandler.MAXIMUM_SUPPORTED_FORMAT_VERSION);
         // No flags unless specified
         if (null == result.get(FLAGS_COLUMN)) result.put(FLAGS_COLUMN, 0);
         return result;
@@ -657,48 +628,6 @@ public class MetadataDbHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Given a specific download ID, return records for all pending downloads across all clients.
-     *
-     * If several clients use the same metadata URL, we know to only download it once, and
-     * dispatch the update process across all relevant clients when the download ends. This means
-     * several clients may share a single download ID if they share a metadata URI.
-     * The dispatching is done in
-     * {@link UpdateHandler#downloadFinished(Context, android.content.Intent)}, which
-     * finds out about the list of relevant clients by calling this method.
-     *
-     * @param context a context instance to open the databases
-     * @param downloadId the download ID to query about
-     * @return the list of records. Never null, but may be empty.
-     */
-    public static ArrayList<DownloadRecord> getDownloadRecordsForDownloadId(final Context context,
-            final long downloadId) {
-        final SQLiteDatabase defaultDb = getDb(context, "");
-        final ArrayList<DownloadRecord> results = new ArrayList<>();
-        final Cursor cursor = defaultDb.query(CLIENT_TABLE_NAME, CLIENT_TABLE_COLUMNS,
-                null, null, null, null, null);
-        try {
-            if (!cursor.moveToFirst()) return results;
-            final int clientIdIndex = cursor.getColumnIndex(CLIENT_CLIENT_ID_COLUMN);
-            final int pendingIdColumn = cursor.getColumnIndex(CLIENT_PENDINGID_COLUMN);
-            do {
-                final long pendingId = cursor.getInt(pendingIdColumn);
-                final String clientId = cursor.getString(clientIdIndex);
-                if (pendingId == downloadId) {
-                    results.add(new DownloadRecord(clientId, null));
-                }
-                final ContentValues valuesForThisClient =
-                        getContentValuesByPendingId(getDb(context, clientId), downloadId);
-                if (null != valuesForThisClient) {
-                    results.add(new DownloadRecord(clientId, valuesForThisClient));
-                }
-            } while (cursor.moveToNext());
-        } finally {
-            cursor.close();
-        }
-        return results;
-    }
-
-    /**
      * Gets the info about a specific word list.
      *
      * @param db the database to get the information from.
@@ -716,7 +645,7 @@ public class MetadataDbHelper extends SQLiteOpenHelper {
                 new String[]
                         { id,
                           Integer.toString(version),
-                          Integer.toString(UpdateHandler.MAXIMUM_SUPPORTED_FORMAT_VERSION)
+                          Integer.toString(version)
                         },
                 null /* groupBy */,
                 null /* having */,
@@ -893,7 +822,6 @@ public class MetadataDbHelper extends SQLiteOpenHelper {
             return;
         }
         // Default value for a pending ID is NOT_AN_ID
-        values.put(CLIENT_PENDINGID_COLUMN, UpdateHandler.NOT_AN_ID);
         final SQLiteDatabase defaultDb = getDb(context, "");
         if (-1 == defaultDb.insert(CLIENT_TABLE_NAME, null, values)) {
             defaultDb.update(CLIENT_TABLE_NAME, values,
@@ -909,42 +837,6 @@ public class MetadataDbHelper extends SQLiteOpenHelper {
     public static Cursor queryClientIds(final Context context) {
         return getDb(context, null).query(CLIENT_TABLE_NAME,
                 new String[] { CLIENT_CLIENT_ID_COLUMN }, null, null, null, null, null);
-    }
-
-    /**
-     * Register a download ID for a specific metadata URI.
-     *
-     * This method should be called when a download for a metadata URI is starting. It will
-     * search for all clients using this metadata URI and will register for each of them
-     * the download ID into the database for later retrieval by
-     * {@link #getDownloadRecordsForDownloadId(Context, long)}.
-     *
-     * @param context a context for opening databases
-     * @param uri the metadata URI
-     * @param downloadId the download ID
-     */
-    public static void registerMetadataDownloadId(final Context context, final String uri,
-            final long downloadId) {
-        final ContentValues values = new ContentValues();
-        values.put(CLIENT_PENDINGID_COLUMN, downloadId);
-        values.put(CLIENT_LAST_UPDATE_DATE_COLUMN, System.currentTimeMillis());
-        final SQLiteDatabase defaultDb = getDb(context, "");
-        final Cursor cursor = MetadataDbHelper.queryClientIds(context);
-        if (null == cursor) return;
-        try {
-            if (!cursor.moveToFirst()) return;
-            do {
-                final String clientId = cursor.getString(0);
-                final String metadataUri =
-                        MetadataDbHelper.getMetadataUriAsString(context, clientId);
-                if (metadataUri.equals(uri)) {
-                    defaultDb.update(CLIENT_TABLE_NAME, values,
-                            CLIENT_CLIENT_ID_COLUMN + " = ?", new String[] { clientId });
-                }
-            } while (cursor.moveToNext());
-        } finally {
-            cursor.close();
-        }
     }
 
     /**

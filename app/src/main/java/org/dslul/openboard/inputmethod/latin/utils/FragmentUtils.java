@@ -18,7 +18,6 @@ package org.dslul.openboard.inputmethod.latin.utils;
 
 import org.dslul.openboard.inputmethod.dictionarypack.DictionarySettingsFragment;
 import org.dslul.openboard.inputmethod.latin.about.AboutPreferences;
-import org.dslul.openboard.inputmethod.latin.settings.AccountsSettingsFragment;
 import org.dslul.openboard.inputmethod.latin.settings.AdvancedSettingsFragment;
 import org.dslul.openboard.inputmethod.latin.settings.AppearanceSettingsFragment;
 import org.dslul.openboard.inputmethod.latin.settings.CorrectionSettingsFragment;
@@ -42,7 +41,6 @@ public class FragmentUtils {
         sLatinImeFragments.add(DictionarySettingsFragment.class.getName());
         sLatinImeFragments.add(AboutPreferences.class.getName());
         sLatinImeFragments.add(PreferencesSettingsFragment.class.getName());
-        sLatinImeFragments.add(AccountsSettingsFragment.class.getName());
         sLatinImeFragments.add(AppearanceSettingsFragment.class.getName());
         sLatinImeFragments.add(ThemeSettingsFragment.class.getName());
         sLatinImeFragments.add(CustomInputStyleSettingsFragment.class.getName());
