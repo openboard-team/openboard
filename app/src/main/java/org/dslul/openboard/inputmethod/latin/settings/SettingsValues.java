@@ -73,6 +73,8 @@ public class SettingsValues {
     public final boolean mUsePersonalizedDicts;
     public final boolean mUseDoubleSpacePeriod;
     public final boolean mBlockPotentiallyOffensive;
+    public final boolean mSpaceTrackpadEnabled;
+    public final boolean mDeleteSwipeEnabled;
     // Use bigrams to predict the next word when there is no input for it yet
     public final boolean mBigramPredictionEnabled;
     public final boolean mGestureInputEnabled;
@@ -223,6 +225,8 @@ public class SettingsValues {
             new TargetPackageInfoGetterTask(context, mAppWorkarounds)
                     .execute(mInputAttributes.mTargetApplicationPackageName);
         }
+        mSpaceTrackpadEnabled = Settings.readSpaceTrackpadEnabled(prefs);
+        mDeleteSwipeEnabled = Settings.readDeleteSwipeEnabled(prefs);
     }
 
     public boolean isMetricsLoggingEnabled() {

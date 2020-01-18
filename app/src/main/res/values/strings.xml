@@ -597,4 +597,8 @@ Tip: You can download and remove dictionaries by going to &lt;b>Languages&#160;&
          This resource is copied from packages/apps/Settings/res/values/strings.xml -->
     <!-- This resource is corresponding to msgid="5433275485499039199" -->
     <string name="user_dict_fast_scroll_alphabet">\u0020ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="delete_swipe">Delete swipe</string>
+    <string name="space_trackpad">Space bar trackpad</string>
+    <string name="delete_swipe_summary">Perform a swipe from the delete key to select and remove bigger portions of text at once</string>
+    <string name="space_trackpad_summary">Swipe on the spacebar to move the cursor</string>
 </resources>

@@ -85,6 +85,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element,
 
     // Parameters for pointer handling.
     private static PointerTrackerParams sParams;
+    private static int sPointerStep = (int)(10.0 * Resources.getSystem().getDisplayMetrics().density);
     private static GestureStrokeRecognitionParams sGestureStrokeRecognitionParams;
     private static GestureStrokeDrawingParams sGestureStrokeDrawingParams;
     private static boolean sNeedsPhantomSuddenMoveEventHack;
@@ -127,6 +128,10 @@ public final class PointerTracker implements PointerTrackerQueue.Element,
     // Last pointer position.
     private int mLastX;
     private int mLastY;
+    private int mStartX;
+    private int mStartY;
+    private long mStartTime;
+    private boolean mCursorMoved = false;
 
     // true if keyboard layout has been changed.
     private boolean mKeyboardLayoutHasBeenChanged;
@@ -696,6 +701,9 @@ public final class PointerTracker implements PointerTrackerQueue.Element,
             startRepeatKey(key);
             startLongPressTimer(key);
             setPressedKeyGraphics(key, eventTime);
+            mStartX = x;
+            mStartY = y;
+            mStartTime = System.currentTimeMillis();
         }
     }
 
@@ -894,10 +902,35 @@ public final class PointerTracker implements PointerTrackerQueue.Element,
     }
 
     private void onMoveEventInternal(final int x, final int y, final long eventTime) {
+        final Key oldKey = mCurrentKey;
+
+        if (oldKey != null && oldKey.getCode() == Constants.CODE_SPACE && Settings.getInstance().getCurrent().mSpaceTrackpadEnabled) {
+            //Pointer slider
+            int steps = (x - mStartX) / sPointerStep;
+            final int longpressTimeout = Settings.getInstance().getCurrent().mKeyLongpressTimeout / MULTIPLIER_FOR_LONG_PRESS_TIMEOUT_IN_SLIDING_INPUT;
+            if (steps != 0 && mStartTime + longpressTimeout < System.currentTimeMillis()) {
+                mCursorMoved = true;
+                mStartX += steps * sPointerStep;
+                sListener.onMovePointer(steps);
+            }
+            return;
+        }
+
+        if (oldKey != null && oldKey.getCode() == Constants.CODE_DELETE && Settings.getInstance().getCurrent().mDeleteSwipeEnabled) {
+            //Delete slider
+            int steps = (x - mStartX) / sPointerStep;
+            if (steps != 0) {
+                sTimerProxy.cancelKeyTimersOf(this);
+                mCursorMoved = true;
+                mStartX += steps * sPointerStep;
+                sListener.onMoveDeletePointer(steps);
+            }
+            return;
+        }
+
+        final Key newKey = onMoveKey(x, y);
         final int lastX = mLastX;
         final int lastY = mLastY;
-        final Key oldKey = mCurrentKey;
-        final Key newKey = onMoveKey(x, y);
 
         if (sGestureEnabler.shouldHandleGesture()) {
             // Register move event on gesture tracker.
@@ -971,6 +1004,10 @@ public final class PointerTracker implements PointerTrackerQueue.Element,
         // Release the last pressed key.
         setReleasedKeyGraphics(currentKey, true /* withAnimation */);
 
+        if(mCursorMoved && currentKey.getCode() == Constants.CODE_DELETE) {
+            sListener.onUpWithDeletePointerActive();
+        }
+
         if (isShowingMoreKeysPanel()) {
             if (!mIsTrackingForActionDisabled) {
                 final int translatedX = mMoreKeysPanel.translateX(x);
@@ -978,6 +1015,11 @@ public final class PointerTracker implements PointerTrackerQueue.Element,
                 mMoreKeysPanel.onUpEvent(translatedX, translatedY, mPointerId, eventTime);
             }
             dismissMoreKeysPanel();
+            return;
+        }
+
+        if (mCursorMoved) {
+            mCursorMoved = false;
             return;
         }
 
@@ -1021,6 +1063,9 @@ public final class PointerTracker implements PointerTrackerQueue.Element,
     public void onLongPressed() {
         sTimerProxy.cancelLongPressTimersOf(this);
         if (isShowingMoreKeysPanel()) {
+            return;
+        }
+        if(mCursorMoved) {
             return;
         }
         final Key key = getKey();
@@ -1146,6 +1191,10 @@ public final class PointerTracker implements PointerTrackerQueue.Element,
         final int longpressTimeout = Settings.getInstance().getCurrent().mKeyLongpressTimeout;
         if (mIsInSlidingKeyInput) {
             // We use longer timeout for sliding finger input started from the modifier key.
+            return longpressTimeout * MULTIPLIER_FOR_LONG_PRESS_TIMEOUT_IN_SLIDING_INPUT;
+        }
+        if (code == Constants.CODE_SPACE) {
+            // Cursor can be moved in space
             return longpressTimeout * MULTIPLIER_FOR_LONG_PRESS_TIMEOUT_IN_SLIDING_INPUT;
         }
         return longpressTimeout;

@@ -40,6 +40,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.PrintWriterPrinter;
 import android.util.Printer;
@@ -1347,14 +1348,46 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public boolean onCustomRequest(final int requestCode) {
         if (isShowingOptionDialog()) return false;
         switch (requestCode) {
-        case Constants.CUSTOM_CODE_SHOW_INPUT_METHOD_PICKER:
-            if (mRichImm.hasMultipleEnabledIMEsOrSubtypes(true /* include aux subtypes */)) {
-                mRichImm.getInputMethodManager().showInputMethodPicker();
-                return true;
-            }
-            return false;
+            case Constants.CUSTOM_CODE_SHOW_INPUT_METHOD_PICKER:
+                if (mRichImm.hasMultipleEnabledIMEsOrSubtypes(true /* include aux subtypes */)) {
+                    mRichImm.getInputMethodManager().showInputMethodPicker();
+                    return true;
+                }
+                return false;
         }
         return false;
+    }
+
+    @Override
+    public void onMovePointer(int steps) {
+        if (steps < 0) {
+            int availableCharacters = getCurrentInputConnection().getTextBeforeCursor(64, 0).length();
+            steps = availableCharacters < -steps ? -availableCharacters : steps;
+        }
+        else if (steps > 0) {
+            int availableCharacters = getCurrentInputConnection().getTextAfterCursor(64, 0).length();
+            steps = availableCharacters < steps ? availableCharacters : steps;
+        } else return;
+
+        int newPosition = mInputLogic.mConnection.mExpectedSelStart + steps;
+        getCurrentInputConnection().setSelection(newPosition, newPosition);
+    }
+
+    @Override
+    public void onMoveDeletePointer(int steps) {
+        int end = mInputLogic.mConnection.getExpectedSelectionEnd();
+        int start = mInputLogic.mConnection.getExpectedSelectionStart() + steps;
+        if (start > end)
+            return;
+        mInputLogic.mConnection.setSelection(start, end);
+    }
+
+    @Override
+    public void onUpWithDeletePointerActive() {
+        if (mInputLogic.mConnection.hasSelection()) {
+            mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
+            mInputLogic.finishInput();
+        }
     }
 
     private boolean isShowingOptionDialog() {
