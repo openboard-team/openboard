@@ -5,3 +5,6 @@
 ![](images/feature.png)
 
 100% FOSS keyboard, based on AOSP.
+
+### Permissions
+* **Read Contacts**: Used to add your contact list to suggestions. Disabled by default.
