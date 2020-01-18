@@ -1,0 +1,4 @@
+- Spacebar swipe navigation
+- swipe on delete key to select and remove text
+- bugfix
+- Removed more permissions

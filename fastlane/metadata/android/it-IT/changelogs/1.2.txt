@@ -1,0 +1,4 @@
+- Scorrimento sulla barra spaziatrice per spostare il cursore
+- scorrimento dal tasto elimina per selezionare e cancellare porzioni di testo
+- sistemati bug
+- rimossi altri permessi inutili
