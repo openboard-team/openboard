@@ -32,7 +32,6 @@ public final class SettingsActivity extends PreferenceActivity
         implements ActivityCompat.OnRequestPermissionsResultCallback {
     private static final String DEFAULT_FRAGMENT = SettingsFragment.class.getName();
 
-    public static final String EXTRA_SHOW_HOME_AS_UP = "show_home_as_up";
     public static final String EXTRA_ENTRY_KEY = "entry";
     public static final String EXTRA_ENTRY_VALUE_LONG_PRESS_COMMA = "long_press_comma";
     public static final String EXTRA_ENTRY_VALUE_APP_ICON = "app_icon";
@@ -45,24 +44,10 @@ public final class SettingsActivity extends PreferenceActivity
     protected void onCreate(final Bundle savedState) {
         super.onCreate(savedState);
         final ActionBar actionBar = getActionBar();
-        final Intent intent = getIntent();
         if (actionBar != null) {
-            mShowHomeAsUp = intent.getBooleanExtra(EXTRA_SHOW_HOME_AS_UP, true);
-            actionBar.setDisplayHomeAsUpEnabled(mShowHomeAsUp);
-            actionBar.setHomeButtonEnabled(mShowHomeAsUp);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
         }
-        StatsUtils.onSettingsActivity(
-                intent.hasExtra(EXTRA_ENTRY_KEY) ? intent.getStringExtra(EXTRA_ENTRY_KEY)
-                        : EXTRA_ENTRY_VALUE_SYSTEM_SETTINGS);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(final MenuItem item) {
-        if (mShowHomeAsUp && item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
