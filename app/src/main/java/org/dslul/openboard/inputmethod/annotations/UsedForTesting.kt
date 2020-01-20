@@ -13,12 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package org.dslul.openboard.inputmethod.annotations;
+package org.dslul.openboard.inputmethod.annotations
 
 /**
  * Denotes that the class, method or field should not be eliminated by ProGuard,
- * because it is externally referenced. (See proguard.flags)
+ * so that unit tests can access it. (See proguard.flags)
  */
-public @interface ExternallyReferenced {
-}
+annotation class UsedForTesting

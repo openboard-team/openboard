@@ -1,11 +1,13 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 29
 
     defaultConfig {
         applicationId "org.dslul.openboard.inputmethod.latin"
-        minSdkVersion 14
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 4
         versionName "1.2"
@@ -36,4 +38,9 @@ android {
 dependencies {
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.core:core-ktx:1.1.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
