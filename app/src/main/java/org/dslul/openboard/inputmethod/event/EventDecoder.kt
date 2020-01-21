@@ -13,14 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package org.dslul.openboard.inputmethod.event;
-
-import android.view.KeyEvent;
+package org.dslul.openboard.inputmethod.event
 
 /**
- * An event decoder for hardware events.
+ * A generic interface for event decoders.
  */
-public interface HardwareEventDecoder extends EventDecoder {
-    public Event decodeHardwareKey(final KeyEvent keyEvent);
-}
+interface EventDecoder

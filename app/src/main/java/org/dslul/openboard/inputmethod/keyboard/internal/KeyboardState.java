@@ -619,7 +619,7 @@ public final class KeyboardState {
     }
 
     public void onEvent(final Event event, final int autoCapsFlags, final int recapitalizeMode) {
-        final int code = event.isFunctionalKeyEvent() ? event.mKeyCode : event.mCodePoint;
+        final int code = event.isFunctionalKeyEvent() ? event.getMKeyCode() : event.getMCodePoint();
         if (DEBUG_EVENT) {
             Log.d(TAG, "onEvent: code=" + Constants.printableCode(code)
                     + " " + stateToString(autoCapsFlags, recapitalizeMode));

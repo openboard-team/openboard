@@ -76,6 +76,9 @@
     <color name="suggested_word_background_selected_lxx_dark">#19FFFFFF</color>
     <color name="gesture_floating_preview_color_lxx_dark">#E621272B</color>
     <color name="emoji_tab_page_indicator_background_lxx_dark">#21272B</color>
+
+    <color name="popup_background_material_dark_theme">#ff3c474c</color>
+
     <!-- Color resources for setup wizard and tutorial -->
     <color name="setup_background">#FFEBEBEB</color>
     <color name="setup_text_dark">#FF707070</color>

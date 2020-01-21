@@ -1443,7 +1443,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     // This method is public for testability of LatinIME, but also in the future it should
     // completely replace #onCodeInput.
     public void onEvent(@Nonnull final Event event) {
-        if (Constants.CODE_SHORTCUT == event.mKeyCode) {
+        if (Constants.CODE_SHORTCUT == event.getMKeyCode()) {
             mRichImm.switchToShortcutIme(this);
         }
         final InputTransaction completeInputTransaction =
@@ -1685,10 +1685,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
         if (inputTransaction.requiresUpdateSuggestions()) {
             final int inputStyle;
-            if (inputTransaction.mEvent.isSuggestionStripPress()) {
+            if (inputTransaction.getMEvent().isSuggestionStripPress()) {
                 // Suggestion strip press: no input.
                 inputStyle = SuggestedWords.INPUT_STYLE_NONE;
-            } else if (inputTransaction.mEvent.isGesture()) {
+            } else if (inputTransaction.getMEvent().isGesture()) {
                 inputStyle = SuggestedWords.INPUT_STYLE_TAIL_BATCH;
             } else {
                 inputStyle = SuggestedWords.INPUT_STYLE_TYPING;

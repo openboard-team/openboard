@@ -442,11 +442,11 @@ public final class InputLogic {
         final InputTransaction inputTransaction = new InputTransaction(settingsValues,
                 processedEvent, SystemClock.uptimeMillis(), mSpaceState,
                 getActualCapsMode(settingsValues, keyboardShiftMode));
-        if (processedEvent.mKeyCode != Constants.CODE_DELETE
-                || inputTransaction.mTimestamp > mLastKeyTime + Constants.LONG_PRESS_MILLISECONDS) {
+        if (processedEvent.getMKeyCode() != Constants.CODE_DELETE
+                || inputTransaction.getMTimestamp() > mLastKeyTime + Constants.LONG_PRESS_MILLISECONDS) {
             mDeleteCount = 0;
         }
-        mLastKeyTime = inputTransaction.mTimestamp;
+        mLastKeyTime = inputTransaction.getMTimestamp();
         mConnection.beginBatchEdit();
         if (!mWordComposer.isComposingWord()) {
             // TODO: is this useful? It doesn't look like it should be done here, but rather after
@@ -455,7 +455,7 @@ public final class InputLogic {
         }
 
         // TODO: Consolidate the double-space period timer, mLastKeyTime, and the space state.
-        if (processedEvent.mCodePoint != Constants.CODE_SPACE) {
+        if (processedEvent.getMCodePoint() != Constants.CODE_SPACE) {
             cancelDoubleSpacePeriodCountdown();
         }
 
@@ -469,21 +469,21 @@ public final class InputLogic {
             } else {
                 handleNonFunctionalEvent(currentEvent, inputTransaction, handler);
             }
-            currentEvent = currentEvent.mNextEvent;
+            currentEvent = currentEvent.getMNextEvent();
         }
         // Try to record the word being corrected when the user enters a word character or
         // the backspace key.
         if (!mConnection.hasSlowInputConnection() && !mWordComposer.isComposingWord()
-                && (settingsValues.isWordCodePoint(processedEvent.mCodePoint) ||
-                        processedEvent.mKeyCode == Constants.CODE_DELETE)) {
+                && (settingsValues.isWordCodePoint(processedEvent.getMCodePoint()) ||
+                        processedEvent.getMKeyCode() == Constants.CODE_DELETE)) {
             mWordBeingCorrectedByCursor = getWordAtCursor(
                    settingsValues, currentKeyboardScriptId);
         }
-        if (!inputTransaction.didAutoCorrect() && processedEvent.mKeyCode != Constants.CODE_SHIFT
-                && processedEvent.mKeyCode != Constants.CODE_CAPSLOCK
-                && processedEvent.mKeyCode != Constants.CODE_SWITCH_ALPHA_SYMBOL)
+        if (!inputTransaction.didAutoCorrect() && processedEvent.getMKeyCode() != Constants.CODE_SHIFT
+                && processedEvent.getMKeyCode() != Constants.CODE_CAPSLOCK
+                && processedEvent.getMKeyCode() != Constants.CODE_SWITCH_ALPHA_SYMBOL)
             mLastComposedWord.deactivate();
-        if (Constants.CODE_DELETE != processedEvent.mKeyCode) {
+        if (Constants.CODE_DELETE != processedEvent.getMKeyCode()) {
             mEnteredText = null;
         }
         mConnection.endBatchEdit();
@@ -643,14 +643,14 @@ public final class InputLogic {
      */
     private void handleFunctionalEvent(final Event event, final InputTransaction inputTransaction,
             final int currentKeyboardScriptId, final LatinIME.UIHandler handler) {
-        switch (event.mKeyCode) {
+        switch (event.getMKeyCode()) {
             case Constants.CODE_DELETE:
                 handleBackspaceEvent(event, inputTransaction, currentKeyboardScriptId);
                 // Backspace is a functional key, but it affects the contents of the editor.
                 inputTransaction.setDidAffectContents();
                 break;
             case Constants.CODE_SHIFT:
-                performRecapitalization(inputTransaction.mSettingsValues);
+                performRecapitalization(inputTransaction.getMSettingsValues());
                 inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW);
                 if (mSuggestedWords.isPrediction()) {
                     inputTransaction.setRequiresUpdateSuggestions();
@@ -694,14 +694,14 @@ public final class InputLogic {
                 break;
             case Constants.CODE_SHIFT_ENTER:
                 final Event tmpEvent = Event.createSoftwareKeypressEvent(Constants.CODE_ENTER,
-                        event.mKeyCode, event.mX, event.mY, event.isKeyRepeat());
+                        event.getMKeyCode(), event.getMX(), event.getMY(), event.isKeyRepeat());
                 handleNonSpecialCharacterEvent(tmpEvent, inputTransaction, handler);
                 // Shift + Enter is treated as a functional key but it results in adding a new
                 // line, so that does affect the contents of the editor.
                 inputTransaction.setDidAffectContents();
                 break;
             default:
-                throw new RuntimeException("Unknown key code : " + event.mKeyCode);
+                throw new RuntimeException("Unknown key code : " + event.getMKeyCode());
         }
     }
 
@@ -718,7 +718,7 @@ public final class InputLogic {
             final InputTransaction inputTransaction,
             final LatinIME.UIHandler handler) {
         inputTransaction.setDidAffectContents();
-        switch (event.mCodePoint) {
+        switch (event.getMCodePoint()) {
             case Constants.CODE_ENTER:
                 final EditorInfo editorInfo = getCurrentInputEditorInfo();
                 final int imeOptionsActionId =
@@ -762,26 +762,26 @@ public final class InputLogic {
     private void handleNonSpecialCharacterEvent(final Event event,
             final InputTransaction inputTransaction,
             final LatinIME.UIHandler handler) {
-        final int codePoint = event.mCodePoint;
+        final int codePoint = event.getMCodePoint();
         mSpaceState = SpaceState.NONE;
-        if (inputTransaction.mSettingsValues.isWordSeparator(codePoint)
+        if (inputTransaction.getMSettingsValues().isWordSeparator(codePoint)
                 || Character.getType(codePoint) == Character.OTHER_SYMBOL) {
             handleSeparatorEvent(event, inputTransaction, handler);
         } else {
-            if (SpaceState.PHANTOM == inputTransaction.mSpaceState) {
+            if (SpaceState.PHANTOM == inputTransaction.getMSpaceState()) {
                 if (mWordComposer.isCursorFrontOrMiddleOfComposingWord()) {
                     // If we are in the middle of a recorrection, we need to commit the recorrection
                     // first so that we can insert the character at the current cursor position.
                     // We also need to unlearn the original word that is now being corrected.
-                    unlearnWord(mWordComposer.getTypedWord(), inputTransaction.mSettingsValues,
+                    unlearnWord(mWordComposer.getTypedWord(), inputTransaction.getMSettingsValues(),
                             Constants.EVENT_BACKSPACE);
                     resetEntireInputState(mConnection.getExpectedSelectionStart(),
                             mConnection.getExpectedSelectionEnd(), true /* clearSuggestionStrip */);
                 } else {
-                    commitTyped(inputTransaction.mSettingsValues, LastComposedWord.NOT_A_SEPARATOR);
+                    commitTyped(inputTransaction.getMSettingsValues(), LastComposedWord.NOT_A_SEPARATOR);
                 }
             }
-            handleNonSeparatorEvent(event, inputTransaction.mSettingsValues, inputTransaction);
+            handleNonSeparatorEvent(event, inputTransaction.getMSettingsValues(), inputTransaction);
         }
     }
 
@@ -793,7 +793,7 @@ public final class InputLogic {
      */
     private void handleNonSeparatorEvent(final Event event, final SettingsValues settingsValues,
             final InputTransaction inputTransaction) {
-        final int codePoint = event.mCodePoint;
+        final int codePoint = event.getMCodePoint();
         // TODO: refactor this method to stop flipping isComposingWord around all the time, and
         // make it shorter (possibly cut into several pieces). Also factor
         // handleNonSpecialCharacterEvent which has the same name as other handle* methods but is
@@ -802,7 +802,7 @@ public final class InputLogic {
 
         // TODO: remove isWordConnector() and use isUsuallyFollowedBySpace() instead.
         // See onStartBatchInput() to see how to do it.
-        if (SpaceState.PHANTOM == inputTransaction.mSpaceState
+        if (SpaceState.PHANTOM == inputTransaction.getMSpaceState()
                 && !settingsValues.isWordConnector(codePoint)) {
             if (isComposingWord) {
                 // Sanity check
@@ -815,7 +815,7 @@ public final class InputLogic {
             // If we are in the middle of a recorrection, we need to commit the recorrection
             // first so that we can insert the character at the current cursor position.
             // We also need to unlearn the original word that is now being corrected.
-            unlearnWord(mWordComposer.getTypedWord(), inputTransaction.mSettingsValues,
+            unlearnWord(mWordComposer.getTypedWord(), inputTransaction.getMSettingsValues(),
                     Constants.EVENT_BACKSPACE);
             resetEntireInputState(mConnection.getExpectedSelectionStart(),
                     mConnection.getExpectedSelectionEnd(), true /* clearSuggestionStrip */);
@@ -856,7 +856,7 @@ public final class InputLogic {
             mWordComposer.applyProcessedEvent(event);
             // If it's the first letter, make note of auto-caps state
             if (mWordComposer.isSingleLetter()) {
-                mWordComposer.setCapitalizedModeAtStartComposingTime(inputTransaction.mShiftState);
+                mWordComposer.setCapitalizedModeAtStartComposingTime(inputTransaction.getMShiftState());
             }
             setComposingTextInternal(getTextWithUnderline(mWordComposer.getTypedWord()), 1);
         } else {
@@ -879,8 +879,8 @@ public final class InputLogic {
      */
     private void handleSeparatorEvent(final Event event, final InputTransaction inputTransaction,
             final LatinIME.UIHandler handler) {
-        final int codePoint = event.mCodePoint;
-        final SettingsValues settingsValues = inputTransaction.mSettingsValues;
+        final int codePoint = event.getMCodePoint();
+        final SettingsValues settingsValues = inputTransaction.getMSettingsValues();
         final boolean wasComposingWord = mWordComposer.isComposingWord();
         // We avoid sending spaces in languages without spaces if we were composing.
         final boolean shouldAvoidSendingCode = Constants.CODE_SPACE == codePoint
@@ -890,7 +890,7 @@ public final class InputLogic {
             // If we are in the middle of a recorrection, we need to commit the recorrection
             // first so that we can insert the separator at the current cursor position.
             // We also need to unlearn the original word that is now being corrected.
-            unlearnWord(mWordComposer.getTypedWord(), inputTransaction.mSettingsValues,
+            unlearnWord(mWordComposer.getTypedWord(), inputTransaction.getMSettingsValues(),
                     Constants.EVENT_BACKSPACE);
             resetEntireInputState(mConnection.getExpectedSelectionStart(),
                     mConnection.getExpectedSelectionEnd(), true /* clearSuggestionStrip */);
@@ -915,7 +915,7 @@ public final class InputLogic {
                 && mConnection.isInsideDoubleQuoteOrAfterDigit();
 
         final boolean needsPrecedingSpace;
-        if (SpaceState.PHANTOM != inputTransaction.mSpaceState) {
+        if (SpaceState.PHANTOM != inputTransaction.getMSpaceState()) {
             needsPrecedingSpace = false;
         } else if (Constants.CODE_DOUBLE_QUOTE == codePoint) {
             // Double quotes behave like they are usually preceded by space iff we are
@@ -954,7 +954,7 @@ public final class InputLogic {
                 sendKeyCodePoint(settingsValues, codePoint);
             }
         } else {
-            if ((SpaceState.PHANTOM == inputTransaction.mSpaceState
+            if ((SpaceState.PHANTOM == inputTransaction.getMSpaceState()
                     && settingsValues.isUsuallyFollowedBySpace(codePoint))
                     || (Constants.CODE_DOUBLE_QUOTE == codePoint
                             && isInsideDoubleQuoteOrAfterDigit)) {
@@ -1008,7 +1008,7 @@ public final class InputLogic {
             // If we are in the middle of a recorrection, we need to commit the recorrection
             // first so that we can remove the character at the current cursor position.
             // We also need to unlearn the original word that is now being corrected.
-            unlearnWord(mWordComposer.getTypedWord(), inputTransaction.mSettingsValues,
+            unlearnWord(mWordComposer.getTypedWord(), inputTransaction.getMSettingsValues(),
                     Constants.EVENT_BACKSPACE);
             resetEntireInputState(mConnection.getExpectedSelectionStart(),
                     mConnection.getExpectedSelectionEnd(), true /* clearSuggestionStrip */);
@@ -1020,7 +1020,7 @@ public final class InputLogic {
                 mWordComposer.reset();
                 mWordComposer.setRejectedBatchModeSuggestion(rejectedSuggestion);
                 if (!TextUtils.isEmpty(rejectedSuggestion)) {
-                    unlearnWord(rejectedSuggestion, inputTransaction.mSettingsValues,
+                    unlearnWord(rejectedSuggestion, inputTransaction.getMSettingsValues(),
                             Constants.EVENT_REJECTION);
                 }
                 StatsUtils.onBackspaceWordDelete(rejectedSuggestion.length());
@@ -1037,7 +1037,7 @@ public final class InputLogic {
         } else {
             if (mLastComposedWord.canRevertCommit()) {
                 final String lastComposedWord = mLastComposedWord.mTypedWord;
-                revertCommit(inputTransaction, inputTransaction.mSettingsValues);
+                revertCommit(inputTransaction, inputTransaction.getMSettingsValues());
                 StatsUtils.onRevertAutoCorrect();
                 StatsUtils.onWordCommitUserTyped(lastComposedWord, mWordComposer.isBatchMode());
                 // Restart suggestions when backspacing into a reverted word. This is required for
@@ -1046,12 +1046,12 @@ public final class InputLogic {
                 //
                 // Note: restartSuggestionsOnWordTouchedByCursor is already called for normal
                 // (non-revert) backspace handling.
-                if (inputTransaction.mSettingsValues.isSuggestionsEnabledPerUserSettings()
-                        && inputTransaction.mSettingsValues.mSpacingAndPunctuations
+                if (inputTransaction.getMSettingsValues().isSuggestionsEnabledPerUserSettings()
+                        && inputTransaction.getMSettingsValues().mSpacingAndPunctuations
                                 .mCurrentLanguageHasSpaces
                         && !mConnection.isCursorFollowedByWordCharacter(
-                                inputTransaction.mSettingsValues.mSpacingAndPunctuations)) {
-                    restartSuggestionsOnWordTouchedByCursor(inputTransaction.mSettingsValues,
+                                inputTransaction.getMSettingsValues().mSpacingAndPunctuations)) {
+                    restartSuggestionsOnWordTouchedByCursor(inputTransaction.getMSettingsValues(),
                             false /* forStartInput */, currentKeyboardScriptId);
                 }
                 return;
@@ -1068,10 +1068,10 @@ public final class InputLogic {
                 // reverting any autocorrect at this point. So we can safely return.
                 return;
             }
-            if (SpaceState.DOUBLE == inputTransaction.mSpaceState) {
+            if (SpaceState.DOUBLE == inputTransaction.getMSpaceState()) {
                 cancelDoubleSpacePeriodCountdown();
                 if (mConnection.revertDoubleSpacePeriod(
-                        inputTransaction.mSettingsValues.mSpacingAndPunctuations)) {
+                        inputTransaction.getMSettingsValues().mSpacingAndPunctuations)) {
                     // No need to reset mSpaceState, it has already be done (that's why we
                     // receive it as a parameter)
                     inputTransaction.setRequiresUpdateSuggestions();
@@ -1080,7 +1080,7 @@ public final class InputLogic {
                     StatsUtils.onRevertDoubleSpacePeriod();
                     return;
                 }
-            } else if (SpaceState.SWAP_PUNCTUATION == inputTransaction.mSpaceState) {
+            } else if (SpaceState.SWAP_PUNCTUATION == inputTransaction.getMSpaceState()) {
                 if (mConnection.revertSwapPunctuation()) {
                     StatsUtils.onRevertSwapPunctuation();
                     // Likewise
@@ -1097,7 +1097,7 @@ public final class InputLogic {
                 // We also need to unlearn the selected text.
                 final CharSequence selection = mConnection.getSelectedText(0 /* 0 for no styles */);
                 if (!TextUtils.isEmpty(selection)) {
-                    unlearnWord(selection.toString(), inputTransaction.mSettingsValues,
+                    unlearnWord(selection.toString(), inputTransaction.getMSettingsValues(),
                             Constants.EVENT_BACKSPACE);
                     hasUnlearnedWordBeingDeleted = true;
                 }
@@ -1109,8 +1109,8 @@ public final class InputLogic {
                 StatsUtils.onBackspaceSelectedText(numCharsDeleted);
             } else {
                 // There is no selection, just delete one character.
-                if (inputTransaction.mSettingsValues.isBeforeJellyBean()
-                        || inputTransaction.mSettingsValues.mInputAttributes.isTypeNull()
+                if (inputTransaction.getMSettingsValues().isBeforeJellyBean()
+                        || inputTransaction.getMSettingsValues().mInputAttributes.isTypeNull()
                         || Constants.NOT_A_CURSOR_POSITION
                                 == mConnection.getExpectedSelectionEnd()) {
                     // There are three possible reasons to send a key event: either the field has
@@ -1131,7 +1131,7 @@ public final class InputLogic {
                         // consider unlearning here because we may have already reached
                         // the previous word, and will lose it after next deletion.
                         hasUnlearnedWordBeingDeleted |= unlearnWordBeingDeleted(
-                                inputTransaction.mSettingsValues, currentKeyboardScriptId);
+                                inputTransaction.getMSettingsValues(), currentKeyboardScriptId);
                         sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
                         totalDeletedLength++;
                     }
@@ -1158,7 +1158,7 @@ public final class InputLogic {
                         // consider unlearning here because we may have already reached
                         // the previous word, and will lose it after next deletion.
                         hasUnlearnedWordBeingDeleted |= unlearnWordBeingDeleted(
-                                inputTransaction.mSettingsValues, currentKeyboardScriptId);
+                                inputTransaction.getMSettingsValues(), currentKeyboardScriptId);
                         final int codePointBeforeCursorToDeleteAgain =
                                 mConnection.getCodePointBeforeCursor();
                         if (codePointBeforeCursorToDeleteAgain != Constants.NOT_A_CODE) {
@@ -1174,16 +1174,16 @@ public final class InputLogic {
             if (!hasUnlearnedWordBeingDeleted) {
                 // Consider unlearning the word being deleted (if we have not done so already).
                 unlearnWordBeingDeleted(
-                        inputTransaction.mSettingsValues, currentKeyboardScriptId);
+                        inputTransaction.getMSettingsValues(), currentKeyboardScriptId);
             }
             if (mConnection.hasSlowInputConnection()) {
                 mSuggestionStripViewAccessor.setNeutralSuggestionStrip();
-            } else if (inputTransaction.mSettingsValues.isSuggestionsEnabledPerUserSettings()
-                    && inputTransaction.mSettingsValues.mSpacingAndPunctuations
+            } else if (inputTransaction.getMSettingsValues().isSuggestionsEnabledPerUserSettings()
+                    && inputTransaction.getMSettingsValues().mSpacingAndPunctuations
                             .mCurrentLanguageHasSpaces
                     && !mConnection.isCursorFollowedByWordCharacter(
-                            inputTransaction.mSettingsValues.mSpacingAndPunctuations)) {
-                restartSuggestionsOnWordTouchedByCursor(inputTransaction.mSettingsValues,
+                            inputTransaction.getMSettingsValues().mSpacingAndPunctuations)) {
+                restartSuggestionsOnWordTouchedByCursor(inputTransaction.getMSettingsValues(),
                         false /* forStartInput */, currentKeyboardScriptId);
             }
         }
@@ -1272,20 +1272,20 @@ public final class InputLogic {
      */
     private boolean tryStripSpaceAndReturnWhetherShouldSwapInstead(final Event event,
             final InputTransaction inputTransaction) {
-        final int codePoint = event.mCodePoint;
+        final int codePoint = event.getMCodePoint();
         final boolean isFromSuggestionStrip = event.isSuggestionStripPress();
         if (Constants.CODE_ENTER == codePoint &&
-                SpaceState.SWAP_PUNCTUATION == inputTransaction.mSpaceState) {
+                SpaceState.SWAP_PUNCTUATION == inputTransaction.getMSpaceState()) {
             mConnection.removeTrailingSpace();
             return false;
         }
-        if ((SpaceState.WEAK == inputTransaction.mSpaceState
-                || SpaceState.SWAP_PUNCTUATION == inputTransaction.mSpaceState)
+        if ((SpaceState.WEAK == inputTransaction.getMSpaceState()
+                || SpaceState.SWAP_PUNCTUATION == inputTransaction.getMSpaceState())
                 && isFromSuggestionStrip) {
-            if (inputTransaction.mSettingsValues.isUsuallyPrecededBySpace(codePoint)) {
+            if (inputTransaction.getMSettingsValues().isUsuallyPrecededBySpace(codePoint)) {
                 return false;
             }
-            if (inputTransaction.mSettingsValues.isUsuallyFollowedBySpace(codePoint)) {
+            if (inputTransaction.getMSettingsValues().isUsuallyFollowedBySpace(codePoint)) {
                 return true;
             }
             mConnection.removeTrailingSpace();
@@ -1294,7 +1294,7 @@ public final class InputLogic {
     }
 
     public void startDoubleSpacePeriodCountdown(final InputTransaction inputTransaction) {
-        mDoubleSpacePeriodCountdownStart = inputTransaction.mTimestamp;
+        mDoubleSpacePeriodCountdownStart = inputTransaction.getMTimestamp();
     }
 
     public void cancelDoubleSpacePeriodCountdown() {
@@ -1302,8 +1302,8 @@ public final class InputLogic {
     }
 
     public boolean isDoubleSpacePeriodCountdownActive(final InputTransaction inputTransaction) {
-        return inputTransaction.mTimestamp - mDoubleSpacePeriodCountdownStart
-                < inputTransaction.mSettingsValues.mDoubleSpacePeriodTimeout;
+        return inputTransaction.getMTimestamp() - mDoubleSpacePeriodCountdownStart
+                < inputTransaction.getMSettingsValues().mDoubleSpacePeriodTimeout;
     }
 
     /**
@@ -1326,8 +1326,8 @@ public final class InputLogic {
             final InputTransaction inputTransaction) {
         // Check the setting, the typed character and the countdown. If any of the conditions is
         // not fulfilled, return false.
-        if (!inputTransaction.mSettingsValues.mUseDoubleSpacePeriod
-                || Constants.CODE_SPACE != event.mCodePoint
+        if (!inputTransaction.getMSettingsValues().mUseDoubleSpacePeriod
+                || Constants.CODE_SPACE != event.getMCodePoint()
                 || !isDoubleSpacePeriodCountdownActive(inputTransaction)) {
             return false;
         }
@@ -1348,7 +1348,7 @@ public final class InputLogic {
         if (canBeFollowedByDoubleSpacePeriod(firstCodePoint)) {
             cancelDoubleSpacePeriodCountdown();
             mConnection.deleteTextBeforeCursor(1);
-            final String textToInsert = inputTransaction.mSettingsValues.mSpacingAndPunctuations
+            final String textToInsert = inputTransaction.getMSettingsValues().mSpacingAndPunctuations
                     .mSentenceSeparatorAndSpace;
             mConnection.commitText(textToInsert, 1);
             inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW);
@@ -1662,7 +1662,7 @@ public final class InputLogic {
         }
         mConnection.deleteTextBeforeCursor(deleteLength);
         if (!TextUtils.isEmpty(committedWord)) {
-            unlearnWord(committedWordString, inputTransaction.mSettingsValues,
+            unlearnWord(committedWordString, inputTransaction.getMSettingsValues(),
                     Constants.EVENT_REVERT);
         }
         final String stringToCommit = originallyTypedWord +
@@ -1696,13 +1696,13 @@ public final class InputLogic {
             }
             // Add the suggestion list to the list of suggestions.
             textToCommit.setSpan(new SuggestionSpan(mLatinIME /* context */,
-                    inputTransaction.mSettingsValues.mLocale,
+                    inputTransaction.getMSettingsValues().mLocale,
                     suggestions.toArray(new String[suggestions.size()]), 0 /* flags */,
                     null /* notificationTargetClass */),
                     0 /* start */, lastCharIndex /* end */, 0 /* flags */);
         }
 
-        if (inputTransaction.mSettingsValues.mSpacingAndPunctuations.mCurrentLanguageHasSpaces) {
+        if (inputTransaction.getMSettingsValues().mSpacingAndPunctuations.mCurrentLanguageHasSpaces) {
             mConnection.commitText(textToCommit, 1);
             if (usePhantomSpace) {
                 mSpaceState = SpaceState.PHANTOM;

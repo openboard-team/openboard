@@ -177,9 +177,9 @@ public final class WordComposer {
      */
     public void applyProcessedEvent(final Event event) {
         mCombinerChain.applyProcessedEvent(event);
-        final int primaryCode = event.mCodePoint;
-        final int keyX = event.mX;
-        final int keyY = event.mY;
+        final int primaryCode = event.getMCodePoint();
+        final int keyX = event.getMX();
+        final int keyY = event.getMY();
         final int newIndex = size();
         refreshTypedWordCache();
         mCursorPositionWithinWord = mCodePointSize;
@@ -187,7 +187,7 @@ public final class WordComposer {
         if (0 == mCodePointSize) {
             mIsOnlyFirstCharCapitalized = false;
         }
-        if (Constants.CODE_DELETE != event.mKeyCode) {
+        if (Constants.CODE_DELETE != event.getMKeyCode()) {
             if (newIndex < MAX_WORD_LENGTH) {
                 // In the batch input mode, the {@code mInputPointers} holds batch input points and
                 // shouldn't be overridden by the "typed key" coordinates
