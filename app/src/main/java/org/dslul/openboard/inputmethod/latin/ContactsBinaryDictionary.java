@@ -27,11 +27,9 @@ import org.dslul.openboard.inputmethod.annotations.ExternallyReferenced;
 import org.dslul.openboard.inputmethod.latin.ContactsManager.ContactsChangedListener;
 import org.dslul.openboard.inputmethod.latin.common.StringUtils;
 import org.dslul.openboard.inputmethod.latin.permissions.PermissionsUtil;
-import org.dslul.openboard.inputmethod.latin.personalization.AccountUtils;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 import javax.annotation.Nullable;
@@ -80,32 +78,9 @@ public class ContactsBinaryDictionary extends ExpandableBinaryDictionary
      */
     @Override
     public void loadInitialContentsLocked() {
-        loadDeviceAccountsEmailAddressesLocked();
         loadDictionaryForUriLocked(ContactsContract.Profile.CONTENT_URI);
         // TODO: Switch this URL to the newer ContactsContract too
         loadDictionaryForUriLocked(Contacts.CONTENT_URI);
-    }
-
-    /**
-     * Loads device accounts to the dictionary.
-     */
-    private void loadDeviceAccountsEmailAddressesLocked() {
-        final List<String> accountVocabulary =
-                AccountUtils.getDeviceAccountsEmailAddresses(mContext);
-        if (accountVocabulary == null || accountVocabulary.isEmpty()) {
-            return;
-        }
-        for (String word : accountVocabulary) {
-            if (DEBUG) {
-                Log.d(TAG, "loadAccountVocabulary: " + word);
-            }
-            runGCIfRequiredLocked(true /* mindsBlockByGC */);
-            addUnigramLocked(word, ContactsDictionaryConstants.FREQUENCY_FOR_CONTACTS,
-                    null /* shortcut */,
-                    0 /* shortcutFreq */,
-                    false /* isNotAWord */, false /* isPossiblyOffensive */,
-                    BinaryDictionary.NOT_A_VALID_TIMESTAMP);
-        }
     }
 
     /**
