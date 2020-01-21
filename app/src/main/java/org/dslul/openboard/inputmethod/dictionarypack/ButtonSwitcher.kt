@@ -23,8 +23,8 @@ class ButtonSwitcher : FrameLayout {
     private var mInterfaceState: DictionaryListInterfaceState? = null
     private var mOnClickListener: OnClickListener? = null
 
-    constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs) {}
-    constructor(context: Context?, attrs: AttributeSet?, defStyle: Int) : super(context!!, attrs, defStyle) {}
+    constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs)
+    constructor(context: Context?, attrs: AttributeSet?, defStyle: Int) : super(context!!, attrs, defStyle)
 
     fun reset(interfaceState: DictionaryListInterfaceState?) {
         mStatus = NOT_INITIALIZED
@@ -77,9 +77,9 @@ class ButtonSwitcher : FrameLayout {
         if (null == mInstallButton) return
         val width = width
         // Set to out of the screen if that's not the currently displayed status
-        mInstallButton!!.setTranslationX(if (STATUS_INSTALL == status) 0F else width.toFloat())
-        mCancelButton!!.setTranslationX(if (STATUS_CANCEL == status) 0F else width.toFloat())
-        mDeleteButton!!.setTranslationX(if (STATUS_DELETE == status) 0F else width.toFloat())
+        mInstallButton!!.translationX = if (STATUS_INSTALL == status) 0F else width.toFloat()
+        mCancelButton!!.translationX = if (STATUS_CANCEL == status) 0F else width.toFloat()
+        mDeleteButton!!.translationX = if (STATUS_DELETE == status) 0F else width.toFloat()
     }
 
     // The helper method for {@link AnimatorListenerAdapter}.

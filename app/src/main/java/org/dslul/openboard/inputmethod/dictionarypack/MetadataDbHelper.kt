@@ -324,7 +324,7 @@ class MetadataDbHelper private constructor(private val mContext: Context?, priva
             val values = ContentValues()
             values.put(CLIENT_LAST_UPDATE_DATE_COLUMN, System.currentTimeMillis())
             val defaultDb = getDb(context, null)
-            val cursor = queryClientIds(context) ?: return
+            val cursor = queryClientIds(context)
             try {
                 if (!cursor.moveToFirst()) return
                 do {
@@ -679,10 +679,8 @@ class MetadataDbHelper private constructor(private val mContext: Context?, priva
             db.execSQL(METADATA_TABLE_CREATE)
             // Remove this client's entry in the clients table
             val defaultDb = getDb(context, "")
-            return if (0 == defaultDb.delete(CLIENT_TABLE_NAME,
-                            "$CLIENT_CLIENT_ID_COLUMN = ?", arrayOf(clientId))) {
-                false
-            } else true
+            return 0 != defaultDb.delete(CLIENT_TABLE_NAME,
+                    "$CLIENT_CLIENT_ID_COLUMN = ?", arrayOf(clientId))
         }
 
         /**

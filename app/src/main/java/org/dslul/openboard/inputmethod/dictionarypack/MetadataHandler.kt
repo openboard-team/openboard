@@ -72,7 +72,7 @@ object MetadataHandler {
         return try {
             makeMetadataObject(results)
         } finally {
-            results?.close()
+            results.close()
         }
     }
 

@@ -3,7 +3,6 @@ package org.dslul.openboard.inputmethod.dictionarypack
 import android.annotation.TargetApi
 import android.content.Intent
 import android.os.Build
-import android.os.Bundle
 import android.preference.PreferenceActivity
 import org.dslul.openboard.inputmethod.latin.utils.FragmentUtils
 

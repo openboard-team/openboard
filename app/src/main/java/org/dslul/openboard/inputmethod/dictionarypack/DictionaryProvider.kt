@@ -302,7 +302,6 @@ class DictionaryProvider : ContentProvider() {
         val context = context
         val results: Cursor = MetadataDbHelper.Companion.queryInstalledOrDeletingOrAvailableDictionaryMetadata(context,
                 clientId)
-                ?: return emptyList()
         return try {
             val dicts = HashMap<String, WordListInfo>()
             val idIndex = results.getColumnIndex(MetadataDbHelper.Companion.WORDLISTID_COLUMN)
