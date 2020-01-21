@@ -57,8 +57,7 @@ public final class CorrectionSettingsFragment extends SubScreenFragment
 
     private static final boolean DBG_USE_INTERNAL_PERSONAL_DICTIONARY_SETTINGS = false;
     private static final boolean USE_INTERNAL_PERSONAL_DICTIONARY_SETTINGS =
-            DBG_USE_INTERNAL_PERSONAL_DICTIONARY_SETTINGS
-            || Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN_MR2;
+            DBG_USE_INTERNAL_PERSONAL_DICTIONARY_SETTINGS;
 
     private SwitchPreference mUseContactsPreference;
 

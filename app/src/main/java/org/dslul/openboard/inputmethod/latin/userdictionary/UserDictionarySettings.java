@@ -49,7 +49,7 @@ import java.util.Locale;
 public class UserDictionarySettings extends ListFragment {
 
     public static final boolean IS_SHORTCUT_API_SUPPORTED =
-            Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
+            true;
 
     private static final String[] QUERY_PROJECTION_SHORTCUT_UNSUPPORTED =
             { UserDictionary.Words._ID, UserDictionary.Words.WORD};

@@ -1000,14 +1000,6 @@ public final class RichInputConnection implements PrivateCommandPerformer {
      * On platforms on which this method is not present, this is a no-op.
      */
     public void maybeMoveTheCursorAroundAndRestoreToWorkaroundABug() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-            if (mExpectedSelStart > 0) {
-                mIC.setSelection(mExpectedSelStart - 1, mExpectedSelStart - 1);
-            } else {
-                mIC.setSelection(mExpectedSelStart + 1, mExpectedSelStart + 1);
-            }
-            mIC.setSelection(mExpectedSelStart, mExpectedSelEnd);
-        }
     }
 
     /**

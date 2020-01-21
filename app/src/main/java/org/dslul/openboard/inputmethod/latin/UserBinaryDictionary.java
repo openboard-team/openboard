@@ -171,17 +171,12 @@ public class UserBinaryDictionary extends ExpandableBinaryDictionary {
             requestArguments = localeElements;
         }
         final String requestString = request.toString();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            try {
-                addWordsFromProjectionLocked(PROJECTION_QUERY_WITH_SHORTCUT, requestString,
-                        requestArguments);
-            } catch (IllegalArgumentException e) {
-                // This may happen on some non-compliant devices where the declared API is JB+ but
-                // the SHORTCUT column is not present for some reason.
-                addWordsFromProjectionLocked(PROJECTION_QUERY_WITHOUT_SHORTCUT, requestString,
-                        requestArguments);
-            }
-        } else {
+        try {
+            addWordsFromProjectionLocked(PROJECTION_QUERY_WITH_SHORTCUT, requestString,
+                    requestArguments);
+        } catch (IllegalArgumentException e) {
+            // This may happen on some non-compliant devices where the declared API is JB+ but
+            // the SHORTCUT column is not present for some reason.
             addWordsFromProjectionLocked(PROJECTION_QUERY_WITHOUT_SHORTCUT, requestString,
                     requestArguments);
         }
@@ -219,7 +214,7 @@ public class UserBinaryDictionary extends ExpandableBinaryDictionary {
     }
 
     private void addWordsLocked(final Cursor cursor) {
-        final boolean hasShortcutColumn = Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
+        final boolean hasShortcutColumn = true;
         if (cursor == null) return;
         if (cursor.moveToFirst()) {
             final int indexWord = cursor.getColumnIndex(Words.WORD);

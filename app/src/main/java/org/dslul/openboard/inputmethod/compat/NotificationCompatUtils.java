@@ -73,11 +73,8 @@ public class NotificationCompatUtils {
 
     @SuppressWarnings("deprecation")
     public static Notification build(final Notification.Builder builder) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            // #build was added in API level 16, JELLY_BEAN
-            return (Notification) CompatUtils.invoke(builder, null, METHOD_build);
-        }
+        // #build was added in API level 16, JELLY_BEAN
+        return (Notification) CompatUtils.invoke(builder, null, METHOD_build);
         // #getNotification was deprecated in API level 16, JELLY_BEAN
-        return builder.getNotification();
     }
 }

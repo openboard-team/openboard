@@ -158,8 +158,7 @@ public final class SubtypeLocaleUtils {
     }
 
     public static int getSubtypeNameId(final String localeString, final String keyboardLayoutName) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN
-                && isExceptionalLocale(localeString)) {
+        if (isExceptionalLocale(localeString)) {
             return sExceptionalLocaleToWithLayoutNameIdsMap.get(localeString);
         }
         final String key = NO_LANGUAGE.equals(localeString)
@@ -258,8 +257,7 @@ public final class SubtypeLocaleUtils {
     @Nonnull
     private static String getReplacementString(@Nonnull final InputMethodSubtype subtype,
             @Nonnull final Locale displayLocale) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN
-                && subtype.containsExtraValueKey(UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME)) {
+        if (subtype.containsExtraValueKey(UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME)) {
             return subtype.getExtraValueOf(UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME);
         }
         return getSubtypeLocaleDisplayNameInternal(subtype.getLocale(), displayLocale);

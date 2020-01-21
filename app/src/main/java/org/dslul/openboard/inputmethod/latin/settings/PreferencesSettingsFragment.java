@@ -41,7 +41,7 @@ import org.dslul.openboard.inputmethod.latin.RichInputMethodManager;
 public final class PreferencesSettingsFragment extends SubScreenFragment {
 
     private static final boolean VOICE_IME_ENABLED =
-            Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
+            true;
 
     @Override
     public void onCreate(final Bundle icicle) {
