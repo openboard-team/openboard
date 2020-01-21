@@ -13,12 +13,12 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-
-package org.dslul.openboard.inputmethod.dictionarypack;
+package org.dslul.openboard.inputmethod.dictionarypack
 
 /**
- * A simple interface to report problems.
+ * Exception thrown when the metadata for the dictionary does not comply to a known format.
  */
-public interface ProblemReporter {
-    public void report(Exception e);
+class BadFormatException : Exception {
+    constructor() : super() {}
+    constructor(message: String?) : super(message) {}
 }

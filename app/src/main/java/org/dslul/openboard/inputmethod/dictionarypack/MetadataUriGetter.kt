@@ -13,17 +13,15 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+package org.dslul.openboard.inputmethod.dictionarypack
 
-package org.dslul.openboard.inputmethod.dictionarypack;
-
-import android.content.Context;
+import android.content.Context
 
 /**
  * Helper to get the metadata URI from its base URI.
  */
-@SuppressWarnings("unused")
-public class MetadataUriGetter {
-    public static String getUri(final Context context, final String baseUri) {
-        return baseUri;
+object MetadataUriGetter {
+    fun getUri(context: Context?, baseUri: String): String {
+        return baseUri
     }
 }
