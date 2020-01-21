@@ -17,12 +17,13 @@
 package org.dslul.openboard.inputmethod.keyboard.emoji;
 
 import android.content.res.Resources;
-import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.utils.ResourceUtils;
+
+import androidx.viewpager.widget.ViewPager;
 
 final class EmojiLayoutParams {
     private static final int DEFAULT_KEYBOARD_ROWS = 4;

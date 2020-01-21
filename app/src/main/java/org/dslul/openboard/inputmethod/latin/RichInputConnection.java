@@ -17,7 +17,6 @@
 package org.dslul.openboard.inputmethod.latin;
 
 import android.inputmethodservice.InputMethodService;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.SpannableStringBuilder;
@@ -34,8 +33,8 @@ import android.view.inputmethod.InputMethodManager;
 
 import org.dslul.openboard.inputmethod.compat.InputConnectionCompatUtils;
 import org.dslul.openboard.inputmethod.latin.common.Constants;
-import org.dslul.openboard.inputmethod.latin.common.UnicodeSurrogate;
 import org.dslul.openboard.inputmethod.latin.common.StringUtils;
+import org.dslul.openboard.inputmethod.latin.common.UnicodeSurrogate;
 import org.dslul.openboard.inputmethod.latin.inputlogic.PrivateCommandPerformer;
 import org.dslul.openboard.inputmethod.latin.settings.SpacingAndPunctuations;
 import org.dslul.openboard.inputmethod.latin.utils.CapsModeUtils;

@@ -18,9 +18,6 @@ package org.dslul.openboard.inputmethod.latin;
 
 import android.text.TextUtils;
 
-import static org.dslul.openboard.inputmethod.latin.define.DecoderSpecificConstants.SHOULD_AUTO_CORRECT_USING_NON_WHITE_LISTED_SUGGESTION;
-import static org.dslul.openboard.inputmethod.latin.define.DecoderSpecificConstants.SHOULD_REMOVE_PREVIOUSLY_REJECTED_SUGGESTION;
-
 import org.dslul.openboard.inputmethod.keyboard.Keyboard;
 import org.dslul.openboard.inputmethod.latin.SuggestedWords.SuggestedWordInfo;
 import org.dslul.openboard.inputmethod.latin.common.Constants;
@@ -36,6 +33,9 @@ import java.util.HashMap;
 import java.util.Locale;
 
 import javax.annotation.Nonnull;
+
+import static org.dslul.openboard.inputmethod.latin.define.DecoderSpecificConstants.SHOULD_AUTO_CORRECT_USING_NON_WHITE_LISTED_SUGGESTION;
+import static org.dslul.openboard.inputmethod.latin.define.DecoderSpecificConstants.SHOULD_REMOVE_PREVIOUSLY_REJECTED_SUGGESTION;
 
 /**
  * This class loads a dictionary and provides a list of suggestions for a given sequence of

@@ -28,21 +28,15 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import org.dslul.openboard.inputmethod.dictionarypack.DictionaryPackConstants;
-import org.dslul.openboard.inputmethod.dictionarypack.MD5Calculator;
-import org.dslul.openboard.inputmethod.latin.common.FileUtils;
 import org.dslul.openboard.inputmethod.latin.define.DecoderSpecificConstants;
 import org.dslul.openboard.inputmethod.latin.utils.DictionaryInfoUtils;
 import org.dslul.openboard.inputmethod.latin.utils.DictionaryInfoUtils.DictionaryInfo;
-import org.dslul.openboard.inputmethod.latin.utils.FileTransforms;
 import org.dslul.openboard.inputmethod.latin.utils.MetadataFileUriGetter;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.Closeable;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;

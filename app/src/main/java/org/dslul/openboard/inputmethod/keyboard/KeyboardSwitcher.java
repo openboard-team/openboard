@@ -24,7 +24,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 
-import org.dslul.openboard.inputmethod.compat.InputMethodServiceCompatUtils;
 import org.dslul.openboard.inputmethod.event.Event;
 import org.dslul.openboard.inputmethod.keyboard.KeyboardLayoutSet.KeyboardLayoutSetException;
 import org.dslul.openboard.inputmethod.keyboard.emoji.EmojiPalettesView;
@@ -84,8 +83,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         mLatinIME = latinIme;
         mRichImm = RichInputMethodManager.getInstance();
         mState = new KeyboardState(this);
-        mIsHardwareAcceleratedDrawingEnabled =
-                InputMethodServiceCompatUtils.enableHardwareAcceleration(mLatinIME);
+        mIsHardwareAcceleratedDrawingEnabled = mLatinIME.enableHardwareAcceleration();
     }
 
     public void updateKeyboardTheme() {

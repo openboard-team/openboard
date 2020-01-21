@@ -23,8 +23,6 @@ import org.dslul.openboard.inputmethod.latin.RichInputMethodManager;
 import org.dslul.openboard.inputmethod.latin.SuggestedWords;
 import org.dslul.openboard.inputmethod.latin.settings.SettingsValues;
 
-import javax.annotation.Nullable;
-
 @SuppressWarnings("unused")
 public final class StatsUtils {
 

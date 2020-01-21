@@ -20,11 +20,12 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
-import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
 import org.dslul.openboard.inputmethod.latin.R;
+
+import androidx.core.view.ViewCompat;
 
 public final class SetupStepIndicatorView extends View {
     private final Path mIndicatorPath = new Path();

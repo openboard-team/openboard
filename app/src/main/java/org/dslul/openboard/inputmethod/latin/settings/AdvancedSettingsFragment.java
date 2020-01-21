@@ -22,12 +22,10 @@ import android.content.res.Resources;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.preference.ListPreference;
-import android.preference.Preference;
 
 import org.dslul.openboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.SystemBroadcastReceiver;
-import org.dslul.openboard.inputmethod.latin.define.ProductionFlags;
 
 /**
  * "Advanced" settings sub screen.

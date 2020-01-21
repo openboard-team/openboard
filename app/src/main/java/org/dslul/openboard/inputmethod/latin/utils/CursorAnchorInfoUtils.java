@@ -30,7 +30,6 @@ import android.view.ViewParent;
 import android.view.inputmethod.CursorAnchorInfo;
 import android.widget.TextView;
 
-import org.dslul.openboard.inputmethod.compat.BuildCompatUtils;
 import org.dslul.openboard.inputmethod.compat.CursorAnchorInfoCompatWrapper;
 
 import javax.annotation.Nonnull;
@@ -96,7 +95,7 @@ public final class CursorAnchorInfoUtils {
     @Nullable
     public static CursorAnchorInfoCompatWrapper extractFromTextView(
             @Nonnull final TextView textView) {
-        if (BuildCompatUtils.EFFECTIVE_SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             return null;
         }
         return CursorAnchorInfoCompatWrapper.wrap(extractFromTextViewInternal(textView));

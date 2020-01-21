@@ -16,14 +16,14 @@
 
 package org.dslul.openboard.inputmethod.keyboard.internal;
 
-import static org.dslul.openboard.inputmethod.latin.common.Constants.CODE_OUTPUT_TEXT;
-import static org.dslul.openboard.inputmethod.latin.common.Constants.CODE_UNSPECIFIED;
-
 import org.dslul.openboard.inputmethod.latin.common.Constants;
 import org.dslul.openboard.inputmethod.latin.common.StringUtils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import static org.dslul.openboard.inputmethod.latin.common.Constants.CODE_OUTPUT_TEXT;
+import static org.dslul.openboard.inputmethod.latin.common.Constants.CODE_UNSPECIFIED;
 
 /**
  * The string parser of the key specification.

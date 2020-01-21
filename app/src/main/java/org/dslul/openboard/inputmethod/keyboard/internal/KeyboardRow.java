@@ -24,7 +24,6 @@ import org.dslul.openboard.inputmethod.keyboard.Key;
 import org.dslul.openboard.inputmethod.keyboard.Keyboard;
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.utils.ResourceUtils;
-
 import org.xmlpull.v1.XmlPullParser;
 
 import java.util.ArrayDeque;

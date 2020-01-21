@@ -13,7 +13,6 @@ import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityManager
 import android.view.inputmethod.EditorInfo
 import androidx.core.view.accessibility.AccessibilityEventCompat
-import org.dslul.openboard.inputmethod.compat.SettingsSecureCompatUtils
 import org.dslul.openboard.inputmethod.latin.R
 import org.dslul.openboard.inputmethod.latin.SuggestedWords
 import org.dslul.openboard.inputmethod.latin.utils.InputTypeUtils
@@ -61,9 +60,9 @@ class AccessibilityUtils private constructor() {
     fun shouldObscureInput(editorInfo: EditorInfo?): Boolean {
         if (editorInfo == null) return false
         // The user can optionally force speaking passwords.
-        if (SettingsSecureCompatUtils.ACCESSIBILITY_SPEAK_PASSWORD != null) {
+        if (Settings.Secure.ACCESSIBILITY_SPEAK_PASSWORD != null) {
             val speakPassword = Settings.Secure.getInt(mContext!!.contentResolver,
-                    SettingsSecureCompatUtils.ACCESSIBILITY_SPEAK_PASSWORD, 0) != 0
+                    Settings.Secure.ACCESSIBILITY_SPEAK_PASSWORD, 0) != 0
             if (speakPassword) return false
         }
         // Always speak if the user is listening through headphones.

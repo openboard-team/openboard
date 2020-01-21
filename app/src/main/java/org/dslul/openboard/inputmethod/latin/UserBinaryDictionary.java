@@ -22,7 +22,6 @@ import android.database.ContentObserver;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.net.Uri;
-import android.os.Build;
 import android.provider.UserDictionary.Words;
 import android.text.TextUtils;
 import android.util.Log;

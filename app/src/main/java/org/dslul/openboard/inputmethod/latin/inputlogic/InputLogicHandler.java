@@ -20,10 +20,9 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 
-import org.dslul.openboard.inputmethod.compat.LooperCompatUtils;
 import org.dslul.openboard.inputmethod.latin.LatinIME;
-import org.dslul.openboard.inputmethod.latin.SuggestedWords;
 import org.dslul.openboard.inputmethod.latin.Suggest.OnGetSuggestedWordsCallback;
+import org.dslul.openboard.inputmethod.latin.SuggestedWords;
 import org.dslul.openboard.inputmethod.latin.common.InputPointers;
 
 /**
@@ -83,7 +82,7 @@ class InputLogicHandler implements Handler.Callback {
     // In unit tests, we create several instances of LatinIME, which results in several instances
     // of InputLogicHandler. To avoid these handlers lingering, we call this.
     public void destroy() {
-        LooperCompatUtils.quitSafely(mNonUIThreadHandler.getLooper());
+        mNonUIThreadHandler.getLooper().quitSafely();
     }
 
     /**

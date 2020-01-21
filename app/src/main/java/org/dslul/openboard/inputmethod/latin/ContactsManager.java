@@ -25,7 +25,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import org.dslul.openboard.inputmethod.latin.common.Constants;
-import org.dslul.openboard.inputmethod.latin.common.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;

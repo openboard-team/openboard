@@ -16,13 +16,10 @@
 
 package org.dslul.openboard.inputmethod.latin;
 
-import static org.dslul.openboard.inputmethod.latin.common.Constants.Subtype.KEYBOARD_MODE;
-
 import android.os.Build;
 import android.util.Log;
 import android.view.inputmethod.InputMethodSubtype;
 
-import org.dslul.openboard.inputmethod.compat.BuildCompatUtils;
 import org.dslul.openboard.inputmethod.compat.InputMethodSubtypeCompatUtils;
 import org.dslul.openboard.inputmethod.latin.common.Constants;
 import org.dslul.openboard.inputmethod.latin.common.LocaleUtils;
@@ -33,6 +30,8 @@ import java.util.Locale;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import static org.dslul.openboard.inputmethod.latin.common.Constants.Subtype.KEYBOARD_MODE;
 
 /**
  * Enrichment class for InputMethodSubtype to enable concurrent multi-lingual input.
@@ -46,12 +45,17 @@ public class RichInputMethodSubtype {
     private static final HashMap<Locale, Locale> sLocaleMap = initializeLocaleMap();
     private static final HashMap<Locale, Locale> initializeLocaleMap() {
         final HashMap<Locale, Locale> map = new HashMap<>();
-        if (BuildCompatUtils.EFFECTIVE_SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             // Locale#forLanguageTag is available on API Level 21+.
             // TODO: Remove this workaround once when we become able to deal with "sr-Latn".
             map.put(Locale.forLanguageTag("sr-Latn"), new Locale("sr_ZZ"));
         }
         return map;
+    }
+
+    @Nonnull
+    public InputMethodSubtype getmSubtype() {
+        return mSubtype;
     }
 
     @Nonnull

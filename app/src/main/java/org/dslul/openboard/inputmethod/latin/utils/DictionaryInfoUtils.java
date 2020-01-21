@@ -29,7 +29,6 @@ import org.dslul.openboard.inputmethod.latin.AssetFileAddress;
 import org.dslul.openboard.inputmethod.latin.BinaryDictionaryGetter;
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.RichInputMethodManager;
-import org.dslul.openboard.inputmethod.latin.common.FileUtils;
 import org.dslul.openboard.inputmethod.latin.common.LocaleUtils;
 import org.dslul.openboard.inputmethod.latin.define.DecoderSpecificConstants;
 import org.dslul.openboard.inputmethod.latin.makedict.DictionaryHeader;
@@ -37,7 +36,6 @@ import org.dslul.openboard.inputmethod.latin.makedict.UnsupportedFormatException
 import org.dslul.openboard.inputmethod.latin.settings.SpacingAndPunctuations;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;

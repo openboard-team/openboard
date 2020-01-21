@@ -16,9 +16,9 @@
 
 package org.dslul.openboard.inputmethod.keyboard.internal;
 
-import org.dslul.openboard.inputmethod.annotations.UsedForTesting;
-
 import android.util.Log;
+
+import org.dslul.openboard.inputmethod.annotations.UsedForTesting;
 
 import java.util.Arrays;
 

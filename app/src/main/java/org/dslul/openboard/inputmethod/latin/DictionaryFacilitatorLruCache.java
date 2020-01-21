@@ -16,11 +16,11 @@
 
 package org.dslul.openboard.inputmethod.latin;
 
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-
 import android.content.Context;
 import android.util.Log;
+
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Cache for dictionary facilitators of multiple locales.

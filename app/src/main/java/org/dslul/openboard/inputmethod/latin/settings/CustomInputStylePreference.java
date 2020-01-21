@@ -32,8 +32,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
-import org.dslul.openboard.inputmethod.compat.InputMethodSubtypeCompatUtils;
-import org.dslul.openboard.inputmethod.compat.ViewCompatUtils;
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.RichInputMethodManager;
 import org.dslul.openboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
@@ -125,8 +123,7 @@ final class CustomInputStylePreference extends DialogPreference
         // the view would align them to the left even if the system locale is RTL, but that
         // would look strange. To fix this, we align them to the view's start, which will be
         // natural for any direction.
-        ViewCompatUtils.setTextAlignment(
-                mKeyboardLayoutSetSpinner, ViewCompatUtils.TEXT_ALIGNMENT_VIEW_START);
+        mKeyboardLayoutSetSpinner.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
         return v;
     }
 
@@ -295,7 +292,7 @@ final class CustomInputStylePreference extends DialogPreference
                             subtype.getLocale(), subtype.hashCode(), subtype.hashCode(),
                             SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtype)));
                 }
-                if (InputMethodSubtypeCompatUtils.isAsciiCapable(subtype)) {
+                if (subtype.isAsciiCapable()) {
                     items.add(new SubtypeLocaleItem(subtype));
                 }
             }

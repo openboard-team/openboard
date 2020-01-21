@@ -16,17 +16,15 @@
 
 package org.dslul.openboard.inputmethod.latin.settings;
 
-import org.dslul.openboard.inputmethod.latin.permissions.PermissionsManager;
-import org.dslul.openboard.inputmethod.latin.utils.FragmentUtils;
-import org.dslul.openboard.inputmethod.latin.utils.StatsUtils;
-import org.dslul.openboard.inputmethod.latin.utils.StatsUtilsManager;
-
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+
+import org.dslul.openboard.inputmethod.latin.permissions.PermissionsManager;
+import org.dslul.openboard.inputmethod.latin.utils.FragmentUtils;
+
 import androidx.core.app.ActivityCompat;
-import android.view.MenuItem;
 
 public final class SettingsActivity extends PreferenceActivity
         implements ActivityCompat.OnRequestPermissionsResultCallback {

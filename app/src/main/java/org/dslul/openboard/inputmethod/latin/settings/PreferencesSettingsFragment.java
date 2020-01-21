@@ -19,7 +19,6 @@ package org.dslul.openboard.inputmethod.latin.settings;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
 

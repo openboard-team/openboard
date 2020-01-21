@@ -16,14 +16,11 @@
 
 package org.dslul.openboard.inputmethod.latin.userdictionary;
 
-import org.dslul.openboard.inputmethod.latin.R;
-
 import android.app.ListFragment;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.UserDictionary;
 import android.text.TextUtils;
@@ -39,6 +36,8 @@ import android.widget.ListView;
 import android.widget.SectionIndexer;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+
+import org.dslul.openboard.inputmethod.latin.R;
 
 import java.util.Locale;
 

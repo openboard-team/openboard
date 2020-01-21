@@ -38,7 +38,6 @@ import org.dslul.openboard.inputmethod.latin.common.StringUtils;
 import org.dslul.openboard.inputmethod.latin.utils.ResourceUtils;
 import org.dslul.openboard.inputmethod.latin.utils.XmlParseUtils;
 import org.dslul.openboard.inputmethod.latin.utils.XmlParseUtils.ParseException;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 

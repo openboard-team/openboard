@@ -19,7 +19,6 @@ package org.dslul.openboard.inputmethod.keyboard.internal;
 import android.text.TextUtils;
 import android.util.SparseIntArray;
 
-import org.dslul.openboard.inputmethod.compat.CharacterCompat;
 import org.dslul.openboard.inputmethod.keyboard.Key;
 import org.dslul.openboard.inputmethod.latin.common.CollectionUtils;
 import org.dslul.openboard.inputmethod.latin.common.Constants;
@@ -129,7 +128,7 @@ public final class MoreKeySpec {
 
         public void addLetter(@Nonnull final Key key) {
             final int code = key.getCode();
-            if (CharacterCompat.isAlphabetic(code)) {
+            if (Character.isAlphabetic(code)) {
                 mCodes.put(code, 0);
             } else if (code == Constants.CODE_OUTPUT_TEXT) {
                 mTexts.add(key.getOutputText());
@@ -138,7 +137,7 @@ public final class MoreKeySpec {
 
         public boolean contains(@Nonnull final MoreKeySpec moreKey) {
             final int code = moreKey.mCode;
-            if (CharacterCompat.isAlphabetic(code) && mCodes.indexOfKey(code) >= 0) {
+            if (Character.isAlphabetic(code) && mCodes.indexOfKey(code) >= 0) {
                 return true;
             } else if (code == Constants.CODE_OUTPUT_TEXT && mTexts.contains(moreKey.mOutputText)) {
                 return true;

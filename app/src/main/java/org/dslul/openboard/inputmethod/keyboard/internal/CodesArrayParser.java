@@ -16,10 +16,10 @@
 
 package org.dslul.openboard.inputmethod.keyboard.internal;
 
+import android.text.TextUtils;
+
 import org.dslul.openboard.inputmethod.latin.common.Constants;
 import org.dslul.openboard.inputmethod.latin.common.StringUtils;
-
-import android.text.TextUtils;
 
 /**
  * The string parser of codesArray specification for <GridRows />. The attribute codesArray is an

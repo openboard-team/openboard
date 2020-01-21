@@ -16,10 +16,6 @@
 
 package org.dslul.openboard.inputmethod.latin;
 
-import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.NO_FLOATING_GESTURE_PREVIEW;
-import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.NO_MICROPHONE;
-import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.NO_MICROPHONE_COMPAT;
-
 import android.text.InputType;
 import android.util.Log;
 import android.view.inputmethod.EditorInfo;
@@ -29,6 +25,10 @@ import org.dslul.openboard.inputmethod.latin.utils.InputTypeUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.NO_FLOATING_GESTURE_PREVIEW;
+import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.NO_MICROPHONE;
+import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.NO_MICROPHONE_COMPAT;
 
 /**
  * Class to hold attributes of the input field.

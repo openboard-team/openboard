@@ -16,11 +16,11 @@
 
 package org.dslul.openboard.inputmethod.latin.userdictionary;
 
-import org.dslul.openboard.inputmethod.latin.R;
-import org.dslul.openboard.inputmethod.latin.common.LocaleUtils;
-
 import android.content.Context;
 import android.text.TextUtils;
+
+import org.dslul.openboard.inputmethod.latin.R;
+import org.dslul.openboard.inputmethod.latin.common.LocaleUtils;
 
 import java.util.Locale;
 

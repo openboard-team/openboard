@@ -14,9 +14,7 @@
      limitations under the License.
 -->
 
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:latin="http://schemas.android.com/apk/res-auto"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:key="english_ime_settings">
     <PreferenceScreen
         android:fragment="org.dslul.openboard.inputmethod.latin.settings.PreferencesSettingsFragment"

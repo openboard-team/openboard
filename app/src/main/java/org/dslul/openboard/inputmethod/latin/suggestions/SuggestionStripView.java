@@ -21,7 +21,6 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import androidx.core.view.ViewCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -54,6 +53,8 @@ import org.dslul.openboard.inputmethod.latin.suggestions.MoreSuggestionsView.Mor
 import org.dslul.openboard.inputmethod.latin.utils.ImportantNoticeUtils;
 
 import java.util.ArrayList;
+
+import androidx.core.view.ViewCompat;
 
 public final class SuggestionStripView extends RelativeLayout implements OnClickListener,
         OnLongClickListener {

@@ -16,7 +16,6 @@
 
 package org.dslul.openboard.inputmethod.latin;
 
-import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -24,14 +23,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.os.Process;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 import android.view.inputmethod.InputMethodSubtype;
 
-import org.dslul.openboard.inputmethod.dictionarypack.DictionaryPackConstants;
 import org.dslul.openboard.inputmethod.keyboard.KeyboardLayoutSet;
 import org.dslul.openboard.inputmethod.latin.settings.Settings;
 import org.dslul.openboard.inputmethod.latin.setup.SetupActivity;

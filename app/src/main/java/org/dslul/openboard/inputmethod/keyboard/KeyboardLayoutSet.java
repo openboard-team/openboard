@@ -16,9 +16,6 @@
 
 package org.dslul.openboard.inputmethod.keyboard;
 
-import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.FORCE_ASCII;
-import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.NO_SETTINGS_KEY;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -39,12 +36,10 @@ import org.dslul.openboard.inputmethod.keyboard.internal.UniqueKeysCache;
 import org.dslul.openboard.inputmethod.latin.InputAttributes;
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.RichInputMethodSubtype;
-import org.dslul.openboard.inputmethod.latin.define.DebugFlags;
 import org.dslul.openboard.inputmethod.latin.utils.InputTypeUtils;
 import org.dslul.openboard.inputmethod.latin.utils.ScriptUtils;
 import org.dslul.openboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 import org.dslul.openboard.inputmethod.latin.utils.XmlParseUtils;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -54,6 +49,9 @@ import java.util.HashMap;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.FORCE_ASCII;
+import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.NO_SETTINGS_KEY;
 
 /**
  * This class represents a set of keyboard layouts. Each of them represents a different keyboard
@@ -295,7 +293,7 @@ public final class KeyboardLayoutSet {
         }
 
         public Builder setSubtype(@Nonnull final RichInputMethodSubtype subtype) {
-            final boolean asciiCapable = InputMethodSubtypeCompatUtils.isAsciiCapable(subtype);
+            final boolean asciiCapable = subtype.getmSubtype().isAsciiCapable();
             // TODO: Consolidate with {@link InputAttributes}.
             @SuppressWarnings("deprecation")
             final boolean deprecatedForceAscii = InputAttributes.inPrivateImeOptions(

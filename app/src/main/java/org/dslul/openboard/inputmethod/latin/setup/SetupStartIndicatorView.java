@@ -21,7 +21,6 @@ import android.content.res.ColorStateList;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
-import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +28,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.dslul.openboard.inputmethod.latin.R;
+
+import androidx.core.view.ViewCompat;
 
 public final class SetupStartIndicatorView extends LinearLayout {
     public SetupStartIndicatorView(final Context context, final AttributeSet attrs) {

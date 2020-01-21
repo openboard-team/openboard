@@ -21,8 +21,8 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceFragment;
 import android.view.inputmethod.InputMethodSubtype;
 
-import org.dslul.openboard.inputmethod.latin.RichInputMethodSubtype;
 import org.dslul.openboard.inputmethod.latin.RichInputMethodManager;
+import org.dslul.openboard.inputmethod.latin.RichInputMethodSubtype;
 
 import javax.annotation.Nonnull;
 

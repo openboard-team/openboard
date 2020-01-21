@@ -24,8 +24,6 @@ import org.dslul.openboard.inputmethod.latin.BinaryDictionary;
 import org.dslul.openboard.inputmethod.latin.Dictionary;
 import org.dslul.openboard.inputmethod.latin.ExpandableBinaryDictionary;
 import org.dslul.openboard.inputmethod.latin.NgramContext;
-import org.dslul.openboard.inputmethod.latin.define.DecoderSpecificConstants;
-import org.dslul.openboard.inputmethod.latin.define.ProductionFlags;
 import org.dslul.openboard.inputmethod.latin.makedict.DictionaryHeader;
 
 import java.io.File;

@@ -21,7 +21,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.os.Build;
 import android.util.Log;
 import android.view.inputmethod.EditorInfo;
 
@@ -290,18 +289,6 @@ public class SettingsValues {
 
     public boolean hasSameOrientation(final Configuration configuration) {
         return mDisplayOrientation == configuration.orientation;
-    }
-
-    public boolean isBeforeJellyBean() {
-        final AppWorkaroundsUtils appWorkaroundUtils
-                = mAppWorkarounds.get(null, TIMEOUT_TO_GET_TARGET_PACKAGE);
-        return null == appWorkaroundUtils ? false : appWorkaroundUtils.isBeforeJellyBean();
-    }
-
-    public boolean isBrokenByRecorrection() {
-        final AppWorkaroundsUtils appWorkaroundUtils
-                = mAppWorkarounds.get(null, TIMEOUT_TO_GET_TARGET_PACKAGE);
-        return null == appWorkaroundUtils ? false : appWorkaroundUtils.isBrokenByRecorrection();
     }
 
     private static final String SUGGESTIONS_VISIBILITY_HIDE_VALUE_OBSOLETE = "2";

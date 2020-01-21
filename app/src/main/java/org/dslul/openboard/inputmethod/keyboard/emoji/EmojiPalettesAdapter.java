@@ -16,7 +16,6 @@
 
 package org.dslul.openboard.inputmethod.keyboard.emoji;
 
-import androidx.viewpager.widget.PagerAdapter;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -27,6 +26,8 @@ import org.dslul.openboard.inputmethod.keyboard.Key;
 import org.dslul.openboard.inputmethod.keyboard.Keyboard;
 import org.dslul.openboard.inputmethod.keyboard.KeyboardView;
 import org.dslul.openboard.inputmethod.latin.R;
+
+import androidx.viewpager.widget.PagerAdapter;
 
 final class EmojiPalettesAdapter extends PagerAdapter {
     private static final String TAG = EmojiPalettesAdapter.class.getSimpleName();

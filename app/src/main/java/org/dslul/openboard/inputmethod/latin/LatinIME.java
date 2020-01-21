@@ -16,10 +16,6 @@
 
 package org.dslul.openboard.inputmethod.latin;
 
-import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.FORCE_ASCII;
-import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.NO_MICROPHONE;
-import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.NO_MICROPHONE_COMPAT;
-
 import android.Manifest.permission;
 import android.app.ActivityOptions;
 import android.app.AlertDialog;
@@ -40,7 +36,6 @@ import android.os.IBinder;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.text.InputType;
-import android.text.TextUtils;
 import android.util.Log;
 import android.util.PrintWriterPrinter;
 import android.util.Printer;
@@ -57,10 +52,7 @@ import android.view.inputmethod.InputMethodSubtype;
 
 import org.dslul.openboard.inputmethod.accessibility.AccessibilityUtils;
 import org.dslul.openboard.inputmethod.annotations.UsedForTesting;
-import org.dslul.openboard.inputmethod.compat.BuildCompatUtils;
 import org.dslul.openboard.inputmethod.compat.EditorInfoCompatUtils;
-import org.dslul.openboard.inputmethod.compat.InputMethodServiceCompatUtils;
-import org.dslul.openboard.inputmethod.compat.InputMethodSubtypeCompatUtils;
 import org.dslul.openboard.inputmethod.compat.ViewOutlineProviderCompatUtils;
 import org.dslul.openboard.inputmethod.compat.ViewOutlineProviderCompatUtils.InsetsUpdater;
 import org.dslul.openboard.inputmethod.dictionarypack.DictionaryPackConstants;
@@ -108,6 +100,10 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nonnull;
+
+import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.FORCE_ASCII;
+import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.NO_MICROPHONE;
+import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.NO_MICROPHONE_COMPAT;
 
 /**
  * Input method implementation for Qwerty'ish keyboard.
@@ -583,8 +579,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         mSettings = Settings.getInstance();
         mKeyboardSwitcher = KeyboardSwitcher.getInstance();
         mStatsUtilsManager = StatsUtilsManager.getInstance();
-        mIsHardwareAcceleratedDrawingEnabled =
-                InputMethodServiceCompatUtils.enableHardwareAcceleration(this);
+        mIsHardwareAcceleratedDrawingEnabled = this.enableHardwareAcceleration();
         Log.i(TAG, "Hardware accelerated drawing: " + mIsHardwareAcceleratedDrawingEnabled);
     }
 
@@ -1992,7 +1987,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     private void setNavigationBarVisibility(final boolean visible) {
-        if (BuildCompatUtils.EFFECTIVE_SDK_INT > Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
             // For N and later, IMEs can specify Color.TRANSPARENT to make the navigation bar
             // transparent.  For other colors the system uses the default color.
             getWindow().getWindow().setNavigationBarColor(

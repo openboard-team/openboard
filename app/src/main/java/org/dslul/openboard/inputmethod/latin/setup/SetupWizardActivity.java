@@ -33,8 +33,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.VideoView;
 
-import org.dslul.openboard.inputmethod.compat.TextViewCompatUtils;
-import org.dslul.openboard.inputmethod.compat.ViewCompatUtils;
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.settings.SettingsActivity;
 import org.dslul.openboard.inputmethod.latin.utils.LeakGuardHandlerWrapper;
@@ -222,8 +220,8 @@ public final class SetupWizardActivity extends Activity implements View.OnClickL
         mActionNext = findViewById(R.id.setup_next);
         mActionNext.setOnClickListener(this);
         mActionFinish = (TextView)findViewById(R.id.setup_finish);
-        TextViewCompatUtils.setCompoundDrawablesRelativeWithIntrinsicBounds(mActionFinish,
-                getResources().getDrawable(R.drawable.ic_setup_finish), null, null, null);
+        mActionFinish.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_setup_finish),
+                                                        null, null, null);
         mActionFinish.setOnClickListener(this);
     }
 
@@ -460,11 +458,11 @@ public final class SetupWizardActivity extends Activity implements View.OnClickL
             mActionLabel = (TextView)mStepView.findViewById(R.id.setup_step_action_label);
             mActionLabel.setText(res.getString(actionLabel));
             if (actionIcon == 0) {
-                final int paddingEnd = ViewCompatUtils.getPaddingEnd(mActionLabel);
-                ViewCompatUtils.setPaddingRelative(mActionLabel, paddingEnd, 0, paddingEnd, 0);
+                final int paddingEnd = mActionLabel.getPaddingEnd();
+                mActionLabel.setPaddingRelative(paddingEnd, 0, paddingEnd, 0);
             } else {
-                TextViewCompatUtils.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                        mActionLabel, res.getDrawable(actionIcon), null, null, null);
+                mActionLabel.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        res.getDrawable(actionIcon), null, null, null);
             }
         }
 

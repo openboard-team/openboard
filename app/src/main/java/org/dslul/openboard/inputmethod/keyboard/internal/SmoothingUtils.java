@@ -16,10 +16,10 @@
 
 package org.dslul.openboard.inputmethod.keyboard.internal;
 
+import android.util.Log;
+
 import org.dslul.openboard.inputmethod.annotations.UsedForTesting;
 import org.dslul.openboard.inputmethod.keyboard.internal.MatrixUtils.MatrixOperationFailedException;
-
-import android.util.Log;
 
 import java.util.Arrays;
 

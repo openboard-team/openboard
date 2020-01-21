@@ -16,13 +16,8 @@
 
 package org.dslul.openboard.inputmethod.latin.utils;
 
-import static org.dslul.openboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.COMBINING_RULES;
-import static org.dslul.openboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.KEYBOARD_LAYOUT_SET;
-import static org.dslul.openboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME;
-
 import android.content.Context;
 import android.content.res.Resources;
-import android.os.Build;
 import android.util.Log;
 import android.view.inputmethod.InputMethodSubtype;
 
@@ -35,6 +30,10 @@ import java.util.Locale;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import static org.dslul.openboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.COMBINING_RULES;
+import static org.dslul.openboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.KEYBOARD_LAYOUT_SET;
+import static org.dslul.openboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME;
 
 /**
  * A helper class to deal with subtype locales.

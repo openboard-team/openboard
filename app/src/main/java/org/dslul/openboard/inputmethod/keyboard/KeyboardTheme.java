@@ -23,7 +23,6 @@ import android.os.Build.VERSION_CODES;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import org.dslul.openboard.inputmethod.compat.BuildCompatUtils;
 import org.dslul.openboard.inputmethod.latin.R;
 
 import java.util.ArrayList;
@@ -156,7 +155,7 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
     }
 
     public static void saveKeyboardThemeId(final int themeId, final SharedPreferences prefs) {
-        saveKeyboardThemeId(themeId, prefs, BuildCompatUtils.EFFECTIVE_SDK_INT);
+        saveKeyboardThemeId(themeId, prefs, Build.VERSION.SDK_INT);
     }
 
     /* package private for testing */
@@ -177,7 +176,7 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
     public static KeyboardTheme getKeyboardTheme(final Context context) {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         final KeyboardTheme[] availableThemeArray = getAvailableThemeArray(context);
-        return getKeyboardTheme(prefs, BuildCompatUtils.EFFECTIVE_SDK_INT, availableThemeArray);
+        return getKeyboardTheme(prefs, Build.VERSION.SDK_INT, availableThemeArray);
     }
 
     /* package private for testing */

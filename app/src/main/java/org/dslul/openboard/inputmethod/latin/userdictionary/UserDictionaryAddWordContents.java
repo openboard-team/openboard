@@ -26,7 +26,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
-import org.dslul.openboard.inputmethod.compat.UserDictionaryCompatUtils;
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.common.LocaleUtils;
 
@@ -184,7 +183,7 @@ public class UserDictionaryAddWordContents {
 
         // In this class we use the empty string to represent 'all locales' and mLocale cannot
         // be null. However the addWord method takes null to mean 'all locales'.
-        UserDictionaryCompatUtils.addWord(context, newWord.toString(),
+        UserDictionary.Words.addWord(context, newWord.toString(),
                 FREQUENCY_FOR_USER_DICTIONARY_ADDS, newShortcut, TextUtils.isEmpty(mLocale) ?
                         null : LocaleUtils.constructLocaleFromString(mLocale));
 

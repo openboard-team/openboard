@@ -16,14 +16,15 @@
 
 package org.dslul.openboard.inputmethod.latin.spellcheck;
 
-import org.dslul.openboard.inputmethod.latin.permissions.PermissionsManager;
-import org.dslul.openboard.inputmethod.latin.utils.FragmentUtils;
-
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+
+import org.dslul.openboard.inputmethod.latin.permissions.PermissionsManager;
+import org.dslul.openboard.inputmethod.latin.utils.FragmentUtils;
+
 import androidx.core.app.ActivityCompat;
 
 /**

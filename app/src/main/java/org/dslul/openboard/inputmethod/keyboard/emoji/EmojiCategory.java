@@ -25,7 +25,6 @@ import android.os.Build;
 import android.util.Log;
 import android.util.Pair;
 
-import org.dslul.openboard.inputmethod.compat.BuildCompatUtils;
 import org.dslul.openboard.inputmethod.keyboard.Key;
 import org.dslul.openboard.inputmethod.keyboard.Keyboard;
 import org.dslul.openboard.inputmethod.keyboard.KeyboardId;
@@ -174,7 +173,7 @@ final class EmojiCategory {
 
         int defaultCategoryId = EmojiCategory.ID_SYMBOLS;
         addShownCategoryId(EmojiCategory.ID_RECENTS);
-        if (BuildCompatUtils.EFFECTIVE_SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             if (canShowUnicodeEightEmoji()) {
                 defaultCategoryId = EmojiCategory.ID_EIGHT_SMILEY_PEOPLE;
                 addShownCategoryId(EmojiCategory.ID_EIGHT_SMILEY_PEOPLE);

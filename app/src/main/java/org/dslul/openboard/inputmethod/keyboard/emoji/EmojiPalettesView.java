@@ -16,14 +16,11 @@
 
 package org.dslul.openboard.inputmethod.keyboard.emoji;
 
-import static org.dslul.openboard.inputmethod.latin.common.Constants.NOT_A_COORDINATE;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
-import androidx.viewpager.widget.ViewPager;
 import android.util.AttributeSet;
 import android.util.Pair;
 import android.util.TypedValue;
@@ -50,6 +47,10 @@ import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.RichInputMethodSubtype;
 import org.dslul.openboard.inputmethod.latin.common.Constants;
 import org.dslul.openboard.inputmethod.latin.utils.ResourceUtils;
+
+import androidx.viewpager.widget.ViewPager;
+
+import static org.dslul.openboard.inputmethod.latin.common.Constants.NOT_A_COORDINATE;
 
 /**
  * View class to implement Emoji palettes.
