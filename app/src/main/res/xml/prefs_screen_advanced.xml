@@ -16,7 +16,7 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:latin="http://schemas.android.com/apk/res/org.dslul.openboard.inputmethod.latin"
+    xmlns:latin="http://schemas.android.com/apk/res-auto"
     android:title="@string/settings_screen_advanced"
     android:key="screen_advanced">
     <!-- TODO: consolidate key preview dismiss delay with the key preview animation parameters. -->
