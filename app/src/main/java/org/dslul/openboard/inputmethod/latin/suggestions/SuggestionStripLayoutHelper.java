@@ -447,7 +447,7 @@ final class SuggestionStripLayoutHelper {
         // With accessibility touch exploration on, <code>wordView</code> should be enabled even
         // when it is empty to avoid announcing as "disabled".
         wordView.setEnabled(!TextUtils.isEmpty(word)
-                || AccessibilityUtils.getInstance().isTouchExplorationEnabled());
+                || AccessibilityUtils.Companion.getInstance().isTouchExplorationEnabled());
         return wordView;
     }
 

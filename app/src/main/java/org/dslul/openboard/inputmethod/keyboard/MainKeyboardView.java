@@ -400,7 +400,7 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
         final int keyHeight = keyboard.mMostCommonKeyHeight - keyboard.mVerticalGap;
         mLanguageOnSpacebarTextSize = keyHeight * mLanguageOnSpacebarTextRatio;
 
-        if (AccessibilityUtils.getInstance().isAccessibilityEnabled()) {
+        if (AccessibilityUtils.Companion.getInstance().isAccessibilityEnabled()) {
             if (mAccessibilityDelegate == null) {
                 mAccessibilityDelegate = new MainKeyboardAccessibilityDelegate(this, mKeyDetector);
             }
@@ -742,7 +742,7 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
         onDismissMoreKeysPanel();
         final MainKeyboardAccessibilityDelegate accessibilityDelegate = mAccessibilityDelegate;
         if (accessibilityDelegate != null
-                && AccessibilityUtils.getInstance().isAccessibilityEnabled()) {
+                && AccessibilityUtils.Companion.getInstance().isAccessibilityEnabled()) {
             accessibilityDelegate.onHideWindow();
         }
     }
@@ -754,7 +754,7 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
     public boolean onHoverEvent(final MotionEvent event) {
         final MainKeyboardAccessibilityDelegate accessibilityDelegate = mAccessibilityDelegate;
         if (accessibilityDelegate != null
-                && AccessibilityUtils.getInstance().isTouchExplorationEnabled()) {
+                && AccessibilityUtils.Companion.getInstance().isTouchExplorationEnabled()) {
             return accessibilityDelegate.onHoverEvent(event);
         }
         return super.onHoverEvent(event);

@@ -81,7 +81,7 @@ final class EmojiPageKeyboardView extends KeyboardView implements
     public void setKeyboard(final Keyboard keyboard) {
         super.setKeyboard(keyboard);
         mKeyDetector.setKeyboard(keyboard, 0 /* correctionX */, 0 /* correctionY */);
-        if (AccessibilityUtils.getInstance().isAccessibilityEnabled()) {
+        if (AccessibilityUtils.Companion.getInstance().isAccessibilityEnabled()) {
             if (mAccessibilityDelegate == null) {
                 mAccessibilityDelegate = new KeyboardAccessibilityDelegate<>(this, mKeyDetector);
             }
@@ -105,7 +105,7 @@ final class EmojiPageKeyboardView extends KeyboardView implements
         final KeyboardAccessibilityDelegate<EmojiPageKeyboardView> accessibilityDelegate =
                 mAccessibilityDelegate;
         if (accessibilityDelegate != null
-                && AccessibilityUtils.getInstance().isTouchExplorationEnabled()) {
+                && AccessibilityUtils.Companion.getInstance().isTouchExplorationEnabled()) {
             return accessibilityDelegate.onHoverEvent(event);
         }
         return super.onHoverEvent(event);

@@ -56,7 +56,7 @@ public final class InputView extends FrameLayout {
 
     @Override
     protected boolean dispatchHoverEvent(final MotionEvent event) {
-        if (AccessibilityUtils.getInstance().isTouchExplorationEnabled()
+        if (AccessibilityUtils.Companion.getInstance().isTouchExplorationEnabled()
                 && mMainKeyboardView.isShowingMoreKeysPanel()) {
             // With accessibility mode on, discard hover events while a more keys keyboard is shown.
             // The {@link MoreKeysKeyboard} receives hover events directly from the platform.

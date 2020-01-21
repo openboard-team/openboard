@@ -376,7 +376,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
             // upward. Further {@link MotionEvent}s will be delivered to
             // {@link #onTouchEvent(MotionEvent)}.
             mNeedsToTransformTouchEventToHoverEvent =
-                    AccessibilityUtils.getInstance().isTouchExplorationEnabled();
+                    AccessibilityUtils.Companion.getInstance().isTouchExplorationEnabled();
             mIsDispatchingHoverEventToMoreSuggestions = false;
             return true;
         }

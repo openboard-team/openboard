@@ -918,7 +918,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 switcher.getKeyboard());
 
         // Forward this event to the accessibility utilities, if enabled.
-        final AccessibilityUtils accessUtils = AccessibilityUtils.getInstance();
+        final AccessibilityUtils accessUtils = AccessibilityUtils.Companion.getInstance();
         if (accessUtils.isTouchExplorationEnabled()) {
             accessUtils.onStartInputViewInternal(mainKeyboardView, editorInfo, restarting);
         }
@@ -1623,7 +1623,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
         // Cache the auto-correction in accessibility code so we can speak it if the user
         // touches a key that will insert it.
-        AccessibilityUtils.getInstance().setAutoCorrection(suggestedWords);
+        AccessibilityUtils.Companion.getInstance().setAutoCorrection(suggestedWords);
     }
 
     // Called from {@link SuggestionStripView} through the {@link SuggestionStripView#Listener}
