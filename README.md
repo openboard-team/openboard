@@ -8,3 +8,8 @@
 
 ### Permissions
 * **Read Contacts**: Used to add your contact list to suggestions. Disabled by default.
+
+# Contribute
+
+### How to create a dictionary
+You can use [this tool](https://github.com/remi0s/aosp-dictionary-tools) to create a dictionary. You need a wordlist, as described [here](https://github.com/dslul/openboard/blob/master/dictionaries/sample.combined). The output .dict file must be put in [res/raw](https://github.com/dslul/openboard/tree/master/app/src/main/res/raw).
