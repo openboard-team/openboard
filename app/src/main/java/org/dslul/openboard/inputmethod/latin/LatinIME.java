@@ -791,7 +791,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         mInputView = view;
         mInsetsUpdater = ViewOutlineProviderCompatUtils.setInsetsOutlineProvider(view);
         updateSoftInputWindowLayoutParameters();
-        mSuggestionStripView = (SuggestionStripView)view.findViewById(R.id.suggestion_strip_view);
+        mSuggestionStripView = view.findViewById(R.id.suggestion_strip_view);
         if (hasSuggestionStripView()) {
             mSuggestionStripView.setListener(this, view);
         }
@@ -1807,22 +1807,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
     };
 
-    /**
-     * Starts {@link android.app.Activity} on the same display where the IME is shown.
-     *
-     * @param intent {@link Intent} to be used to start {@link android.app.Activity}.
-     */
-    private void startActivityOnTheSameDisplay(Intent intent) {
-        // Note that WindowManager#getDefaultDisplay() returns the display ID associated with the
-        // Context from which the WindowManager instance was obtained. Therefore the following code
-        // returns the display ID for the window where the IME is shown.
-        final int currentDisplayId = ((WindowManager) getSystemService(Context.WINDOW_SERVICE))
-                .getDefaultDisplay().getDisplayId();
-
-        startActivity(intent,
-                ActivityOptions.makeBasic().setLaunchDisplayId(currentDisplayId).toBundle());
-    }
-
     void launchSettings() {
         mInputLogic.commitTyped(mSettings.getCurrent(), LastComposedWord.NOT_A_SEPARATOR);
         requestHideSelf(0);
@@ -1835,7 +1819,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                 | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
                 | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivityOnTheSameDisplay(intent);
+        startActivity(intent);
     }
 
     private void showSubtypeSelectorAndSettings() {
@@ -1859,7 +1843,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                                     | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
                                     | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra(Intent.EXTRA_TITLE, languageSelectionTitle);
-                    startActivityOnTheSameDisplay(intent);
+                    startActivity(intent);
                     break;
                 case 1:
                     launchSettings();
