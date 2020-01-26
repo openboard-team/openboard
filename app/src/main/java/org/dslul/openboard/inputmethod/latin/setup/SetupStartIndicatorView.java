@@ -37,7 +37,7 @@ public final class SetupStartIndicatorView extends LinearLayout {
         setOrientation(HORIZONTAL);
         LayoutInflater.from(context).inflate(R.layout.setup_start_indicator_label, this);
 
-        final LabelView labelView = (LabelView)findViewById(R.id.setup_start_label);
+        final LabelView labelView = findViewById(R.id.setup_start_label);
         labelView.setIndicatorView(findViewById(R.id.setup_start_indicator));
     }
 

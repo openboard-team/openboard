@@ -69,10 +69,7 @@ public final class KeySpecParser {
         }
         // This is a workaround to have a key that has a supplementary code point. We can't put a
         // string in resource as a XML entity of a supplementary code point or a surrogate pair.
-        if (keySpec.startsWith(PREFIX_HEX, labelEnd + 1)) {
-            return true;
-        }
-        return false;
+        return keySpec.startsWith(PREFIX_HEX, labelEnd + 1);
     }
 
     @Nonnull

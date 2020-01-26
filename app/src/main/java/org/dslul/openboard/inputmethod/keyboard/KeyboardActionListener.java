@@ -29,7 +29,7 @@ public interface KeyboardActionListener {
      * @param repeatCount how many times the key was repeated. Zero if it is the first press.
      * @param isSinglePointer true if pressing has occurred while no other key is being pressed.
      */
-    public void onPressKey(int primaryCode, int repeatCount, boolean isSinglePointer);
+    void onPressKey(int primaryCode, int repeatCount, boolean isSinglePointer);
 
     /**
      * Called when the user releases a key. This is sent after the {@link #onCodeInput} is called.
@@ -39,7 +39,7 @@ public interface KeyboardActionListener {
      * @param withSliding true if releasing has occurred because the user slid finger from the key
      *             to other key without releasing the finger.
      */
-    public void onReleaseKey(int primaryCode, boolean withSliding);
+    void onReleaseKey(int primaryCode, boolean withSliding);
 
     /**
      * Send a key code to the listener.
@@ -56,57 +56,57 @@ public interface KeyboardActionListener {
      * @param isKeyRepeat true if this is a key repeat, false otherwise
      */
     // TODO: change this to send an Event object instead
-    public void onCodeInput(int primaryCode, int x, int y, boolean isKeyRepeat);
+    void onCodeInput(int primaryCode, int x, int y, boolean isKeyRepeat);
 
     /**
      * Sends a string of characters to the listener.
      *
      * @param text the string of characters to be registered.
      */
-    public void onTextInput(String text);
+    void onTextInput(String text);
 
     /**
      * Called when user started batch input.
      */
-    public void onStartBatchInput();
+    void onStartBatchInput();
 
     /**
      * Sends the ongoing batch input points data.
      * @param batchPointers the batch input points representing the user input
      */
-    public void onUpdateBatchInput(InputPointers batchPointers);
+    void onUpdateBatchInput(InputPointers batchPointers);
 
     /**
      * Sends the final batch input points data.
      *
      * @param batchPointers the batch input points representing the user input
      */
-    public void onEndBatchInput(InputPointers batchPointers);
+    void onEndBatchInput(InputPointers batchPointers);
 
-    public void onCancelBatchInput();
+    void onCancelBatchInput();
 
     /**
      * Called when user released a finger outside any key.
      */
-    public void onCancelInput();
+    void onCancelInput();
 
     /**
      * Called when user finished sliding key input.
      */
-    public void onFinishSlidingInput();
+    void onFinishSlidingInput();
 
     /**
      * Send a non-"code input" custom request to the listener.
      * @return true if the request has been consumed, false otherwise.
      */
-    public boolean onCustomRequest(int requestCode);
-    public void onMovePointer(int steps);
-    public void onMoveDeletePointer(int steps);
-    public void onUpWithDeletePointerActive();
+    boolean onCustomRequest(int requestCode);
+    void onMovePointer(int steps);
+    void onMoveDeletePointer(int steps);
+    void onUpWithDeletePointerActive();
 
-    public static final KeyboardActionListener EMPTY_LISTENER = new Adapter();
+    KeyboardActionListener EMPTY_LISTENER = new Adapter();
 
-    public static class Adapter implements KeyboardActionListener {
+    class Adapter implements KeyboardActionListener {
         @Override
         public void onPressKey(int primaryCode, int repeatCount, boolean isSinglePointer) {}
         @Override

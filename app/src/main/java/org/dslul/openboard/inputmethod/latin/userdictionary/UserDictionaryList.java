@@ -99,7 +99,7 @@ public class UserDictionaryList extends PreferenceFragment {
         // enabled subtypes. If we already have the locale-without-country version of the system
         // locale, we don't add the system locale to avoid confusion even though it's technically
         // correct to add it.
-        if (!localeSet.contains(Locale.getDefault().getLanguage().toString())) {
+        if (!localeSet.contains(Locale.getDefault().getLanguage())) {
             localeSet.add(Locale.getDefault().toString());
         }
 

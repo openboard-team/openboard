@@ -59,9 +59,9 @@ import androidx.core.view.ViewCompat;
 public final class SuggestionStripView extends RelativeLayout implements OnClickListener,
         OnLongClickListener {
     public interface Listener {
-        public void showImportantNoticeContents();
-        public void pickSuggestionManually(SuggestedWordInfo word);
-        public void onCodeInput(int primaryCode, int x, int y, boolean isKeyRepeat);
+        void showImportantNoticeContents();
+        void pickSuggestionManually(SuggestedWordInfo word);
+        void onCodeInput(int primaryCode, int x, int y, boolean isKeyRepeat);
     }
 
     static final boolean DBG = DebugFlags.DEBUG_ENABLED;
@@ -139,8 +139,8 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
         final LayoutInflater inflater = LayoutInflater.from(context);
         inflater.inflate(R.layout.suggestions_strip, this);
 
-        mSuggestionsStrip = (ViewGroup)findViewById(R.id.suggestions_strip);
-        mVoiceKey = (ImageButton)findViewById(R.id.suggestions_strip_voice_key);
+        mSuggestionsStrip = findViewById(R.id.suggestions_strip);
+        mVoiceKey = findViewById(R.id.suggestions_strip_voice_key);
         mImportantNoticeStrip = findViewById(R.id.important_notice_strip);
         mStripVisibilityGroup = new StripVisibilityGroup(this, mSuggestionsStrip,
                 mImportantNoticeStrip);
@@ -163,7 +163,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
                 context, attrs, defStyle, mWordViews, mDividerViews, mDebugInfoViews);
 
         mMoreSuggestionsContainer = inflater.inflate(R.layout.more_suggestions, null);
-        mMoreSuggestionsView = (MoreSuggestionsView)mMoreSuggestionsContainer
+        mMoreSuggestionsView = mMoreSuggestionsContainer
                 .findViewById(R.id.more_suggestions_view);
         mMoreSuggestionsBuilder = new MoreSuggestions.Builder(context, mMoreSuggestionsView);
 
@@ -187,7 +187,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
      */
     public void setListener(final Listener listener, final View inputView) {
         mListener = listener;
-        mMainKeyboardView = (MainKeyboardView)inputView.findViewById(R.id.keyboard_view);
+        mMainKeyboardView = inputView.findViewById(R.id.keyboard_view);
     }
 
     public void updateVisibility(final boolean shouldBeVisible, final boolean isFullscreenMode) {

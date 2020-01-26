@@ -178,7 +178,7 @@ class AccessibilityUtils private constructor() {
         private val TAG = AccessibilityUtils::class.java.simpleName
         private val CLASS = AccessibilityUtils::class.java.name
         private val PACKAGE = AccessibilityUtils::class.java.getPackage()!!.name
-        public val instance = AccessibilityUtils()
+        val instance = AccessibilityUtils()
         /*
      * Setting this constant to {@code false} will disable all keyboard
      * accessibility code, regardless of whether Accessibility is turned on in

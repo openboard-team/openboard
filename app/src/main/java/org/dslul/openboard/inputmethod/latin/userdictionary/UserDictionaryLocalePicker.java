@@ -31,6 +31,6 @@ public class UserDictionaryLocalePicker extends Fragment {
     }
 
     public interface LocationChangedListener {
-        public void onLocaleSelected(Locale locale);
+        void onLocaleSelected(Locale locale);
     }
 }

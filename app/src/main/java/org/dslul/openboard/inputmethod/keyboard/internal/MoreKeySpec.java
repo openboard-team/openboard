@@ -139,10 +139,7 @@ public final class MoreKeySpec {
             final int code = moreKey.mCode;
             if (Character.isAlphabetic(code) && mCodes.indexOfKey(code) >= 0) {
                 return true;
-            } else if (code == Constants.CODE_OUTPUT_TEXT && mTexts.contains(moreKey.mOutputText)) {
-                return true;
-            }
-            return false;
+            } else return code == Constants.CODE_OUTPUT_TEXT && mTexts.contains(moreKey.mOutputText);
         }
     }
 

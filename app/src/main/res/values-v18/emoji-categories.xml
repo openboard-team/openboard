@@ -20,8 +20,7 @@
     <array
         name="emoji_nature"
         format="string"
-    >
-        <!-- <item>1f415</item> -->
+    >1f415
         <item>1f436</item>
         <item>1f429</item>
         <!-- <item>1f408</item> -->

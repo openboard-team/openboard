@@ -450,7 +450,7 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
             Log.w(TAG, "Cannot find root view");
             return;
         }
-        final ViewGroup windowContentView = (ViewGroup)rootView.findViewById(android.R.id.content);
+        final ViewGroup windowContentView = rootView.findViewById(android.R.id.content);
         // Note: It'd be very weird if we get null by android.R.id.content.
         if (windowContentView == null) {
             Log.w(TAG, "Cannot find android.R.id.content view to add DrawingPreviewPlacerView");
@@ -618,7 +618,7 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
         final View container = key.isActionKey() ? mMoreKeysKeyboardForActionContainer
                 : mMoreKeysKeyboardContainer;
         final MoreKeysKeyboardView moreKeysKeyboardView =
-                (MoreKeysKeyboardView)container.findViewById(R.id.more_keys_keyboard_view);
+                container.findViewById(R.id.more_keys_keyboard_view);
         moreKeysKeyboardView.setKeyboard(moreKeysKeyboard);
         container.measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 

@@ -35,53 +35,6 @@ object SuggestionSpanUtils {
         return spannable
     }
 
-    @UsedForTesting
-    fun getTextWithSuggestionSpan(context: Context?,
-                                  pickedWord: String, suggestedWords: SuggestedWords, locale: Locale?): CharSequence {
-        if (TextUtils.isEmpty(pickedWord) || suggestedWords.isEmpty
-                || suggestedWords.isPrediction || suggestedWords.isPunctuationSuggestions) {
-            return pickedWord
-        }
-        val suggestionsList = ArrayList<String>()
-        for (i in 0 until suggestedWords.size()) {
-            if (suggestionsList.size >= SuggestionSpan.SUGGESTIONS_MAX_SIZE) {
-                break
-            }
-            val info = suggestedWords.getInfo(i)
-            if (info.isKindOf(SuggestedWordInfo.KIND_PREDICTION)) {
-                continue
-            }
-            val word = suggestedWords.getWord(i)
-            if (!TextUtils.equals(pickedWord, word)) {
-                suggestionsList.add(word.toString())
-            }
-        }
-        val suggestionSpan = SuggestionSpan(context, locale,
-                suggestionsList.toTypedArray(), 0 /* flags */, null)
-        val spannable: Spannable = SpannableString(pickedWord)
-        spannable.setSpan(suggestionSpan, 0, pickedWord.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        return spannable
-    }
-
-    /**
-     * Returns first [Locale] found in the given array of [SuggestionSpan].
-     * @param suggestionSpans the array of [SuggestionSpan] to be examined.
-     * @return the first [Locale] found in `suggestionSpans`. `null` when not
-     * found.
-     */
-    @UsedForTesting
-    fun findFirstLocaleFromSuggestionSpans(
-            suggestionSpans: Array<SuggestionSpan>): Locale? {
-        for (suggestionSpan in suggestionSpans) {
-            val localeString = suggestionSpan.locale
-            if (TextUtils.isEmpty(localeString)) {
-                continue
-            }
-            return LocaleUtils.constructLocaleFromString(localeString)
-        }
-        return null
-    }
-
     init {
         if (DebugFlags.DEBUG_ENABLED) {
             if (OBJ_FLAG_AUTO_CORRECTION == null) {

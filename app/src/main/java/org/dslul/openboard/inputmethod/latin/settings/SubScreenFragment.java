@@ -59,7 +59,7 @@ public abstract class SubScreenFragment extends PreferenceFragment
         if (listPreference == null) {
             return;
         }
-        final CharSequence entries[] = listPreference.getEntries();
+        final CharSequence[] entries = listPreference.getEntries();
         final int entryIndex = listPreference.findIndexOfValue(listPreference.getValue());
         listPreference.setSummary(entryIndex < 0 ? null : entries[entryIndex]);
     }

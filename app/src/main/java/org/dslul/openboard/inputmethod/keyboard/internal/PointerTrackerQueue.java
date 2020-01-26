@@ -25,10 +25,10 @@ public final class PointerTrackerQueue {
     private static final boolean DEBUG = false;
 
     public interface Element {
-        public boolean isModifier();
-        public boolean isInDraggingFinger();
-        public void onPhantomUpEvent(long eventTime);
-        public void cancelTrackingForAction();
+        boolean isModifier();
+        boolean isInDraggingFinger();
+        void onPhantomUpEvent(long eventTime);
+        void cancelTrackingForAction();
     }
 
     private static final int INITIAL_CAPACITY = 10;

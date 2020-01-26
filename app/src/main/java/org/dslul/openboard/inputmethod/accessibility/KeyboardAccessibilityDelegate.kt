@@ -145,7 +145,7 @@ open class KeyboardAccessibilityDelegate<KV : KeyboardView?>(protected val mKeyb
         if (DEBUG_HOVER) {
             Log.d(TAG, "onHoverEnter: key=$key")
         }
-        key?.let { onHoverEnterTo(it) }
+        key.let { onHoverEnterTo(it) }
         mLastHoverKey = key
     }
 
@@ -159,9 +159,9 @@ open class KeyboardAccessibilityDelegate<KV : KeyboardView?>(protected val mKeyb
         val key = getHoverKeyOf(event)
         if (key !== lastKey) {
             lastKey?.let { onHoverExitFrom(it) }
-            key?.let { onHoverEnterTo(it) }
+            key.let { onHoverEnterTo(it) }
         }
-        key?.let { onHoverMoveWithin(it) }
+        key.let { onHoverMoveWithin(it) }
         mLastHoverKey = key
     }
 

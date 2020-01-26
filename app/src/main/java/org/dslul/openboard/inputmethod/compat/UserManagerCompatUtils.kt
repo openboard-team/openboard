@@ -34,7 +34,6 @@ object UserManagerCompatUtils {
         val userManager = context.getSystemService(UserManager::class.java)
                 ?: return LOCK_STATE_UNKNOWN
         val result = CompatUtils.invoke(userManager, null, METHOD_isUserUnlocked) as Boolean
-                ?: return LOCK_STATE_UNKNOWN
         return if (result) LOCK_STATE_UNLOCKED else LOCK_STATE_LOCKED
     }
 

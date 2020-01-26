@@ -187,7 +187,7 @@ public class RichInputMethodSubtype {
             + "," + Constants.Subtype.ExtraValue.EMOJI_CAPABLE;
     @Nonnull
     private static final RichInputMethodSubtype DUMMY_NO_LANGUAGE_SUBTYPE =
-            new RichInputMethodSubtype(InputMethodSubtypeCompatUtils.newInputMethodSubtype(
+            new RichInputMethodSubtype(new InputMethodSubtype(
                     R.string.subtype_no_language_qwerty, R.drawable.ic_ime_switcher_dark,
                     SubtypeLocaleUtils.NO_LANGUAGE, KEYBOARD_MODE,
                     EXTRA_VALUE_OF_DUMMY_NO_LANGUAGE_SUBTYPE,
@@ -201,7 +201,7 @@ public class RichInputMethodSubtype {
             + "," + Constants.Subtype.ExtraValue.EMOJI_CAPABLE;
     @Nonnull
     private static final RichInputMethodSubtype DUMMY_EMOJI_SUBTYPE = new RichInputMethodSubtype(
-            InputMethodSubtypeCompatUtils.newInputMethodSubtype(
+            new InputMethodSubtype(
                     R.string.subtype_emoji, R.drawable.ic_ime_switcher_dark,
                     SubtypeLocaleUtils.NO_LANGUAGE, KEYBOARD_MODE,
                     EXTRA_VALUE_OF_DUMMY_EMOJI_SUBTYPE,

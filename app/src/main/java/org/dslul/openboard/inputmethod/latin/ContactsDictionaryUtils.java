@@ -47,9 +47,6 @@ public class ContactsDictionaryUtils {
      */
     public static boolean useFirstLastBigramsForLocale(final Locale locale) {
         // TODO: Add firstname/lastname bigram rules for other languages.
-        if (locale != null && locale.getLanguage().equals(Locale.ENGLISH.getLanguage())) {
-            return true;
-        }
-        return false;
+        return locale != null && locale.getLanguage().equals(Locale.ENGLISH.getLanguage());
     }
 }

@@ -70,8 +70,8 @@ public class UserDictionaryAddWordContents {
     private String mSavedShortcut;
 
     /* package */ UserDictionaryAddWordContents(final View view, final Bundle args) {
-        mWordEditText = (EditText)view.findViewById(R.id.user_dictionary_add_word_text);
-        mShortcutEditText = (EditText)view.findViewById(R.id.user_dictionary_add_shortcut);
+        mWordEditText = view.findViewById(R.id.user_dictionary_add_word_text);
+        mShortcutEditText = view.findViewById(R.id.user_dictionary_add_shortcut);
         if (!UserDictionarySettings.IS_SHORTCUT_API_SUPPORTED) {
             mShortcutEditText.setVisibility(View.GONE);
             view.findViewById(R.id.user_dictionary_add_shortcut_label).setVisibility(View.GONE);
@@ -101,8 +101,8 @@ public class UserDictionaryAddWordContents {
 
     /* package */ UserDictionaryAddWordContents(final View view,
             final UserDictionaryAddWordContents oldInstanceToBeEdited) {
-        mWordEditText = (EditText)view.findViewById(R.id.user_dictionary_add_word_text);
-        mShortcutEditText = (EditText)view.findViewById(R.id.user_dictionary_add_shortcut);
+        mWordEditText = view.findViewById(R.id.user_dictionary_add_word_text);
+        mShortcutEditText = view.findViewById(R.id.user_dictionary_add_shortcut);
         mMode = MODE_EDIT;
         mOldWord = oldInstanceToBeEdited.mSavedWord;
         mOldShortcut = oldInstanceToBeEdited.mSavedShortcut;
@@ -183,7 +183,7 @@ public class UserDictionaryAddWordContents {
 
         // In this class we use the empty string to represent 'all locales' and mLocale cannot
         // be null. However the addWord method takes null to mean 'all locales'.
-        UserDictionary.Words.addWord(context, newWord.toString(),
+        UserDictionary.Words.addWord(context, newWord,
                 FREQUENCY_FOR_USER_DICTIONARY_ADDS, newShortcut, TextUtils.isEmpty(mLocale) ?
                         null : LocaleUtils.constructLocaleFromString(mLocale));
 

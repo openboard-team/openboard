@@ -89,7 +89,7 @@ public final class DebugLogUtils {
         if (!sDBG) return;
         final StringBuilder sb = new StringBuilder();
         for (final Object o : args) {
-            sb.append(s(o).toString());
+            sb.append(s(o));
             sb.append(" ");
         }
         Log.e(TAG, sb.toString());
@@ -106,7 +106,7 @@ public final class DebugLogUtils {
         if (!sDBG) return;
         final StringBuilder sb = new StringBuilder("\u001B[31m");
         for (final Object o : args) {
-            sb.append(s(o).toString());
+            sb.append(s(o));
             sb.append(" ");
         }
         sb.append("\u001B[0m");

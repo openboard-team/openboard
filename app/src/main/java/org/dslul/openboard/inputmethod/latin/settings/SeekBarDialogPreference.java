@@ -31,12 +31,12 @@ import org.dslul.openboard.inputmethod.latin.R;
 public final class SeekBarDialogPreference extends DialogPreference
         implements SeekBar.OnSeekBarChangeListener {
     public interface ValueProxy {
-        public int readValue(final String key);
-        public int readDefaultValue(final String key);
-        public void writeValue(final int value, final String key);
-        public void writeDefaultValue(final String key);
-        public String getValueText(final int value);
-        public void feedbackValue(final int value);
+        int readValue(final String key);
+        int readDefaultValue(final String key);
+        void writeValue(final int value, final String key);
+        void writeDefaultValue(final String key);
+        String getValueText(final int value);
+        void feedbackValue(final int value);
     }
 
     private final int mMaxValue;
@@ -68,10 +68,10 @@ public final class SeekBarDialogPreference extends DialogPreference
     @Override
     protected View onCreateDialogView() {
         final View view = super.onCreateDialogView();
-        mSeekBar = (SeekBar)view.findViewById(R.id.seek_bar_dialog_bar);
+        mSeekBar = view.findViewById(R.id.seek_bar_dialog_bar);
         mSeekBar.setMax(mMaxValue - mMinValue);
         mSeekBar.setOnSeekBarChangeListener(this);
-        mValueView = (TextView)view.findViewById(R.id.seek_bar_dialog_value);
+        mValueView = view.findViewById(R.id.seek_bar_dialog_value);
         return view;
     }
 

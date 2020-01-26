@@ -132,11 +132,7 @@ public class UserDictionarySettings extends ListFragment {
         final String locale;
         if (null != localeFromArguments) {
             locale = localeFromArguments;
-        } else if (null != localeFromIntent) {
-            locale = localeFromIntent;
-        } else {
-            locale = null;
-        }
+        } else locale = localeFromIntent;
 
         mLocale = locale;
         // WARNING: The following cursor is never closed! TODO: don't put that in a member, and
@@ -145,7 +141,7 @@ public class UserDictionarySettings extends ListFragment {
         // closing the cursor, so take care when resolving this TODO). We should either use a
         // regular query and close the cursor, or switch to a LoaderManager and a CursorLoader.
         mCursor = createCursor(locale);
-        TextView emptyView = (TextView) getView().findViewById(android.R.id.empty);
+        TextView emptyView = getView().findViewById(android.R.id.empty);
         emptyView.setText(R.string.user_dict_settings_empty_text);
 
         final ListView listView = getListView();

@@ -20,25 +20,25 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public interface MoreKeysPanel {
-    public interface Controller {
+    interface Controller {
         /**
          * Add the {@link MoreKeysPanel} to the target view.
          * @param panel the panel to be shown.
          */
-        public void onShowMoreKeysPanel(final MoreKeysPanel panel);
+        void onShowMoreKeysPanel(final MoreKeysPanel panel);
 
         /**
          * Remove the current {@link MoreKeysPanel} from the target view.
          */
-        public void onDismissMoreKeysPanel();
+        void onDismissMoreKeysPanel();
 
         /**
          * Instructs the parent to cancel the panel (e.g., when entering a different input mode).
          */
-        public void onCancelMoreKeysPanel();
+        void onCancelMoreKeysPanel();
     }
 
-    public static final Controller EMPTY_CONTROLLER = new Controller() {
+    Controller EMPTY_CONTROLLER = new Controller() {
         @Override
         public void onShowMoreKeysPanel(final MoreKeysPanel panel) {}
         @Override
@@ -60,14 +60,14 @@ public interface MoreKeysPanel {
      */
     // TODO: Currently the MoreKeysPanel is inside a container view that is added to the parent.
     // Consider the simpler approach of placing the MoreKeysPanel itself into the parent view.
-    public void showMoreKeysPanel(View parentView, Controller controller, int pointX,
-            int pointY, KeyboardActionListener listener);
+    void showMoreKeysPanel(View parentView, Controller controller, int pointX,
+                           int pointY, KeyboardActionListener listener);
 
     /**
      * Dismisses the more keys panel and calls the controller's onDismissMoreKeysPanel to remove
      * the panel's container view.
      */
-    public void dismissMoreKeysPanel();
+    void dismissMoreKeysPanel();
 
     /**
      * Process a move event on the more keys panel.
@@ -77,7 +77,7 @@ public interface MoreKeysPanel {
      * @param pointerId pointer id touch point
      * @param eventTime timestamp of touch point
      */
-    public void onMoveEvent(final int x, final int y, final int pointerId, final long eventTime);
+    void onMoveEvent(final int x, final int y, final int pointerId, final long eventTime);
 
     /**
      * Process a down event on the more keys panel.
@@ -87,7 +87,7 @@ public interface MoreKeysPanel {
      * @param pointerId pointer id touch point
      * @param eventTime timestamp of touch point
      */
-    public void onDownEvent(final int x, final int y, final int pointerId, final long eventTime);
+    void onDownEvent(final int x, final int y, final int pointerId, final long eventTime);
 
     /**
      * Process an up event on the more keys panel.
@@ -97,7 +97,7 @@ public interface MoreKeysPanel {
      * @param pointerId pointer id touch point
      * @param eventTime timestamp of touch point
      */
-    public void onUpEvent(final int x, final int y, final int pointerId, final long eventTime);
+    void onUpEvent(final int x, final int y, final int pointerId, final long eventTime);
 
     /**
      * Translate X-coordinate of touch event to the local X-coordinate of this
@@ -106,7 +106,7 @@ public interface MoreKeysPanel {
      * @param x the global X-coordinate
      * @return the local X-coordinate to this {@link MoreKeysPanel}
      */
-    public int translateX(int x);
+    int translateX(int x);
 
     /**
      * Translate Y-coordinate of touch event to the local Y-coordinate of this
@@ -115,22 +115,22 @@ public interface MoreKeysPanel {
      * @param y the global Y-coordinate
      * @return the local Y-coordinate to this {@link MoreKeysPanel}
      */
-    public int translateY(int y);
+    int translateY(int y);
 
     /**
      * Show this {@link MoreKeysPanel} in the parent view.
      *
      * @param parentView the {@link ViewGroup} that hosts this {@link MoreKeysPanel}.
      */
-    public void showInParent(ViewGroup parentView);
+    void showInParent(ViewGroup parentView);
 
     /**
      * Remove this {@link MoreKeysPanel} from the parent view.
      */
-    public void removeFromParent();
+    void removeFromParent();
 
     /**
      * Return whether the panel is currently being shown.
      */
-    public boolean isShowingInParent();
+    boolean isShowingInParent();
 }

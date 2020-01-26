@@ -62,7 +62,7 @@ public final class JsonUtils {
         } finally {
             close(reader);
         }
-        return Collections.<Object>emptyList();
+        return Collections.emptyList();
     }
 
     public static String listToJsonStr(final List<Object> list) {

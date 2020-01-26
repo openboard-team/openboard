@@ -135,18 +135,18 @@ public final class SetupWizardActivity extends Activity implements View.OnClickL
 
         final String applicationName = getResources().getString(getApplicationInfo().labelRes);
         mWelcomeScreen = findViewById(R.id.setup_welcome_screen);
-        final TextView welcomeTitle = (TextView)findViewById(R.id.setup_welcome_title);
+        final TextView welcomeTitle = findViewById(R.id.setup_welcome_title);
         welcomeTitle.setText(getString(R.string.setup_welcome_title, applicationName));
 
         mSetupScreen = findViewById(R.id.setup_steps_screen);
-        final TextView stepsTitle = (TextView)findViewById(R.id.setup_title);
+        final TextView stepsTitle = findViewById(R.id.setup_title);
         stepsTitle.setText(getString(R.string.setup_steps_title, applicationName));
 
         final SetupStepIndicatorView indicatorView =
-                (SetupStepIndicatorView)findViewById(R.id.setup_step_indicator);
+                findViewById(R.id.setup_step_indicator);
         mSetupStepGroup = new SetupStepGroup(indicatorView);
 
-        mStep1Bullet = (TextView)findViewById(R.id.setup_step1_bullet);
+        mStep1Bullet = findViewById(R.id.setup_step1_bullet);
         mStep1Bullet.setOnClickListener(this);
         final SetupStep step1 = new SetupStep(STEP_1, applicationName,
                 mStep1Bullet, findViewById(R.id.setup_step1),
@@ -194,7 +194,7 @@ public final class SetupWizardActivity extends Activity implements View.OnClickL
                 .authority(getPackageName())
                 .path(Integer.toString(R.raw.setup_welcome_video))
                 .build();
-        final VideoView welcomeVideoView = (VideoView)findViewById(R.id.setup_welcome_video);
+        final VideoView welcomeVideoView = findViewById(R.id.setup_welcome_video);
         welcomeVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(final MediaPlayer mp) {
@@ -213,13 +213,13 @@ public final class SetupWizardActivity extends Activity implements View.OnClickL
             }
         });
         mWelcomeVideoView = welcomeVideoView;
-        mWelcomeImageView = (ImageView)findViewById(R.id.setup_welcome_image);
+        mWelcomeImageView = findViewById(R.id.setup_welcome_image);
 
         mActionStart = findViewById(R.id.setup_start_label);
         mActionStart.setOnClickListener(this);
         mActionNext = findViewById(R.id.setup_next);
         mActionNext.setOnClickListener(this);
-        mActionFinish = (TextView)findViewById(R.id.setup_finish);
+        mActionFinish = findViewById(R.id.setup_finish);
         mActionFinish.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_setup_finish),
                                                         null, null, null);
         mActionFinish.setOnClickListener(this);
@@ -448,14 +448,14 @@ public final class SetupWizardActivity extends Activity implements View.OnClickL
             mActivatedColor = res.getColor(R.color.setup_text_action);
             mDeactivatedColor = res.getColor(R.color.setup_text_dark);
 
-            final TextView titleView = (TextView)mStepView.findViewById(R.id.setup_step_title);
+            final TextView titleView = mStepView.findViewById(R.id.setup_step_title);
             titleView.setText(res.getString(title, applicationName));
             mInstruction = (instruction == 0) ? null
                     : res.getString(instruction, applicationName);
             mFinishedInstruction = (finishedInstruction == 0) ? null
                     : res.getString(finishedInstruction, applicationName);
 
-            mActionLabel = (TextView)mStepView.findViewById(R.id.setup_step_action_label);
+            mActionLabel = mStepView.findViewById(R.id.setup_step_action_label);
             mActionLabel.setText(res.getString(actionLabel));
             if (actionIcon == 0) {
                 final int paddingEnd = mActionLabel.getPaddingEnd();
@@ -469,7 +469,7 @@ public final class SetupWizardActivity extends Activity implements View.OnClickL
         public void setEnabled(final boolean enabled, final boolean isStepActionAlreadyDone) {
             mStepView.setVisibility(enabled ? View.VISIBLE : View.GONE);
             mBulletView.setTextColor(enabled ? mActivatedColor : mDeactivatedColor);
-            final TextView instructionView = (TextView)mStepView.findViewById(
+            final TextView instructionView = mStepView.findViewById(
                     R.id.setup_step_instruction);
             instructionView.setText(isStepActionAlreadyDone ? mFinishedInstruction : mInstruction);
             mActionLabel.setVisibility(isStepActionAlreadyDone ? View.GONE : View.VISIBLE);

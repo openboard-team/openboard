@@ -100,8 +100,8 @@ public class PersonalDictionaryLookup implements Closeable {
     /**
      * Interface to implement for classes interested in getting notified of updates.
      */
-    public static interface PersonalDictionaryListener {
-        public void onUpdate();
+    public interface PersonalDictionaryListener {
+        void onUpdate();
     }
 
     private final Set<PersonalDictionaryListener> mListeners = new HashSet<>();

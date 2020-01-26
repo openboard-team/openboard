@@ -42,27 +42,27 @@ public final class KeyboardState {
     private static final boolean DEBUG_INTERNAL_ACTION = false;
 
     public interface SwitchActions {
-        public static final boolean DEBUG_ACTION = false;
+        boolean DEBUG_ACTION = false;
 
-        public void setAlphabetKeyboard();
-        public void setAlphabetManualShiftedKeyboard();
-        public void setAlphabetAutomaticShiftedKeyboard();
-        public void setAlphabetShiftLockedKeyboard();
-        public void setAlphabetShiftLockShiftedKeyboard();
-        public void setEmojiKeyboard();
-        public void setSymbolsKeyboard();
-        public void setSymbolsShiftedKeyboard();
+        void setAlphabetKeyboard();
+        void setAlphabetManualShiftedKeyboard();
+        void setAlphabetAutomaticShiftedKeyboard();
+        void setAlphabetShiftLockedKeyboard();
+        void setAlphabetShiftLockShiftedKeyboard();
+        void setEmojiKeyboard();
+        void setSymbolsKeyboard();
+        void setSymbolsShiftedKeyboard();
 
         /**
          * Request to call back {@link KeyboardState#onUpdateShiftState(int, int)}.
          */
-        public void requestUpdatingShiftState(final int autoCapsFlags, final int recapitalizeMode);
+        void requestUpdatingShiftState(final int autoCapsFlags, final int recapitalizeMode);
 
-        public static final boolean DEBUG_TIMER_ACTION = false;
+        boolean DEBUG_TIMER_ACTION = false;
 
-        public void startDoubleTapShiftKeyTimer();
-        public boolean isInDoubleTapShiftKeyTimeout();
-        public void cancelDoubleTapShiftKeyTimer();
+        void startDoubleTapShiftKeyTimer();
+        boolean isInDoubleTapShiftKeyTimeout();
+        void cancelDoubleTapShiftKeyTimer();
     }
 
     private final SwitchActions mSwitchActions;

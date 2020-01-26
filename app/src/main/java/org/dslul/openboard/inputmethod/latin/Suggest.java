@@ -92,7 +92,7 @@ public final class Suggest {
     }
 
     public interface OnGetSuggestedWordsCallback {
-        public void onGetSuggestedWords(final SuggestedWords suggestedWords);
+        void onGetSuggestedWords(final SuggestedWords suggestedWords);
     }
 
     public void getSuggestedWords(final WordComposer wordComposer,

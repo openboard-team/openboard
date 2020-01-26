@@ -103,8 +103,8 @@ public class ContactsManager {
      * Interface to implement for classes interested in getting notified for updates
      * to Contacts content provider.
      */
-    public static interface ContactsChangedListener {
-        public void onContactsChange();
+    public interface ContactsChangedListener {
+        void onContactsChange();
     }
 
     /**

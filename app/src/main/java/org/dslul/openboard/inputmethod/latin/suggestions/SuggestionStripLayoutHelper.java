@@ -546,7 +546,7 @@ final class SuggestionStripLayoutHelper {
 
     public void layoutImportantNotice(final View importantNoticeStrip,
             final String importantNoticeTitle) {
-        final TextView titleView = (TextView)importantNoticeStrip.findViewById(
+        final TextView titleView = importantNoticeStrip.findViewById(
                 R.id.important_notice_title);
         final int width = titleView.getWidth() - titleView.getPaddingLeft()
                 - titleView.getPaddingRight();

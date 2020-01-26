@@ -42,8 +42,8 @@ public final class InputView extends FrameLayout {
     @Override
     protected void onFinishInflate() {
         final SuggestionStripView suggestionStripView =
-                (SuggestionStripView)findViewById(R.id.suggestion_strip_view);
-        mMainKeyboardView = (MainKeyboardView)findViewById(R.id.keyboard_view);
+                findViewById(R.id.suggestion_strip_view);
+        mMainKeyboardView = findViewById(R.id.keyboard_view);
         mKeyboardTopPaddingForwarder = new KeyboardTopPaddingForwarder(
                 mMainKeyboardView, suggestionStripView);
         mMoreSuggestionsViewCanceler = new MoreSuggestionsViewCanceler(
@@ -162,9 +162,7 @@ public final class InputView extends FrameLayout {
             if (me.getActionMasked() == MotionEvent.ACTION_DOWN) {
                 // If the down event happens in the forwarding area, successive
                 // {@link MotionEvent}s should be forwarded to <code>ReceiverView</code>.
-                if (needsToForward(x, y)) {
-                    return true;
-                }
+                return needsToForward(x, y);
             }
 
             return false;

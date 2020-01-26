@@ -394,7 +394,7 @@ abstract public class ExpandableBinaryDictionary extends Dictionary {
      */
     @UsedForTesting
     public interface UpdateEntriesForInputEventsCallback {
-        public void onFinished();
+        void onFinished();
     }
 
     /**

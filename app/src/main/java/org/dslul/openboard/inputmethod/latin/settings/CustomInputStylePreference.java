@@ -44,11 +44,11 @@ final class CustomInputStylePreference extends DialogPreference
     private static final boolean DEBUG_SUBTYPE_ID = false;
 
     interface Listener {
-        public void onRemoveCustomInputStyle(CustomInputStylePreference stylePref);
-        public void onSaveCustomInputStyle(CustomInputStylePreference stylePref);
-        public void onAddCustomInputStyle(CustomInputStylePreference stylePref);
-        public SubtypeLocaleAdapter getSubtypeLocaleAdapter();
-        public KeyboardLayoutSetAdapter getKeyboardLayoutSetAdapter();
+        void onRemoveCustomInputStyle(CustomInputStylePreference stylePref);
+        void onSaveCustomInputStyle(CustomInputStylePreference stylePref);
+        void onAddCustomInputStyle(CustomInputStylePreference stylePref);
+        SubtypeLocaleAdapter getSubtypeLocaleAdapter();
+        KeyboardLayoutSetAdapter getKeyboardLayoutSetAdapter();
     }
 
     private static final String KEY_PREFIX = "subtype_pref_";
@@ -115,9 +115,9 @@ final class CustomInputStylePreference extends DialogPreference
     @Override
     protected View onCreateDialogView() {
         final View v = super.onCreateDialogView();
-        mSubtypeLocaleSpinner = (Spinner) v.findViewById(R.id.subtype_locale_spinner);
+        mSubtypeLocaleSpinner = v.findViewById(R.id.subtype_locale_spinner);
         mSubtypeLocaleSpinner.setAdapter(mProxy.getSubtypeLocaleAdapter());
-        mKeyboardLayoutSetSpinner = (Spinner) v.findViewById(R.id.keyboard_layout_set_spinner);
+        mKeyboardLayoutSetSpinner = v.findViewById(R.id.keyboard_layout_set_spinner);
         mKeyboardLayoutSetSpinner.setAdapter(mProxy.getKeyboardLayoutSetAdapter());
         // All keyboard layout names are in the Latin script and thus left to right. That means
         // the view would align them to the left even if the system locale is RTL, but that
@@ -233,7 +233,7 @@ final class CustomInputStylePreference extends DialogPreference
 
         public SavedState(final Parcel source) {
             super(source);
-            mSubtype = (InputMethodSubtype)source.readParcelable(null);
+            mSubtype = source.readParcelable(null);
         }
 
         @SuppressWarnings("hiding")

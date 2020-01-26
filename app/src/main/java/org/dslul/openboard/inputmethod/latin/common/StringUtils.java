@@ -485,11 +485,8 @@ public final class StringUtils {
             return true;
         }
         // If it has both a period and a slash, it looks like an URL.
-        if (hasPeriod && hasSlash) {
-            return true;
-        }
+        return hasPeriod && hasSlash;
         // Otherwise, it doesn't look like an URL.
-        return false;
     }
 
     /**

@@ -244,7 +244,7 @@ class MainKeyboardAccessibilityDelegate(mainKeyboardView: MainKeyboardView,
             val codePointOfNoPanelAutoMoreKey = key.moreKeys!![0].mCode
             val text: String = KeyCodeDescriptionMapper.instance.getDescriptionForCodePoint(
                     mKeyboardView!!.context, codePointOfNoPanelAutoMoreKey)!!
-            text?.let { sendWindowStateChanged(it) }
+            text.let { sendWindowStateChanged(it) }
         }
     }
 

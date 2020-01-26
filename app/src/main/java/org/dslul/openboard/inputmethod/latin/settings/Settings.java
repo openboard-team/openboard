@@ -266,18 +266,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
                         R.integer.config_key_preview_linger_timeout))));
     }
 
-    public static boolean readShowsLanguageSwitchKey(final SharedPreferences prefs) {
-        if (prefs.contains(PREF_SUPPRESS_LANGUAGE_SWITCH_KEY)) {
-            final boolean suppressLanguageSwitchKey = prefs.getBoolean(
-                    PREF_SUPPRESS_LANGUAGE_SWITCH_KEY, false);
-            final SharedPreferences.Editor editor = prefs.edit();
-            editor.remove(PREF_SUPPRESS_LANGUAGE_SWITCH_KEY);
-            editor.putBoolean(PREF_SHOW_LANGUAGE_SWITCH_KEY, !suppressLanguageSwitchKey);
-            editor.apply();
-        }
-        return prefs.getBoolean(PREF_SHOW_LANGUAGE_SWITCH_KEY, true);
-    }
-
     public static String readPrefAdditionalSubtypes(final SharedPreferences prefs,
             final Resources res) {
         final String predefinedPrefSubtypes = AdditionalSubtypeUtils.createPrefSubtypes(

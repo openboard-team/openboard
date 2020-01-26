@@ -48,7 +48,7 @@
             android:allowBackup="true"
             android:defaultToDeviceProtectedStorage="true"
             android:directBootAware="true"
-        android:extractNativeLibs="false">
+            android:extractNativeLibs="false">
 
         <!-- Services -->
         <service android:name="LatinIME"

@@ -783,11 +783,8 @@ public final class RichInputConnection implements PrivateCommandPerformer {
             return false;
         }
         final int codePointAfterCursor = Character.codePointAt(after, 0);
-        if (spacingAndPunctuations.isWordSeparator(codePointAfterCursor)
-                || spacingAndPunctuations.isWordConnector(codePointAfterCursor)) {
-            return false;
-        }
-        return true;
+        return !spacingAndPunctuations.isWordSeparator(codePointAfterCursor)
+                && !spacingAndPunctuations.isWordConnector(codePointAfterCursor);
     }
 
     public void removeTrailingSpace() {

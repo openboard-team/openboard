@@ -68,7 +68,7 @@ public final class BinaryDictionaryFileDumper {
     private static final boolean SHOULD_VERIFY_CHECKSUM =
             DecoderSpecificConstants.SHOULD_VERIFY_CHECKSUM;
 
-    private static final String DICTIONARY_PROJECTION[] = { "id" };
+    private static final String[] DICTIONARY_PROJECTION = {"id"};
 
     private static final String QUERY_PARAMETER_MAY_PROMPT_USER = "mayPrompt";
     private static final String QUERY_PARAMETER_TRUE = "true";
@@ -143,7 +143,7 @@ public final class BinaryDictionaryFileDumper {
         final String clientId = context.getString(R.string.dictionary_pack_client_id);
         final ContentProviderClient client = context.getContentResolver().
                 acquireContentProviderClient(getProviderUriBuilder("").build());
-        if (null == client) return Collections.<WordListInfo>emptyList();
+        if (null == client) return Collections.emptyList();
         Cursor cursor = null;
         try {
             final Uri.Builder builder = getContentUriBuilderForType(clientId, client,
@@ -161,9 +161,9 @@ public final class BinaryDictionaryFileDumper {
                 reinitializeClientRecordInDictionaryContentProvider(context, client, clientId);
                 cursor = client.query(queryUri, DICTIONARY_PROJECTION, null, null, null);
             }
-            if (null == cursor) return Collections.<WordListInfo>emptyList();
+            if (null == cursor) return Collections.emptyList();
             if (cursor.getCount() <= 0 || !cursor.moveToFirst()) {
-                return Collections.<WordListInfo>emptyList();
+                return Collections.emptyList();
             }
             final ArrayList<WordListInfo> list = new ArrayList<>();
             do {
@@ -179,13 +179,13 @@ public final class BinaryDictionaryFileDumper {
             // happens when the content provider got suddenly killed because it crashed or because
             // the user disabled it through Settings.
             Log.e(TAG, "RemoteException: communication with the dictionary pack cut", e);
-            return Collections.<WordListInfo>emptyList();
+            return Collections.emptyList();
         } catch (Exception e) {
             // A crash here is dangerous because crashing here would brick any encrypted device -
             // we need the keyboard to be up and working to enter the password, so we don't want
             // to die no matter what. So let's be as safe as possible.
             Log.e(TAG, "Unexpected exception communicating with the dictionary pack", e);
-            return Collections.<WordListInfo>emptyList();
+            return Collections.emptyList();
         } finally {
             if (null != cursor) {
                 cursor.close();
@@ -263,7 +263,7 @@ public final class BinaryDictionaryFileDumper {
      * @param output an output stream to copy the data to.
      */
     public static void checkMagicAndCopyFileTo(final BufferedInputStream input,
-            final BufferedOutputStream output) throws FileNotFoundException, IOException {
+            final BufferedOutputStream output) throws IOException {
         // Check the magic number
         final int length = MAGIC_NUMBER_VERSION_2.length;
         final byte[] magicNumberBuffer = new byte[length];

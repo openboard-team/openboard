@@ -27,11 +27,11 @@ import org.dslul.openboard.inputmethod.latin.common.InputPointers;
  */
 public class BatchInputArbiter {
     public interface BatchInputArbiterListener {
-        public void onStartBatchInput();
-        public void onUpdateBatchInput(
+        void onStartBatchInput();
+        void onUpdateBatchInput(
                 final InputPointers aggregatedPointers, final long moveEventTime);
-        public void onStartUpdateBatchInputTimer();
-        public void onEndBatchInput(final InputPointers aggregatedPointers, final long upEventTime);
+        void onStartUpdateBatchInputTimer();
+        void onEndBatchInput(final InputPointers aggregatedPointers, final long upEventTime);
     }
 
     // The starting time of the first stroke of a gesture input.

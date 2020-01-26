@@ -29,14 +29,14 @@ public interface DrawingProxy {
      * @param key the {@link Key} that is being pressed.
      * @param withPreview true if key popup preview should be displayed.
      */
-    public void onKeyPressed(@Nonnull Key key, boolean withPreview);
+    void onKeyPressed(@Nonnull Key key, boolean withPreview);
 
     /**
      * Called when a key is being released.
      * @param key the {@link Key} that is being released.
      * @param withAnimation when true, key popup preview should be dismissed with animation.
      */
-    public void onKeyReleased(@Nonnull Key key, boolean withAnimation);
+    void onKeyReleased(@Nonnull Key key, boolean withAnimation);
 
     /**
      * Start showing more keys keyboard of a key that is being long pressed.
@@ -46,23 +46,23 @@ public interface DrawingProxy {
      *     keyboard.
      */
     @Nullable
-    public MoreKeysPanel showMoreKeysKeyboard(@Nonnull Key key, @Nonnull PointerTracker tracker);
+    MoreKeysPanel showMoreKeysKeyboard(@Nonnull Key key, @Nonnull PointerTracker tracker);
 
     /**
      * Start a while-typing-animation.
      * @param fadeInOrOut {@link #FADE_IN} starts while-typing-fade-in animation.
      * {@link #FADE_OUT} starts while-typing-fade-out animation.
      */
-    public void startWhileTypingAnimation(int fadeInOrOut);
-    public static final int FADE_IN = 0;
-    public static final int FADE_OUT = 1;
+    void startWhileTypingAnimation(int fadeInOrOut);
+    int FADE_IN = 0;
+    int FADE_OUT = 1;
 
     /**
      * Show sliding-key input preview.
      * @param tracker the {@link PointerTracker} that is currently doing the sliding-key input.
      * null to dismiss the sliding-key input preview.
      */
-    public void showSlidingKeyInputPreview(@Nullable PointerTracker tracker);
+    void showSlidingKeyInputPreview(@Nullable PointerTracker tracker);
 
     /**
      * Show gesture trails.
@@ -70,10 +70,10 @@ public interface DrawingProxy {
      * @param showsFloatingPreviewText when true, a gesture floating preview text will be shown
      * with this <code>tracker</code>'s trail.
      */
-    public void showGestureTrail(@Nonnull PointerTracker tracker, boolean showsFloatingPreviewText);
+    void showGestureTrail(@Nonnull PointerTracker tracker, boolean showsFloatingPreviewText);
 
     /**
      * Dismiss a gesture floating preview text without delay.
      */
-    public void dismissGestureFloatingPreviewTextWithoutDelay();
+    void dismissGestureFloatingPreviewTextWithoutDelay();
 }

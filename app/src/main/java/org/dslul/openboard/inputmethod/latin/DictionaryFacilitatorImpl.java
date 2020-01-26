@@ -260,7 +260,7 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
             final Method factoryMethod = dictClass.getMethod(DICT_FACTORY_METHOD_NAME,
                     DICT_FACTORY_METHOD_ARG_TYPES);
             final Object dict = factoryMethod.invoke(null /* obj */,
-                    new Object[] { context, locale, dictFile, dictNamePrefix, account });
+                    context, locale, dictFile, dictNamePrefix, account);
             return (ExpandableBinaryDictionary) dict;
         } catch (final NoSuchMethodException | SecurityException | IllegalAccessException
                 | IllegalArgumentException | InvocationTargetException e) {
@@ -468,18 +468,12 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
     // of these methods.
     public boolean hasAtLeastOneInitializedMainDictionary() {
         final Dictionary mainDict = mDictionaryGroup.getDict(Dictionary.TYPE_MAIN);
-        if (mainDict != null && mainDict.isInitialized()) {
-            return true;
-        }
-        return false;
+        return mainDict != null && mainDict.isInitialized();
     }
 
     public boolean hasAtLeastOneUninitializedMainDictionary() {
         final Dictionary mainDict = mDictionaryGroup.getDict(Dictionary.TYPE_MAIN);
-        if (mainDict == null || !mainDict.isInitialized()) {
-            return true;
-        }
-        return false;
+        return mainDict == null || !mainDict.isInitialized();
     }
 
     public void waitForLoadingMainDictionaries(final long timeout, final TimeUnit unit)
@@ -507,7 +501,7 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         NgramContext ngramContextForCurrentWord = ngramContext;
         for (int i = 0; i < words.length; i++) {
             final String currentWord = words[i];
-            final boolean wasCurrentWordAutoCapitalized = (i == 0) ? wasAutoCapitalized : false;
+            final boolean wasCurrentWordAutoCapitalized = (i == 0) && wasAutoCapitalized;
             addWordToUserHistory(mDictionaryGroup, ngramContextForCurrentWord, currentWord,
                     wasCurrentWordAutoCapitalized, (int) timeStampInSeconds,
                     blockPotentiallyOffensive);
