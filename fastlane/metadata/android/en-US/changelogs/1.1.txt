@@ -1,2 +1,0 @@
-- Added keyboard resize option
-- remove network permissions

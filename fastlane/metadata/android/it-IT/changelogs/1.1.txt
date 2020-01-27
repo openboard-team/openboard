@@ -1,2 +1,0 @@
-- Aggiunta opzione per il ridimensionamento della tastiera
-- rimossi i permessi di accesso alla rete

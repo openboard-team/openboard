@@ -1,3 +1,6 @@
+- modifiche ai temi
+- possibilità di disabilitare il tasto cambia lingua
+- aggiunto il dizionario polacco
 - Scorrimento sulla barra spaziatrice per spostare il cursore
 - scorrimento dal tasto elimina per selezionare e cancellare porzioni di testo
 - sistemati bug
