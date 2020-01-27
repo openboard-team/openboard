@@ -50,7 +50,7 @@ open class KeyboardAccessibilityDelegate<KV : KeyboardView?>(protected val mKeyb
         if (keyboard == null) {
             return
         }
-        mAccessibilityNodeProvider!!.setKeyboard(keyboard)
+        mAccessibilityNodeProvider?.setKeyboard(keyboard)
         mKeyboard = keyboard
     }
 
