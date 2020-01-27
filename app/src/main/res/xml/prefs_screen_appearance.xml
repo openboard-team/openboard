@@ -34,7 +34,7 @@
         android:defaultValue="false" />
     <CheckBoxPreference
         android:key="pref_show_language_switch_key"
-        android:title="Show language switch key"
+        android:title="@string/show_language_switch_key"
         android:defaultValue="false"
         android:persistent="true" />
     <CheckBoxPreference

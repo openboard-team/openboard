@@ -1193,10 +1193,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element,
             // We use longer timeout for sliding finger input started from the modifier key.
             return longpressTimeout * MULTIPLIER_FOR_LONG_PRESS_TIMEOUT_IN_SLIDING_INPUT;
         }
-        if (code == Constants.CODE_SPACE) {
-            // Cursor can be moved in space
-            return longpressTimeout * MULTIPLIER_FOR_LONG_PRESS_TIMEOUT_IN_SLIDING_INPUT;
-        }
         return longpressTimeout;
     }
 
