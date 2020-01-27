@@ -115,15 +115,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="org.dslul.openboard.inputmethod.dictionarypack.DictionarySettingsActivity"
-                android:theme="@style/platformSettingsTheme"
-                android:label="@string/dictionary_settings_title"
-                android:uiOptions="splitActionBarWhenNarrow">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-            </intent-filter>
-        </activity>
-
         <!-- Unexported activity used for tests. -->
         <activity android:name=".settings.TestFragmentActivity"
                 android:exported="false" />

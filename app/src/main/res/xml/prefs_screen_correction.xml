@@ -22,17 +22,6 @@
         android:title="@string/edit_personal_dictionary">
         <intent android:action="android.settings.USER_DICTIONARY_SETTINGS" />
     </PreferenceScreen>
-    <PreferenceScreen
-        android:key="configure_dictionaries_key"
-        android:title="@string/configure_dictionaries_title">
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetClass="@string/dictionary_pack_settings_activity">
-            <extra
-                android:name="clientId"
-                android:value="@string/dictionary_pack_client_id" />
-        </intent>
-    </PreferenceScreen>
     <CheckBoxPreference
         android:key="pref_key_block_potentially_offensive"
         android:title="@string/prefs_block_potentially_offensive_title"

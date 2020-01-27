@@ -16,7 +16,6 @@
 
 package org.dslul.openboard.inputmethod.latin.utils;
 
-import org.dslul.openboard.inputmethod.dictionarypack.DictionarySettingsFragment;
 import org.dslul.openboard.inputmethod.latin.about.AboutPreferences;
 import org.dslul.openboard.inputmethod.latin.settings.AdvancedSettingsFragment;
 import org.dslul.openboard.inputmethod.latin.settings.AppearanceSettingsFragment;
@@ -38,7 +37,6 @@ import java.util.HashSet;
 public class FragmentUtils {
     private static final HashSet<String> sLatinImeFragments = new HashSet<>();
     static {
-        sLatinImeFragments.add(DictionarySettingsFragment.class.getName());
         sLatinImeFragments.add(AboutPreferences.class.getName());
         sLatinImeFragments.add(PreferencesSettingsFragment.class.getName());
         sLatinImeFragments.add(AppearanceSettingsFragment.class.getName());

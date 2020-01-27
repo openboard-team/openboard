@@ -28,7 +28,6 @@ import android.preference.Preference;
 import android.preference.SwitchPreference;
 import android.text.TextUtils;
 
-import org.dslul.openboard.inputmethod.dictionarypack.DictionarySettingsActivity;
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.permissions.PermissionsManager;
 import org.dslul.openboard.inputmethod.latin.permissions.PermissionsUtil;
@@ -67,14 +66,6 @@ public final class CorrectionSettingsFragment extends SubScreenFragment
 
         final Context context = getActivity();
         final PackageManager pm = context.getPackageManager();
-
-        final Preference dictionaryLink = findPreference(Settings.PREF_CONFIGURE_DICTIONARIES_KEY);
-        final Intent intent = dictionaryLink.getIntent();
-        intent.setClassName(context.getPackageName(), DictionarySettingsActivity.class.getName());
-        final int number = pm.queryIntentActivities(intent, 0).size();
-        if (0 >= number) {
-            removePreference(Settings.PREF_CONFIGURE_DICTIONARIES_KEY);
-        }
 
         final Preference editPersonalDictionary =
                 findPreference(Settings.PREF_EDIT_PERSONAL_DICTIONARY);
