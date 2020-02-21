@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
+<!--
 /*
 **
 ** Copyright 2008, The Android Open Source Project
@@ -209,4 +209,10 @@
     <string name="user_dict_settings_more_languages" msgid="7131268499685180461">"Bahasa lainnya..."</string>
     <string name="user_dict_settings_delete" msgid="110413335187193859">"Hapus"</string>
     <string name="user_dict_fast_scroll_alphabet" msgid="5431919401558285473">" ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
+    <string name="prefs_resize_keyboard">Ubah ukuran keyboard</string>
+    <string name="prefs_keyboard_height_scale">Skala tinggi keyboard</string>
+    <string name="delete_swipe">Gestur hapus</string>
+    <string name="space_trackpad">Gestur bilah spasi</string>
+    <string name="delete_swipe_summary">Sentuh dan geser ke kiri pada tombol hapus untuk menghapus beberapa huruf/kata sekaligus</string>
+    <string name="space_trackpad_summary">Sentuh dan geser pada bilah spasi untuk menggerakkan kursor</string>
 </resources>
