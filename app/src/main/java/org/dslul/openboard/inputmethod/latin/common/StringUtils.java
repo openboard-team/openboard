@@ -26,6 +26,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public final class StringUtils {
+    public static final String LANGUAGE_GEORGIAN = "ka";
+
     public static final int CAPITALIZE_NONE = 0;  // No caps, or mixed case
     public static final int CAPITALIZE_FIRST = 1; // First only
     public static final int CAPITALIZE_ALL = 2;   // All caps
@@ -583,7 +585,6 @@ public final class StringUtils {
     }
 
     private static final String LANGUAGE_GREEK = "el";
-    private static final String LANGUAGE_GEORGIAN = "ka";
 
     @Nonnull
     private static Locale getLocaleUsedForToTitleCase(@Nonnull final Locale locale) {
