@@ -169,7 +169,7 @@ public final class KeyboardLayoutSet {
 
     @Nonnull
     public Keyboard getKeyboard(final int baseKeyboardLayoutSetElementId) {
-        int keyboardLayoutSetElementId;
+        final int keyboardLayoutSetElementId;
         switch (mParams.mMode) {
             case KeyboardId.MODE_PHONE:
                 if (baseKeyboardLayoutSetElementId == KeyboardId.ELEMENT_SYMBOLS) {
@@ -202,10 +202,6 @@ public final class KeyboardLayoutSet {
 
         mParams.mIsSplitLayoutEnabled = mParams.mIsSplitLayoutEnabledByUser
                 && elementParams.mSupportsSplitLayout;
-
-        if (StringUtils.LANGUAGE_GEORGIAN.equals(mParams.mSubtype.getLocale().getLanguage()) && keyboardLayoutSetElementId == KeyboardId.ELEMENT_ALPHABET_AUTOMATIC_SHIFTED) {
-            keyboardLayoutSetElementId = KeyboardId.ELEMENT_ALPHABET;
-        }
 
         final KeyboardId id = new KeyboardId(keyboardLayoutSetElementId, mParams);
         try {
