@@ -28,8 +28,10 @@ import org.dslul.openboard.inputmethod.compat.AppWorkaroundsUtils;
 import org.dslul.openboard.inputmethod.latin.InputAttributes;
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.RichInputMethodManager;
+import org.dslul.openboard.inputmethod.latin.common.StringUtils;
 import org.dslul.openboard.inputmethod.latin.utils.AsyncResultHolder;
 import org.dslul.openboard.inputmethod.latin.utils.ResourceUtils;
+import org.dslul.openboard.inputmethod.latin.utils.ScriptUtils;
 import org.dslul.openboard.inputmethod.latin.utils.TargetPackageInfoGetterTask;
 
 import java.util.Arrays;
@@ -118,10 +120,11 @@ public class SettingsValues {
     public final float mKeyPreviewDismissEndXScale;
     public final float mKeyPreviewDismissEndYScale;
 
-    @Nullable public final String mAccount;
+    @Nullable
+    public final String mAccount;
 
     public SettingsValues(final Context context, final SharedPreferences prefs, final Resources res,
-            @Nonnull final InputAttributes inputAttributes) {
+                          @Nonnull final InputAttributes inputAttributes) {
         mLocale = res.getConfiguration().locale;
         // Get the resources
         mDelayInMillisecondsToUpdateOldSuggestions =
@@ -132,7 +135,7 @@ public class SettingsValues {
         mInputAttributes = inputAttributes;
 
         // Get the settings preferences
-        mAutoCap = prefs.getBoolean(Settings.PREF_AUTO_CAP, true);
+        mAutoCap = prefs.getBoolean(Settings.PREF_AUTO_CAP, true) && ScriptUtils.scriptSupportsUppercase(mLocale.getLanguage());
         mVibrateOn = Settings.readVibrationEnabled(prefs, res);
         mSoundOn = Settings.readKeypressSoundEnabled(prefs, res);
         mKeyPreviewPopupOn = Settings.readKeyPreviewPopupEnabled(prefs, res);
@@ -303,13 +306,13 @@ public class SettingsValues {
     }
 
     private static boolean readBigramPredictionEnabled(final SharedPreferences prefs,
-            final Resources res) {
+                                                       final Resources res) {
         return prefs.getBoolean(Settings.PREF_BIGRAM_PREDICTIONS, res.getBoolean(
                 R.bool.config_default_next_word_prediction));
     }
 
     private static float readAutoCorrectionThreshold(final Resources res,
-            final String currentAutoCorrectionSetting) {
+                                                     final String currentAutoCorrectionSetting) {
         final String[] autoCorrectionThresholdValues = res.getStringArray(
                 R.array.auto_correction_threshold_values);
         // When autoCorrectionThreshold is greater than 1.0, it's like auto correction is off.
@@ -340,7 +343,7 @@ public class SettingsValues {
     }
 
     private static boolean needsToShowVoiceInputKey(final SharedPreferences prefs,
-            final Resources res) {
+                                                    final Resources res) {
         // Migrate preference from {@link Settings#PREF_VOICE_MODE_OBSOLETE} to
         // {@link Settings#PREF_VOICE_INPUT_KEY}.
         if (prefs.contains(Settings.PREF_VOICE_MODE_OBSOLETE)) {

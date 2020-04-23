@@ -16,7 +16,10 @@
 
 package org.dslul.openboard.inputmethod.latin.common;
 
+import android.renderscript.Script;
+
 import org.dslul.openboard.inputmethod.annotations.UsedForTesting;
+import org.dslul.openboard.inputmethod.latin.utils.ScriptUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,6 +29,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public final class StringUtils {
+
     public static final int CAPITALIZE_NONE = 0;  // No caps, or mixed case
     public static final int CAPITALIZE_FIRST = 1; // First only
     public static final int CAPITALIZE_ALL = 2;   // All caps
@@ -47,8 +51,10 @@ public final class StringUtils {
 
     // Taken from android.text.TextUtils. We are extensively using this method in many places,
     // some of which don't have the android libraries available.
+
     /**
      * Returns true if the string is null or 0-length.
+     *
      * @param str the string to be examined
      * @return true if str is null or zero length
      */
@@ -57,18 +63,20 @@ public final class StringUtils {
     }
 
     // Taken from android.text.TextUtils to cut the dependency to the Android framework.
+
     /**
      * Returns a string containing the tokens joined by delimiters.
+     *
      * @param delimiter the delimiter
-     * @param tokens an array objects to be joined. Strings will be formed from
-     *     the objects by calling object.toString().
+     * @param tokens    an array objects to be joined. Strings will be formed from
+     *                  the objects by calling object.toString().
      */
     @Nonnull
     public static String join(@Nonnull final CharSequence delimiter,
-            @Nonnull final Iterable<?> tokens) {
+                              @Nonnull final Iterable<?> tokens) {
         final StringBuilder sb = new StringBuilder();
         boolean firstTime = true;
-        for (final Object token: tokens) {
+        for (final Object token : tokens) {
             if (firstTime) {
                 firstTime = false;
             } else {
@@ -80,10 +88,12 @@ public final class StringUtils {
     }
 
     // Taken from android.text.TextUtils to cut the dependency to the Android framework.
+
     /**
      * Returns true if a and b are equal, including if they are both null.
      * <p><i>Note: In platform versions 1.1 and earlier, this method only worked well if
      * both the arguments were instances of String.</i></p>
+     *
      * @param a first CharSequence to check
      * @param b second CharSequence to check
      * @return true if a and b are equal
@@ -126,7 +136,7 @@ public final class StringUtils {
     }
 
     public static boolean containsInArray(@Nonnull final String text,
-            @Nonnull final String[] array) {
+                                          @Nonnull final String[] array) {
         for (final String element : array) {
             if (text.equals(element)) {
                 return true;
@@ -144,7 +154,7 @@ public final class StringUtils {
     private static final String SEPARATOR_FOR_COMMA_SPLITTABLE_TEXT = ",";
 
     public static boolean containsInCommaSplittableText(@Nonnull final String text,
-            @Nullable final String extraValues) {
+                                                        @Nullable final String extraValues) {
         if (isEmpty(extraValues)) {
             return false;
         }
@@ -153,7 +163,7 @@ public final class StringUtils {
 
     @Nonnull
     public static String removeFromCommaSplittableTextIfExists(@Nonnull final String text,
-            @Nullable final String extraValues) {
+                                                               @Nullable final String extraValues) {
         if (isEmpty(extraValues)) {
             return EMPTY_STRING;
         }
@@ -172,7 +182,7 @@ public final class StringUtils {
 
     /**
      * Remove duplicates from an array of strings.
-     *
+     * <p>
      * This method will always keep the first occurrence of all strings at their position
      * in the array, removing the subsequent ones.
      */
@@ -199,7 +209,7 @@ public final class StringUtils {
 
     @Nonnull
     public static String capitalizeFirstCodePoint(@Nonnull final String s,
-            @Nonnull final Locale locale) {
+                                                  @Nonnull final Locale locale) {
         if (s.length() <= 1) {
             return s.toUpperCase(getLocaleUsedForToTitleCase(locale));
         }
@@ -212,7 +222,7 @@ public final class StringUtils {
 
     @Nonnull
     public static String capitalizeFirstAndDowncaseRest(@Nonnull final String s,
-            @Nonnull final Locale locale) {
+                                                        @Nonnull final Locale locale) {
         if (s.length() <= 1) {
             return s.toUpperCase(getLocaleUsedForToTitleCase(locale));
         }
@@ -238,14 +248,15 @@ public final class StringUtils {
 
     /**
      * Converts a range of a string to an array of code points.
+     *
      * @param charSequence the source string.
-     * @param startIndex the start index inside the string in java chars, inclusive.
-     * @param endIndex the end index inside the string in java chars, exclusive.
+     * @param startIndex   the start index inside the string in java chars, inclusive.
+     * @param endIndex     the end index inside the string in java chars, exclusive.
      * @return a new array of code points. At most endIndex - startIndex, but possibly less.
      */
     @Nonnull
     public static int[] toCodePointArray(@Nonnull final CharSequence charSequence,
-            final int startIndex, final int endIndex) {
+                                         final int startIndex, final int endIndex) {
         final int length = charSequence.length();
         if (length <= 0) {
             return EMPTY_CODEPOINTS;
@@ -259,7 +270,7 @@ public final class StringUtils {
 
     /**
      * Copies the codepoints in a CharSequence to an int array.
-     *
+     * <p>
      * This method assumes there is enough space in the array to store the code points. The size
      * can be measured with Character#codePointCount(CharSequence, int, int) before passing to this
      * method. If the int array is too small, an ArrayIndexOutOfBoundsException will be thrown.
@@ -268,19 +279,19 @@ public final class StringUtils {
      * This method can optionally downcase code points before copying them, but it pays no attention
      * to locale while doing so.
      *
-     * @param destination the int array.
+     * @param destination  the int array.
      * @param charSequence the CharSequence.
-     * @param startIndex the start index inside the string in java chars, inclusive.
-     * @param endIndex the end index inside the string in java chars, exclusive.
-     * @param downCase if this is true, code points will be downcased before being copied.
+     * @param startIndex   the start index inside the string in java chars, inclusive.
+     * @param endIndex     the end index inside the string in java chars, exclusive.
+     * @param downCase     if this is true, code points will be downcased before being copied.
      * @return the number of copied code points.
      */
     public static int copyCodePointsAndReturnCodePointCount(@Nonnull final int[] destination,
-            @Nonnull final CharSequence charSequence, final int startIndex, final int endIndex,
-            final boolean downCase) {
+                                                            @Nonnull final CharSequence charSequence, final int startIndex, final int endIndex,
+                                                            final boolean downCase) {
         int destIndex = 0;
         for (int index = startIndex; index < endIndex;
-                index = Character.offsetByCodePoints(charSequence, index, 1)) {
+             index = Character.offsetByCodePoints(charSequence, index, 1)) {
             final int codePoint = Character.codePointAt(charSequence, index);
             // TODO: stop using this, as it's not aware of the locale and does not always do
             // the right thing.
@@ -301,7 +312,7 @@ public final class StringUtils {
      * Construct a String from a code point array
      *
      * @param codePoints a code point array that is null terminated when its logical length is
-     * shorter than the array length.
+     *                   shorter than the array length.
      * @return a string constructed from the code point array.
      */
     @Nonnull
@@ -335,7 +346,7 @@ public final class StringUtils {
         int capsCount = 1;
         int letterCount = 1;
         for (index = text.offsetByCodePoints(index, 1); index < len;
-                index = text.offsetByCodePoints(index, 1)) {
+             index = text.offsetByCodePoints(index, 1)) {
             if (1 != capsCount && letterCount != capsCount) break;
             final int codePoint = text.codePointAt(index);
             if (Character.isUpperCase(codePoint)) {
@@ -381,7 +392,7 @@ public final class StringUtils {
     }
 
     public static boolean isIdenticalAfterCapitalizeEachWord(@Nonnull final String text,
-            @Nonnull final int[] sortedSeparators) {
+                                                             @Nonnull final int[] sortedSeparators) {
         boolean needsCapsNext = true;
         final int len = text.length();
         for (int i = 0; i < len; i = text.offsetByCodePoints(i, 1)) {
@@ -402,7 +413,7 @@ public final class StringUtils {
     // which should be capitalized together in *some* cases.
     @Nonnull
     public static String capitalizeEachWord(@Nonnull final String text,
-            @Nonnull final int[] sortedSeparators, @Nonnull final Locale locale) {
+                                            @Nonnull final int[] sortedSeparators, @Nonnull final Locale locale) {
         final StringBuilder builder = new StringBuilder();
         boolean needsCapsNext = true;
         final int len = text.length();
@@ -421,7 +432,7 @@ public final class StringUtils {
 
     /**
      * Approximates whether the text before the cursor looks like a URL.
-     *
+     * <p>
      * This is not foolproof, but it should work well in the practice.
      * Essentially it walks backward from the cursor until it finds something that's not a letter,
      * digit, or common URL symbol like underscore. If it hasn't found a period yet, then it
@@ -430,9 +441,9 @@ public final class StringUtils {
      * - starts with www and contains a period
      * - starts with a slash preceded by either a slash, whitespace, or start-of-string
      * Then it looks like a URL and we return true. Otherwise, we return false.
-     *
+     * <p>
      * Note: this method is called quite often, and should be fast.
-     *
+     * <p>
      * TODO: This will return that "abc./def" and ".abc/def" look like URLs to keep down the
      * code complexity, but ideally it should not. It's acceptable for now.
      */
@@ -491,7 +502,7 @@ public final class StringUtils {
 
     /**
      * Examines the string and returns whether we're inside a double quote.
-     *
+     * <p>
      * This is used to decide whether we should put an automatic space before or after a double
      * quote character. If we're inside a quotation, then we want to close it, so we want a space
      * after and not before. Otherwise, we want to open the quotation, so we want a space before
@@ -596,10 +607,11 @@ public final class StringUtils {
 
     @Nullable
     public static String toTitleCaseOfKeyLabel(@Nullable final String label,
-            @Nonnull final Locale locale) {
-        if (label == null) {
+                                               @Nonnull final Locale locale) {
+        if (label == null || !ScriptUtils.scriptSupportsUppercase(locale.getLanguage())) {
             return label;
         }
+
         return label.toUpperCase(getLocaleUsedForToTitleCase(locale));
     }
 
@@ -661,7 +673,7 @@ public final class StringUtils {
 
         @Nonnull
         protected String joinStringArray(@Nonnull final String[] stringArray,
-                @Nullable final String delimiter) {
+                                         @Nullable final String delimiter) {
             if (delimiter == null) {
                 return Arrays.toString(stringArray);
             }
@@ -676,6 +688,7 @@ public final class StringUtils {
 
     /**
      * Returns whether the last composed word contains line-breaking character (e.g. CR or LF).
+     *
      * @param text the text to be examined.
      * @return {@code true} if the last composed word contains line-breaking separator.
      */
