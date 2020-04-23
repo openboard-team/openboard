@@ -65,7 +65,7 @@ public final class StringUtils {
      */
     @Nonnull
     public static String join(@Nonnull final CharSequence delimiter,
-            @Nonnull final Iterable<?> tokens) {
+                              @Nonnull final Iterable<?> tokens) {
         final StringBuilder sb = new StringBuilder();
         boolean firstTime = true;
         for (final Object token: tokens) {
@@ -126,7 +126,7 @@ public final class StringUtils {
     }
 
     public static boolean containsInArray(@Nonnull final String text,
-            @Nonnull final String[] array) {
+                                          @Nonnull final String[] array) {
         for (final String element : array) {
             if (text.equals(element)) {
                 return true;
@@ -144,7 +144,7 @@ public final class StringUtils {
     private static final String SEPARATOR_FOR_COMMA_SPLITTABLE_TEXT = ",";
 
     public static boolean containsInCommaSplittableText(@Nonnull final String text,
-            @Nullable final String extraValues) {
+                                                        @Nullable final String extraValues) {
         if (isEmpty(extraValues)) {
             return false;
         }
@@ -153,7 +153,7 @@ public final class StringUtils {
 
     @Nonnull
     public static String removeFromCommaSplittableTextIfExists(@Nonnull final String text,
-            @Nullable final String extraValues) {
+                                                               @Nullable final String extraValues) {
         if (isEmpty(extraValues)) {
             return EMPTY_STRING;
         }
@@ -199,7 +199,7 @@ public final class StringUtils {
 
     @Nonnull
     public static String capitalizeFirstCodePoint(@Nonnull final String s,
-            @Nonnull final Locale locale) {
+                                                  @Nonnull final Locale locale) {
         if (s.length() <= 1) {
             return s.toUpperCase(getLocaleUsedForToTitleCase(locale));
         }
@@ -212,7 +212,7 @@ public final class StringUtils {
 
     @Nonnull
     public static String capitalizeFirstAndDowncaseRest(@Nonnull final String s,
-            @Nonnull final Locale locale) {
+                                                        @Nonnull final Locale locale) {
         if (s.length() <= 1) {
             return s.toUpperCase(getLocaleUsedForToTitleCase(locale));
         }
@@ -245,7 +245,7 @@ public final class StringUtils {
      */
     @Nonnull
     public static int[] toCodePointArray(@Nonnull final CharSequence charSequence,
-            final int startIndex, final int endIndex) {
+                                         final int startIndex, final int endIndex) {
         final int length = charSequence.length();
         if (length <= 0) {
             return EMPTY_CODEPOINTS;
@@ -276,11 +276,11 @@ public final class StringUtils {
      * @return the number of copied code points.
      */
     public static int copyCodePointsAndReturnCodePointCount(@Nonnull final int[] destination,
-            @Nonnull final CharSequence charSequence, final int startIndex, final int endIndex,
-            final boolean downCase) {
+                                                            @Nonnull final CharSequence charSequence, final int startIndex, final int endIndex,
+                                                            final boolean downCase) {
         int destIndex = 0;
         for (int index = startIndex; index < endIndex;
-                index = Character.offsetByCodePoints(charSequence, index, 1)) {
+             index = Character.offsetByCodePoints(charSequence, index, 1)) {
             final int codePoint = Character.codePointAt(charSequence, index);
             // TODO: stop using this, as it's not aware of the locale and does not always do
             // the right thing.
@@ -335,7 +335,7 @@ public final class StringUtils {
         int capsCount = 1;
         int letterCount = 1;
         for (index = text.offsetByCodePoints(index, 1); index < len;
-                index = text.offsetByCodePoints(index, 1)) {
+             index = text.offsetByCodePoints(index, 1)) {
             if (1 != capsCount && letterCount != capsCount) break;
             final int codePoint = text.codePointAt(index);
             if (Character.isUpperCase(codePoint)) {
@@ -381,7 +381,7 @@ public final class StringUtils {
     }
 
     public static boolean isIdenticalAfterCapitalizeEachWord(@Nonnull final String text,
-            @Nonnull final int[] sortedSeparators) {
+                                                             @Nonnull final int[] sortedSeparators) {
         boolean needsCapsNext = true;
         final int len = text.length();
         for (int i = 0; i < len; i = text.offsetByCodePoints(i, 1)) {
@@ -402,7 +402,7 @@ public final class StringUtils {
     // which should be capitalized together in *some* cases.
     @Nonnull
     public static String capitalizeEachWord(@Nonnull final String text,
-            @Nonnull final int[] sortedSeparators, @Nonnull final Locale locale) {
+                                            @Nonnull final int[] sortedSeparators, @Nonnull final Locale locale) {
         final StringBuilder builder = new StringBuilder();
         boolean needsCapsNext = true;
         final int len = text.length();
@@ -583,6 +583,7 @@ public final class StringUtils {
     }
 
     private static final String LANGUAGE_GREEK = "el";
+    private static final String LANGUAGE_GEORGIAN = "ka";
 
     @Nonnull
     private static Locale getLocaleUsedForToTitleCase(@Nonnull final Locale locale) {
@@ -596,10 +597,12 @@ public final class StringUtils {
 
     @Nullable
     public static String toTitleCaseOfKeyLabel(@Nullable final String label,
-            @Nonnull final Locale locale) {
+                                               @Nonnull final Locale locale) {
         if (label == null) {
             return label;
         }
+        if (LANGUAGE_GEORGIAN.equals(locale.getLanguage()))
+            return label;
         return label.toUpperCase(getLocaleUsedForToTitleCase(locale));
     }
 
@@ -661,7 +664,7 @@ public final class StringUtils {
 
         @Nonnull
         protected String joinStringArray(@Nonnull final String[] stringArray,
-                @Nullable final String delimiter) {
+                                         @Nullable final String delimiter) {
             if (delimiter == null) {
                 return Arrays.toString(stringArray);
             }
