@@ -30,7 +30,7 @@
         latin:keySpec="!text/keyspec_x"
         latin:keyHintLabel="&quot;"
         latin:additionalMoreKeys="&quot;"
-        latin:keySpec="x" />
+        latin:moreKeys="!text/morekeys_x" />
     <Key
         latin:keySpec="c"
         latin:keyHintLabel="&apos;"
