@@ -19,7 +19,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <string name="english_ime_name" translatable="false">OpenBoard</string>
+    <string name="english_ime_name" translatable="false">Key Mapper Keyboard</string>
     <!-- Name of Android spell checker service. AOSP(Android Open Source Project) should not be translated.
          This resource should be copied from msgid="511950477199948048" -->
     <string name="spell_checker_service_name">OpenBoard Spell Checker</string>
