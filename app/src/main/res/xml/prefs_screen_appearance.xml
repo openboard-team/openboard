@@ -20,11 +20,11 @@
     android:key="screen_appearance"
     android:title="@string/settings_screen_appearance">
     <PreferenceScreen
-        android:fragment="org.dslul.openboard.inputmethod.latin.settings.ThemeSettingsFragment"
+        android:fragment="io.github.sds100.keymapper.inputmethod.latin.settings.ThemeSettingsFragment"
         android:key="screen_theme"
         android:title="@string/settings_screen_theme" />
     <PreferenceScreen
-        android:fragment="org.dslul.openboard.inputmethod.latin.settings.CustomInputStyleSettingsFragment"
+        android:fragment="io.github.sds100.keymapper.inputmethod.latin.settings.CustomInputStyleSettingsFragment"
         android:key="custom_input_styles"
         android:title="@string/custom_input_styles_title" />
     <CheckBoxPreference
@@ -42,7 +42,7 @@
         android:title="@string/prefs_resize_keyboard"
         android:defaultValue="false"
         android:persistent="true" />
-    <org.dslul.openboard.inputmethod.latin.settings.SeekBarDialogPreference
+    <io.github.sds100.keymapper.inputmethod.latin.settings.SeekBarDialogPreference
         android:dependency="pref_resize_keyboard"
         android:key="pref_keyboard_height_scale"
         android:title="@string/prefs_keyboard_height_scale"

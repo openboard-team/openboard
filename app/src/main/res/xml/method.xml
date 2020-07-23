@@ -116,7 +116,7 @@
 <!-- If IME doesn't have an applicable subtype, the first subtype will be used as a default
      subtype.-->
 <input-method xmlns:android="http://schemas.android.com/apk/res/android"
-        android:settingsActivity="org.dslul.openboard.inputmethod.latin.settings.SettingsActivity"
+        android:settingsActivity="io.github.sds100.keymapper.inputmethod.latin.settings.SettingsActivity"
         android:isDefault="@bool/im_is_default"
         android:supportsSwitchingToNextInputMethod="true">
     <subtype android:icon="@drawable/ic_ime_switcher_dark"

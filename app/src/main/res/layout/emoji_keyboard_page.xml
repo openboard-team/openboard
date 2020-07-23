@@ -18,7 +18,7 @@
 */
 -->
 
-<org.dslul.openboard.inputmethod.keyboard.emoji.EmojiPageKeyboardView
+<io.github.sds100.keymapper.inputmethod.keyboard.emoji.EmojiPageKeyboardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/emoji_keyboard_page"
     android:layoutDirection="ltr"

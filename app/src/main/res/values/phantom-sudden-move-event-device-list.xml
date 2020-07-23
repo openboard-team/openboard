@@ -20,7 +20,7 @@
 <resources>
     <string-array name="phantom_sudden_move_event_device_list" translatable="false">
         <!-- "Build condition,true" that needs "phantom sudden move event" hack.
-             See {@link org.dslul.openboard.inputmethod.keyboard.PointerTracker}. -->
+             See {@link io.github.sds100.keymapper.inputmethod.keyboard.PointerTracker}. -->
         <!-- Xoom -->
         <item>HARDWARE=stingray,true</item>
     </string-array>
