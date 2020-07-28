@@ -1,7 +1,0 @@
-- visual changes to themes
-- add toggle to disable globe key
-- added polish language for autocorrection
-- Spacebar swipe navigation
-- swipe on delete key to select and remove text
-- bugfix
-- Removed more permissions
