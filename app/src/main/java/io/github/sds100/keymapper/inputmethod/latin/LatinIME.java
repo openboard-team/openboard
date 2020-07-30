@@ -234,7 +234,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 }
 
                 case LatinIME.KEY_MAPPER_INPUT_METHOD_ACTION_INPUT_DOWN: {
-                    Log.e(TAG, "onReceive: ondown");
                     int keyCode = getKeyCode(intent);
                     if (keyCode == -1) return;
 
@@ -249,7 +248,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 }
 
                 case LatinIME.KEY_MAPPER_INPUT_METHOD_ACTION_INPUT_UP: {
-                    Log.e(TAG, "onReceive: onup");
                     int keyCode = getKeyCode(intent);
                     if (keyCode == -1) return;
 
