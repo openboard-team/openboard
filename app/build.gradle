@@ -18,6 +18,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            versionNameSuffix "-debug"
+        }
+        ci {
+            debuggable = true
+
+            versionNameSuffix "-ci.$RUN_NUMBER"
+            signingConfig signingConfigs.debug
+        }
     }
 
     aaptOptions {
@@ -35,12 +44,19 @@ android {
     }
 }
 
+android.applicationVariants.all { variant ->
+    variant.outputs.all {
+        outputFileName = "keymapper-gui-keyboard-${variant.versionName}.apk"
+    }
+}
+
 dependencies {
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "androidx.core:core-ktx:1.1.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+
 repositories {
     mavenCentral()
 }
