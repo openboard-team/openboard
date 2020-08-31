@@ -665,6 +665,9 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             final boolean languageSwitchKeyEnabledMatched = matchBoolean(caseAttr,
                     R.styleable.Keyboard_Case_languageSwitchKeyEnabled,
                     id.mLanguageSwitchKeyEnabled);
+            final boolean numberRowKeyEnabled = matchBoolean(caseAttr,
+                    R.styleable.Keyboard_Case_numberRowKeyEnabled,
+                    id.mNumberRowKeyEnabled);
             final boolean isMultiLineMatched = matchBoolean(caseAttr,
                     R.styleable.Keyboard_Case_isMultiLine, id.isMultiLine());
             final boolean imeActionMatched = matchInteger(caseAttr,
@@ -683,7 +686,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                     && hasShortcutKeyMatched  && languageSwitchKeyEnabledMatched
                     && isMultiLineMatched && imeActionMatched && isIconDefinedMatched
                     && localeCodeMatched && languageCodeMatched && countryCodeMatched
-                    && splitLayoutMatched;
+                    && splitLayoutMatched && numberRowKeyEnabled;
 
             if (DEBUG) {
                 startTag("<%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s>%s", TAG_CASE,
@@ -709,6 +712,8 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                                 "hasShortcutKey"),
                         booleanAttr(caseAttr, R.styleable.Keyboard_Case_languageSwitchKeyEnabled,
                                 "languageSwitchKeyEnabled"),
+                        booleanAttr(caseAttr, R.styleable.Keyboard_Case_numberRowKeyEnabled,
+                                "numberRowKeyEnabled"),
                         booleanAttr(caseAttr, R.styleable.Keyboard_Case_isMultiLine,
                                 "isMultiLine"),
                         booleanAttr(caseAttr, R.styleable.Keyboard_Case_isSplitLayout,

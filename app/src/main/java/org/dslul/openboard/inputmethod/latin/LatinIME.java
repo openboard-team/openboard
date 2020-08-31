@@ -1958,6 +1958,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         return mRichImm.shouldOfferSwitchingToNextInputMethod(token, fallbackValue);
     }
 
+    public boolean shouldShowNumberRowKey() {
+        return mSettings.getCurrent().mShowsNumberRowKey;
+    }
+
     public boolean shouldShowLanguageSwitchKey() {
         // TODO: Revisit here to reorganize the settings. Probably we can/should use different
         // strategy once the implementation of

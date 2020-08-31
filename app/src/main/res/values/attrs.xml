@@ -500,6 +500,7 @@
         <attr name="passwordInput" format="boolean" />
         <attr name="clobberSettingsKey" format="boolean" />
         <attr name="hasShortcutKey" format="boolean" />
+        <attr name="numberRowKeyEnabled" format="boolean"/>
         <attr name="languageSwitchKeyEnabled" format="boolean" />
         <attr name="isMultiLine" format="boolean" />
         <attr name="imeAction" format="enum">

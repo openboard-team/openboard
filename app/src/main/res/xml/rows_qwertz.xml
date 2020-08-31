@@ -23,12 +23,32 @@
 >
     <include
         latin:keyboardLayout="@xml/key_styles_common" />
-    <Row
-        latin:keyWidth="10%p"
-    >
-        <include
-            latin:keyboardLayout="@xml/rowkeys_qwertz1" />
-    </Row>
+    <switch>
+        <case latin:numberRowKeyEnabled="true"
+            >
+            <Row
+                latin:keyWidth="10%p"
+                >
+                <include
+                    latin:keyboardLayout="@xml/rowkeys_number" />
+            </Row>
+            <Row
+                latin:keyWidth="10%p"
+                >
+                <include
+                    latin:keyboardLayout="@xml/rowkeys_qwertz1_alt" />
+            </Row>
+        </case>
+        <case latin:numberRowKeyEnabled="false"
+            >
+            <Row
+                latin:keyWidth="10%p"
+                >
+                <include
+                    latin:keyboardLayout="@xml/rowkeys_qwertz1" />
+            </Row>
+        </case>
+    </switch>
     <Row
         latin:keyWidth="10%p"
     >

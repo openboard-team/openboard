@@ -116,6 +116,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         builder.setSubtype(mRichImm.getCurrentSubtype());
         builder.setVoiceInputKeyEnabled(settingsValues.mShowsVoiceInputKey);
         builder.setLanguageSwitchKeyEnabled(mLatinIME.shouldShowLanguageSwitchKey());
+        builder.setNumRowKeyEnabled(mLatinIME.shouldShowNumberRowKey());
         builder.setSplitLayoutEnabledByUser(ProductionFlags.IS_SPLIT_KEYBOARD_SUPPORTED
                 && settingsValues.mIsSplitKeyboardEnabled);
         mKeyboardLayoutSet = builder.build();

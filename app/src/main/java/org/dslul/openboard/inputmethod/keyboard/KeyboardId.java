@@ -79,6 +79,7 @@ public final class KeyboardId {
     public final EditorInfo mEditorInfo;
     public final boolean mClobberSettingsKey;
     public final boolean mLanguageSwitchKeyEnabled;
+    public final boolean mNumberRowKeyEnabled;
     public final String mCustomActionLabel;
     public final boolean mHasShortcutKey;
     public final boolean mIsSplitLayout;
@@ -94,6 +95,7 @@ public final class KeyboardId {
         mEditorInfo = params.mEditorInfo;
         mClobberSettingsKey = params.mNoSettingsKey;
         mLanguageSwitchKeyEnabled = params.mLanguageSwitchKeyEnabled;
+        mNumberRowKeyEnabled = params.mNumberRowKeyEnabled;
         mCustomActionLabel = (mEditorInfo.actionLabel != null)
                 ? mEditorInfo.actionLabel.toString() : null;
         mHasShortcutKey = params.mVoiceInputKeyEnabled;
@@ -112,6 +114,7 @@ public final class KeyboardId {
                 id.mClobberSettingsKey,
                 id.mHasShortcutKey,
                 id.mLanguageSwitchKeyEnabled,
+                id.mNumberRowKeyEnabled,
                 id.isMultiLine(),
                 id.imeAction(),
                 id.mCustomActionLabel,
@@ -133,6 +136,7 @@ public final class KeyboardId {
                 && other.mClobberSettingsKey == mClobberSettingsKey
                 && other.mHasShortcutKey == mHasShortcutKey
                 && other.mLanguageSwitchKeyEnabled == mLanguageSwitchKeyEnabled
+                && other.mNumberRowKeyEnabled == mNumberRowKeyEnabled
                 && other.isMultiLine() == isMultiLine()
                 && other.imeAction() == imeAction()
                 && TextUtils.equals(other.mCustomActionLabel, mCustomActionLabel)
@@ -203,6 +207,7 @@ public final class KeyboardId {
                 (passwordInput() ? " passwordInput" : ""),
                 (mHasShortcutKey ? " hasShortcutKey" : ""),
                 (mLanguageSwitchKeyEnabled ? " languageSwitchKeyEnabled" : ""),
+                (mNumberRowKeyEnabled ? " numberRowKeyEnabled" : ""),
                 (isMultiLine() ? " isMultiLine" : ""),
                 (mIsSplitLayout ? " isSplitLayout" : "")
         );
