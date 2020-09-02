@@ -23,20 +23,35 @@
 >
     <Key
         latin:keySpec="z"
+        latin:keyHintLabel="*"
+        latin:additionalMoreKeys="*"
         latin:moreKeys="!text/morekeys_z" />
     <Key
-        latin:keySpec="x" />
+        latin:keySpec="!text/keyspec_x"
+        latin:keyHintLabel="&quot;"
+        latin:additionalMoreKeys="&quot;"
+        latin:moreKeys="!text/morekeys_x" />
     <Key
         latin:keySpec="c"
+        latin:keyHintLabel="&apos;"
+        latin:additionalMoreKeys="&apos;"
         latin:moreKeys="!text/morekeys_c" />
     <Key
         latin:keySpec="v"
+        latin:keyHintLabel=":"
+        latin:additionalMoreKeys=":"
         latin:moreKeys="!text/morekeys_v" />
     <Key
-        latin:keySpec="b" />
+        latin:keySpec="b" 
+        latin:keyHintLabel=";"
+        latin:additionalMoreKeys=";" />
     <Key
         latin:keySpec="k"
+        latin:keyHintLabel="!"
+        latin:additionalMoreKeys="!"
         latin:moreKeys="!text/morekeys_k" />
     <Key
-        latin:keySpec="m" />
+        latin:keySpec="m" 
+        latin:keyHintLabel="\?"
+        latin:additionalMoreKeys="\\?" />
 </merge>
