@@ -7,5 +7,5 @@ dictionaries work.
 ## Contributing
 Contribute to the [OpenBoard](https://github.com/dslul/openboard) project if it isn't a fix for the Key Mapper integration.
 
-I will make any bug fixes or add features that are useful to people who don't use Key Mapper I will make pull requests in
+I will make any bug fixes or add features that are useful to people who don't use Key Mapper pull requests in
 OpenBoard.
