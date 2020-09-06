@@ -483,11 +483,11 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
         locatePreviewPlacerView();
         getLocationInWindow(mOriginCoords);
         mKeyPreviewChoreographer.placeAndShowKeyPreview(key, keyboard.mIconsSet, getKeyDrawParams(),
-                getWidth(), mOriginCoords, mDrawingPreviewPlacerView, isHardwareAccelerated());
+                getWidth(), mOriginCoords, mDrawingPreviewPlacerView);
     }
 
     private void dismissKeyPreviewWithoutDelay(@Nonnull final Key key) {
-        mKeyPreviewChoreographer.dismissKeyPreview(key, false /* withAnimation */);
+        mKeyPreviewChoreographer.dismissKeyPreview(key);
         invalidateKey(key);
     }
 
@@ -507,7 +507,7 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
 
     private void dismissKeyPreview(@Nonnull final Key key) {
         if (isHardwareAccelerated()) {
-            mKeyPreviewChoreographer.dismissKeyPreview(key, true /* withAnimation */);
+            mKeyPreviewChoreographer.dismissKeyPreview(key);
             return;
         }
         // TODO: Implement preference option to control key preview method and duration.
