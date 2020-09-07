@@ -106,6 +106,7 @@ public class SettingsValues {
     public final float mPlausibilityThreshold;
     public final boolean mAutoCorrectionEnabledPerUserSettings;
     private final boolean mSuggestionsEnabledPerUserSettings;
+    public final boolean mIncognitoModeEnabled;
     private final AsyncResultHolder<AppWorkaroundsUtils> mAppWorkarounds;
 
     // Debug settings
@@ -181,10 +182,11 @@ public class SettingsValues {
                 null /* default */);
         mGestureFloatingPreviewTextEnabled = !mInputAttributes.mDisableGestureFloatingPreviewText
                 && prefs.getBoolean(Settings.PREF_GESTURE_FLOATING_PREVIEW_TEXT, true);
-        mAutoCorrectionEnabledPerUserSettings = mAutoCorrectEnabled
-                && !mInputAttributes.mInputTypeNoAutoCorrect;
-        mSuggestionsEnabledPerUserSettings = !mInputAttributes.mNoLearning &&
+        mAutoCorrectionEnabledPerUserSettings = mAutoCorrectEnabled;
+                //&& !mInputAttributes.mInputTypeNoAutoCorrect;
+        mSuggestionsEnabledPerUserSettings = !mInputAttributes.mIsPasswordField &&
                 readSuggestionsEnabled(prefs);
+        mIncognitoModeEnabled = mInputAttributes.mNoLearning;
         mIsInternal = Settings.isInternal(prefs);
         mHasCustomKeyPreviewAnimationParams = prefs.getBoolean(
                 DebugSettings.PREF_HAS_CUSTOM_KEY_PREVIEW_ANIMATION_PARAMS, false);

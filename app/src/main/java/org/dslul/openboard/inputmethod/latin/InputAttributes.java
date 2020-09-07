@@ -20,6 +20,8 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.inputmethod.EditorInfo;
 
+import androidx.core.view.inputmethod.EditorInfoCompat;
+
 import org.dslul.openboard.inputmethod.latin.common.StringUtils;
 import org.dslul.openboard.inputmethod.latin.utils.InputTypeUtils;
 
@@ -104,9 +106,9 @@ public final class InputAttributes {
         // TODO: Have a helper method in InputTypeUtils
         // Make sure that passwords are not displayed in {@link SuggestionStripView}.
         final boolean shouldSuppressSuggestions = mIsPasswordField
-                || InputTypeUtils.isEmailVariation(variation)
-                || InputType.TYPE_TEXT_VARIATION_URI == variation
-                || InputType.TYPE_TEXT_VARIATION_FILTER == variation
+                //|| InputTypeUtils.isEmailVariation(variation)
+                //|| InputType.TYPE_TEXT_VARIATION_URI == variation
+                //|| InputType.TYPE_TEXT_VARIATION_FILTER == variation
                 //|| flagNoSuggestions
                 || flagAutoComplete;
         mShouldShowSuggestions = !shouldSuppressSuggestions;
@@ -142,7 +144,8 @@ public final class InputAttributes {
                 && InputType.TYPE_TEXT_VARIATION_WEB_EMAIL_ADDRESS != variation
                 && InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD != variation;
 
-        mNoLearning = (editorInfo.imeOptions & EditorInfo.IME_FLAG_NO_PERSONALIZED_LEARNING) != 0;
+
+        mNoLearning = flagNoSuggestions || (editorInfo.imeOptions & EditorInfo.IME_FLAG_NO_PERSONALIZED_LEARNING) != 0;
     }
 
     public boolean isTypeNull() {
