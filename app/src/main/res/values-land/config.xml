@@ -20,7 +20,7 @@
 
 <!-- Configuration values for Small Phone Landscape. -->
 <resources>
-    <bool name="config_use_fullscreen_mode">true</bool>
+    <bool name="config_use_fullscreen_mode">false</bool>
 
     <!-- Preferable keyboard height in absolute scale: 1.100in -->
     <!-- This config_default_keyboard_height value should match with keyboard-heights.xml -->
@@ -41,7 +41,7 @@
     <dimen name="config_more_keys_keyboard_vertical_correction_holo">-22.4dp</dimen>
     <dimen name="config_key_preview_offset_holo">1.6dp</dimen>
     <dimen name="config_key_preview_height_holo">80dp</dimen>
-    <dimen name="config_key_preview_offset_lxx">43.6dp</dimen>
+    <dimen name="config_key_preview_offset_lxx">0dp</dimen>
     <dimen name="config_key_preview_height_lxx">122dp</dimen>
     <fraction name="config_key_preview_text_ratio">90%</fraction>
     <fraction name="config_key_letter_ratio_holo">65%</fraction>
