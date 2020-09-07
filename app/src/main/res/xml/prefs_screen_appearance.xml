@@ -47,5 +47,5 @@
         android:key="pref_keyboard_height_scale"
         android:title="@string/prefs_keyboard_height_scale"
         latin:minValue="50"
-        latin:maxValue="120" /> <!-- percentage -->
+        latin:maxValue="150" /> <!-- percentage -->
 </PreferenceScreen>
