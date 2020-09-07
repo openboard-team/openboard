@@ -71,8 +71,8 @@
     <color name="suggested_word_color_lxx_dark">#B3FFFFFF</color>
     <color name="gesture_trail_color_lxx_dark">#80CBC4</color>
     <color name="sliding_key_input_preview_color_lxx_dark">#B380CBC4</color>
-    <color name="key_background_lxx_dark">#263238</color>
-    <color name="key_background_pressed_lxx_dark">#19FFFFFF</color>
+    <color name="key_background_lxx_dark">#000</color>
+    <color name="key_background_pressed_lxx_dark">#000</color>
     <color name="suggested_word_background_selected_lxx_dark">#19FFFFFF</color>
     <color name="gesture_floating_preview_color_lxx_dark">#E621272B</color>
     <color name="emoji_tab_page_indicator_background_lxx_dark">#21272B</color>
