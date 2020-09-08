@@ -1368,6 +1368,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
         int newPosition = mInputLogic.mConnection.mExpectedSelStart + steps;
         mInputLogic.mConnection.setSelection(newPosition, newPosition);
+        mInputLogic.restartSuggestionsOnWordTouchedByCursor(mSettings.getCurrent(),
+                false, mKeyboardSwitcher.getCurrentKeyboardScriptId());
     }
 
     @Override
