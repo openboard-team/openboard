@@ -1374,6 +1374,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     @Override
     public void onMoveDeletePointer(int steps) {
+        mInputLogic.finishInput();
         int end = mInputLogic.mConnection.getExpectedSelectionEnd();
         int start = mInputLogic.mConnection.getExpectedSelectionStart() + steps;
         if (start > end)
