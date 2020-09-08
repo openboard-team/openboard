@@ -41,7 +41,7 @@
     <!-- Suppress showing key preview duration after batch input in millisecond -->
     <integer name="config_suppress_key_preview_after_batch_input_duration">100</integer>
 
-    <bool name="config_default_vibration_enabled">true</bool>
+    <bool name="config_default_vibration_enabled">false</bool>
     <integer name="config_max_vibration_duration">100</integer>
 
     <integer name="config_default_longpress_key_timeout">300</integer>
