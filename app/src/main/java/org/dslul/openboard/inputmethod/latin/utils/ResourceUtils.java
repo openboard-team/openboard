@@ -198,14 +198,7 @@ public final class ResourceUtils {
 
     public static int getDefaultKeyboardHeight(final Resources res) {
         final DisplayMetrics dm = res.getDisplayMetrics();
-        final String keyboardHeightInDp = getDeviceOverrideValue(
-                res, R.array.keyboard_heights, null /* defaultValue */);
-        final float keyboardHeight;
-        if (TextUtils.isEmpty(keyboardHeightInDp)) {
-            keyboardHeight = res.getDimension(R.dimen.config_default_keyboard_height);
-        } else {
-            keyboardHeight = Float.parseFloat(keyboardHeightInDp) * dm.density;
-        }
+        final float keyboardHeight = res.getDimension(R.dimen.config_default_keyboard_height);
         final float maxKeyboardHeight = res.getFraction(
                 R.fraction.config_max_keyboard_height, dm.heightPixels, dm.heightPixels);
         float minKeyboardHeight = res.getFraction(
