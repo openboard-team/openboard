@@ -9,6 +9,9 @@
 ## Permissions
 * **Read Contacts**: Used to add your contact list to suggestions. Disabled by default.
 
+## Cannot open settings in MIUI
+See https://github.com/dslul/openboard/issues/46
+
 ## Contribute
 
 ### How to create a dictionary
