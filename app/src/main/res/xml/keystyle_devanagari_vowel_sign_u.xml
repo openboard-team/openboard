@@ -25,19 +25,17 @@
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto">
     <switch>
         <case latin:keyboardLayoutSet="hindi">
-            <!-- U+25CC: "◌" DOTTED CIRCLE
-                 U+0941/U+0902: "ुं" DEVANAGARI VOWEL SIGN U/DEVANAGARI SIGN ANUSVARA
+            <!-- U+0941/U+0902: "ुं" DEVANAGARI VOWEL SIGN U/DEVANAGARI SIGN ANUSVARA
                  U+0941/U+0901: "ुँ" DEVANAGARI VOWEL SIGN U/DEVANAGARI SIGN CANDRABINDU -->
             <key-style
                 latin:styleName="moreKeysDevanagariVowelSignU"
-                latin:moreKeys="&#x25CC;&#x0941;&#x0902;|&#x0941;&#x0902;,&#x25CC;&#x0941;&#x0901;|&#x0941;&#x0901;" />
+                latin:moreKeys="&#x0941;&#x0902;,&#x0941;&#x0901;" />
         </case>
         <case latin:keyboardLayoutSet="hindi_compact">
-            <!-- U+25CC: "◌" DOTTED CIRCLE
-                 U+0941: "ु" DEVANAGARI VOWEL SIGN U -->
+            <!-- U+0941: "ु" DEVANAGARI VOWEL SIGN U -->
             <key-style
                 latin:styleName="moreKeysDevanagariVowelSignU"
-                latin:moreKeys="&#x25CC;&#x0941;|&#x0941;" />
+                latin:moreKeys="&#x0941;" />
         </case>
         <case latin:keyboardLayoutSet="marathi">
             <!-- U+0909: "उ" DEVANAGARI LETTER U -->
@@ -49,11 +47,9 @@
             <key-style latin:styleName="moreKeysDevanagariVowelSignU" />
         </default>
     </switch>
-    <!-- U+25CC: "◌" DOTTED CIRCLE
-         U+0941: "ु" DEVANAGARI VOWEL SIGN U -->
+    <!-- U+0941: "ु" DEVANAGARI VOWEL SIGN U -->
     <key-style
         latin:styleName="baseKeyDevanagariVowelSignU"
         latin:parentStyle="moreKeysDevanagariVowelSignU"
-        latin:keySpec="&#x25CC;&#x0941;|&#x0941;"
-        latin:keyLabelFlags="followKeyLetterRatio" />
+        latin:keySpec="&#x0941;" />
 </merge>

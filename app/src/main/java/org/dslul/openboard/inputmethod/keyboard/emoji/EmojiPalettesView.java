@@ -79,7 +79,6 @@ public final class EmojiPalettesView extends LinearLayout implements OnTabChange
 
     private ImageButton mDeleteKey;
     private TextView mAlphabetKeyLeft;
-    private TextView mAlphabetKeyRight;
     private View mSpacebar;
     // TODO: Remove this workaround.
     private View mSpacebarIcon;
@@ -206,7 +205,7 @@ public final class EmojiPalettesView extends LinearLayout implements OnTabChange
         mDeleteKey.setTag(Constants.CODE_DELETE);
         mDeleteKey.setOnTouchListener(mDeleteKeyOnTouchListener);
 
-        // {@link #mAlphabetKeyLeft}, {@link #mAlphabetKeyRight, and spaceKey depend on
+        // {@link #mAlphabetKeyLeft} and spaceKey depend on
         // {@link View.OnClickListener} as well as {@link View.OnTouchListener}.
         // {@link View.OnTouchListener} is used as the trigger of key-press, while
         // {@link View.OnClickListener} is used as the trigger of key-release which does not occur
@@ -218,11 +217,6 @@ public final class EmojiPalettesView extends LinearLayout implements OnTabChange
         mAlphabetKeyLeft.setTag(Constants.CODE_ALPHA_FROM_EMOJI);
         mAlphabetKeyLeft.setOnTouchListener(this);
         mAlphabetKeyLeft.setOnClickListener(this);
-        mAlphabetKeyRight = findViewById(R.id.emoji_keyboard_alphabet_right);
-        mAlphabetKeyRight.setBackgroundResource(mFunctionalKeyBackgroundId);
-        mAlphabetKeyRight.setTag(Constants.CODE_ALPHA_FROM_EMOJI);
-        mAlphabetKeyRight.setOnTouchListener(this);
-        mAlphabetKeyRight.setOnClickListener(this);
         mSpacebar = findViewById(R.id.emoji_keyboard_space);
         mSpacebar.setBackgroundResource(mSpacebarBackgroundId);
         mSpacebar.setTag(Constants.CODE_SPACE);
@@ -387,7 +381,6 @@ public final class EmojiPalettesView extends LinearLayout implements OnTabChange
         final KeyDrawParams params = new KeyDrawParams();
         params.updateParams(mEmojiLayoutParams.getActionBarHeight(), keyVisualAttr);
         setupAlphabetKey(mAlphabetKeyLeft, switchToAlphaLabel, params);
-        setupAlphabetKey(mAlphabetKeyRight, switchToAlphaLabel, params);
         mEmojiPager.setAdapter(mEmojiPalettesAdapter);
         mEmojiPager.setCurrentItem(mCurrentPagerPosition);
     }

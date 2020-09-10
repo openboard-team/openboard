@@ -62,10 +62,10 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
                 VERSION_CODES.BASE),
         new KeyboardTheme(THEME_ID_LIGHT_BORDER, "LXXLightBorder", R.style.KeyboardTheme_LXX_Light_Border,
                 // This has never been selected as default theme.
-                Build.VERSION_CODES.LOLLIPOP),
+                Build.VERSION_CODES.BASE),
         new KeyboardTheme(THEME_ID_DARK_BORDER, "LXXDarkBorder", R.style.KeyboardTheme_LXX_Dark_Border,
                 // This has never been selected as default theme.
-                VERSION_CODES.BASE),
+                VERSION_CODES.LOLLIPOP),
     };
 
     static {

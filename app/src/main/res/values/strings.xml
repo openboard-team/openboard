@@ -370,7 +370,7 @@ mobile devices. [CHAR LIMIT=25] -->
     <!-- The keyboard theme name, Holo Blue. This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
     <string name="keyboard_theme_holo_blue" translatable="false">Holo Blue</string>
     <!-- The keyboard theme name, Material Dark. This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
-    <string name="keyboard_theme_material_dark" translatable="false">Material Dark</string>
+    <string name="keyboard_theme_material_dark" translatable="false">Material Dark (AMOLED)</string>
     <!-- The keyboard theme name, Material Light. This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
     <string name="keyboard_theme_material_light" translatable="false">Material Light</string>
     <string name="keyboard_theme_dark_border" translatable="false">Material Dark Border</string>
