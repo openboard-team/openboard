@@ -49,6 +49,7 @@ import org.dslul.openboard.inputmethod.latin.common.Constants;
 import org.dslul.openboard.inputmethod.latin.utils.ResourceUtils;
 
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import static org.dslul.openboard.inputmethod.latin.common.Constants.NOT_A_COORDINATE;
 
@@ -63,9 +64,9 @@ import static org.dslul.openboard.inputmethod.latin.common.Constants.NOT_A_COORD
  * </ol>
  * Because of the above reasons, this class doesn't extend {@link KeyboardView}.
  */
-public final class EmojiPalettesView extends LinearLayout implements OnTabChangeListener,
-        ViewPager.OnPageChangeListener, View.OnClickListener, View.OnTouchListener,
-        EmojiPageKeyboardView.OnKeyEventListener {
+public final class EmojiPalettesView extends LinearLayout
+        implements OnTabChangeListener, View.OnClickListener, View.OnTouchListener,
+        EmojiPageKeyboardView.OnKeyEventListener{
     private final int mFunctionalKeyBackgroundId;
     private final int mSpacebarBackgroundId;
     private final boolean mCategoryIndicatorEnabled;
@@ -83,7 +84,7 @@ public final class EmojiPalettesView extends LinearLayout implements OnTabChange
     // TODO: Remove this workaround.
     private View mSpacebarIcon;
     private TabHost mTabHost;
-    private ViewPager mEmojiPager;
+    private ViewPager2 mEmojiPager;
     private int mCurrentPagerPosition = 0;
     private EmojiCategoryPageIndicatorView mEmojiCategoryPageIndicatorView;
 
@@ -183,8 +184,46 @@ public final class EmojiPalettesView extends LinearLayout implements OnTabChange
 
         mEmojiPager = findViewById(R.id.emoji_keyboard_pager);
         mEmojiPager.setAdapter(mEmojiPalettesAdapter);
-        mEmojiPager.setOnPageChangeListener(this);
-        mEmojiPager.setOffscreenPageLimit(0);
+
+        mEmojiPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {mEmojiPalettesAdapter.onPageScrolled();
+                final Pair<Integer, Integer> newPos =
+                        mEmojiCategory.getCategoryIdAndPageIdFromPagePosition(position);
+                final int newCategoryId = newPos.first;
+                final int newCategorySize = mEmojiCategory.getCategoryPageSize(newCategoryId);
+                final int currentCategoryId = mEmojiCategory.getCurrentCategoryId();
+                final int currentCategoryPageId = mEmojiCategory.getCurrentCategoryPageId();
+                final int currentCategorySize = mEmojiCategory.getCurrentCategoryPageSize();
+                if (newCategoryId == currentCategoryId) {
+                    mEmojiCategoryPageIndicatorView.setCategoryPageId(
+                            newCategorySize, newPos.second, positionOffset);
+                } else if (newCategoryId > currentCategoryId) {
+                    mEmojiCategoryPageIndicatorView.setCategoryPageId(
+                            currentCategorySize, currentCategoryPageId, positionOffset);
+                } else if (newCategoryId < currentCategoryId) {
+                    mEmojiCategoryPageIndicatorView.setCategoryPageId(
+                            currentCategorySize, currentCategoryPageId, positionOffset - 1);
+                }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                final Pair<Integer, Integer> newPos =
+                        mEmojiCategory.getCategoryIdAndPageIdFromPagePosition(position);
+                setCurrentCategoryId(newPos.first /* categoryId */, false /* force */);
+                mEmojiCategory.setCurrentCategoryPageId(newPos.second /* categoryPageId */);
+                updateEmojiCategoryPageIdView();
+                mCurrentPagerPosition = position;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                // Ignore this message. Only want the actual page selected.
+            }
+        });
+
+        mEmojiPager.setOffscreenPageLimit(ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT);
         mEmojiPager.setPersistentDrawingCache(PERSISTENT_NO_CACHE);
         mEmojiLayoutParams.setPagerProperties(mEmojiPager);
 
@@ -241,44 +280,6 @@ public final class EmojiPalettesView extends LinearLayout implements OnTabChange
         final int categoryId = mEmojiCategory.getCategoryId(tabId);
         setCurrentCategoryId(categoryId, false /* force */);
         updateEmojiCategoryPageIdView();
-    }
-
-    @Override
-    public void onPageSelected(final int position) {
-        final Pair<Integer, Integer> newPos =
-                mEmojiCategory.getCategoryIdAndPageIdFromPagePosition(position);
-        setCurrentCategoryId(newPos.first /* categoryId */, false /* force */);
-        mEmojiCategory.setCurrentCategoryPageId(newPos.second /* categoryPageId */);
-        updateEmojiCategoryPageIdView();
-        mCurrentPagerPosition = position;
-    }
-
-    @Override
-    public void onPageScrollStateChanged(final int state) {
-        // Ignore this message. Only want the actual page selected.
-    }
-
-    @Override
-    public void onPageScrolled(final int position, final float positionOffset,
-                               final int positionOffsetPixels) {
-        mEmojiPalettesAdapter.onPageScrolled();
-        final Pair<Integer, Integer> newPos =
-                mEmojiCategory.getCategoryIdAndPageIdFromPagePosition(position);
-        final int newCategoryId = newPos.first;
-        final int newCategorySize = mEmojiCategory.getCategoryPageSize(newCategoryId);
-        final int currentCategoryId = mEmojiCategory.getCurrentCategoryId();
-        final int currentCategoryPageId = mEmojiCategory.getCurrentCategoryPageId();
-        final int currentCategorySize = mEmojiCategory.getCurrentCategoryPageSize();
-        if (newCategoryId == currentCategoryId) {
-            mEmojiCategoryPageIndicatorView.setCategoryPageId(
-                    newCategorySize, newPos.second, positionOffset);
-        } else if (newCategoryId > currentCategoryId) {
-            mEmojiCategoryPageIndicatorView.setCategoryPageId(
-                    currentCategorySize, currentCategoryPageId, positionOffset);
-        } else if (newCategoryId < currentCategoryId) {
-            mEmojiCategoryPageIndicatorView.setCategoryPageId(
-                    currentCategorySize, currentCategoryPageId, positionOffset - 1);
-        }
     }
 
     /**

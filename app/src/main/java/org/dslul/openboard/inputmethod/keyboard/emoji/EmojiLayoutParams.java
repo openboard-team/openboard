@@ -24,6 +24,7 @@ import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.utils.ResourceUtils;
 
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 final class EmojiLayoutParams {
     private static final int DEFAULT_KEYBOARD_ROWS = 4;
@@ -61,7 +62,7 @@ final class EmojiLayoutParams {
         mEmojiKeyboardHeight = mEmojiPagerHeight - mEmojiPagerBottomMargin - 1;
     }
 
-    public void setPagerProperties(final ViewPager vp) {
+    public void setPagerProperties(final ViewPager2 vp) {
         final LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) vp.getLayoutParams();
         lp.height = mEmojiKeyboardHeight;
         lp.bottomMargin = mEmojiPagerBottomMargin;
