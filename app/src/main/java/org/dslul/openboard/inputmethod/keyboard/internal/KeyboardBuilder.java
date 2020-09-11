@@ -662,6 +662,9 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                     R.styleable.Keyboard_Case_clobberSettingsKey, id.mClobberSettingsKey);
             final boolean hasShortcutKeyMatched = matchBoolean(caseAttr,
                     R.styleable.Keyboard_Case_hasShortcutKey, id.mHasShortcutKey);
+            final boolean numberRowEnabledMatched = matchBoolean(caseAttr,
+                    R.styleable.Keyboard_Case_numberRowEnabled,
+                    id.mNumberRowEnabled);
             final boolean languageSwitchKeyEnabledMatched = matchBoolean(caseAttr,
                     R.styleable.Keyboard_Case_languageSwitchKeyEnabled,
                     id.mLanguageSwitchKeyEnabled);
@@ -680,7 +683,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             final boolean selected = keyboardLayoutSetMatched && keyboardLayoutSetElementMatched
                     && keyboardThemeMacthed && modeMatched && navigateNextMatched
                     && navigatePreviousMatched && passwordInputMatched && clobberSettingsKeyMatched
-                    && hasShortcutKeyMatched  && languageSwitchKeyEnabledMatched
+                    && hasShortcutKeyMatched  && languageSwitchKeyEnabledMatched && numberRowEnabledMatched
                     && isMultiLineMatched && imeActionMatched && isIconDefinedMatched
                     && localeCodeMatched && languageCodeMatched && countryCodeMatched
                     && splitLayoutMatched;
@@ -707,6 +710,8 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                                 "passwordInput"),
                         booleanAttr(caseAttr, R.styleable.Keyboard_Case_hasShortcutKey,
                                 "hasShortcutKey"),
+                        booleanAttr(caseAttr, R.styleable.Keyboard_Case_numberRowEnabled,
+                                "numberRowEnabled"),
                         booleanAttr(caseAttr, R.styleable.Keyboard_Case_languageSwitchKeyEnabled,
                                 "languageSwitchKeyEnabled"),
                         booleanAttr(caseAttr, R.styleable.Keyboard_Case_isMultiLine,

@@ -102,6 +102,10 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_KEY_IS_INTERNAL = "pref_key_is_internal";
 
     public static final String PREF_ENABLE_METRICS_LOGGING = "pref_enable_metrics_logging";
+    
+    public static final String PREF_SHOW_NUMBER_ROW =
+            "pref_show_number_row";
+
     // This preference key is deprecated. Use {@link #PREF_SHOW_LANGUAGE_SWITCH_KEY} instead.
     // This is being used only for the backward compatibility.
     private static final String PREF_SUPPRESS_LANGUAGE_SWITCH_KEY =
@@ -333,6 +337,10 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
                                                       final String prefKey, final int defaultValue) {
         final int milliseconds = prefs.getInt(prefKey, UNDEFINED_PREFERENCE_VALUE_INT);
         return (milliseconds != UNDEFINED_PREFERENCE_VALUE_INT) ? milliseconds : defaultValue;
+    }
+    
+    public static boolean readShowsNumberRow(final SharedPreferences prefs) {
+        return prefs.getBoolean(PREF_SHOW_NUMBER_ROW, false);
     }
 
     public static float readKeyboardHeight(final SharedPreferences prefs,

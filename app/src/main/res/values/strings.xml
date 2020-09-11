@@ -222,6 +222,11 @@
 
     <!-- Title of the item to change the keyboard theme [CHAR LIMIT=20]-->
     <string name="keyboard_layout">Keyboard theme</string>
+    
+    <!-- Title of the settings to enable number row -->
+    <string name="number_row">Number row</string>
+    <!-- Description of the settings to enable number row -->
+    <string name="number_row_summary">Always show number row</string>
 
     <!-- Title of the settings to enable keyboard resizing -->
     <string name="prefs_resize_keyboard">Enable keyboard resizing</string>
