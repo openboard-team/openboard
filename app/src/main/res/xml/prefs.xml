@@ -17,23 +17,23 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:key="english_ime_settings">
     <PreferenceScreen
-        android:fragment="org.dslul.openboard.inputmethod.latin.settings.PreferencesSettingsFragment"
+        android:fragment="io.github.sds100.keymapper.inputmethod.latin.settings.PreferencesSettingsFragment"
         android:title="@string/settings_screen_preferences"
         android:key="screen_preferences" />
     <PreferenceScreen
-        android:fragment="org.dslul.openboard.inputmethod.latin.settings.AppearanceSettingsFragment"
+        android:fragment="io.github.sds100.keymapper.inputmethod.latin.settings.AppearanceSettingsFragment"
         android:title="@string/settings_screen_appearance"
         android:key="screen_appearance" />
     <PreferenceScreen
-        android:fragment="org.dslul.openboard.inputmethod.latin.settings.GestureSettingsFragment"
+        android:fragment="io.github.sds100.keymapper.inputmethod.latin.settings.GestureSettingsFragment"
         android:title="@string/settings_screen_gesture"
         android:key="screen_gesture" />
     <PreferenceScreen
-        android:fragment="org.dslul.openboard.inputmethod.latin.settings.CorrectionSettingsFragment"
+        android:fragment="io.github.sds100.keymapper.inputmethod.latin.settings.CorrectionSettingsFragment"
         android:title="@string/settings_screen_correction"
         android:key="screen_correction" />
     <PreferenceScreen
-        android:fragment="org.dslul.openboard.inputmethod.latin.settings.AdvancedSettingsFragment"
+        android:fragment="io.github.sds100.keymapper.inputmethod.latin.settings.AdvancedSettingsFragment"
         android:title="@string/settings_screen_advanced"
         android:key="screen_advanced" />
 </PreferenceScreen>

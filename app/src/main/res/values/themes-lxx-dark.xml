@@ -73,9 +73,9 @@
         <!-- A negative value to disable text shadow layer. -->
         <item name="languageOnSpacebarTextShadowRadius">-1.0</item>
     </style>
-    <!-- Though {@link org.dslul.openboard.inputmethod.keyboard.emoji.EmojiPalettesView} doesn't extend
-         {@link org.dslul.openboard.inputmethod.keyboard.KeyboardView}, some views inside it, for instance
-         delete button, need themed {@link org.dslul.openboard.inputmethod.keyboard.KeyboardView}
+    <!-- Though {@link io.github.sds100.keymapper.inputmethod.keyboard.emoji.EmojiPalettesView} doesn't extend
+         {@link io.github.sds100.keymapper.inputmethod.keyboard.KeyboardView}, some views inside it, for instance
+         delete button, need themed {@link io.github.sds100.keymapper.inputmethod.keyboard.KeyboardView}
          attributes. -->
     <style
         name="EmojiPalettesView.LXX_Dark"

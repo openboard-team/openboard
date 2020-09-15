@@ -28,7 +28,7 @@
         <item>@string/keyboard_theme_holo_blue</item>
     </string-array>
     <!-- An element must be a keyboard theme id of
-         {@link org.dslul.openboard.inputmethod.keyboard.KeyboardTheme#THEME_ID_ICS} etc. -->
+         {@link io.github.sds100.keymapper.inputmethod.keyboard.KeyboardTheme#THEME_ID_ICS} etc. -->
     <integer-array name="keyboard_theme_ids" translatable="false">
         <item>5</item>
         <item>6</item>

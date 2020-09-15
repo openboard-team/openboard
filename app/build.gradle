@@ -1,22 +1,31 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
 
     defaultConfig {
-        applicationId "org.dslul.openboard.inputmethod.latin"
+        applicationId "io.github.sds100.keymapper.inputmethod.latin"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 10
-        versionName "1.3"
+        versionCode 11
+        versionName "1.3.1"
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            versionNameSuffix "-debug"
+        }
+        ci {
+            debuggable = true
+
+            versionNameSuffix "-ci.$RUN_NUMBER"
+            signingConfig signingConfigs.debug
         }
     }
 
@@ -35,12 +44,19 @@ android {
     }
 }
 
+android.applicationVariants.all { variant ->
+    variant.outputs.all {
+        outputFileName = "keymapper-gui-keyboard-${variant.versionName}.apk"
+    }
+}
+
 dependencies {
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "androidx.core:core-ktx:1.1.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+
 repositories {
     mavenCentral()
 }

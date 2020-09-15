@@ -27,7 +27,7 @@
 
     <!-- To ensure that key preview popup is correctly placed when the current system locale is
          one of RTL locales, layoutDirection="ltr" is needed in the SDK version 17+. -->
-    <org.dslul.openboard.inputmethod.latin.suggestions.SuggestionStripView
+    <io.github.sds100.keymapper.inputmethod.latin.suggestions.SuggestionStripView
         android:id="@+id/suggestion_strip_view"
         android:layoutDirection="ltr"
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
 
     <!-- To ensure that key preview popup is correctly placed when the current system locale is
          one of RTL locales, layoutDirection="ltr" is needed in the SDK version 17+. -->
-    <org.dslul.openboard.inputmethod.keyboard.MainKeyboardView
+    <io.github.sds100.keymapper.inputmethod.keyboard.MainKeyboardView
         android:id="@+id/keyboard_view"
         android:layoutDirection="ltr"
         android:layout_width="match_parent"
