@@ -9,7 +9,9 @@
 ## Permissions
 * **Read Contacts**: Used to add your contact list to suggestions. Disabled by default.
 
-## Cannot open settings in MIUI
+## Common issues
+- Cannot open settings in MIUI
+
 See https://github.com/dslul/openboard/issues/46
 
 ## Contribute
@@ -39,7 +41,7 @@ export ANDROID_SDK_ROOT=~/snap/androidsdk/current/AndroidSDK/
 
 Install the platform tools for your target android version:
 ```sh
-androidsdk "platform-tools" "platforms;android-28"
+androidsdk "platform-tools" "platforms;android-29"
 ```
 
 Compile the project. This will install all dependencies, make sure to accept
@@ -53,3 +55,8 @@ Connect your phone and install the debug APK
 ```sh
 adb install ./app/build/outputs/apk/debug/app-debug.apk
 ```
+## Credits
+- [AOSP Keyboard](https://android.googlesource.com/platform/packages/inputmethods/LatinIME/)
+- [LineageOS](https://review.lineageos.org/admin/repos/LineageOS/android_packages_inputmethods_LatinIME)
+- [Simple Keyboard](https://github.com/rkkr/simple-keyboard)
+- [Indic Keyboard](https://gitlab.com/indicproject/indic-keyboard)
