@@ -606,4 +606,5 @@ Tip: You can download and remove dictionaries by going to &lt;b>Languages&#160;&
     <string name="space_trackpad">Space bar trackpad</string>
     <string name="delete_swipe_summary">Perform a swipe from the delete key to select and remove bigger portions of text at once</string>
     <string name="space_trackpad_summary">Swipe on the spacebar to move the cursor</string>
+    <string name="more_keys_strip_description">More keys</string>
 </resources>
