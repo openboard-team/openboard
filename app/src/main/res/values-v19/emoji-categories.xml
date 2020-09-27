@@ -1162,33 +1162,16 @@
         name="emoji_emoticons"
         format="string"
     >
-        <item>(╯°□°）╯︵ ┻━┻</item>
-        <item> ¯\\_(ツ)_/¯</item>
+        <item>(╯°</item>
+        <item>□°）</item>
+        <item>╯︵ </item>
+        <item>┻━┻</item>
+        <item> ¯\\_</item>
+        <item>(ツ)</item>
+        <item>_/¯</item>
         <item>┬─┬</item>
         <item>︵ /(</item>
         <item>.□.\\</item>
-        <item>:-)</item>
-        <item>:-(</item>
-        <item>;-)</item>
-        <item>:'-(</item>
-        <item>:^)</item>
-        <item>^_^</item>
-        <item>(^^)</item>
-        <item>:,-)</item>
-        <item>8-)</item>
-        <item>B-)</item>
-        <item>o:-)</item>
-        <item>:-D</item>
-        <item>}:‑)</item>
-        <item>:-*</item>
-        <item>:-P</item>
-        <item>(+_+)</item>
-        <item>(*_*)</item>
-        <item>O_o</item>
-        <item>(￣ヘ￣;)</item>
-        <item>(ー_ー゛)</item>
-        <item>(ʘ言ʘ╬)</item>
-        <item>¯\\_( ͡° ͜ʖ ͡°)_/¯</item>
     </array>
     <array
         name="emoji_eight_symbols"
