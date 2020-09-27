@@ -101,7 +101,6 @@ public class SettingsValues {
     // Deduced settings
     public final int mKeypressVibrationDuration;
     public final float mKeypressSoundVolume;
-    public final int mKeyPreviewPopupDismissDelay;
     private final boolean mAutoCorrectEnabled;
     public final float mAutoCorrectionThreshold;
     public final float mPlausibilityThreshold;
@@ -169,7 +168,6 @@ public class SettingsValues {
         mKeyLongpressTimeout = Settings.readKeyLongpressTimeout(prefs, res);
         mKeypressVibrationDuration = Settings.readKeypressVibrationDuration(prefs, res);
         mKeypressSoundVolume = Settings.readKeypressSoundVolume(prefs, res);
-        mKeyPreviewPopupDismissDelay = Settings.readKeyPreviewPopupDismissDelay(prefs, res);
         mEnableEmojiAltPhysicalKey = prefs.getBoolean(
                 Settings.PREF_ENABLE_EMOJI_ALT_PHYSICAL_KEY, true);
         mShowAppIcon = Settings.readShowSetupWizardIcon(prefs, context);
@@ -188,7 +186,7 @@ public class SettingsValues {
                 //&& !mInputAttributes.mInputTypeNoAutoCorrect;
         mSuggestionsEnabledPerUserSettings = !mInputAttributes.mIsPasswordField &&
                 readSuggestionsEnabled(prefs);
-        mIncognitoModeEnabled = mInputAttributes.mNoLearning;
+        mIncognitoModeEnabled = Settings.readAlwaysIncognitoMode(prefs) || mInputAttributes.mNoLearning;
         mIsInternal = Settings.isInternal(prefs);
         mHasCustomKeyPreviewAnimationParams = prefs.getBoolean(
                 DebugSettings.PREF_HAS_CUSTOM_KEY_PREVIEW_ANIMATION_PARAMS, false);
@@ -412,8 +410,6 @@ public class SettingsValues {
         sb.append("" + mKeypressVibrationDuration);
         sb.append("\n   mKeypressSoundVolume = ");
         sb.append("" + mKeypressSoundVolume);
-        sb.append("\n   mKeyPreviewPopupDismissDelay = ");
-        sb.append("" + mKeyPreviewPopupDismissDelay);
         sb.append("\n   mAutoCorrectEnabled = ");
         sb.append("" + mAutoCorrectEnabled);
         sb.append("\n   mAutoCorrectionThreshold = ");

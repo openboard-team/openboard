@@ -62,30 +62,6 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
             removePreference(Settings.PREF_VIBRATION_DURATION_SETTINGS);
         }
 
-        // TODO: consolidate key preview dismiss delay with the key preview animation parameters.
-        if (!Settings.readFromBuildConfigIfToShowKeyPreviewPopupOption(res)) {
-            removePreference(Settings.PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY);
-        } else {
-            // TODO: Cleanup this setup.
-            final ListPreference keyPreviewPopupDismissDelay =
-                    (ListPreference) findPreference(Settings.PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY);
-            final String popupDismissDelayDefaultValue = Integer.toString(res.getInteger(
-                    R.integer.config_key_preview_linger_timeout));
-            keyPreviewPopupDismissDelay.setEntries(new String[] {
-                    res.getString(R.string.key_preview_popup_dismiss_no_delay),
-                    res.getString(R.string.key_preview_popup_dismiss_default_delay),
-            });
-            keyPreviewPopupDismissDelay.setEntryValues(new String[] {
-                    "0",
-                    popupDismissDelayDefaultValue
-            });
-            if (null == keyPreviewPopupDismissDelay.getValue()) {
-                keyPreviewPopupDismissDelay.setValue(popupDismissDelayDefaultValue);
-            }
-            keyPreviewPopupDismissDelay.setEnabled(
-                    Settings.readKeyPreviewPopupEnabled(prefs, res));
-        }
-
         setupKeypressVibrationDurationSettings();
         setupKeypressSoundVolumeSettings();
         setupKeyLongpressTimeoutSettings();
@@ -93,22 +69,10 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        final SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
-        updateListPreferenceSummaryToCurrentValue(Settings.PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY);
-    }
-
-    @Override
     public void onSharedPreferenceChanged(final SharedPreferences prefs, final String key) {
-        final Resources res = getResources();
-        if (key.equals(Settings.PREF_POPUP_ON)) {
-            setPreferenceEnabled(Settings.PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY,
-                    Settings.readKeyPreviewPopupEnabled(prefs, res));
-        } else if (key.equals(Settings.PREF_SHOW_SETUP_WIZARD_ICON)) {
+        if (key.equals(Settings.PREF_SHOW_SETUP_WIZARD_ICON)) {
             SystemBroadcastReceiver.toggleAppIcon(getActivity());
         }
-        updateListPreferenceSummaryToCurrentValue(Settings.PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY);
         refreshEnablingsOfKeypressSoundAndVibrationSettings();
     }
 

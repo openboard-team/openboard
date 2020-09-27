@@ -83,9 +83,8 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_KEYBOARD_HEIGHT_SCALE = "pref_keyboard_height_scale";
     public static final String PREF_SPACE_TRACKPAD = "pref_space_trackpad";
     public static final String PREF_DELETE_SWIPE = "pref_delete_swipe";
-    // TODO: consolidate key preview dismiss delay with the key preview animation parameters.
-    public static final String PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY =
-            "pref_key_preview_popup_dismiss_delay";
+    public static final String PREF_ALWAYS_INCOGNITO_MODE =
+            "pref_always_incognito_mode";
     public static final String PREF_BIGRAM_PREDICTIONS = "next_word_prediction";
     public static final String PREF_GESTURE_INPUT = "gesture_input";
     public static final String PREF_VIBRATION_DURATION_SETTINGS =
@@ -262,11 +261,8 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         return prefs.getBoolean(PREF_POPUP_ON, defaultKeyPreviewPopup);
     }
 
-    public static int readKeyPreviewPopupDismissDelay(final SharedPreferences prefs,
-                                                      final Resources res) {
-        return Integer.parseInt(prefs.getString(PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY,
-                Integer.toString(res.getInteger(
-                        R.integer.config_key_preview_linger_timeout))));
+    public static boolean readAlwaysIncognitoMode(final SharedPreferences prefs) {
+        return prefs.getBoolean(PREF_ALWAYS_INCOGNITO_MODE, true);
     }
 
     public static String readPrefAdditionalSubtypes(final SharedPreferences prefs,
