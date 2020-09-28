@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"Разширени"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"Тема"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"Активиране на разделената клавиатура"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Клавиатура на Google: Синхрон."</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"Синхронизирането е включено"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"Синхронизиране на личния ви речник на устройствата"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"Синхронизиране сега"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"Изтриване на данните в облака"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Изтрива синхронизираните ви данни от Google"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"Синхрон. ви данни ще бъдат изтрити от облака. Сигурни ли сте?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"Изтриване"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"Отказ"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"Личният ви речник ще бъде синхронизиран и за него ще бъде създадено резервно копие на сървърите на Google. Статистическата информация за честотата на използване на думите може да се събира с цел подобряване на продуктите ни. Събирането и ползването на всички данни ще бъде съгласно "<a href="https://www.google.com/policies/privacy">"Декларацията ни за поверителност"</a>"."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"За да активирате функцията, добавете профил в Google към у-вото"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"Синхронизирането не е налице за у-ва с профили в Google Apps for Business"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"Други методи за въвеждане"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"Клавишът за превкл. на езика обхваща и други методи за въвеждане"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"Клавиш за превкл. на езика"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"Услуга за речник"</string>
     <string name="download_description" msgid="6014835283119198591">"Информация за актуализацията на речниците"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"Добавени речници"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"Речникът е налице"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"Настройки за речници"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"Потребителски речници"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"Потребителски речник"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"Инсталиране"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"Отказ"</string>
     <string name="delete_dict" msgid="756853268088330054">"Изтриване"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"Налице е речник за избрания език на мобилното ви устройство.&lt;br/&gt;Препоръчваме ви &lt;b&gt;да изтеглите&lt;/b&gt; речника за <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>, за да подобрите работата си при писане.&lt;br/&gt; &lt;br/&gt;Изтеглянето през 3G може да отнеме една или две минути. Възможно е да бъдете таксувани, ако нямате &lt;b&gt;неограничен план за данни&lt;/b&gt;.&lt;br/&gt;В случай че не сте сигурни какъв е вашият план, ви препоръчваме да намерите Wi-Fi връзка, за да започнете изтеглянето автоматично.&lt;br/&gt; &lt;br/&gt;Съвет: Можете да изтегляте и премахвате речници, като отворите &lt;b&gt;Език и въвеждане&lt;/b&gt; от менюто &lt;b&gt;Настройки&lt;/b&gt; на мобилното си устройство."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"Изтегляне сега (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g> МБ)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Изтегляне през Wi-Fi"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"За <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> е налице речник"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"Натиснете, за да прегледате и изтеглите"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"Изтегля се: Предложенията за <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> ще бъдат готови скоро."</string>
     <string name="version_text" msgid="2715354215568469385">"Версия <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"Добавяне"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"Добавяне в речника"</string>

@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"बेहतर सेटिंग"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"थीम"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"स्प्लिट कीबोर्ड चालू करें"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Google कीबोर्ड समन्‍वयन"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"समन्‍वयन चालू किया गया है"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"अपना व्‍यक्‍तिगत शब्‍दकोश सभी डिवाइसों से सिंक करें"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"अभी समन्वयन करें"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"क्‍लाउड डेटा मिटाएं"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Google से आपका समन्वयित डेटा हटाता है"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"आपका समन्‍वयित डेटा क्‍लाउड से हटा दिया जाएगा. इसके बारे में पक्का हैं?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"मिटाएं"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"रद्द करें"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"आपकी निजी डिक्शनरी को Google सर्वर से सिंक किया जाएगा और उसका बैक अप लिया जाएगा. हमारे उत्पादों को बेहतर बनाने में मदद करने के लिए हो सकता है कि इस बात के आंकड़े इकट्ठा किये जाएं कि एक शब्द को कितनी बार दोहराया गया है. सभी जानकारी को इकट्ठा करना और उसका इस्तेमाल करना "<a href="https://www.google.com/policies/privacy">"Google की निजता नीति"</a>" के अनुपालन में होगा."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"यह सुविधा सक्षम करने के लिए इस डिवाइस पर एक Google खाता जोड़ें"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"Google Apps for Business खातों वाले डिवाइस के लिए समन्वय उपलब्ध नहीं है"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"अन्‍य इनपुट पद्धतियों पर जाएं"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"भाषा स्‍विच कुंजी में अन्‍य इनपुट पद्धतियां भी शामिल हैं"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"भाषा स्विच कुंजी"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"डिक्‍शनरी सेवा"</string>
     <string name="download_description" msgid="6014835283119198591">"डिक्शनरी में बदलाव की जानकारी"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"अन्य शब्दकोष"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"शब्दकोश उपलब्‍ध"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"डिक्‍शनरी की सेटिंग"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"उपयोगकर्ता डिक्शनरी"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"उपयोगकर्ता डिक्शनरी"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"इंस्टॉल करें"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"रद्द करें"</string>
     <string name="delete_dict" msgid="756853268088330054">"मिटाएं"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"आपके मोबाइल पर चुनी हुई भाषा में एक डिक्शनरी मौजूद है.&lt;br/&gt; आपके लिखने के अनुभव को बेहतर बनाने के लिए हम आपको<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> की डिक्शनरी को &lt;b&gt;डाउनलोड करने&lt;/b&gt; की सलाह देते हैं.&lt;br/&gt; &lt;br/&gt; 3G पर  डाउनलोड करने में एक-दो मिनट का समय लग सकता है. अगर आपके पास &lt;b&gt;असीमित डेटा प्लान&lt;/b&gt; नहीं है तो शुल्क लग सकता है.&lt;br/&gt; अगर आपको पक्का नहीं पता कि आपके पास कौन सा डेटा प्लान है, तो हमारी सलाह है कि डाउनलोड अपने आप शुरू करने के लिए आप किसी वाई-फ़ाई कनेक्शन से जुड़ जाएं.&lt;br/&gt; &lt;br/&gt; सलाह: आप अपने मोबाइल के <b>सेटिंग</b> मेन्यू में &lt;b&gt;भाषा और इनपुट&lt;/b&gt; पर जाकर डिक्शनरी डाउनलोड कर सकते हैं और निकाल सकते हैं."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"अभी डाउनलोड करें (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g>एमबी)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"वाई-फ़ाई  से डाउनलोड करें"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> के लिए एक शब्‍दकोश उपलब्‍ध है"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"समीक्षा करने और डाउनलोड करने के लिए दबाएं"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"डाउनलोड प्रारंभ हो रहा है: <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> के लिए सुझाव जल्दी ही उपलब्ध होंगे."</string>
     <string name="version_text" msgid="2715354215568469385">"वर्शन <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"जोड़ें"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"शब्दकोश में जोड़ें"</string>

@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"Rozšířená nastavení"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"Motiv"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"Aktivovat rozdělenou klávesnici"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Synchronizace Klávesnice Google"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"Synchronizace je zapnutá"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"Synchronizovat váš osobní slovník mezi zařízeními"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"Synchronizovat"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"Smazat data z cloudu"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Smaže z Googlu vaše synchronizovaná data"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"Synchronizovaná data budou z cloudu smazána. Chcete pokračovat?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"Smazat"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"Zrušit"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"Váš osobní slovník bude synchronizován a zálohován na servery Google. Za účelem vylepšení našich služeb mohou být shromažďovány statistické informace o četnosti slov. Shromažďování a využití všech informací bude probíhat v souladu se "<a href="https://www.google.com/policies/privacy">"zásadami ochrany soukromí společnosti Google"</a>"."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"Za účelem aktivace této funkce přidejte do zařízení účet Google."</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"U zařízení s účty Google Apps pro firmy není synchronizace dostupná"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"Přepínat metody zadávání"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"Klávesa pro přepínání jazyka ovládá i další metody zadávání"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"Klávesa přepínání jazyka"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"Služba slovníku"</string>
     <string name="download_description" msgid="6014835283119198591">"Informace o aktualizaci slovníku"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"Doplňkové slovníky"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"Slovník k dispozici"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"Nastavení slovníků"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"Uživatelské slovníky"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"Uživatelský slovník"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"Instalovat"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"Zrušit"</string>
     <string name="delete_dict" msgid="756853268088330054">"Smazat"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"Pro vybraný jazyk je v mobilním zařízení k dispozici slovník.&lt;br/&gt; Doporučujeme slovník pro jazyk <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> &lt;b&gt;stáhnout&lt;/b&gt;. Usnadníte si tím zadávání textu.&lt;br/&gt; &lt;br/&gt; V síti 3G bude stahování trvat jen chvilku. Pokud nemáte &lt;b&gt;neomezený datový tarif&lt;/b&gt;, mohou vám být účtovány poplatky.&lt;br/&gt; Jestliže si nejste jistí, jaký datový tarif máte, doporučujeme vám najít připojení Wi-Fi. Stahování se pak zahájí automaticky.&lt;br/&gt; &lt;br/&gt; Tip: Slovníky můžete stahovat a odstraňovat v nabídce mobilního zařízení &lt;b&gt;Jazyky a zadávání&lt;/b&gt; v &lt;b&gt;Nastavení&lt;/b&gt;."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"Stáhnout ihned (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g> MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Stáhnout pouze přes Wi-Fi"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"Je k dispozici slovník pro jazyk <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"Stisknutím zkontrolujete a stáhnete"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"Stahování: návrhy pro jazyk <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> budou brzy k dispozici."</string>
     <string name="version_text" msgid="2715354215568469385">"Verze <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"Přidat"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"Přidat do slovníku"</string>

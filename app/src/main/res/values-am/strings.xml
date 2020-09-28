@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"የላቀ"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"ገፅታ"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"የተከፈለ ቁልፍ ሰሌዳ አንቃ"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Google ቁልፍ ሰሌዳ አመሳስል"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"አመሳስል በርቷል"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"የግል መዝገበ-ቃላትዎን በሁሉም መሣሪያዎች ላይ ያመሳስሉ"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"አሁን አመሳስል"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"የደመና ውሂብ ይሰርዙ"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"ከGoogle የእርስዎን የተመሳሰለ ውሂብ ይሰርዛል"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"የተመሳሰለው ውሂብዎ ከደመናው ይሰረዛል። እርግጠኛ ነዎት?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"ሰርዝ"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"ይቅር"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"የግል መዝገበ-ቃላትዎ ይመሳሰልና ምትኬው በGoogle አገልጋዮች ላይ ይቀመጣል። ምርቶቻችንን ለማሻሻል የቃላት ተደጋጋሚነት ስታቲስቲካዊ መረጃ ሊሰበሰብ ይችላል። የመረጃው አሰባሰብ እና አጠቃቀም በ"<a href="https://www.google.com/policies/privacy">"Google ግላዊነት መመሪያ"</a>" መሠረት የሚካሄድ ነው።"</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"ይህን ባህሪ ለማንቃት እባክዎ የGoogle መለያ ወደዚህ መሣሪያ ያክሉ"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"ማመሳሰል Google Apps ለንግድ መለያዎች ላላቸው መሣሪያዎች ሊገኝ አይችልም"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"ወደ ሌሎች የግቤት ስልቶች ቀይር"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"የቋንቋ መቀየሪያ ቁልፍ ሌሎች የግቤት ስልቶችንም ይሸፍናል"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"የቋንቋ መቀየሪያ ቁልፍ"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"የመዝገበ-ቃላት አገልግሎት"</string>
     <string name="download_description" msgid="6014835283119198591">"መዝገበ-ቃላት ዝማኔ መረጃ"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"ጭማሪ መዝገበ-ቃላት"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"መዝገበ-ቃላት ይገኛል"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"የመዝገበ-ቃላት ቅንብሮች"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"የተጠቃሚ መዝገበ-ቃላት"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"የተጠቃሚ መዝገበ-ቃላት"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"ጫን"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"ይቅር"</string>
     <string name="delete_dict" msgid="756853268088330054">"ሰርዝ"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"በእርስዎ ሞባይል መሣሪያ ላይ የተመረጠው ቋንቋ የሚገኝ መዝገብ-ቃላት አለው።&lt;br/&gt; የእርስዎን የትየባ ተሞክሮ ለማሻሻል <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> መዝገበ ቃላትን &lt;b&gt;እንዲያወርዱ&lt;/b&gt; እንመክራለን።&lt;br/&gt; &lt;br/&gt; ማውረዱ አንድ ወይም ሁለት ደቂቃ በ3ጂ ላይ ሊወስድ ይችላል። &lt;b&gt;ያልተገደበ ውሂብ የክፍያ ዕቅድ&lt;/b&gt;.&lt;br/&gt; ከሌለዎት ክፍያዎች ሊከፈልባቸው ይችላሉ። የትኛው የውሂብ የክፍያ ዕቅድ እንዳለዎት እርግጠኛ ካልሆኑ ማውረዱን በራስ-ሰር ለመጀመር የWi-Fi ግንኙነት እንዲያገኙ እንመክርዎታለን።&lt;br/&gt; &lt;br/&gt; ጠቃሚ ምክር፦  በእርስዎ ሞባይል መሣሪያ ወደ &lt;b&gt;ቋንቋዎች እና ግቤት&lt;/b&gt; በ&lt;b&gt;ቅንብሮች&lt;/b&gt; ምናሌ ውስጥ በመሄድ መዝገበ-ቃላትን ማውረድ እና ማስወገድ ይችላሉ።"</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"አሁን አውርድ (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g> ሜባ)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"በWi-Fi አውርድ"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"የ<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> መዝገበ-ቃላት ማግኘት ይችላል"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"ለመገምገምና ለማውረድ ይጫኑ"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"በማውረድ ላይ፦ ለ<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> የሚሰጡ ጥቆማዎች በቅርቡ ዝግጁ ይሆናሉ።"</string>
     <string name="version_text" msgid="2715354215568469385">"ሥሪት <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"አክል"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"ወደ መዝገበ-ቃላት አክል"</string>

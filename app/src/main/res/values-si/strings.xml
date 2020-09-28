@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"උසස්"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"තේමාව"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"බෙදු යතුරු පුවරුව සබල කරන්න"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Google යතුරු පුවරුව සමමුහුර්ත කිරීම"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"සමමුහුර්ත කිරීම් ක්‍රියාත්මකයි"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"ඔබේ පෞද්ගලික ශබ්දකෝෂය ඔබේ උපකරණ සමඟ සමමුහුර්ත කරන්න"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"දැන් සමමුහුර්ත කරන්න"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"වලාකුළු දත්ත මකන්න"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"ඔබගේ සමමුහුර්ත කළ දත්ත Google වෙතින් මකා දමයි"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"ඔබගේ සමමුහුර්ත දත්ත සියල්ල ක්ලවුඩ් එකෙන් ඉවත් කරනු ඇත. ඔබට විශ්වාසද?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"මකන්න"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"අවලංගු කරන්න"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"ඔබගේ පෞද්ගලික ශබ්දකෝෂය Google සේවාදායකයන් වෙත සමමුහුර්ත කර උපස්ථය කෙරෙනු ඇත. අපගේ නිෂ්පාදන වැඩි දියුණු කිරීමට උදවු වනු පිණිස වචන භාවිතා වන වාර ගණන පිළිබඳ සංඛ්‍යාත්මක තොරතුරු සමුච්චය කිරීමට ඉඩ ඇත. සියලු දත්ත සමුච්චය කිරීම සහ භාවිතා කිරීම "<a href="https://www.google.com/policies/privacy">"Google හි රහස්‍යතා ප්‍රතිපත්තිය"</a>"අනුව සිදු කරනු ඇත."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"මෙම විශේෂාංගය සබල කිරීමට කරුණාකර Google ගිණුමක් එක් කරන්න"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"ව්‍යාපාර ගිණුම් සඳහා Google යෙදුම් සමඟ සමමුහුර්ත කිරීම ලද නොහැකිය."</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"වෙනත් ආදාන ක්‍රම වෙත මාරුවන්න"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"භාෂා මාරු යතුර වෙනත් ආදාන ක්‍රමද ආවරණය කරයි"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"භාෂා මාරු යතුර"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"ශබ්ද කෝෂ සේවාව"</string>
     <string name="download_description" msgid="6014835283119198591">"ශබ්ද කෝෂ යාවත්කාලීන තොරතුරු"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"ඈඳුම් ශබ්ද කෝෂ"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"ශබ්දකෝෂය ලබාගත හැක"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"ශබ්ද කෝෂ සඳහා සැකසීම්"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"පරිශීලක ශබ්ද කෝෂ"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"පරිශීලක ශබ්ද කෝෂය"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"ස්ථාපනය"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"අවලංගු කරන්න"</string>
     <string name="delete_dict" msgid="756853268088330054">"මකන්න"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"ඔබේ ජංගම දුරකථනය මත ඔබ තෝරන ලද භාෂාවට ලබා ගත හැකි ශබ්ද කෝෂයක් ඇත.&lt;br/&gt; ඔබේ ටයිප් කිරීමේ අත්දැකීම වැඩි දියුණු කර ගැනීමට <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> ශබ්ද කෝෂය &lt;b&gt;බාගැනීම&lt;/b&gt; කරන ලෙස අපි ඔබට නිර්දේශ කරමු.&lt;br/&gt; &lt;br/&gt; 3G හරහා බාගැනීම විනාඩියක් හෝ දෙකක් ගත හැකිය. ඔබට &lt;b&gt;සීමා රහිත දත්ත සැලසුමක්&lt;/b&gt; නැති නම් දත්ත ගාස්තු අදාළ විය හැකිය.&lt;br/&gt; ඔබට තිබෙන්නේ කුමන දත්ත සැලසුමක්ද යන්න ගැන ඔබට විශ්වාස නැති නම්, බාගැනීම ස්වයංක්‍රියව ඇරඹීමට Wi-Fi සබැඳුමක් භාවිත කරන්න.&lt;br/&gt; &lt;br/&gt; ඉඟිය: ඔබට ඔබේ ජංගම උපාංගයෙහි &lt;b&gt;සැකසීම්&lt;/b&gt; මෙනුව තුළ &lt;b&gt;භාෂා සහ ආදානය&lt;/b&gt; වෙත යාමෙන් ශබ්ද කෝෂ බාගැනීමට සහ ඉවත් කිරීමට හැකිය."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"දැන් බාගන්න (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g>MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Wi-Fi හරහා බාගන්න"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> සඳහා ශබ්දකෝෂයක් නොමැත"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"සමාලෝචනය කිරීමට සහ බාගැනීමට ඔබන්න"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"බාගතකරමින්: <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> සඳහා යෝජනා ඉක්මනින් සුදානම් වනු ඇත."</string>
     <string name="version_text" msgid="2715354215568469385">"<xliff:g id="VERSION_NUMBER">%1$s</xliff:g> අනුවාදය"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"එක් කරන්න"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"ශබ්ද කෝෂය වෙත එක් කරන්න"</string>

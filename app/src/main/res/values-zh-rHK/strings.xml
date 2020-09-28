@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"進階"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"主題背景"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"啟用分離式鍵盤"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Google 鍵盤同步"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"同步功能已啟用"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"同步處理各裝置之間的個人字典"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"立即同步"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"刪除雲端資料"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"刪除您來自 Google 的同步處理資料"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"您的同步處理資料將從雲端刪除，要確定嗎？"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"刪除"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"取消"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"您的個人字典將同步處理並備份至 Google 伺服器。系統可能會收集字詞頻率的統計資料，以協助改善產品。所有資訊的收集和使用均遵循《"<a href="https://www.google.com/policies/privacy">"Google 私隱權政策"</a>"》。"</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"請在這部裝置加入 Google 帳戶，以加入此功能。"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"擁有 Google Apps for Business 帳戶的裝置無法使用同步功能"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"切換至其他輸入法"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"語言切換鍵包括其他輸入法"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"語言切換鍵"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"字典服務"</string>
     <string name="download_description" msgid="6014835283119198591">"字典更新資訊"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"附加字典"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"可使用字典"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"字典設定"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"使用者字典"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"使用者字典"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"安裝"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"取消"</string>
     <string name="delete_dict" msgid="756853268088330054">"刪除"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"您流動裝置上所選的語言有字典可供使用。&lt;br/&gt; 我們建議您&lt;b&gt;下載&lt;/b&gt;<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>字典以改善文字輸入體驗。&lt;br/&gt; &lt;br/&gt; 透過 3G 下載可能需時一至兩分鐘。如果您並非使用&lt;b&gt;無限數據計劃&lt;/b&gt;，可能需要支付數據費用。&lt;br/&gt; 如果您不清楚您的流動數據計劃內容，建議您連線至 Wi-Fi 網絡以開始自動下載。&lt;br/&gt; &lt;br/&gt; 提示：您可以前往流動裝置「設定」選單中的「語言和輸入」，下載並移除字典。&lt;b&gt;&lt;/b&gt;&lt;b&gt;&lt;/b&gt;"</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"立即下載 (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g> MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"經由 Wi-Fi 下載"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"可使用<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>字典"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"按下即可查看並下載"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"下載中：<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>字詞建議服務即將啟用。"</string>
     <string name="version_text" msgid="2715354215568469385">"版本 <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"新增"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"加入字典"</string>

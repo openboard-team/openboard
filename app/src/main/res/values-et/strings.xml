@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"Täpsemad"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"Teema"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"Luba kaheks jaotatud klaviatuur"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Sünkrooni Google\'i klaviatuur"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"Sünkroonimine on sisse lülitatud"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"Isikliku kataloogi sünkroonimine kõigis seadmetes"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"Sünkrooni kohe"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"Pilveandmete kustutamine"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Kustutab sünkroonitud andmed Google\'ist"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"Teie sünkroonitud andmed kustutatakse pilvest. Kas olete kindel?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"Kustuta"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"Tühista"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"Teie isiklik sõnastik sünkroonitakse ja varundatakse Google\'i serveritesse. Meie toodete parandamiseks võidakse koguda sõna esinemissageduse statistikat. Kogu teabe kogumine ja kasutamine toimub "<a href="https://www.google.com/policies/privacy">"Google\'i privaatsuseeskirjade"</a>" järgi."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"Lisage selle funktsiooni lubamiseks seadmesse Google\'i konto"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"Sünkroonimine pole Google Apps for Businessi kontodega seadmetele saadaval"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"Vaheta sisestusmeetodit"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"Keelevahetuse võti hõlmab ka muid sisestusmeetodeid"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"Keelevahetuse nupp"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"Sõnastikuteenus"</string>
     <string name="download_description" msgid="6014835283119198591">"Sõnastiku värskendamisteave"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"Pistiksõnastikud"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"Sõnastik on saadaval"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"Sõnastike seaded"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"Kasutaja sõnastikud"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"Kasutaja sõnastik"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"Installi"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"Tühista"</string>
     <string name="delete_dict" msgid="756853268088330054">"Kustuta"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"Teie mobiilseadmes valitud keele jaoks on saadaval sõnaraamat.&lt;br/&gt; Soovitame <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> sõnaraamatu &lt;b&gt;alla laadida&lt;/b&gt;, kuna see parandab teksti sisestamise kogemust.&lt;br/&gt; &lt;br/&gt; 3G-võrgu kaudu võib allalaadimiseks kuluda paar minutit. Kui teil ei ole &lt;b&gt;piiramatu andmesidepakett&lt;/b&gt;, võivad sellega kaasneda tasud.&lt;br/&gt; Kui te ei tea, milline andmesidepakett teil on, soovitame leida Wi-Fi-võrgu, et allalaadimist automaatselt alustada.&lt;br/&gt; &lt;br/&gt; Nõuanne. Sõnastikke saate alla laadida ja eemaldada mobiilseadme menüü <b>Seaded</b> jaotises &lt;b&gt;Keeled ja sisend&lt;/b&gt;."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"Laadi kohe alla (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g> MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Laadi alla WiFi kaudu"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"Sõnastik on saadaval <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> keeles"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"Vajutage ülevaatamiseks ja allalaadimiseks"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"Allalaadimine: <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> keele soovitused on peagi saadaval."</string>
     <string name="version_text" msgid="2715354215568469385">"Versioon <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"Lisa"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"Sõnaraamatusse lisamine"</string>

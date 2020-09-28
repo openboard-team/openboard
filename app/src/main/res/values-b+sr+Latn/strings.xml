@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"Napredno"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"Tema"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"Omogući podeljenu tastaturu"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Sinhronizuj Google tastaturu"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"Sinhronizacija je uključena"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"Sinhronizujte lični rečnik na svim uređajima"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"Sinhronizuj odmah"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"Želite da izbrišete podatke iz klauda"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Briše sinhronizovane podatke sa Google-a"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"Izbrisaćemo sinhronizovane podatke iz klauda. Da li ste sigurni?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"Izbriši"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"Otkaži"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"Sinhronizovaćemo lični rečnik i napravićemo njegovu rezervnu kopiju na Google serverima. Možda ćemo prikupljati statističke podatke o učestalosti reči da bismo poboljšali proizvode. Prikupljanje i korišćenje svih informacija će biti u skladu sa "<a href="https://www.google.com/policies/privacy">"Google-ovom politikom privatnosti"</a>"."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"Dodajte Google nalog na uređaj da biste omogućili ovu funkciju"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"Sinhroniz. nije dostupna za uređaje sa nalozima Google Apps for Business"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"Prebaci na druge metode unosa"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"Taster za prebacivanje jezika obuhvata i druge metode unosa"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"Taster za prebacivanje jezika"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"Usluga rečnika"</string>
     <string name="download_description" msgid="6014835283119198591">"Informacije o ažuriranju rečnika"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"Pomoćni rečnici"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"Rečnik je dostupan"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"Podešavanja za rečnike"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"Korisnički rečnici"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"Korisnički rečnik"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"Instaliraj"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"Otkaži"</string>
     <string name="delete_dict" msgid="756853268088330054">"Izbriši"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"Dostupan je rečnik za izabrani jezik na mobilnom uređaju.&lt;br/&gt; Preporučujemo vam da &lt;b&gt;preuzmete&lt;/b&gt; rečnik za <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> da biste poboljšali doživljaj kucanja.&lt;br/&gt; &lt;br/&gt; Preuzimanje može da traje minut ili dva preko 3G mreže. Troškovi će možda biti naplaćeni ako nemate &lt;b&gt;pretplatnički paket bez ograničenja&lt;/b&gt;.&lt;br/&gt; Ako niste sigurni koji pretplatnički paket imate, preporučujemo vam da pronađete Wi-Fi vezu da biste automatski započeli preuzimanje.&lt;br/&gt; &lt;br/&gt; Savet: Rečnike možete da preuzimate i uklanjate ako odete na &lt;b&gt;Jezik i unos&lt;/b&gt; u meniju &lt;b&gt;Podešavanja&lt;/b&gt; na mobilnom uređaju."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"Preuzmi odmah (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g> MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Preuzmi preko Wi-Fi-ja"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"Dostupan je rečnik za <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"Pritisnite za pregled i preuzimanje"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"Preuzimanje: Predlozi za <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> će uskoro biti spremni."</string>
     <string name="version_text" msgid="2715354215568469385">"Verzija <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"Dodaj"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"Dodavanje u rečnik"</string>

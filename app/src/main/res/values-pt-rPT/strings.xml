@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"Avançadas"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"Tema"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"Ativar teclado dividido"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Sincronização do Teclado Google"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"A sincronização está ativada"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"Sincronizar o seu dicionário pessoal entre dispositivos"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"Sincronizar agora"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"Eliminar dados da nuvem"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Elimina os seus dados sincronizados do Google"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"Os seus dados sincr. serão eliminados da nuvem. Tem a certeza?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"Eliminar"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"Cancelar"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"O seu dicionário pessoal será sincronizado e será criada uma cópia de segurança do mesmo nos servidores da Google. As informações estatísticas de frequência das palavras podem ser recolhidas para ajudar a melhorar os nossos produtos. A recolha e a utilização de todas as informações são efetuadas em conformidade com a "<a href="https://www.google.com/policies/privacy">"Política de Privacidade da Google"</a>"."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"Adicione uma Conta Google a este disp. para ativar esta func."</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"A sinc. não está disp. para disp. com contas do Google Apps for Business"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"Mudar p/ outros mét. ent."</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"A tecla de mudança de idioma abrange outros métodos de entrada"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"Tecla alterar idioma"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"Serviço de Dicionário"</string>
     <string name="download_description" msgid="6014835283119198591">"Informações de atualização do dicionário"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"Dicionários suplementares"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"Dicionário disponível"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"Definições dos dicionários"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"Dicionários do utilizador"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"Dicionário do utilizador"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"Instalar"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"Cancelar"</string>
     <string name="delete_dict" msgid="756853268088330054">"Eliminar"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"O idioma selecionado no dispositivo móvel tem um dicionário disponível.&lt;br/&gt; Recomendamos que &lt;b&gt;transfira&lt;/b&gt; o dicionário de <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> para melhorar a experiência de introdução de texto.&lt;br/&gt; &lt;br/&gt; A transferência pode demorar um ou dois minutos através de 3G. Podem ser aplicadas taxas se não tiver um &lt;b&gt;plano de dados ilimitado&lt;/b&gt;.&lt;br/&gt; Se não tiver a certeza do plano de dados que tem, recomendamos que procure uma ligação Wi-Fi para começar a transferência automaticamente.&lt;br/&gt; &lt;br/&gt; Sugestão: pode transferir e remover dicionários ao aceder a &lt;b&gt;Idioma e introdução&lt;/b&gt; no menu &lt;b&gt;Definições&lt;/b&gt; do dispositivo móvel."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"Transferir agora (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g> MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Transferir via Wi-Fi"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"Está disponível um dicionário de <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"Prima para consultar e transferir"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"A transferir: as sugestões para <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> estarão prontas em breve"</string>
     <string name="version_text" msgid="2715354215568469385">"Versão <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"Adicionar"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"Adicionar ao dicionário"</string>

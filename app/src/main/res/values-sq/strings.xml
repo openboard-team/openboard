@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"I përparuar"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"Tema"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"Aktivizo tastierën e ndarë"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Sinkronizimi i tastierës së Google"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"Sinkronizimi është i aktivizuar"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"Sinkronizo fjalorin tënd personal midis pajisjeve"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"Sinkronizo tani"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"Fshi të dhënat në Renë kompjuterike"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Fshin të dhënat e tua të sinkronizuara nga Google"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"Të dhënat e tua të sinkronizuara do të fshihen nga Reja kompjuterike. Je i sigurt?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"Fshi"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"Anulo"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"Fjalori yt personal do të sinkronizohet dhe do të rezervohet në serverët e Google. Informacionet statistikore mbi shpeshtësinë e përdorimit të fjalëve mund të mblidhen për të ndihmuar në përmirësimin e produkteve tona. Mbledhja dhe përdorimi i të gjitha informacioneve do të jetë në përputhje me "<a href="https://www.google.com/policies/privacy">"Politikën e privatësisë së Google"</a>"."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"Shto një llogari të Google në këtë pajisje për të aktivizuar këtë funksion"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"Sinkronizimi nuk mundësohet për pajisjet me llogari të \"Aplikacioneve të Google për biznesin\""</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"Kalo në metoda të tjera hyrjeje"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"Tasti i ndryshimit të gjuhës mbulon edhe metoda të tjera hyrjeje"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"Tasti i ndryshimit të gjuhës"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"Shërbim fjalori"</string>
     <string name="download_description" msgid="6014835283119198591">"Informacion mbi përditësimin e fjalorit"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"Fjalorë shtesë"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"Fjalor i përdorshëm"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"Cilësimet për fjalorët"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"Fjalorë përdoruesi"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"Fjalori i përdoruesit"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"Instalo"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"Anulo"</string>
     <string name="delete_dict" msgid="756853268088330054">"Fshi"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"Gjuha e zgjedhur në pajisjen tënde celulare ka një fjalor të disponueshëm.&lt;br/&gt; Ne rekomandojmë &lt;b&gt;shkarkimin&lt;/b&gt; e fjalorit në <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> për të përmirësuar përvojën tënde të të shkruarit.&lt;br/&gt; &lt;br/&gt; Shkarkimi mund të zgjasë një ose dy minuta me 3G. Mund të zbatohen tarifa nëse nuk ke &lt;b&gt;një plan të pakufizuar të të dhënave&lt;/b&gt;.&lt;br/&gt; Nëse nuk je i sigurt se cilin plan të dhënash ke, rekomandojmë të gjesh një lidhje Wi-Fi për ta nisur automatikisht shkarkimin.&lt;br/&gt; &lt;br/&gt; Këshillë: Mund të shkarkosh dhe t\'i heqësh fjalorët duke shkuar te &lt;b&gt;Gjuhët dhe hyrja&lt;/b&gt; te menyja &lt;b&gt;Cilësimet&lt;/b&gt; në pajisjen tënde celulare."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"Shkarko tani (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g> MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Shkarko nga Wi-Fi"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"Mund të përdoret një fjalor për <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"Shtyp për të rishikuar dhe shkarkuar"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"Po shkarkon... Sugjerimet për <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> do të jenë gati së shpejti."</string>
     <string name="version_text" msgid="2715354215568469385">"Versioni <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"Shto"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"Shto në fjalor"</string>

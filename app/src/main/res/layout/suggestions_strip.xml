@@ -41,23 +41,6 @@
         android:layout_centerVertical="true"
         style="?attr/suggestionWordStyle"
         android:contentDescription="@string/more_keys_strip_description" />
-    <LinearLayout
-        android:id="@+id/important_notice_strip"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/config_suggestions_strip_horizontal_margin"
-        android:layout_marginRight="@dimen/config_suggestions_strip_horizontal_margin"
-        android:hapticFeedbackEnabled="false"
-        android:soundEffectsEnabled="false" >
-        <TextView
-            android:id="@+id/important_notice_title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="6sp"
-            android:textSize="16sp"
-            style="?attr/suggestionWordStyle" />
-    </LinearLayout>
     <ImageButton
         android:id="@+id/suggestions_strip_voice_key"
         android:layout_width="@dimen/config_suggestions_strip_edge_key_width"

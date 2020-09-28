@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"Σύνθετες"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"Θέμα"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"Ενεργοποίηση διαχωρισμού πληκτρολογίου"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Συγχρονισμός Πληκτρολογίου Google"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"Ο συγχρονισμός είναι ενεργοποιημένος"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"Συγχρονισμός του προσωπικού λεξικού σας σε όλες τις συσκευές"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"Συγχρονισμός τώρα"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"Διαγραφή δεδομένων cloud"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Διαγράφει τα συγχρονισμένα δεδομένα σας από το Google"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"Διαγραφή συγχρονισμένων δεδομένων από το cloud. Είστε βέβαιοι;"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"Διαγραφή"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"Ακύρωση"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"Θα γίνει συγχρονισμός και δημιουργία αντιγράφων ασφαλείας του προσωπικού σας λεξικού στους διακομιστές της Google. Ενδέχεται να γίνεται συλλογή στατιστικών στοιχείων σχετικά με τη συχνότητα των λέξεων για τη βελτίωση των προϊόντων μας. Η συλλογή και χρήση όλων των πληροφοριών θα συμμορφώνεται με την "<a href="https://www.google.com/policies/privacy">"Πολιτική απορρήτου της Google"</a>"."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"Προσθέσετε Λογαριασμό Google για να ενεργοποιήσετε τη λειτουργία"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"Μη διαθέσιμος συγχρονισμός για συσκευές με λογ. Google Apps for Business"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"Άλλη μέθοδος εισόδου"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"Το κλειδί αλλαγής γλώσσας καλύπτει και άλλες μεθόδους εισόδου"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"Πλήκτρο εναλλαγής γλώσσας"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"Υπηρεσία λεξικού"</string>
     <string name="download_description" msgid="6014835283119198591">"Ενημέρωση πληροφοριών λεξικού"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"Πρόσθετα λεξικά"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"Διαθέσιμο λεξικό"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"Ρυθμίσεις για λεξικά"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"Λεξικά χρήστη"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"Λεξικό χρήστη"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"Εγκατάσταση"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"Ακύρωση"</string>
     <string name="delete_dict" msgid="756853268088330054">"Διαγραφή"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"Η επιλεγμένη γλώσσα στην κινητή συσκευή σας διαθέτει λεξικό.&lt;br/&gt; Σας συνιστούμε &lt;b&gt;να κατεβάσετε&lt;/b&gt; το λεξικό <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> για καλύτερη εμπειρία πληκτρολόγησης.&lt;br/&gt; &lt;br/&gt; Για τη λήψη μπορεί να χρειαστούν 1 ή 2 λεπτά μέσω 3G. Ενδέχεται να ισχύουν χρεώσεις αν δεν διαθέτετε &lt;b&gt;πρόγραμμα απεριόριστων δεδομένων&lt;/b&gt;.&lt;br/&gt; Αν δεν γνωρίζετε ποιο πρόγραμμα δεδομένων διαθέτετε, σας συνιστούμε να χρησιμοποιήσετε μια σύνδεση Wi-Fi για να ξεκινήσει αυτόματα η λήψη.&lt;br/&gt; &lt;br/&gt; Συμβουλή: Μπορείτε να κατεβάσετε και να καταργήσετε λεξικά, από την περιοχή &lt;b&gt;Γλώσσα και εισαγωγή&lt;/b&gt; του μενού &lt;b&gt;Ρυθμίσεις&lt;/b&gt; της κινητής συσκευής σας."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"Άμεση λήψη (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g>MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Λήψη μέσω Wi-Fi"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"Υπάρχει διαθέσιμο λεξικό για τα <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"Πατήστε για έλεγχο και λήψη"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"Λήψη: οι προτάσεις για τα <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> θα είναι έτοιμες σύντομα."</string>
     <string name="version_text" msgid="2715354215568469385">"Έκδοση <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"Προσθήκη"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"Προσθήκη στο λεξικό"</string>

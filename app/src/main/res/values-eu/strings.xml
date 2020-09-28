@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"Ezarpen aurreratuak"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"Gaia"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"Gaitu teklatu banatua"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Google teklatuaren sinkronizazioa"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"Sinkronizazioa aktibatuta dago"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"Izan hiztegi pertsonala sinkronizatuta gailu guztietan"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"Sinkronizatu"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"Ezabatu hodeiko datuak"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Sinkronizatutako datuak ezabatzen ditu Google-tik"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"Datuak hodeitik ezabatuko dira. Ziur hori egin nahi duzula?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"Ezabatu"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"Utzi"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"Hiztegi pertsonalizatua sinkronizatu egingo da eta Google zerbitzarietan gordeko da babeskopia gisa. Hitzak erabiltzeko maiztasunari buruzko estatistikak bil daitezke produktuak hobetzen laguntzeko. Informazioaren bilketak eta erabilerak "<a href="https://www.google.com/policies/privacy">"Google Pribatutasun-gidalerroak"</a>" gordeko ditu une oro."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"Eginbidea gaitzeko, gehitu Google kontua gailuan"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"Sinkronizazioa ez dago erabilgarri Google Apps for Business kontuak dituzten gailuetan"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"Aldatu idazketa-metodoa"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"Hizkuntza aldatzeko teklak beste idazketa-metodoetarako ere balio du"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"Hizkuntza aldatzeko tekla"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"Hiztegi-zerbitzua"</string>
     <string name="download_description" msgid="6014835283119198591">"Hiztegia eguneratzeko informazioa"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"Hiztegi gehigarriak"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"Hiztegia erabilgarri"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"Hiztegien ezarpenak"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"Erabiltzailearen hiztegiak"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"Erabiltzailearen hiztegia"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"Instalatu"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"Utzi"</string>
     <string name="delete_dict" msgid="756853268088330054">"Ezabatu"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"Gailu mugikorrean hautatutako hizkuntzak hiztegi bat du erabilgarri.&lt;br/&gt;<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> erabiltzeko, hiztegia &lt;b&gt;deskargatzea&lt;/b&gt; gomendatzen dugu, idaztea erosoagoa izan dadin.&lt;br/&gt; &lt;br/&gt; 3G sarearen bidez deskargatzeko minutu pare bat behar izan dezakezu. Ez baduzu &lt;b&gt;datu-plan mugagaberik&lt;/b&gt;, baliteke gastu gehigarriak kobratzea.&lt;br/&gt;Ez badakizu ziur nolako datu-plana duzun, Wi-Fi konexio bat bilatzea gomendatzen dizugu automatikoki deskarga dadin.&lt;br/&gt; &lt;br/&gt; Aholkua: gailu mugikorreko &lt;b&gt;Ezarpenak&lt;/b&gt; menuan dagoen &lt;b&gt;Hizkuntza eta idazketa&lt;/b&gt; atalean deskarga eta ken ditzakezu hiztegiak."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"Deskargatu (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g> MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Deskargatu Wi-Fi bidez"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> hizkuntzaren hiztegi bat erabilgarri dago"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"Berrikusteko eta deskargatzeko, sakatu hau"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"Deskargatzen: <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> hizkuntzaren iradokizunak laster egongo dira prest."</string>
     <string name="version_text" msgid="2715354215568469385">"<xliff:g id="VERSION_NUMBER">%1$s</xliff:g> bertsioa"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"Gehitu"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"Gehitu hiztegian"</string>

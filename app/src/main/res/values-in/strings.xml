@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"Lanjutan"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"Tema"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"Aktifkan keyboard terpisah"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Sinkronisasi Google Keyboard"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"Sinkronisasi diaktifkan"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"Menyinkronkan kamus pribadi di perangkat"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"Sinkronkan sekarang"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"Menghapus data awan"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Menghapus data yang disinkronkan dari Google"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"Data yang disinkronkan akan dihapus dari awan. Anda yakin?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"Hapus"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"Batal"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"Kamus pribadi akan disinkronkan dan di-backup ke server Google. Informasi statistik tentang frekuensi kata dapat dikumpulkan untuk membantu menyempurnakan produk kami. Pengumpulan dan penggunaan data tunduk pada "<a href="https://www.google.com/policies/privacy">"Kebijakan Privasi Google"</a>"."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"Tambahkan akun Google ke perangkat ini untuk mengaktifkan fitur ini"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"Sinkronisasi tidak tersedia untuk perangkat yang memiliki akun Google Apps for Business"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"Beralih ke metode masukan lain"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"Tombol beralih bahasa juga mencakup metode masukan lain"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"Tombol pengalih bahasa"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"Layanan Kamus"</string>
     <string name="download_description" msgid="6014835283119198591">"Informasi pembaruan kamus"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"Kamus pengaya"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"Kamus yang tersedia"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"Setelan untuk kamus"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"Kamus pengguna"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"Kamus pengguna"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"Instal"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"Batal"</string>
     <string name="delete_dict" msgid="756853268088330054">"Hapus"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"Bahasa yang dipilih di perangkat seluler memiliki kamus.&lt;br/&gt; Sebaiknya &lt;b&gt;download&lt;/b&gt; kamus <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> untuk menyempurnakan pengalaman mengetik.&lt;br/&gt; &lt;br/&gt; Download memerlukan waktu satu atau dua menit melalui 3G. Tagihan mungkin berlaku jika Anda tidak menggunakan &lt;b&gt;paket data tak terbatas&lt;/b&gt;.&lt;br/&gt; Jika Anda tidak yakin paket data mana yang digunakan, sebaiknya cari sambungan Wi-Fi untuk memulai download secara otomatis.&lt;br/&gt; &lt;br/&gt; Kiat: Anda dapat mendownload dan menghapus kamus dengan membuka &lt;b&gt;Bahasa &amp; masukan&lt;/b&gt; di menu &lt;b&gt;Setelan&lt;/b&gt; pada perangkat seluler."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"Download sekarang (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g>MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Download melalui Wi-Fi"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"Kamus tersedia untuk <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"Tekan untuk meninjau dan mendownload"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"Mendownload: saran untuk <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> akan segera tersedia."</string>
     <string name="version_text" msgid="2715354215568469385">"Versi <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"Tambahkan"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"Tambahkan ke kamus"</string>

@@ -68,37 +68,17 @@
     <string name="enable_split_keyboard">Enable split keyboard</string>
 
     <!-- Option title for enabling cloud sync feature [CHAR LIMIT=33]-->
-    <string name="cloud_sync_title">Google Keyboard Sync</string>
     <!-- Option summary when cloud sync feature is enabled  [CHAR LIMIT=65] -->
-    <string name="cloud_sync_summary">Sync is turned on</string>
     <!-- Option summary when cloud sync feature is disabled  [CHAR LIMIT=65] -->
-    <string name="cloud_sync_summary_disabled">Sync your personal dictionary across devices</string>
     <!-- Option title for starting the sync cycle now. [CHAR LIMIT=33]-->
-    <string name="sync_now_title">Sync now</string>
     <!-- Option title for letting user delete synced google keyboard data from Google servers.  [CHAR LIMIT=35] -->
-    <string name="clear_sync_data_title">Delete cloud data</string>
     <!-- Option summary for letting user delete synced google keyboard data from Google servers. [CHAR LIMIT=65] -->
-    <string name="clear_sync_data_summary">Deletes your synced data from Google</string>
     <!-- Text for confirmation dialog box asking user to confirm deletion of cloud data. [CHAR LIMIT=65] -->
-    <string name="clear_sync_data_confirmation">Your synced data will be deleted from the cloud. Are you sure?</string>
     <!-- Option to confirm deleting of user data from cloud [CHAR LIMIT=20] -->
-    <string name="clear_sync_data_ok">Delete</string>
     <!-- Option to cancel the deletion of user data from cloud [CHAR LIMIT=20] -->
-    <string name="cloud_sync_cancel">Cancel</string>
     <!-- Option to agree to terms and conditions for enabling cloud sync feature. -->
-    <string name="cloud_sync_opt_in_text">Your personal dictionary will be synced and backed up to
-        Google servers. The statistical information of word frequency may be collected to help
-        improve our products. The collection and usage of all the information will be compliant with
-        <a href="https://www.google.com/policies/privacy">Google\'s Privacy Policy</a>.
-    </string>
     <!-- Text to tell the user to add a Google account to the device to enable the cloud sync feature. [CHAR LIMIT=65]-->
-    <string name="add_account_to_enable_sync">
-        Please add a Google account to this device to enable this feature
-    </string>
     <!-- Text to tell the user that sync feature is disabled because they have Google Apps for Business account(s) on their device. [CHAR LIMIT=80]-->
-    <string name="cloud_sync_summary_disabled_work_profile">
-        Sync is not available for devices with Google Apps for Business accounts
-    </string>
 
     <!-- Option name for including other IMEs in the language switch list [CHAR LIMIT=30] -->
     <string name="include_other_imes_in_language_switch_list">Switch to other input methods</string>
@@ -474,7 +454,6 @@ mobile devices. [CHAR LIMIT=25] -->
     <!-- Title and summary of the dictionary settings screen -->
     <string name="dictionary_settings_title">Add-on dictionaries</string>
     <!-- Title for the prompt dialog which informs the user that a dictionary is available for the current language and asks to decide whether to download it over 3g -->
-    <string name="dictionary_install_over_metered_network_prompt">Dictionary available</string>
     <string name="dictionary_settings_summary">Settings for dictionaries</string>
     <!-- Name of the user dictionaries settings category -->
     <string name="user_dictionaries">User dictionaries</string>
@@ -518,24 +497,6 @@ mobile devices. [CHAR LIMIT=25] -->
     <string name="cancel_download_dict">Cancel</string>
     <!-- Action to delete a dictionary file [CHAR_LIMIT=15] -->
     <string name="delete_dict">Delete</string>
-
-    <!-- Message in the popup informing the user a dictionary is available for their language, and asking for a decision to download over their mobile data plan or not. The reason we ask for this is, the data is large and may be downloaded over a paid-per-megabyte connection but a dictionary is also essential to type comfortably, so we ask the user. This only pops in selected cases, when there is no dictionary at all currently, and the only available network seems to be metered. The "Languages & input" part should be set to the actual name of the option (message ID 5292716747264442359 in the translation console). [CHAR_LIMIT=700] -->
-    <string name="should_download_over_metered_prompt">The selected language on your mobile device has an available dictionary.&lt;br/>
-We recommend &lt;b>downloading&lt;/b> the <xliff:g id="LANGUAGE_NAME" example="English">%1$s</xliff:g> dictionary to improve your typing experience.&lt;br/>
-&lt;br/>
-The download could take a minute or two over 3G. Charges may apply if you don\'t have an &lt;b>unlimited data plan&lt;/b>.&lt;br/>
-If you are not sure which data plan you have, we recommend finding a Wi-Fi connection to start the download automatically.&lt;br/>
-&lt;br/>
-Tip: You can download and remove dictionaries by going to &lt;b>Languages&#160;&amp; input&lt;/b> in the &lt;b>Settings&lt;/b> menu of your mobile device.</string>
-    <string name="download_over_metered">Download now (<xliff:g id="SIZE_IN_MEGABYTES" example="0.7">%1$.1f</xliff:g>MB)</string>
-    <string name="do_not_download_over_metered">Download over Wi-Fi</string>
-    <!-- The text of the "dictionary available" notification. -->
-    <string name="dict_available_notification_title">A dictionary is available for <xliff:g id="LANGUAGE_NAME" example="English">%1$s</xliff:g></string>
-    <!-- The small subtext in the "dictionary available" notification. -->
-    <string name="dict_available_notification_description">Press to review and download</string>
-
-    <!-- The text of the toast warning a download is starting automatically to enable suggestions for the selected language [CHAR LIMIT=100] -->
-    <string name="toast_downloading_suggestions">Downloading: suggestions for <xliff:g id="LANGUAGE_NAME" example="English">%1$s</xliff:g> will be ready soon.</string>
 
     <!-- Version text [CHAR LIMIT=30]-->
     <string name="version_text">Version <xliff:g id="VERSION_NUMBER" example="1.0.1864.643521">%1$s</xliff:g></string>

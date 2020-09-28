@@ -50,14 +50,11 @@ import java.util.TreeSet;
  * - Next-word suggestions
  */
 public final class CorrectionSettingsFragment extends SubScreenFragment
-    implements SharedPreferences.OnSharedPreferenceChangeListener,
-            PermissionsManager.PermissionsResultCallback {
+    implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final boolean DBG_USE_INTERNAL_PERSONAL_DICTIONARY_SETTINGS = false;
     private static final boolean USE_INTERNAL_PERSONAL_DICTIONARY_SETTINGS =
             DBG_USE_INTERNAL_PERSONAL_DICTIONARY_SETTINGS;
-
-    private SwitchPreference mUseContactsPreference;
 
     @Override
     public void onCreate(final Bundle icicle) {
@@ -76,9 +73,6 @@ public final class CorrectionSettingsFragment extends SubScreenFragment
         if (ri == null) {
             overwriteUserDictionaryPreference(editPersonalDictionary);
         }
-
-        mUseContactsPreference = (SwitchPreference) findPreference(Settings.PREF_KEY_USE_CONTACTS_DICT);
-        turnOffUseContactsIfNoPermission();
     }
 
     private void overwriteUserDictionaryPreference(final Preference userDictionaryPreference) {
@@ -105,37 +99,4 @@ public final class CorrectionSettingsFragment extends SubScreenFragment
         }
     }
 
-    @Override
-    public void onSharedPreferenceChanged(final SharedPreferences sharedPreferences, final String key) {
-        if (!TextUtils.equals(key, Settings.PREF_KEY_USE_CONTACTS_DICT)) {
-            return;
-        }
-        if (!sharedPreferences.getBoolean(key, false)) {
-            // don't care if the preference is turned off.
-            return;
-        }
-
-        // Check for permissions.
-        if (PermissionsUtil.checkAllPermissionsGranted(
-                getActivity() /* context */, Manifest.permission.READ_CONTACTS)) {
-            return; // all permissions granted, no need to request permissions.
-        }
-
-        PermissionsManager.get(getActivity() /* context */).requestPermissions(
-                this /* PermissionsResultCallback */,
-                getActivity() /* activity */,
-                Manifest.permission.READ_CONTACTS);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(boolean allGranted) {
-        turnOffUseContactsIfNoPermission();
-    }
-
-    private void turnOffUseContactsIfNoPermission() {
-        if (!PermissionsUtil.checkAllPermissionsGranted(
-                getActivity(), Manifest.permission.READ_CONTACTS)) {
-            mUseContactsPreference.setChecked(false);
-        }
-    }
 }

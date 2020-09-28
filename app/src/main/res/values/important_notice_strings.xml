@@ -17,5 +17,4 @@
 
 <resources>
     <!-- The text shown on the suggestion bar to request the contacts permission info. -->
-    <string name="important_notice_suggest_contact_names">Suggest contact names? Touch for info.</string>
 </resources>

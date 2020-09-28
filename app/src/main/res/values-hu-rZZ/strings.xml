@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"Speciális"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"Téma"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"Megosztott billentyűzet bekapcsolása"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Google-billentyűzet szinkronizálása"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"A szinkronizálás be van kapcsolva"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"Szinkronizálja személyes szótárát eszközei között"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"Szinkronizálás most"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"Adatok törlése a felhőből"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Törli a Google rendszeréből a szinkronizált adatokat"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"A szinkronizált adatok törlődnek a felhőből. Biztosan folytatja?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"Törlés"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"Mégse"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"A rendszer szinkronizálni fogja az Ön személyes szótárát, és biztonsági mentést készít róla a Google szerverein. Termékeink továbbfejlesztése érdekében a rendszer a szavak előfordulási gyakoriságára vonatkozó statisztikai adatokat gyűjthet. Ezen információkat a "<a href="https://www.google.com/policies/privacy">"Google adatvédelmi irányelveivel"</a>" összhangban gyűjtjük és használjuk fel."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"A funkció engedélyezéséhez adjon egy Google-fiókot az eszközhöz"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"A Google Apps cégeknek-fiókkal rendelkező eszközökön nem érhető el a szinkronizálás"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"Váltás más beviteli módra"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"A nyelvkapcsoló gomb egyéb beviteli módokat is tartalmaz"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"A nyelvkapcsoló"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"Szótárszolgáltatás"</string>
     <string name="download_description" msgid="6014835283119198591">"Szótárfrissítéssel kapcsolatos információk"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"Bővítmények: szótárak"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"Van rendelkezésre álló szótár"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"Szótárak beállításai"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"Felhasználói szótárak"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"Felhasználói szótár"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"Telepítés"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"Mégse"</string>
     <string name="delete_dict" msgid="756853268088330054">"Törlés"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"A mobileszközön kiválasztott nyelvhez szótár áll rendelkezésre.&lt;br/&gt; A gépelési élmény javításához javasoljuk a(z) <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> szótár &lt;b&gt;letöltését&lt;/b&gt;.&lt;br/&gt; &lt;br/&gt; A letöltés 3G hálózaton keresztül néhány percig tart. Ha &lt;b&gt;előfizetése nem tartalmaz korlátlan adatforgalmat&lt;/b&gt;, a letöltés költségekkel járhat.&lt;br/&gt; Ha nem biztos abban, hogy milyen adatcsomagot használ, javasoljuk, hogy keressen Wi-Fi-kapcsolatot a letöltés automatikus elindításához.&lt;br/&gt; &lt;br/&gt; Tipp: Szótárakat a mobileszköz <b>Beállítások</b> menüjének &lt;b&gt;Nyelvek és bevitel&lt;/b&gt; szakaszában tölthet le és távolíthat el."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"Töltse le most (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g> MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Letöltés Wi-Fivel"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> nyelvhez van rendelkezésre álló szótár"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"Nyomja meg az áttekintéshez és letöltéshez"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"Letöltés: a(z) <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> nyelvvel kapcsolatos javaslatok hamarosan elérhetők lesznek."</string>
     <string name="version_text" msgid="2715354215568469385">"Verzió: <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"Hozzáadás"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"Hozzáadás a szótárhoz"</string>
