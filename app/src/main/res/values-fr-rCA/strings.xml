@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"Avancés"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"Thème"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"Activer le clavier en deux parties"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Synchronisation du clavier Google"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"La synchronisation est activée"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"Synchronisez votre dictionnaire personnel sur plusieurs appareils"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"Synchroniser maintenant"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"Supprimer les données du nuage"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Supprime vos données synchronisées de Google"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"Vos données synchronisées seront suppr. du nuage. Êtes-vous sûr?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"Supprimer"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"Annuler"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"Votre dictionnaire personnel sera synchronisé et sauvegardé sur les serveurs de Google. Des statistiques concernant la fréquence des mots peuvent être recueillies pour nous aider à améliorer nos produits. La collecte et l\'utilisation de toutes les données sont effectuées conformément à la "<a href="https://www.google.com/policies/privacy">"politique de confidentialité de Google"</a>"."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"Ajoutez un compte Google à cet appareil pour activer la fonction."</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"Synchronisation non disponible pour les comptes Google Apps pour entreprises"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"Autres modes de saisie"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"La touche de sélection de langue couvre d\'autres modes de saisie"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"Touche de sélection de langue"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"Service de dictionnaires"</string>
     <string name="download_description" msgid="6014835283119198591">"Informations relatives à la mise à jour des dictionnaires"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"Dictionnaires complémentaires"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"Dictionnaire disponible"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"Paramètres des dictionnaires"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"Dictionnaires personnels"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"Dictionnaire personnel"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"Installer"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"Annuler"</string>
     <string name="delete_dict" msgid="756853268088330054">"Supprimer"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"La langue sélectionnée sur votre appareil mobile comprend un dictionnaire.&lt;br/&gt;Nous vous recommandons de &lt;b&gt;télécharger&lt;/b&gt; le dictionnaire <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> pour améliorer votre expérience d\'entrée de texte.&lt;br/&gt;&lt;br&gt;Le téléchargement peut prendre quelques minutes sur un réseau cellulaire 3G. Certains frais peuvent s\'appliquer si vous n\'avez pas de &lt;b&gt;forfait de données illimitées&lt;/b&gt;.&lt;br/&gt;Si vous n\'êtes pas certain de ce qui est compris dans votre forfait, nous vous recommandons de vous connecter à un réseau Wi-Fi avant de commencer le téléchargement.&lt;br/&gt;&lt;br/&gt;Astuce : Vous pouvez télécharger et supprimer les dictionnaires dans le menu &lt;b&gt;Paramètres&lt;/b&gt; &gt;&lt;b&gt;Langues et méthodes d\'entrées&lt;/b&gt; de votre appareil."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"Télécharger (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g> Mo)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Télécharger via Wi-Fi"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"Un dictionnaire est offert pour la langue suivante : <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"Appuyez ici pour consulter et télécharger le dictionnaire."</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"Téléchargement en cours… Les suggestions seront bientôt offertes pour la langue suivante : <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>."</string>
     <string name="version_text" msgid="2715354215568469385">"Version <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"Ajouter"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"Ajouter au dictionnaire"</string>

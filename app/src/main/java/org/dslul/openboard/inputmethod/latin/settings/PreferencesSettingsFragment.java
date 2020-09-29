@@ -84,11 +84,6 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
 
     @Override
     public void onSharedPreferenceChanged(final SharedPreferences prefs, final String key) {
-        final Resources res = getResources();
-        if (key.equals(Settings.PREF_POPUP_ON)) {
-            setPreferenceEnabled(Settings.PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY,
-                    Settings.readKeyPreviewPopupEnabled(prefs, res));
-        }
         refreshEnablingsOfKeypressSoundAndVibrationSettings();
     }
 

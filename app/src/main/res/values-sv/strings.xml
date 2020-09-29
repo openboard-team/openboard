@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"Avancerat"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"Tema"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"Aktivera delat tangentbord"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Synkronisera Googles tangentbord"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"Synkroniseringen har aktiverats"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"Synkronisera din personliga ordlista på dina enheter"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"Synkronisera nu"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"Radera data i molnet"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Din synkroniserade data raderas från Google"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"Din synkroniserade data raderas från molnet. Vill du fortsätta?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"Radera"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"Avbryt"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"Den personliga ordlistan synkroniseras och säkerhetskopieras till Googles servrar. Statistisk information om ordfrekvens kan samlas in och användas för att förbättra våra produkter. Insamlingen och användningen av all information sker i enlighet med "<a href="https://www.google.com/policies/privacy">"Googles sekretesspolicy"</a>"."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"Lägg till ett Google-konto på enheten om du vill aktivera detta"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"Synkronisering är inte tillgänglig för enheter med Google Apps for Business-konton"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"Byt till annan inmatning"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"Språkbytesknappen omfattar även andra inmatningsmetoder"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"Knapp för att byta språk"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"Ordlistetjänst"</string>
     <string name="download_description" msgid="6014835283119198591">"Uppdateringsinformation för ordlista"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"Tilläggsordlistor"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"En ordlista är tillgänglig"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"Inställningar för ordlistor"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"Egna ordlistor"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"Egen ordlista"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"Installera"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"Avbryt"</string>
     <string name="delete_dict" msgid="756853268088330054">"Ta bort"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"Det finns en ordbok för språket du har valt på din mobila enhet.&lt;br/&gt; Vi rekommenderar att du &lt;b&gt;laddar ned&lt;/b&gt; ordboken på <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>. Då blir det enklare och smidigare att skriva.&lt;br/&gt; &lt;br/&gt; Nedladdningen tar en minut eller två om du använder 3G. Avgifter kan tillkomma om du inte har ett &lt;b&gt;abonnemang med obegränsad data&lt;/b&gt;.&lt;br/&gt; Om du inte är säker på vad som ingår i ditt abonnemang rekommenderar vi att du hittar en Wi-Fi-anslutning och påbörjar nedladdningen automatiskt.&lt;br/&gt; &lt;br/&gt; Tips: Du kan ladda ned och ta bort ordböcker via &lt;b&gt;Språk och inmatning&lt;/b&gt; i menyn &lt;b&gt;Inställningar&lt;/b&gt; på din mobila enhet."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"Ladda ned nu (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g> MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Ladda ned via Wi-Fi"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"En ordlista för <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> är tillgänglig"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"Tryck om du vill granska och ladda ned"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"Hämtar: förslag för <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> är snart klara."</string>
     <string name="version_text" msgid="2715354215568469385">"Version <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"Lägg till"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"Lägg till i ordlista"</string>

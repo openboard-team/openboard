@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"جدید ترین"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"تھیم"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"الگ ہونے والا کی بورڈ فعال کریں"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"‏Google کی بورڈ کی مطابقت پذیری"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"مطابقت پذیری آن کر دی گئی"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"سبھی آلات پر اپنی ذاتی لغت کی مطابقت پذیری کریں"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"ابھی مطابقت پذیری کریں"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"کلاؤڈ ڈیٹا حذف کریں"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"‏Google سے آپ کے مطابقت پذیر ڈیٹا کو حذف کر دیتا ہے"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"آپ کا مطابقت پذیر ڈيٹا کلاؤڈ سے حذف ہو جائے گا۔ کیا آپ تیار ہیں؟"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"حذف کریں"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"منسوخ کریں"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"‏آپ کی ذاتی لغت کی مطابقت پذیری کی جائے گی اور Google سرورز میں اس کا بیک اپ لیا جائے گا۔ ہمارے پروڈکٹس کو بہتر بنانے میں مدد کرنے کیلئے الفاظ کی فریکوئنسی کے اعداد و شمار کی معلومات کو جمع کیا جا سکتا ہے۔ سبھی معلومات کی جمع آوری اور استعمال "<a href="https://www.google.com/policies/privacy">"Google کی رازداری کی پالیسی"</a>" کے مطابق ہوگا۔"</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"‏یہ خصوصیت فعال کرنے کیلئے اس آلہ پر ایک Google اکاؤنٹ شامل کریں"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"‏Google Apps برائے کاروبار اکاؤنٹس کے ساتھ آلات کیلئے مطابقت پذیری دستیاب نہیں ہے"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"دیگر اندراج طریقوں پر سوئچ کریں"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"زبان سوئچ کرنے کی کلید اندراج کے دیگر طریقوں کا بھی احاطہ کرتی ہے"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"زبان سوئچ کرنے کی کلید"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"لغت سروس"</string>
     <string name="download_description" msgid="6014835283119198591">"لغت اپ ڈیٹ کی معلومات"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"اضافی لغات"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"لغت دستیاب ہے"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"لغات کیلئے ترتیبات"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"صارف لغات"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"صارف کی لغت"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"انسٹال کریں"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"منسوخ کریں"</string>
     <string name="delete_dict" msgid="756853268088330054">"حذف کریں"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"‏آپ کے موبائل آلہ پر منتخب کردہ زبان کیلئے ایک لغت دستیاب ہے۔&lt;br/&gt; آپ کے ٹائپنگ تجربہ کو بہتر بنانے کیلئے ہم <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> لغت کو &lt;br/&gt;ڈاؤن لوڈ کرنے&lt;br/&gt; کی تجویز کرتے ہیں۔&lt;br/&gt; &lt;br/&gt; ڈاؤن لوڈ میں 3G پر ایک یا دو منٹ لگ سکتے ہیں۔ اگر آپ کے پاس &lt;br/&gt;لا محدود ڈیٹا پلان&lt;br/&gt; نہیں ہے تو چارجز لاگو ہو سکتے ہیں&lt;br/&gt;۔&lt;br/&gt; اگر آپ کو یقین نہیں ہے کہ آپ کے پاس کون سا ڈیٹا پلان ہے تو ہم ڈاؤن لوڈ خود کار طور پر شروع کرنے کیلئے ایک Wi-Fi کنکشن تلاش کرنے کی تجویز کرتے ہیں۔&lt;br/&gt; &lt;br/&gt; تجویز: آپ اپنے موبائل آلہ کے &lt;br/&gt;ترتیبات&lt;br/&gt; مینو میں &lt;b&gt;زبانیں اور ان پٹ&lt;/b&gt; پر جا کر لغات کو ڈاؤن لوڈ کر سکتے اور ہٹا سکتے ہیں۔"</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"‏ابھی ڈاؤن لوڈ کریں (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g>MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"‏Wi-Fi پر ڈاؤن لوڈ کریں"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> کیلئے ایک لغت دستیاب ہے"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"جائزہ لینے اور ڈاؤن لوڈ کرنے کیلئے دبائیں"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"ڈاؤن لوڈ ہو رہا ہے: <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> کیلئے تجاویز جلد ہی تیار ہو جائیں گی۔"</string>
     <string name="version_text" msgid="2715354215568469385">"ورژن <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"شامل کریں"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"لغت میں شامل کریں"</string>

@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"​ຂັ້ນ​ສູງ"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"ຮູບແບບສີສັນ"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"ເປີດ​ນຳ​ໃຊ້​ແປ້ນ​ພິມ​ແຍກ​ຕົວ"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"ການ​ຊິງ​ຄ໌​ແປ້ນ​ພິມ Google"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"ຊິງ​ຄ໌​ເປ​ີດ​ແລ້ວ"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"ຊິງ​ຄ໌​ພົດ​ຈະ​ນາ​ນຸ​ກົມ​ສ່ວນ​ຕົວ​ຂອງ​ທ່ານ​ໃນ​ທຸກ​ອຸ​ປະ​ກອນ"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"ຊິງ​ຄ໌ດຽວນີ້"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"ລຶບ​ຂໍ້​ມູນ​ຄ​ລາວ"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"ລຶບ​ຂໍ້​ມູນ​ທີ່​ຊິງ​ຄ໌​ແລ້ວ​ຂອງ​ທ່ານ​ຈາກ Google"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"ຂໍ້​ມູນ​ທີ່​ຊິງ​ຄ໌​ແລ້ວ​ຂອງ​ທ່ານ​ຈະ​ຖືກ​ລຶບ​ໄປ​ຈາກ​ຄ​ລາວ. ທ່ານ​ແນ່​ໃຈ​ບໍ?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"ລຶບ"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"ຍົກເລີກ"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"ພົດ​ຈະ​ນາ​ນຸ​ກົມ​ສ່ວນ​ຕົວ​ຂອງ​ທ່ານ​ຈະ​ຖືກ​ຊິງ​ຄ໌ ແລະ​ສຳ​ຮອງ​ໄປ​ໃສ່​ເຊີບ​ເວີ Google. ຂໍ້​ມູນ​ສະ​ຖິ​ຕິ​ຂອງ​ຄວາມ​ຖີ່​ຄຳ​ເວົ້າ​ອາດ​ຈະ​ຖືກ​ເກັບ​ກຳ ເພື່ອ​ຊ່ວຍ​ປັບ​ປຸງ​ຜະ​ລິດ​ຕະ​ພັນ​ຂອງ​ທ່ານ. ການ​ເກັບ​ກຳ ແລະ​ການ​ນຳ​ໃຊ້​ທຸກ​ຂໍ້​ມູນ​ຈະ​ເປັນ​ໄປ​ຕາມ "<a href="https://www.google.com/policies/privacy">"ນະ​ໂຍ​ບາຍ​ຄວາມ​ເປັນ​ສ່ວນ​ຕົວ​ຂອງ Googl"</a>"."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"ກະ​ລຸ​ນາ​ເພີ່ມ​ບັນ​ຊີ Google ໃສ່​ອຸ​ປະ​ກອນ​ນີ້ ເພື່ອ​ເປີດ​ໃຊ້​ງານ​ຄຸນ​ສົມ​ບັດ​ນີ້"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"ບໍ່​ມີ​ການ​ຊິງ​ຄ໌​ໃຫ້​ສຳ​ລັບ​ອຸ​ປະ​ກອນ​ທີ່​ມີ Google Apps ສຳ​ລັບ​ບັນ​ຊີ Business"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"ປ່ຽນໄປໃຊ້ການປ້ອນຂໍ້ມູນແບບອື່ນ"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"ໂຕປ່ຽນພາສາເປັນທັງໂຕປ່ຽນຮູບແບບການປ້ອນຂໍ້ມູນເຊັ່ນກັນ"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"ປຸ່ມປ່ຽນພາສາ"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"ບໍລິການວັດຈະນານຸກົມ"</string>
     <string name="download_description" msgid="6014835283119198591">"ຂໍ້ມູນການອັບເດດວັດຈະນານຸກົມ"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"ໂຕເສີມວັດຈະນານຸກົມ"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"ມີວັດຈະນານຸກົມ"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"ການຕັ້ງຄ່າສຳລັບວັດຈະນານຸກົມ"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"ວັດຈະນານຸກົມຜູ່ໃຊ້"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"ວັດຈະນານຸກົມຜູ່ໃຊ້"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"ຕິດຕັ້ງ"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"ຍົກເລີກ"</string>
     <string name="delete_dict" msgid="756853268088330054">"ລຶບ"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"ພາສາທີ່ເລືອກໃນອຸປະກອນມືຖືຂອງທ່ານມີວັດຈະນານຸກົມທີ່ສາມາດໃຊ້ໄດ້.&lt;br/&gt; ພວກເຮົາແນະນຳໃຫ້ &lt;b&gt;ດາວໂຫລດ&lt;/b&gt; ວັດຈະນານຸກົມ <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> ເພື່ອປັບປຸງປະສົບການການພິມຂອງທ່ານ.&lt;br/&gt; &lt;br/&gt; ການດາວໂຫລດອາດໃຊ້ເວລາສອງສາມນາທີຜ່ານ 3G ເຊິ່ງອາດມີການຮຽກເກັບຄ່າຂໍ້ມູນໃນການດາວໂຫລດຫາກທ່ານບໍ່ມີ &lt;b&gt;ແພັກເກດແບບອັນລິມິດ&lt;/b&gt;.&lt;br/&gt; ຫາກທ່ານບໍ່ແນ່ໃຈວ່າໃຊ້ແພັກເກດໃດຢູ່, ພວກເຮົາແນະນຳໃຫ້ທ່ານຊອກຫາການເຊື່ອມຕໍ່ Wi-Fi ເພື່ອດາວໂຫລດໂດຍອັດຕະໂນມັດແທນ.&lt;br/&gt; &lt;br/&gt; ເຄັດລັບ: ທ່ານສາມາດດາວໂຫລດ ແລະ ລຶບວັດຈະນານຸກົມອອກໄດ້ໂດຍການໄປທີ່ &lt;b&gt;ພາສາ ແລະ ການປ້ອນຂໍ້ມູນເຂົ້າ&lt;/b&gt; ໃນເມນູ &lt;b&gt;ການຕັ້ງຄ່າ&lt;/b&gt; ຂອງອຸປະກອນມືຖືຂອງທ່ານ."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"ດາວໂຫລດດຽວນີ້ (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g>MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"ດາວ​ໂຫລດຜ່ານ Wi-Fi"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"ມີ​ວັດ​ຈະ​ນາ​ນຸ​ກົມ​ທີ່​ສາ​ມາດ​ໃຊ້​ໄດ້​ກັບ <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"ກົດທີ່ກວດຄືນ ແລະ ດາວໂຫລດ"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"ກຳ​ລັງ​ດາວ​ໂຫລດ: ການ​ແນະ​ນຳ​ສຳ​ລັບ <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> ຈະ​ພ້ອມ​ໃນ​ໄວໆ​ນີ້."</string>
     <string name="version_text" msgid="2715354215568469385">"ເວີຊັນ <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"ເພີ່ມ"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"ເພີ່ມໄປທີ່ວັດຈະນານຸກົມ"</string>

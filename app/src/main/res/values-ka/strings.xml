@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"გაფართოებული"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"თემა"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"გაყოფილი კლავიატურის გააქტიურება"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Google კლავიატურის სინქრონიზება"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"სინქრონიზება ჩართულია"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"აწარმოეთ თქვენი პერს. ლექსიკონის სინქ. მოწყობილობების მასშტაბით"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"ახლა სინქრონიზაცია"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"ღრუბლის მონაცემების წაშლა"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"წაშლის Google-თან თქვენს სინქრონიზებულს მონაცემებს"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"თქვენი სინქ. მონაც. წაიშლება ღრუბ. სივრციდან. დარწმუნებული ხართ?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"წაშლა"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"გაუქმება"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"თქვენი პერსონალური ლექსიკონი სინქრონიზდება და შეინახება სარეზერვოდ Google სერვერებზე. ჩვენი პროდუქტების გასაუმჯობესებლად, შეიძლება შეგროვდეს სტატისტიკური ინფორმაცია სიტყვების სიხშირის შესახებ. ნებისმიერი ინფორმაციის შეგროვება და გამოყენება "<a href="https://www.google.com/policies/privacy">"Google-ის კონფიდენციალურობის პოლიტიკასთან"</a>" შესაბამისობაში იქნება."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"ფუნქციის ჩასართავად, გთხოვთ მოწყობილობას Google ანგარიში დაამატოთ"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"სინქრ. არ არის ხელმისაწვდომი Google Apps for Business ანგ. მქონე მოწყ."</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"შეყვანის სხვა მეთოდებზე გადართვა"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"ენის გადართვის ღილაკს შეყვანის სხვა მეთოდებსაც შეიცავს"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"ენის გადართვის კლავიში"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"ლექსიკონის სერვისი"</string>
     <string name="download_description" msgid="6014835283119198591">"ლექსიკონის განახლების მონაცემები"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"დამატებითი ლექსიკონები"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"ხელმისაწვდომია ლექსიკონი"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"ლექსიკონების პარამეტრები"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"მომხმარებლის ლექსიკონები"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"მომხმარებლის ლექსიკონი"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"ინსტალაცია"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"გაუქმება"</string>
     <string name="delete_dict" msgid="756853268088330054">"წაშლა"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"თქვენს მობილურ მოწყობილობაზე არჩეული ენისთვის ხელმისაწვდომია ლექსიკონი.&lt;br/&gt; გირჩევთ, &lt;b&gt;ჩამოტვირთოთ&lt;/b&gt; <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> ლექსიკონი, რათა გაიმარტივოთ ტექსტის შეყვანა.&lt;br/&gt; &lt;br/&gt; 3G კავშირის მეშვეობით ჩამოტვირთვას შესაძლოა ერთი ან ორი წუთი დასჭირდეს. თუ &lt;b&gt;მობილური ინტერნეტის ულიმიტო&lt;/b&gt; ტარიფით არ სარგებლობთ, შეიძლება გადახდა მოგიწიოთ.&lt;br/&gt; თუ არ ხართ დარწმუნებული, მობილური ინტერნეტის რომელი ტარიფი გაქვთ გააქტიურებული, გირჩევთ, გამოიყენოთ Wi-Fi კავშირი და ჩამოტვირთვა ავტომატურად დაიწყება.&lt;br/&gt; &lt;br/&gt; მინიშნება: ლექსიკონების ჩამოტვირთვა და ამოშლა შეგიძლიათ თქვენი მობილური მოწყობილობის &lt;b&gt;პარამეტრების&lt;/b&gt; მენიუს სექციაში — &lt;b&gt;ენა და შეყვანა&lt;/b&gt;."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"ახლა ჩამოტვირთვა (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g>მბაიტი)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Wi-Fi კავშირზე ჩამოტვირთვა"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>-სთვის ხელმისაწვდომია ლექსიკონი"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"დააჭირეთ განხილვას და ჩამოტვირთეთ"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"იტვირთება: <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>-ის შემოთავაზებები მალე მომზადდება."</string>
     <string name="version_text" msgid="2715354215568469385">"ვერსია <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"დამატება"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"ლექსიკონში დამატება"</string>

@@ -21,7 +21,6 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.GestureDetector;
@@ -50,7 +49,6 @@ import org.dslul.openboard.inputmethod.latin.define.DebugFlags;
 import org.dslul.openboard.inputmethod.latin.settings.Settings;
 import org.dslul.openboard.inputmethod.latin.settings.SettingsValues;
 import org.dslul.openboard.inputmethod.latin.suggestions.MoreSuggestionsView.MoreSuggestionsListener;
-import org.dslul.openboard.inputmethod.latin.utils.ImportantNoticeUtils;
 
 import java.util.ArrayList;
 
@@ -59,7 +57,6 @@ import androidx.core.view.ViewCompat;
 public final class SuggestionStripView extends RelativeLayout implements OnClickListener,
         OnLongClickListener {
     public interface Listener {
-        void showImportantNoticeContents();
         void pickSuggestionManually(SuggestedWordInfo word);
         void onCodeInput(int primaryCode, int x, int y, boolean isKeyRepeat);
     }
@@ -69,7 +66,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
 
     private final ViewGroup mSuggestionsStrip;
     private final ImageButton mVoiceKey;
-    private final View mImportantNoticeStrip;
+    private final ImageButton mOtherKey;
     MainKeyboardView mMainKeyboardView;
 
     private final View mMoreSuggestionsContainer;
@@ -90,13 +87,11 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
     private static class StripVisibilityGroup {
         private final View mSuggestionStripView;
         private final View mSuggestionsStrip;
-        private final View mImportantNoticeStrip;
 
         public StripVisibilityGroup(final View suggestionStripView,
-                final ViewGroup suggestionsStrip, final View importantNoticeStrip) {
+                final ViewGroup suggestionsStrip) {
             mSuggestionStripView = suggestionStripView;
             mSuggestionsStrip = suggestionsStrip;
-            mImportantNoticeStrip = importantNoticeStrip;
             showSuggestionsStrip();
         }
 
@@ -105,22 +100,12 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
                     : ViewCompat.LAYOUT_DIRECTION_LTR;
             ViewCompat.setLayoutDirection(mSuggestionStripView, layoutDirection);
             ViewCompat.setLayoutDirection(mSuggestionsStrip, layoutDirection);
-            ViewCompat.setLayoutDirection(mImportantNoticeStrip, layoutDirection);
         }
 
         public void showSuggestionsStrip() {
             mSuggestionsStrip.setVisibility(VISIBLE);
-            mImportantNoticeStrip.setVisibility(INVISIBLE);
         }
 
-        public void showImportantNoticeStrip() {
-            mSuggestionsStrip.setVisibility(INVISIBLE);
-            mImportantNoticeStrip.setVisibility(VISIBLE);
-        }
-
-        public boolean isShowingImportantNoticeStrip() {
-            return mImportantNoticeStrip.getVisibility() == VISIBLE;
-        }
     }
 
     /**
@@ -141,9 +126,8 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
 
         mSuggestionsStrip = findViewById(R.id.suggestions_strip);
         mVoiceKey = findViewById(R.id.suggestions_strip_voice_key);
-        mImportantNoticeStrip = findViewById(R.id.important_notice_strip);
-        mStripVisibilityGroup = new StripVisibilityGroup(this, mSuggestionsStrip,
-                mImportantNoticeStrip);
+        mOtherKey = findViewById(R.id.suggestions_strip_other_key);
+        mStripVisibilityGroup = new StripVisibilityGroup(this, mSuggestionsStrip);
 
         for (int pos = 0; pos < SuggestedWords.MAX_SUGGESTIONS; pos++) {
             final TextView word = new TextView(context, null, R.attr.suggestionWordStyle);
@@ -176,9 +160,12 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
         final TypedArray keyboardAttr = context.obtainStyledAttributes(attrs,
                 R.styleable.Keyboard, defStyle, R.style.SuggestionStripView);
         final Drawable iconVoice = keyboardAttr.getDrawable(R.styleable.Keyboard_iconShortcutKey);
+        final Drawable iconIncognito = keyboardAttr.getDrawable(R.styleable.Keyboard_iconIncognitoKey);
         keyboardAttr.recycle();
         mVoiceKey.setImageDrawable(iconVoice);
         mVoiceKey.setOnClickListener(this);
+
+        mOtherKey.setImageDrawable(iconIncognito);
     }
 
     /**
@@ -195,6 +182,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
         setVisibility(visibility);
         final SettingsValues currentSettingsValues = Settings.getInstance().getCurrent();
         mVoiceKey.setVisibility(currentSettingsValues.mShowsVoiceInputKey ? VISIBLE : INVISIBLE);
+        mOtherKey.setVisibility(currentSettingsValues.mIncognitoModeEnabled ? VISIBLE : INVISIBLE);
     }
 
     public void setSuggestions(final SuggestedWords suggestedWords, final boolean isRtlLanguage) {
@@ -208,31 +196,6 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
 
     public void setMoreSuggestionsHeight(final int remainingHeight) {
         mLayoutHelper.setMoreSuggestionsHeight(remainingHeight);
-    }
-
-    // This method checks if we should show the important notice (checks on permanent storage if
-    // it has been shown once already or not, and if in the setup wizard). If applicable, it shows
-    // the notice. In all cases, it returns true if it was shown, false otherwise.
-    public boolean maybeShowImportantNoticeTitle() {
-        final SettingsValues currentSettingsValues = Settings.getInstance().getCurrent();
-        if (!ImportantNoticeUtils.shouldShowImportantNotice(getContext(), currentSettingsValues)) {
-            return false;
-        }
-        if (getWidth() <= 0) {
-            return false;
-        }
-        final String importantNoticeTitle = ImportantNoticeUtils.getSuggestContactsNoticeTitle(
-                getContext());
-        if (TextUtils.isEmpty(importantNoticeTitle)) {
-            return false;
-        }
-        if (isShowingMoreSuggestionPanel()) {
-            dismissMoreSuggestionsPanel();
-        }
-        mLayoutHelper.layoutImportantNotice(mImportantNoticeStrip, importantNoticeTitle);
-        mStripVisibilityGroup.showImportantNoticeStrip();
-        mImportantNoticeStrip.setOnClickListener(this);
-        return true;
     }
 
     public void clear() {
@@ -354,9 +317,6 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
 
     @Override
     public boolean onInterceptTouchEvent(final MotionEvent me) {
-        if (mStripVisibilityGroup.isShowingImportantNoticeStrip()) {
-            return false;
-        }
         // Detecting sliding up finger to show {@link MoreSuggestionsView}.
         if (!mMoreSuggestionsView.isShowingInParent()) {
             mLastX = (int)me.getX();
@@ -447,10 +407,6 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
     public void onClick(final View view) {
         AudioAndHapticFeedbackManager.getInstance().performHapticAndAudioFeedback(
                 Constants.CODE_UNSPECIFIED, this);
-        if (view == mImportantNoticeStrip) {
-            mListener.showImportantNoticeContents();
-            return;
-        }
         if (view == mVoiceKey) {
             mListener.onCodeInput(Constants.CODE_SHORTCUT,
                     Constants.SUGGESTION_STRIP_COORDINATE, Constants.SUGGESTION_STRIP_COORDINATE,
@@ -482,8 +438,5 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
     protected void onSizeChanged(final int w, final int h, final int oldw, final int oldh) {
         // Called by the framework when the size is known. Show the important notice if applicable.
         // This may be overriden by showing suggestions later, if applicable.
-        if (oldw <= 0 && w > 0) {
-            maybeShowImportantNoticeTitle();
-        }
     }
 }

@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"고급"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"테마"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"분할 키보드 사용"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Google 키보드 동기화"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"동기화가 사용 설정됩니다."</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"개인 사전을 기기 간에 동기화합니다."</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"지금 동기화"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"클라우드 데이터 삭제"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Google에서 동기화된 데이터 삭제"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"동기화된 데이터가 클라우드에서 삭제됩니다. 계속하시겠습니까?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"삭제"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"취소"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"개인 사전이 Google 서버에 동기화되며 백업됩니다. Google의 제품 개선을 위해 단어 빈도에 관한 통계 정보가 수집될 수 있습니다. 모든 정보는 "<a href="https://www.google.com/policies/privacy">"Google 개인정보처리방침"</a>"에 따라 수집되고 사용됩니다."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"이 기능을 사용하려면 기기에 Google 계정을 추가하세요."</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"Google Apps for Work 계정을 사용하는 기기에서는 동기화할 수 없습니다."</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"다른 입력 방법으로 전환"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"언어 전환 키가 제공하는 기타 입력 방법"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"언어 전환 키"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"사전 서비스"</string>
     <string name="download_description" msgid="6014835283119198591">"사전 업데이트 정보"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"사전 추가"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"사전 사용 가능"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"사전 설정"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"사용자 사전"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"사용자 사전"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"설치"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"취소"</string>
     <string name="delete_dict" msgid="756853268088330054">"삭제"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"기기에서 선택한 언어로 사용할 수 있는 사전이 있습니다.&lt;br/&gt; <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> 사전을 <b>다운로드</b>하여 입력 환경을 개선해 보세요.&lt;br/&gt; &lt;br/&gt; 3G로 다운로드하는 경우 1~2분 정도 걸립니다. &lt;b&gt;무제한 데이터 요금제&lt;/b&gt;가 아닌 경우 요금이 청구됩니다.&lt;br/&gt; 사용 중인 데이터 요금제를 잘 모르는 경우 Wi-Fi에 연결할 수 있는 곳을 찾아 자동 다운로드를 시작하는 것이 좋습니다.&lt;br/&gt; &lt;br/&gt; 도움말: 사전을 다운로드하거나 삭제하려면 &lt;b&gt;언어 및 입력&lt;/b&gt;으로 이동하면 되며 이는 휴대기기의 &lt;b&gt;설정&lt;/b&gt; 메뉴에 있습니다."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"지금 다운로드(<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g>MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Wi-Fi를 통해 다운로드"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> 사전을 사용할 수 있습니다."</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"검토하고 다운로드하려면 누르세요."</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"다운로드 중: <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>에 대한 추천항목이 곧 준비됩니다."</string>
     <string name="version_text" msgid="2715354215568469385">"버전 <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"추가"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"사전에 추가"</string>

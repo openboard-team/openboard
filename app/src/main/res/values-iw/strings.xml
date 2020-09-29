@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"אפשרויות מתקדמות"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"עיצוב"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"הפעל מקלדת מפוצלת"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"‏סנכרון מקלדת Google"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"הסנכרון פועל"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"סנכרן את המילון האישי בין מכשירים"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"סנכרן עכשיו"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"מחק נתונים בענן"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"‏מוחק את הנתונים המסונכרנים שלך מ-Google"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"הנתונים המסונכרנים שלך יימחקו מהענן. להמשיך?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"מחק"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"ביטול"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"‏המילון האישי שלך יסונכרן ויגובה בשרתי Google. ייתכן שהמידע הסטטיסטי לגבי תדירות מילים ייאסף כדי לעזור בשיפור המוצרים שלנו. איסוף המידע והשימוש בו ייעשו בהתאם ל"<a href="https://www.google.com/policies/privacy">"מדיניות הפרטיות של Google"</a>"."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"‏הוסף חשבון Google במכשיר הזה כדי להפעיל את התכונה הזו"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"‏סנכרון אינו זמין במכשירים עם חשבונות Google Apps for Business"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"עבור לשיטות קלט אחרות"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"מתג החלפת השפה מכסה גם שיטות קלט אחרות"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"מתג החלפת שפה"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"שירות מילון"</string>
     <string name="download_description" msgid="6014835283119198591">"פרטי עדכון מילון"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"תוספי מילונים"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"מילון זמין"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"הגדרות עבור מילונים"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"מילוני משתמש"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"מילון משתמש"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"התקן"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"ביטול"</string>
     <string name="delete_dict" msgid="756853268088330054">"מחק"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"‏לשפה הנבחרת בנייד שלך יש מילון זמין.&lt;br/&gt; אנחנו ממליצים &lt;br/&gt;להוריד&lt;br/&gt; את המילון בשפה ה<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> כדי לשפר את חוויית ההקלדה.&lt;br/&gt; &lt;br/&gt; תהליך ההורדה עשוי לקחת כדקה או שתיים ברשת 3G. ייתכן שתחויב בתשלום אם אין לך &lt;b&gt;תוכנית נתונים ללא הגבלה&lt;b&gt;&lt;b&gt; אם אינך בטוח איזו תוכנית נתונים יש לך, אנחנו ממליצים למצוא חיבור Wi-Fi כדי להתחיל בהורדה באופן אוטומטי.&lt;br/&gt;&lt;br/&gt; טיפ: ניתן להוריד מילונים ולהסיר אותם על ידי מעבר אל &lt;b&gt;שפות וקלט&lt;b&gt; בתפריט &lt;b&gt;הגדרות&lt;b&gt; בנייד."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"‏הורד עכשיו (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g>MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"‏הורד באמצעות Wi-Fi"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"יש מילון זמין עבור <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"לחץ כדי לעיין ולהוריד"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"מוריד: הצעות עבור <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> יהיו מוכנות בקרוב."</string>
     <string name="version_text" msgid="2715354215568469385">"גרסה <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"הוסף"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"הוסף למילון"</string>

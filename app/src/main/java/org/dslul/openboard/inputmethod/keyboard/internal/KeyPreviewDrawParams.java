@@ -32,7 +32,6 @@ public final class KeyPreviewDrawParams {
     public final int mPreviewOffset;
     public final int mPreviewHeight;
     public final int mPreviewBackgroundResId;
-    private int mLingerTimeout;
     private boolean mShowPopup = true;
 
     // The graphical geometry of the key preview.
@@ -67,8 +66,6 @@ public final class KeyPreviewDrawParams {
                 R.styleable.MainKeyboardView_keyPreviewHeight, 0);
         mPreviewBackgroundResId = mainKeyboardViewAttr.getResourceId(
                 R.styleable.MainKeyboardView_keyPreviewBackground, 0);
-        mLingerTimeout = mainKeyboardViewAttr.getInt(
-                R.styleable.MainKeyboardView_keyPreviewLingerTimeout, 0);
     }
 
     public void setVisibleOffset(final int previewVisibleOffset) {
@@ -100,17 +97,12 @@ public final class KeyPreviewDrawParams {
         return mVisibleHeight;
     }
 
-    public void setPopupEnabled(final boolean enabled, final int lingerTimeout) {
+    public void setPopupEnabled(final boolean enabled) {
         mShowPopup = enabled;
-        mLingerTimeout = lingerTimeout;
     }
 
     public boolean isPopupEnabled() {
         return mShowPopup;
-    }
-
-    public int getLingerTimeout() {
-        return mLingerTimeout;
     }
 
     public void setAnimationParams(final boolean hasCustomAnimationParams,

@@ -83,7 +83,6 @@ import org.dslul.openboard.inputmethod.latin.suggestions.SuggestionStripViewAcce
 import org.dslul.openboard.inputmethod.latin.touchinputconsumer.GestureConsumer;
 import org.dslul.openboard.inputmethod.latin.utils.ApplicationUtils;
 import org.dslul.openboard.inputmethod.latin.utils.DialogUtils;
-import org.dslul.openboard.inputmethod.latin.utils.ImportantNoticeUtils;
 import org.dslul.openboard.inputmethod.latin.utils.IntentUtils;
 import org.dslul.openboard.inputmethod.latin.utils.JniUtils;
 import org.dslul.openboard.inputmethod.latin.utils.LeakGuardHandlerWrapper;
@@ -703,7 +702,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     private void resetDictionaryFacilitator(final Locale locale) {
         final SettingsValues settingsValues = mSettings.getCurrent();
         mDictionaryFacilitator.resetDictionaries(this /* context */, locale,
-                settingsValues.mUseContactsDict, settingsValues.mUsePersonalizedDicts,
+                false, settingsValues.mUsePersonalizedDicts,
                 false /* forceReloadMainDictionary */,
                 settingsValues.mAccount, "" /* dictNamePrefix */,
                 this /* DictionaryInitializationListener */);
@@ -720,7 +719,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     /* package private */ void resetSuggestMainDict() {
         final SettingsValues settingsValues = mSettings.getCurrent();
         mDictionaryFacilitator.resetDictionaries(this /* context */,
-                mDictionaryFacilitator.getLocale(), settingsValues.mUseContactsDict,
+                mDictionaryFacilitator.getLocale(), false,
                 settingsValues.mUsePersonalizedDicts,
                 true /* forceReloadMainDictionary */,
                 settingsValues.mAccount, "" /* dictNamePrefix */,
@@ -1014,8 +1013,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
         mainKeyboardView.setMainDictionaryAvailability(
                 mDictionaryFacilitator.hasAtLeastOneInitializedMainDictionary());
-        mainKeyboardView.setKeyPreviewPopupEnabled(currentSettingsValues.mKeyPreviewPopupOn,
-                currentSettingsValues.mKeyPreviewPopupDismissDelay);
+        mainKeyboardView.setKeyPreviewPopupEnabled(currentSettingsValues.mKeyPreviewPopupOn);
         mainKeyboardView.setSlidingKeyInputPreviewEnabled(
                 currentSettingsValues.mSlidingKeyInputPreviewEnabled);
         mainKeyboardView.setGestureHandlingEnabledByUser(
@@ -1317,18 +1315,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         return keyboard.getCoordinates(codePoints);
     }
 
-    // Callback for the {@link SuggestionStripView}, to call when the important notice strip is
-    // pressed.
-    @Override
-    public void showImportantNoticeContents() {
-        PermissionsManager.get(this).requestPermissions(
-                this /* PermissionsResultCallback */,
-                null /* activity */, permission.READ_CONTACTS);
-    }
-
     @Override
     public void onRequestPermissionsResult(boolean allGranted) {
-        ImportantNoticeUtils.updateContactsNoticeShown(this /* context */);
         setNeutralSuggestionStrip();
     }
 
@@ -1561,13 +1549,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             return;
         }
 
-        final boolean shouldShowImportantNotice =
-                ImportantNoticeUtils.shouldShowImportantNotice(this, currentSettingsValues);
         final boolean shouldShowSuggestionCandidates =
                 currentSettingsValues.mInputAttributes.mShouldShowSuggestions
                         && currentSettingsValues.isSuggestionsEnabledPerUserSettings();
-        final boolean shouldShowSuggestionsStripUnlessPassword = shouldShowImportantNotice
-                || currentSettingsValues.mShowsVoiceInputKey
+        final boolean shouldShowSuggestionsStripUnlessPassword = currentSettingsValues.mShowsVoiceInputKey
                 || shouldShowSuggestionCandidates
                 || currentSettingsValues.isApplicationSpecifiedCompletionsOn();
         final boolean shouldShowSuggestionsStrip = shouldShowSuggestionsStripUnlessPassword
@@ -1587,11 +1572,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 == SuggestedWords.INPUT_STYLE_BEGINNING_OF_SENTENCE_PREDICTION);
         final boolean noSuggestionsToOverrideImportantNotice = noSuggestionsFromDictionaries
                 || isBeginningOfSentencePrediction;
-        if (shouldShowImportantNotice && noSuggestionsToOverrideImportantNotice) {
-            if (mSuggestionStripView.maybeShowImportantNoticeTitle()) {
-                return;
-            }
-        }
 
         if (currentSettingsValues.isSuggestionsEnabledPerUserSettings()
                 || currentSettingsValues.isApplicationSpecifiedCompletionsOn()
@@ -1901,7 +1881,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     void replaceDictionariesForTest(final Locale locale) {
         final SettingsValues settingsValues = mSettings.getCurrent();
         mDictionaryFacilitator.resetDictionaries(this, locale,
-                settingsValues.mUseContactsDict, settingsValues.mUsePersonalizedDicts,
+                false, settingsValues.mUsePersonalizedDicts,
                 false /* forceReloadMainDictionary */,
                 settingsValues.mAccount, "", /* dictionaryNamePrefix */
                 this /* DictionaryInitializationListener */);

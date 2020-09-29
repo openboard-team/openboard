@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"Lisäasetukset"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"Teema"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"Ota jaettu näppäimistö käyttöön"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Google-näppäimistön synkronointi"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"Synkronointi on käytössä."</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"Synkronoi oma sanakirjasi eri laitteiden välillä."</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"Synkronoi"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"Poista tiedot pilvestä"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Poistaa synkronoidut tietosi Googlen palveluista"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"Synkronoidut tiedot poistetaan pilvestä. Oletko varma?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"Poista"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"Peruuta"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"Oma sanakirjasi synkronoidaan ja varmuuskopiodaan Googlen palvelimille. Sanojen yleisyyttä koskevia tilastotietoja voidaan kerätä tuotteidemme parantamiseksi. Tietojen keräämisessä ja käytössä noudatetaan "<a href="https://www.google.com/policies/privacy">"Googlen tietosuojakäytäntöä"</a>"."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"Ota tämä ominaisuus käyttöön lisäämällä Google-tili laitteeseen."</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"Synkronointi ei ole käytettävissä Google Apps for Business -tilejä sisältäville laitteille."</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"Käytä toista syöttötapaa"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"Kielenvaihtonäppäin kattaa myös muut syöttötavat"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"Kielenvaihtonäppäin"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"Sanakirjapalvelu"</string>
     <string name="download_description" msgid="6014835283119198591">"Sanakirjan päivitystiedot"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"Sanakirjalisäosat"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"Sanakirja saatavilla"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"Sanakirjojen asetukset"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"Käyttäjän sanakirjat"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"Käyttäjän sanakirja"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"Asenna"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"Peruuta"</string>
     <string name="delete_dict" msgid="756853268088330054">"Poista"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"Mobiililaitteellasi valittuna olevalle kielelle (<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>) on saatavilla sanakirja.&lt;br/&gt; Suosittelemme sanakirjan &lt;b&gt;lataamista&lt;/b&gt;, sillä se parantaa kirjoituskokemustasi.&lt;br/&gt; &lt;br/&gt; Lataus 3G-yhteydellä voi kestää pari minuuttia. Operaattorisi saattaa veloittaa sinua tiedonsiirrosta, jos &lt;b&gt;liittymäsi datamäärä ei ole rajoittamaton&lt;/b&gt;.&lt;br/&gt; Jos et ole varma, millainen liittymä sinulla on, muodosta yhteys Wi-Fi-verkkoon. Lataus käynnistyy tällöin automaattisesti.&lt;br/&gt; &lt;br/&gt; Vinkki: Voit ladata ja poistaa sanakirjoja avaamalla &lt;b&gt;Kielet ja syöttötapa ‑asetukset&lt;/b&gt; mobiililaitteesi &lt;b&gt;Asetukset&lt;/b&gt;-valikossa."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"Lataa nyt (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g> Mt)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Lataa Wi-Fi-yhteydellä"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"Sanakirja on saatavilla kielelle <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"Paina tätä, jos haluat tarkastella kohdetta ja ladata sen"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"Ladataan: kielen <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> ehdotukset ovat pian käytettävissä."</string>
     <string name="version_text" msgid="2715354215568469385">"Versio <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"Lisää"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"Lisää sanakirjaan"</string>

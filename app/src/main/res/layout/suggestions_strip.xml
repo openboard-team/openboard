@@ -33,25 +33,14 @@
         android:soundEffectsEnabled="false" />
     <!-- Provide audio and haptic feedback by ourselves based on the keyboard settings.
          We just need to ignore the system's audio and haptic feedback settings. -->
-    <!-- Provide audio and haptic feedback by ourselves based on the keyboard settings.
-         We just need to ignore the system's audio and haptic feedback settings. -->
-    <LinearLayout
-        android:id="@+id/important_notice_strip"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/config_suggestions_strip_horizontal_margin"
-        android:layout_marginRight="@dimen/config_suggestions_strip_horizontal_margin"
-        android:hapticFeedbackEnabled="false"
-        android:soundEffectsEnabled="false" >
-        <TextView
-            android:id="@+id/important_notice_title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="6sp"
-            android:textSize="16sp"
-            style="?attr/suggestionWordStyle" />
-    </LinearLayout>
+    <ImageButton
+        android:id="@+id/suggestions_strip_other_key"
+        android:layout_width="@dimen/config_suggestions_strip_edge_key_width"
+        android:layout_height="fill_parent"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        style="?attr/suggestionWordStyle"
+        android:contentDescription="@string/more_keys_strip_description" />
     <ImageButton
         android:id="@+id/suggestions_strip_voice_key"
         android:layout_width="@dimen/config_suggestions_strip_edge_key_width"

@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"மேம்பட்டவை"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"தீம்"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"பிரிக்கப்பட்ட விசைப்பலகையை இயக்கு"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Google விசைப்பலகை ஒத்திசைவு"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"ஒத்திசைவு இயக்கப்பட்டது"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"எல்லா சாதனங்களிலும் தனிப்பட்ட அகராதியை ஒத்திசைக்கவும்"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"இப்போது ஒத்திசைத்தல்"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"கிளவுடு தரவை நீக்கவும்"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Google இலிருந்து ஒத்திசைத்த தரவை நீக்கும்"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"ஒத்திசைத்தத் தரவு மேகக்கணியிலிருந்து நீக்கப்படும். நிச்சயமாக நீக்கவா?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"நீக்கு"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"ரத்துசெய்"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"உங்கள் தனிப்பட்ட அகராதி ஒத்திசைக்கப்பட்டு, Google சேவையகங்களில் காப்புப் பிரதி எடுக்கப்படும். எங்கள் தயாரிப்புகளை மேம்படுத்த உதவ, சொல் உபயோகத்தின் புள்ளிவிவரத் தகவல் சேகரிக்கப்படலாம். எல்லா தகவல்களின் சேகரிப்பும், உபயோகமும் "<a href="https://www.google.com/policies/privacy">"Google இன் தனியுரிமைக் கொள்கைக்கு"</a>" இணங்கியபடியே இருக்கும்."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"இந்த அம்சத்தை இயக்க, சாதனத்தில் Google கணக்கைச் சேர்க்கவும்"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"வணிகத்திற்கான Google Apps கணக்குகள் இயங்கும் சாதனங்களில் ஒத்திசைக்க முடியாது."</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"பிற உள்ளீட்டு முறைகளுக்கு மாறு"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"மொழி மாற்றல் விசை பிற உள்ளீட்டு முறைகளையும் கட்டுப்படுத்துகிறது"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"மொழி மாற்ற விசை"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"அகராதி சேவை"</string>
     <string name="download_description" msgid="6014835283119198591">"அகராதியின் புதுப்பிப்பு தகவல்"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"துணை அகராதிகள்"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"அகராதி கிடைக்கிறது"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"அகராதிகளுக்கான அமைப்பு"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"பயனர் அகராதிகள்"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"பயனர் அகராதி"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"நிறுவு"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"ரத்துசெய்"</string>
     <string name="delete_dict" msgid="756853268088330054">"நீக்கு"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"உங்கள் மொபைலில் தேர்ந்தெடுத்துள்ள மொழிக்கான அகராதி கிடைக்கிறது.&lt;br/&gt; உள்ளிடும் அனுபவத்தை மேம்படுத்த, <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> அகராதியை &lt;b&gt;இறக்கும்படி&lt;/b&gt; பரிந்துரைக்கிறோம்.&lt;br/&gt; &lt;br/&gt; 3G இல் இறக்க, ஒன்று அல்லது இரண்டு நிமிடங்கள் ஆகலாம். உங்களிடம் &lt;b&gt;வரம்பற்ற தரவுத் திட்டம்&lt;/b&gt; இல்லையெனில், கட்டணம் விதிக்கப்படலாம்.&lt;br/&gt; எந்தத் தரவு திட்டத்தைப் பயன்படுத்துகிறீர்கள் என்பது உறுதியாகத் தெரியவில்லை எனில், இறக்குவதைத் தானாகத் தொடங்குவதற்கு வைஃபை இணைப்பைக் கண்டறியும்படி பரிந்துரைக்கிறோம்.&lt;br/&gt; &lt;br/&gt; உதவிக்குறிப்பு: மொபைலில் &lt;b&gt;அமைப்புகள்&lt;/b&gt; மெனுவில், &lt;b&gt;மொழி &amp; உள்ளீடு&lt;/b&gt; என்பதற்குச் சென்று அகராதிகளை இறக்கலாம், அகற்றலாம்."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"இப்போது பதிவிறக்கு (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g>மெ.பை.)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"வைஃபை வழியாகப் பதிவிறக்கு"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> மொழிக்கு அகராதி கிடைக்கிறது"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"மதிப்பாய்வு செய்து பதிவிறக்க அழுத்தவும்"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"பதிவிறக்குகிறது: <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> க்கான பரிந்துரைகள் விரைவில் தயாராகிவிடும்."</string>
     <string name="version_text" msgid="2715354215568469385">"<xliff:g id="VERSION_NUMBER">%1$s</xliff:g> பதிப்பு"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"சேர்"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"அகராதியில் சேர்"</string>

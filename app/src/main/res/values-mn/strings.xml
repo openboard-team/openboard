@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"Дэлгэрэнгүй"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"Загвар"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"Хуваагдмал гарыг идэвхжүүлэх"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Google-н гарны тохиргоо"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"Тохиргоо хийгдэх үйлдлийг идэвхжүүлсэн байна"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"Төхөөрөмжинд өөрийн хувийн толь бичгийг тохируулах"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"Одоо синк хийх"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"Cloud-ын мэдээллийг устгах"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Таны синк хийсэн мэдээллийг Google-ээс устгана."</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"Таны мэдээллийг cloud-с устгах болно. Та итгэлтэй байна уу?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"Устгах"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"Цуцлах"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"Таны хувийн толь бичгийг синк хийж, Google-ийн серверүүд дээр хадгалж авч үлдэнэ. Манай бүтээгдэхүүнүүдийг сайжруулахад туслах зорилгоор үгийн давтамжийн статистик мэдээллийг цуглуулж болно. Бүх мэдээллийг "<a href="https://www.google.com/policies/privacy">"Google-ийн Нууцлалын бодлогын дагуу"</a>" цуглуулж, ашиглана."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"Энэ горимыг идэвхжүүлэхийн тулд энэ төхөөрөмж рүү Google бүртгэл нэмж оруулна уу"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"Бизнес акаунтуудын Google Апп бүхий төхөөрөмжүүдэд синк хийх боломжгүй"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"Оруулах өөр арга руу шилжүүлэх"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"Хэл солих түлхүүрт өөр оруулах аргууд мөн багтсан байгаа"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"Хэл солих товч"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"Толь бичгийн үйлчилгээ"</string>
     <string name="download_description" msgid="6014835283119198591">"Толь бичгийн шинэчлэлтийн мэдээлэл"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"Нэмэлт толь бичгүүд"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"Толь бичиг байна"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"Толь бичгийн тохиргоо"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"Хэрэглэгчийн толь бичиг"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"Хэрэглэгчийн толь"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"Суулгах"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"Цуцлах"</string>
     <string name="delete_dict" msgid="756853268088330054">"Устгах"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"Таны мобайл төхөөрөмждөө сонгосон хэлний толь бичиг боломжтой байна.&lt;br/&gt; Та бичих хэрэглээгээ сайжруулахын тулд <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> толийг &lt;b&gt;татах&lt;/b&amp;gt-г зөвлөж байна.&lt;br/&gt; &lt;br/&gt; 3G-р татахад 1-2 минут болно. Танд &lt;b&gt;хязгааргүй дата хэрэглээ&lt;/b&gt;.&lt;br/&gt; байхгүй бол төлбөр ногдож болзошгүй. Та датаны төрлөө мэдэхгүй байгаа бол  автоматаар татаж эхлэхийн тулд Wi-Fi холболттой газар олно уу.&lt;br/&gt; &lt;br/&gt; Зөвлөмж: Та утасныхаа цэсний <b>Тохиргоо</b> хэсгийн &lt;b&gt;Хэл, оролт&lt;/b&gt;хэсэгт толь бичиг нэмэх, устгах боломжтой."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"Одоо татах (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g>MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Wi-Fi-р татаж авах"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> хэлний толь ашиглах боломжтой"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"Шалгах болон татаж авахын тулд дарна уу"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>-д зориулсан татан авалтын санал болголтууд удахгүй бэлэн болно."</string>
     <string name="version_text" msgid="2715354215568469385">"Хувилбар <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"Нэмэх"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"Толь бичигт нэмэх"</string>

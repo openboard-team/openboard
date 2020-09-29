@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"Gevorderd"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"Tema"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"Aktiveer verdeelde sleutelbord"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Google-sleutelbordsinkronisering"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"Sinkronisering is aangeskakel"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"Sinkroniseer jou persoonlike woordeboek oor toestelle heen"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"Sinkroniseer nou"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"Vee wolkdata uit"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Vee jou gesinkroniseerde data van Google af uit"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"Jou gesinkroniseerde data sal uit die wolk uitgevee word. Seker?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"Vee uit"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"Kanselleer"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"Jou persoonlike woordeboek sal gesinkroniseer en in Google-bedieners gerugsteun word. Die statistiese inligting van woordfrekwensie sal dalk ingesamel word om ons produkte te help verbeter. Die insameling en gebruik van al die inligting sal voldoen aan "<a href="https://www.google.com/policies/privacy">"Google se privaatheidsbeleid"</a>"."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"Voeg \'n Google-rekening by die toestel om hierdie kenmerk te aktiveer"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"Toestelle met Google Apps vir Besigheid-rekeninge kan nie sinkroniseer nie"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"Skakel oor na die ander invoermetodes"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"Taal-wisselsleutel dek ook ander invoermetodes"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"Taal-wisselsleutel"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"Woordeboek-diens"</string>
     <string name="download_description" msgid="6014835283119198591">"Woordeboek se opdateerinligting"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"Voeg woordeboeke by"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"Woordeboek beskikbaar"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"Instellings vir woordeboeke"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"Gebruikerwoordeboeke"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"Gebruikerwoordeboek"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"Installeer"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"Kanselleer"</string>
     <string name="delete_dict" msgid="756853268088330054">"Vee uit"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"\'n Woordeboek is beskikbaar vir die taal wat op jou mobiele toestel gekies is.&lt;br/&gt; Ons beveel aan dat jy die <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>-woordeboek <b>aflaai</b> om jou tikervaring te verbeter.&lt;br/&gt; &lt;br/&gt; Dit kan \'n minuut of twee neem om dit oor 3G af te laai. Dit kan koste bedra as jy nie \'n &lt;b&gt;onbeperktedata-plan&lt;/b&gt; het nie.&lt;br/&gt; As jy nie seker is watter dataplan jy het nie, beveel ons aan dat jy \'n Wi-Fi-verbinding vind om die aflaai outomaties te begin.&lt;br/&gt; &lt;br/&gt; Wenk: Jy kan woordeboeke aflaai en verwyder deur na &lt;b&gt;Tale en invoer&lt;/b&gt; op jou mobiele toestel se &lt;b&gt;Instellings&lt;/b&gt;-kieslys te gaan."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"Laai nou af (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g> MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Laai oor Wi-Fi af"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"\'n Woordeboek is beskikbaar vir <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"Druk om te hersien en af te laai"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"Laai tans af: voorstelle vir <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> sal binnekort gereed wees."</string>
     <string name="version_text" msgid="2715354215568469385">"Weergawe <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"Voeg by"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"Voeg by woordeboek"</string>

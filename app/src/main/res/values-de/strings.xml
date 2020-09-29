@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"Erweitert"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"Design"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"Geteilte Tastatur aktivieren"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Google-Tastatur-Synchronisierung"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"Die Synchronisierung ist aktiviert."</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"Persönliches Wörterbuch geräteübergreifend synchronisieren"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"Jetzt synchronisieren"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"Cloud-Daten löschen"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"Löscht deine synchronisierten Daten aus Google"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"Die synchronisierten Daten werden aus der Cloud gelöscht. Sicher?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"Löschen"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"Abbrechen"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"Dein persönliches Wörterbuch wird mit den Google-Servern synchronisiert und auf diesen Servern gesichert. Zur Verbesserung unserer Produkte werden eventuell statistische Daten zur Worthäufigkeit erfasst. Die Erfassung und Nutzung sämtlicher Daten erfolgt gemäß der "<a href="https://www.google.com/policies/privacy">"Datenschutzerklärung von Google"</a>"."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"Zur Aktivierung dieser Funktion Google-Konto zu Gerät hinzufügen"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"Synchronisierung für Geräte mit Apps für Business-Konten nicht verfügbar"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"Eingabemethoden wechseln"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"Sprachwechseltaste umfasst auch andere Eingabemethoden."</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"Sprachwechsel"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"Wörterbuch"</string>
     <string name="download_description" msgid="6014835283119198591">"Update-Informationen für Wörterbuch"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"Erweiterte Wörterbücher"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"Wörterbuch verfügbar"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"Einstellungen für Wörterbücher"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"Meine Wörterbücher"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"Mein Wörterbuch"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"Installieren"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"Abbrechen"</string>
     <string name="delete_dict" msgid="756853268088330054">"Löschen"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"Für die auf deinem Mobilgerät ausgewählte Sprache ist ein Wörterbuch verfügbar.&lt;br/&gt; &lt;b&gt;Lade das <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>-Wörterbuch herunter,&lt;/b&gt; und verbessere deine Eingabeerfahrung.&lt;br/&gt; &lt;br/&gt; Der Download über 3G kann ein bis zwei Minuten dauern. Falls du keine &lt;b&gt;Datenflatrate&lt;/b&gt; hast, fallen eventuell Gebühren an.&lt;br/&gt; Solltest du dir nicht sicher sein, welchen Datentarif du hast, suche eine WLAN-Verbindung, um den Download automatisch zu starten.&lt;br/&gt; &lt;br/&gt; Tipp: Du kannst Wörterbücher herunterladen und entfernen. Gehe dazu auf deinem Gerät im Menü <b>Einstellungen</b> zu &lt;b&gt;Sprache &amp; Eingabe&lt;/b&gt;."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"Jetzt herunterladen (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g> MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"Über WLAN herunterladen"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"Es ist ein Wörterbuch für <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> verfügbar."</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"Zum Lesen und Herunterladen drücken"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"Download wurde gestartet: Vorschläge für <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> sind in Kürze bereit."</string>
     <string name="version_text" msgid="2715354215568469385">"Version <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"Hinzufügen"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"Zum Wörterbuch hinzufügen"</string>

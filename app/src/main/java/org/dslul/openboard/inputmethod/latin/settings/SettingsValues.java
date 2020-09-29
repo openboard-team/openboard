@@ -71,7 +71,6 @@ public class SettingsValues {
     public final boolean mIncludesOtherImesInLanguageSwitchList;
     public final boolean mShowsNumberRow;
     public final boolean mShowsLanguageSwitchKey;
-    public final boolean mUseContactsDict;
     public final boolean mUsePersonalizedDicts;
     public final boolean mUseDoubleSpacePeriod;
     public final boolean mBlockPotentiallyOffensive;
@@ -101,7 +100,6 @@ public class SettingsValues {
     // Deduced settings
     public final int mKeypressVibrationDuration;
     public final float mKeypressSoundVolume;
-    public final int mKeyPreviewPopupDismissDelay;
     private final boolean mAutoCorrectEnabled;
     public final float mAutoCorrectionThreshold;
     public final float mPlausibilityThreshold;
@@ -147,7 +145,6 @@ public class SettingsValues {
         mIncludesOtherImesInLanguageSwitchList = !Settings.ENABLE_SHOW_LANGUAGE_SWITCH_KEY_SETTINGS || prefs.getBoolean(Settings.PREF_INCLUDE_OTHER_IMES_IN_LANGUAGE_SWITCH_LIST, false) /* forcibly */;
         mShowsNumberRow = prefs.getBoolean(Settings.PREF_SHOW_NUMBER_ROW, false);
         mShowsLanguageSwitchKey = prefs.getBoolean(Settings.PREF_SHOW_LANGUAGE_SWITCH_KEY, false);
-        mUseContactsDict = prefs.getBoolean(Settings.PREF_KEY_USE_CONTACTS_DICT, true);
         mUsePersonalizedDicts = prefs.getBoolean(Settings.PREF_KEY_USE_PERSONALIZED_DICTS, true);
         mUseDoubleSpacePeriod = prefs.getBoolean(Settings.PREF_KEY_USE_DOUBLE_SPACE_PERIOD, true)
                 && inputAttributes.mIsGeneralTextInput;
@@ -169,7 +166,6 @@ public class SettingsValues {
         mKeyLongpressTimeout = Settings.readKeyLongpressTimeout(prefs, res);
         mKeypressVibrationDuration = Settings.readKeypressVibrationDuration(prefs, res);
         mKeypressSoundVolume = Settings.readKeypressSoundVolume(prefs, res);
-        mKeyPreviewPopupDismissDelay = Settings.readKeyPreviewPopupDismissDelay(prefs, res);
         mEnableEmojiAltPhysicalKey = prefs.getBoolean(
                 Settings.PREF_ENABLE_EMOJI_ALT_PHYSICAL_KEY, true);
         mShowAppIcon = Settings.readShowSetupWizardIcon(prefs, context);
@@ -188,7 +184,7 @@ public class SettingsValues {
                 //&& !mInputAttributes.mInputTypeNoAutoCorrect;
         mSuggestionsEnabledPerUserSettings = !mInputAttributes.mIsPasswordField &&
                 readSuggestionsEnabled(prefs);
-        mIncognitoModeEnabled = mInputAttributes.mNoLearning;
+        mIncognitoModeEnabled = Settings.readAlwaysIncognitoMode(prefs) || mInputAttributes.mNoLearning;
         mIsInternal = Settings.isInternal(prefs);
         mHasCustomKeyPreviewAnimationParams = prefs.getBoolean(
                 DebugSettings.PREF_HAS_CUSTOM_KEY_PREVIEW_ANIMATION_PARAMS, false);
@@ -384,8 +380,6 @@ public class SettingsValues {
         sb.append("" + mIncludesOtherImesInLanguageSwitchList);
         sb.append("\n   mShowsLanguageSwitchKey = ");
         sb.append("" + mShowsLanguageSwitchKey);
-        sb.append("\n   mUseContactsDict = ");
-        sb.append("" + mUseContactsDict);
         sb.append("\n   mUsePersonalizedDicts = ");
         sb.append("" + mUsePersonalizedDicts);
         sb.append("\n   mUseDoubleSpacePeriod = ");
@@ -412,8 +406,6 @@ public class SettingsValues {
         sb.append("" + mKeypressVibrationDuration);
         sb.append("\n   mKeypressSoundVolume = ");
         sb.append("" + mKeypressSoundVolume);
-        sb.append("\n   mKeyPreviewPopupDismissDelay = ");
-        sb.append("" + mKeyPreviewPopupDismissDelay);
         sb.append("\n   mAutoCorrectEnabled = ");
         sb.append("" + mAutoCorrectEnabled);
         sb.append("\n   mAutoCorrectionThreshold = ");

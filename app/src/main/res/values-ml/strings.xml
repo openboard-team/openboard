@@ -34,18 +34,6 @@
     <string name="settings_screen_advanced" msgid="7472408607625972994">"വിപുലം"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"തീം"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"സ്‌പ്‌ലിറ്റ് കീബോർഡ് പ്രവർത്തനക്ഷമമാക്കുക"</string>
-    <string name="cloud_sync_title" msgid="8579271074443847055">"Google കീബോർഡ് സമന്വയം"</string>
-    <string name="cloud_sync_summary" msgid="7684887161145650857">"സമന്വയം ഓണാണ്"</string>
-    <string name="cloud_sync_summary_disabled" msgid="4553338970382825796">"ഉപകരണങ്ങളിലുടനീളം നിങ്ങളുടെ സ്വകാര്യ നിഘണ്ടു സമന്വയിപ്പിക്കുക"</string>
-    <string name="sync_now_title" msgid="3088838136743277721">"ഇപ്പോൾ സമന്വയിപ്പിക്കുക"</string>
-    <string name="clear_sync_data_title" msgid="8582001557037069154">"ക്ലൗഡ് വിവരം ഇല്ലാതാക്കുക"</string>
-    <string name="clear_sync_data_summary" msgid="993477139012576584">"നിങ്ങളുടെ സമന്വയിപ്പിച്ച വിവരം Google-ൽ നിന്ന് ഇല്ലാതാക്കുന്നു"</string>
-    <string name="clear_sync_data_confirmation" msgid="2811931135574727678">"നിങ്ങളുടെ സമന്വയിപ്പിച്ച വിവരം ക്ലൗഡിൽ നിന്ന് ഇല്ലാതാക്കും. തീർച്ചയാണോ?"</string>
-    <string name="clear_sync_data_ok" msgid="613104067705915132">"ഇല്ലാതാക്കുക"</string>
-    <string name="cloud_sync_cancel" msgid="5877481252150919037">"റദ്ദാക്കുക"</string>
-    <string name="cloud_sync_opt_in_text" msgid="9176039655776298248">"നിങ്ങളുടെ സ്വകാര്യ നിഘണ്ടു Google സെർവറുകളിലേക്ക് സമന്വയിപ്പിച്ച് ബാക്കപ്പുചെയ്യും. ഞങ്ങളുടെ ഉൽപ്പന്നങ്ങൾ മെച്ചപ്പെടുത്താൻ സഹായിക്കുന്നതിന് പദങ്ങളുടെ ആവർത്തനം സംബന്ധിച്ച സ്ഥിതിവിവരക്കണക്കുകൾ ശേഖരിച്ചേക്കാം. എല്ലാ വിവരങ്ങളും ശേഖരിക്കുന്നതും ഉപയോഗിക്കുന്നതും "<a href="https://www.google.com/policies/privacy">"Google-ന്റെ സ്വകാര്യത നയത്തിന്"</a>" വിധേയമായിട്ടായിരിക്കും."</string>
-    <string name="add_account_to_enable_sync" msgid="7836932571852055265">"ഈ ഫീച്ചർ പ്രവർത്തനക്ഷമമാക്കാൻ ഈ ഉപകരണത്തിൽ Google അക്കൗണ്ട് ചേർക്കുക"</string>
-    <string name="cloud_sync_summary_disabled_work_profile" msgid="1381770407303129164">"ബിസിനസ്സിനായുള്ള Google Apps അക്കൗണ്ടുകൾ ഉള്ള ഉപകരണങ്ങൾക്ക് സമന്വയം ലഭ്യമല്ല"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"മറ്റു ടൈപ്പുചെയ്യൽ രീതികളിലേക്ക് മാറുക"</string>
     <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"ഭാഷ മാറൽ കീയിൽ മറ്റ് ടൈപ്പുചെയ്യൽ രീതികളും ഉൾപ്പെടുന്നു"</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"ഭാഷ മാറൽ കീ"</string>
@@ -163,7 +151,6 @@
     <string name="dictionary_service_name" msgid="6237472350693511448">"നിഘണ്ടു സേവനം"</string>
     <string name="download_description" msgid="6014835283119198591">"നിഘണ്ടു അപ്‌ഡേറ്റുചെയ്യാനുള്ള വിവരം"</string>
     <string name="dictionary_settings_title" msgid="8091417676045693313">"ആഡ്-ഓൺ നിഘണ്ടുക്കൾ"</string>
-    <string name="dictionary_install_over_metered_network_prompt" msgid="3587517870006332980">"നിഘണ്ടു ലഭ്യമാണ്"</string>
     <string name="dictionary_settings_summary" msgid="5305694987799824349">"നിഘണ്ടുക്കൾക്കായുള്ള ക്രമീകരണങ്ങൾ"</string>
     <string name="user_dictionaries" msgid="3582332055892252845">"ഉപയോക്തൃ നിഘണ്ടുക്കൾ"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"ഉപയോക്തൃ നിഘണ്ടു"</string>
@@ -183,12 +170,6 @@
     <string name="install_dict" msgid="180852772562189365">"ഇൻസ്റ്റാളുചെയ്യുക"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"റദ്ദാക്കുക"</string>
     <string name="delete_dict" msgid="756853268088330054">"ഇല്ലാതാക്കുക"</string>
-    <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"മൊബൈൽ ഉപകരണത്തിൽ തിരഞ്ഞെടുത്ത ഭാഷയ്‌ക്ക് നിഘണ്ടു ലഭ്യം.&lt;br/&gt; നിങ്ങളുടെ ടൈപ്പുചെയ്യൽ അനുഭവം മെച്ചപ്പെടുത്താന്‍ <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> നിഘണ്ടു &lt;b&gt;ഡൗണ്‍ലോഡ് ചെയ്യാൻ&lt;/b&gt; ഞങ്ങൾ ശുപാർശചെയ്യുന്നു.&lt;br/&gt; &lt;br/&gt; 3G-യിൽ ഡൗൺലോഡ് ചെയ്യാൻ ഒന്നോ രണ്ടോ മിനിറ്റെടുക്കാം. നിങ്ങൾക്ക് &lt;b&gt;പരിധിയില്ലാത്ത ഡാറ്റാ പ്ലാൻ&lt;/b&gt; ഇല്ലെങ്കിൽ നിരക്കുകൾ ബാധകമാകാം.&lt;br/&gt; ഏത് ഡാറ്റ പ്ലാനാണ് ഉള്ളതെന്ന് തീർച്ചയില്ലെങ്കിൽ, ഡൗൺലോഡ് സ്വമേധയാ ആരംഭിക്കുന്നതിന് വൈഫൈ കണക്ഷൻ കണ്ടെത്താൻ ഞങ്ങൾ ശുപാർശ ചെയ്യുന്നു.&lt;br/&gt; &lt;br/&gt; നുറുങ്ങുവിവരം: മൊബൈലിലെ &lt;b&gt;ക്രമീകരണം&lt;/b&gt; മെനുവിലുള്ള &lt;b&gt;ഭാഷയും ഇൻപുട്ടും&lt;/b&gt; എന്നതിലേക്ക് പോയി നിങ്ങൾക്ക് നിഘണ്ടുകൾ ഡൗൺലോഡ് ചെയ്യാനും നീക്കം ചെയ്യാനുമാകും."</string>
-    <string name="download_over_metered" msgid="1643065851159409546">"ഇപ്പോൾ ഡൗൺലോഡുചെയ്യുക (<xliff:g id="SIZE_IN_MEGABYTES">%1$.1f</xliff:g>MB)"</string>
-    <string name="do_not_download_over_metered" msgid="2176209579313941583">"വൈഫൈ മുഖേന ഡൗൺലോഡ് ചെയ്യുക"</string>
-    <string name="dict_available_notification_title" msgid="4583842811218581658">"<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> ഭാഷയ്‌ക്കായി ഒരു നിഘണ്ടു ലഭ്യമാണ്"</string>
-    <string name="dict_available_notification_description" msgid="1075194169443163487">"അവലോകനം ചെയ്യാനും ഡൗൺലോഡ് ചെയ്യാനും അമർത്തുക"</string>
-    <string name="toast_downloading_suggestions" msgid="6128155879830851739">"ഡൗൺലോഡുചെയ്യുന്നു: <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> ഭാഷയ്‌ക്കുള്ള നിർദ്ദേശങ്ങൾ ഉടൻതന്നെ തയ്യാറാകും."</string>
     <string name="version_text" msgid="2715354215568469385">"പതിപ്പ് <xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"ചേര്‍ക്കുക"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"നിഘണ്ടുവിൽ ചേർക്കുക"</string>
