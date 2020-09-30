@@ -237,7 +237,8 @@
             <enum name="ICS" value="0" />
             <enum name="KLP" value="2" />
             <enum name="LXXLight" value="3" />
-            <enum name="LXXDark" value="4" />
+            <enum name="LXXDarkAmoled" value="4" />
+            <enum name="LXXDark" value="7" />
             <enum name="LXXLightBorder" value="5" />
             <enum name="LXXDarkBorder" value="6" />
         </attr>
