@@ -502,7 +502,8 @@ public final class KeyboardLayoutSet {
                     } else if (variation == InputType.TYPE_TEXT_VARIATION_URI) {
                         return KeyboardId.MODE_URL;
                     } else if (variation == InputType.TYPE_TEXT_VARIATION_SHORT_MESSAGE) {
-                        return KeyboardId.MODE_IM;
+                        //return KeyboardId.MODE_IM;
+                        return KeyboardId.MODE_TEXT;
                     } else if (variation == InputType.TYPE_TEXT_VARIATION_FILTER) {
                         return KeyboardId.MODE_TEXT;
                     } else {
