@@ -570,4 +570,6 @@ mobile devices. [CHAR LIMIT=25] -->
     <string name="more_keys_strip_description">More keys</string>
     <string name="prefs_force_incognito_mode">Force incognito mode</string>
     <string name="prefs_force_incognito_mode_summary">Disable learning of new words</string>
+    <string name="show_emoji_key">Show emoji key</string>
+    <string name="show_emoji_key_summary">Show a separate emoji key. When disabled, the emoji keyboard is still accessible by long-pressing the ENTER button.</string>
 </resources>

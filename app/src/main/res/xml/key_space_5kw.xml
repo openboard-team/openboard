@@ -44,8 +44,10 @@
             <Key
                 latin:keyStyle="zwnjKeyStyle" />
         </case>
+
         <case
             latin:languageSwitchKeyEnabled="true"
+            latin:emojiKeyEnabled="false"
         >
             <Key
                 latin:keyStyle="languageSwitchKeyStyle" />
@@ -53,6 +55,33 @@
                 latin:keyStyle="spaceKeyStyle"
                 latin:keyWidth="40%p" />
         </case>
+
+        <case
+            latin:languageSwitchKeyEnabled="false"
+            latin:emojiKeyEnabled="true"
+        >
+            <Key
+                latin:keyStyle="spaceKeyStyle"
+                latin:keyWidth="40%p" />
+            <Key
+                latin:keyStyle="emojiKeyStyle"
+                latin:backgroundType="functional" />
+        </case>
+
+        <case
+            latin:languageSwitchKeyEnabled="true"
+            latin:emojiKeyEnabled="true"
+        >
+            <Key
+                latin:keyStyle="languageSwitchKeyStyle" />
+            <Key
+                latin:keyStyle="spaceKeyStyle"
+                latin:keyWidth="30%p" />
+            <Key
+                latin:keyStyle="emojiKeyStyle"
+                latin:backgroundType="functional" />
+        </case>
+
         <!-- languageSwitchKeyEnabled="false" -->
         <default>
             <Key

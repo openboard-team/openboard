@@ -75,6 +75,8 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
     public static final String PREF_SHOW_LANGUAGE_SWITCH_KEY =
             "pref_show_language_switch_key";
+    public static final String PREF_SHOW_EMOJI_KEY =
+            "pref_show_emoji_key";
     public static final String PREF_INCLUDE_OTHER_IMES_IN_LANGUAGE_SWITCH_LIST =
             "pref_include_other_imes_in_language_switch_list";
     public static final String PREF_CUSTOM_INPUT_STYLES = "custom_input_styles";
