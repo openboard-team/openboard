@@ -13,14 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.dslul.openboard.inputmethod.latin.define
 
-package org.dslul.openboard.inputmethod.latin.define;
-
-public final class JniLibName {
-    private JniLibName() {
-        // This class is not publicly instantiable.
-    }
-
-    public static final String JNI_LIB_NAME = "jni_latinime";
-    //public static final String JNI_LIB_NAME2 = "jni_latinimegoogle";
+object JniLibName {
+    const val JNI_LIB_NAME = "jni_latinime" //public static final String JNI_LIB_NAME2 = "jni_latinimegoogle";
 }

@@ -13,30 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.dslul.openboard.inputmethod.latin.define
 
-package org.dslul.openboard.inputmethod.latin.define;
-
-public final class ProductionFlags {
-    private ProductionFlags() {
-        // This class is not publicly instantiable.
-    }
-
-    public static final boolean IS_HARDWARE_KEYBOARD_SUPPORTED = false;
+object ProductionFlags {
+    const val IS_HARDWARE_KEYBOARD_SUPPORTED = false
 
     /**
      * Include all suggestions from all dictionaries in
-     * {@link org.dslul.openboard.inputmethod.latin.SuggestedWords#mRawSuggestions}.
+     * [org.dslul.openboard.inputmethod.latin.SuggestedWords.mRawSuggestions].
      */
-    public static final boolean INCLUDE_RAW_SUGGESTIONS = false;
+    const val INCLUDE_RAW_SUGGESTIONS = false
 
     /**
      * When false, the metrics logging is not yet ready to be enabled.
      */
-    public static final boolean IS_METRICS_LOGGING_SUPPORTED = false;
+    const val IS_METRICS_LOGGING_SUPPORTED = false
 
     /**
-     * When {@code false}, the split keyboard is not yet ready to be enabled.
+     * When `false`, the split keyboard is not yet ready to be enabled.
      */
-    public static final boolean IS_SPLIT_KEYBOARD_SUPPORTED = true;
-
+    const val IS_SPLIT_KEYBOARD_SUPPORTED = true
 }

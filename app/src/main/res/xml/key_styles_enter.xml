@@ -245,15 +245,6 @@
                 latin:keySpec="!icon/enter_key|!code/key_shift_enter"
                 latin:parentStyle="defaultEnterKeyStyle" />
         </case>
-        <!-- Smiley in textShortMessage field.
-             This <case> should be after Shift + Enter <case> and before any of action <case>. -->
-        <case
-            latin:mode="im"
-        >
-            <key-style
-                latin:styleName="enterKeyStyle"
-                latin:parentStyle="emojiKeyStyle" />
-        </case>
         <case
             latin:imeAction="actionGo"
         >

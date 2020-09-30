@@ -13,19 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.dslul.openboard.inputmethod.latin.define
 
-package org.dslul.openboard.inputmethod.latin.define;
+import android.content.SharedPreferences
 
-import android.content.SharedPreferences;
-
-public final class DebugFlags {
-    public static final boolean DEBUG_ENABLED = false;
-
-    private DebugFlags() {
-        // This class is not publicly instantiable.
-    }
-
-    @SuppressWarnings("unused")
-    public static void init(final SharedPreferences prefs) {
-    }
+object DebugFlags {
+    const val DEBUG_ENABLED = false
+    fun init(prefs: SharedPreferences?) {}
 }
