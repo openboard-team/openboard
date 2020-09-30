@@ -33,11 +33,6 @@
         android:persistent="true"
         android:defaultValue="false" />
     <CheckBoxPreference
-        android:key="pref_show_language_switch_key"
-        android:title="@string/show_language_switch_key"
-        android:defaultValue="false"
-        android:persistent="true" />
-    <CheckBoxPreference
         android:key="pref_resize_keyboard"
         android:title="@string/prefs_resize_keyboard"
         android:defaultValue="false"

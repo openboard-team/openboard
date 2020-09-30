@@ -29,6 +29,11 @@
         android:defaultValue="false"
         android:persistent="true" />
     <CheckBoxPreference
+        android:key="pref_show_language_switch_key"
+        android:title="@string/show_language_switch_key"
+        android:defaultValue="false"
+        android:persistent="true" />
+    <CheckBoxPreference
         android:key="pref_show_emoji_key"
         android:title="@string/show_emoji_key"
         android:summary="@string/show_emoji_key_summary"
