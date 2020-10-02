@@ -35,7 +35,7 @@
             <key-style
                 latin:styleName="settingsMoreKeysStyle"
                 latin:keyLabelFlags="hasPopupHint"
-                latin:additionalMoreKeys="!text/keyspec_settings"
+                latin:additionalMoreKeys="!text/keyspec_settings,!icon/language_switch_key|!code/key_language_switch,!text/keyspec_emoji_action_key"
                 latin:backgroundType="functional" />
         </default>
     </switch>
