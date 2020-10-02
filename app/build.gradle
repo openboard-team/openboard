@@ -16,6 +16,9 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -28,6 +31,10 @@ android {
         ndkBuild {
             path 'src/main/jni/Android.mk'
         }
+    }
+
+    lintOptions {
+        abortOnError false
     }
 
     ndkVersion '21.3.6528147'
