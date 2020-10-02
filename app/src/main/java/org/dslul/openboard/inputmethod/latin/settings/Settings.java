@@ -263,7 +263,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     }
 
     public static boolean readAlwaysIncognitoMode(final SharedPreferences prefs) {
-        return prefs.getBoolean(PREF_ALWAYS_INCOGNITO_MODE, true);
+        return prefs.getBoolean(PREF_ALWAYS_INCOGNITO_MODE, false);
     }
 
     public static String readPrefAdditionalSubtypes(final SharedPreferences prefs,
