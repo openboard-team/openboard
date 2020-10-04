@@ -39,9 +39,10 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
     public static final int THEME_ID_ICS = 0;
     public static final int THEME_ID_KLP = 2;
     public static final int THEME_ID_LXX_LIGHT = 3;
-    public static final int THEME_ID_LXX_DARK = 4;
+    public static final int THEME_ID_LXX_DARK_AMOLED = 4;
     public static final int THEME_ID_LIGHT_BORDER = 5;
     public static final int THEME_ID_DARK_BORDER = 6;
+    public static final int THEME_ID_LXX_DARK = 7;
     public static final int DEFAULT_THEME_ID = THEME_ID_DARK_BORDER;
 
     private static KeyboardTheme[] AVAILABLE_KEYBOARD_THEMES;
@@ -58,6 +59,9 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
                 // Default theme for LXX.
                 VERSION_CODES.BASE),
         new KeyboardTheme(THEME_ID_LXX_DARK, "LXXDark", R.style.KeyboardTheme_LXX_Dark,
+                // This has never been selected as default theme.
+                VERSION_CODES.BASE),
+        new KeyboardTheme(THEME_ID_LXX_DARK_AMOLED, "LXXDarkAmoled", R.style.KeyboardTheme_LXX_Dark_Amoled,
                 // This has never been selected as default theme.
                 VERSION_CODES.BASE),
         new KeyboardTheme(THEME_ID_LIGHT_BORDER, "LXXLightBorder", R.style.KeyboardTheme_LXX_Light_Border,

@@ -1321,10 +1321,13 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     public void displaySettingsDialog() {
+        launchSettings();
+        /* old dialog
         if (isShowingOptionDialog()) {
             return;
         }
         showSubtypeSelectorAndSettings();
+         */
     }
 
     @Override
@@ -1391,7 +1394,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public void switchToNextSubtype() {
         final IBinder token = getWindow().getWindow().getAttributes().token;
         if (shouldSwitchToOtherInputMethods()) {
-            mRichImm.switchToNextInputMethod(token, false /* onlyCurrentIme */);
+            mRichImm.switchToNextInputMethod(token, true /* onlyCurrentIme */);
             return;
         }
         mSubtypeState.switchSubtype(token, mRichImm);

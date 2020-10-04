@@ -1,0 +1,17 @@
+1.4.2:
+- Riga dei numeri aggiunta per tutti i layout
+- aggiunto un tasto opzionale per gli emoji
+- reintrodotto il vecchio tema Dark
+- modifiche ai temi
+- sistemato bug della modalità incognito (prima sempre attiva di predefinito)
+- il tasto di cambio lingua non cambia più tastiera
+- rimossi i permessi di accesso ai contatti
+1.4.1:
+- riga dei numeri per il layout spagnolo
+- icona incognito
+1.4:
+- Aggiunga riga dei numeri!
+- Tema AMOLED (Material Dark)
+- Sistemati il cursore spazio e il gesto eliminazione
+- Piccole migliorie ai temi
+- lingue aggiunte: Rumeno, Bulgaro, Olandese, Portoghese, Esperanto, Greco, Turco

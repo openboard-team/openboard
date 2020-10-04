@@ -126,7 +126,7 @@
         parent="MoreKeysKeyboardView.LXX_Light"
     >
         <item name="android:background">@android:color/transparent</item>
-        <item name="keyBackground">@drawable/btn_keyboard_key_popup_action_lxx_light</item>
+        <item name="keyBackground">@drawable/btn_keyboard_key_popup_action_lxx</item>
         <item name="divider">@null</item>
         <item name="keyLabelFlags">keepBackgroundAspectRatio</item>
     </style>

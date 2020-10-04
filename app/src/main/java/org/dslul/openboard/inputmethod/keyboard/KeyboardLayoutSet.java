@@ -121,6 +121,7 @@ public final class KeyboardLayoutSet {
         boolean mNoSettingsKey;
         boolean mNumberRowEnabled;
         boolean mLanguageSwitchKeyEnabled;
+        boolean mEmojiKeyEnabled;
         RichInputMethodSubtype mSubtype;
         boolean mIsSpellChecker;
         int mKeyboardWidth;
@@ -335,6 +336,11 @@ public final class KeyboardLayoutSet {
             return this;
         }
 
+        public Builder setEmojiKeyEnabled(final boolean enabled) {
+            mParams.mEmojiKeyEnabled = enabled;
+            return this;
+        }
+
         public Builder disableTouchPositionCorrectionData() {
             mParams.mDisableTouchPositionCorrectionDataForTest = true;
             return this;
@@ -502,7 +508,8 @@ public final class KeyboardLayoutSet {
                     } else if (variation == InputType.TYPE_TEXT_VARIATION_URI) {
                         return KeyboardId.MODE_URL;
                     } else if (variation == InputType.TYPE_TEXT_VARIATION_SHORT_MESSAGE) {
-                        return KeyboardId.MODE_IM;
+                        //return KeyboardId.MODE_IM;
+                        return KeyboardId.MODE_TEXT;
                     } else if (variation == InputType.TYPE_TEXT_VARIATION_FILTER) {
                         return KeyboardId.MODE_TEXT;
                     } else {

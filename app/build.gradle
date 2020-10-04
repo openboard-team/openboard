@@ -9,13 +9,16 @@ android {
         applicationId "org.dslul.openboard.inputmethod.latin"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 12
-        versionName '1.4.1'
+        versionCode 13
+        versionName '1.4.2'
     }
 
     buildTypes {
         release {
             minifyEnabled false
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -31,8 +34,9 @@ android {
     }
 
     lintOptions {
-        checkReleaseBuilds false
+        abortOnError false
     }
+
     ndkVersion '21.3.6528147'
 }
 
