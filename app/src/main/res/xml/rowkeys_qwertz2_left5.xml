@@ -23,9 +23,13 @@
 >
     <Key
         latin:keySpec="a"
+        latin:keyHintLabel="\@"
+        latin:additionalMoreKeys="\\@"
         latin:moreKeys="!text/morekeys_a" />
     <Key
         latin:keySpec="s"
+        latin:keyHintLabel="#"
+        latin:additionalMoreKeys="#"
         latin:moreKeys="!text/morekeys_s" />
     <Key
         latin:keySpec="d"
