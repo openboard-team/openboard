@@ -24,6 +24,7 @@
     keyboard_locale: script_name/keyboard_layout_set
     af: Afrikaans/qwerty
     ar: Arabic/arabic
+    ar: Arabic/arabic_pc
     az_AZ: Azerbaijani (Azerbaijan)/qwerty
     be_BY: Belarusian (Belarus)/east_slavic
     bg: Bulgarian/bulgarian
@@ -159,6 +160,14 @@
             android:imeSubtypeLocale="ar"
             android:imeSubtypeMode="keyboard"
             android:imeSubtypeExtraValue="SupportTouchPositionCorrection,EmojiCapable"
+            android:isAsciiCapable="false"
+    />
+    <subtype android:icon="@drawable/ic_ime_switcher_dark"
+            android:label="@string/subtype_arabic_pc"
+            android:subtypeId="0x590dde41"
+            android:imeSubtypeLocale="ar"
+            android:imeSubtypeMode="keyboard"
+            android:imeSubtypeExtraValue="KeyboardLayoutSet=arabic_pc,EmojiCapable"
             android:isAsciiCapable="false"
     />
     <subtype android:icon="@drawable/ic_ime_switcher_dark"

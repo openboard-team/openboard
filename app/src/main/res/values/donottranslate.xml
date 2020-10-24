@@ -84,6 +84,9 @@
     <!-- Description for Bulgarian (BEKL) subtype. -->
     <string name="subtype_bulgarian_bekl" translatable="false">%s (BEKL)</string>
 
+    <!-- Description for Arabic (PC) subtype. -->
+    <string name="subtype_arabic_pc" translatable="false">%s (PC)</string>
+
     <!-- Compatibility map from subtypeLocale:subtypeExtraValue to keyboardLayoutSet -->
     <string-array name="locale_and_extra_value_to_keyboard_layout_set_map">
         <item>en_US:TrySuppressingImeSwitcher,AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
