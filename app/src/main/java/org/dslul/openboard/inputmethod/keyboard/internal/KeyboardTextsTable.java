@@ -1085,7 +1085,7 @@ public final class KeyboardTextsTable {
         // U+00DF: "ß" LATIN SMALL LETTER SHARP S
         // U+015B: "ś" LATIN SMALL LETTER S WITH ACUTE
         // U+0161: "š" LATIN SMALL LETTER S WITH CARON
-        /* morekeys_s */ "\u00DF,\u015B,\u0161",
+        /* morekeys_s */ "\u00DF,%,\u015B,\u0161",
         /* single_quotes */ "!text/single_9qm_lqm",
         /* keyspec_currency ~ */
         null, null, null, null, null, null, null,
