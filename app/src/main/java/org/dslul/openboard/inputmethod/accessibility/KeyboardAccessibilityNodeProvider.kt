@@ -209,7 +209,7 @@ class KeyboardAccessibilityNodeProvider<KV : KeyboardView?>(keyboardView: KV,
     }
 
     override fun performAction(virtualViewId: Int, action: Int,
-                               arguments: Bundle): Boolean {
+                               arguments: Bundle?): Boolean {
         val key = getKeyOf(virtualViewId) ?: return false
         return performActionForKey(key, action)
     }
