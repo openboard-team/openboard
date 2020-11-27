@@ -112,7 +112,7 @@ open class KeyboardAccessibilityDelegate<KV : KeyboardView?>(protected val mKeyb
      * @param event The hover event.
      * @return key The key that the `event` is on.
      */
-    protected fun getHoverKeyOf(event: MotionEvent): Key {
+    protected fun getHoverKeyOf(event: MotionEvent): Key? {
         val actionIndex = event.actionIndex
         val x = event.getX(actionIndex).toInt()
         val y = event.getY(actionIndex).toInt()
@@ -145,7 +145,7 @@ open class KeyboardAccessibilityDelegate<KV : KeyboardView?>(protected val mKeyb
         if (DEBUG_HOVER) {
             Log.d(TAG, "onHoverEnter: key=$key")
         }
-        key.let { onHoverEnterTo(it) }
+        key?.let { onHoverEnterTo(it) }
         mLastHoverKey = key
     }
 
@@ -159,9 +159,9 @@ open class KeyboardAccessibilityDelegate<KV : KeyboardView?>(protected val mKeyb
         val key = getHoverKeyOf(event)
         if (key !== lastKey) {
             lastKey?.let { onHoverExitFrom(it) }
-            key.let { onHoverEnterTo(it) }
+            key?.let { onHoverEnterTo(it) }
         }
-        key.let { onHoverMoveWithin(it) }
+        key?.let { onHoverMoveWithin(it) }
         mLastHoverKey = key
     }
 
@@ -179,8 +179,8 @@ open class KeyboardAccessibilityDelegate<KV : KeyboardView?>(protected val mKeyb
         val key = getHoverKeyOf(event)
         // Make sure we're not getting an EXIT event because the user slid
 // off the keyboard area, then force a key press.
-        performClickOn(key)
-        onHoverExitFrom(key)
+        key?.let { performClickOn(it)
+        onHoverExitFrom(it) }
         mLastHoverKey = null
     }
 
