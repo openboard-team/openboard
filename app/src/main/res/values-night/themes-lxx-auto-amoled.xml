@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="KeyboardTheme.LXX_Auto_Amoled"
+           parent="KeyboardTheme.LXX_Dark_Amoled"
+            >
+    </style>
+    <style
+        name="Keyboard.LXX_Auto_Amoled"
+        parent="Keyboard"
+    >
+        <!-- This should be aligned with KeyboardTheme.THEME_ID_* -->
+        <item name="themeId">LXXAutoAmoled</item>
+    </style>
+    <style
+        name="KeyboardView.LXX_Auto_Amoled"
+        parent="KeyboardView.LXX_Dark_Amoled"
+    >
+    </style>
+    <style
+        name="MainKeyboardView.LXX_Auto_Amoled"
+        parent="MainKeyboardView.LXX_Dark_Amoled"
+        >
+    </style>
+    <!-- Though {@link org.dslul.openboard.inputmethod.keyboard.emoji.EmojiPalettesView} doesn't extend
+         {@link org.dslul.openboard.inputmethod.keyboard.KeyboardView}, some views inside it, for instance
+         delete button, need themed {@link org.dslul.openboard.inputmethod.keyboard.KeyboardView}
+         attributes. -->
+    <style
+        name="EmojiPalettesView.LXX_Auto_Amoled"
+        parent="EmojiPalettesView.LXX_Dark_Amoled"
+        >
+    </style>
+    <style
+        name="MoreKeysKeyboard.LXX_Auto_Amoled"
+        parent="MoreKeysKeyboard.LXX_Dark_Amoled"
+        >
+    </style>
+    <style
+        name="MoreKeysKeyboardView.LXX_Auto_Amoled"
+        parent="MoreKeysKeyboardView.LXX_Dark_Amoled"
+        >
+    </style>
+    <style
+        name="MoreKeysKeyboardView.LXX_Auto_Amoled.Action"
+        parent="MoreKeysKeyboardView.LXX_Dark_Amoled.Action"
+        >
+    </style>
+    <style
+        name="SuggestionStripView.LXX_Auto_Amoled"
+        parent="SuggestionStripView.LXX_Dark_Amoled"
+        >
+    </style>
+    <style
+        name="SuggestionWord.LXX_Auto_Amoled"
+        parent="SuggestionWord.LXX_Dark_Amoled"
+        >
+    </style>
+</resources>

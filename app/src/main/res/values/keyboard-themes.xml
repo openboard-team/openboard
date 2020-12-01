@@ -20,8 +20,11 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- For keyboard color scheme option dialog. -->
     <string-array name="keyboard_theme_names" translatable="false">
+        <item>@string/keyboard_theme_auto_border</item>
         <item>@string/keyboard_theme_light_border</item>
         <item>@string/keyboard_theme_dark_border</item>
+        <item>@string/keyboard_theme_material_auto</item>
+        <item>@string/keyboard_theme_material_auto_amoled</item>
         <item>@string/keyboard_theme_material_light</item>
         <item>@string/keyboard_theme_material_dark</item>
         <item>@string/keyboard_theme_material_dark_amoled</item>
@@ -31,8 +34,11 @@
     <!-- An element must be a keyboard theme id of
          {@link org.dslul.openboard.inputmethod.keyboard.KeyboardTheme#THEME_ID_ICS} etc. -->
     <integer-array name="keyboard_theme_ids" translatable="false">
+        <item>8</item>
         <item>5</item>
         <item>6</item>
+        <item>9</item>
+        <item>10</item>
         <item>3</item>
         <item>7</item>
         <item>4</item>

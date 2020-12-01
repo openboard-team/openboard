@@ -40,9 +40,12 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
     public static final int THEME_ID_KLP = 2;
     public static final int THEME_ID_LXX_LIGHT = 3;
     public static final int THEME_ID_LXX_DARK_AMOLED = 4;
+    public static final int THEME_ID_LXX_AUTO_AMOLED = 10;
     public static final int THEME_ID_LIGHT_BORDER = 5;
     public static final int THEME_ID_DARK_BORDER = 6;
     public static final int THEME_ID_LXX_DARK = 7;
+    public static final int THEME_ID_LXX_AUTO = 9;
+    public static final int THEME_ID_AUTO_BORDER = 8;
     public static final int DEFAULT_THEME_ID = THEME_ID_DARK_BORDER;
 
     private static KeyboardTheme[] AVAILABLE_KEYBOARD_THEMES;
@@ -68,6 +71,15 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
                 // This has never been selected as default theme.
                 Build.VERSION_CODES.BASE),
         new KeyboardTheme(THEME_ID_DARK_BORDER, "LXXDarkBorder", R.style.KeyboardTheme_LXX_Dark_Border,
+                // This has never been selected as default theme.
+                VERSION_CODES.LOLLIPOP),
+        new KeyboardTheme(THEME_ID_AUTO_BORDER, "LXXAutoBorder", R.style.KeyboardTheme_LXX_Auto_Border,
+                // This has never been selected as default theme.
+                VERSION_CODES.LOLLIPOP),
+        new KeyboardTheme(THEME_ID_LXX_AUTO, "LXXAuto", R.style.KeyboardTheme_LXX_Auto,
+                // This has never been selected as default theme.
+                VERSION_CODES.LOLLIPOP),
+        new KeyboardTheme(THEME_ID_LXX_AUTO_AMOLED, "LXXAutoAmoled", R.style.KeyboardTheme_LXX_Auto_Amoled,
                 // This has never been selected as default theme.
                 VERSION_CODES.LOLLIPOP),
     };
