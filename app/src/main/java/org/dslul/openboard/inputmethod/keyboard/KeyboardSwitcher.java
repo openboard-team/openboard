@@ -17,6 +17,7 @@
 package org.dslul.openboard.inputmethod.keyboard;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
@@ -64,6 +65,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
 
     private KeyboardTheme mKeyboardTheme;
     private Context mThemeContext;
+    private int mCurrentUiMode;
 
     private static final KeyboardSwitcher sInstance = new KeyboardSwitcher();
 
@@ -96,9 +98,12 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
 
     private boolean updateKeyboardThemeAndContextThemeWrapper(final Context context,
             final KeyboardTheme keyboardTheme) {
-        if (mThemeContext == null || !keyboardTheme.equals(mKeyboardTheme)) {
+        final boolean nightModeChanged = (mCurrentUiMode & Configuration.UI_MODE_NIGHT_MASK)
+                != (context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK);
+        if (mThemeContext == null || !keyboardTheme.equals(mKeyboardTheme) || nightModeChanged) {
             mKeyboardTheme = keyboardTheme;
             mThemeContext = new ContextThemeWrapper(context, keyboardTheme.mStyleId);
+            mCurrentUiMode = context.getResources().getConfiguration().uiMode;
             KeyboardLayoutSet.onKeyboardThemeChanged();
             return true;
         }

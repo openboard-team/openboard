@@ -354,13 +354,21 @@ mobile devices. [CHAR LIMIT=25] -->
     <string name="keyboard_theme_holo_white" translatable="false">Holo White</string>
     <!-- The keyboard theme name, Holo Blue. This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
     <string name="keyboard_theme_holo_blue" translatable="false">Holo Blue</string>
+    <!-- The keyboard theme name, Material (Auto). This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
+    <string name="keyboard_theme_material_auto" translatable="false">Material Auto</string>
+    <!-- The keyboard theme name, Material (Auto) (AMOLED). This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
+    <string name="keyboard_theme_material_auto_amoled" translatable="false">Material Auto (AMOLED)</string>
     <!-- The keyboard theme name, Material Dark. This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
     <string name="keyboard_theme_material_dark" translatable="false">Material Dark</string>
-    <!-- The keyboard theme name, Material Dark. This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
+    <!-- The keyboard theme name, Material Dark (AMOLED). This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
     <string name="keyboard_theme_material_dark_amoled" translatable="false">Material Dark (AMOLED)</string>
     <!-- The keyboard theme name, Material Light. This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
     <string name="keyboard_theme_material_light" translatable="false">Material Light</string>
+    <!-- The keyboard theme name, Material Border (Auto). This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
+    <string name="keyboard_theme_auto_border" translatable="false">Material Auto Border</string>
+    <!-- The keyboard theme name, Material Dark Border. This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
     <string name="keyboard_theme_dark_border" translatable="false">Material Dark Border</string>
+    <!-- The keyboard theme name, Material Light Border. This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
     <string name="keyboard_theme_light_border" translatable="false">Material Light Border</string>
 
     <!-- Title of the preference settings for custom input styles (language and keyboard layout pairs) [CHAR LIMIT=35]-->

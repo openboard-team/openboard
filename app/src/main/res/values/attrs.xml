@@ -238,9 +238,12 @@
             <enum name="KLP" value="2" />
             <enum name="LXXLight" value="3" />
             <enum name="LXXDarkAmoled" value="4" />
+            <enum name="LXXAutoAmoled" value="10" />
             <enum name="LXXDark" value="7" />
+            <enum name="LXXAuto" value="9" />
             <enum name="LXXLightBorder" value="5" />
             <enum name="LXXDarkBorder" value="6" />
+            <enum name="LXXAutoBorder" value="8" />
         </attr>
         <!-- Touch position correction -->
         <attr name="touchPositionCorrectionData" format="reference" />

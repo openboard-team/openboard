@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+**
+** Copyright 2015, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="KeyboardTheme.LXX_Auto_Amoled"
+           parent="KeyboardTheme.LXX_Light"
+            >
+    </style>
+    <style
+        name="Keyboard.LXX_Auto_Amoled"
+        parent="Keyboard"
+    >
+        <!-- This should be aligned with KeyboardTheme.THEME_ID_* -->
+        <item name="themeId">LXXAuto</item>
+    </style>
+    <style
+        name="KeyboardView.LXX_Auto_Amoled"
+        parent="KeyboardView.LXX_Light"
+    >
+    </style>
+    <style
+        name="MainKeyboardView.LXX_Auto_Amoled"
+        parent="MainKeyboardView.LXX_Light"
+    >
+    </style>
+    <!-- Though {@link org.dslul.openboard.inputmethod.keyboard.emoji.EmojiPalettesView} doesn't extend
+         {@link org.dslul.openboard.inputmethod.keyboard.KeyboardView}, some views inside it, for instance
+         delete button, need themed {@link org.dslul.openboard.inputmethod.keyboard.KeyboardView}
+         attributes. -->
+    <style
+        name="EmojiPalettesView.LXX_Auto_Amoled"
+        parent="EmojiPalettesView.LXX_Light"
+    >
+    </style>
+    <style
+        name="MoreKeysKeyboard.LXX_Auto_Amoled"
+        parent="MoreKeysKeyboard.LXX_Light"
+    >
+    </style>
+    <style
+        name="MoreKeysKeyboardView.LXX_Auto_Amoled"
+        parent="MoreKeysKeyboardView.LXX_Light"
+    >
+    </style>
+    <style
+        name="MoreKeysKeyboardView.LXX_Auto_Amoled.Action"
+        parent="MoreKeysKeyboardView.LXX_Light.Action"
+    >
+    </style>
+    <style
+        name="SuggestionStripView.LXX_Auto_Amoled"
+        parent="SuggestionStripView.LXX_Light"
+    >
+    </style>
+    <style
+        name="SuggestionWord.LXX_Auto_Amoled"
+        parent="SuggestionWord.LXX_Light"
+    >
+    </style>
+</resources>
