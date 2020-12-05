@@ -22,9 +22,12 @@ import android.util.Log;
 
 import org.dslul.openboard.inputmethod.keyboard.Key;
 import org.dslul.openboard.inputmethod.keyboard.Keyboard;
+import org.dslul.openboard.inputmethod.keyboard.internal.MoreKeySpec;
 import org.dslul.openboard.inputmethod.latin.settings.Settings;
 import org.dslul.openboard.inputmethod.latin.utils.JsonUtils;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -105,7 +108,16 @@ final class DynamicGridKeyboard extends Keyboard {
         }
         synchronized (mLock) {
             mCachedGridKeys = null;
-            final GridKey key = new GridKey(usedKey);
+            // When a key is added to recents keyboard, we don't want to keep its more keys
+            // neither its hint label. Also, we make sure its background type is matching our keyboard
+            // if key comes from another keyboard (ie. a {@link MoreKeysKeyboard}).
+            final boolean dropMoreKeys = mIsRecents;
+            // Check if hint was a more emoji indicator and prevent its copy if more keys aren't copied
+            final boolean dropHintLabel = dropMoreKeys && "\u25E5".equals(usedKey.getHintLabel());
+            final GridKey key = new GridKey(usedKey,
+                    dropMoreKeys ? null : usedKey.getMoreKeys(),
+                    dropHintLabel ? null : usedKey.getHintLabel(),
+                    mIsRecents ? Key.BACKGROUND_TYPE_EMPTY : usedKey.getBackgroundType());
             while (mGridKeys.remove(key)) {
                 // Remove duplicate keys.
             }
@@ -227,8 +239,9 @@ final class DynamicGridKeyboard extends Keyboard {
         private int mCurrentX;
         private int mCurrentY;
 
-        public GridKey(final Key originalKey) {
-            super(originalKey);
+        public GridKey(@Nonnull final Key originalKey, @Nullable final MoreKeySpec[] moreKeys,
+             @Nullable final String labelHint, final int backgroundType) {
+            super(originalKey, moreKeys, labelHint, backgroundType);
         }
 
         public void updateCoordinates(final int x0, final int y0, final int x1, final int y1) {

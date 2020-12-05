@@ -291,6 +291,7 @@
     <declare-styleable name="Keyboard_GridRows">
         <attr name="codesArray" format="reference" />
         <attr name="textsArray" format="reference" />
+        <attr name="moreCodesArray" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="Keyboard_Key">

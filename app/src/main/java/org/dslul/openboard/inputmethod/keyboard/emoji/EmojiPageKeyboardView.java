@@ -17,19 +17,37 @@
 package org.dslul.openboard.inputmethod.keyboard.emoji;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.os.Handler;
 import android.util.AttributeSet;
-import android.view.GestureDetector;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 
+import android.widget.FrameLayout;
 import org.dslul.openboard.inputmethod.accessibility.AccessibilityUtils;
 import org.dslul.openboard.inputmethod.accessibility.KeyboardAccessibilityDelegate;
 import org.dslul.openboard.inputmethod.keyboard.Key;
 import org.dslul.openboard.inputmethod.keyboard.KeyDetector;
 import org.dslul.openboard.inputmethod.keyboard.Keyboard;
 import org.dslul.openboard.inputmethod.keyboard.KeyboardView;
+import org.dslul.openboard.inputmethod.keyboard.MoreKeysKeyboard;
+import org.dslul.openboard.inputmethod.keyboard.MoreKeysKeyboardView;
+import org.dslul.openboard.inputmethod.keyboard.MoreKeysPanel;
+import org.dslul.openboard.inputmethod.keyboard.internal.MoreKeySpec;
 import org.dslul.openboard.inputmethod.latin.R;
+import org.dslul.openboard.inputmethod.latin.common.CoordinateUtils;
+import org.dslul.openboard.inputmethod.latin.settings.Settings;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.WeakHashMap;
 
 /**
  * This is an extended {@link KeyboardView} class that hosts an emoji page keyboard.
@@ -37,14 +55,11 @@ import org.dslul.openboard.inputmethod.latin.R;
  */
 // TODO: Implement key popup preview.
 final class EmojiPageKeyboardView extends KeyboardView implements
-        GestureDetector.OnGestureListener {
+        MoreKeysPanel.Controller {
+    private static final String TAG = "EmojiPageKeyboardView";
+    private static final boolean LOG = true;
     private static final long KEY_PRESS_DELAY_TIME = 250;  // msec
     private static final long KEY_RELEASE_DELAY_TIME = 30;  // msec
-
-    public interface OnKeyEventListener {
-        void onPressKey(Key key);
-        void onReleaseKey(Key key);
-    }
 
     private static final OnKeyEventListener EMPTY_LISTENER = new OnKeyEventListener() {
         @Override
@@ -55,8 +70,24 @@ final class EmojiPageKeyboardView extends KeyboardView implements
 
     private OnKeyEventListener mListener = EMPTY_LISTENER;
     private final KeyDetector mKeyDetector = new KeyDetector();
-    private final GestureDetector mGestureDetector;
     private KeyboardAccessibilityDelegate<EmojiPageKeyboardView> mAccessibilityDelegate;
+
+    // Touch inputs
+    private int mPointerId = MotionEvent.INVALID_POINTER_ID;
+    private int mLastX, mLastY;
+    private Key mCurrentKey;
+    private Runnable mPendingKeyDown;
+    private Runnable mPendingLongPress;
+    private final Handler mHandler;
+
+    // More keys keyboard
+    private final View mMoreKeysKeyboardContainer;
+    private final WeakHashMap<Key, Keyboard> mMoreKeysKeyboardCache = new WeakHashMap<>();
+    private final boolean mConfigShowMoreKeysKeyboardAtTouchedPoint;
+    private final ViewGroup mMoreKeysPlacerView;
+    // More keys panel (used by more keys keyboard view)
+    // TODO: Consider extending to support multiple more keys panels
+    private MoreKeysPanel mMoreKeysPanel;
 
     public EmojiPageKeyboardView(final Context context, final AttributeSet attrs) {
         this(context, attrs, R.attr.keyboardViewStyle);
@@ -65,9 +96,74 @@ final class EmojiPageKeyboardView extends KeyboardView implements
     public EmojiPageKeyboardView(final Context context, final AttributeSet attrs,
             final int defStyle) {
         super(context, attrs, defStyle);
-        mGestureDetector = new GestureDetector(context, this);
-        mGestureDetector.setIsLongpressEnabled(false /* isLongpressEnabled */);
         mHandler = new Handler();
+
+        mMoreKeysPlacerView = new FrameLayout(context, attrs);
+
+        final TypedArray keyboardViewAttr = context.obtainStyledAttributes(attrs,
+                R.styleable.MainKeyboardView, defStyle, R.style.MainKeyboardView);
+        final int moreKeysKeyboardLayoutId = keyboardViewAttr.getResourceId(
+                R.styleable.MainKeyboardView_moreKeysKeyboardLayout, 0);
+        mConfigShowMoreKeysKeyboardAtTouchedPoint = keyboardViewAttr.getBoolean(
+                R.styleable.MainKeyboardView_showMoreKeysKeyboardAtTouchedPoint, false);
+        keyboardViewAttr.recycle();
+
+        final LayoutInflater inflater = LayoutInflater.from(getContext());
+        mMoreKeysKeyboardContainer = inflater.inflate(moreKeysKeyboardLayoutId, null);
+    }
+
+    @Override
+    public void setHardwareAcceleratedDrawingEnabled(final boolean enabled) {
+        super.setHardwareAcceleratedDrawingEnabled(enabled);
+        if (!enabled) return;
+        final Paint layerPaint = new Paint();
+        layerPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
+        mMoreKeysPlacerView.setLayerType(LAYER_TYPE_HARDWARE, layerPaint);
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        installMoreKeysPlacerView();
+    }
+
+    private void installMoreKeysPlacerView() {
+        final View rootView = getRootView();
+        if (rootView == null) {
+            Log.w(TAG, "Cannot find root view");
+            return;
+        }
+        final ViewGroup windowContentView = rootView.findViewById(android.R.id.content);
+        // Note: It'd be very weird if we get null by android.R.id.content.
+        if (windowContentView == null) {
+            Log.w(TAG, "Cannot find android.R.id.content view to add DrawingPreviewPlacerView");
+            return;
+        }
+
+        windowContentView.addView(mMoreKeysPlacerView);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        mMoreKeysPlacerView.removeAllViews();
+        uninstallMoreKeysPlacerView();
+    }
+
+    private void uninstallMoreKeysPlacerView() {
+        final View rootView = getRootView();
+        if (rootView == null) {
+            Log.w(TAG, "Cannot find root view");
+            return;
+        }
+        final ViewGroup windowContentView = rootView.findViewById(android.R.id.content);
+        // Note: It'd be very weird if we get null by android.R.id.content.
+        if (windowContentView == null) {
+            Log.w(TAG, "Cannot find android.R.id.content view to add DrawingPreviewPlacerView");
+            return;
+        }
+
+        windowContentView.removeView(mMoreKeysPlacerView);
     }
 
     public void setOnKeyEventListener(final OnKeyEventListener listener) {
@@ -81,6 +177,7 @@ final class EmojiPageKeyboardView extends KeyboardView implements
     public void setKeyboard(final Keyboard keyboard) {
         super.setKeyboard(keyboard);
         mKeyDetector.setKeyboard(keyboard, 0 /* correctionX */, 0 /* correctionY */);
+        mMoreKeysKeyboardCache.clear();
         if (AccessibilityUtils.Companion.getInstance().isAccessibilityEnabled()) {
             if (mAccessibilityDelegate == null) {
                 mAccessibilityDelegate = new KeyboardAccessibilityDelegate<>(this, mKeyDetector);
@@ -91,10 +188,80 @@ final class EmojiPageKeyboardView extends KeyboardView implements
         }
     }
 
+    @Nullable
+    public MoreKeysPanel showMoreKeysKeyboard(@Nonnull final Key key, final int lastX, final int lastY) {
+        final MoreKeySpec[] moreKeys = key.getMoreKeys();
+        if (moreKeys == null) {
+            return null;
+        }
+        Keyboard moreKeysKeyboard = mMoreKeysKeyboardCache.get(key);
+        if (moreKeysKeyboard == null) {
+            final MoreKeysKeyboard.Builder builder = new MoreKeysKeyboard.Builder(
+                    getContext(), key, getKeyboard(),
+                    true, key.getWidth(), key.getHeight(), // TODO This is cheating
+                    newLabelPaint(key));
+            moreKeysKeyboard = builder.build();
+            mMoreKeysKeyboardCache.put(key, moreKeysKeyboard);
+        }
+
+        final View container = mMoreKeysKeyboardContainer;
+        final MoreKeysKeyboardView moreKeysKeyboardView =
+                container.findViewById(R.id.more_keys_keyboard_view);
+        moreKeysKeyboardView.setKeyboard(moreKeysKeyboard);
+        container.measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        final int[] lastCoords = CoordinateUtils.newCoordinateArray(1, lastX, lastY);
+        // The more keys keyboard is usually horizontally aligned with the center of the parent key.
+        // If showMoreKeysKeyboardAtTouchedPoint is true and the key preview is disabled, the more
+        // keys keyboard is placed at the touch point of the parent key.
+        final int pointX = mConfigShowMoreKeysKeyboardAtTouchedPoint
+                ? CoordinateUtils.x(lastCoords)
+                : key.getX() + key.getWidth() / 2;
+        final int pointY = key.getY();
+        moreKeysKeyboardView.showMoreKeysPanel(this, this,
+                pointX, pointY, mListener);
+        return moreKeysKeyboardView;
+    }
+
+    @Override
+    public void onShowMoreKeysPanel(final MoreKeysPanel panel) {
+        // Dismiss another {@link MoreKeysPanel} that may be being showed.
+        onDismissMoreKeysPanel();
+        panel.showInParent(mMoreKeysPlacerView);
+        mMoreKeysPanel = panel;
+    }
+
+    public boolean isShowingMoreKeysPanel() {
+        return mMoreKeysPanel != null;
+    }
+
+    @Override
+    public void onCancelMoreKeysPanel() {
+        // Nothing to do
+    }
+
+    @Override
+    public void onDismissMoreKeysPanel() {
+        if (isShowingMoreKeysPanel()) {
+            mMoreKeysPanel.removeFromParent();
+            mMoreKeysPanel = null;
+        }
+    }
+
+    private void dismissMoreKeysPanel() {
+        if (isShowingMoreKeysPanel()) {
+            mMoreKeysPanel.dismissMoreKeysPanel();
+        }
+    }
+
     @Override
     public boolean dispatchPopulateAccessibilityEvent(final AccessibilityEvent event) {
         // Don't populate accessibility event with all Emoji keys.
         return true;
+    }
+
+    private int getLongPressTimeout() {
+        return Settings.getInstance().getCurrent().mKeyLongpressTimeout;
     }
 
     /**
@@ -116,26 +283,64 @@ final class EmojiPageKeyboardView extends KeyboardView implements
      */
     @Override
     public boolean onTouchEvent(final MotionEvent e) {
-        if (mGestureDetector.onTouchEvent(e)) {
-            return true;
+        switch (e.getActionMasked()) {
+            case MotionEvent.ACTION_DOWN:
+                mPointerId = e.getPointerId(0);
+                return onDown(e);
+            case MotionEvent.ACTION_UP:
+                return onUp(e);
+            case MotionEvent.ACTION_MOVE:
+                return onMove(e);
+            case MotionEvent.ACTION_CANCEL:
+                return onCancel(e);
+            default:
+                return false;
         }
-        final Key key = getKey(e);
-        if (key != null && key != mCurrentKey) {
-            releaseCurrentKey(false /* withKeyRegistering */);
-        }
-        return true;
     }
 
-    // {@link GestureEnabler#OnGestureListener} methods.
-    private Key mCurrentKey;
-    private Runnable mPendingKeyDown;
-    private final Handler mHandler;
-
-    private Key getKey(final MotionEvent e) {
-        final int index = e.getActionIndex();
-        final int x = (int)e.getX(index);
-        final int y = (int)e.getY(index);
+    private Key getKey(final int x, final int y) {
         return mKeyDetector.detectHitKey(x, y);
+    }
+
+    private void onLongPressed(final Key key) {
+        if (isShowingMoreKeysPanel()) {
+            return;
+        }
+
+        if (key == null) {
+            if (LOG) Log.d(TAG, "Long press ignored because detected key is null");
+            return;
+        }
+
+        final int x = mLastX;
+        final int y = mLastY;
+        final MoreKeysPanel moreKeysPanel = showMoreKeysKeyboard(key, x, y);
+        if (moreKeysPanel != null) {
+            final int translatedX = moreKeysPanel.translateX(x);
+            final int translatedY = moreKeysPanel.translateY(y);
+            moreKeysPanel.onDownEvent(translatedX, translatedY, mPointerId, 0 /* nor used for now */);
+        }
+    }
+
+    private void registerPress(final Key key) {
+        // Do not trigger key-down effect right now in case this is actually a fling action.
+        mPendingKeyDown = new Runnable() {
+            @Override
+            public void run() {
+                callListenerOnPressKey(key);
+            }
+        };
+        mHandler.postDelayed(mPendingKeyDown, KEY_PRESS_DELAY_TIME);
+    }
+
+    private void registerLongPress(final Key key) {
+        mPendingLongPress = new Runnable() {
+            @Override
+            public void run() {
+                onLongPressed(key);
+            }
+        };
+        mHandler.postDelayed(mPendingLongPress, getLongPressTimeout());
     }
 
     void callListenerOnReleaseKey(final Key releasedKey, final boolean withKeyRegistering) {
@@ -164,40 +369,48 @@ final class EmojiPageKeyboardView extends KeyboardView implements
         mCurrentKey = null;
     }
 
-    @Override
+    public void cancelLongPress() {
+        mHandler.removeCallbacks(mPendingLongPress);
+        mPendingLongPress = null;
+    }
+
     public boolean onDown(final MotionEvent e) {
-        final Key key = getKey(e);
+        final int x = (int) e.getX();
+        final int y = (int) e.getY();
+        final Key key = getKey(x, y);
         releaseCurrentKey(false /* withKeyRegistering */);
         mCurrentKey = key;
         if (key == null) {
             return false;
         }
-        // Do not trigger key-down effect right now in case this is actually a fling action.
-        mPendingKeyDown = new Runnable() {
-            @Override
-            public void run() {
-                callListenerOnPressKey(key);
-            }
-        };
-        mHandler.postDelayed(mPendingKeyDown, KEY_PRESS_DELAY_TIME);
-        return false;
+        registerPress(key);
+
+        registerLongPress(key);
+
+        mLastX = x;
+        mLastY = y;
+        return true;
     }
 
-    @Override
-    public void onShowPress(final MotionEvent e) {
-        // User feedback is done at {@link #onDown(MotionEvent)}.
-    }
-
-    @Override
-    public boolean onSingleTapUp(final MotionEvent e) {
-        final Key key = getKey(e);
+    public boolean onUp(final MotionEvent e) {
+        final int x = (int) e.getX();
+        final int y = (int) e.getY();
+        final Key key = getKey(x, y);
         final Runnable pendingKeyDown = mPendingKeyDown;
         final Key currentKey = mCurrentKey;
         releaseCurrentKey(false /* withKeyRegistering */);
         if (key == null) {
             return false;
         }
-        if (key == currentKey && pendingKeyDown != null) {
+
+        final boolean isShowingMoreKeysPanel = isShowingMoreKeysPanel();
+        if (isShowingMoreKeysPanel) {
+            final long eventTime = e.getEventTime();
+            final int translatedX = mMoreKeysPanel.translateX(x);
+            final int translatedY = mMoreKeysPanel.translateY(y);
+            mMoreKeysPanel.onUpEvent(translatedX, translatedY, mPointerId, eventTime);
+            dismissMoreKeysPanel();
+        } else if (key == currentKey && pendingKeyDown != null) {
             pendingKeyDown.run();
             // Trigger key-release event a little later so that a user can see visual feedback.
             mHandler.postDelayed(new Runnable() {
@@ -209,25 +422,47 @@ final class EmojiPageKeyboardView extends KeyboardView implements
         } else {
             callListenerOnReleaseKey(key, true /* withRegistering */);
         }
+
+        cancelLongPress();
         return true;
     }
 
-    @Override
-    public boolean onScroll(final MotionEvent e1, final MotionEvent e2, final float distanceX,
-           final float distanceY) {
+    public boolean onCancel(final MotionEvent e) {
         releaseCurrentKey(false /* withKeyRegistering */);
-        return false;
+        dismissMoreKeysPanel();
+        cancelLongPress();
+        return true;
     }
 
-    @Override
-    public boolean onFling(final MotionEvent e1, final MotionEvent e2, final float velocityX,
-            final float velocityY) {
-        releaseCurrentKey(false /* withKeyRegistering */);
-        return false;
-    }
+    public boolean onMove(final MotionEvent e) {
+        final int x = (int)e.getX();
+        final int y = (int)e.getY();
+        final Key key = getKey(x, y);
+        final boolean isShowingMoreKeysPanel = isShowingMoreKeysPanel();
 
-    @Override
-    public void onLongPress(final MotionEvent e) {
-        // Long press detection of {@link #mGestureDetector} is disabled and not used.
+        // Touched key has changed, release previous key's callbacks and
+        // re-register them for the new key.
+        if (key != mCurrentKey && !isShowingMoreKeysPanel) {
+            releaseCurrentKey(false /* withKeyRegistering */);
+            mCurrentKey = key;
+            if (key == null) {
+                return false;
+            }
+            registerPress(key);
+
+            cancelLongPress();
+            registerLongPress(key);
+        }
+
+        if (isShowingMoreKeysPanel) {
+            final long eventTime = e.getEventTime();
+            final int translatedX = mMoreKeysPanel.translateX(x);
+            final int translatedY = mMoreKeysPanel.translateY(y);
+            mMoreKeysPanel.onMoveEvent(translatedX, translatedY, mPointerId, eventTime);
+        }
+
+        mLastX = x;
+        mLastY = y;
+        return true;
     }
 }

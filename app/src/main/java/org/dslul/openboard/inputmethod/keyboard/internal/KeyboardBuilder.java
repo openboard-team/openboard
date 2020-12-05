@@ -403,6 +403,8 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                 R.styleable.Keyboard_GridRows_codesArray, 0);
         final int textsArrayId = gridRowAttr.getResourceId(
                 R.styleable.Keyboard_GridRows_textsArray, 0);
+        final int moreCodesArrayId = gridRowAttr.getResourceId(
+                R.styleable.Keyboard_GridRows_moreCodesArray, 0);
         gridRowAttr.recycle();
         if (codesArrayId == 0 && textsArrayId == 0) {
             throw new XmlParseUtils.ParseException(
@@ -412,9 +414,19 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             throw new XmlParseUtils.ParseException(
                     "Both codesArray and textsArray attributes specifed", parser);
         }
+        if (textsArrayId != 0 && moreCodesArrayId != 0) {
+            throw new XmlParseUtils.ParseException(
+                    "moreCodesArray is not compatible with textsArray", parser);
+        }
         final String[] array = mResources.getStringArray(
                 codesArrayId != 0 ? codesArrayId : textsArrayId);
+        final String[] arrayMore = moreCodesArrayId != 0 ?
+                mResources.getStringArray(moreCodesArrayId) : null;
         final int counts = array.length;
+        if (arrayMore != null && counts != arrayMore.length) {
+            throw new XmlParseUtils.ParseException(
+                    "Inconsistent array size between codesArray and moreKeysArray", parser);
+        }
         final float keyWidth = gridRows.getKeyWidth(null, 0.0f);
         final int numColumns = (int)(mParams.mOccupiedWidth / keyWidth);
         for (int index = 0; index < counts; index += numColumns) {
@@ -429,6 +441,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                 final int code;
                 final String outputText;
                 final int supportedMinSdkVersion;
+                final String moreKeySpecs;
                 if (codesArrayId != 0) {
                     final String codeArraySpec = array[i];
                     label = CodesArrayParser.parseLabel(codeArraySpec);
@@ -436,6 +449,8 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                     outputText = CodesArrayParser.parseOutputText(codeArraySpec);
                     supportedMinSdkVersion =
                             CodesArrayParser.getMinSupportSdkVersion(codeArraySpec);
+                    moreKeySpecs = MoreCodesArrayParser.parseKeySpecs(
+                            arrayMore != null ? arrayMore[i] : null);
                 } else {
                     final String textArraySpec = array[i];
                     // TODO: Utilize KeySpecParser or write more generic TextsArrayParser.
@@ -443,6 +458,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                     code = Constants.CODE_OUTPUT_TEXT;
                     outputText = textArraySpec + (char)Constants.CODE_SPACE;
                     supportedMinSdkVersion = 0;
+                    moreKeySpecs = null;
                 }
                 if (Build.VERSION.SDK_INT < supportedMinSdkVersion) {
                     continue;
@@ -454,9 +470,10 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                 final int y = row.getKeyY();
                 final int width = (int)keyWidth;
                 final int height = row.getRowHeight();
-                final Key key = new Key(label, KeyboardIconsSet.ICON_UNDEFINED, code, outputText,
-                        null /* hintLabel */, labelFlags, backgroundType, x, y, width, height,
-                        mParams.mHorizontalGap, mParams.mVerticalGap);
+                final String hintLabel = moreKeySpecs != null ? "\u25E5" : null;
+                final KeyboardParams params = mParams;
+                final Key key = new Key(label, code, outputText,  hintLabel, moreKeySpecs,
+                        labelFlags, backgroundType, x, y, width, height, params);
                 endKey(key);
                 row.advanceXPos(keyWidth);
             }
