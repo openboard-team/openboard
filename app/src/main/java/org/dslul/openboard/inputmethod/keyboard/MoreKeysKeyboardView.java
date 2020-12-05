@@ -28,6 +28,7 @@ import android.view.ViewGroup;
 
 import org.dslul.openboard.inputmethod.accessibility.AccessibilityUtils;
 import org.dslul.openboard.inputmethod.accessibility.MoreKeysKeyboardAccessibilityDelegate;
+import org.dslul.openboard.inputmethod.keyboard.emoji.OnKeyEventListener;
 import org.dslul.openboard.inputmethod.keyboard.internal.KeyDrawParams;
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.common.Constants;
@@ -44,6 +45,7 @@ public class MoreKeysKeyboardView extends KeyboardView implements MoreKeysPanel 
     protected final KeyDetector mKeyDetector;
     private Controller mController = EMPTY_CONTROLLER;
     protected KeyboardActionListener mListener;
+    protected OnKeyEventListener mKeyEventListener;
     private int mOriginX;
     private int mOriginY;
     private Key mCurrentKey;
@@ -118,11 +120,31 @@ public class MoreKeysKeyboardView extends KeyboardView implements MoreKeysPanel 
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void showMoreKeysPanel(final View parentView, final Controller controller,
             final int pointX, final int pointY, final KeyboardActionListener listener) {
-        mController = controller;
         mListener = listener;
+        mKeyEventListener = null;
+        showMoreKeysPanelInternal(parentView, controller, pointX, pointY);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void showMoreKeysPanel(final View parentView, final Controller controller,
+            final int pointX, final int pointY, final OnKeyEventListener listener) {
+        mListener = null;
+        mKeyEventListener = listener;
+        showMoreKeysPanelInternal(parentView, controller, pointX, pointY);
+    }
+
+    private void showMoreKeysPanelInternal(final View parentView, final Controller controller,
+            final int pointX, final int pointY) {
+        mController = controller;
         final View container = getContainerView();
         // The coordinates of panel's left-top corner in parentView's coordinate system.
         // We need to consider background drawable paddings.
@@ -193,16 +215,20 @@ public class MoreKeysKeyboardView extends KeyboardView implements MoreKeysPanel 
      * Performs the specific action for this panel when the user presses a key on the panel.
      */
     protected void onKeyInput(final Key key, final int x, final int y) {
-        final int code = key.getCode();
-        if (code == Constants.CODE_OUTPUT_TEXT) {
-            mListener.onTextInput(mCurrentKey.getOutputText());
-        } else if (code != Constants.CODE_UNSPECIFIED) {
-            if (getKeyboard().hasProximityCharsCorrection(code)) {
-                mListener.onCodeInput(code, x, y, false /* isKeyRepeat */);
-            } else {
-                mListener.onCodeInput(code, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE,
-                        false /* isKeyRepeat */);
+        if (mListener != null) {
+            final int code = key.getCode();
+            if (code == Constants.CODE_OUTPUT_TEXT) {
+                mListener.onTextInput(mCurrentKey.getOutputText());
+            } else if (code != Constants.CODE_UNSPECIFIED) {
+                if (getKeyboard().hasProximityCharsCorrection(code)) {
+                    mListener.onCodeInput(code, x, y, false /* isKeyRepeat */);
+                } else {
+                    mListener.onCodeInput(code, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE,
+                            false /* isKeyRepeat */);
+                }
             }
+        } else if (mKeyEventListener != null) {
+            mKeyEventListener.onReleaseKey(key);
         }
     }
 

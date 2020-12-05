@@ -34,14 +34,14 @@ final class EmojiPalettesAdapter extends RecyclerView.Adapter<EmojiPalettesAdapt
     private static final String TAG = EmojiPalettesAdapter.class.getSimpleName();
     private static final boolean DEBUG_PAGER = false;
 
-    private final EmojiPageKeyboardView.OnKeyEventListener mListener;
+    private final OnKeyEventListener mListener;
     private final DynamicGridKeyboard mRecentsKeyboard;
     private final SparseArray<EmojiPageKeyboardView> mActiveKeyboardViews = new SparseArray<>();
     private final EmojiCategory mEmojiCategory;
     private int mActivePosition = 0;
 
     public EmojiPalettesAdapter(final EmojiCategory emojiCategory,
-            final EmojiPageKeyboardView.OnKeyEventListener listener) {
+            final OnKeyEventListener listener) {
         mEmojiCategory = emojiCategory;
         mListener = listener;
         mRecentsKeyboard = mEmojiCategory.getKeyboard(EmojiCategory.ID_RECENTS, 0);

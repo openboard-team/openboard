@@ -18,6 +18,7 @@ package org.dslul.openboard.inputmethod.keyboard;
 
 import android.view.View;
 import android.view.ViewGroup;
+import org.dslul.openboard.inputmethod.keyboard.emoji.OnKeyEventListener;
 
 public interface MoreKeysPanel {
     interface Controller {
@@ -62,6 +63,25 @@ public interface MoreKeysPanel {
     // Consider the simpler approach of placing the MoreKeysPanel itself into the parent view.
     void showMoreKeysPanel(View parentView, Controller controller, int pointX,
                            int pointY, KeyboardActionListener listener);
+
+    /**
+     *
+     * Initializes the layout and event handling of this {@link MoreKeysPanel} and calls the
+     * controller's onShowMoreKeysPanel to add the panel's container view.
+     * Same as {@link MoreKeysPanel#showMoreKeysPanel(View, Controller, int, int, KeyboardActionListener)},
+     * but with a {@link OnKeyEventListener}.
+     *
+     * @param parentView the parent view of this {@link MoreKeysPanel}
+     * @param controller the controller that can dismiss this {@link MoreKeysPanel}
+     * @param pointX x coordinate of this {@link MoreKeysPanel}
+     * @param pointY y coordinate of this {@link MoreKeysPanel}
+     * @param listener the listener that will receive keyboard action from this
+     * {@link MoreKeysPanel}.
+     */
+    // TODO: Currently the MoreKeysPanel is inside a container view that is added to the parent.
+    // Consider the simpler approach of placing the MoreKeysPanel itself into the parent view.
+    void showMoreKeysPanel(View parentView, Controller controller, int pointX,
+                           int pointY, OnKeyEventListener listener);
 
     /**
      * Dismisses the more keys panel and calls the controller's onDismissMoreKeysPanel to remove

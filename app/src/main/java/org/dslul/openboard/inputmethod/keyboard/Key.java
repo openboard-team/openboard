@@ -22,6 +22,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 
+import android.util.Log;
 import org.dslul.openboard.inputmethod.keyboard.internal.KeyDrawParams;
 import org.dslul.openboard.inputmethod.keyboard.internal.KeySpecParser;
 import org.dslul.openboard.inputmethod.keyboard.internal.KeyStyle;
@@ -208,8 +209,7 @@ public class Key implements Comparable<Key> {
     private boolean mEnabled = true;
 
     /**
-     * Constructor for a key on <code>MoreKeyKeyboard</code>, on <code>MoreSuggestions</code>,
-     * and in a <GridRows/>.
+     * Constructor for a key on <code>MoreKeyKeyboard</code> and on <code>MoreSuggestions</code>.
      */
     public Key(@Nullable final String label, final int iconId, final int code,
             @Nullable final String outputText, @Nullable final String hintLabel,
@@ -232,6 +232,82 @@ public class Key implements Comparable<Key> {
         mCode = code;
         mEnabled = (code != CODE_UNSPECIFIED);
         mIconId = iconId;
+        // Horizontal gap is divided equally to both sides of the key.
+        mX = x + mHorizontalGap / 2;
+        mY = y;
+        mHitBox.set(x, y, x + width + 1, y + height);
+        mKeyVisualAttributes = null;
+
+        mHashCode = computeHashCode(this);
+    }
+
+    /**
+     * Constructor for a key in a <GridRows/>.
+     */
+    public Key(@Nullable final String label, final int code, @Nullable final String outputText,
+               @Nullable final String hintLabel, @Nullable final String moreKeySpecs,
+               final int labelFlags, final int backgroundType, final int x, final int y,
+               final int width, final int height, final KeyboardParams params) {
+        mWidth = width - params.mHorizontalGap;
+        mHeight = height - params.mVerticalGap;
+        mHorizontalGap = params.mHorizontalGap;
+        mVerticalGap = params.mVerticalGap;
+        mHintLabel = hintLabel;
+        mLabelFlags = labelFlags;
+        mBackgroundType = backgroundType;
+
+        if (moreKeySpecs != null) {
+            String[] moreKeys = MoreKeySpec.splitKeySpecs(moreKeySpecs);
+            // Get maximum column order number and set a relevant mode value.
+            int moreKeysColumnAndFlags = MORE_KEYS_MODE_MAX_COLUMN_WITH_AUTO_ORDER
+                    | params.mMaxMoreKeysKeyboardColumn;
+            int value;
+            if ((value = MoreKeySpec.getIntValue(moreKeys, MORE_KEYS_AUTO_COLUMN_ORDER, -1)) > 0) {
+                // Override with fixed column order number and set a relevant mode value.
+                moreKeysColumnAndFlags = MORE_KEYS_MODE_FIXED_COLUMN_WITH_AUTO_ORDER
+                        | (value & MORE_KEYS_COLUMN_NUMBER_MASK);
+            }
+            if ((value = MoreKeySpec.getIntValue(moreKeys, MORE_KEYS_FIXED_COLUMN_ORDER, -1)) > 0) {
+                // Override with fixed column order number and set a relevant mode value.
+                moreKeysColumnAndFlags = MORE_KEYS_MODE_FIXED_COLUMN_WITH_FIXED_ORDER
+                        | (value & MORE_KEYS_COLUMN_NUMBER_MASK);
+            }
+            if (MoreKeySpec.getBooleanValue(moreKeys, MORE_KEYS_HAS_LABELS)) {
+                moreKeysColumnAndFlags |= MORE_KEYS_FLAGS_HAS_LABELS;
+            }
+            if (MoreKeySpec.getBooleanValue(moreKeys, MORE_KEYS_NEEDS_DIVIDERS)) {
+                moreKeysColumnAndFlags |= MORE_KEYS_FLAGS_NEEDS_DIVIDERS;
+            }
+            if (MoreKeySpec.getBooleanValue(moreKeys, MORE_KEYS_NO_PANEL_AUTO_MORE_KEY)) {
+                moreKeysColumnAndFlags |= MORE_KEYS_FLAGS_NO_PANEL_AUTO_MORE_KEY;
+            }
+            mMoreKeysColumnAndFlags = moreKeysColumnAndFlags;
+
+            moreKeys = MoreKeySpec.insertAdditionalMoreKeys(moreKeys, null);
+            int actionFlags = 0;
+            if (moreKeys != null) {
+                actionFlags |= ACTION_FLAGS_ENABLE_LONG_PRESS;
+                mMoreKeys = new MoreKeySpec[moreKeys.length];
+                for (int i = 0; i < moreKeys.length; i++) {
+                    mMoreKeys[i] = new MoreKeySpec(moreKeys[i], false, Locale.getDefault());
+                }
+            } else {
+                mMoreKeys = null;
+            }
+            mActionFlags = actionFlags;
+        } else {
+            // TODO: Pass keyActionFlags as an argument.
+            mActionFlags = ACTION_FLAGS_NO_KEY_PREVIEW;
+            mMoreKeys = null;
+            mMoreKeysColumnAndFlags = 0;
+        }
+
+        mLabel = label;
+        mOptionalAttributes = OptionalAttributes.newInstance(outputText, CODE_UNSPECIFIED,
+                ICON_UNDEFINED, 0 /* visualInsetsLeft */, 0 /* visualInsetsRight */);
+        mCode = code;
+        mEnabled = (code != CODE_UNSPECIFIED);
+        mIconId = KeyboardIconsSet.ICON_UNDEFINED;
         // Horizontal gap is divided equally to both sides of the key.
         mX = x + mHorizontalGap / 2;
         mY = y;
@@ -410,9 +486,35 @@ public class Key implements Comparable<Key> {
      * Copy constructor for DynamicGridKeyboard.GridKey.
      *
      * @param key the original key.
+     * @param moreKeys the more keys that should be assigned to this key.
+     * @param labelHint the label hint that should be assigned to this key.
+     * @param backgroundType the background type that should be assigned to this key.
      */
-    protected Key(@Nonnull final Key key) {
-        this(key, key.mMoreKeys);
+    protected Key(@Nonnull final Key key, @Nullable final MoreKeySpec[] moreKeys,
+                @Nullable final String labelHint, final int backgroundType) {
+        // Final attributes.
+        mCode = key.mCode;
+        mLabel = key.mLabel;
+        mHintLabel = labelHint;
+        mLabelFlags = key.mLabelFlags;
+        mIconId = key.mIconId;
+        mWidth = key.mWidth;
+        mHeight = key.mHeight;
+        mHorizontalGap = key.mHorizontalGap;
+        mVerticalGap = key.mVerticalGap;
+        mX = key.mX;
+        mY = key.mY;
+        mHitBox.set(key.mHitBox);
+        mMoreKeys = moreKeys;
+        mMoreKeysColumnAndFlags = key.mMoreKeysColumnAndFlags;
+        mBackgroundType = backgroundType;
+        mActionFlags = key.mActionFlags;
+        mKeyVisualAttributes = key.mKeyVisualAttributes;
+        mOptionalAttributes = key.mOptionalAttributes;
+        mHashCode = key.mHashCode;
+        // Key state.
+        mPressed = key.mPressed;
+        mEnabled = key.mEnabled;
     }
 
     private Key(@Nonnull final Key key, @Nullable final MoreKeySpec[] moreKeys) {
@@ -824,6 +926,21 @@ public class Key implements Comparable<Key> {
     @Nullable
     public Drawable getPreviewIcon(final KeyboardIconsSet iconSet) {
         return iconSet.getIconDrawable(getIconId());
+    }
+
+    /**
+     * Gets the background type of this key.
+     * @return Background type.
+     * @see Key#BACKGROUND_TYPE_EMPTY
+     * @see Key#BACKGROUND_TYPE_NORMAL
+     * @see Key#BACKGROUND_TYPE_FUNCTIONAL
+     * @see Key#BACKGROUND_TYPE_STICKY_OFF
+     * @see Key#BACKGROUND_TYPE_STICKY_ON
+     * @see Key#BACKGROUND_TYPE_ACTION
+     * @see Key#BACKGROUND_TYPE_SPACEBAR
+     */
+    public int getBackgroundType() {
+        return mBackgroundType;
     }
 
     /**

@@ -66,7 +66,7 @@ import static org.dslul.openboard.inputmethod.latin.common.Constants.NOT_A_COORD
  */
 public final class EmojiPalettesView extends LinearLayout
         implements OnTabChangeListener, View.OnClickListener, View.OnTouchListener,
-        EmojiPageKeyboardView.OnKeyEventListener{
+        OnKeyEventListener{
     private final int mFunctionalKeyBackgroundId;
     private final int mSpacebarBackgroundId;
     private final boolean mCategoryIndicatorEnabled;
@@ -325,7 +325,7 @@ public final class EmojiPalettesView extends LinearLayout
 
     /**
      * Called from {@link EmojiPageKeyboardView} through
-     * {@link org.dslul.openboard.inputmethod.keyboard.emoji.EmojiPageKeyboardView.OnKeyEventListener}
+     * {@link org.dslul.openboard.inputmethod.keyboard.emoji.OnKeyEventListener}
      * interface to handle touch events from non-View-based elements such as Emoji buttons.
      */
     @Override
@@ -336,8 +336,9 @@ public final class EmojiPalettesView extends LinearLayout
 
     /**
      * Called from {@link EmojiPageKeyboardView} through
-     * {@link org.dslul.openboard.inputmethod.keyboard.emoji.EmojiPageKeyboardView.OnKeyEventListener}
+     * {@link org.dslul.openboard.inputmethod.keyboard.emoji.OnKeyEventListener}
      * interface to handle touch events from non-View-based elements such as Emoji buttons.
+     * This may be called without any prior call to {@link OnKeyEventListener#onPressKey(Key)}.
      */
     @Override
     public void onReleaseKey(final Key key) {
