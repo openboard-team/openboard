@@ -16,6 +16,8 @@
 
 package org.dslul.openboard.inputmethod.keyboard.internal;
 
+import android.os.Build;
+import android.text.TextUtils;
 import org.dslul.openboard.inputmethod.latin.common.StringUtils;
 
 import javax.annotation.Nullable;
@@ -39,12 +41,16 @@ public final class MoreCodesArrayParser {
     }
 
     public static String parseKeySpecs(@Nullable String codeArraySpecs) {
-        if (codeArraySpecs == null) {
+        if (codeArraySpecs == null || TextUtils.isEmpty(codeArraySpecs)) {
             return null;
         }
 
         final StringBuilder sb = new StringBuilder();
         for (final String codeArraySpec : codeArraySpecs.split(SEMICOLON_REGEX)) {
+            final int supportedMinSdkVersion = CodesArrayParser.getMinSupportSdkVersion(codeArraySpec);
+            if (Build.VERSION.SDK_INT < supportedMinSdkVersion) {
+                continue;
+            }
             final String label = CodesArrayParser.parseLabel(codeArraySpec);
             final String outputText = CodesArrayParser.parseOutputText(codeArraySpec);
 
@@ -55,6 +61,6 @@ public final class MoreCodesArrayParser {
         // Remove last comma
         if (sb.length() > 0) sb.deleteCharAt(sb.length() - 1);
 
-        return sb.toString();
+        return sb.length() > 0 ? sb.toString() : null;
     }
 }
