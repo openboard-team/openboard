@@ -67,22 +67,16 @@
         <item name="categoryPageIndicatorColor">@color/highlight_color_lxx_dark</item>
         <item name="categoryPageIndicatorBackground">@color/emoji_tab_page_indicator_background_lxx_dark</item>
         <item name="iconEmojiRecentsTab">@drawable/ic_emoji_recents_lxx_dark</item>
-        <item name="iconEmojiCategory1Tab">@drawable/ic_emoji_people_lxx_dark</item>
-        <item name="iconEmojiCategory2Tab">@drawable/ic_emoji_objects_lxx_dark</item>
-        <item name="iconEmojiCategory3Tab">@drawable/ic_emoji_nature_lxx_dark</item>
-        <item name="iconEmojiCategory4Tab">@drawable/ic_emoji_places_lxx_dark</item>
-        <item name="iconEmojiCategory5Tab">@drawable/ic_emoji_symbols_lxx_dark</item>
-        <item name="iconEmojiCategory6Tab">@drawable/ic_emoji_emoticons_lxx_dark</item>
-        <item name="iconEmojiCategory7Tab">@drawable/ic_emoji_flag_lxx_dark</item>
-        <item name="iconEmojiCategory8Tab">@drawable/ic_emoji_people_lxx_dark</item>
-        <item name="iconEmojiCategory9Tab">@drawable/ic_emoji_nature_lxx_dark</item>
-        <item name="iconEmojiCategory10Tab">@drawable/ic_emoji_food_lxx_dark</item>
-        <item name="iconEmojiCategory11Tab">@drawable/ic_emoji_places_lxx_dark</item>
-        <item name="iconEmojiCategory12Tab">@drawable/ic_emoji_activity_lxx_dark</item>
-        <item name="iconEmojiCategory13Tab">@drawable/ic_emoji_objects_lxx_dark</item>
-        <item name="iconEmojiCategory14Tab">@drawable/ic_emoji_symbols_lxx_dark</item>
-        <item name="iconEmojiCategory15Tab">@drawable/ic_emoji_flag_lxx_dark</item>
-        <item name="iconEmojiCategory16Tab">@drawable/ic_emoji_people_lxx_dark</item>
+        <item name="iconEmojiCategory1Tab">@drawable/ic_emoji_smileys_emotion_lxx_dark</item>
+        <item name="iconEmojiCategory2Tab">@drawable/ic_emoji_people_body_lxx_dark</item>
+        <item name="iconEmojiCategory3Tab">@drawable/ic_emoji_animals_nature_lxx_dark</item>
+        <item name="iconEmojiCategory4Tab">@drawable/ic_emoji_food_drink_lxx_dark</item>
+        <item name="iconEmojiCategory5Tab">@drawable/ic_emoji_travel_places_lxx_dark</item>
+        <item name="iconEmojiCategory6Tab">@drawable/ic_emoji_activities_lxx_dark</item>
+        <item name="iconEmojiCategory7Tab">@drawable/ic_emoji_objects_lxx_dark</item>
+        <item name="iconEmojiCategory8Tab">@drawable/ic_emoji_symbols_lxx_dark</item>
+        <item name="iconEmojiCategory9Tab">@drawable/ic_emoji_flags_lxx_dark</item>
+        <item name="iconEmojiCategory10Tab">@drawable/ic_emoji_emoticons_lxx_dark</item>
     </style>
     <style
         name="MoreKeysKeyboard.LXX_Dark_Amoled"

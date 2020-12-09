@@ -203,12 +203,6 @@
         <attr name="iconEmojiCategory8Tab" format="reference" />
         <attr name="iconEmojiCategory9Tab" format="reference" />
         <attr name="iconEmojiCategory10Tab" format="reference" />
-        <attr name="iconEmojiCategory11Tab" format="reference" />
-        <attr name="iconEmojiCategory12Tab" format="reference" />
-        <attr name="iconEmojiCategory13Tab" format="reference" />
-        <attr name="iconEmojiCategory14Tab" format="reference" />
-        <attr name="iconEmojiCategory15Tab" format="reference" />
-        <attr name="iconEmojiCategory16Tab" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="SuggestionStripView">

@@ -25,6 +25,7 @@ import android.os.Build;
 import android.util.Log;
 import android.util.Pair;
 
+import androidx.core.graphics.PaintCompat;
 import org.dslul.openboard.inputmethod.keyboard.Key;
 import org.dslul.openboard.inputmethod.keyboard.Keyboard;
 import org.dslul.openboard.inputmethod.keyboard.KeyboardId;
@@ -44,22 +45,16 @@ final class EmojiCategory {
 
     private static final int ID_UNSPECIFIED = -1;
     public static final int ID_RECENTS = 0;
-    private static final int ID_PEOPLE = 1;
-    private static final int ID_OBJECTS = 2;
-    private static final int ID_NATURE = 3;
-    private static final int ID_PLACES = 4;
-    private static final int ID_SYMBOLS = 5;
-    private static final int ID_EMOTICONS = 6;
-    private static final int ID_FLAGS = 7;
-    private static final int ID_EIGHT_SMILEY_PEOPLE = 8;
-    private static final int ID_EIGHT_ANIMALS_NATURE = 9;
-    private static final int ID_EIGHT_FOOD_DRINK = 10;
-    private static final int ID_EIGHT_TRAVEL_PLACES = 11;
-    private static final int ID_EIGHT_ACTIVITY = 12;
-    private static final int ID_EIGHT_OBJECTS = 13;
-    private static final int ID_EIGHT_SYMBOLS = 14;
-    private static final int ID_EIGHT_FLAGS = 15;
-    private static final int ID_EIGHT_SMILEY_PEOPLE_BORING = 16;
+    private static final int ID_SMILEYS_EMOTION = 1;
+    private static final int ID_PEOPLE_BODY = 2;
+    private static final int ID_ANIMALS_NATURE = 3;
+    private static final int ID_FOOD_DRINK = 4;
+    private static final int ID_TRAVEL_PLACES = 5;
+    private static final int ID_ACTIVITIES = 6;
+    private static final int ID_OBJECTS = 7;
+    private static final int ID_SYMBOLS = 8;
+    private static final int ID_FLAGS = 9;
+    private static final int ID_EMOTICONS = 10;
 
     public final class CategoryProperties {
         public final int mCategoryId;
@@ -72,22 +67,16 @@ final class EmojiCategory {
 
     private static final String[] sCategoryName = {
             "recents",
-            "people",
-            "objects",
-            "nature",
-            "places",
-            "symbols",
-            "emoticons",
-            "flags",
-            "smiley & people",
+            "smileys & emotion",
+            "people & body",
             "animals & nature",
             "food & drink",
             "travel & places",
-            "activity",
-            "objects2",
-            "symbols2",
-            "flags2",
-            "smiley & people2" };
+            "activities",
+            "objects",
+            "symbols",
+            "flags",
+            "emoticons" };
 
     private static final int[] sCategoryTabIconAttr = {
             R.styleable.EmojiPalettesView_iconEmojiRecentsTab,
@@ -100,23 +89,11 @@ final class EmojiCategory {
             R.styleable.EmojiPalettesView_iconEmojiCategory7Tab,
             R.styleable.EmojiPalettesView_iconEmojiCategory8Tab,
             R.styleable.EmojiPalettesView_iconEmojiCategory9Tab,
-            R.styleable.EmojiPalettesView_iconEmojiCategory10Tab,
-            R.styleable.EmojiPalettesView_iconEmojiCategory11Tab,
-            R.styleable.EmojiPalettesView_iconEmojiCategory12Tab,
-            R.styleable.EmojiPalettesView_iconEmojiCategory13Tab,
-            R.styleable.EmojiPalettesView_iconEmojiCategory14Tab,
-            R.styleable.EmojiPalettesView_iconEmojiCategory15Tab,
-            R.styleable.EmojiPalettesView_iconEmojiCategory16Tab };
+            R.styleable.EmojiPalettesView_iconEmojiCategory10Tab };
 
     private static final int[] sAccessibilityDescriptionResourceIdsForCategories = {
             R.string.spoken_descrption_emoji_category_recents,
-            R.string.spoken_descrption_emoji_category_people,
-            R.string.spoken_descrption_emoji_category_objects,
-            R.string.spoken_descrption_emoji_category_nature,
-            R.string.spoken_descrption_emoji_category_places,
-            R.string.spoken_descrption_emoji_category_symbols,
-            R.string.spoken_descrption_emoji_category_emoticons,
-            R.string.spoken_descrption_emoji_category_flags,
+            R.string.spoken_descrption_emoji_category_eight_smiley_people,
             R.string.spoken_descrption_emoji_category_eight_smiley_people,
             R.string.spoken_descrption_emoji_category_eight_animals_nature,
             R.string.spoken_descrption_emoji_category_eight_food_drink,
@@ -125,7 +102,7 @@ final class EmojiCategory {
             R.string.spoken_descrption_emoji_category_objects,
             R.string.spoken_descrption_emoji_category_symbols,
             R.string.spoken_descrption_emoji_category_flags,
-            R.string.spoken_descrption_emoji_category_eight_smiley_people };
+            R.string.spoken_descrption_emoji_category_emoticons };
 
     private static final int[] sCategoryElementId = {
             KeyboardId.ELEMENT_EMOJI_RECENTS,
@@ -138,13 +115,7 @@ final class EmojiCategory {
             KeyboardId.ELEMENT_EMOJI_CATEGORY7,
             KeyboardId.ELEMENT_EMOJI_CATEGORY8,
             KeyboardId.ELEMENT_EMOJI_CATEGORY9,
-            KeyboardId.ELEMENT_EMOJI_CATEGORY10,
-            KeyboardId.ELEMENT_EMOJI_CATEGORY11,
-            KeyboardId.ELEMENT_EMOJI_CATEGORY12,
-            KeyboardId.ELEMENT_EMOJI_CATEGORY13,
-            KeyboardId.ELEMENT_EMOJI_CATEGORY14,
-            KeyboardId.ELEMENT_EMOJI_CATEGORY15,
-            KeyboardId.ELEMENT_EMOJI_CATEGORY16 };
+            KeyboardId.ELEMENT_EMOJI_CATEGORY10 };
 
     private final SharedPreferences mPrefs;
     private final Resources mRes;
@@ -173,30 +144,17 @@ final class EmojiCategory {
 
         int defaultCategoryId = EmojiCategory.ID_SYMBOLS;
         addShownCategoryId(EmojiCategory.ID_RECENTS);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            if (canShowUnicodeEightEmoji()) {
-                defaultCategoryId = EmojiCategory.ID_EIGHT_SMILEY_PEOPLE;
-                addShownCategoryId(EmojiCategory.ID_EIGHT_SMILEY_PEOPLE);
-                addShownCategoryId(EmojiCategory.ID_EIGHT_ANIMALS_NATURE);
-                addShownCategoryId(EmojiCategory.ID_EIGHT_FOOD_DRINK);
-                addShownCategoryId(EmojiCategory.ID_EIGHT_TRAVEL_PLACES);
-                addShownCategoryId(EmojiCategory.ID_EIGHT_ACTIVITY);
-                addShownCategoryId(EmojiCategory.ID_EIGHT_OBJECTS);
-                addShownCategoryId(EmojiCategory.ID_EIGHT_SYMBOLS);
-                addShownCategoryId(EmojiCategory.ID_FLAGS); // Exclude combinations without glyphs.
-            } else {
-                defaultCategoryId = EmojiCategory.ID_PEOPLE;
-                addShownCategoryId(EmojiCategory.ID_PEOPLE);
-                addShownCategoryId(EmojiCategory.ID_OBJECTS);
-                addShownCategoryId(EmojiCategory.ID_NATURE);
-                addShownCategoryId(EmojiCategory.ID_PLACES);
-                addShownCategoryId(EmojiCategory.ID_SYMBOLS);
-                if (canShowFlagEmoji()) {
-                    addShownCategoryId(EmojiCategory.ID_FLAGS);
-                }
-            }
-        } else {
-            addShownCategoryId(EmojiCategory.ID_SYMBOLS);
+        defaultCategoryId = EmojiCategory.ID_SMILEYS_EMOTION;
+        addShownCategoryId(ID_SMILEYS_EMOTION);
+        addShownCategoryId(ID_PEOPLE_BODY);
+        addShownCategoryId(ID_ANIMALS_NATURE);
+        addShownCategoryId(ID_FOOD_DRINK);
+        addShownCategoryId(ID_TRAVEL_PLACES);
+        addShownCategoryId(ID_ACTIVITIES);
+        addShownCategoryId(ID_OBJECTS);
+        addShownCategoryId(ID_SYMBOLS);
+        if (canShowFlagEmoji()) {
+            addShownCategoryId(ID_FLAGS);
         }
         addShownCategoryId(EmojiCategory.ID_EMOTICONS);
 
@@ -440,30 +398,7 @@ final class EmojiCategory {
     private static boolean canShowFlagEmoji() {
         Paint paint = new Paint();
         String switzerland = "\uD83C\uDDE8\uD83C\uDDED"; //  U+1F1E8 U+1F1ED Flag for Switzerland
-        try {
-            return paint.hasGlyph(switzerland);
-        } catch (NoSuchMethodError e) {
-            // Compare display width of single-codepoint emoji to width of flag emoji to determine
-            // whether flag is rendered as single glyph or two adjacent regional indicator symbols.
-            float flagWidth = paint.measureText(switzerland);
-            float standardWidth = paint.measureText("\uD83D\uDC27"); //  U+1F427 Penguin
-            return flagWidth < standardWidth * 1.25;
-            // This assumes that a valid glyph for the flag emoji must be less than 1.25 times
-            // the width of the penguin.
-        }
+        return PaintCompat.hasGlyph(paint, switzerland);
     }
 
-    private static boolean canShowUnicodeEightEmoji() {
-        Paint paint = new Paint();
-        String cheese = "\uD83E\uDDC0"; //  U+1F9C0 Cheese wedge
-        try {
-            return paint.hasGlyph(cheese);
-        } catch (NoSuchMethodError e) {
-            float cheeseWidth = paint.measureText(cheese);
-            float tofuWidth = paint.measureText("\uFFFE");
-            return cheeseWidth > tofuWidth;
-            // This assumes that a valid glyph for the cheese wedge must be greater than the width
-            // of the noncharacter.
-        }
-    }
 }

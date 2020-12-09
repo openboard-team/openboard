@@ -53,22 +53,4 @@
     <Element
         latin:elementName="emojiCategory10"
         latin:elementKeyboard="@xml/kbd_emoji_category10" />
-    <Element
-        latin:elementName="emojiCategory11"
-        latin:elementKeyboard="@xml/kbd_emoji_category11" />
-    <Element
-        latin:elementName="emojiCategory12"
-        latin:elementKeyboard="@xml/kbd_emoji_category12" />
-    <Element
-        latin:elementName="emojiCategory13"
-        latin:elementKeyboard="@xml/kbd_emoji_category13" />
-    <Element
-        latin:elementName="emojiCategory14"
-        latin:elementKeyboard="@xml/kbd_emoji_category14" />
-    <Element
-        latin:elementName="emojiCategory15"
-        latin:elementKeyboard="@xml/kbd_emoji_category15" />
-    <Element
-        latin:elementName="emojiCategory16"
-        latin:elementKeyboard="@xml/kbd_emoji_category16" />
 </KeyboardLayoutSet>
