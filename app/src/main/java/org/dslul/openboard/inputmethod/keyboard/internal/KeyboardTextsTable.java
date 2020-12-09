@@ -2163,7 +2163,8 @@ public final class KeyboardTextsTable {
         // U+0119: "ę" LATIN SMALL LETTER E WITH OGONEK
         // U+0117: "ė" LATIN SMALL LETTER E WITH DOT ABOVE
         // U+0113: "ē" LATIN SMALL LETTER E WITH MACRON
-        /* morekeys_e */ "\u00E8,\u00E9,\u00EA,\u00EB,\u0119,\u0117,\u0113",
+        // U+0259: "ə" LATIN SMALL LETTER SCHWA
+        /* morekeys_e */ "\u00E8,\u00E9,\u00EA,\u00EB,\u0119,\u0117,\u0113,\u0259",
         // U+00F9: "ù" LATIN SMALL LETTER U WITH GRAVE
         // U+00FA: "ú" LATIN SMALL LETTER U WITH ACUTE
         // U+00FB: "û" LATIN SMALL LETTER U WITH CIRCUMFLEX
