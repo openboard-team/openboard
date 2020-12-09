@@ -25,7 +25,8 @@
     latin:rowHeight="@fraction/config_emoji_keyboard_row_height"
 >
     <GridRows
-        latin:codesArray="@array/emoji_objects"
+        latin:codesArray="@array/emoji_people_body"
+        latin:moreCodesArray="@array/emoji_people_body_more"
         latin:keyLabelFlags="fontNormal"
         latin:backgroundType="empty" />
 </Keyboard>
