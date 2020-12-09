@@ -87,10 +87,10 @@
     <dimen name="config_gesture_floating_preview_round_radius">2dp</dimen>
 
     <!-- Emoji keyboard -->
-    <fraction name="config_emoji_keyboard_key_width">14.2857%p</fraction>
+    <fraction name="config_emoji_keyboard_key_width">12.5%p</fraction>
     <fraction name="config_emoji_keyboard_row_height">33%p</fraction>
     <fraction name="config_emoji_keyboard_key_letter_size">68%p</fraction>
-    <integer name="config_emoji_keyboard_max_page_key_count">21</integer>
+    <integer name="config_emoji_keyboard_max_page_key_count">24</integer>
 
     <!-- Key codes of hardware keys that can be used to toggle the Emoji layout.
          Each array defines a comma-separated tuple containing:
