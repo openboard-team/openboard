@@ -28,6 +28,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 
 import android.widget.FrameLayout;
@@ -57,7 +58,7 @@ import java.util.WeakHashMap;
 final class EmojiPageKeyboardView extends KeyboardView implements
         MoreKeysPanel.Controller {
     private static final String TAG = "EmojiPageKeyboardView";
-    private static final boolean LOG = true;
+    private static final boolean LOG = false;
     private static final long KEY_PRESS_DELAY_TIME = 250;  // msec
     private static final long KEY_RELEASE_DELAY_TIME = 30;  // msec
 
@@ -121,13 +122,7 @@ final class EmojiPageKeyboardView extends KeyboardView implements
         mMoreKeysPlacerView.setLayerType(LAYER_TYPE_HARDWARE, layerPaint);
     }
 
-    @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        installMoreKeysPlacerView();
-    }
-
-    private void installMoreKeysPlacerView() {
+    private void installMoreKeysPlacerView(final boolean uninstall) {
         final View rootView = getRootView();
         if (rootView == null) {
             Log.w(TAG, "Cannot find root view");
@@ -140,30 +135,11 @@ final class EmojiPageKeyboardView extends KeyboardView implements
             return;
         }
 
-        windowContentView.addView(mMoreKeysPlacerView);
-    }
-
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        mMoreKeysPlacerView.removeAllViews();
-        uninstallMoreKeysPlacerView();
-    }
-
-    private void uninstallMoreKeysPlacerView() {
-        final View rootView = getRootView();
-        if (rootView == null) {
-            Log.w(TAG, "Cannot find root view");
-            return;
+        if (uninstall) {
+            windowContentView.removeView(mMoreKeysPlacerView);
+        } else {
+            windowContentView.addView(mMoreKeysPlacerView);
         }
-        final ViewGroup windowContentView = rootView.findViewById(android.R.id.content);
-        // Note: It'd be very weird if we get null by android.R.id.content.
-        if (windowContentView == null) {
-            Log.w(TAG, "Cannot find android.R.id.content view to add DrawingPreviewPlacerView");
-            return;
-        }
-
-        windowContentView.removeView(mMoreKeysPlacerView);
     }
 
     public void setOnKeyEventListener(final OnKeyEventListener listener) {
@@ -223,12 +199,10 @@ final class EmojiPageKeyboardView extends KeyboardView implements
         return moreKeysKeyboardView;
     }
 
-    @Override
-    public void onShowMoreKeysPanel(final MoreKeysPanel panel) {
-        // Dismiss another {@link MoreKeysPanel} that may be being showed.
-        onDismissMoreKeysPanel();
-        panel.showInParent(mMoreKeysPlacerView);
-        mMoreKeysPanel = panel;
+    private void dismissMoreKeysPanel() {
+        if (isShowingMoreKeysPanel()) {
+            mMoreKeysPanel.dismissMoreKeysPanel();
+        }
     }
 
     public boolean isShowingMoreKeysPanel() {
@@ -236,8 +210,12 @@ final class EmojiPageKeyboardView extends KeyboardView implements
     }
 
     @Override
-    public void onCancelMoreKeysPanel() {
-        // Nothing to do
+    public void onShowMoreKeysPanel(final MoreKeysPanel panel) {
+        // install placer view only when needed instead of when this
+        // view is attached to window
+        installMoreKeysPlacerView(false /* uninstall */);
+        panel.showInParent(mMoreKeysPlacerView);
+        mMoreKeysPanel = panel;
     }
 
     @Override
@@ -245,12 +223,14 @@ final class EmojiPageKeyboardView extends KeyboardView implements
         if (isShowingMoreKeysPanel()) {
             mMoreKeysPanel.removeFromParent();
             mMoreKeysPanel = null;
+            installMoreKeysPlacerView(true /* uninstall */);
         }
     }
 
-    private void dismissMoreKeysPanel() {
+    @Override
+    public void onCancelMoreKeysPanel() {
         if (isShowingMoreKeysPanel()) {
-            mMoreKeysPanel.dismissMoreKeysPanel();
+            dismissMoreKeysPanel();
         }
     }
 
@@ -319,6 +299,9 @@ final class EmojiPageKeyboardView extends KeyboardView implements
             final int translatedX = moreKeysPanel.translateX(x);
             final int translatedY = moreKeysPanel.translateY(y);
             moreKeysPanel.onDownEvent(translatedX, translatedY, mPointerId, 0 /* nor used for now */);
+            // No need of re-allowing parent later as we don't
+            // want any scroll to append during this entire input.
+            disallowParentInterceptTouchEvent(true);
         }
     }
 
@@ -464,5 +447,14 @@ final class EmojiPageKeyboardView extends KeyboardView implements
         mLastX = x;
         mLastY = y;
         return true;
+    }
+
+    private void disallowParentInterceptTouchEvent(final boolean disallow) {
+        final ViewParent parent = getParent();
+        if (parent == null) {
+            Log.w(TAG, "Cannot disallow touch event interception, no parent found.");
+            return;
+        }
+        parent.requestDisallowInterceptTouchEvent(disallow);
     }
 }
