@@ -1109,6 +1109,74 @@ public final class KeyboardTextsTable {
         /* morekeys_swiss_row2_11 */ "\u00E0",
     };
 
+    /* Locale de: German */
+    private static final String[] TEXTS_de_DE = {
+        // U+00E4: "ä" LATIN SMALL LETTER A WITH DIAERESIS
+        // U+00E2: "â" LATIN SMALL LETTER A WITH CIRCUMFLEX
+        // U+00E0: "à" LATIN SMALL LETTER A WITH GRAVE
+        // U+00E1: "á" LATIN SMALL LETTER A WITH ACUTE
+        // U+00E6: "æ" LATIN SMALL LETTER AE
+        // U+00E3: "ã" LATIN SMALL LETTER A WITH TILDE
+        // U+00E5: "å" LATIN SMALL LETTER A WITH RING ABOVE
+        // U+0101: "ā" LATIN SMALL LETTER A WITH MACRON
+        /* morekeys_a */ "\u00E4,\u00E2,\u00E0,\u00E1,\u00E6,\u00E3,\u00E5,\u0101",
+        // U+00F6: "ö" LATIN SMALL LETTER O WITH DIAERESIS
+        // U+00F4: "ô" LATIN SMALL LETTER O WITH CIRCUMFLEX
+        // U+00F2: "ò" LATIN SMALL LETTER O WITH GRAVE
+        // U+00F3: "ó" LATIN SMALL LETTER O WITH ACUTE
+        // U+00F5: "õ" LATIN SMALL LETTER O WITH TILDE
+        // U+0153: "œ" LATIN SMALL LIGATURE OE
+        // U+00F8: "ø" LATIN SMALL LETTER O WITH STROKE
+        // U+014D: "ō" LATIN SMALL LETTER O WITH MACRON
+        /* morekeys_o */ "\u00F6,\u00F4,\u00F2,\u00F3,\u00F5,\u0153,\u00F8,\u014D",
+        // U+00E9: "é" LATIN SMALL LETTER E WITH ACUTE
+        // U+00E8: "è" LATIN SMALL LETTER E WITH GRAVE
+        // U+00EA: "ê" LATIN SMALL LETTER E WITH CIRCUMFLEX
+        // U+00EB: "ë" LATIN SMALL LETTER E WITH DIAERESIS
+        // U+0117: "ė" LATIN SMALL LETTER E WITH DOT ABOVE
+        /* morekeys_e */ "\u00E9,\u00E8,\u00EA,\u00EB,\u0117",
+        // U+00FC: "ü" LATIN SMALL LETTER U WITH DIAERESIS
+        // U+00FB: "û" LATIN SMALL LETTER U WITH CIRCUMFLEX
+        // U+00F9: "ù" LATIN SMALL LETTER U WITH GRAVE
+        // U+00FA: "ú" LATIN SMALL LETTER U WITH ACUTE
+        // U+016B: "ū" LATIN SMALL LETTER U WITH MACRON
+        /* morekeys_u */ "\u00FC,\u00FB,\u00F9,\u00FA,\u016B",
+        /* morekeys_i */ null,
+        /* keylabel_to_alpha */ null,
+        // U+00F1: "ñ" LATIN SMALL LETTER N WITH TILDE
+        // U+0144: "ń" LATIN SMALL LETTER N WITH ACUTE
+        /* morekeys_n */ "\u00F1,\u0144",
+        /* morekeys_c */ null,
+        /* double_quotes */ "!text/double_9qm_lqm",
+        // U+00DF: "ß" LATIN SMALL LETTER SHARP S
+        // U+015B: "ś" LATIN SMALL LETTER S WITH ACUTE
+        // U+0161: "š" LATIN SMALL LETTER S WITH CARON
+        /* morekeys_s */ "\u00DF,%,\u015B,\u0161",
+        /* single_quotes */ "!text/single_9qm_lqm",
+        /* keyspec_currency ~ */
+        null, null, null, null, null, null, null,
+        /* ~ morekeys_g */
+        /* single_angle_quotes */ "!text/single_raqm_laqm",
+        /* double_angle_quotes */ "!text/double_raqm_laqm",
+        /* morekeys_r ~ */
+        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null, null, null, null,
+        /* ~ keyspec_tablet_period */
+        // U+00FC: "ü" LATIN SMALL LETTER U WITH DIAERESIS
+        /* keyspec_swiss_row1_11 */ "\u00FC",
+        // U+00F6: "ö" LATIN SMALL LETTER O WITH DIAERESIS
+        /* keyspec_swiss_row2_10 */ "\u00F6",
+        // U+00E4: "ä" LATIN SMALL LETTER A WITH DIAERESIS
+        /* keyspec_swiss_row2_11 */ "\u00E4",
+        // U+00E8: "è" LATIN SMALL LETTER E WITH GRAVE
+        /* morekeys_swiss_row1_11 */ "\u00E8",
+        // U+00E9: "é" LATIN SMALL LETTER E WITH ACUTE
+        /* morekeys_swiss_row2_10 */ "\u00E9",
+        // U+00E0: "à" LATIN SMALL LETTER A WITH GRAVE
+        /* morekeys_swiss_row2_11 */ "\u00E0",
+    };
+
     /* Locale el: Greek */
     private static final String[] TEXTS_el = {
         /* morekeys_a ~ */
@@ -4178,6 +4246,7 @@ public final class KeyboardTextsTable {
         "cs"     , TEXTS_cs,    /*  17/ 21 Czech */
         "da"     , TEXTS_da,    /*  19/ 55 Danish */
         "de"     , TEXTS_de,    /*  16/ 66 German */
+        "de_DE"  , TEXTS_de_DE, /*         German (Germany) */
         "el"     , TEXTS_el,    /*   1/  6 Greek */
         "en"     , TEXTS_en,    /*   8/ 10 English */
         "eo"     , TEXTS_eo,    /*  26/126 Esperanto */
