@@ -24,7 +24,8 @@
         latin:elementName="alphabet"
         latin:elementKeyboard="@xml/kbd_german"
         latin:enableProximityCharsCorrection="true"
-        latin:allowRedundantMoreKeys="true" />
+        latin:allowRedundantMoreKeys="true"
+        latin:supportsSplitLayout="true" />
     <Element
         latin:elementName="symbols"
         latin:elementKeyboard="@xml/kbd_symbols" />
