@@ -32,7 +32,7 @@
         android:layout_height="@dimen/config_suggestions_strip_height"
         style="?attr/suggestionStripViewStyle"
     >
-        <TabHost
+        <org.dslul.openboard.inputmethod.compat.TabHostCompat
             android:id="@+id/emoji_category_tabhost"
             android:layout_width="0dip"
             android:layout_weight="87.5"
@@ -57,7 +57,7 @@
                     android:layout_height="0dip"
                     android:visibility="gone" />
             </FrameLayout>
-        </TabHost>
+        </org.dslul.openboard.inputmethod.compat.TabHostCompat>
     </LinearLayout>
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/emoji_keyboard_pager"

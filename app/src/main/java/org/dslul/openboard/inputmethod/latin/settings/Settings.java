@@ -122,6 +122,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_EMOJI_RECENT_KEYS = "emoji_recent_keys";
     public static final String PREF_EMOJI_CATEGORY_LAST_TYPED_ID = "emoji_category_last_typed_id";
     public static final String PREF_LAST_SHOWN_EMOJI_CATEGORY_ID = "last_shown_emoji_category_id";
+    public static final String PREF_LAST_SHOWN_EMOJI_CATEGORY_PAGE_ID = "last_shown_emoji_category_page_id";
 
     private static final float UNDEFINED_PREFERENCE_VALUE_FLOAT = -1.0f;
     private static final int UNDEFINED_PREFERENCE_VALUE_INT = -1;
@@ -443,6 +444,16 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static int readLastShownEmojiCategoryId(
             final SharedPreferences prefs, final int defValue) {
         return prefs.getInt(PREF_LAST_SHOWN_EMOJI_CATEGORY_ID, defValue);
+    }
+
+    public static void writeLastShownEmojiCategoryPageId(
+            final SharedPreferences prefs, final int categoryId) {
+        prefs.edit().putInt(PREF_LAST_SHOWN_EMOJI_CATEGORY_PAGE_ID, categoryId).apply();
+    }
+
+    public static int readLastShownEmojiCategoryPageId(
+            final SharedPreferences prefs, final int defValue) {
+        return prefs.getInt(PREF_LAST_SHOWN_EMOJI_CATEGORY_PAGE_ID, defValue);
     }
 
     private void upgradeAutocorrectionSettings(final SharedPreferences prefs, final Resources res) {
