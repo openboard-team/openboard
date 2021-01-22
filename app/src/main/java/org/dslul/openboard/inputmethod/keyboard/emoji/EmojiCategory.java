@@ -142,19 +142,18 @@ final class EmojiCategory {
                     sCategoryTabIconAttr[i], 0);
         }
 
-        int defaultCategoryId = EmojiCategory.ID_SYMBOLS;
+        int defaultCategoryId = EmojiCategory.ID_SMILEYS_EMOTION;
         addShownCategoryId(EmojiCategory.ID_RECENTS);
-        defaultCategoryId = EmojiCategory.ID_SMILEYS_EMOTION;
-        addShownCategoryId(ID_SMILEYS_EMOTION);
-        addShownCategoryId(ID_PEOPLE_BODY);
-        addShownCategoryId(ID_ANIMALS_NATURE);
-        addShownCategoryId(ID_FOOD_DRINK);
-        addShownCategoryId(ID_TRAVEL_PLACES);
-        addShownCategoryId(ID_ACTIVITIES);
-        addShownCategoryId(ID_OBJECTS);
-        addShownCategoryId(ID_SYMBOLS);
+        addShownCategoryId(EmojiCategory.ID_SMILEYS_EMOTION);
+        addShownCategoryId(EmojiCategory.ID_PEOPLE_BODY);
+        addShownCategoryId(EmojiCategory.ID_ANIMALS_NATURE);
+        addShownCategoryId(EmojiCategory.ID_FOOD_DRINK);
+        addShownCategoryId(EmojiCategory.ID_TRAVEL_PLACES);
+        addShownCategoryId(EmojiCategory.ID_ACTIVITIES);
+        addShownCategoryId(EmojiCategory.ID_OBJECTS);
+        addShownCategoryId(EmojiCategory.ID_SYMBOLS);
         if (canShowFlagEmoji()) {
-            addShownCategoryId(ID_FLAGS);
+            addShownCategoryId(EmojiCategory.ID_FLAGS);
         }
         addShownCategoryId(EmojiCategory.ID_EMOTICONS);
 
@@ -163,6 +162,7 @@ final class EmojiCategory {
         recentsKbd.loadRecentKeys(mCategoryKeyboardMap.values());
 
         mCurrentCategoryId = Settings.readLastShownEmojiCategoryId(mPrefs, defaultCategoryId);
+        mCurrentCategoryPageId = Settings.readLastShownEmojiCategoryPageId(mPrefs, 0);
         Log.i(TAG, "Last Emoji category id is " + mCurrentCategoryId);
         if (!isShownCategoryId(mCurrentCategoryId)) {
             Log.i(TAG, "Last emoji category " + mCurrentCategoryId +
@@ -172,6 +172,10 @@ final class EmojiCategory {
                 recentsKbd.getSortedKeys().isEmpty()) {
             Log.i(TAG, "No recent emojis found, starting in category " + defaultCategoryId);
             mCurrentCategoryId = defaultCategoryId;
+        }
+
+        if (mCurrentCategoryPageId >= getCategoryPageCount(mCurrentCategoryId)) {
+            mCurrentCategoryPageId = 0;
         }
     }
 
@@ -239,6 +243,7 @@ final class EmojiCategory {
 
     public void setCurrentCategoryPageId(final int id) {
         mCurrentCategoryPageId = id;
+        Settings.writeLastShownEmojiCategoryPageId(mPrefs, id);
     }
 
     public int getCurrentCategoryPageId() {
@@ -265,14 +270,12 @@ final class EmojiCategory {
     }
 
     // Returns the view pager's page position for the categoryId
-    public int getPageIdFromCategoryId(final int categoryId) {
-        final int lastSavedCategoryPageId =
-                Settings.readLastTypedEmojiCategoryPageId(mPrefs, categoryId);
+    public int getPagerPageIdFromCategoryAndPageId(final int categoryId, final int categoryPageId) {
         int sum = 0;
         for (int i = 0; i < mShownCategories.size(); ++i) {
             final CategoryProperties props = mShownCategories.get(i);
             if (props.mCategoryId == categoryId) {
-                return sum + lastSavedCategoryPageId;
+                return sum + categoryPageId;
             }
             sum += props.mPageCount;
         }
