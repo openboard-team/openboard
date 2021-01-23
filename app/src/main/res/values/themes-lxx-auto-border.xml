@@ -18,63 +18,7 @@
 */
 -->
 
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources>
     <style name="KeyboardTheme.LXX_Auto_Border"
-           parent="KeyboardTheme.LXX_Light_Border"
-            >
-    </style>
-    <style
-        name="Keyboard.LXX_Auto_Border"
-        parent="Keyboard"
-        >
-        <!-- This should be aligned with KeyboardTheme.THEME_ID_* -->
-        <item name="themeId">LXXAutoBorder</item>
-    </style>
-    <style
-        name="KeyboardView.LXX_Auto_Border"
-        parent="KeyboardView.LXX_Light_Border"
-        >
-    </style>
-    <style
-        name="MainKeyboardView.LXX_Auto_Border"
-        parent="MainKeyboardView.LXX_Light_Border"
-        >
-    </style>
-
-    <!-- Though {@link org.dslul.openboard.inputmethod.keyboard.emoji.EmojiPalettesView} doesn't extend
-         {@link org.dslul.openboard.inputmethod.keyboard.KeyboardView}, some views inside it, for instance
-         delete button, need themed {@link org.dslul.openboard.inputmethod.keyboard.KeyboardView}
-         attributes. -->
-    <style
-        name="EmojiPalettesView.LXX_Auto_Border"
-        parent="EmojiPalettesView.LXX_Light_Border"
-        >
-    </style>
-    <style
-        name="MoreKeysKeyboard.LXX_Auto_Border"
-        parent="MoreKeysKeyboard.LXX_Light_Border"
-        >
-    </style>
-    <style
-        name="MoreKeysKeyboardView.LXX_Auto_Border"
-        parent="MoreKeysKeyboardView.LXX_Light_Border"
-        >
-    </style>
-    <style
-        name="MoreKeysKeyboardView.LXX_Auto_Border.Action"
-        parent="MoreKeysKeyboardView.LXX_Light_Border.Action"
-        >
-    </style>
-    <style
-        name="SuggestionStripView.LXX_Auto_Border"
-        parent="SuggestionStripView.LXX_Light_Border"
-        >
-    </style>
-    <style
-        name="SuggestionWord.LXX_Auto_Border"
-        parent="SuggestionWord.LXX_Light_Border"
-        >
-    </style>
-
-
+           parent="KeyboardTheme.LXX_Light_Border"/>
 </resources>
