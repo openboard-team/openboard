@@ -61,11 +61,10 @@
             latin:emojiKeyEnabled="true"
         >
             <Key
+                latin:keyStyle="emojiKeyStyle" />
+            <Key
                 latin:keyStyle="spaceKeyStyle"
                 latin:keyWidth="40%p" />
-            <Key
-                latin:keyStyle="emojiKeyStyle"
-                latin:backgroundType="functional" />
         </case>
 
         <case
@@ -75,11 +74,10 @@
             <Key
                 latin:keyStyle="languageSwitchKeyStyle" />
             <Key
+                latin:keyStyle="emojiKeyStyle" />
+            <Key
                 latin:keyStyle="spaceKeyStyle"
                 latin:keyWidth="30%p" />
-            <Key
-                latin:keyStyle="emojiKeyStyle"
-                latin:backgroundType="functional" />
         </case>
 
         <!-- languageSwitchKeyEnabled="false" -->
