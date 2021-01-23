@@ -40,6 +40,7 @@
     <color name="typed_word_color_klp">#D8F0F0F0</color>
     <color name="suggested_word_color_klp">#B2F0F0F0</color>
     <color name="highlight_translucent_color_klp">#99E0E0E0</color>
+
     <!-- Color resources for LXX_Light theme.
          15%:0x26 70%:0xB3 75%:0xC0 80%:0xCC 85%:0xD9 90%:0xE6 -->
     <color name="key_text_color_lxx_light">#37474F</color>
