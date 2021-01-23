@@ -163,14 +163,10 @@ final class EmojiCategory {
 
         mCurrentCategoryId = Settings.readLastShownEmojiCategoryId(mPrefs, defaultCategoryId);
         mCurrentCategoryPageId = Settings.readLastShownEmojiCategoryPageId(mPrefs, 0);
-        Log.i(TAG, "Last Emoji category id is " + mCurrentCategoryId);
         if (!isShownCategoryId(mCurrentCategoryId)) {
-            Log.i(TAG, "Last emoji category " + mCurrentCategoryId +
-                    " is invalid, starting in " + defaultCategoryId);
             mCurrentCategoryId = defaultCategoryId;
         } else if (mCurrentCategoryId == EmojiCategory.ID_RECENTS &&
                 recentsKbd.getSortedKeys().isEmpty()) {
-            Log.i(TAG, "No recent emojis found, starting in category " + defaultCategoryId);
             mCurrentCategoryId = defaultCategoryId;
         }
 
