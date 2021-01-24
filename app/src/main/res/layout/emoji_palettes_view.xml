@@ -81,9 +81,12 @@
         <TextView
             android:id="@+id/emoji_keyboard_alphabet_left"
             android:layout_width="0dip"
-            android:layout_weight="0.15"
-            android:gravity="center"
             android:layout_height="match_parent"
+            android:layout_weight="0.15"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:gravity="center"
             android:hapticFeedbackEnabled="false"
             android:soundEffectsEnabled="false" />
         <!-- TODO: Implement KeyView and replace this. -->
@@ -92,8 +95,11 @@
         <RelativeLayout
             android:id="@+id/emoji_keyboard_space"
             android:layout_width="0dip"
-            android:layout_weight="0.70"
             android:layout_height="match_parent"
+            android:layout_weight="0.70"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
             android:hapticFeedbackEnabled="false"
             android:soundEffectsEnabled="false"
             android:contentDescription="@string/spoken_description_space">
@@ -112,9 +118,12 @@
         <ImageButton
             android:id="@+id/emoji_keyboard_delete"
             android:layout_width="0dip"
-            android:layout_weight="0.15"
-            android:gravity="center"
             android:layout_height="match_parent"
+            android:layout_weight="0.15"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:gravity="center"
             android:hapticFeedbackEnabled="false"
             android:soundEffectsEnabled="false"
             android:contentDescription="@string/spoken_description_delete" />
