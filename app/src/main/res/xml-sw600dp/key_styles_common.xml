@@ -102,7 +102,8 @@
         latin:styleName="languageSwitchKeyStyle"
         latin:keySpec="!icon/language_switch_key|!code/key_language_switch"
         latin:keyActionFlags="noKeyPreview|altCodeWhileTyping|enableLongPress"
-        latin:altCode="!code/key_space" />
+        latin:altCode="!code/key_space"
+        latin:backgroundType="functional" />
     <key-style
         latin:styleName="emojiKeyStyle"
         latin:keySpec="!icon/emoji_normal_key|!code/key_emoji"

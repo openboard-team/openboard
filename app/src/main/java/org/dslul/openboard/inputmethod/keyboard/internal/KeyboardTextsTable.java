@@ -259,6 +259,7 @@ public final class KeyboardTextsTable {
         /* 173: 0 */ "morekeys_double_quote",
         /* 174: 0 */ "morekeys_tablet_double_quote",
         /* 175: 0 */ "keyspec_emoji_action_key",
+        /* 176: 0 */ "keyspec_emoji_normal_key",
     };
 
     private static final String EMPTY = "";
@@ -480,6 +481,7 @@ public final class KeyboardTextsTable {
         /* morekeys_double_quote */ "!fixedColumnOrder!5,!text/double_quotes,!text/double_angle_quotes",
         /* morekeys_tablet_double_quote */ "!fixedColumnOrder!6,!text/double_quotes,!text/single_quotes,!text/double_angle_quotes,!text/single_angle_quotes",
         /* keyspec_emoji_action_key */ "!icon/emoji_action_key|!code/key_emoji",
+        /* keyspec_emoji_normal_key */ "!icon/emoji_normal_key|!code/key_emoji",
     };
 
     /* Locale af: Afrikaans */
@@ -1083,7 +1085,7 @@ public final class KeyboardTextsTable {
         // U+00DF: "ß" LATIN SMALL LETTER SHARP S
         // U+015B: "ś" LATIN SMALL LETTER S WITH ACUTE
         // U+0161: "š" LATIN SMALL LETTER S WITH CARON
-        /* morekeys_s */ "\u00DF,\u015B,\u0161",
+        /* morekeys_s */ "\u00DF,%,\u015B,\u0161",
         /* single_quotes */ "!text/single_9qm_lqm",
         /* keyspec_currency ~ */
         null, null, null, null, null, null, null,

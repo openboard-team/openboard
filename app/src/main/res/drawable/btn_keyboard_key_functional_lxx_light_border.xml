@@ -18,5 +18,5 @@
     <!-- Functional keys. -->
     <item android:state_pressed="true"
           android:drawable="@drawable/btn_keyboard_key_pressed_lxx_light_border" />
-    <item android:drawable="@drawable/btn_keyboard_key_function_lxx_light_border" />
+    <item android:drawable="@drawable/btn_keyboard_key_functional_normal_lxx_light_border" />
 </selector>

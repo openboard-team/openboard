@@ -32,7 +32,7 @@
         android:layout_height="@dimen/config_suggestions_strip_height"
         style="?attr/suggestionStripViewStyle"
     >
-        <TabHost
+        <org.dslul.openboard.inputmethod.compat.TabHostCompat
             android:id="@+id/emoji_category_tabhost"
             android:layout_width="0dip"
             android:layout_weight="87.5"
@@ -57,7 +57,7 @@
                     android:layout_height="0dip"
                     android:visibility="gone" />
             </FrameLayout>
-        </TabHost>
+        </org.dslul.openboard.inputmethod.compat.TabHostCompat>
     </LinearLayout>
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/emoji_keyboard_pager"
@@ -81,9 +81,12 @@
         <TextView
             android:id="@+id/emoji_keyboard_alphabet_left"
             android:layout_width="0dip"
-            android:layout_weight="0.15"
-            android:gravity="center"
             android:layout_height="match_parent"
+            android:layout_weight="0.15"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:gravity="center"
             android:hapticFeedbackEnabled="false"
             android:soundEffectsEnabled="false" />
         <!-- TODO: Implement KeyView and replace this. -->
@@ -92,8 +95,11 @@
         <RelativeLayout
             android:id="@+id/emoji_keyboard_space"
             android:layout_width="0dip"
-            android:layout_weight="0.70"
             android:layout_height="match_parent"
+            android:layout_weight="0.70"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
             android:hapticFeedbackEnabled="false"
             android:soundEffectsEnabled="false"
             android:contentDescription="@string/spoken_description_space">
@@ -112,9 +118,12 @@
         <ImageButton
             android:id="@+id/emoji_keyboard_delete"
             android:layout_width="0dip"
-            android:layout_weight="0.15"
-            android:gravity="center"
             android:layout_height="match_parent"
+            android:layout_weight="0.15"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:gravity="center"
             android:hapticFeedbackEnabled="false"
             android:soundEffectsEnabled="false"
             android:contentDescription="@string/spoken_description_delete" />
