@@ -78,7 +78,7 @@
     <string name="subtype_generic_dvorak" translatable="false">%s (Dvorak)</string>
     <string name="subtype_generic_colemak" translatable="false">%s (Colemak)</string>
     <string name="subtype_generic_colemak_dh" translatable="false">%s (Colemak Mod-DH)</string>
-    <string name="subtype_generic_bepo" translatable="false">c%s (Bépo)</string>
+    <string name="subtype_generic_bepo" translatable="false">%s (Bépo)</string>
     <string name="subtype_generic_pcqwerty" translatable="false">%s (PC)</string>
 
     <!-- Description for Bulgarian (BDS) subtype. -->
