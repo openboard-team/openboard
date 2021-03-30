@@ -38,6 +38,10 @@ android {
     }
 
     ndkVersion '21.3.6528147'
+
+    packagingOptions {
+        pickFirst '**/*.so'
+    }
 }
 
 dependencies {
