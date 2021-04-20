@@ -90,8 +90,8 @@
     <string name="account_select_cancel" msgid="5181012062618504340">"Отмена"</string>
     <string name="account_select_sign_out" msgid="3299651159390187933">"Выйти"</string>
     <string name="account_select_title" msgid="6279711684772922649">"Выберите аккаунт"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"английский (Великобритания)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"английский (США)"</string>
+    <string name="subtype_en_GB" msgid="88170601942311355">"Английский (Великобритания)"</string>
+    <string name="subtype_en_US" msgid="6160452336634534239">"Английский (США)"</string>
     <string name="subtype_es_US" msgid="5583145191430180200">"Испанский (США)"</string>
     <string name="subtype_hi_ZZ" msgid="8860448146262798623">"Хинглиш"</string>
     <string name="subtype_sr_ZZ" msgid="9059219552986034343">"Сербский (латиница)"</string>
@@ -122,8 +122,8 @@
     <string name="enable" msgid="5031294444630523247">"Включить"</string>
     <string name="not_now" msgid="6172462888202790482">"Не сейчас"</string>
     <string name="custom_input_style_already_exists" msgid="8008728952215449707">"Такой стиль ввода уже существует: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Вибросигнал при нажатии клавиш"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Звук при нажатии клавиш"</string>
+    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Длительность вибро при нажатии"</string>
+    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Громкость звука при нажатии"</string>
     <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Долгое нажатие"</string>
     <string name="prefs_enable_emoji_alt_physical_key" msgid="5963640002335470112">"Смайлики с внешней клавиатуры"</string>
     <string name="prefs_enable_emoji_alt_physical_key_summary" msgid="5259484820941627827">"Открывать список смайликов нажатием клавиши ALT"</string>
@@ -144,8 +144,8 @@
     <string name="setup_step3_instruction" msgid="8025981829605426000">"Теперь вы можете использовать приложение \"<xliff:g id="APPLICATION_NAME">%s</xliff:g>\" для набора текста."</string>
     <string name="setup_step3_action" msgid="600879797256942259">"Настроить дополнительные языки"</string>
     <string name="setup_finish_action" msgid="276559243409465389">"Готово"</string>
-    <string name="show_setup_wizard_icon" msgid="5008028590593710830">"Показывать значок приложения"</string>
-    <string name="show_setup_wizard_icon_summary" msgid="4119998322536880213">"Отображать значок приложения на панели запуска"</string>
+    <string name="show_setup_wizard_icon" msgid="5008028590593710830">"Значок приложения"</string>
+    <string name="show_setup_wizard_icon_summary" msgid="4119998322536880213">"Отображать значок приложения среди других приложений."</string>
     <string name="app_name" msgid="6320102637491234792">"Поставщик словарей"</string>
     <string name="dictionary_provider_name" msgid="3027315045397363079">"Поставщик словарей"</string>
     <string name="dictionary_service_name" msgid="6237472350693511448">"Служба словарей"</string>
@@ -190,4 +190,17 @@
     <string name="user_dict_settings_more_languages" msgid="7131268499685180461">"Другой язык"</string>
     <string name="user_dict_settings_delete" msgid="110413335187193859">"Удалить"</string>
     <string name="user_dict_fast_scroll_alphabet" msgid="5431919401558285473">" АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"</string>
+    <string name="number_row">"Ряд с цифрами"</string>
+    <string name="number_row_summary">"Всегда показывать отдельный ряд с цифрами."</string>
+    <string name="prefs_resize_keyboard">"Включить изменение размера клавиатуры"</string>
+    <string name="prefs_keyboard_height_scale">"Масштабирование по высоте"</string>
+    <string name="delete_swipe">"Удаление жестом"</string>
+    <string name="space_trackpad">"Жест по пробелу"</string>
+    <string name="delete_swipe_summary">"Включить быстрое удаление текста жестом по клавише удаления."</string>
+    <string name="space_trackpad_summary">"Перемещать курсор жестом по клавише пробела."</string>
+    <string name="more_keys_strip_description">"Ещё клавиши"</string>
+    <string name="prefs_force_incognito_mode">"Режим инкогнито"</string>
+    <string name="prefs_force_incognito_mode_summary">"Не запоминать новые слова."</string>
+    <string name="show_emoji_key">"Клавиша смайликов"</string>
+    <string name="show_emoji_key_summary">"Показать отдельную клавишу для смайликов. Если отключено, смайлики доступны по долгому нажатию на клавишу ENTER."</string>
 </resources>
