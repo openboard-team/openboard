@@ -27,4 +27,17 @@
     <!-- b,n,m -->
     <include
         latin:keyboardLayout="@xml/rowkeys_qwertz3_right3" />
+    <!-- ß -->
+    <switch>
+        <case
+            latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetAutomaticShifted|symbolsShifted"
+            >
+            <Key
+                latin:keySpec="ẞ" />
+        </case>
+        <default>
+            <Key
+                latin:keySpec="ß" />
+        </default>
+    </switch>
 </merge>
