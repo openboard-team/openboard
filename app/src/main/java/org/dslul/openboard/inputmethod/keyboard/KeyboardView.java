@@ -36,6 +36,7 @@ import org.dslul.openboard.inputmethod.keyboard.internal.KeyDrawParams;
 import org.dslul.openboard.inputmethod.keyboard.internal.KeyVisualAttributes;
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.common.Constants;
+import org.dslul.openboard.inputmethod.latin.settings.Settings;
 import org.dslul.openboard.inputmethod.latin.utils.TypefaceUtils;
 
 import java.util.HashSet;
@@ -115,6 +116,8 @@ public class KeyboardView extends View {
     private final Rect mClipRect = new Rect();
     /** The keyboard bitmap buffer for faster updates */
     private Bitmap mOffscreenBuffer;
+    /** Flag for whether the key hints should be displayed */
+    private boolean mShowsHints;
     /** The canvas for the above mutable keyboard bitmap */
     @Nonnull
     private final Canvas mOffscreenCanvas = new Canvas();
@@ -284,6 +287,7 @@ public class KeyboardView extends View {
             return;
         }
 
+        mShowsHints = Settings.getInstance().getCurrent().mShowsHints;
         final Paint paint = mPaint;
         final Drawable background = getBackground();
         // Calculate clip region and set.
@@ -438,7 +442,7 @@ public class KeyboardView extends View {
 
         // Draw hint label.
         final String hintLabel = key.getHintLabel();
-        if (hintLabel != null) {
+        if (hintLabel != null && mShowsHints) {
             paint.setTextSize(key.selectHintTextSize(params));
             paint.setColor(key.selectHintTextColor(params));
             // TODO: Should add a way to specify type face for hint letters
