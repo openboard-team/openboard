@@ -87,7 +87,7 @@
     <color name="key_background_pressed_lxx_dark">#19FFFFFF</color>
     <color name="action_key_background_lxx_dark">#5E97F6</color>
     <color name="action_key_background_pressed_lxx_dark">#86b0f6</color>
-    <color name="suggested_word_background_selected_lxx_dark">#19FFFFFF</color>
+    <color name="suggested_word_background_selected_lxx_dark">#1CFFFFFF</color>
     <color name="gesture_floating_preview_color_lxx_dark">#E621272B</color>
     <color name="emoji_tab_page_indicator_background_lxx_dark">#21272B</color>
     <!-- Color resources for LXX_Dark_Border theme.
@@ -101,6 +101,7 @@
     <!-- Color resources for LXX_Dark_Amoled theme.
          15%:0x26 70%:0xB3 75%:0xC0 80%:0xCC 85%:0xD9 90%:0xE6 -->
     <color name="background_amoled_black">#000000</color>
+    <color name="background_amoled_dark">#1A1A1A</color>
 
     <color name="popup_background_material_dark_theme">#ff3c474c</color>
 
