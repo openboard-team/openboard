@@ -72,7 +72,7 @@
 
     <!-- Color resources for LXX_Dark theme.
          10%:0x19 50%:0x80 70%:0xB3 75%:0xC0 80%:0xCC 85%:0xD9 90%:0xE6  -->
-    <color name="key_text_color_lxx_dark">#CCFFFFFF</color>
+    <color name="key_text_color_lxx_dark">#FFFFFF</color>
     <color name="key_functional_text_color_lxx_dark">#CCFFFFFF</color>
     <color name="key_text_inactive_color_lxx_dark">#80FFFFFF</color>
     <color name="key_hint_letter_color_lxx_dark">#80FFFFFF</color>
