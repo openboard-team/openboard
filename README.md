@@ -6,9 +6,6 @@
 
 100% FOSS keyboard, based on AOSP.
 
-## Permissions
-* **Read Contacts**: Used to add your contact list to suggestions. Disabled by default.
-
 ## Common issues
 - Cannot open settings in MIUI
 
