@@ -1,5 +1,0 @@
-- Aggiunga riga dei numeri!
-- Tema AMOLED (Material Dark)
-- Sistemati il cursore spazio e il gesto eliminazione
-- Piccole migliorie ai temi
-- lingue aggiunte: Rumeno, Bulgaro, Olandese, Portoghese, Esperanto, Greco, Turco
