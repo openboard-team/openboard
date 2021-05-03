@@ -56,6 +56,8 @@ Connect your phone and install the debug APK
 adb install ./app/build/outputs/apk/debug/app-debug.apk
 ```
 ## Credits
+- icon by [Marco TLS](https://www.marcotls.eu)
+
 - [AOSP Keyboard](https://android.googlesource.com/platform/packages/inputmethods/LatinIME/)
 - [LineageOS](https://review.lineageos.org/admin/repos/LineageOS/android_packages_inputmethods_LatinIME)
 - [Simple Keyboard](https://github.com/rkkr/simple-keyboard)
