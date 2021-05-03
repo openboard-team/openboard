@@ -6,6 +6,10 @@
 
 100% FOSS keyboard, based on AOSP.
 
+## Community [matrix] channel
+Join [here](https://matrix.to/#/+openboard:matrix.org)
+![](images/matrix_qr.png)
+
 ## Common issues
 - Cannot open settings in MIUI
 
