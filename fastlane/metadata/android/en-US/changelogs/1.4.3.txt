@@ -1,0 +1,6 @@
+1.4.3:
+- automatic day/night themes
+- Add Arabic PC layout
+- German layout fixes
+- changes to themes
+- bugfixes

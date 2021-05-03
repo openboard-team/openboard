@@ -29,6 +29,12 @@
         android:defaultValue="false"
         android:persistent="true" />
     <CheckBoxPreference
+        android:key="pref_show_hints"
+        android:title="@string/show_hints"
+        android:summary="@string/show_hints_summary"
+        android:defaultValue="true"
+        android:persistent="true" />
+    <CheckBoxPreference
         android:key="pref_show_language_switch_key"
         android:title="@string/show_language_switch_key"
         android:defaultValue="false"

@@ -77,7 +77,7 @@
         name="SuggestionStripView.LXX_Dark_Amoled"
         parent="SuggestionStripView.LXX_Dark"
     >
-        <item name="android:background">@color/background_amoled_black</item>
+        <item name="android:background">@color/background_amoled_dark</item>
     </style>
 
 </resources>

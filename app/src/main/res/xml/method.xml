@@ -36,6 +36,7 @@
     cs: Czech/qwertz
     da: Danish/nordic
     de: German/qwertz
+    de_DE: German (Germany)/german
     de_CH: German (Switzerland)/swiss
     el: Greek/greek
     en_AU: English (Australia)/qwerty
@@ -264,6 +265,14 @@
             android:imeSubtypeLocale="de_CH"
             android:imeSubtypeMode="keyboard"
             android:imeSubtypeExtraValue="KeyboardLayoutSet=swiss,AsciiCapable,SupportTouchPositionCorrection,EmojiCapable"
+            android:isAsciiCapable="true"
+    />
+    <subtype android:icon="@drawable/ic_ime_switcher_dark"
+            android:label="@string/subtype_generic"
+            android:subtypeId="0x00"
+            android:imeSubtypeLocale="de_DE"
+            android:imeSubtypeMode="keyboard"
+            android:imeSubtypeExtraValue="KeyboardLayoutSet=german,AsciiCapable,SupportTouchPositionCorrection,EmojiCapable"
             android:isAsciiCapable="true"
     />
     <subtype android:icon="@drawable/ic_ime_switcher_dark"

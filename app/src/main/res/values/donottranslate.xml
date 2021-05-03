@@ -53,6 +53,7 @@
         <item>azerty</item>
         <item>dvorak</item>
         <item>colemak</item>
+        <item>colemak_dh</item>
         <item>bepo</item>
         <item>pcqwerty</item>
     </string-array>
@@ -63,6 +64,7 @@
         <item>AZERTY</item>
         <item>Dvorak</item>
         <item>Colemak</item>
+        <item>Colemak Mod-DH</item>
         <item>Bépo</item>
         <item>PC</item>
     </string-array>
@@ -75,6 +77,7 @@
     <string name="subtype_generic_azerty" translatable="false">%s (AZERTY)</string>
     <string name="subtype_generic_dvorak" translatable="false">%s (Dvorak)</string>
     <string name="subtype_generic_colemak" translatable="false">%s (Colemak)</string>
+    <string name="subtype_generic_colemak_dh" translatable="false">%s (Colemak Mod-DH)</string>
     <string name="subtype_generic_bepo" translatable="false">%s (Bépo)</string>
     <string name="subtype_generic_pcqwerty" translatable="false">%s (PC)</string>
 
