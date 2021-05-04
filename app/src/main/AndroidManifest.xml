@@ -52,7 +52,8 @@
         <!-- Services -->
         <service android:name="LatinIME"
                 android:label="@string/english_ime_name"
-                android:permission="android.permission.BIND_INPUT_METHOD">
+                android:permission="android.permission.BIND_INPUT_METHOD"
+                android:directBootAware="true">
             <intent-filter>
                 <action android:name="android.view.InputMethod" />
             </intent-filter>
