@@ -24,17 +24,17 @@ public final class DeviceProtectedUtils {
 
     private static Context deviceProtectedContext;
 
-    public static Context getContext(final Context context) {
+    public static SharedPreferences getSharedPreferences(final Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(getDeviceProtectedContext(context));
+    }
+
+    private static Context getDeviceProtectedContext(final Context context) {
         if (deviceProtectedContext != null) {
             return deviceProtectedContext;
         }
         deviceProtectedContext = context.isDeviceProtectedStorage()
                 ? context : context.createDeviceProtectedStorageContext();
         return deviceProtectedContext;
-    }
-
-    public static SharedPreferences getSharedPreferences(final Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(getContext(context));
     }
 
     private DeviceProtectedUtils() {
