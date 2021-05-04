@@ -100,6 +100,7 @@ public abstract class SubScreenFragment extends PreferenceFragment
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getPreferenceManager().setStorageDeviceProtected();
         mSharedPreferenceChangeListener = new OnSharedPreferenceChangeListener() {
             @Override
             public void onSharedPreferenceChanged(final SharedPreferences prefs, final String key) {

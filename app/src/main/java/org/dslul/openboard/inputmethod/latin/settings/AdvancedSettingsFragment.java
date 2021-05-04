@@ -52,7 +52,7 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
         // initialization method of these classes here. See {@link LatinIME#onCreate()}.
         AudioAndHapticFeedbackManager.init(context);
 
-        final SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
+        final SharedPreferences prefs = getSharedPreferences();
 
         if (!Settings.isInternal(prefs)) {
             removePreference(Settings.SCREEN_DEBUG);
