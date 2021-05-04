@@ -95,6 +95,7 @@ public final class CustomInputStyleSettingsFragment extends PreferenceFragment
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getPreferenceManager().setStorageDeviceProtected();
 
         mPrefs = getPreferenceManager().getSharedPreferences();
         RichInputMethodManager.init(getActivity());

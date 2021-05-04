@@ -22,7 +22,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import org.dslul.openboard.inputmethod.latin.AudioAndHapticFeedbackManager;
@@ -30,6 +29,7 @@ import org.dslul.openboard.inputmethod.latin.InputAttributes;
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.common.StringUtils;
 import org.dslul.openboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
+import org.dslul.openboard.inputmethod.latin.utils.DeviceProtectedUtils;
 import org.dslul.openboard.inputmethod.latin.utils.JniUtils;
 import org.dslul.openboard.inputmethod.latin.utils.ResourceUtils;
 import org.dslul.openboard.inputmethod.latin.utils.RunInLocale;
@@ -152,7 +152,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     private void onCreate(final Context context) {
         mContext = context;
         mRes = context.getResources();
-        mPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+        mPrefs = DeviceProtectedUtils.getSharedPreferences(context);
         mPrefs.registerOnSharedPreferenceChangeListener(this);
         upgradeAutocorrectionSettings(mPrefs, mRes);
     }
