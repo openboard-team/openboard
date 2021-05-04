@@ -19,22 +19,51 @@ package org.dslul.openboard.inputmethod.latin.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
+
+import org.dslul.openboard.inputmethod.latin.LatinIME;
+
+import java.util.Map;
+import java.util.Set;
 
 public final class DeviceProtectedUtils {
 
-    private static Context deviceProtectedContext;
+    static final String TAG = DeviceProtectedUtils.class.getSimpleName();
 
+    @SuppressWarnings("unchecked")
     public static SharedPreferences getSharedPreferences(final Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(getDeviceProtectedContext(context));
+        SharedPreferences deviceProtectedPreferences = PreferenceManager.getDefaultSharedPreferences(getDeviceProtectedContext(context));
+        if (deviceProtectedPreferences.getAll().isEmpty()) {
+            Log.i(TAG, "Device encrypted storage is empty, copying values from credential encrypted storage");
+            for (Map.Entry<String, ?> entry : PreferenceManager.getDefaultSharedPreferences(context).getAll().entrySet()) {
+                SharedPreferences.Editor deviceProtectedPreferencesEditor = deviceProtectedPreferences.edit();
+                try {
+                    if (entry.getKey() != null && entry.getValue() != null) {
+                        if (entry.getValue() instanceof Boolean)
+                            deviceProtectedPreferencesEditor.putBoolean(entry.getKey(), (Boolean) entry.getValue());
+                        if (entry.getValue() instanceof Float)
+                            deviceProtectedPreferencesEditor.putFloat(entry.getKey(), (Float) entry.getValue());
+                        if (entry.getValue() instanceof Integer)
+                            deviceProtectedPreferencesEditor.putInt(entry.getKey(), (Integer) entry.getValue());
+                        if (entry.getValue() instanceof Long)
+                            deviceProtectedPreferencesEditor.putLong(entry.getKey(), (Long) entry.getValue());
+                        if (entry.getValue() instanceof String)
+                            deviceProtectedPreferencesEditor.putString(entry.getKey(), (String) entry.getValue());
+                        if (entry.getValue() instanceof Set)
+                            deviceProtectedPreferencesEditor.putStringSet(entry.getKey(), (Set<String>) entry.getValue());
+                    }
+                } catch (Exception e) {
+                    Log.w(TAG, "Unable to copy preference from credential to device encrypted storage", e);
+                }
+                deviceProtectedPreferencesEditor.apply();
+            }
+        }
+        return deviceProtectedPreferences;
     }
 
     private static Context getDeviceProtectedContext(final Context context) {
-        if (deviceProtectedContext != null) {
-            return deviceProtectedContext;
-        }
-        deviceProtectedContext = context.isDeviceProtectedStorage()
+        return context.isDeviceProtectedStorage()
                 ? context : context.createDeviceProtectedStorageContext();
-        return deviceProtectedContext;
     }
 
     private DeviceProtectedUtils() {
