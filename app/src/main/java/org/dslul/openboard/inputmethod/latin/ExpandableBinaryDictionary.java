@@ -632,7 +632,8 @@ abstract public class ExpandableBinaryDictionary extends Dictionary {
     /**
      * Flush binary dictionary to dictionary file.
      */
-    public void asyncFlushBinaryDictionary() {
+    @Override
+    public void onFinishInput() {
         asyncExecuteTaskWithWriteLock(new Runnable() {
             @Override
             public void run() {
@@ -641,7 +642,7 @@ abstract public class ExpandableBinaryDictionary extends Dictionary {
                     return;
                 }
                 if (binaryDictionary.needsToRunGC(false /* mindsBlockByGC */)) {
-                    binaryDictionary.flushWithGC();
+                    binaryDictionary.flushWithGCIfHasUpdated();
                 } else {
                     binaryDictionary.flush();
                 }

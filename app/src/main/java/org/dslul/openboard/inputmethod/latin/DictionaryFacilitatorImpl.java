@@ -225,7 +225,10 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
 
     @Override
     public void onFinishInput(Context context) {
-        flushDictionaries();
+        for (final String dictType : ALL_DICTIONARY_TYPES) {
+            Dictionary dict = mDictionaryGroup.getDict(dictType);
+            if (dict != null) dict.onFinishInput();
+        }
     }
 
     @Override
@@ -457,18 +460,6 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         }
         for (final String dictType : ALL_DICTIONARY_TYPES) {
             dictionaryGroupToClose.closeDict(dictType);
-        }
-    }
-
-    public void flushDictionaries() {
-        final DictionaryGroup dictionaryGroupToClose;
-        synchronized (mLock) {
-            dictionaryGroupToClose = mDictionaryGroup;
-            mDictionaryGroup = new DictionaryGroup();
-        }
-        for (final String dictType : ALL_DICTIONARY_TYPES) {
-            ExpandableBinaryDictionary dict = dictionaryGroupToClose.getSubDict(dictType);
-            if (dict != null) dict.asyncFlushBinaryDictionary();
         }
     }
 
