@@ -209,9 +209,9 @@
     <string name="number_row_summary">Always show number row</string>
 
     <!-- Title of the settings to show key hints -->
-    <string name="show_hints">Show key hints</string>
+    <string name="show_hints">Подсказывать символы</string>
     <!-- Description of the settings to show hints -->
-    <string name="show_hints_summary">Show long-press hints</string>
+    <string name="show_hints_summary">Показывать символы на клавишах</string>
 
     <!-- Title of the settings to enable keyboard resizing -->
     <string name="prefs_resize_keyboard">Enable keyboard resizing</string>
