@@ -9,7 +9,7 @@
 ## Community [matrix] channel
 ![](images/matrix_qr.png)
 
-Join [here](https://matrix.to/#/+openboard:matrix.org)
+Join [here](https://matrix.to/#/#openboard:matrix.org?via=matrix.org)
 
 ## Common issues
 - Cannot open settings in MIUI
