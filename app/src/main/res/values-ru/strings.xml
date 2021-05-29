@@ -192,6 +192,8 @@
     <string name="user_dict_fast_scroll_alphabet" msgid="5431919401558285473">" АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"</string>
     <string name="number_row">"Ряд с цифрами"</string>
     <string name="number_row_summary">"Всегда показывать отдельный ряд с цифрами."</string>
+    <string name="show_hints">"Подсказывать символы"</string>
+    <string name="show_hints_summary">"Показывать символы на клавишах"</string>
     <string name="prefs_resize_keyboard">"Включить изменение размера клавиатуры"</string>
     <string name="prefs_keyboard_height_scale">"Масштабирование по высоте"</string>
     <string name="delete_swipe">"Удаление жестом"</string>
