@@ -117,13 +117,13 @@
                 latin:keyActionFlags="enableLongPress"
                 latin:parentStyle="numKeyBaseStyle" />
         </case>
-        <case latin:keyboardTheme="LXXLight|LXXDark">
+        <default>
             <key-style
                 latin:styleName="tabletNumSpaceKeyStyle"
                 latin:keySpec="!icon/space_key|!code/key_space"
                 latin:backgroundType="spacebar"
                 latin:keyActionFlags="enableLongPress"
                 latin:parentStyle="numKeyBaseStyle" />
-        </case>
+        </default>
     </switch>
 </merge>
