@@ -20,6 +20,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import org.dslul.openboard.inputmethod.keyboard.Keyboard;
+import org.dslul.openboard.inputmethod.keyboard.KeyboardId;
 import org.dslul.openboard.inputmethod.latin.SuggestedWords.SuggestedWordInfo;
 import org.dslul.openboard.inputmethod.latin.common.Constants;
 import org.dslul.openboard.inputmethod.latin.common.StringUtils;
@@ -217,6 +218,10 @@ public final class Suggest {
                 || wordComposer.isMostlyCaps()
                 // We never auto-correct when suggestions are resumed because it would be unexpected
                 || wordComposer.isResumed()
+                // We don't autocorrect in URL or email input, since websites and emails can be
+                // deliberate misspellings of actual words
+                || keyboard.mId.mMode == KeyboardId.MODE_URL
+                || keyboard.mId.mMode == KeyboardId.MODE_EMAIL
                 // If we don't have a main dictionary, we never want to auto-correct. The reason
                 // for this is, the user may have a contact whose name happens to match a valid
                 // word in their language, and it will unexpectedly auto-correct. For example, if
