@@ -160,6 +160,10 @@ public abstract class Dictionary {
         // empty base implementation
     }
 
+    public void onFinishInput() {
+        //empty base implementation
+    }
+
     /**
      * Subclasses may override to indicate that this Dictionary is not yet properly initialized.
      */

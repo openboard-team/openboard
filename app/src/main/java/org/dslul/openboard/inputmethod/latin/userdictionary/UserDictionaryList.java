@@ -51,6 +51,7 @@ public class UserDictionaryList extends PreferenceFragment {
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
+        getPreferenceManager().setStorageDeviceProtected();
         setPreferenceScreen(getPreferenceManager().createPreferenceScreen(getActivity()));
     }
 

@@ -20,10 +20,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import org.dslul.openboard.inputmethod.latin.R;
+import org.dslul.openboard.inputmethod.latin.utils.DeviceProtectedUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -190,7 +190,7 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
     }
 
     public static KeyboardTheme getKeyboardTheme(final Context context) {
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        final SharedPreferences prefs = DeviceProtectedUtils.getSharedPreferences(context);
         final KeyboardTheme[] availableThemeArray = getAvailableThemeArray(context);
         return getKeyboardTheme(prefs, Build.VERSION.SDK_INT, availableThemeArray);
     }

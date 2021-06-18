@@ -225,6 +225,10 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
 
     @Override
     public void onFinishInput(Context context) {
+        for (final String dictType : ALL_DICTIONARY_TYPES) {
+            Dictionary dict = mDictionaryGroup.getDict(dictType);
+            if (dict != null) dict.onFinishInput();
+        }
     }
 
     @Override

@@ -27,7 +27,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Typeface;
-import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -56,6 +55,7 @@ import org.dslul.openboard.inputmethod.latin.SuggestedWords;
 import org.dslul.openboard.inputmethod.latin.common.Constants;
 import org.dslul.openboard.inputmethod.latin.common.CoordinateUtils;
 import org.dslul.openboard.inputmethod.latin.settings.DebugSettings;
+import org.dslul.openboard.inputmethod.latin.utils.DeviceProtectedUtils;
 import org.dslul.openboard.inputmethod.latin.utils.LanguageOnSpacebarUtils;
 import org.dslul.openboard.inputmethod.latin.utils.TypefaceUtils;
 
@@ -197,7 +197,7 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
 
         PointerTracker.init(mainKeyboardViewAttr, mTimerHandler, this /* DrawingProxy */);
 
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        final SharedPreferences prefs = DeviceProtectedUtils.getSharedPreferences(context);
         final boolean forceNonDistinctMultitouch = prefs.getBoolean(
                 DebugSettings.PREF_FORCE_NON_DISTINCT_MULTITOUCH, false);
         final boolean hasDistinctMultitouch = context.getPackageManager()

@@ -87,13 +87,6 @@ public class UserHistoryDictionary extends ExpandableBinaryDictionary {
     }
 
     @Override
-    public void close() {
-        // Flush pending writes.
-        asyncFlushBinaryDictionary();
-        super.close();
-    }
-
-    @Override
     protected Map<String, String> getHeaderAttributeMap() {
         final Map<String, String> attributeMap = super.getHeaderAttributeMap();
         attributeMap.put(DictionaryHeader.USES_FORGETTING_CURVE_KEY,

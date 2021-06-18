@@ -6,8 +6,10 @@
 
 100% FOSS keyboard, based on AOSP.
 
-## Permissions
-* **Read Contacts**: Used to add your contact list to suggestions. Disabled by default.
+## Community [matrix] channel
+![](images/matrix_qr.png)
+
+Join [here](https://matrix.to/#/#openboard:matrix.org?via=matrix.org)
 
 ## Common issues
 - Cannot open settings in MIUI
@@ -56,6 +58,8 @@ Connect your phone and install the debug APK
 adb install ./app/build/outputs/apk/debug/app-debug.apk
 ```
 ## Credits
+- icon by [Marco TLS](https://www.marcotls.eu)
+
 - [AOSP Keyboard](https://android.googlesource.com/platform/packages/inputmethods/LatinIME/)
 - [LineageOS](https://review.lineageos.org/admin/repos/LineageOS/android_packages_inputmethods_LatinIME)
 - [Simple Keyboard](https://github.com/rkkr/simple-keyboard)

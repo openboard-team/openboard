@@ -1,9 +1,0 @@
-1.4.1:
-- riga dei numeri per il layout spagnolo
-- icona incognito
-1.4:
-- Aggiunga riga dei numeri!
-- Tema AMOLED (Material Dark)
-- Sistemati il cursore spazio e il gesto eliminazione
-- Piccole migliorie ai temi
-- lingue aggiunte: Rumeno, Bulgaro, Olandese, Portoghese, Esperanto, Greco, Turco
