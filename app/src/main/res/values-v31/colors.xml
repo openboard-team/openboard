@@ -19,10 +19,10 @@
 -->
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-    <color name="highlight_color_lxx_dark">@android:color/system_accent1_200</color>
+    <color name="highlight_color_lxx_dark">@android:color/system_accent1_500</color>
     <color name="gesture_trail_color_lxx_dark">@android:color/system_accent1_200</color>
     <color name="sliding_key_input_preview_color_lxx_dark">@android:color/system_accent1_900</color>
     <color name="action_key_background_lxx_dark">@android:color/system_accent1_500</color>
     <color name="action_key_background_pressed_lxx_dark">@android:color/system_accent1_200</color>
-    <color name="button_system_accent_lxx_dark">@android:color/system_accent1_200</color>
+    <color name="icon_tint_system_accent_lxx_dark">@android:color/system_accent1_300</color>
 </resources>
