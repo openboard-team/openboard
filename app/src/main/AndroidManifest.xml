@@ -53,7 +53,8 @@
         <service android:name="LatinIME"
                 android:label="@string/english_ime_name"
                 android:permission="android.permission.BIND_INPUT_METHOD"
-                android:directBootAware="true">
+                android:directBootAware="true"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.view.InputMethod" />
             </intent-filter>
@@ -62,7 +63,8 @@
 
         <service android:name=".spellcheck.AndroidSpellCheckerService"
                  android:label="@string/spell_checker_service_name"
-                 android:permission="android.permission.BIND_TEXT_SERVICE">
+                 android:permission="android.permission.BIND_TEXT_SERVICE"
+                 android:exported="true">
             <intent-filter>
                 <action android:name="android.service.textservice.SpellCheckerService" />
             </intent-filter>
@@ -76,7 +78,8 @@
                 android:label="@string/english_ime_name"
                 android:icon="@mipmap/ic_launcher"
                 android:launchMode="singleTask"
-                android:noHistory="true">
+                android:noHistory="true"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -93,7 +96,8 @@
         <activity android:name=".setup.SetupWizardActivity"
                 android:theme="@style/platformActivityTheme"
                 android:label="@string/english_ime_name"
-                android:clearTaskOnLaunch="true">
+                android:clearTaskOnLaunch="true"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -101,7 +105,8 @@
 
         <activity android:name=".settings.SettingsActivity"
                 android:theme="@style/platformSettingsTheme"
-                android:label="@string/english_ime_settings">
+                android:label="@string/english_ime_settings"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -109,7 +114,8 @@
 
         <activity android:name=".spellcheck.SpellCheckerSettingsActivity"
                   android:theme="@style/platformSettingsTheme"
-                  android:label="@string/android_spell_checker_settings">
+                  android:label="@string/android_spell_checker_settings"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -120,7 +126,8 @@
                 android:exported="false" />
 
         <!-- Broadcast receivers -->
-        <receiver android:name="SystemBroadcastReceiver">
+        <receiver android:name="SystemBroadcastReceiver"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

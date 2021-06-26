@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion "android-S"
 
     defaultConfig {
         applicationId "org.dslul.openboard.inputmethod.latin"
         minSdkVersion 19
-        targetSdkVersion 30
+        targetSdkVersion "S"
         versionCode 15
         versionName '1.4.3'
     }
