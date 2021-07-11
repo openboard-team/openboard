@@ -31,7 +31,7 @@
         <include latin:keyboardLayout="@xml/rowkeys_bengali_unijoy1" />
     </Row>
     <Row latin:keyLabelFlags="fontNormal" latin:keyWidth="10%p">
-        <include latin:keyboardLayout="@xml/rowkeys_bengali_unijoy2" />
+        <include latin:keyboardLayout="@xml/rowkeys_bengali_unijoy2" latin:keyXPos="5%p" />
     </Row>
     <Row latin:keyLabelFlags="fontNormal" latin:keyWidth="10%p">
         <Key latin:keyStyle="shiftKeyStyle" latin:keyWidth="15%p" latin:visualInsetsRight="1%p" />
