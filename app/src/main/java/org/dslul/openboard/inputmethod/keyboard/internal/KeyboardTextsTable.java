@@ -787,15 +787,59 @@ public final class KeyboardTextsTable {
         null, null, null, null, null,
         /* ~ morekeys_i */
         // Label for "switch to alphabetic" key.
-        // U+0995: "क" BENGALI LETTER KA
-        // U+0996: "ख" BENGALI LETTER KHA
-        // U+0997: "ग" BENGALI LETTER GA
+        // U+0995: "ক" BENGALI LETTER KA
+        // U+0996: "খ" BENGALI LETTER KHA
+        // U+0997: "গ" BENGALI LETTER GA
         /* keylabel_to_alpha */ "\u0995\u0996\u0997",
         /* morekeys_n ~ */
         null, null, null, null, null,
         /* ~ single_quotes */
         // U+09F3: "৳" BENGALI RUPEE SIGN
         /* keyspec_currency */ "\u09F3",
+        /* morekeys_y ~ */
+        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+        null, null, null, null, null,
+        /* ~ morekeys_cyrillic_soft_sign */
+        // U+0967: "১" BENGALI DIGIT ONE
+        /* keyspec_symbols_1 */ "\u09E7",
+        // U+0968: "২" BENGALI DIGIT TWO
+        /* keyspec_symbols_2 */ "\u09E8",
+        // U+0969: "৩" BENGALI DIGIT THREE
+        /* keyspec_symbols_3 */ "\u09E9",
+        // U+096A: "৪" BENGALI DIGIT FOUR
+        /* keyspec_symbols_4 */ "\u09EA",
+        // U+096B: "৫" BENGALI DIGIT FIVE
+        /* keyspec_symbols_5 */ "\u09EB",
+        // U+096C: "৬" BENGALI DIGIT SIX
+        /* keyspec_symbols_6 */ "\u09EC",
+        // U+096D: "৭" BENGALI DIGIT SEVEN
+        /* keyspec_symbols_7 */ "\u09ED",
+        // U+096E: "৮" BENGALI DIGIT EIGHT
+        /* keyspec_symbols_8 */ "\u09EE",
+        // U+096F: "৯" BENGALI DIGIT NINE
+        /* keyspec_symbols_9 */ "\u09EF",
+        // U+0966: "০" BENGALI DIGIT ZERO
+        /* keyspec_symbols_0 */ "\u09E6",
+        // Label for "switch to symbols" key.
+        /* keylabel_to_symbol */ "?\u09E7\u09E8\u09E9",
+        /* additional_morekeys_symbols_1 */ "1",
+        /* additional_morekeys_symbols_2 */ "2",
+        /* additional_morekeys_symbols_3 */ "3",
+        /* additional_morekeys_symbols_4 */ "4",
+        /* additional_morekeys_symbols_5 */ "5",
+        /* additional_morekeys_symbols_6 */ "6",
+        /* additional_morekeys_symbols_7 */ "7",
+        /* additional_morekeys_symbols_8 */ "8",
+        /* additional_morekeys_symbols_9 */ "9",
+        /* additional_morekeys_symbols_0 */ "0",
+        /* morekeys_tablet_period */ "!autoColumnOrder!8,\\,,॥,?,!,!icon/zwnj_key|\u200C,!icon/zwj_key|\u200D,#,@,!text/keyspec_left_parenthesis,!text/keyspec_right_parenthesis,/,;,:,-,+,\\%",
+         /* morekeys_nordic_row2_11 ~ */
+        null, null, null,
+        /* ~ keyspec_tablet_comma */
+        // U+0964: "।" DEVANAGARI DANDA
+        /* keyspec_period */ "\u0964",
+        /* morekeys_period */ "!autoColumnOrder!8,\\,,॥,?,!,!icon/zwnj_key|\u200C,!icon/zwj_key|\u200D,#,@,!text/keyspec_left_parenthesis,!text/keyspec_right_parenthesis,/,;,:,-,+,\\%",
+        /* keyspec_tablet_period */ "\u0964",
     };
 
     /* Locale bn_IN: Bengali (India) */
