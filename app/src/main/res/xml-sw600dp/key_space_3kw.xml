@@ -23,7 +23,7 @@
 >
     <switch>
         <case
-            latin:keyboardLayoutSet="bengali_unijoy|farsi|kannada|nepali_romanized|nepali_traditional|telugu"
+            latin:keyboardLayoutSet="farsi|kannada|nepali_romanized|nepali_traditional|telugu"
             latin:languageSwitchKeyEnabled="true"
         >
             <Key
@@ -35,7 +35,7 @@
                 latin:keyStyle="zwnjKeyStyle" />
         </case>
         <case
-            latin:keyboardLayoutSet="bengali_unijoy|farsi|kannada|nepali_romanized|nepali_traditional|telugu"
+            latin:keyboardLayoutSet="farsi|kannada|nepali_romanized|nepali_traditional|telugu"
             latin:languageSwitchKeyEnabled="false"
         >
             <Key
