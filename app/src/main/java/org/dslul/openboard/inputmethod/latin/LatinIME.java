@@ -32,6 +32,7 @@ import android.os.Build;
 import android.os.Debug;
 import android.os.IBinder;
 import android.os.Message;
+import android.os.Process;
 import android.text.InputType;
 import android.util.Log;
 import android.util.PrintWriterPrinter;
@@ -185,6 +186,24 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
     }
     final HideSoftInputReceiver mHideSoftInputReceiver = new HideSoftInputReceiver(this);
+
+    final static class RestartAfterDeviceUnlockReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            final String action = intent.getAction();
+            // Restart the keyboard if credential encrypted storage is unlocked. This reloads the
+            // dictionary and other data from credential-encrypted storage (with the onCreate()
+            // method).
+            if (Intent.ACTION_USER_UNLOCKED.equals(action)) {
+                final int myPid = Process.myPid();
+                Log.i(TAG, "Killing my process: pid=" + myPid);
+                Process.killProcess(myPid);
+            } else {
+                Log.e(TAG, "Unexpected intent " + intent);
+            }
+        }
+    }
+    final RestartAfterDeviceUnlockReceiver mRestartAfterDeviceUnlockReceiver = new RestartAfterDeviceUnlockReceiver();
 
     private AlertDialog mOptionsDialog;
 
@@ -625,6 +644,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         registerReceiver(mHideSoftInputReceiver, hideSoftInputFilter, PERMISSION_HIDE_SOFT_INPUT,
                 null /* scheduler */);
 
+        final IntentFilter restartAfterUnlockFilter = new IntentFilter();
+        restartAfterUnlockFilter.addAction(Intent.ACTION_USER_UNLOCKED);
+        registerReceiver(mRestartAfterDeviceUnlockReceiver, restartAfterUnlockFilter);
+
         StatsUtils.onCreate(mSettings.getCurrent(), mRichImm);
     }
 
@@ -733,6 +756,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         unregisterReceiver(mRingerModeChangeReceiver);
         unregisterReceiver(mDictionaryPackInstallReceiver);
         unregisterReceiver(mDictionaryDumpBroadcastReceiver);
+        unregisterReceiver(mRestartAfterDeviceUnlockReceiver);
         mStatsUtilsManager.onDestroy(this /* context */);
         super.onDestroy();
     }
@@ -742,6 +766,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         unregisterReceiver(mDictionaryPackInstallReceiver);
         unregisterReceiver(mDictionaryDumpBroadcastReceiver);
         unregisterReceiver(mRingerModeChangeReceiver);
+        unregisterReceiver(mRestartAfterDeviceUnlockReceiver);
         mInputLogic.recycle();
     }
 
