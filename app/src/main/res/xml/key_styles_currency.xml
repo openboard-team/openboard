@@ -67,7 +67,7 @@
              sk: Slovakia (sk_SK)
              sl: Slovenia (sl_SL)
              sv: Sweden (sv_SV)
-             tr: Trukey (tr_TR) -->
+             tr: Turkey (tr_TR) -->
         <case latin:localeCode="da|de|es|el|fi|fr|it|nl|sk|sl|sv|tr">
             <include latin:keyboardLayout="@xml/key_styles_currency_euro" />
         </case>
