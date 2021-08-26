@@ -22,21 +22,26 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import androidx.annotation.RequiresApi;
+
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.settings.SettingsActivity;
 import org.dslul.openboard.inputmethod.latin.utils.LeakGuardHandlerWrapper;
 import org.dslul.openboard.inputmethod.latin.utils.UncachedInputMethodManagerUtils;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -439,8 +444,8 @@ public final class SetupWizardActivity extends Activity implements View.OnClickL
         private Runnable mAction;
 
         public SetupStep(final int stepNo, final String applicationName, final TextView bulletView,
-                final View stepView, final int title, final int instruction,
-                final int finishedInstruction, final int actionIcon, final int actionLabel) {
+                         final View stepView, final int title, final int instruction,
+                         final int finishedInstruction, final int actionIcon, final int actionLabel) {
             mStepNo = stepNo;
             mStepView = stepView;
             mBulletView = bulletView;
@@ -457,6 +462,9 @@ public final class SetupWizardActivity extends Activity implements View.OnClickL
 
             mActionLabel = mStepView.findViewById(R.id.setup_step_action_label);
             mActionLabel.setText(res.getString(actionLabel));
+            ViewGroup.LayoutParams params = mActionLabel.getLayoutParams();
+            params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            mActionLabel.setLayoutParams(params);
             if (actionIcon == 0) {
                 final int paddingEnd = mActionLabel.getPaddingEnd();
                 mActionLabel.setPaddingRelative(paddingEnd, 0, paddingEnd, 0);
