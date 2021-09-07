@@ -21,7 +21,8 @@
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto">
     <!-- U+00A3: "£" POUND SIGN
          U+20AC: "€" EURO SIGN
-         U+00A2: "¢" CENT SIGN -->
+         U+00A2: "¢" CENT SIGN
+         U+20BA: "₺" TURKISH LIRA SIGN -->
     <key-style
         latin:styleName="currencyKeyStyle"
         latin:keySpec="!text/keyspec_currency"
@@ -39,4 +40,7 @@
     <key-style
         latin:styleName="moreCurrency4KeyStyle"
         latin:keySpec="&#x00A2;" />
+    <key-style
+        latin:styleName="moreCurrency5KeyStyle"
+        latin:keySpec="&#x20BA;"/>
 </merge>
