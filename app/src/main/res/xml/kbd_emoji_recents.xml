@@ -22,7 +22,7 @@
     xmlns:latin="http://schemas.android.com/apk/res-auto"
     latin:keyWidth="@fraction/config_emoji_keyboard_key_width"
     latin:keyLetterSize="@fraction/config_emoji_keyboard_key_letter_size"
-    latin:keyLabelSize="60%p"
+    latin:keyLabelSize="@fraction/config_emoji_keyboard_key_label_size"
     latin:rowHeight="@fraction/config_emoji_keyboard_row_height"
 >
     <GridRows

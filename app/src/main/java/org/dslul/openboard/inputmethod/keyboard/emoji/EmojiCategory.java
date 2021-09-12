@@ -21,9 +21,7 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.os.Build;
 import android.util.Log;
-import android.util.Pair;
 
 import androidx.core.graphics.PaintCompat;
 import org.dslul.openboard.inputmethod.keyboard.Key;
@@ -55,6 +53,8 @@ final class EmojiCategory {
     private static final int ID_SYMBOLS = 8;
     private static final int ID_FLAGS = 9;
     private static final int ID_EMOTICONS = 10;
+
+    private static final int MAX_LINE_COUNT_PER_PAGE = 3;
 
     public final class CategoryProperties {
         public final int mCategoryId;
@@ -119,7 +119,7 @@ final class EmojiCategory {
 
     private final SharedPreferences mPrefs;
     private final Resources mRes;
-    private final int mMaxPageKeyCount;
+    private final int mMaxRecentsKeyCount;
     private final KeyboardLayoutSet mLayoutSet;
     private final HashMap<String, Integer> mCategoryNameToIdMap = new HashMap<>();
     private final int[] mCategoryTabIconId = new int[sCategoryName.length];
@@ -134,7 +134,7 @@ final class EmojiCategory {
             final KeyboardLayoutSet layoutSet, final TypedArray emojiPaletteViewAttr) {
         mPrefs = prefs;
         mRes = res;
-        mMaxPageKeyCount = res.getInteger(R.integer.config_emoji_keyboard_max_page_key_count);
+        mMaxRecentsKeyCount = res.getInteger(R.integer.config_emoji_keyboard_max_recents_key_count);
         mLayoutSet = layoutSet;
         for (int i = 0; i < sCategoryName.length; ++i) {
             mCategoryNameToIdMap.put(sCategoryName[i], i);
@@ -170,7 +170,7 @@ final class EmojiCategory {
             mCurrentCategoryId = defaultCategoryId;
         }
 
-        if (mCurrentCategoryPageId >= getCategoryPageCount(mCurrentCategoryId)) {
+        if (mCurrentCategoryPageId >= computeCategoryPageCount(mCurrentCategoryId)) {
             mCurrentCategoryPageId = 0;
         }
     }
@@ -179,7 +179,7 @@ final class EmojiCategory {
         // Load a keyboard of categoryId
         getKeyboard(categoryId, 0 /* categoryPageId */);
         final CategoryProperties properties =
-                new CategoryProperties(categoryId, getCategoryPageCount(categoryId));
+                new CategoryProperties(categoryId, computeCategoryPageCount(categoryId));
         mShownCategories.add(properties);
     }
 
@@ -217,11 +217,11 @@ final class EmojiCategory {
         return mCurrentCategoryId;
     }
 
-    public int getCurrentCategoryPageSize() {
-        return getCategoryPageSize(mCurrentCategoryId);
+    public int getCurrentCategoryPageCount() {
+        return getCategoryPageCount(mCurrentCategoryId);
     }
 
-    public int getCategoryPageSize(final int categoryId) {
+    public int getCategoryPageCount(final int categoryId) {
         for (final CategoryProperties prop : mShownCategories) {
             if (prop.mCategoryId == categoryId) {
                 return prop.mPageCount;
@@ -283,38 +283,21 @@ final class EmojiCategory {
         return getTabIdFromCategoryId(EmojiCategory.ID_RECENTS);
     }
 
-    private int getCategoryPageCount(final int categoryId) {
+    private int computeCategoryPageCount(final int categoryId) {
         final Keyboard keyboard = mLayoutSet.getKeyboard(sCategoryElementId[categoryId]);
-        return (keyboard.getSortedKeys().size() - 1) / mMaxPageKeyCount + 1;
+        return (keyboard.getSortedKeys().size() - 1) / computeMaxKeyCountPerPage() + 1;
     }
 
-    // Returns a pair of the category id and the category page id from the view pager's page
-    // position. The category page id is numbered in each category. And the view page position
-    // is the position of the current shown page in the view pager which contains all pages of
-    // all categories.
-    public Pair<Integer, Integer> getCategoryIdAndPageIdFromPagePosition(final int position) {
-        int sum = 0;
-        for (final CategoryProperties properties : mShownCategories) {
-            final int temp = sum;
-            sum += properties.mPageCount;
-            if (sum > position) {
-                return new Pair<>(properties.mCategoryId, position - temp);
-            }
+    // Returns a keyboard from the recycler view's adapter position.
+    public DynamicGridKeyboard getKeyboardFromAdapterPosition(final int position) {
+        if (position >= 0 && position < getCurrentCategoryPageCount()) {
+            return getKeyboard(mCurrentCategoryId, position);
         }
+        Log.w(TAG, "invalid position for categoryId : " + mCurrentCategoryId);
         return null;
     }
 
-    // Returns a keyboard from the view pager's page position.
-    public DynamicGridKeyboard getKeyboardFromPagePosition(final int position) {
-        final Pair<Integer, Integer> categoryAndId =
-                getCategoryIdAndPageIdFromPagePosition(position);
-        if (categoryAndId != null) {
-            return getKeyboard(categoryAndId.first, categoryAndId.second);
-        }
-        return null;
-    }
-
-    private static final Long getCategoryKeyboardMapKey(final int categoryId, final int id) {
+    private static Long getCategoryKeyboardMapKey(final int categoryId, final int id) {
         return (((long) categoryId) << Integer.SIZE) | id;
     }
 
@@ -328,19 +311,20 @@ final class EmojiCategory {
             if (categoryId == EmojiCategory.ID_RECENTS) {
                 final DynamicGridKeyboard kbd = new DynamicGridKeyboard(mPrefs,
                         mLayoutSet.getKeyboard(KeyboardId.ELEMENT_EMOJI_RECENTS),
-                        mMaxPageKeyCount, categoryId);
+                        mMaxRecentsKeyCount, categoryId);
                 mCategoryKeyboardMap.put(categoryKeyboardMapKey, kbd);
                 return kbd;
             }
 
             final Keyboard keyboard = mLayoutSet.getKeyboard(sCategoryElementId[categoryId]);
-            final Key[][] sortedKeys = sortKeysIntoPages(
-                    keyboard.getSortedKeys(), mMaxPageKeyCount);
-            for (int pageId = 0; pageId < sortedKeys.length; ++pageId) {
+            final int keyCountPerPage = computeMaxKeyCountPerPage();
+            final Key[][] sortedKeysPages = sortKeysGrouped(
+                    keyboard.getSortedKeys(), keyCountPerPage);
+            for (int pageId = 0; pageId < sortedKeysPages.length; ++pageId) {
                 final DynamicGridKeyboard tempKeyboard = new DynamicGridKeyboard(mPrefs,
                         mLayoutSet.getKeyboard(KeyboardId.ELEMENT_EMOJI_RECENTS),
-                        mMaxPageKeyCount, categoryId);
-                for (final Key emojiKey : sortedKeys[pageId]) {
+                        keyCountPerPage, categoryId);
+                for (final Key emojiKey : sortedKeysPages[pageId]) {
                     if (emojiKey == null) {
                         break;
                     }
@@ -353,37 +337,33 @@ final class EmojiCategory {
         }
     }
 
-    public int getTotalPageCountOfAllCategories() {
-        int sum = 0;
-        for (CategoryProperties properties : mShownCategories) {
-            sum += properties.mPageCount;
-        }
-        return sum;
+    private int computeMaxKeyCountPerPage() {
+        final DynamicGridKeyboard tempKeyboard = new DynamicGridKeyboard(mPrefs,
+                mLayoutSet.getKeyboard(KeyboardId.ELEMENT_EMOJI_RECENTS),
+                0, 0);
+        return MAX_LINE_COUNT_PER_PAGE * tempKeyboard.getColumnsCount();
     }
 
-    private static Comparator<Key> EMOJI_KEY_COMPARATOR = new Comparator<Key>() {
-        @Override
-        public int compare(final Key lhs, final Key rhs) {
-            final Rect lHitBox = lhs.getHitBox();
-            final Rect rHitBox = rhs.getHitBox();
-            if (lHitBox.top < rHitBox.top) {
-                return -1;
-            } else if (lHitBox.top > rHitBox.top) {
-                return 1;
-            }
-            if (lHitBox.left < rHitBox.left) {
-                return -1;
-            } else if (lHitBox.left > rHitBox.left) {
-                return 1;
-            }
-            if (lhs.getCode() == rhs.getCode()) {
-                return 0;
-            }
-            return lhs.getCode() < rhs.getCode() ? -1 : 1;
+    private static final Comparator<Key> EMOJI_KEY_COMPARATOR = (lhs, rhs) -> {
+        final Rect lHitBox = lhs.getHitBox();
+        final Rect rHitBox = rhs.getHitBox();
+        if (lHitBox.top < rHitBox.top) {
+            return -1;
+        } else if (lHitBox.top > rHitBox.top) {
+            return 1;
         }
+        if (lHitBox.left < rHitBox.left) {
+            return -1;
+        } else if (lHitBox.left > rHitBox.left) {
+            return 1;
+        }
+        if (lhs.getCode() == rhs.getCode()) {
+            return 0;
+        }
+        return lhs.getCode() < rhs.getCode() ? -1 : 1;
     };
 
-    private static Key[][] sortKeysIntoPages(final List<Key> inKeys, final int maxPageCount) {
+    private static Key[][] sortKeysGrouped(final List<Key> inKeys, final int maxPageCount) {
         final ArrayList<Key> keys = new ArrayList<>(inKeys);
         Collections.sort(keys, EMOJI_KEY_COMPARATOR);
         final int pageCount = (keys.size() - 1) / maxPageCount + 1;
