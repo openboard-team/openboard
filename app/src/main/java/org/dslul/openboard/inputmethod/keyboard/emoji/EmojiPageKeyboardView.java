@@ -114,6 +114,20 @@ final class EmojiPageKeyboardView extends KeyboardView implements
     }
 
     @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        final Keyboard keyboard = getKeyboard();
+        if (keyboard instanceof DynamicGridKeyboard) {
+            final int width = keyboard.mOccupiedWidth + getPaddingLeft() + getPaddingRight();
+            final int occupiedHeight =
+                    ((DynamicGridKeyboard) keyboard).getDynamicOccupiedHeight();
+            final int height = occupiedHeight + getPaddingTop() + getPaddingBottom();
+            setMeasuredDimension(width, height);
+            return;
+        }
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    @Override
     public void setHardwareAcceleratedDrawingEnabled(final boolean enabled) {
         super.setHardwareAcceleratedDrawingEnabled(enabled);
         if (!enabled) return;
@@ -173,9 +187,7 @@ final class EmojiPageKeyboardView extends KeyboardView implements
         Keyboard moreKeysKeyboard = mMoreKeysKeyboardCache.get(key);
         if (moreKeysKeyboard == null) {
             final MoreKeysKeyboard.Builder builder = new MoreKeysKeyboard.Builder(
-                    getContext(), key, getKeyboard(),
-                    true, key.getWidth(), key.getHeight(), // TODO This is cheating
-                    newLabelPaint(key));
+                    getContext(), key, getKeyboard(), false, 0, 0, newLabelPaint(key));
             moreKeysKeyboard = builder.build();
             mMoreKeysKeyboardCache.put(key, moreKeysKeyboard);
         }
@@ -382,9 +394,6 @@ final class EmojiPageKeyboardView extends KeyboardView implements
         final Runnable pendingKeyDown = mPendingKeyDown;
         final Key currentKey = mCurrentKey;
         releaseCurrentKey(false /* withKeyRegistering */);
-        if (key == null) {
-            return false;
-        }
 
         final boolean isShowingMoreKeysPanel = isShowingMoreKeysPanel();
         if (isShowingMoreKeysPanel) {
@@ -402,7 +411,7 @@ final class EmojiPageKeyboardView extends KeyboardView implements
                     callListenerOnReleaseKey(key, true /* withRegistering */);
                 }
             }, KEY_RELEASE_DELAY_TIME);
-        } else {
+        } else if (key != null) {
             callListenerOnReleaseKey(key, true /* withRegistering */);
         }
 

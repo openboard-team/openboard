@@ -61,9 +61,9 @@ public final class EmojiCategoryPageIndicatorView extends View {
         final float height = getHeight();
         final float width = getWidth();
         final float unitWidth = width / mCategoryPageSize;
-        final float left = unitWidth * mCurrentCategoryPageId + mOffset * unitWidth;
+        final float left = Math.min(unitWidth * mCurrentCategoryPageId + mOffset * unitWidth, width - unitWidth);
         final float top = 0.0f;
-        final float right = left + unitWidth;
+        final float right = Math.min(left + unitWidth, width);
         final float bottom = height * BOTTOM_MARGIN_RATIO;
         canvas.drawRect(left, top, right, bottom, mPaint);
     }

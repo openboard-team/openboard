@@ -182,7 +182,7 @@ final class EmojiPalettesAdapter extends RecyclerView.Adapter<EmojiPalettesAdapt
             mActiveKeyboardViews.remove(position);
         }
         final Keyboard keyboard =
-                mEmojiCategory.getKeyboardFromPagePosition(position);
+                mEmojiCategory.getKeyboardFromAdapterPosition(position);
         holder.getKeyboardView().setKeyboard(keyboard);
         holder.getKeyboardView().setOnKeyEventListener(mListener);
         //parent.addView(keyboardView);
@@ -201,9 +201,8 @@ final class EmojiPalettesAdapter extends RecyclerView.Adapter<EmojiPalettesAdapt
 
     @Override
     public int getItemCount() {
-        return mEmojiCategory.getTotalPageCountOfAllCategories();
+        return mEmojiCategory.getCurrentCategoryPageCount();
     }
-
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         private EmojiPageKeyboardView customView;
