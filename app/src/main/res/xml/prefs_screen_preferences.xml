@@ -35,6 +35,11 @@
         android:defaultValue="true"
         android:persistent="true" />
     <CheckBoxPreference
+        android:key="prefs_long_press_keyboard_to_change_lang"
+        android:title="@string/prefs_long_press_keyboard_to_change_lang"
+        android:persistent="true"
+        android:defaultValue="true" />
+    <CheckBoxPreference
         android:key="pref_show_language_switch_key"
         android:title="@string/show_language_switch_key"
         android:defaultValue="false"
