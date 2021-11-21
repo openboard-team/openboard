@@ -16,6 +16,8 @@
 
 package org.dslul.openboard.inputmethod.latin.suggestions;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -59,6 +61,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
     public interface Listener {
         void pickSuggestionManually(SuggestedWordInfo word);
         void onCodeInput(int primaryCode, int x, int y, boolean isKeyRepeat);
+        void onTextInput(final String rawText);
     }
 
     static final boolean DBG = DebugFlags.DEBUG_ENABLED;
@@ -164,7 +167,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
         final Drawable iconVoice = keyboardAttr.getDrawable(R.styleable.Keyboard_iconShortcutKey);
         final Drawable iconIncognito = keyboardAttr.getDrawable(R.styleable.Keyboard_iconIncognitoKey);
         //TODO: create and set a different icon for this
-        final Drawable iconPaste = keyboardAttr.getDrawable(R.styleable.Keyboard_iconShortcutKey);
+        final Drawable iconPaste = keyboardAttr.getDrawable(R.styleable.Keyboard_iconSendKey);
         keyboardAttr.recycle();
         mVoiceKey.setImageDrawable(iconVoice);
         mVoiceKey.setOnClickListener(this);
@@ -423,7 +426,18 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
             return;
         }
         if (view == mPasteKey) {
-            //TODO: fill in
+            ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clipData = clipboardManager.getPrimaryClip();
+            if (clipData != null && clipData.getItemCount() > 0 && clipData.getItemAt(0) != null) {
+                String clipString = clipData.getItemAt(0).coerceToText(getContext()).toString();
+                if (clipString.length() == 1) {
+                    mListener.onTextInput(clipString);
+                } else if (clipString.length() > 1) {
+                    //awkward workaround
+                    mListener.onTextInput(clipString.substring(0, clipString.length() - 1));
+                    mListener.onTextInput(clipString.substring(clipString.length() - 1));
+                }
+            }
             return;
         }
 
