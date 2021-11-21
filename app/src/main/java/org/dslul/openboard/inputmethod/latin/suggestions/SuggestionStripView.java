@@ -66,6 +66,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
 
     private final ViewGroup mSuggestionsStrip;
     private final ImageButton mVoiceKey;
+    private final ImageButton mPasteKey;
     private final ImageButton mOtherKey;
     MainKeyboardView mMainKeyboardView;
 
@@ -126,6 +127,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
 
         mSuggestionsStrip = findViewById(R.id.suggestions_strip);
         mVoiceKey = findViewById(R.id.suggestions_strip_voice_key);
+        mPasteKey = findViewById(R.id.suggestions_strip_paste_key);
         mOtherKey = findViewById(R.id.suggestions_strip_other_key);
         mStripVisibilityGroup = new StripVisibilityGroup(this, mSuggestionsStrip);
 
@@ -161,9 +163,13 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
                 R.styleable.Keyboard, defStyle, R.style.SuggestionStripView);
         final Drawable iconVoice = keyboardAttr.getDrawable(R.styleable.Keyboard_iconShortcutKey);
         final Drawable iconIncognito = keyboardAttr.getDrawable(R.styleable.Keyboard_iconIncognitoKey);
+        //TODO: create and set a different icon for this
+        final Drawable iconPaste = keyboardAttr.getDrawable(R.styleable.Keyboard_iconShortcutKey);
         keyboardAttr.recycle();
         mVoiceKey.setImageDrawable(iconVoice);
         mVoiceKey.setOnClickListener(this);
+        mPasteKey.setImageDrawable(iconPaste);
+        mPasteKey.setOnClickListener(this);
 
         mOtherKey.setImageDrawable(iconIncognito);
     }
@@ -181,7 +187,10 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
         final int visibility = shouldBeVisible ? VISIBLE : (isFullscreenMode ? GONE : INVISIBLE);
         setVisibility(visibility);
         final SettingsValues currentSettingsValues = Settings.getInstance().getCurrent();
-        mVoiceKey.setVisibility(currentSettingsValues.mShowsVoiceInputKey ? VISIBLE : INVISIBLE);
+        //TODO: set either mVoiceKey or mPasteKey to INVISIBLE if the other is GONE
+        mVoiceKey.setVisibility(currentSettingsValues.mShowsVoiceInputKey ? VISIBLE : GONE);
+        //TODO: read visibility from settings
+        mPasteKey.setVisibility(VISIBLE);
         mOtherKey.setVisibility(currentSettingsValues.mIncognitoModeEnabled ? VISIBLE : INVISIBLE);
     }
 
@@ -411,6 +420,10 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
             mListener.onCodeInput(Constants.CODE_SHORTCUT,
                     Constants.SUGGESTION_STRIP_COORDINATE, Constants.SUGGESTION_STRIP_COORDINATE,
                     false /* isKeyRepeat */);
+            return;
+        }
+        if (view == mPasteKey) {
+            //TODO: fill in
             return;
         }
 
