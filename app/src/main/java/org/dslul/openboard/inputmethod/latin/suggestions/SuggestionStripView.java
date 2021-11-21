@@ -166,8 +166,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
                 R.styleable.Keyboard, defStyle, R.style.SuggestionStripView);
         final Drawable iconVoice = keyboardAttr.getDrawable(R.styleable.Keyboard_iconShortcutKey);
         final Drawable iconIncognito = keyboardAttr.getDrawable(R.styleable.Keyboard_iconIncognitoKey);
-        //TODO: create and set a different icon for this
-        final Drawable iconPaste = keyboardAttr.getDrawable(R.styleable.Keyboard_iconSendKey);
+        final Drawable iconPaste = keyboardAttr.getDrawable(R.styleable.Keyboard_iconPasteKey);
         keyboardAttr.recycle();
         mVoiceKey.setImageDrawable(iconVoice);
         mVoiceKey.setOnClickListener(this);
