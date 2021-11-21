@@ -71,4 +71,9 @@
         android:title="@string/voice_input"
         android:defaultValue="true"
         android:persistent="true" />
+    <CheckBoxPreference
+        android:key="pref_show_paste_key"
+        android:title="@string/show_paste_key"
+        android:defaultValue="false"
+        android:persistent="true" />
 </PreferenceScreen>

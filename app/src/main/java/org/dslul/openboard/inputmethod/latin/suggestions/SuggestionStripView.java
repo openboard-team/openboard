@@ -190,10 +190,8 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
         final int visibility = shouldBeVisible ? VISIBLE : (isFullscreenMode ? GONE : INVISIBLE);
         setVisibility(visibility);
         final SettingsValues currentSettingsValues = Settings.getInstance().getCurrent();
-        //TODO: set either mVoiceKey or mPasteKey to INVISIBLE if the other is GONE
         mVoiceKey.setVisibility(currentSettingsValues.mShowsVoiceInputKey ? VISIBLE : GONE);
-        //TODO: read visibility from settings
-        mPasteKey.setVisibility(VISIBLE);
+        mPasteKey.setVisibility(currentSettingsValues.mShowsPasteKey ? VISIBLE : (mVoiceKey.getVisibility() == GONE ? INVISIBLE : GONE));
         mOtherKey.setVisibility(currentSettingsValues.mIncognitoModeEnabled ? VISIBLE : INVISIBLE);
     }
 
