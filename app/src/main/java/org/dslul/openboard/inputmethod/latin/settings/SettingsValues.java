@@ -190,7 +190,8 @@ public class SettingsValues {
                 //&& !mInputAttributes.mInputTypeNoAutoCorrect;
         mSuggestionsEnabledPerUserSettings = !mInputAttributes.mIsPasswordField &&
                 readSuggestionsEnabled(prefs);
-        mIncognitoModeEnabled = Settings.readAlwaysIncognitoMode(prefs) || mInputAttributes.mNoLearning;
+        mIncognitoModeEnabled = Settings.readAlwaysIncognitoMode(prefs) || mInputAttributes.mNoLearning
+                || mInputAttributes.mIsPasswordField;
         mIsInternal = Settings.isInternal(prefs);
         mHasCustomKeyPreviewAnimationParams = prefs.getBoolean(
                 DebugSettings.PREF_HAS_CUSTOM_KEY_PREVIEW_ANIMATION_PARAMS, false);
