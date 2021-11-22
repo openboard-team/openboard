@@ -36,6 +36,7 @@
         <item name="iconPreviousKey">@drawable/sym_keyboard_previous_lxx_dark</item>
         <item name="iconShortcutKey">@drawable/sym_keyboard_voice_lxx_dark</item>
         <item name="iconShortcutKeyDisabled">@drawable/sym_keyboard_voice_off_lxx_dark</item>
+        <item name="iconClipboardKey">@drawable/sym_keyboard_clipboard_dark</item>
         <item name="iconIncognitoKey">@drawable/sym_keyboard_incognito_lxx_dark</item>
         <item name="iconSpaceKeyForNumberLayout">@drawable/sym_keyboard_space_lxx_dark</item>
         <item name="iconLanguageSwitchKey">@drawable/sym_keyboard_language_switch_lxx_dark</item>
