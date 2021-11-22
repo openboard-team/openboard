@@ -1117,6 +1117,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
     }
 
+    public CharSequence getSelection() {
+        return mInputLogic.mConnection.getSelectedText(0);
+    }
+
     /**
      * This is called when the user has clicked on the extracted text view,
      * when running in fullscreen mode.  The default implementation hides
