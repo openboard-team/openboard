@@ -180,8 +180,8 @@
     <string name="voice_input_disabled_summary">No voice input methods enabled. Check Languages&#160;&amp; input settings.</string>
 
     <!-- Preferences item for enabling pasting from keyboard -->
-    <string name="show_paste_key">Clipboard paste key</string>
-    <string name="show_paste_key_summary">Press to copy, long-press to paste.</string>
+    <string name="show_clipboard_key">Clipboard key</string>
+    <string name="show_clipboard_key_summary">Press to copy, long-press to paste.</string>
 
     <!-- Title for configuring input method settings [CHAR LIMIT=35] -->
     <string name="configure_input_method">Configure input methods</string>

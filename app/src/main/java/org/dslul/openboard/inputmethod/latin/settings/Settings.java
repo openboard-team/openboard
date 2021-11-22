@@ -56,7 +56,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     // PREF_VOICE_MODE_OBSOLETE is obsolete. Use PREF_VOICE_INPUT_KEY instead.
     public static final String PREF_VOICE_MODE_OBSOLETE = "voice_mode";
     public static final String PREF_VOICE_INPUT_KEY = "pref_voice_input_key";
-    public static final String PREF_CLIPBOARD_PASTE_KEY = "pref_clipboard_paste_key";
+    public static final String PREF_CLIPBOARD_CLIPBOARD_KEY = "pref_clipboard_clipboard_key";
     public static final String PREF_EDIT_PERSONAL_DICTIONARY = "edit_personal_dictionary";
     // PREF_AUTO_CORRECTION_THRESHOLD_OBSOLETE is obsolete. Use PREF_AUTO_CORRECTION instead.
     public static final String PREF_AUTO_CORRECTION_THRESHOLD_OBSOLETE =
@@ -78,8 +78,8 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
             "pref_show_language_switch_key";
     public static final String PREF_SHOW_EMOJI_KEY =
             "pref_show_emoji_key";
-    public static final String PREF_SHOW_PASTE_KEY =
-            "pref_show_paste_key";
+    public static final String PREF_SHOW_CLIPBOARD_KEY =
+            "pref_show_clipboard_key";
     public static final String PREF_INCLUDE_OTHER_IMES_IN_LANGUAGE_SWITCH_LIST =
             "pref_include_other_imes_in_language_switch_list";
     public static final String PREF_CUSTOM_INPUT_STYLES = "custom_input_styles";

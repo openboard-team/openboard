@@ -72,9 +72,9 @@
         android:defaultValue="true"
         android:persistent="true" />
     <CheckBoxPreference
-        android:key="pref_show_paste_key"
-        android:title="@string/show_paste_key"
-        android:summary="@string/show_paste_key_summary"
+        android:key="pref_show_clipboard_key"
+        android:title="@string/show_clipboard_key"
+        android:summary="@string/show_clipboard_key_summary"
         android:defaultValue="false"
         android:persistent="true" />
 </PreferenceScreen>

@@ -70,7 +70,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
 
     private final ViewGroup mSuggestionsStrip;
     private final ImageButton mVoiceKey;
-    private final ImageButton mPasteKey;
+    private final ImageButton mClipboardKey;
     private final ImageButton mOtherKey;
     MainKeyboardView mMainKeyboardView;
 
@@ -131,7 +131,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
 
         mSuggestionsStrip = findViewById(R.id.suggestions_strip);
         mVoiceKey = findViewById(R.id.suggestions_strip_voice_key);
-        mPasteKey = findViewById(R.id.suggestions_strip_paste_key);
+        mClipboardKey = findViewById(R.id.suggestions_strip_clipboard_key);
         mOtherKey = findViewById(R.id.suggestions_strip_other_key);
         mStripVisibilityGroup = new StripVisibilityGroup(this, mSuggestionsStrip);
 
@@ -167,13 +167,13 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
                 R.styleable.Keyboard, defStyle, R.style.SuggestionStripView);
         final Drawable iconVoice = keyboardAttr.getDrawable(R.styleable.Keyboard_iconShortcutKey);
         final Drawable iconIncognito = keyboardAttr.getDrawable(R.styleable.Keyboard_iconIncognitoKey);
-        final Drawable iconPaste = keyboardAttr.getDrawable(R.styleable.Keyboard_iconPasteKey);
+        final Drawable iconClipboard = keyboardAttr.getDrawable(R.styleable.Keyboard_iconClipboardKey);
         keyboardAttr.recycle();
         mVoiceKey.setImageDrawable(iconVoice);
         mVoiceKey.setOnClickListener(this);
-        mPasteKey.setImageDrawable(iconPaste);
-        mPasteKey.setOnClickListener(this);
-        mPasteKey.setOnLongClickListener(this);
+        mClipboardKey.setImageDrawable(iconClipboard);
+        mClipboardKey.setOnClickListener(this);
+        mClipboardKey.setOnLongClickListener(this);
 
         mOtherKey.setImageDrawable(iconIncognito);
     }
@@ -192,7 +192,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
         setVisibility(visibility);
         final SettingsValues currentSettingsValues = Settings.getInstance().getCurrent();
         mVoiceKey.setVisibility(currentSettingsValues.mShowsVoiceInputKey ? VISIBLE : GONE);
-        mPasteKey.setVisibility(currentSettingsValues.mShowsPasteKey ? VISIBLE : (mVoiceKey.getVisibility() == GONE ? INVISIBLE : GONE));
+        mClipboardKey.setVisibility(currentSettingsValues.mShowsClipboardKey ? VISIBLE : (mVoiceKey.getVisibility() == GONE ? INVISIBLE : GONE));
         mOtherKey.setVisibility(currentSettingsValues.mIncognitoModeEnabled ? VISIBLE : INVISIBLE);
     }
 
@@ -267,7 +267,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
 
     @Override
     public boolean onLongClick(final View view) {
-        if (view == mPasteKey) {
+        if (view == mClipboardKey) {
             ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clipData = clipboardManager.getPrimaryClip();
             if (clipData != null && clipData.getItemCount() > 0 && clipData.getItemAt(0) != null) {
@@ -441,7 +441,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
                     false /* isKeyRepeat */);
             return;
         }
-        if (view == mPasteKey) {
+        if (view == mClipboardKey) {
             CharSequence selectionSequence = mListener.getSelection();
             if (selectionSequence != null && selectionSequence.length() > 0
                     && !Settings.getInstance().getCurrent().mInputAttributes.mIsPasswordField) {
