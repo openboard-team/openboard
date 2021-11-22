@@ -443,7 +443,8 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
         }
         if (view == mPasteKey) {
             CharSequence selectionSequence = mListener.getSelection();
-            if (selectionSequence != null && selectionSequence.length() > 0) {
+            if (selectionSequence != null && selectionSequence.length() > 0
+                    && !Settings.getInstance().getCurrent().mInputAttributes.mIsPasswordField) {
                 ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
                 clipboardManager.setPrimaryClip(ClipData.newPlainText(selectionSequence, selectionSequence));
             }

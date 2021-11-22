@@ -1588,10 +1588,11 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 currentSettingsValues.mInputAttributes.mShouldShowSuggestions
                         && currentSettingsValues.isSuggestionsEnabledPerUserSettings();
         final boolean shouldShowSuggestionsStripUnlessPassword = currentSettingsValues.mShowsVoiceInputKey
+                || currentSettingsValues.mShowsPasteKey
                 || shouldShowSuggestionCandidates
                 || currentSettingsValues.isApplicationSpecifiedCompletionsOn();
         final boolean shouldShowSuggestionsStrip = shouldShowSuggestionsStripUnlessPassword
-                && !currentSettingsValues.mInputAttributes.mIsPasswordField;
+                && (!currentSettingsValues.mInputAttributes.mIsPasswordField || currentSettingsValues.mShowsPasteKey);
         mSuggestionStripView.updateVisibility(shouldShowSuggestionsStrip, isFullscreenMode());
         if (!shouldShowSuggestionsStrip) {
             return;
