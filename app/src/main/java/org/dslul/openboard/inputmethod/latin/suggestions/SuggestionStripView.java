@@ -16,6 +16,8 @@
 
 package org.dslul.openboard.inputmethod.latin.suggestions;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -59,6 +61,8 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
     public interface Listener {
         void pickSuggestionManually(SuggestedWordInfo word);
         void onCodeInput(int primaryCode, int x, int y, boolean isKeyRepeat);
+        void onTextInput(final String rawText);
+        CharSequence getSelection();
     }
 
     static final boolean DBG = DebugFlags.DEBUG_ENABLED;
@@ -66,6 +70,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
 
     private final ViewGroup mSuggestionsStrip;
     private final ImageButton mVoiceKey;
+    private final ImageButton mClipboardKey;
     private final ImageButton mOtherKey;
     MainKeyboardView mMainKeyboardView;
 
@@ -126,6 +131,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
 
         mSuggestionsStrip = findViewById(R.id.suggestions_strip);
         mVoiceKey = findViewById(R.id.suggestions_strip_voice_key);
+        mClipboardKey = findViewById(R.id.suggestions_strip_clipboard_key);
         mOtherKey = findViewById(R.id.suggestions_strip_other_key);
         mStripVisibilityGroup = new StripVisibilityGroup(this, mSuggestionsStrip);
 
@@ -161,9 +167,13 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
                 R.styleable.Keyboard, defStyle, R.style.SuggestionStripView);
         final Drawable iconVoice = keyboardAttr.getDrawable(R.styleable.Keyboard_iconShortcutKey);
         final Drawable iconIncognito = keyboardAttr.getDrawable(R.styleable.Keyboard_iconIncognitoKey);
+        final Drawable iconClipboard = keyboardAttr.getDrawable(R.styleable.Keyboard_iconClipboardKey);
         keyboardAttr.recycle();
         mVoiceKey.setImageDrawable(iconVoice);
         mVoiceKey.setOnClickListener(this);
+        mClipboardKey.setImageDrawable(iconClipboard);
+        mClipboardKey.setOnClickListener(this);
+        mClipboardKey.setOnLongClickListener(this);
 
         mOtherKey.setImageDrawable(iconIncognito);
     }
@@ -181,7 +191,8 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
         final int visibility = shouldBeVisible ? VISIBLE : (isFullscreenMode ? GONE : INVISIBLE);
         setVisibility(visibility);
         final SettingsValues currentSettingsValues = Settings.getInstance().getCurrent();
-        mVoiceKey.setVisibility(currentSettingsValues.mShowsVoiceInputKey ? VISIBLE : INVISIBLE);
+        mVoiceKey.setVisibility(currentSettingsValues.mShowsVoiceInputKey ? VISIBLE : GONE);
+        mClipboardKey.setVisibility(currentSettingsValues.mShowsClipboardKey ? VISIBLE : (mVoiceKey.getVisibility() == GONE ? INVISIBLE : GONE));
         mOtherKey.setVisibility(currentSettingsValues.mIncognitoModeEnabled ? VISIBLE : INVISIBLE);
     }
 
@@ -256,6 +267,23 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
 
     @Override
     public boolean onLongClick(final View view) {
+        if (view == mClipboardKey) {
+            ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clipData = clipboardManager.getPrimaryClip();
+            if (clipData != null && clipData.getItemCount() > 0 && clipData.getItemAt(0) != null) {
+                String clipString = clipData.getItemAt(0).coerceToText(getContext()).toString();
+                if (clipString.length() == 1) {
+                    mListener.onTextInput(clipString);
+                } else if (clipString.length() > 1) {
+                    //awkward workaround
+                    mListener.onTextInput(clipString.substring(0, clipString.length() - 1));
+                    mListener.onTextInput(clipString.substring(clipString.length() - 1));
+                }
+            }
+            AudioAndHapticFeedbackManager.getInstance().performHapticAndAudioFeedback(
+                    Constants.NOT_A_CODE, this);
+            return true;
+        }
         AudioAndHapticFeedbackManager.getInstance().performHapticAndAudioFeedback(
                 Constants.NOT_A_CODE, this);
         return showMoreSuggestions();
@@ -411,6 +439,15 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
             mListener.onCodeInput(Constants.CODE_SHORTCUT,
                     Constants.SUGGESTION_STRIP_COORDINATE, Constants.SUGGESTION_STRIP_COORDINATE,
                     false /* isKeyRepeat */);
+            return;
+        }
+        if (view == mClipboardKey) {
+            CharSequence selectionSequence = mListener.getSelection();
+            if (selectionSequence != null && selectionSequence.length() > 0
+                    && !Settings.getInstance().getCurrent().mInputAttributes.mIsPasswordField) {
+                ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                clipboardManager.setPrimaryClip(ClipData.newPlainText(selectionSequence, selectionSequence));
+            }
             return;
         }
 
