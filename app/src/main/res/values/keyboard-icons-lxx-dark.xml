@@ -19,29 +19,5 @@
 -->
 
 <resources>
-    <style name="KeyboardIcons.LXX_Dark">
-        <!-- Keyboard icons -->
-        <item name="iconShiftKey">@drawable/sym_keyboard_shift_lxx_dark</item>
-        <item name="iconShiftKeyShifted">@drawable/sym_keyboard_shift_locked_lxx_dark</item>
-        <item name="iconDeleteKey">@drawable/sym_keyboard_delete_lxx_dark</item>
-        <item name="iconTabKey">@drawable/sym_keyboard_tab_lxx_dark</item>
-        <item name="iconSettingsKey">@drawable/sym_keyboard_settings_lxx_dark</item>
-        <item name="iconSpaceKey">@null</item>
-        <item name="iconEnterKey">@drawable/sym_keyboard_return_lxx_dark</item>
-        <item name="iconGoKey">@drawable/sym_keyboard_go_lxx_dark</item>
-        <item name="iconSearchKey">@drawable/sym_keyboard_search_lxx_dark</item>
-        <item name="iconSendKey">@drawable/sym_keyboard_send_lxx_dark</item>
-        <item name="iconNextKey">@drawable/sym_keyboard_next_lxx_dark</item>
-        <item name="iconDoneKey">@drawable/sym_keyboard_done_lxx_dark</item>
-        <item name="iconPreviousKey">@drawable/sym_keyboard_previous_lxx_dark</item>
-        <item name="iconShortcutKey">@drawable/sym_keyboard_voice_lxx_dark</item>
-        <item name="iconShortcutKeyDisabled">@drawable/sym_keyboard_voice_off_lxx_dark</item>
-        <item name="iconIncognitoKey">@drawable/sym_keyboard_incognito_lxx_dark</item>
-        <item name="iconSpaceKeyForNumberLayout">@drawable/sym_keyboard_space_lxx_dark</item>
-        <item name="iconLanguageSwitchKey">@drawable/sym_keyboard_language_switch_lxx_dark</item>
-        <item name="iconZwnjKey">@drawable/sym_keyboard_zwnj_lxx_dark</item>
-        <item name="iconZwjKey">@drawable/sym_keyboard_zwj_lxx_dark</item>
-        <item name="iconEmojiActionKey">@drawable/sym_keyboard_smiley_lxx_dark</item>
-        <item name="iconEmojiNormalKey">@drawable/sym_keyboard_smiley_lxx_dark</item>
-    </style>
+    <style name="KeyboardIcons.LXX_Dark" parent="KeyboardIcons.LXX_Dark.Parent" />
 </resources>

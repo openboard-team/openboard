@@ -88,9 +88,10 @@
 
     <!-- Emoji keyboard -->
     <fraction name="config_emoji_keyboard_key_width">12.5%p</fraction>
-    <fraction name="config_emoji_keyboard_row_height">33%p</fraction>
-    <fraction name="config_emoji_keyboard_key_letter_size">68%p</fraction>
-    <integer name="config_emoji_keyboard_max_page_key_count">24</integer>
+    <fraction name="config_emoji_keyboard_row_height">28%p</fraction>
+    <fraction name="config_emoji_keyboard_key_letter_size">78%p</fraction>
+    <fraction name="config_emoji_keyboard_key_label_size">78%p</fraction>
+    <integer name="config_emoji_keyboard_max_recents_key_count">32</integer>
 
     <!-- Key codes of hardware keys that can be used to toggle the Emoji layout.
          Each array defines a comma-separated tuple containing:

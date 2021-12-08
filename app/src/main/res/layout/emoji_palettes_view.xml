@@ -59,8 +59,8 @@
             </FrameLayout>
         </org.dslul.openboard.inputmethod.compat.TabHostCompat>
     </LinearLayout>
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/emoji_keyboard_pager"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/emoji_keyboard_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" />

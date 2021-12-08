@@ -76,6 +76,15 @@ final class DynamicGridKeyboard extends Keyboard {
         throw new RuntimeException("Can't find template key: code=" + code);
     }
 
+    public int getDynamicOccupiedHeight() {
+        final int row = (mGridKeys.size() - 1) / mColumnsNum + 1;
+        return row * mVerticalStep;
+    }
+
+    public int getColumnsCount() {
+        return mColumnsNum;
+    }
+
     public void addPendingKey(final Key usedKey) {
         synchronized (mLock) {
             mPendingKeys.addLast(usedKey);

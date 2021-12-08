@@ -20,17 +20,16 @@ import android.content.res.Resources;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import androidx.recyclerview.widget.RecyclerView;
 import org.dslul.openboard.inputmethod.latin.R;
+import org.dslul.openboard.inputmethod.latin.settings.SettingsValues;
 import org.dslul.openboard.inputmethod.latin.utils.ResourceUtils;
-
-import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
 final class EmojiLayoutParams {
     private static final int DEFAULT_KEYBOARD_ROWS = 4;
 
-    public final int mEmojiPagerHeight;
-    private final int mEmojiPagerBottomMargin;
+    public final int mEmojiListHeight;
+    private final int mEmojiListBottomMargin;
     public final int mEmojiKeyboardHeight;
     private final int mEmojiCategoryPageIdViewHeight;
     public final int mEmojiActionBarHeight;
@@ -56,16 +55,16 @@ final class EmojiLayoutParams {
                 + mKeyVerticalGap;
         mEmojiActionBarHeight = baseheight / DEFAULT_KEYBOARD_ROWS
                 - (mKeyVerticalGap - mBottomPadding) / 2;
-        mEmojiPagerHeight = defaultKeyboardHeight - mEmojiActionBarHeight
+        mEmojiListHeight = defaultKeyboardHeight - mEmojiActionBarHeight
                 - mEmojiCategoryPageIdViewHeight;
-        mEmojiPagerBottomMargin = 0;
-        mEmojiKeyboardHeight = mEmojiPagerHeight - mEmojiPagerBottomMargin - 1;
+        mEmojiListBottomMargin = 0;
+        mEmojiKeyboardHeight = mEmojiListHeight - mEmojiListBottomMargin - 1;
     }
 
-    public void setPagerProperties(final ViewPager2 vp) {
+    public void setEmojiListProperties(final RecyclerView vp) {
         final LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) vp.getLayoutParams();
         lp.height = mEmojiKeyboardHeight;
-        lp.bottomMargin = mEmojiPagerBottomMargin;
+        lp.bottomMargin = mEmojiListBottomMargin;
         vp.setLayoutParams(lp);
     }
 
