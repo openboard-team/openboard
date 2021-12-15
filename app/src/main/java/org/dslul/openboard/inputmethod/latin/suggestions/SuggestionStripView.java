@@ -23,6 +23,8 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.text.Html;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.GestureDetector;
@@ -271,7 +273,15 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
             ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clipData = clipboardManager.getPrimaryClip();
             if (clipData != null && clipData.getItemCount() > 0 && clipData.getItemAt(0) != null) {
-                String clipString = clipData.getItemAt(0).coerceToText(getContext()).toString();
+                ClipData.Item clipItem = clipData.getItemAt(0);
+                String clipString = clipItem.coerceToText(getContext()).toString();
+                // remove formatting from HTML strings
+                if (clipItem.getHtmlText() != null && Build.VERSION.SDK_INT >= 24) {
+                    clipString = (Build.VERSION.SDK_INT >= 24
+                                ? Html.fromHtml(clipItem.getHtmlText(), Html.FROM_HTML_MODE_LEGACY)
+                                : Html.fromHtml(clipItem.getHtmlText()))
+                            .toString().trim();
+                }
                 if (clipString.length() == 1) {
                     mListener.onTextInput(clipString);
                 } else if (clipString.length() > 1) {
