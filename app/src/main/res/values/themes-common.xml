@@ -110,6 +110,7 @@
          delete button, need themed {@link org.dslul.openboard.inputmethod.keyboard.KeyboardView}
          attributes. -->
     <style name="EmojiPalettesView" />
+    <style name="ClipboardHistoryView" />
     <style name="MoreKeysKeyboard" />
     <style name="MoreKeysKeyboardView" />
     <style name="SuggestionStripView" />

@@ -25,6 +25,7 @@
         <item name="keyboardViewStyle">@style/KeyboardView.KLP</item>
         <item name="mainKeyboardViewStyle">@style/MainKeyboardView.KLP</item>
         <item name="emojiPalettesViewStyle">@style/EmojiPalettesView.KLP</item>
+        <item name="clipboardHistoryViewStyle">@style/ClipboardHistoryView.KLP</item>
         <item name="moreKeysKeyboardStyle">@style/MoreKeysKeyboard.KLP</item>
         <!-- Note: KLP theme uses the same style for both general more keys and action more keys. -->
         <item name="moreKeysKeyboardViewStyle">@style/MoreKeysKeyboardView.KLP</item>
@@ -97,6 +98,11 @@
         <item name="iconEmojiCategory8Tab">@drawable/ic_emoji_symbols_holo_dark</item>
         <item name="iconEmojiCategory9Tab">@drawable/ic_emoji_flags_holo_dark</item>
         <item name="iconEmojiCategory10Tab">@drawable/ic_emoji_emoticons_holo_dark</item>
+    </style>
+    <style
+            name="ClipboardHistoryView.KLP"
+            parent="ClipboardHistoryView.ICS"
+            >
     </style>
     <style
         name="MoreKeysKeyboard.KLP"

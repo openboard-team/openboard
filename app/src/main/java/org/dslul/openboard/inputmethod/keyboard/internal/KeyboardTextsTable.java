@@ -260,6 +260,8 @@ public final class KeyboardTextsTable {
         /* 174: 0 */ "morekeys_tablet_double_quote",
         /* 175: 0 */ "keyspec_emoji_action_key",
         /* 176: 0 */ "keyspec_emoji_normal_key",
+        /* 177: 0 */ "keyspec_clipboard_action_key",
+        /* 178: 0 */ "keyspec_clipboard_normal_key",
     };
 
     private static final String EMPTY = "";
@@ -482,6 +484,8 @@ public final class KeyboardTextsTable {
         /* morekeys_tablet_double_quote */ "!fixedColumnOrder!6,!text/double_quotes,!text/single_quotes,!text/double_angle_quotes,!text/single_angle_quotes",
         /* keyspec_emoji_action_key */ "!icon/emoji_action_key|!code/key_emoji",
         /* keyspec_emoji_normal_key */ "!icon/emoji_normal_key|!code/key_emoji",
+        /* keyspec_clipbaord_action_key */ "!icon/clipboard_action_key|!code/key_clipboard",
+        /* keyspec_clipboard_normal_key */ "!icon/clipboard_normal_key|!code/key_clipboard",
     };
 
     /* Locale af: Afrikaans */

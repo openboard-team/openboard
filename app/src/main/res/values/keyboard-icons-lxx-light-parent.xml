@@ -36,7 +36,6 @@
         <item name="iconPreviousKey">@drawable/sym_keyboard_previous_lxx_light</item>
         <item name="iconShortcutKey">@drawable/sym_keyboard_voice_lxx_light</item>
         <item name="iconShortcutKeyDisabled">@drawable/sym_keyboard_voice_off_lxx_light</item>
-        <item name="iconClipboardKey">@drawable/sym_keyboard_clipboard_light</item>
         <item name="iconIncognitoKey">@drawable/sym_keyboard_incognito_lxx_light</item>
         <item name="iconSpaceKeyForNumberLayout">@drawable/sym_keyboard_space_lxx_light</item>
         <item name="iconLanguageSwitchKey">@drawable/sym_keyboard_language_switch_lxx_light</item>
@@ -44,5 +43,8 @@
         <item name="iconZwjKey">@drawable/sym_keyboard_zwj_lxx_light</item>
         <item name="iconEmojiActionKey">@drawable/sym_keyboard_smiley_lxx_dark</item>
         <item name="iconEmojiNormalKey">@drawable/sym_keyboard_smiley_lxx_light</item>
+        <item name="iconClipboardActionKey">@drawable/sym_keyboard_clipboard_lxx_dark</item>
+        <item name="iconClipboardNormalKey">@drawable/sym_keyboard_clipboard_lxx_light</item>
+        <item name="iconClearClipboardKey">@drawable/sym_keyboard_clear_clipboard_lxx_light</item>
     </style>
 </resources>

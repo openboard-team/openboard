@@ -40,6 +40,7 @@ import android.widget.TextView;
 
 import org.dslul.openboard.inputmethod.accessibility.AccessibilityUtils;
 import org.dslul.openboard.inputmethod.keyboard.Keyboard;
+import org.dslul.openboard.inputmethod.keyboard.KeyboardSwitcher;
 import org.dslul.openboard.inputmethod.keyboard.MainKeyboardView;
 import org.dslul.openboard.inputmethod.keyboard.MoreKeysPanel;
 import org.dslul.openboard.inputmethod.latin.AudioAndHapticFeedbackManager;
@@ -167,7 +168,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
                 R.styleable.Keyboard, defStyle, R.style.SuggestionStripView);
         final Drawable iconVoice = keyboardAttr.getDrawable(R.styleable.Keyboard_iconShortcutKey);
         final Drawable iconIncognito = keyboardAttr.getDrawable(R.styleable.Keyboard_iconIncognitoKey);
-        final Drawable iconClipboard = keyboardAttr.getDrawable(R.styleable.Keyboard_iconClipboardKey);
+        final Drawable iconClipboard = keyboardAttr.getDrawable(R.styleable.Keyboard_iconClipboardNormalKey);
         keyboardAttr.recycle();
         mVoiceKey.setImageDrawable(iconVoice);
         mVoiceKey.setOnClickListener(this);
@@ -442,12 +443,8 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
             return;
         }
         if (view == mClipboardKey) {
-            CharSequence selectionSequence = mListener.getSelection();
-            if (selectionSequence != null && selectionSequence.length() > 0
-                    && !Settings.getInstance().getCurrent().mInputAttributes.mIsPasswordField) {
-                ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                clipboardManager.setPrimaryClip(ClipData.newPlainText(selectionSequence, selectionSequence));
-            }
+            final KeyboardSwitcher switcher = KeyboardSwitcher.getInstance();
+            switcher.onToggleKeyboard(KeyboardSwitcher.KeyboardSwitchState.CLIPBOARD);
             return;
         }
 
