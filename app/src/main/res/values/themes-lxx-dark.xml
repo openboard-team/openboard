@@ -28,6 +28,7 @@
         <item name="keyboardViewStyle">@style/KeyboardView.LXX_Dark</item>
         <item name="mainKeyboardViewStyle">@style/MainKeyboardView.LXX_Dark</item>
         <item name="emojiPalettesViewStyle">@style/EmojiPalettesView.LXX_Dark</item>
+        <item name="clipboardHistoryViewStyle">@style/ClipboardHistoryView.LXX_Dark</item>
         <item name="moreKeysKeyboardStyle">@style/MoreKeysKeyboard.LXX_Dark</item>
         <item name="moreKeysKeyboardViewStyle">@style/MoreKeysKeyboardView.LXX_Dark</item>
         <item name="moreKeysKeyboardViewForActionStyle">@style/MoreKeysKeyboardView.LXX_Dark.Action</item>
@@ -98,6 +99,13 @@
         <item name="iconEmojiCategory8Tab">@drawable/ic_emoji_symbols_lxx_dark</item>
         <item name="iconEmojiCategory9Tab">@drawable/ic_emoji_flags_lxx_dark</item>
         <item name="iconEmojiCategory10Tab">@drawable/ic_emoji_emoticons_lxx_dark</item>
+    </style>
+    <style
+            name="ClipboardHistoryView.LXX_Dark"
+            parent="MainKeyboardView.LXX_Dark"
+            >
+        <item name="iconPinnedClip">@drawable/ic_clipboard_pin_lxx_dark</item>
+        <item name="dividerBackground">@color/emoji_tab_page_indicator_background_lxx_dark</item>
     </style>
     <style
         name="MoreKeysKeyboard.LXX_Dark"

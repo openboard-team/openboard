@@ -28,6 +28,7 @@
         <item name="keyboardViewStyle">@style/KeyboardView.LXX_Dark_Amoled</item>
         <item name="mainKeyboardViewStyle">@style/MainKeyboardView.LXX_Dark_Amoled</item>
         <item name="emojiPalettesViewStyle">@style/EmojiPalettesView.LXX_Dark_Amoled</item>
+        <item name="clipboardHistoryViewStyle">@style/ClipboardHistoryView.LXX_Dark_Amoled</item>
         <item name="moreKeysKeyboardViewStyle">@style/MoreKeysKeyboardView.LXX_Dark_Amoled</item>
         <item name="suggestionStripViewStyle">@style/SuggestionStripView.LXX_Dark_Amoled</item>
     </style>
@@ -61,6 +62,14 @@
         parent="EmojiPalettesView.LXX_Dark"
     >
         <item name="categoryPageIndicatorBackground">@android:color/transparent</item>
+        <item name="android:background">@color/background_amoled_black</item>
+        <item name="keyBackground">@drawable/btn_keyboard_key_lxx_dark_amoled</item>
+    </style>
+
+    <style
+            name="ClipboardHistoryView.LXX_Dark_Amoled"
+            parent="ClipboardHistoryView.LXX_Dark"
+    >
         <item name="android:background">@color/background_amoled_black</item>
         <item name="keyBackground">@drawable/btn_keyboard_key_lxx_dark_amoled</item>
     </style>
