@@ -71,6 +71,7 @@ public class SettingsValues {
     public final boolean mIncludesOtherImesInLanguageSwitchList;
     public final boolean mShowsNumberRow;
     public final boolean mShowsHints;
+    public final boolean mSpaceForLangChange;
     public final boolean mShowsLanguageSwitchKey;
     public final boolean mShowsEmojiKey;
     public final boolean mShowsClipboardKey;
@@ -148,6 +149,7 @@ public class SettingsValues {
         mIncludesOtherImesInLanguageSwitchList = !Settings.ENABLE_SHOW_LANGUAGE_SWITCH_KEY_SETTINGS || prefs.getBoolean(Settings.PREF_INCLUDE_OTHER_IMES_IN_LANGUAGE_SWITCH_LIST, false) /* forcibly */;
         mShowsNumberRow = prefs.getBoolean(Settings.PREF_SHOW_NUMBER_ROW, false);
         mShowsHints = prefs.getBoolean(Settings.PREF_SHOW_HINTS, true);
+        mSpaceForLangChange = prefs.getBoolean(Settings.PREF_SPACE_TO_CHANGE_LANG, true);
         mShowsLanguageSwitchKey = prefs.getBoolean(Settings.PREF_SHOW_LANGUAGE_SWITCH_KEY, false);
         mShowsEmojiKey = prefs.getBoolean(Settings.PREF_SHOW_EMOJI_KEY, false);
         mShowsClipboardKey = prefs.getBoolean(Settings.PREF_SHOW_CLIPBOARD_KEY, false);
