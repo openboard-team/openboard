@@ -1,0 +1,6 @@
+1.4.4:
+- aggiunta funzionalità di storico appunti
+- sistemato bug che non permetteva la visualizzazione del tastierino numerico nei tablet
+- aggiunto layout Workman
+- dizionari aggiunti: svedese, danese, ungherese
+- bugfix

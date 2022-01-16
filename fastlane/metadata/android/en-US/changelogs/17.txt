@@ -1,0 +1,6 @@
+1.4.4:
+- add clipboard history
+- fix bug preventing numpad from showing on tablets
+- add Workman layout
+- added dictionaries: Swedish, Danish, Hungarian
+- bugfixes
