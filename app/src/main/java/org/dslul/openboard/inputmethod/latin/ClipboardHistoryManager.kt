@@ -2,9 +2,11 @@ package org.dslul.openboard.inputmethod.latin
 
 import android.content.ClipboardManager
 import android.content.Context
+import android.os.Build
 import android.text.TextUtils
 import android.util.Base64
 import android.util.Log
+import androidx.annotation.RequiresApi
 import org.dslul.openboard.inputmethod.compat.ClipboardManagerCompat
 import org.dslul.openboard.inputmethod.latin.utils.JsonUtils
 import java.io.File
@@ -45,25 +47,31 @@ class ClipboardHistoryManager(
     override fun onPrimaryClipChanged() = fetchPrimaryClip()
 
     private fun fetchPrimaryClip() {
-        if (!clipboardManager.hasPrimaryClip()) return
-        val clipData = clipboardManager.primaryClip
-        if (clipData != null && clipData.itemCount > 0 && clipData.getItemAt(0) != null) {
-            val content = clipData.getItemAt(0).coerceToText(latinIME)
-            if (!TextUtils.isEmpty(content)) {
-                val id = System.nanoTime()
-                val entry = ClipboardHistoryEntry(id, content)
-                historyEntries.add(entry)
-                sortHistoryEntries()
-                val at = historyEntries.indexOf(entry)
-                onHistoryChangeListener?.onClipboardHistoryEntryAdded(at)
-            }
+        val clipData = clipboardManager.primaryClip ?: return
+        if (clipData.itemCount == 0) return
+        clipData.getItemAt(0)?.let { clipItem ->
+            // Starting from API 30, onPrimaryClipChanged() can be called multiple times
+            // for the same clip. We can identify clips with their timestamps since API 26.
+            // We use that to prevent unwanted duplicates.
+            val id = ClipboardManagerCompat.getClipTimestamp(clipData)?.also { stamp ->
+                if (historyEntries.any { it.id == stamp }) return
+            } ?: System.currentTimeMillis()
+
+            val content = clipItem.coerceToText(latinIME)
+            if (TextUtils.isEmpty(content)) return
+
+            val entry = ClipboardHistoryEntry(id, content)
+            historyEntries.add(entry)
+            sortHistoryEntries()
+            val at = historyEntries.indexOf(entry)
+            onHistoryChangeListener?.onClipboardHistoryEntryAdded(at)
         }
     }
 
     fun toggleClipPinned(clipId: Long) {
         val from = historyEntries.indexOfFirst { it.id == clipId }
         val historyEntry = historyEntries[from].apply {
-            id = System.nanoTime()
+            id = System.currentTimeMillis()
             isPinned = !isPinned
         }
         sortHistoryEntries()
