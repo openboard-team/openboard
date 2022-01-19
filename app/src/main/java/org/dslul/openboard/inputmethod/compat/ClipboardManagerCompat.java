@@ -16,4 +16,13 @@ public class ClipboardManagerCompat {
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.O)
+    public static Long getClipTimestamp(ClipData cd) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return cd.getDescription().getTimestamp();
+        } else {
+            return null;
+        }
+    }
+
 }
