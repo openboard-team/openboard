@@ -27,7 +27,7 @@ You can use [this tool](https://github.com/remi0s/aosp-dictionary-tools) to crea
 
 Install java:
 ```sh
-sudo pacman -S jdk8-openjdk jre8-openjdk jre8-openjdk-headless
+sudo pacman -S jdk11-openjdk jre11-openjdk jre11-openjdk-headless
 ```
 
 Install Android SDK:
@@ -39,11 +39,6 @@ sudo snap install androidsdk
 Configure your SDK location in your `~/.bash_profile` or `~/.bashrc`:
 ```bash
 export ANDROID_SDK_ROOT=~/snap/androidsdk/current/AndroidSDK/
-```
-
-Install the platform tools for your target android version:
-```sh
-androidsdk "platform-tools" "platforms;android-29"
 ```
 
 Compile the project. This will install all dependencies, make sure to accept
