@@ -12,14 +12,22 @@
 Join [here](https://matrix.to/#/#openboard:matrix.org?via=matrix.org)
 
 ## Common issues
-- Cannot open settings in MIUI
-
-See https://github.com/dslul/openboard/issues/46
+- Cannot open settings in MIUI: See [issue #46](https://github.com/dslul/openboard/issues/46).
 
 ## Contribute
 
 ### How to create a dictionary
-You can use [this tool](https://github.com/remi0s/aosp-dictionary-tools) to create a dictionary. You need a wordlist, as described [here](https://github.com/dslul/openboard/blob/master/dictionaries/sample.combined). The output .dict file must be put in [res/raw](https://github.com/dslul/openboard/tree/master/app/src/main/res/raw).
+You can use [this tool](https://github.com/remi0s/aosp-dictionary-tools) to create a dictionary. You need a wordlist, as described [here](dictionaries/sample.combined). The output .dict file must be put in [res/raw](app/src/main/res/raw).
+
+### How to edit keyboard texts
+Make your modifications in [tools/make-keyboard-text/src/main/resources](tools/make-keyboard-text/src/main/resources)/values-YOUR LOCALE.
+
+Generate the new version of [KeyboardTextsTable.java](app/src/main/java/org/dslul/openboard/inputmethod/keyboard/internal/KeyboardTextsTable.java):
+```sh
+./gradlew tools:make-keyboard-text:makeText
+```
+
+
 
 ### APK Development
 
