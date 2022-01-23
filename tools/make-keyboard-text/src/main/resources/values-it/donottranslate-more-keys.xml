@@ -34,8 +34,9 @@
          U+00EB: "ë" LATIN SMALL LETTER E WITH DIAERESIS
          U+0119: "ę" LATIN SMALL LETTER E WITH OGONEK
          U+0117: "ė" LATIN SMALL LETTER E WITH DOT ABOVE
-         U+0113: "ē" LATIN SMALL LETTER E WITH MACRON -->
-    <string name="morekeys_e">&#x00E8;,&#x00E9;,&#x00EA;,&#x00EB;,&#x0119;,&#x0117;,&#x0113;</string>
+         U+0113: "ē" LATIN SMALL LETTER E WITH MACRON
+         U+0259: "ə" LATIN SMALL LETTER SCHWA -->
+    <string name="morekeys_e">&#x00E8;,&#x00E9;,&#x00EA;,&#x00EB;,&#x0119;,&#x0117;,&#x0113;,&#x0259;</string>
     <!-- U+00EC: "ì" LATIN SMALL LETTER I WITH GRAVE
          U+00ED: "í" LATIN SMALL LETTER I WITH ACUTE
          U+00EE: "î" LATIN SMALL LETTER I WITH CIRCUMFLEX
