@@ -1,4 +1,4 @@
-# Emoji tools
+# make-emoji-keys
 
 This module takes care of generating emoji data bundled with Openboard.
 Basically data is generated in three steps:
@@ -13,8 +13,8 @@ A gradle task called 'makeEmoji' builds and runs this tool to generate android r
 ### Update to latest emoji version
 
 * Get new emoji data from Unicode official repository located here: https://unicode.org/Public/emoji.
-* Create a new directory in (/src/main/resources/emoji/ucd)[/src/main/resources/emoji/ucd] and name it as a decimal number corresponding to Unicode's version.
-* Update (android-emoji-support.txt)[/src/main/resources/emoji/android-emoji-support.txt] with new emojis supported in latest Android versions.
+* Create a new directory in [/src/main/resources/emoji/ucd](/tools/make-emoji-keys/src/main/resources/emoji/ucd) and name it as a decimal number corresponding to Unicode's version.
+* Update [android-emoji-support.txt](/tools/make-emoji-keys/src/main/resources/emoji/android-emoji-support.txt) with new emojis supported in latest Android versions.
 * Run :
   ```sh
   ./gradlew tools:make-emoji-keys:makeEmoji
