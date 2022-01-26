@@ -1,0 +1,3718 @@
+# This file defines emoji compatibility through different Android releases.
+# Emoji support may vary from one vendor to another. As we cannot get this
+# level of details, official Google support list for Android is used.
+#
+# How to use:
+#  - Define an api level with the @[api level integer] mark.
+#  - Place new emojis codes for this api level below the marker. Each line
+#    defines an emoji. Code points must be represented in Unicode Standard
+#    codespace (ie. from U+0000 to U+10FFFF). If multiple code points are
+#    needed, they must be separated with a space character.
+#  - Emoji's name is provided in comments for readability but is not required.
+#
+# Note: Emojipedia® (https://emojipedia.org) is a useful source to get a clear
+# vision of new emojis supported by Android according to Google. As Google is
+# releasing new emojis through its Noto font, it might be more complicated to
+# keep track of new additions though Noto font.
+
+
+@32 # Below emojis are supported from Android 12l (API level 32)
+U+1FAE0 # melting face
+U+1FAE2 # face with open eyes and hand over mouth
+U+1FAE3 # face with peeking eye
+U+1FAE1 # saluting face
+U+1FAE5 # dotted line face
+U+1FAE4 # face with diagonal mouth
+U+1F979 # face holding back tears
+U+1FAF1 # rightwards hand
+U+1FAF1 U+1F3FB # rightwards hand: light skin tone
+U+1FAF1 U+1F3FC # rightwards hand: medium-light skin tone
+U+1FAF1 U+1F3FD # rightwards hand: medium skin tone
+U+1FAF1 U+1F3FE # rightwards hand: medium-dark skin tone
+U+1FAF1 U+1F3FF # rightwards hand: dark skin tone
+U+1FAF2 # leftwards hand
+U+1FAF2 U+1F3FB # leftwards hand: light skin tone
+U+1FAF2 U+1F3FC # leftwards hand: medium-light skin tone
+U+1FAF2 U+1F3FD # leftwards hand: medium skin tone
+U+1FAF2 U+1F3FE # leftwards hand: medium-dark skin tone
+U+1FAF2 U+1F3FF # leftwards hand: dark skin tone
+U+1FAF3 # palm down hand
+U+1FAF3 U+1F3FB # palm down hand: light skin tone
+U+1FAF3 U+1F3FC # palm down hand: medium-light skin tone
+U+1FAF3 U+1F3FD # palm down hand: medium skin tone
+U+1FAF3 U+1F3FE # palm down hand: medium-dark skin tone
+U+1FAF3 U+1F3FF # palm down hand: dark skin tone
+U+1FAF4 # palm up hand
+U+1FAF4 U+1F3FB # palm up hand: light skin tone
+U+1FAF4 U+1F3FC # palm up hand: medium-light skin tone
+U+1FAF4 U+1F3FD # palm up hand: medium skin tone
+U+1FAF4 U+1F3FE # palm up hand: medium-dark skin tone
+U+1FAF4 U+1F3FF # palm up hand: dark skin tone
+U+1FAF0 # hand with index finger and thumb crossed
+U+1FAF0 U+1F3FB # hand with index finger and thumb crossed: light skin tone
+U+1FAF0 U+1F3FC # hand with index finger and thumb crossed: medium-light skin tone
+U+1FAF0 U+1F3FD # hand with index finger and thumb crossed: medium skin tone
+U+1FAF0 U+1F3FE # hand with index finger and thumb crossed: medium-dark skin tone
+U+1FAF0 U+1F3FF # hand with index finger and thumb crossed: dark skin tone
+U+1FAF5 # index pointing at the viewer
+U+1FAF5 U+1F3FB # index pointing at the viewer: light skin tone
+U+1FAF5 U+1F3FC # index pointing at the viewer: medium-light skin tone
+U+1FAF5 U+1F3FD # index pointing at the viewer: medium skin tone
+U+1FAF5 U+1F3FE # index pointing at the viewer: medium-dark skin tone
+U+1FAF5 U+1F3FF # index pointing at the viewer: dark skin tone
+U+1FAF6 # heart hands
+U+1FAF6 U+1F3FB # heart hands: light skin tone
+U+1FAF6 U+1F3FC # heart hands: medium-light skin tone
+U+1FAF6 U+1F3FD # heart hands: medium skin tone
+U+1FAF6 U+1F3FE # heart hands: medium-dark skin tone
+U+1FAF6 U+1F3FF # heart hands: dark skin tone
+U+1FAF1 U+1F3FB U+200D U+1FAF2 U+1F3FC # handshake: light skin tone, medium-light skin tone
+U+1FAF1 U+1F3FB U+200D U+1FAF2 U+1F3FD # handshake: light skin tone, medium skin tone
+U+1FAF1 U+1F3FB U+200D U+1FAF2 U+1F3FE # handshake: light skin tone, medium-dark skin tone
+U+1FAF1 U+1F3FB U+200D U+1FAF2 U+1F3FF # handshake: light skin tone, dark skin tone
+U+1FAF1 U+1F3FC U+200D U+1FAF2 U+1F3FB # handshake: medium-light skin tone, light skin tone
+U+1FAF1 U+1F3FC U+200D U+1FAF2 U+1F3FD # handshake: medium-light skin tone, medium skin tone
+U+1FAF1 U+1F3FC U+200D U+1FAF2 U+1F3FE # handshake: medium-light skin tone, medium-dark skin tone
+U+1FAF1 U+1F3FC U+200D U+1FAF2 U+1F3FF # handshake: medium-light skin tone, dark skin tone
+U+1FAF1 U+1F3FD U+200D U+1FAF2 U+1F3FB # handshake: medium skin tone, light skin tone
+U+1FAF1 U+1F3FD U+200D U+1FAF2 U+1F3FC # handshake: medium skin tone, medium-light skin tone
+U+1FAF1 U+1F3FD U+200D U+1FAF2 U+1F3FE # handshake: medium skin tone, medium-dark skin tone
+U+1FAF1 U+1F3FD U+200D U+1FAF2 U+1F3FF # handshake: medium skin tone, dark skin tone
+U+1FAF1 U+1F3FE U+200D U+1FAF2 U+1F3FB # handshake: medium-dark skin tone, light skin tone
+U+1FAF1 U+1F3FE U+200D U+1FAF2 U+1F3FC # handshake: medium-dark skin tone, medium-light skin tone
+U+1FAF1 U+1F3FE U+200D U+1FAF2 U+1F3FD # handshake: medium-dark skin tone, medium skin tone
+U+1FAF1 U+1F3FE U+200D U+1FAF2 U+1F3FF # handshake: medium-dark skin tone, dark skin tone
+U+1FAF1 U+1F3FF U+200D U+1FAF2 U+1F3FB # handshake: dark skin tone, light skin tone
+U+1FAF1 U+1F3FF U+200D U+1FAF2 U+1F3FC # handshake: dark skin tone, medium-light skin tone
+U+1FAF1 U+1F3FF U+200D U+1FAF2 U+1F3FD # handshake: dark skin tone, medium skin tone
+U+1FAF1 U+1F3FF U+200D U+1FAF2 U+1F3FE # handshake: dark skin tone, medium-dark skin tone
+U+1FAE6 # biting lip
+U+1FAC5 # person with crown
+U+1FAC5 U+1F3FB # person with crown: light skin tone
+U+1FAC5 U+1F3FC # person with crown: medium-light skin tone
+U+1FAC5 U+1F3FD # person with crown: medium skin tone
+U+1FAC5 U+1F3FE # person with crown: medium-dark skin tone
+U+1FAC5 U+1F3FF # person with crown: dark skin tone
+U+1FAC3 # pregnant man
+U+1FAC3 U+1F3FB # pregnant man: light skin tone
+U+1FAC3 U+1F3FD # pregnant man: medium skin tone
+U+1FAC3 U+1F3FE # pregnant man: medium-dark skin tone
+U+1FAC3 U+1F3FF # pregnant man: dark skin tone
+U+1FAC4 # pregnant person
+U+1FAC4 U+1F3FB # pregnant person: light skin tone
+U+1FAC4 U+1F3FC # pregnant person: medium-light skin tone
+U+1FAC4 U+1F3FD # pregnant person: medium skin tone
+U+1FAC4 U+1F3FE # pregnant person: medium-dark skin tone
+U+1FAC4 U+1F3FF # pregnant person: dark skin tone
+U+1F9CC # troll
+U+1FAB8 # coral
+U+1FAB7 # lotus
+U+1FAB9 # empty nest
+U+1FABA # nest with eggs
+U+1FAD8 # beans
+U+1FAD7 # pouring liquid
+U+1FAD9 # jar
+U+1F6DD # playground slide
+U+1F6DE # wheel
+U+1F6DF # ring buoy
+U+1FAAC # hamsa
+U+1FAA9 # mirror ball
+U+1FAAB # low battery
+U+1FA7C # crutch
+U+1FA7B # x-ray
+U+1FAE7 # bubbles
+U+1FAAA # identification card
+U+1F7F0 # heavy equals sign
+# Above emojis are supported from Android 12l (API level 32)
+
+@31 # Below emojis are supported from Android 12.0 (API level 31)
+U+1F636 U+200D U+1F32B U+FE0F # face in clouds
+U+1F62E U+200D U+1F4A8 # face exhaling
+U+1F635 U+200D U+1F4AB # face with spiral eyes
+U+2764 U+FE0F U+200D U+1F525 # heart on fire
+U+2764 U+FE0F U+200D U+1FA79 # mending heart
+U+1F9D4 U+200D U+2642 U+FE0F # man: beard
+U+1F9D4 U+1F3FB U+200D U+2642 U+FE0F # man: light skin tone, beard
+U+1F9D4 U+1F3FC U+200D U+2642 U+FE0F # man: medium-light skin tone, beard
+U+1F9D4 U+1F3FD U+200D U+2642 U+FE0F # man: medium skin tone, beard
+U+1F9D4 U+1F3FE U+200D U+2642 U+FE0F # man: medium-dark skin tone, beard
+U+1F9D4 U+1F3FF U+200D U+2642 U+FE0F # man: dark skin tone, beard
+U+1F9D4 U+200D U+2640 U+FE0F # woman: beard
+U+1F9D4 U+1F3FB U+200D U+2640 U+FE0F # woman: light skin tone, beard
+U+1F9D4 U+1F3FC U+200D U+2640 U+FE0F # woman: medium-light skin tone, beard
+U+1F9D4 U+1F3FD U+200D U+2640 U+FE0F # woman: medium skin tone, beard
+U+1F9D4 U+1F3FE U+200D U+2640 U+FE0F # woman: medium-dark skin tone, beard
+U+1F9D4 U+1F3FF U+200D U+2640 U+FE0F # woman: dark skin tone, beard
+U+1F48F U+1F3FB # kiss: light skin tone
+U+1F48F U+1F3FC # kiss: medium-light skin tone
+U+1F48F U+1F3FD # kiss: medium skin tone
+U+1F48F U+1F3FE # kiss: medium-dark skin tone
+U+1F48F U+1F3FF # kiss: dark skin tone
+U+1F9D1 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FC # kiss: person, person, light skin tone, medium-light skin tone
+U+1F9D1 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FD # kiss: person, person, light skin tone, medium skin tone
+U+1F9D1 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FE # kiss: person, person, light skin tone, medium-dark skin tone
+U+1F9D1 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FF # kiss: person, person, light skin tone, dark skin tone
+U+1F9D1 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FB # kiss: person, person, medium-light skin tone, light skin tone
+U+1F9D1 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FD # kiss: person, person, medium-light skin tone, medium skin tone
+U+1F9D1 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FE # kiss: person, person, medium-light skin tone, medium-dark skin tone
+U+1F9D1 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FF # kiss: person, person, medium-light skin tone, dark skin tone
+U+1F9D1 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FB # kiss: person, person, medium skin tone, light skin tone
+U+1F9D1 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FC # kiss: person, person, medium skin tone, medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FE # kiss: person, person, medium skin tone, medium-dark skin tone
+U+1F9D1 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FF # kiss: person, person, medium skin tone, dark skin tone
+U+1F9D1 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FB # kiss: person, person, medium-dark skin tone, light skin tone
+U+1F9D1 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FC # kiss: person, person, medium-dark skin tone, medium-light skin tone
+U+1F9D1 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FD # kiss: person, person, medium-dark skin tone, medium skin tone
+U+1F9D1 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FF # kiss: person, person, medium-dark skin tone, dark skin tone
+U+1F9D1 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FB # kiss: person, person, dark skin tone, light skin tone
+U+1F9D1 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FC # kiss: person, person, dark skin tone, medium-light skin tone
+U+1F9D1 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FD # kiss: person, person, dark skin tone, medium skin tone
+U+1F9D1 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F9D1 U+1F3FE # kiss: person, person, dark skin tone, medium-dark skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FB # kiss: woman, man, light skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FC # kiss: woman, man, light skin tone, medium-light skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FD # kiss: woman, man, light skin tone, medium skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FE # kiss: woman, man, light skin tone, medium-dark skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FF # kiss: woman, man, light skin tone, dark skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FB # kiss: woman, man, medium-light skin tone, light skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FC # kiss: woman, man, medium-light skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FD # kiss: woman, man, medium-light skin tone, medium skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FE # kiss: woman, man, medium-light skin tone, medium-dark skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FF # kiss: woman, man, medium-light skin tone, dark skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FB # kiss: woman, man, medium skin tone, light skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FC # kiss: woman, man, medium skin tone, medium-light skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FD # kiss: woman, man, medium skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FE # kiss: woman, man, medium skin tone, medium-dark skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FF # kiss: woman, man, medium skin tone, dark skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FB # kiss: woman, man, medium-dark skin tone, light skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FC # kiss: woman, man, medium-dark skin tone, medium-light skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FD # kiss: woman, man, medium-dark skin tone, medium skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FE # kiss: woman, man, medium-dark skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FF # kiss: woman, man, medium-dark skin tone, dark skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FB # kiss: woman, man, dark skin tone, light skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FC # kiss: woman, man, dark skin tone, medium-light skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FD # kiss: woman, man, dark skin tone, medium skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FE # kiss: woman, man, dark skin tone, medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FF # kiss: woman, man, dark skin tone
+U+1F468 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FB # kiss: man, man, light skin tone
+U+1F468 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FC # kiss: man, man, light skin tone, medium-light skin tone
+U+1F468 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FD # kiss: man, man, light skin tone, medium skin tone
+U+1F468 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FE # kiss: man, man, light skin tone, medium-dark skin tone
+U+1F468 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FF # kiss: man, man, light skin tone, dark skin tone
+U+1F468 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FB # kiss: man, man, medium-light skin tone, light skin tone
+U+1F468 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FC # kiss: man, man, medium-light skin tone
+U+1F468 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FD # kiss: man, man, medium-light skin tone, medium skin tone
+U+1F468 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FE # kiss: man, man, medium-light skin tone, medium-dark skin tone
+U+1F468 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FF # kiss: man, man, medium-light skin tone, dark skin tone
+U+1F468 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FB # kiss: man, man, medium skin tone, light skin tone
+U+1F468 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FC # kiss: man, man, medium skin tone, medium-light skin tone
+U+1F468 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FD # kiss: man, man, medium skin tone
+U+1F468 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FE # kiss: man, man, medium skin tone, medium-dark skin tone
+U+1F468 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FF # kiss: man, man, medium skin tone, dark skin tone
+U+1F468 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FB # kiss: man, man, medium-dark skin tone, light skin tone
+U+1F468 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FC # kiss: man, man, medium-dark skin tone, medium-light skin tone
+U+1F468 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FD # kiss: man, man, medium-dark skin tone, medium skin tone
+U+1F468 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FE # kiss: man, man, medium-dark skin tone
+U+1F468 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FF # kiss: man, man, medium-dark skin tone, dark skin tone
+U+1F468 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FB # kiss: man, man, dark skin tone, light skin tone
+U+1F468 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FC # kiss: man, man, dark skin tone, medium-light skin tone
+U+1F468 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FD # kiss: man, man, dark skin tone, medium skin tone
+U+1F468 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FE # kiss: man, man, dark skin tone, medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 U+1F3FF # kiss: man, man, dark skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FB # kiss: woman, woman, light skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FC # kiss: woman, woman, light skin tone, medium-light skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FD # kiss: woman, woman, light skin tone, medium skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FE # kiss: woman, woman, light skin tone, medium-dark skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FF # kiss: woman, woman, light skin tone, dark skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FB # kiss: woman, woman, medium-light skin tone, light skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FC # kiss: woman, woman, medium-light skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FD # kiss: woman, woman, medium-light skin tone, medium skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FE # kiss: woman, woman, medium-light skin tone, medium-dark skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FF # kiss: woman, woman, medium-light skin tone, dark skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FB # kiss: woman, woman, medium skin tone, light skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FC # kiss: woman, woman, medium skin tone, medium-light skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FD # kiss: woman, woman, medium skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FE # kiss: woman, woman, medium skin tone, medium-dark skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FF # kiss: woman, woman, medium skin tone, dark skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FB # kiss: woman, woman, medium-dark skin tone, light skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FC # kiss: woman, woman, medium-dark skin tone, medium-light skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FD # kiss: woman, woman, medium-dark skin tone, medium skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FE # kiss: woman, woman, medium-dark skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FF # kiss: woman, woman, medium-dark skin tone, dark skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FB # kiss: woman, woman, dark skin tone, light skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FC # kiss: woman, woman, dark skin tone, medium-light skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FD # kiss: woman, woman, dark skin tone, medium skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FE # kiss: woman, woman, dark skin tone, medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FF # kiss: woman, woman, dark skin tone
+U+1F491 U+1F3FB # couple with heart: light skin tone
+U+1F491 U+1F3FC # couple with heart: medium-light skin tone
+U+1F491 U+1F3FD # couple with heart: medium skin tone
+U+1F491 U+1F3FE # couple with heart: medium-dark skin tone
+U+1F491 U+1F3FF # couple with heart: dark skin tone
+U+1F9D1 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FC # couple with heart: person, person, light skin tone, medium-light skin tone
+U+1F9D1 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FD # couple with heart: person, person, light skin tone, medium skin tone
+U+1F9D1 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FE # couple with heart: person, person, light skin tone, medium-dark skin tone
+U+1F9D1 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FF # couple with heart: person, person, light skin tone, dark skin tone
+U+1F9D1 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FB # couple with heart: person, person, medium-light skin tone, light skin tone
+U+1F9D1 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FD # couple with heart: person, person, medium-light skin tone, medium skin tone
+U+1F9D1 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FE # couple with heart: person, person, medium-light skin tone, medium-dark skin tone
+U+1F9D1 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FF # couple with heart: person, person, medium-light skin tone, dark skin tone
+U+1F9D1 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FB # couple with heart: person, person, medium skin tone, light skin tone
+U+1F9D1 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FC # couple with heart: person, person, medium skin tone, medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FE # couple with heart: person, person, medium skin tone, medium-dark skin tone
+U+1F9D1 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FF # couple with heart: person, person, medium skin tone, dark skin tone
+U+1F9D1 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FB # couple with heart: person, person, medium-dark skin tone, light skin tone
+U+1F9D1 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FC # couple with heart: person, person, medium-dark skin tone, medium-light skin tone
+U+1F9D1 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FD # couple with heart: person, person, medium-dark skin tone, medium skin tone
+U+1F9D1 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FF # couple with heart: person, person, medium-dark skin tone, dark skin tone
+U+1F9D1 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FB # couple with heart: person, person, dark skin tone, light skin tone
+U+1F9D1 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FC # couple with heart: person, person, dark skin tone, medium-light skin tone
+U+1F9D1 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FD # couple with heart: person, person, dark skin tone, medium skin tone
+U+1F9D1 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F9D1 U+1F3FE # couple with heart: person, person, dark skin tone, medium-dark skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FB # couple with heart: woman, man, light skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FC # couple with heart: woman, man, light skin tone, medium-light skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FD # couple with heart: woman, man, light skin tone, medium skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FE # couple with heart: woman, man, light skin tone, medium-dark skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FF # couple with heart: woman, man, light skin tone, dark skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FB # couple with heart: woman, man, medium-light skin tone, light skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FC # couple with heart: woman, man, medium-light skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FD # couple with heart: woman, man, medium-light skin tone, medium skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FE # couple with heart: woman, man, medium-light skin tone, medium-dark skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FF # couple with heart: woman, man, medium-light skin tone, dark skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FB # couple with heart: woman, man, medium skin tone, light skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FC # couple with heart: woman, man, medium skin tone, medium-light skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FD # couple with heart: woman, man, medium skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FE # couple with heart: woman, man, medium skin tone, medium-dark skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FF # couple with heart: woman, man, medium skin tone, dark skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FB # couple with heart: woman, man, medium-dark skin tone, light skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FC # couple with heart: woman, man, medium-dark skin tone, medium-light skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FD # couple with heart: woman, man, medium-dark skin tone, medium skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FE # couple with heart: woman, man, medium-dark skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FF # couple with heart: woman, man, medium-dark skin tone, dark skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FB # couple with heart: woman, man, dark skin tone, light skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FC # couple with heart: woman, man, dark skin tone, medium-light skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FD # couple with heart: woman, man, dark skin tone, medium skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FE # couple with heart: woman, man, dark skin tone, medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FF # couple with heart: woman, man, dark skin tone
+U+1F468 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FB # couple with heart: man, man, light skin tone
+U+1F468 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FC # couple with heart: man, man, light skin tone, medium-light skin tone
+U+1F468 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FD # couple with heart: man, man, light skin tone, medium skin tone
+U+1F468 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FE # couple with heart: man, man, light skin tone, medium-dark skin tone
+U+1F468 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FF # couple with heart: man, man, light skin tone, dark skin tone
+U+1F468 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FB # couple with heart: man, man, medium-light skin tone, light skin tone
+U+1F468 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FC # couple with heart: man, man, medium-light skin tone
+U+1F468 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FD # couple with heart: man, man, medium-light skin tone, medium skin tone
+U+1F468 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FE # couple with heart: man, man, medium-light skin tone, medium-dark skin tone
+U+1F468 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FF # couple with heart: man, man, medium-light skin tone, dark skin tone
+U+1F468 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FB # couple with heart: man, man, medium skin tone, light skin tone
+U+1F468 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FC # couple with heart: man, man, medium skin tone, medium-light skin tone
+U+1F468 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FD # couple with heart: man, man, medium skin tone
+U+1F468 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FE # couple with heart: man, man, medium skin tone, medium-dark skin tone
+U+1F468 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FF # couple with heart: man, man, medium skin tone, dark skin tone
+U+1F468 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FB # couple with heart: man, man, medium-dark skin tone, light skin tone
+U+1F468 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FC # couple with heart: man, man, medium-dark skin tone, medium-light skin tone
+U+1F468 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FD # couple with heart: man, man, medium-dark skin tone, medium skin tone
+U+1F468 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FE # couple with heart: man, man, medium-dark skin tone
+U+1F468 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FF # couple with heart: man, man, medium-dark skin tone, dark skin tone
+U+1F468 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FB # couple with heart: man, man, dark skin tone, light skin tone
+U+1F468 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FC # couple with heart: man, man, dark skin tone, medium-light skin tone
+U+1F468 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FD # couple with heart: man, man, dark skin tone, medium skin tone
+U+1F468 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FE # couple with heart: man, man, dark skin tone, medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F468 U+1F3FF # couple with heart: man, man, dark skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FB # couple with heart: woman, woman, light skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FC # couple with heart: woman, woman, light skin tone, medium-light skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FD # couple with heart: woman, woman, light skin tone, medium skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FE # couple with heart: woman, woman, light skin tone, medium-dark skin tone
+U+1F469 U+1F3FB U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FF # couple with heart: woman, woman, light skin tone, dark skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FB # couple with heart: woman, woman, medium-light skin tone, light skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FC # couple with heart: woman, woman, medium-light skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FD # couple with heart: woman, woman, medium-light skin tone, medium skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FE # couple with heart: woman, woman, medium-light skin tone, medium-dark skin tone
+U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FF # couple with heart: woman, woman, medium-light skin tone, dark skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FB # couple with heart: woman, woman, medium skin tone, light skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FC # couple with heart: woman, woman, medium skin tone, medium-light skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FD # couple with heart: woman, woman, medium skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FE # couple with heart: woman, woman, medium skin tone, medium-dark skin tone
+U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FF # couple with heart: woman, woman, medium skin tone, dark skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FB # couple with heart: woman, woman, medium-dark skin tone, light skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FC # couple with heart: woman, woman, medium-dark skin tone, medium-light skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FD # couple with heart: woman, woman, medium-dark skin tone, medium skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FE # couple with heart: woman, woman, medium-dark skin tone
+U+1F469 U+1F3FE U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FF # couple with heart: woman, woman, medium-dark skin tone, dark skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FB # couple with heart: woman, woman, dark skin tone, light skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FC # couple with heart: woman, woman, dark skin tone, medium-light skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FD # couple with heart: woman, woman, dark skin tone, medium skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FE # couple with heart: woman, woman, dark skin tone, medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+2764 U+FE0F U+200D U+1F469 U+1F3FF # couple with heart: woman, woman, dark skin tone
+# Above emojis are supported from Android 12.0 (API level 31)
+
+@30 # Below emojis are supported from Android 11.0 (API level 30)
+U+1F9D1 U+200D U+1F9B0 # person: red hair
+U+1F9D1 U+1F3FB U+200D U+1F9B0 # person: light skin tone, red hair
+U+1F9D1 U+1F3FC U+200D U+1F9B0 # person: medium-light skin tone, red hair
+U+1F9D1 U+1F3FD U+200D U+1F9B0 # person: medium skin tone, red hair
+U+1F9D1 U+1F3FE U+200D U+1F9B0 # person: medium-dark skin tone, red hair
+U+1F9D1 U+1F3FF U+200D U+1F9B0 # person: dark skin tone, red hair
+U+1F9D1 U+200D U+1F9B1 # person: curly hair
+U+1F9D1 U+1F3FB U+200D U+1F9B1 # person: light skin tone, curly hair
+U+1F9D1 U+1F3FC U+200D U+1F9B1 # person: medium-light skin tone, curly hair
+U+1F9D1 U+1F3FD U+200D U+1F9B1 # person: medium skin tone, curly hair
+U+1F9D1 U+1F3FE U+200D U+1F9B1 # person: medium-dark skin tone, curly hair
+U+1F9D1 U+1F3FF U+200D U+1F9B1 # person: dark skin tone, curly hair
+U+1F9D1 U+200D U+1F9B3 # person: white hair
+U+1F9D1 U+1F3FB U+200D U+1F9B3 # person: light skin tone, white hair
+U+1F9D1 U+1F3FC U+200D U+1F9B3 # person: medium-light skin tone, white hair
+U+1F9D1 U+1F3FD U+200D U+1F9B3 # person: medium skin tone, white hair
+U+1F9D1 U+1F3FE U+200D U+1F9B3 # person: medium-dark skin tone, white hair
+U+1F9D1 U+1F3FF U+200D U+1F9B3 # person: dark skin tone, white hair
+U+1F9D1 U+200D U+1F9B2 # person: bald
+U+1F9D1 U+1F3FB U+200D U+1F9B2 # person: light skin tone, bald
+U+1F9D1 U+1F3FC U+200D U+1F9B2 # person: medium-light skin tone, bald
+U+1F9D1 U+1F3FD U+200D U+1F9B2 # person: medium skin tone, bald
+U+1F9D1 U+1F3FE U+200D U+1F9B2 # person: medium-dark skin tone, bald
+U+1F9D1 U+1F3FF U+200D U+1F9B2 # person: dark skin tone, bald
+U+1F9D1 U+200D U+2695 U+FE0F # health worker
+U+1F9D1 U+1F3FB U+200D U+2695 U+FE0F # health worker: light skin tone
+U+1F9D1 U+1F3FC U+200D U+2695 U+FE0F # health worker: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+2695 U+FE0F # health worker: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+2695 U+FE0F # health worker: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+2695 U+FE0F # health worker: dark skin tone
+U+1F9D1 U+200D U+1F393 # student
+U+1F9D1 U+1F3FB U+200D U+1F393 # student: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F393 # student: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F393 # student: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F393 # student: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F393 # student: dark skin tone
+U+1F9D1 U+200D U+1F3EB # teacher
+U+1F9D1 U+1F3FB U+200D U+1F3EB # teacher: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F3EB # teacher: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F3EB # teacher: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F3EB # teacher: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F3EB # teacher: dark skin tone
+U+1F9D1 U+200D U+2696 U+FE0F # judge
+U+1F9D1 U+1F3FB U+200D U+2696 U+FE0F # judge: light skin tone
+U+1F9D1 U+1F3FC U+200D U+2696 U+FE0F # judge: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+2696 U+FE0F # judge: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+2696 U+FE0F # judge: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+2696 U+FE0F # judge: dark skin tone
+U+1F9D1 U+200D U+1F33E # farmer
+U+1F9D1 U+1F3FB U+200D U+1F33E # farmer: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F33E # farmer: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F33E # farmer: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F33E # farmer: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F33E # farmer: dark skin tone
+U+1F9D1 U+200D U+1F373 # cook
+U+1F9D1 U+1F3FB U+200D U+1F373 # cook: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F373 # cook: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F373 # cook: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F373 # cook: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F373 # cook: dark skin tone
+U+1F9D1 U+200D U+1F527 # mechanic
+U+1F9D1 U+1F3FB U+200D U+1F527 # mechanic: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F527 # mechanic: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F527 # mechanic: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F527 # mechanic: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F527 # mechanic: dark skin tone
+U+1F9D1 U+200D U+1F3ED # factory worker
+U+1F9D1 U+1F3FB U+200D U+1F3ED # factory worker: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F3ED # factory worker: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F3ED # factory worker: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F3ED # factory worker: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F3ED # factory worker: dark skin tone
+U+1F9D1 U+200D U+1F4BC # office worker
+U+1F9D1 U+1F3FB U+200D U+1F4BC # office worker: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F4BC # office worker: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F4BC # office worker: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F4BC # office worker: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F4BC # office worker: dark skin tone
+U+1F9D1 U+200D U+1F52C # scientist
+U+1F9D1 U+1F3FB U+200D U+1F52C # scientist: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F52C # scientist: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F52C # scientist: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F52C # scientist: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F52C # scientist: dark skin tone
+U+1F9D1 U+200D U+1F4BB # technologist
+U+1F9D1 U+1F3FB U+200D U+1F4BB # technologist: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F4BB # technologist: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F4BB # technologist: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F4BB # technologist: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F4BB # technologist: dark skin tone
+U+1F9D1 U+200D U+1F3A4 # singer
+U+1F9D1 U+1F3FB U+200D U+1F3A4 # singer: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F3A4 # singer: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F3A4 # singer: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F3A4 # singer: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F3A4 # singer: dark skin tone
+U+1F9D1 U+200D U+1F3A8 # artist
+U+1F9D1 U+1F3FB U+200D U+1F3A8 # artist: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F3A8 # artist: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F3A8 # artist: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F3A8 # artist: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F3A8 # artist: dark skin tone
+U+1F9D1 U+200D U+2708 U+FE0F # pilot
+U+1F9D1 U+1F3FB U+200D U+2708 U+FE0F # pilot: light skin tone
+U+1F9D1 U+1F3FC U+200D U+2708 U+FE0F # pilot: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+2708 U+FE0F # pilot: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+2708 U+FE0F # pilot: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+2708 U+FE0F # pilot: dark skin tone
+U+1F9D1 U+200D U+1F680 # astronaut
+U+1F9D1 U+1F3FB U+200D U+1F680 # astronaut: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F680 # astronaut: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F680 # astronaut: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F680 # astronaut: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F680 # astronaut: dark skin tone
+U+1F9D1 U+200D U+1F692 # firefighter
+U+1F9D1 U+1F3FB U+200D U+1F692 # firefighter: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F692 # firefighter: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F692 # firefighter: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F692 # firefighter: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F692 # firefighter: dark skin tone
+U+1F9D1 U+200D U+1F9AF # person with white cane
+U+1F9D1 U+1F3FB U+200D U+1F9AF # person with white cane: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F9AF # person with white cane: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F9AF # person with white cane: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F9AF # person with white cane: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F9AF # person with white cane: dark skin tone
+U+1F9D1 U+200D U+1F9BC # person in motorized wheelchair
+U+1F9D1 U+1F3FB U+200D U+1F9BC # person in motorized wheelchair: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F9BC # person in motorized wheelchair: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F9BC # person in motorized wheelchair: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F9BC # person in motorized wheelchair: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F9BC # person in motorized wheelchair: dark skin tone
+U+1F9D1 U+200D U+1F9BD # person in manual wheelchair
+U+1F9D1 U+1F3FB U+200D U+1F9BD # person in manual wheelchair: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F9BD # person in manual wheelchair: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F9BD # person in manual wheelchair: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F9BD # person in manual wheelchair: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F9BD # person in manual wheelchair: dark skin tone
+U+1F9D1 U+1F3FB U+200D U+1F91D U+200D U+1F9D1 U+1F3FC # people holding hands: light skin tone, medium-light skin tone
+U+1F9D1 U+1F3FB U+200D U+1F91D U+200D U+1F9D1 U+1F3FD # people holding hands: light skin tone, medium skin tone
+U+1F9D1 U+1F3FB U+200D U+1F91D U+200D U+1F9D1 U+1F3FE # people holding hands: light skin tone, medium-dark skin tone
+U+1F9D1 U+1F3FB U+200D U+1F91D U+200D U+1F9D1 U+1F3FF # people holding hands: light skin tone, dark skin tone
+U+1F9D1 U+1F3FC U+200D U+1F91D U+200D U+1F9D1 U+1F3FD # people holding hands: medium-light skin tone, medium skin tone
+U+1F9D1 U+1F3FC U+200D U+1F91D U+200D U+1F9D1 U+1F3FE # people holding hands: medium-light skin tone, medium-dark skin tone
+U+1F9D1 U+1F3FC U+200D U+1F91D U+200D U+1F9D1 U+1F3FF # people holding hands: medium-light skin tone, dark skin tone
+U+1F9D1 U+1F3FD U+200D U+1F91D U+200D U+1F9D1 U+1F3FE # people holding hands: medium skin tone, medium-dark skin tone
+U+1F9D1 U+1F3FD U+200D U+1F91D U+200D U+1F9D1 U+1F3FF # people holding hands: medium skin tone, dark skin tone
+U+1F9D1 U+1F3FE U+200D U+1F91D U+200D U+1F9D1 U+1F3FF # people holding hands: medium-dark skin tone, dark skin tone
+U+1F469 U+1F3FB U+200D U+1F91D U+200D U+1F469 U+1F3FC # women holding hands: light skin tone, medium-light skin tone
+U+1F469 U+1F3FB U+200D U+1F91D U+200D U+1F469 U+1F3FD # women holding hands: light skin tone, medium skin tone
+U+1F469 U+1F3FB U+200D U+1F91D U+200D U+1F469 U+1F3FE # women holding hands: light skin tone, medium-dark skin tone
+U+1F469 U+1F3FB U+200D U+1F91D U+200D U+1F469 U+1F3FF # women holding hands: light skin tone, dark skin tone
+U+1F469 U+1F3FC U+200D U+1F91D U+200D U+1F469 U+1F3FD # women holding hands: medium-light skin tone, medium skin tone
+U+1F469 U+1F3FC U+200D U+1F91D U+200D U+1F469 U+1F3FE # women holding hands: medium-light skin tone, medium-dark skin tone
+U+1F469 U+1F3FC U+200D U+1F91D U+200D U+1F469 U+1F3FF # women holding hands: medium-light skin tone, dark skin tone
+U+1F469 U+1F3FD U+200D U+1F91D U+200D U+1F469 U+1F3FE # women holding hands: medium skin tone, medium-dark skin tone
+U+1F469 U+1F3FD U+200D U+1F91D U+200D U+1F469 U+1F3FF # women holding hands: medium skin tone, dark skin tone
+U+1F469 U+1F3FE U+200D U+1F91D U+200D U+1F469 U+1F3FF # women holding hands: medium-dark skin tone, dark skin tone
+U+1F468 U+1F3FB U+200D U+1F91D U+200D U+1F468 U+1F3FC # men holding hands: light skin tone, medium-light skin tone
+U+1F468 U+1F3FB U+200D U+1F91D U+200D U+1F468 U+1F3FD # men holding hands: light skin tone, medium skin tone
+U+1F468 U+1F3FB U+200D U+1F91D U+200D U+1F468 U+1F3FE # men holding hands: light skin tone, medium-dark skin tone
+U+1F468 U+1F3FB U+200D U+1F91D U+200D U+1F468 U+1F3FF # men holding hands: light skin tone, dark skin tone
+U+1F468 U+1F3FC U+200D U+1F91D U+200D U+1F468 U+1F3FD # men holding hands: medium-light skin tone, medium skin tone
+U+1F468 U+1F3FC U+200D U+1F91D U+200D U+1F468 U+1F3FE # men holding hands: medium-light skin tone, medium-dark skin tone
+U+1F468 U+1F3FC U+200D U+1F91D U+200D U+1F468 U+1F3FF # men holding hands: medium-light skin tone, dark skin tone
+U+1F468 U+1F3FD U+200D U+1F91D U+200D U+1F468 U+1F3FE # men holding hands: medium skin tone, medium-dark skin tone
+U+1F468 U+1F3FD U+200D U+1F91D U+200D U+1F468 U+1F3FF # men holding hands: medium skin tone, dark skin tone
+U+1F468 U+1F3FE U+200D U+1F91D U+200D U+1F468 U+1F3FF # men holding hands: medium-dark skin tone, dark skin tone
+U+1F972 # smiling face with tear
+U+1F978 # disguised face
+U+1F90C # pinched fingers
+U+1F90C U+1F3FB # pinched fingers: light skin tone
+U+1F90C U+1F3FC # pinched fingers: medium-light skin tone
+U+1F90C U+1F3FD # pinched fingers: medium skin tone
+U+1F90C U+1F3FE # pinched fingers: medium-dark skin tone
+U+1F90C U+1F3FF # pinched fingers: dark skin tone
+U+1FAC0 # anatomical heart
+U+1FAC1 # lungs
+U+1F977 # ninja
+U+1F977 U+1F3FB # ninja: light skin tone
+U+1F977 U+1F3FC # ninja: medium-light skin tone
+U+1F977 U+1F3FD # ninja: medium skin tone
+U+1F977 U+1F3FE # ninja: medium-dark skin tone
+U+1F977 U+1F3FF # ninja: dark skin tone
+U+1F935 U+200D U+2642 U+FE0F # man in tuxedo
+U+1F935 U+1F3FB U+200D U+2642 U+FE0F # man in tuxedo: light skin tone
+U+1F935 U+1F3FC U+200D U+2642 U+FE0F # man in tuxedo: medium-light skin tone
+U+1F935 U+1F3FD U+200D U+2642 U+FE0F # man in tuxedo: medium skin tone
+U+1F935 U+1F3FE U+200D U+2642 U+FE0F # man in tuxedo: medium-dark skin tone
+U+1F935 U+1F3FF U+200D U+2642 U+FE0F # man in tuxedo: dark skin tone
+U+1F935 U+200D U+2640 U+FE0F # woman in tuxedo
+U+1F935 U+1F3FB U+200D U+2640 U+FE0F # woman in tuxedo: light skin tone
+U+1F935 U+1F3FC U+200D U+2640 U+FE0F # woman in tuxedo: medium-light skin tone
+U+1F935 U+1F3FD U+200D U+2640 U+FE0F # woman in tuxedo: medium skin tone
+U+1F935 U+1F3FE U+200D U+2640 U+FE0F # woman in tuxedo: medium-dark skin tone
+U+1F935 U+1F3FF U+200D U+2640 U+FE0F # woman in tuxedo: dark skin tone
+U+1F470 U+200D U+2642 U+FE0F # man with veil
+U+1F470 U+1F3FB U+200D U+2642 U+FE0F # man with veil: light skin tone
+U+1F470 U+1F3FC U+200D U+2642 U+FE0F # man with veil: medium-light skin tone
+U+1F470 U+1F3FD U+200D U+2642 U+FE0F # man with veil: medium skin tone
+U+1F470 U+1F3FE U+200D U+2642 U+FE0F # man with veil: medium-dark skin tone
+U+1F470 U+1F3FF U+200D U+2642 U+FE0F # man with veil: dark skin tone
+U+1F470 U+200D U+2640 U+FE0F # woman with veil
+U+1F470 U+1F3FB U+200D U+2640 U+FE0F # woman with veil: light skin tone
+U+1F470 U+1F3FC U+200D U+2640 U+FE0F # woman with veil: medium-light skin tone
+U+1F470 U+1F3FD U+200D U+2640 U+FE0F # woman with veil: medium skin tone
+U+1F470 U+1F3FE U+200D U+2640 U+FE0F # woman with veil: medium-dark skin tone
+U+1F470 U+1F3FF U+200D U+2640 U+FE0F # woman with veil: dark skin tone
+U+1F469 U+200D U+1F37C # woman feeding baby
+U+1F469 U+1F3FB U+200D U+1F37C # woman feeding baby: light skin tone
+U+1F469 U+1F3FC U+200D U+1F37C # woman feeding baby: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+1F37C # woman feeding baby: medium skin tone
+U+1F469 U+1F3FE U+200D U+1F37C # woman feeding baby: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+1F37C # woman feeding baby: dark skin tone
+U+1F468 U+200D U+1F37C # man feeding baby
+U+1F468 U+1F3FB U+200D U+1F37C # man feeding baby: light skin tone
+U+1F468 U+1F3FC U+200D U+1F37C # man feeding baby: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+1F37C # man feeding baby: medium skin tone
+U+1F468 U+1F3FE U+200D U+1F37C # man feeding baby: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+1F37C # man feeding baby: dark skin tone
+U+1F9D1 U+200D U+1F37C # person feeding baby
+U+1F9D1 U+1F3FB U+200D U+1F37C # person feeding baby: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F37C # person feeding baby: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F37C # person feeding baby: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F37C # person feeding baby: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F37C # person feeding baby: dark skin tone
+U+1F9D1 U+200D U+1F384 # mx claus
+U+1F9D1 U+1F3FB U+200D U+1F384 # mx claus: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F384 # mx claus: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F384 # mx claus: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F384 # mx claus: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F384 # mx claus: dark skin tone
+U+1FAC2 # people hugging
+U+1F408 U+200D U+2B1B # black cat
+U+1F9AC # bison
+U+1F9A3 # mammoth
+U+1F9AB # beaver
+U+1F43B U+200D U+2744 U+FE0F # polar bear
+U+1F9A4 # dodo
+U+1FAB6 # feather
+U+1F9AD # seal
+U+1FAB2 # beetle
+U+1FAB3 # cockroach
+U+1FAB0 # fly
+U+1FAB1 # worm
+U+1FAB4 # potted plant
+U+1FAD0 # blueberries
+U+1FAD2 # olive
+U+1FAD1 # bell pepper
+U+1FAD3 # flatbread
+U+1FAD4 # tamale
+U+1FAD5 # fondue
+U+1FAD6 # teapot
+U+1F9CB # bubble tea
+U+1FAA8 # rock
+U+1FAB5 # wood
+U+1F6D6 # hut
+U+1F6FB # pickup truck
+U+1F6FC # roller skate
+U+1FA84 # magic wand
+U+1FA85 # piñata
+U+1FA86 # nesting dolls
+U+1FAA1 # sewing needle
+U+1FAA2 # knot
+U+1FA74 # thong sandal
+U+1FA96 # military helmet
+U+1FA97 # accordion
+U+1FA98 # long drum
+U+1FA99 # coin
+U+1FA83 # boomerang
+U+1FA9A # carpentry saw
+U+1FA9B # screwdriver
+U+1FA9D # hook
+U+1FA9C # ladder
+U+1F6D7 # elevator
+U+1FA9E # mirror
+U+1FA9F # window
+U+1FAA0 # plunger
+U+1FAA4 # mouse trap
+U+1FAA3 # bucket
+U+1FAA5 # toothbrush
+U+1FAA6 # headstone
+U+1FAA7 # placard
+U+26A7 U+FE0F # transgender symbol
+U+1F3F3 U+FE0F U+200D U+26A7 U+FE0F # transgender flag
+# Above emojis are supported from Android 11.0 (API level 30)
+
+@29 # Below emojis are supported from Android 10.0 (API level 29)
+U+1F971 # yawning face
+U+1F90E # brown heart
+U+1F90D # white heart
+U+1F90F # pinching hand
+U+1F90F U+1F3FB # pinching hand: light skin tone
+U+1F90F U+1F3FC # pinching hand: medium-light skin tone
+U+1F90F U+1F3FD # pinching hand: medium skin tone
+U+1F90F U+1F3FE # pinching hand: medium-dark skin tone
+U+1F90F U+1F3FF # pinching hand: dark skin tone
+U+1F9BE # mechanical arm
+U+1F9BF # mechanical leg
+U+1F9BB # ear with hearing aid
+U+1F9BB U+1F3FB # ear with hearing aid: light skin tone
+U+1F9BB U+1F3FC # ear with hearing aid: medium-light skin tone
+U+1F9BB U+1F3FD # ear with hearing aid: medium skin tone
+U+1F9BB U+1F3FE # ear with hearing aid: medium-dark skin tone
+U+1F9BB U+1F3FF # ear with hearing aid: dark skin tone
+U+1F9CF # deaf person
+U+1F9CF U+1F3FB # deaf person: light skin tone
+U+1F9CF U+1F3FC # deaf person: medium-light skin tone
+U+1F9CF U+1F3FD # deaf person: medium skin tone
+U+1F9CF U+1F3FE # deaf person: medium-dark skin tone
+U+1F9CF U+1F3FF # deaf person: dark skin tone
+U+1F9CF U+200D U+2642 U+FE0F # deaf man
+U+1F9CF U+1F3FB U+200D U+2642 U+FE0F # deaf man: light skin tone
+U+1F9CF U+1F3FC U+200D U+2642 U+FE0F # deaf man: medium-light skin tone
+U+1F9CF U+1F3FD U+200D U+2642 U+FE0F # deaf man: medium skin tone
+U+1F9CF U+1F3FE U+200D U+2642 U+FE0F # deaf man: medium-dark skin tone
+U+1F9CF U+1F3FF U+200D U+2642 U+FE0F # deaf man: dark skin tone
+U+1F9CF U+200D U+2640 U+FE0F # deaf woman
+U+1F9CF U+1F3FB U+200D U+2640 U+FE0F # deaf woman: light skin tone
+U+1F9CF U+1F3FC U+200D U+2640 U+FE0F # deaf woman: medium-light skin tone
+U+1F9CF U+1F3FD U+200D U+2640 U+FE0F # deaf woman: medium skin tone
+U+1F9CF U+1F3FE U+200D U+2640 U+FE0F # deaf woman: medium-dark skin tone
+U+1F9CF U+1F3FF U+200D U+2640 U+FE0F # deaf woman: dark skin tone
+U+1F9CD # person standing
+U+1F9CD U+1F3FB # person standing: light skin tone
+U+1F9CD U+1F3FC # person standing: medium-light skin tone
+U+1F9CD U+1F3FD # person standing: medium skin tone
+U+1F9CD U+1F3FE # person standing: medium-dark skin tone
+U+1F9CD U+1F3FF # person standing: dark skin tone
+U+1F9CD U+200D U+2642 U+FE0F # man standing
+U+1F9CD U+1F3FB U+200D U+2642 U+FE0F # man standing: light skin tone
+U+1F9CD U+1F3FC U+200D U+2642 U+FE0F # man standing: medium-light skin tone
+U+1F9CD U+1F3FD U+200D U+2642 U+FE0F # man standing: medium skin tone
+U+1F9CD U+1F3FE U+200D U+2642 U+FE0F # man standing: medium-dark skin tone
+U+1F9CD U+1F3FF U+200D U+2642 U+FE0F # man standing: dark skin tone
+U+1F9CD U+200D U+2640 U+FE0F # woman standing
+U+1F9CD U+1F3FB U+200D U+2640 U+FE0F # woman standing: light skin tone
+U+1F9CD U+1F3FC U+200D U+2640 U+FE0F # woman standing: medium-light skin tone
+U+1F9CD U+1F3FD U+200D U+2640 U+FE0F # woman standing: medium skin tone
+U+1F9CD U+1F3FE U+200D U+2640 U+FE0F # woman standing: medium-dark skin tone
+U+1F9CD U+1F3FF U+200D U+2640 U+FE0F # woman standing: dark skin tone
+U+1F9CE # person kneeling
+U+1F9CE U+1F3FB # person kneeling: light skin tone
+U+1F9CE U+1F3FC # person kneeling: medium-light skin tone
+U+1F9CE U+1F3FD # person kneeling: medium skin tone
+U+1F9CE U+1F3FE # person kneeling: medium-dark skin tone
+U+1F9CE U+1F3FF # person kneeling: dark skin tone
+U+1F9CE U+200D U+2642 U+FE0F # man kneeling
+U+1F9CE U+1F3FB U+200D U+2642 U+FE0F # man kneeling: light skin tone
+U+1F9CE U+1F3FC U+200D U+2642 U+FE0F # man kneeling: medium-light skin tone
+U+1F9CE U+1F3FD U+200D U+2642 U+FE0F # man kneeling: medium skin tone
+U+1F9CE U+1F3FE U+200D U+2642 U+FE0F # man kneeling: medium-dark skin tone
+U+1F9CE U+1F3FF U+200D U+2642 U+FE0F # man kneeling: dark skin tone
+U+1F9CE U+200D U+2640 U+FE0F # woman kneeling
+U+1F9CE U+1F3FB U+200D U+2640 U+FE0F # woman kneeling: light skin tone
+U+1F9CE U+1F3FC U+200D U+2640 U+FE0F # woman kneeling: medium-light skin tone
+U+1F9CE U+1F3FD U+200D U+2640 U+FE0F # woman kneeling: medium skin tone
+U+1F9CE U+1F3FE U+200D U+2640 U+FE0F # woman kneeling: medium-dark skin tone
+U+1F9CE U+1F3FF U+200D U+2640 U+FE0F # woman kneeling: dark skin tone
+U+1F468 U+200D U+1F9AF # man with white cane
+U+1F468 U+1F3FB U+200D U+1F9AF # man with white cane: light skin tone
+U+1F468 U+1F3FC U+200D U+1F9AF # man with white cane: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+1F9AF # man with white cane: medium skin tone
+U+1F468 U+1F3FE U+200D U+1F9AF # man with white cane: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+1F9AF # man with white cane: dark skin tone
+U+1F469 U+200D U+1F9AF # woman with white cane
+U+1F469 U+1F3FB U+200D U+1F9AF # woman with white cane: light skin tone
+U+1F469 U+1F3FC U+200D U+1F9AF # woman with white cane: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+1F9AF # woman with white cane: medium skin tone
+U+1F469 U+1F3FE U+200D U+1F9AF # woman with white cane: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+1F9AF # woman with white cane: dark skin tone
+U+1F468 U+200D U+1F9BC # man in motorized wheelchair
+U+1F468 U+1F3FB U+200D U+1F9BC # man in motorized wheelchair: light skin tone
+U+1F468 U+1F3FC U+200D U+1F9BC # man in motorized wheelchair: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+1F9BC # man in motorized wheelchair: medium skin tone
+U+1F468 U+1F3FE U+200D U+1F9BC # man in motorized wheelchair: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+1F9BC # man in motorized wheelchair: dark skin tone
+U+1F469 U+200D U+1F9BC # woman in motorized wheelchair
+U+1F469 U+1F3FB U+200D U+1F9BC # woman in motorized wheelchair: light skin tone
+U+1F469 U+1F3FC U+200D U+1F9BC # woman in motorized wheelchair: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+1F9BC # woman in motorized wheelchair: medium skin tone
+U+1F469 U+1F3FE U+200D U+1F9BC # woman in motorized wheelchair: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+1F9BC # woman in motorized wheelchair: dark skin tone
+U+1F468 U+200D U+1F9BD # man in manual wheelchair
+U+1F468 U+1F3FB U+200D U+1F9BD # man in manual wheelchair: light skin tone
+U+1F468 U+1F3FC U+200D U+1F9BD # man in manual wheelchair: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+1F9BD # man in manual wheelchair: medium skin tone
+U+1F468 U+1F3FE U+200D U+1F9BD # man in manual wheelchair: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+1F9BD # man in manual wheelchair: dark skin tone
+U+1F469 U+200D U+1F9BD # woman in manual wheelchair
+U+1F469 U+1F3FB U+200D U+1F9BD # woman in manual wheelchair: light skin tone
+U+1F469 U+1F3FC U+200D U+1F9BD # woman in manual wheelchair: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+1F9BD # woman in manual wheelchair: medium skin tone
+U+1F469 U+1F3FE U+200D U+1F9BD # woman in manual wheelchair: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+1F9BD # woman in manual wheelchair: dark skin tone
+U+1F9D1 U+200D U+1F91D U+200D U+1F9D1 # people holding hands
+U+1F9D1 U+1F3FB U+200D U+1F91D U+200D U+1F9D1 U+1F3FB # people holding hands: light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F91D U+200D U+1F9D1 U+1F3FB # people holding hands: medium-light skin tone, light skin tone
+U+1F9D1 U+1F3FC U+200D U+1F91D U+200D U+1F9D1 U+1F3FC # people holding hands: medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F91D U+200D U+1F9D1 U+1F3FB # people holding hands: medium skin tone, light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F91D U+200D U+1F9D1 U+1F3FC # people holding hands: medium skin tone, medium-light skin tone
+U+1F9D1 U+1F3FD U+200D U+1F91D U+200D U+1F9D1 U+1F3FD # people holding hands: medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F91D U+200D U+1F9D1 U+1F3FB # people holding hands: medium-dark skin tone, light skin tone
+U+1F9D1 U+1F3FE U+200D U+1F91D U+200D U+1F9D1 U+1F3FC # people holding hands: medium-dark skin tone, medium-light skin tone
+U+1F9D1 U+1F3FE U+200D U+1F91D U+200D U+1F9D1 U+1F3FD # people holding hands: medium-dark skin tone, medium skin tone
+U+1F9D1 U+1F3FE U+200D U+1F91D U+200D U+1F9D1 U+1F3FE # people holding hands: medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F91D U+200D U+1F9D1 U+1F3FB # people holding hands: dark skin tone, light skin tone
+U+1F9D1 U+1F3FF U+200D U+1F91D U+200D U+1F9D1 U+1F3FC # people holding hands: dark skin tone, medium-light skin tone
+U+1F9D1 U+1F3FF U+200D U+1F91D U+200D U+1F9D1 U+1F3FD # people holding hands: dark skin tone, medium skin tone
+U+1F9D1 U+1F3FF U+200D U+1F91D U+200D U+1F9D1 U+1F3FE # people holding hands: dark skin tone, medium-dark skin tone
+U+1F9D1 U+1F3FF U+200D U+1F91D U+200D U+1F9D1 U+1F3FF # people holding hands: dark skin tone
+U+1F46D U+1F3FB # women holding hands: light skin tone
+U+1F469 U+1F3FC U+200D U+1F91D U+200D U+1F469 U+1F3FB # women holding hands: medium-light skin tone, light skin tone
+U+1F46D U+1F3FC # women holding hands: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+1F91D U+200D U+1F469 U+1F3FB # women holding hands: medium skin tone, light skin tone
+U+1F469 U+1F3FD U+200D U+1F91D U+200D U+1F469 U+1F3FC # women holding hands: medium skin tone, medium-light skin tone
+U+1F46D U+1F3FD # women holding hands: medium skin tone
+U+1F469 U+1F3FE U+200D U+1F91D U+200D U+1F469 U+1F3FB # women holding hands: medium-dark skin tone, light skin tone
+U+1F469 U+1F3FE U+200D U+1F91D U+200D U+1F469 U+1F3FC # women holding hands: medium-dark skin tone, medium-light skin tone
+U+1F469 U+1F3FE U+200D U+1F91D U+200D U+1F469 U+1F3FD # women holding hands: medium-dark skin tone, medium skin tone
+U+1F46D U+1F3FE # women holding hands: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+1F91D U+200D U+1F469 U+1F3FB # women holding hands: dark skin tone, light skin tone
+U+1F469 U+1F3FF U+200D U+1F91D U+200D U+1F469 U+1F3FC # women holding hands: dark skin tone, medium-light skin tone
+U+1F469 U+1F3FF U+200D U+1F91D U+200D U+1F469 U+1F3FD # women holding hands: dark skin tone, medium skin tone
+U+1F469 U+1F3FF U+200D U+1F91D U+200D U+1F469 U+1F3FE # women holding hands: dark skin tone, medium-dark skin tone
+U+1F46D U+1F3FF # women holding hands: dark skin tone
+U+1F46B U+1F3FB # woman and man holding hands: light skin tone
+U+1F469 U+1F3FB U+200D U+1F91D U+200D U+1F468 U+1F3FC # woman and man holding hands: light skin tone, medium-light skin tone
+U+1F469 U+1F3FB U+200D U+1F91D U+200D U+1F468 U+1F3FD # woman and man holding hands: light skin tone, medium skin tone
+U+1F469 U+1F3FB U+200D U+1F91D U+200D U+1F468 U+1F3FE # woman and man holding hands: light skin tone, medium-dark skin tone
+U+1F469 U+1F3FB U+200D U+1F91D U+200D U+1F468 U+1F3FF # woman and man holding hands: light skin tone, dark skin tone
+U+1F469 U+1F3FC U+200D U+1F91D U+200D U+1F468 U+1F3FB # woman and man holding hands: medium-light skin tone, light skin tone
+U+1F46B U+1F3FC # woman and man holding hands: medium-light skin tone
+U+1F469 U+1F3FC U+200D U+1F91D U+200D U+1F468 U+1F3FD # woman and man holding hands: medium-light skin tone, medium skin tone
+U+1F469 U+1F3FC U+200D U+1F91D U+200D U+1F468 U+1F3FE # woman and man holding hands: medium-light skin tone, medium-dark skin tone
+U+1F469 U+1F3FC U+200D U+1F91D U+200D U+1F468 U+1F3FF # woman and man holding hands: medium-light skin tone, dark skin tone
+U+1F469 U+1F3FD U+200D U+1F91D U+200D U+1F468 U+1F3FB # woman and man holding hands: medium skin tone, light skin tone
+U+1F469 U+1F3FD U+200D U+1F91D U+200D U+1F468 U+1F3FC # woman and man holding hands: medium skin tone, medium-light skin tone
+U+1F46B U+1F3FD # woman and man holding hands: medium skin tone
+U+1F469 U+1F3FD U+200D U+1F91D U+200D U+1F468 U+1F3FE # woman and man holding hands: medium skin tone, medium-dark skin tone
+U+1F469 U+1F3FD U+200D U+1F91D U+200D U+1F468 U+1F3FF # woman and man holding hands: medium skin tone, dark skin tone
+U+1F469 U+1F3FE U+200D U+1F91D U+200D U+1F468 U+1F3FB # woman and man holding hands: medium-dark skin tone, light skin tone
+U+1F469 U+1F3FE U+200D U+1F91D U+200D U+1F468 U+1F3FC # woman and man holding hands: medium-dark skin tone, medium-light skin tone
+U+1F469 U+1F3FE U+200D U+1F91D U+200D U+1F468 U+1F3FD # woman and man holding hands: medium-dark skin tone, medium skin tone
+U+1F46B U+1F3FE # woman and man holding hands: medium-dark skin tone
+U+1F469 U+1F3FE U+200D U+1F91D U+200D U+1F468 U+1F3FF # woman and man holding hands: medium-dark skin tone, dark skin tone
+U+1F469 U+1F3FF U+200D U+1F91D U+200D U+1F468 U+1F3FB # woman and man holding hands: dark skin tone, light skin tone
+U+1F469 U+1F3FF U+200D U+1F91D U+200D U+1F468 U+1F3FC # woman and man holding hands: dark skin tone, medium-light skin tone
+U+1F469 U+1F3FF U+200D U+1F91D U+200D U+1F468 U+1F3FD # woman and man holding hands: dark skin tone, medium skin tone
+U+1F469 U+1F3FF U+200D U+1F91D U+200D U+1F468 U+1F3FE # woman and man holding hands: dark skin tone, medium-dark skin tone
+U+1F46B U+1F3FF # woman and man holding hands: dark skin tone
+U+1F46C U+1F3FB # men holding hands: light skin tone
+U+1F468 U+1F3FC U+200D U+1F91D U+200D U+1F468 U+1F3FB # men holding hands: medium-light skin tone, light skin tone
+U+1F46C U+1F3FC # men holding hands: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+1F91D U+200D U+1F468 U+1F3FB # men holding hands: medium skin tone, light skin tone
+U+1F468 U+1F3FD U+200D U+1F91D U+200D U+1F468 U+1F3FC # men holding hands: medium skin tone, medium-light skin tone
+U+1F46C U+1F3FD # men holding hands: medium skin tone
+U+1F468 U+1F3FE U+200D U+1F91D U+200D U+1F468 U+1F3FB # men holding hands: medium-dark skin tone, light skin tone
+U+1F468 U+1F3FE U+200D U+1F91D U+200D U+1F468 U+1F3FC # men holding hands: medium-dark skin tone, medium-light skin tone
+U+1F468 U+1F3FE U+200D U+1F91D U+200D U+1F468 U+1F3FD # men holding hands: medium-dark skin tone, medium skin tone
+U+1F46C U+1F3FE # men holding hands: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+1F91D U+200D U+1F468 U+1F3FB # men holding hands: dark skin tone, light skin tone
+U+1F468 U+1F3FF U+200D U+1F91D U+200D U+1F468 U+1F3FC # men holding hands: dark skin tone, medium-light skin tone
+U+1F468 U+1F3FF U+200D U+1F91D U+200D U+1F468 U+1F3FD # men holding hands: dark skin tone, medium skin tone
+U+1F468 U+1F3FF U+200D U+1F91D U+200D U+1F468 U+1F3FE # men holding hands: dark skin tone, medium-dark skin tone
+U+1F46C U+1F3FF # men holding hands: dark skin tone
+U+1F9A7 # orangutan
+U+1F9AE # guide dog
+U+1F415 U+200D U+1F9BA # service dog
+U+1F9A5 # sloth
+U+1F9A6 # otter
+U+1F9A8 # skunk
+U+1F9A9 # flamingo
+U+1F9C4 # garlic
+U+1F9C5 # onion
+U+1F9C7 # waffle
+U+1F9C6 # falafel
+U+1F9C8 # butter
+U+1F9AA # oyster
+U+1F9C3 # beverage box
+U+1F9C9 # mate
+U+1F9CA # ice
+U+1F6D5 # hindu temple
+U+1F9BD # manual wheelchair
+U+1F9BC # motorized wheelchair
+U+1F6FA # auto rickshaw
+U+1FA82 # parachute
+U+1FA90 # ringed planet
+U+1F93F # diving mask
+U+1FA80 # yo-yo
+U+1FA81 # kite
+U+1F9BA # safety vest
+U+1F97B # sari
+U+1FA71 # one-piece swimsuit
+U+1FA72 # briefs
+U+1FA73 # shorts
+U+1FA70 # ballet shoes
+U+1FA95 # banjo
+U+1FA94 # diya lamp
+U+1FA93 # axe
+U+1F9AF # white cane
+U+1FA78 # drop of blood
+U+1FA79 # adhesive bandage
+U+1FA7A # stethoscope
+U+1FA91 # chair
+U+1FA92 # razor
+U+1F7E0 # orange circle
+U+1F7E1 # yellow circle
+U+1F7E2 # green circle
+U+1F7E3 # purple circle
+U+1F7E4 # brown circle
+U+1F7E5 # red square
+U+1F7E7 # orange square
+U+1F7E8 # yellow square
+U+1F7E9 # green square
+U+1F7E6 # blue square
+U+1F7EA # purple square
+U+1F7EB # brown square
+U+1F1E7 U+1F1F1 # flag: st. barthélemy
+U+1F1E7 U+1F1F6 # flag: caribbean netherlands
+U+1F1F2 U+1F1F6 # flag: martinique
+U+1F1F7 U+1F1EA # flag: réunion
+U+1F1F9 U+1F1EB # flag: french southern territories
+U+1F1FD U+1F1F0 # flag: kosovo
+# Above emojis are supported from Android 10.0 (API level 29)
+
+@28 # Below emojis are supported from Android 9.0 (API level 28)
+U+1F970 # smiling face with hearts
+U+1F975 # hot face
+U+1F976 # cold face
+U+1F974 # woozy face
+U+1F973 # partying face
+U+1F97A # pleading face
+U+1F9B5 # leg
+U+1F9B5 U+1F3FB # leg: light skin tone
+U+1F9B5 U+1F3FC # leg: medium-light skin tone
+U+1F9B5 U+1F3FD # leg: medium skin tone
+U+1F9B5 U+1F3FE # leg: medium-dark skin tone
+U+1F9B5 U+1F3FF # leg: dark skin tone
+U+1F9B6 # foot
+U+1F9B6 U+1F3FB # foot: light skin tone
+U+1F9B6 U+1F3FC # foot: medium-light skin tone
+U+1F9B6 U+1F3FD # foot: medium skin tone
+U+1F9B6 U+1F3FE # foot: medium-dark skin tone
+U+1F9B6 U+1F3FF # foot: dark skin tone
+U+1F9B7 # tooth
+U+1F9B4 # bone
+U+1F468 U+200D U+1F9B0 # man: red hair
+U+1F468 U+1F3FB U+200D U+1F9B0 # man: light skin tone, red hair
+U+1F468 U+1F3FC U+200D U+1F9B0 # man: medium-light skin tone, red hair
+U+1F468 U+1F3FD U+200D U+1F9B0 # man: medium skin tone, red hair
+U+1F468 U+1F3FE U+200D U+1F9B0 # man: medium-dark skin tone, red hair
+U+1F468 U+1F3FF U+200D U+1F9B0 # man: dark skin tone, red hair
+U+1F468 U+200D U+1F9B1 # man: curly hair
+U+1F468 U+1F3FB U+200D U+1F9B1 # man: light skin tone, curly hair
+U+1F468 U+1F3FC U+200D U+1F9B1 # man: medium-light skin tone, curly hair
+U+1F468 U+1F3FD U+200D U+1F9B1 # man: medium skin tone, curly hair
+U+1F468 U+1F3FE U+200D U+1F9B1 # man: medium-dark skin tone, curly hair
+U+1F468 U+1F3FF U+200D U+1F9B1 # man: dark skin tone, curly hair
+U+1F468 U+200D U+1F9B3 # man: white hair
+U+1F468 U+1F3FB U+200D U+1F9B3 # man: light skin tone, white hair
+U+1F468 U+1F3FC U+200D U+1F9B3 # man: medium-light skin tone, white hair
+U+1F468 U+1F3FD U+200D U+1F9B3 # man: medium skin tone, white hair
+U+1F468 U+1F3FE U+200D U+1F9B3 # man: medium-dark skin tone, white hair
+U+1F468 U+1F3FF U+200D U+1F9B3 # man: dark skin tone, white hair
+U+1F468 U+200D U+1F9B2 # man: bald
+U+1F468 U+1F3FB U+200D U+1F9B2 # man: light skin tone, bald
+U+1F468 U+1F3FC U+200D U+1F9B2 # man: medium-light skin tone, bald
+U+1F468 U+1F3FD U+200D U+1F9B2 # man: medium skin tone, bald
+U+1F468 U+1F3FE U+200D U+1F9B2 # man: medium-dark skin tone, bald
+U+1F468 U+1F3FF U+200D U+1F9B2 # man: dark skin tone, bald
+U+1F469 U+200D U+1F9B0 # woman: red hair
+U+1F469 U+1F3FB U+200D U+1F9B0 # woman: light skin tone, red hair
+U+1F469 U+1F3FC U+200D U+1F9B0 # woman: medium-light skin tone, red hair
+U+1F469 U+1F3FD U+200D U+1F9B0 # woman: medium skin tone, red hair
+U+1F469 U+1F3FE U+200D U+1F9B0 # woman: medium-dark skin tone, red hair
+U+1F469 U+1F3FF U+200D U+1F9B0 # woman: dark skin tone, red hair
+U+1F469 U+200D U+1F9B1 # woman: curly hair
+U+1F469 U+1F3FB U+200D U+1F9B1 # woman: light skin tone, curly hair
+U+1F469 U+1F3FC U+200D U+1F9B1 # woman: medium-light skin tone, curly hair
+U+1F469 U+1F3FD U+200D U+1F9B1 # woman: medium skin tone, curly hair
+U+1F469 U+1F3FE U+200D U+1F9B1 # woman: medium-dark skin tone, curly hair
+U+1F469 U+1F3FF U+200D U+1F9B1 # woman: dark skin tone, curly hair
+U+1F469 U+200D U+1F9B3 # woman: white hair
+U+1F469 U+1F3FB U+200D U+1F9B3 # woman: light skin tone, white hair
+U+1F469 U+1F3FC U+200D U+1F9B3 # woman: medium-light skin tone, white hair
+U+1F469 U+1F3FD U+200D U+1F9B3 # woman: medium skin tone, white hair
+U+1F469 U+1F3FE U+200D U+1F9B3 # woman: medium-dark skin tone, white hair
+U+1F469 U+1F3FF U+200D U+1F9B3 # woman: dark skin tone, white hair
+U+1F469 U+200D U+1F9B2 # woman: bald
+U+1F469 U+1F3FB U+200D U+1F9B2 # woman: light skin tone, bald
+U+1F469 U+1F3FC U+200D U+1F9B2 # woman: medium-light skin tone, bald
+U+1F469 U+1F3FD U+200D U+1F9B2 # woman: medium skin tone, bald
+U+1F469 U+1F3FE U+200D U+1F9B2 # woman: medium-dark skin tone, bald
+U+1F469 U+1F3FF U+200D U+1F9B2 # woman: dark skin tone, bald
+U+1F9B8 # superhero
+U+1F9B8 U+1F3FB # superhero: light skin tone
+U+1F9B8 U+1F3FC # superhero: medium-light skin tone
+U+1F9B8 U+1F3FD # superhero: medium skin tone
+U+1F9B8 U+1F3FE # superhero: medium-dark skin tone
+U+1F9B8 U+1F3FF # superhero: dark skin tone
+U+1F9B8 U+200D U+2642 U+FE0F # man superhero
+U+1F9B8 U+1F3FB U+200D U+2642 U+FE0F # man superhero: light skin tone
+U+1F9B8 U+1F3FC U+200D U+2642 U+FE0F # man superhero: medium-light skin tone
+U+1F9B8 U+1F3FD U+200D U+2642 U+FE0F # man superhero: medium skin tone
+U+1F9B8 U+1F3FE U+200D U+2642 U+FE0F # man superhero: medium-dark skin tone
+U+1F9B8 U+1F3FF U+200D U+2642 U+FE0F # man superhero: dark skin tone
+U+1F9B8 U+200D U+2640 U+FE0F # woman superhero
+U+1F9B8 U+1F3FB U+200D U+2640 U+FE0F # woman superhero: light skin tone
+U+1F9B8 U+1F3FC U+200D U+2640 U+FE0F # woman superhero: medium-light skin tone
+U+1F9B8 U+1F3FD U+200D U+2640 U+FE0F # woman superhero: medium skin tone
+U+1F9B8 U+1F3FE U+200D U+2640 U+FE0F # woman superhero: medium-dark skin tone
+U+1F9B8 U+1F3FF U+200D U+2640 U+FE0F # woman superhero: dark skin tone
+U+1F9B9 # supervillain
+U+1F9B9 U+1F3FB # supervillain: light skin tone
+U+1F9B9 U+1F3FC # supervillain: medium-light skin tone
+U+1F9B9 U+1F3FD # supervillain: medium skin tone
+U+1F9B9 U+1F3FE # supervillain: medium-dark skin tone
+U+1F9B9 U+1F3FF # supervillain: dark skin tone
+U+1F9B9 U+200D U+2642 U+FE0F # man supervillain
+U+1F9B9 U+1F3FB U+200D U+2642 U+FE0F # man supervillain: light skin tone
+U+1F9B9 U+1F3FC U+200D U+2642 U+FE0F # man supervillain: medium-light skin tone
+U+1F9B9 U+1F3FD U+200D U+2642 U+FE0F # man supervillain: medium skin tone
+U+1F9B9 U+1F3FE U+200D U+2642 U+FE0F # man supervillain: medium-dark skin tone
+U+1F9B9 U+1F3FF U+200D U+2642 U+FE0F # man supervillain: dark skin tone
+U+1F9B9 U+200D U+2640 U+FE0F # woman supervillain
+U+1F9B9 U+1F3FB U+200D U+2640 U+FE0F # woman supervillain: light skin tone
+U+1F9B9 U+1F3FC U+200D U+2640 U+FE0F # woman supervillain: medium-light skin tone
+U+1F9B9 U+1F3FD U+200D U+2640 U+FE0F # woman supervillain: medium skin tone
+U+1F9B9 U+1F3FE U+200D U+2640 U+FE0F # woman supervillain: medium-dark skin tone
+U+1F9B9 U+1F3FF U+200D U+2640 U+FE0F # woman supervillain: dark skin tone
+U+1F9B0 # red hair
+U+1F9B1 # curly hair
+U+1F9B3 # white hair
+U+1F9B2 # bald
+U+1F99D # raccoon
+U+1F999 # llama
+U+1F99B # hippopotamus
+U+1F998 # kangaroo
+U+1F9A1 # badger
+U+1F9A2 # swan
+U+1F99A # peacock
+U+1F99C # parrot
+U+1F99F # mosquito
+U+1F9A0 # microbe
+U+1F96D # mango
+U+1F96C # leafy green
+U+1F96F # bagel
+U+1F9C2 # salt
+U+1F96E # moon cake
+U+1F99E # lobster
+U+1F9C1 # cupcake
+U+1F9ED # compass
+U+1F9F1 # brick
+U+1F6F9 # skateboard
+U+1F9F3 # luggage
+U+1F9E8 # firecracker
+U+1F9E7 # red envelope
+U+1F94E # softball
+U+1F94F # flying disc
+U+1F94D # lacrosse
+U+1F9FF # nazar amulet
+U+1F9E9 # puzzle piece
+U+1F9F8 # teddy bear
+U+265F U+FE0F # chess pawn
+U+1F9F5 # thread
+U+1F9F6 # yarn
+U+1F97D # goggles
+U+1F97C # lab coat
+U+1F97E # hiking boot
+U+1F97F # flat shoe
+U+1F9EE # abacus
+U+1F9FE # receipt
+U+1F9F0 # toolbox
+U+1F9F2 # magnet
+U+1F9EA # test tube
+U+1F9EB # petri dish
+U+1F9EC # dna
+U+1F9F4 # lotion bottle
+U+1F9F7 # safety pin
+U+1F9F9 # broom
+U+1F9FA # basket
+U+1F9FB # roll of paper
+U+1F9FC # soap
+U+1F9FD # sponge
+U+1F9EF # fire extinguisher
+U+267E U+FE0F # infinity
+U+1F3F4 U+200D U+2620 U+FE0F # pirate flag
+# Above emojis are supported from Android 9.0 (API level 28)
+
+@27 # Below emojis are supported from Android 8.1 (API level 27)
+U+1F91D U+1F3FB # handshake: light skin tone
+U+1F91D U+1F3FC # handshake: medium-light skin tone
+U+1F91D U+1F3FD # handshake: medium skin tone
+U+1F91D U+1F3FE # handshake: medium-dark skin tone
+U+1F91D U+1F3FF # handshake: dark skin tone
+# Above emojis are supported from Android 8.1 (API level 27)
+
+@26 # Below emojis are supported from Android 8.0 (API level 26)
+U+1F929 # star-struck
+U+1F92A # zany face
+U+1F92D # face with hand over mouth
+U+1F92B # shushing face
+U+1F928 # face with raised eyebrow
+U+1F92E # face vomiting
+U+1F92F # exploding head
+U+1F9D0 # face with monocle
+U+1F92C # face with symbols on mouth
+U+1F9E1 # orange heart
+U+1F91F # love-you gesture
+U+1F91F U+1F3FB # love-you gesture: light skin tone
+U+1F91F U+1F3FC # love-you gesture: medium-light skin tone
+U+1F91F U+1F3FD # love-you gesture: medium skin tone
+U+1F91F U+1F3FE # love-you gesture: medium-dark skin tone
+U+1F91F U+1F3FF # love-you gesture: dark skin tone
+U+1F932 # palms up together
+U+1F932 U+1F3FB # palms up together: light skin tone
+U+1F932 U+1F3FC # palms up together: medium-light skin tone
+U+1F932 U+1F3FD # palms up together: medium skin tone
+U+1F932 U+1F3FE # palms up together: medium-dark skin tone
+U+1F932 U+1F3FF # palms up together: dark skin tone
+U+1F9E0 # brain
+U+1F9D2 # child
+U+1F9D2 U+1F3FB # child: light skin tone
+U+1F9D2 U+1F3FC # child: medium-light skin tone
+U+1F9D2 U+1F3FD # child: medium skin tone
+U+1F9D2 U+1F3FE # child: medium-dark skin tone
+U+1F9D2 U+1F3FF # child: dark skin tone
+U+1F9D1 # person
+U+1F9D1 U+1F3FB # person: light skin tone
+U+1F9D1 U+1F3FC # person: medium-light skin tone
+U+1F9D1 U+1F3FD # person: medium skin tone
+U+1F9D1 U+1F3FE # person: medium-dark skin tone
+U+1F9D1 U+1F3FF # person: dark skin tone
+U+1F9D4 # person: beard
+U+1F9D4 U+1F3FB # person: light skin tone, beard
+U+1F9D4 U+1F3FC # person: medium-light skin tone, beard
+U+1F9D4 U+1F3FD # person: medium skin tone, beard
+U+1F9D4 U+1F3FE # person: medium-dark skin tone, beard
+U+1F9D4 U+1F3FF # person: dark skin tone, beard
+U+1F9D3 # older person
+U+1F9D3 U+1F3FB # older person: light skin tone
+U+1F9D3 U+1F3FC # older person: medium-light skin tone
+U+1F9D3 U+1F3FD # older person: medium skin tone
+U+1F9D3 U+1F3FE # older person: medium-dark skin tone
+U+1F9D3 U+1F3FF # older person: dark skin tone
+U+1F9D5 # woman with headscarf
+U+1F9D5 U+1F3FB # woman with headscarf: light skin tone
+U+1F9D5 U+1F3FC # woman with headscarf: medium-light skin tone
+U+1F9D5 U+1F3FD # woman with headscarf: medium skin tone
+U+1F9D5 U+1F3FE # woman with headscarf: medium-dark skin tone
+U+1F9D5 U+1F3FF # woman with headscarf: dark skin tone
+U+1F931 # breast-feeding
+U+1F931 U+1F3FB # breast-feeding: light skin tone
+U+1F931 U+1F3FC # breast-feeding: medium-light skin tone
+U+1F931 U+1F3FD # breast-feeding: medium skin tone
+U+1F931 U+1F3FE # breast-feeding: medium-dark skin tone
+U+1F931 U+1F3FF # breast-feeding: dark skin tone
+U+1F9D9 # mage
+U+1F9D9 U+1F3FB # mage: light skin tone
+U+1F9D9 U+1F3FC # mage: medium-light skin tone
+U+1F9D9 U+1F3FD # mage: medium skin tone
+U+1F9D9 U+1F3FE # mage: medium-dark skin tone
+U+1F9D9 U+1F3FF # mage: dark skin tone
+U+1F9D9 U+200D U+2642 U+FE0F # man mage
+U+1F9D9 U+1F3FB U+200D U+2642 U+FE0F # man mage: light skin tone
+U+1F9D9 U+1F3FC U+200D U+2642 U+FE0F # man mage: medium-light skin tone
+U+1F9D9 U+1F3FD U+200D U+2642 U+FE0F # man mage: medium skin tone
+U+1F9D9 U+1F3FE U+200D U+2642 U+FE0F # man mage: medium-dark skin tone
+U+1F9D9 U+1F3FF U+200D U+2642 U+FE0F # man mage: dark skin tone
+U+1F9D9 U+200D U+2640 U+FE0F # woman mage
+U+1F9D9 U+1F3FB U+200D U+2640 U+FE0F # woman mage: light skin tone
+U+1F9D9 U+1F3FC U+200D U+2640 U+FE0F # woman mage: medium-light skin tone
+U+1F9D9 U+1F3FD U+200D U+2640 U+FE0F # woman mage: medium skin tone
+U+1F9D9 U+1F3FE U+200D U+2640 U+FE0F # woman mage: medium-dark skin tone
+U+1F9D9 U+1F3FF U+200D U+2640 U+FE0F # woman mage: dark skin tone
+U+1F9DA # fairy
+U+1F9DA U+1F3FB # fairy: light skin tone
+U+1F9DA U+1F3FC # fairy: medium-light skin tone
+U+1F9DA U+1F3FD # fairy: medium skin tone
+U+1F9DA U+1F3FE # fairy: medium-dark skin tone
+U+1F9DA U+1F3FF # fairy: dark skin tone
+U+1F9DA U+200D U+2642 U+FE0F # man fairy
+U+1F9DA U+1F3FB U+200D U+2642 U+FE0F # man fairy: light skin tone
+U+1F9DA U+1F3FC U+200D U+2642 U+FE0F # man fairy: medium-light skin tone
+U+1F9DA U+1F3FD U+200D U+2642 U+FE0F # man fairy: medium skin tone
+U+1F9DA U+1F3FE U+200D U+2642 U+FE0F # man fairy: medium-dark skin tone
+U+1F9DA U+1F3FF U+200D U+2642 U+FE0F # man fairy: dark skin tone
+U+1F9DA U+200D U+2640 U+FE0F # woman fairy
+U+1F9DA U+1F3FB U+200D U+2640 U+FE0F # woman fairy: light skin tone
+U+1F9DA U+1F3FC U+200D U+2640 U+FE0F # woman fairy: medium-light skin tone
+U+1F9DA U+1F3FD U+200D U+2640 U+FE0F # woman fairy: medium skin tone
+U+1F9DA U+1F3FE U+200D U+2640 U+FE0F # woman fairy: medium-dark skin tone
+U+1F9DA U+1F3FF U+200D U+2640 U+FE0F # woman fairy: dark skin tone
+U+1F9DB # vampire
+U+1F9DB U+1F3FB # vampire: light skin tone
+U+1F9DB U+1F3FC # vampire: medium-light skin tone
+U+1F9DB U+1F3FD # vampire: medium skin tone
+U+1F9DB U+1F3FE # vampire: medium-dark skin tone
+U+1F9DB U+1F3FF # vampire: dark skin tone
+U+1F9DB U+200D U+2642 U+FE0F # man vampire
+U+1F9DB U+1F3FB U+200D U+2642 U+FE0F # man vampire: light skin tone
+U+1F9DB U+1F3FC U+200D U+2642 U+FE0F # man vampire: medium-light skin tone
+U+1F9DB U+1F3FD U+200D U+2642 U+FE0F # man vampire: medium skin tone
+U+1F9DB U+1F3FE U+200D U+2642 U+FE0F # man vampire: medium-dark skin tone
+U+1F9DB U+1F3FF U+200D U+2642 U+FE0F # man vampire: dark skin tone
+U+1F9DB U+200D U+2640 U+FE0F # woman vampire
+U+1F9DB U+1F3FB U+200D U+2640 U+FE0F # woman vampire: light skin tone
+U+1F9DB U+1F3FC U+200D U+2640 U+FE0F # woman vampire: medium-light skin tone
+U+1F9DB U+1F3FD U+200D U+2640 U+FE0F # woman vampire: medium skin tone
+U+1F9DB U+1F3FE U+200D U+2640 U+FE0F # woman vampire: medium-dark skin tone
+U+1F9DB U+1F3FF U+200D U+2640 U+FE0F # woman vampire: dark skin tone
+U+1F9DC # merperson
+U+1F9DC U+1F3FB # merperson: light skin tone
+U+1F9DC U+1F3FC # merperson: medium-light skin tone
+U+1F9DC U+1F3FD # merperson: medium skin tone
+U+1F9DC U+1F3FE # merperson: medium-dark skin tone
+U+1F9DC U+1F3FF # merperson: dark skin tone
+U+1F9DC U+200D U+2642 U+FE0F # merman
+U+1F9DC U+1F3FB U+200D U+2642 U+FE0F # merman: light skin tone
+U+1F9DC U+1F3FC U+200D U+2642 U+FE0F # merman: medium-light skin tone
+U+1F9DC U+1F3FD U+200D U+2642 U+FE0F # merman: medium skin tone
+U+1F9DC U+1F3FE U+200D U+2642 U+FE0F # merman: medium-dark skin tone
+U+1F9DC U+1F3FF U+200D U+2642 U+FE0F # merman: dark skin tone
+U+1F9DC U+200D U+2640 U+FE0F # mermaid
+U+1F9DC U+1F3FB U+200D U+2640 U+FE0F # mermaid: light skin tone
+U+1F9DC U+1F3FC U+200D U+2640 U+FE0F # mermaid: medium-light skin tone
+U+1F9DC U+1F3FD U+200D U+2640 U+FE0F # mermaid: medium skin tone
+U+1F9DC U+1F3FE U+200D U+2640 U+FE0F # mermaid: medium-dark skin tone
+U+1F9DC U+1F3FF U+200D U+2640 U+FE0F # mermaid: dark skin tone
+U+1F9DD # elf
+U+1F9DD U+1F3FB # elf: light skin tone
+U+1F9DD U+1F3FC # elf: medium-light skin tone
+U+1F9DD U+1F3FD # elf: medium skin tone
+U+1F9DD U+1F3FE # elf: medium-dark skin tone
+U+1F9DD U+1F3FF # elf: dark skin tone
+U+1F9DD U+200D U+2642 U+FE0F # man elf
+U+1F9DD U+1F3FB U+200D U+2642 U+FE0F # man elf: light skin tone
+U+1F9DD U+1F3FC U+200D U+2642 U+FE0F # man elf: medium-light skin tone
+U+1F9DD U+1F3FD U+200D U+2642 U+FE0F # man elf: medium skin tone
+U+1F9DD U+1F3FE U+200D U+2642 U+FE0F # man elf: medium-dark skin tone
+U+1F9DD U+1F3FF U+200D U+2642 U+FE0F # man elf: dark skin tone
+U+1F9DD U+200D U+2640 U+FE0F # woman elf
+U+1F9DD U+1F3FB U+200D U+2640 U+FE0F # woman elf: light skin tone
+U+1F9DD U+1F3FC U+200D U+2640 U+FE0F # woman elf: medium-light skin tone
+U+1F9DD U+1F3FD U+200D U+2640 U+FE0F # woman elf: medium skin tone
+U+1F9DD U+1F3FE U+200D U+2640 U+FE0F # woman elf: medium-dark skin tone
+U+1F9DD U+1F3FF U+200D U+2640 U+FE0F # woman elf: dark skin tone
+U+1F9DE # genie
+U+1F9DE U+200D U+2642 U+FE0F # man genie
+U+1F9DE U+200D U+2640 U+FE0F # woman genie
+U+1F9DF # zombie
+U+1F9DF U+200D U+2642 U+FE0F # man zombie
+U+1F9DF U+200D U+2640 U+FE0F # woman zombie
+U+1F574 U+1F3FB # person in suit levitating: light skin tone
+U+1F574 U+1F3FC # person in suit levitating: medium-light skin tone
+U+1F574 U+1F3FD # person in suit levitating: medium skin tone
+U+1F574 U+1F3FE # person in suit levitating: medium-dark skin tone
+U+1F574 U+1F3FF # person in suit levitating: dark skin tone
+U+1F9D6 # person in steamy room
+U+1F9D6 U+1F3FB # person in steamy room: light skin tone
+U+1F9D6 U+1F3FC # person in steamy room: medium-light skin tone
+U+1F9D6 U+1F3FD # person in steamy room: medium skin tone
+U+1F9D6 U+1F3FE # person in steamy room: medium-dark skin tone
+U+1F9D6 U+1F3FF # person in steamy room: dark skin tone
+U+1F9D6 U+200D U+2642 U+FE0F # man in steamy room
+U+1F9D6 U+1F3FB U+200D U+2642 U+FE0F # man in steamy room: light skin tone
+U+1F9D6 U+1F3FC U+200D U+2642 U+FE0F # man in steamy room: medium-light skin tone
+U+1F9D6 U+1F3FD U+200D U+2642 U+FE0F # man in steamy room: medium skin tone
+U+1F9D6 U+1F3FE U+200D U+2642 U+FE0F # man in steamy room: medium-dark skin tone
+U+1F9D6 U+1F3FF U+200D U+2642 U+FE0F # man in steamy room: dark skin tone
+U+1F9D6 U+200D U+2640 U+FE0F # woman in steamy room
+U+1F9D6 U+1F3FB U+200D U+2640 U+FE0F # woman in steamy room: light skin tone
+U+1F9D6 U+1F3FC U+200D U+2640 U+FE0F # woman in steamy room: medium-light skin tone
+U+1F9D6 U+1F3FD U+200D U+2640 U+FE0F # woman in steamy room: medium skin tone
+U+1F9D6 U+1F3FE U+200D U+2640 U+FE0F # woman in steamy room: medium-dark skin tone
+U+1F9D6 U+1F3FF U+200D U+2640 U+FE0F # woman in steamy room: dark skin tone
+U+1F9D7 # person climbing
+U+1F9D7 U+1F3FB # person climbing: light skin tone
+U+1F9D7 U+1F3FC # person climbing: medium-light skin tone
+U+1F9D7 U+1F3FD # person climbing: medium skin tone
+U+1F9D7 U+1F3FE # person climbing: medium-dark skin tone
+U+1F9D7 U+1F3FF # person climbing: dark skin tone
+U+1F9D7 U+200D U+2642 U+FE0F # man climbing
+U+1F9D7 U+1F3FB U+200D U+2642 U+FE0F # man climbing: light skin tone
+U+1F9D7 U+1F3FC U+200D U+2642 U+FE0F # man climbing: medium-light skin tone
+U+1F9D7 U+1F3FD U+200D U+2642 U+FE0F # man climbing: medium skin tone
+U+1F9D7 U+1F3FE U+200D U+2642 U+FE0F # man climbing: medium-dark skin tone
+U+1F9D7 U+1F3FF U+200D U+2642 U+FE0F # man climbing: dark skin tone
+U+1F9D7 U+200D U+2640 U+FE0F # woman climbing
+U+1F9D7 U+1F3FB U+200D U+2640 U+FE0F # woman climbing: light skin tone
+U+1F9D7 U+1F3FC U+200D U+2640 U+FE0F # woman climbing: medium-light skin tone
+U+1F9D7 U+1F3FD U+200D U+2640 U+FE0F # woman climbing: medium skin tone
+U+1F9D7 U+1F3FE U+200D U+2640 U+FE0F # woman climbing: medium-dark skin tone
+U+1F9D7 U+1F3FF U+200D U+2640 U+FE0F # woman climbing: dark skin tone
+U+1F3C7 U+1F3FB # horse racing: light skin tone
+U+1F3C7 U+1F3FC # horse racing: medium-light skin tone
+U+1F3C7 U+1F3FD # horse racing: medium skin tone
+U+1F3C7 U+1F3FE # horse racing: medium-dark skin tone
+U+1F3C7 U+1F3FF # horse racing: dark skin tone
+U+1F3C2 U+1F3FB # snowboarder: light skin tone
+U+1F3C2 U+1F3FC # snowboarder: medium-light skin tone
+U+1F3C2 U+1F3FD # snowboarder: medium skin tone
+U+1F3C2 U+1F3FE # snowboarder: medium-dark skin tone
+U+1F3C2 U+1F3FF # snowboarder: dark skin tone
+U+1F3CC U+1F3FB # person golfing: light skin tone
+U+1F3CC U+1F3FC # person golfing: medium-light skin tone
+U+1F3CC U+1F3FD # person golfing: medium skin tone
+U+1F3CC U+1F3FE # person golfing: medium-dark skin tone
+U+1F3CC U+1F3FF # person golfing: dark skin tone
+U+1F3CC U+1F3FB U+200D U+2642 U+FE0F # man golfing: light skin tone
+U+1F3CC U+1F3FC U+200D U+2642 U+FE0F # man golfing: medium-light skin tone
+U+1F3CC U+1F3FD U+200D U+2642 U+FE0F # man golfing: medium skin tone
+U+1F3CC U+1F3FE U+200D U+2642 U+FE0F # man golfing: medium-dark skin tone
+U+1F3CC U+1F3FF U+200D U+2642 U+FE0F # man golfing: dark skin tone
+U+1F3CC U+1F3FB U+200D U+2640 U+FE0F # woman golfing: light skin tone
+U+1F3CC U+1F3FC U+200D U+2640 U+FE0F # woman golfing: medium-light skin tone
+U+1F3CC U+1F3FD U+200D U+2640 U+FE0F # woman golfing: medium skin tone
+U+1F3CC U+1F3FE U+200D U+2640 U+FE0F # woman golfing: medium-dark skin tone
+U+1F3CC U+1F3FF U+200D U+2640 U+FE0F # woman golfing: dark skin tone
+U+1F9D8 # person in lotus position
+U+1F9D8 U+1F3FB # person in lotus position: light skin tone
+U+1F9D8 U+1F3FC # person in lotus position: medium-light skin tone
+U+1F9D8 U+1F3FD # person in lotus position: medium skin tone
+U+1F9D8 U+1F3FE # person in lotus position: medium-dark skin tone
+U+1F9D8 U+1F3FF # person in lotus position: dark skin tone
+U+1F9D8 U+200D U+2642 U+FE0F # man in lotus position
+U+1F9D8 U+1F3FB U+200D U+2642 U+FE0F # man in lotus position: light skin tone
+U+1F9D8 U+1F3FC U+200D U+2642 U+FE0F # man in lotus position: medium-light skin tone
+U+1F9D8 U+1F3FD U+200D U+2642 U+FE0F # man in lotus position: medium skin tone
+U+1F9D8 U+1F3FE U+200D U+2642 U+FE0F # man in lotus position: medium-dark skin tone
+U+1F9D8 U+1F3FF U+200D U+2642 U+FE0F # man in lotus position: dark skin tone
+U+1F9D8 U+200D U+2640 U+FE0F # woman in lotus position
+U+1F9D8 U+1F3FB U+200D U+2640 U+FE0F # woman in lotus position: light skin tone
+U+1F9D8 U+1F3FC U+200D U+2640 U+FE0F # woman in lotus position: medium-light skin tone
+U+1F9D8 U+1F3FD U+200D U+2640 U+FE0F # woman in lotus position: medium skin tone
+U+1F9D8 U+1F3FE U+200D U+2640 U+FE0F # woman in lotus position: medium-dark skin tone
+U+1F9D8 U+1F3FF U+200D U+2640 U+FE0F # woman in lotus position: dark skin tone
+U+1F6CC U+1F3FB # person in bed: light skin tone
+U+1F6CC U+1F3FC # person in bed: medium-light skin tone
+U+1F6CC U+1F3FD # person in bed: medium skin tone
+U+1F6CC U+1F3FE # person in bed: medium-dark skin tone
+U+1F6CC U+1F3FF # person in bed: dark skin tone
+U+1F469 U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 # kiss: woman, man
+U+1F469 U+200D U+2764 U+FE0F U+200D U+1F468 # couple with heart: woman, man
+U+1F993 # zebra
+U+1F992 # giraffe
+U+1F994 # hedgehog
+U+1F995 # sauropod
+U+1F996 # t-rex
+U+1F997 # cricket
+U+1F965 # coconut
+U+1F966 # broccoli
+U+1F968 # pretzel
+U+1F969 # cut of meat
+U+1F96A # sandwich
+U+1F963 # bowl with spoon
+U+1F96B # canned food
+U+1F95F # dumpling
+U+1F960 # fortune cookie
+U+1F961 # takeout box
+U+1F967 # pie
+U+1F964 # cup with straw
+U+1F962 # chopsticks
+U+1F6F8 # flying saucer
+U+1F6F7 # sled
+U+1F94C # curling stone
+U+1F9E3 # scarf
+U+1F9E4 # gloves
+U+1F9E5 # coat
+U+1F9E6 # socks
+U+1F9E2 # billed cap
+U+1F1FA U+1F1F3 # flag: united nations
+U+1F3F4 U+E0067 U+E0062 U+E0065 U+E006E U+E0067 U+E007F # flag: england
+U+1F3F4 U+E0067 U+E0062 U+E0073 U+E0063 U+E0074 U+E007F # flag: scotland
+U+1F3F4 U+E0067 U+E0062 U+E0077 U+E006C U+E0073 U+E007F # flag: wales
+U+0030 U+FE0F # digit zero
+U+0031 U+FE0F # digit one
+U+0032 U+FE0F # digit two
+U+0033 U+FE0F # digit three
+U+0034 U+FE0F # digit four
+U+0035 U+FE0F # digit five
+U+0036 U+FE0F # digit six
+U+0037 U+FE0F # digit seven
+U+0038 U+FE0F # digit eight
+U+0039 U+FE0F # digit nine
+U+002A U+FE0F # asterisk
+U+0023 U+FE0F # hash sign
+U+20E3 # combining enclosing keycap
+# Above emojis are supported from Android 8.0 (API level 26)
+
+@25 # Below emojis are supported from Android 7.1 (API level 25)
+U+1F91D U+1F3FB # handshake: light skin tone
+U+1F91D U+1F3FC # handshake: medium-light skin tone
+U+1F91D U+1F3FD # handshake: medium skin tone
+U+1F91D U+1F3FE # handshake: medium-dark skin tone
+U+1F91D U+1F3FF # handshake: dark skin tone
+U+1F471 U+200D U+2640 U+FE0F # woman: blond hair
+U+1F471 U+1F3FB U+200D U+2640 U+FE0F # woman: light skin tone, blond hair
+U+1F471 U+1F3FC U+200D U+2640 U+FE0F # woman: medium-light skin tone, blond hair
+U+1F471 U+1F3FD U+200D U+2640 U+FE0F # woman: medium skin tone, blond hair
+U+1F471 U+1F3FE U+200D U+2640 U+FE0F # woman: medium-dark skin tone, blond hair
+U+1F471 U+1F3FF U+200D U+2640 U+FE0F # woman: dark skin tone, blond hair
+U+1F471 U+200D U+2642 U+FE0F # man: blond hair
+U+1F471 U+1F3FB U+200D U+2642 U+FE0F # man: light skin tone, blond hair
+U+1F471 U+1F3FC U+200D U+2642 U+FE0F # man: medium-light skin tone, blond hair
+U+1F471 U+1F3FD U+200D U+2642 U+FE0F # man: medium skin tone, blond hair
+U+1F471 U+1F3FE U+200D U+2642 U+FE0F # man: medium-dark skin tone, blond hair
+U+1F471 U+1F3FF U+200D U+2642 U+FE0F # man: dark skin tone, blond hair
+U+1F64D U+200D U+2642 U+FE0F # man frowning
+U+1F64D U+1F3FB U+200D U+2642 U+FE0F # man frowning: light skin tone
+U+1F64D U+1F3FC U+200D U+2642 U+FE0F # man frowning: medium-light skin tone
+U+1F64D U+1F3FD U+200D U+2642 U+FE0F # man frowning: medium skin tone
+U+1F64D U+1F3FE U+200D U+2642 U+FE0F # man frowning: medium-dark skin tone
+U+1F64D U+1F3FF U+200D U+2642 U+FE0F # man frowning: dark skin tone
+U+1F64D U+200D U+2640 U+FE0F # woman frowning
+U+1F64D U+1F3FB U+200D U+2640 U+FE0F # woman frowning: light skin tone
+U+1F64D U+1F3FC U+200D U+2640 U+FE0F # woman frowning: medium-light skin tone
+U+1F64D U+1F3FD U+200D U+2640 U+FE0F # woman frowning: medium skin tone
+U+1F64D U+1F3FE U+200D U+2640 U+FE0F # woman frowning: medium-dark skin tone
+U+1F64D U+1F3FF U+200D U+2640 U+FE0F # woman frowning: dark skin tone
+U+1F64E U+200D U+2642 U+FE0F # man pouting
+U+1F64E U+1F3FB U+200D U+2642 U+FE0F # man pouting: light skin tone
+U+1F64E U+1F3FC U+200D U+2642 U+FE0F # man pouting: medium-light skin tone
+U+1F64E U+1F3FD U+200D U+2642 U+FE0F # man pouting: medium skin tone
+U+1F64E U+1F3FE U+200D U+2642 U+FE0F # man pouting: medium-dark skin tone
+U+1F64E U+1F3FF U+200D U+2642 U+FE0F # man pouting: dark skin tone
+U+1F64E U+200D U+2640 U+FE0F # woman pouting
+U+1F64E U+1F3FB U+200D U+2640 U+FE0F # woman pouting: light skin tone
+U+1F64E U+1F3FC U+200D U+2640 U+FE0F # woman pouting: medium-light skin tone
+U+1F64E U+1F3FD U+200D U+2640 U+FE0F # woman pouting: medium skin tone
+U+1F64E U+1F3FE U+200D U+2640 U+FE0F # woman pouting: medium-dark skin tone
+U+1F64E U+1F3FF U+200D U+2640 U+FE0F # woman pouting: dark skin tone
+U+1F645 U+200D U+2642 U+FE0F # man gesturing no
+U+1F645 U+1F3FB U+200D U+2642 U+FE0F # man gesturing no: light skin tone
+U+1F645 U+1F3FC U+200D U+2642 U+FE0F # man gesturing no: medium-light skin tone
+U+1F645 U+1F3FD U+200D U+2642 U+FE0F # man gesturing no: medium skin tone
+U+1F645 U+1F3FE U+200D U+2642 U+FE0F # man gesturing no: medium-dark skin tone
+U+1F645 U+1F3FF U+200D U+2642 U+FE0F # man gesturing no: dark skin tone
+U+1F645 U+200D U+2640 U+FE0F # woman gesturing no
+U+1F645 U+1F3FB U+200D U+2640 U+FE0F # woman gesturing no: light skin tone
+U+1F645 U+1F3FC U+200D U+2640 U+FE0F # woman gesturing no: medium-light skin tone
+U+1F645 U+1F3FD U+200D U+2640 U+FE0F # woman gesturing no: medium skin tone
+U+1F645 U+1F3FE U+200D U+2640 U+FE0F # woman gesturing no: medium-dark skin tone
+U+1F645 U+1F3FF U+200D U+2640 U+FE0F # woman gesturing no: dark skin tone
+U+1F646 U+200D U+2642 U+FE0F # man gesturing ok
+U+1F646 U+1F3FB U+200D U+2642 U+FE0F # man gesturing ok: light skin tone
+U+1F646 U+1F3FC U+200D U+2642 U+FE0F # man gesturing ok: medium-light skin tone
+U+1F646 U+1F3FD U+200D U+2642 U+FE0F # man gesturing ok: medium skin tone
+U+1F646 U+1F3FE U+200D U+2642 U+FE0F # man gesturing ok: medium-dark skin tone
+U+1F646 U+1F3FF U+200D U+2642 U+FE0F # man gesturing ok: dark skin tone
+U+1F646 U+200D U+2640 U+FE0F # woman gesturing ok
+U+1F646 U+1F3FB U+200D U+2640 U+FE0F # woman gesturing ok: light skin tone
+U+1F646 U+1F3FC U+200D U+2640 U+FE0F # woman gesturing ok: medium-light skin tone
+U+1F646 U+1F3FD U+200D U+2640 U+FE0F # woman gesturing ok: medium skin tone
+U+1F646 U+1F3FE U+200D U+2640 U+FE0F # woman gesturing ok: medium-dark skin tone
+U+1F646 U+1F3FF U+200D U+2640 U+FE0F # woman gesturing ok: dark skin tone
+U+1F481 U+200D U+2642 U+FE0F # man tipping hand
+U+1F481 U+1F3FB U+200D U+2642 U+FE0F # man tipping hand: light skin tone
+U+1F481 U+1F3FC U+200D U+2642 U+FE0F # man tipping hand: medium-light skin tone
+U+1F481 U+1F3FD U+200D U+2642 U+FE0F # man tipping hand: medium skin tone
+U+1F481 U+1F3FE U+200D U+2642 U+FE0F # man tipping hand: medium-dark skin tone
+U+1F481 U+1F3FF U+200D U+2642 U+FE0F # man tipping hand: dark skin tone
+U+1F481 U+200D U+2640 U+FE0F # woman tipping hand
+U+1F481 U+1F3FB U+200D U+2640 U+FE0F # woman tipping hand: light skin tone
+U+1F481 U+1F3FC U+200D U+2640 U+FE0F # woman tipping hand: medium-light skin tone
+U+1F481 U+1F3FD U+200D U+2640 U+FE0F # woman tipping hand: medium skin tone
+U+1F481 U+1F3FE U+200D U+2640 U+FE0F # woman tipping hand: medium-dark skin tone
+U+1F481 U+1F3FF U+200D U+2640 U+FE0F # woman tipping hand: dark skin tone
+U+1F64B U+200D U+2642 U+FE0F # man raising hand
+U+1F64B U+1F3FB U+200D U+2642 U+FE0F # man raising hand: light skin tone
+U+1F64B U+1F3FC U+200D U+2642 U+FE0F # man raising hand: medium-light skin tone
+U+1F64B U+1F3FD U+200D U+2642 U+FE0F # man raising hand: medium skin tone
+U+1F64B U+1F3FE U+200D U+2642 U+FE0F # man raising hand: medium-dark skin tone
+U+1F64B U+1F3FF U+200D U+2642 U+FE0F # man raising hand: dark skin tone
+U+1F64B U+200D U+2640 U+FE0F # woman raising hand
+U+1F64B U+1F3FB U+200D U+2640 U+FE0F # woman raising hand: light skin tone
+U+1F64B U+1F3FC U+200D U+2640 U+FE0F # woman raising hand: medium-light skin tone
+U+1F64B U+1F3FD U+200D U+2640 U+FE0F # woman raising hand: medium skin tone
+U+1F64B U+1F3FE U+200D U+2640 U+FE0F # woman raising hand: medium-dark skin tone
+U+1F64B U+1F3FF U+200D U+2640 U+FE0F # woman raising hand: dark skin tone
+U+1F647 U+200D U+2642 U+FE0F # man bowing
+U+1F647 U+1F3FB U+200D U+2642 U+FE0F # man bowing: light skin tone
+U+1F647 U+1F3FC U+200D U+2642 U+FE0F # man bowing: medium-light skin tone
+U+1F647 U+1F3FD U+200D U+2642 U+FE0F # man bowing: medium skin tone
+U+1F647 U+1F3FE U+200D U+2642 U+FE0F # man bowing: medium-dark skin tone
+U+1F647 U+1F3FF U+200D U+2642 U+FE0F # man bowing: dark skin tone
+U+1F647 U+200D U+2640 U+FE0F # woman bowing
+U+1F647 U+1F3FB U+200D U+2640 U+FE0F # woman bowing: light skin tone
+U+1F647 U+1F3FC U+200D U+2640 U+FE0F # woman bowing: medium-light skin tone
+U+1F647 U+1F3FD U+200D U+2640 U+FE0F # woman bowing: medium skin tone
+U+1F647 U+1F3FE U+200D U+2640 U+FE0F # woman bowing: medium-dark skin tone
+U+1F647 U+1F3FF U+200D U+2640 U+FE0F # woman bowing: dark skin tone
+U+1F926 U+200D U+2642 U+FE0F # man facepalming
+U+1F926 U+1F3FB U+200D U+2642 U+FE0F # man facepalming: light skin tone
+U+1F926 U+1F3FC U+200D U+2642 U+FE0F # man facepalming: medium-light skin tone
+U+1F926 U+1F3FD U+200D U+2642 U+FE0F # man facepalming: medium skin tone
+U+1F926 U+1F3FE U+200D U+2642 U+FE0F # man facepalming: medium-dark skin tone
+U+1F926 U+1F3FF U+200D U+2642 U+FE0F # man facepalming: dark skin tone
+U+1F926 U+200D U+2640 U+FE0F # woman facepalming
+U+1F926 U+1F3FB U+200D U+2640 U+FE0F # woman facepalming: light skin tone
+U+1F926 U+1F3FC U+200D U+2640 U+FE0F # woman facepalming: medium-light skin tone
+U+1F926 U+1F3FD U+200D U+2640 U+FE0F # woman facepalming: medium skin tone
+U+1F926 U+1F3FE U+200D U+2640 U+FE0F # woman facepalming: medium-dark skin tone
+U+1F926 U+1F3FF U+200D U+2640 U+FE0F # woman facepalming: dark skin tone
+U+1F937 U+200D U+2642 U+FE0F # man shrugging
+U+1F937 U+1F3FB U+200D U+2642 U+FE0F # man shrugging: light skin tone
+U+1F937 U+1F3FC U+200D U+2642 U+FE0F # man shrugging: medium-light skin tone
+U+1F937 U+1F3FD U+200D U+2642 U+FE0F # man shrugging: medium skin tone
+U+1F937 U+1F3FE U+200D U+2642 U+FE0F # man shrugging: medium-dark skin tone
+U+1F937 U+1F3FF U+200D U+2642 U+FE0F # man shrugging: dark skin tone
+U+1F937 U+200D U+2640 U+FE0F # woman shrugging
+U+1F937 U+1F3FB U+200D U+2640 U+FE0F # woman shrugging: light skin tone
+U+1F937 U+1F3FC U+200D U+2640 U+FE0F # woman shrugging: medium-light skin tone
+U+1F937 U+1F3FD U+200D U+2640 U+FE0F # woman shrugging: medium skin tone
+U+1F937 U+1F3FE U+200D U+2640 U+FE0F # woman shrugging: medium-dark skin tone
+U+1F937 U+1F3FF U+200D U+2640 U+FE0F # woman shrugging: dark skin tone
+U+1F468 U+200D U+2695 U+FE0F # man health worker
+U+1F468 U+1F3FB U+200D U+2695 U+FE0F # man health worker: light skin tone
+U+1F468 U+1F3FC U+200D U+2695 U+FE0F # man health worker: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+2695 U+FE0F # man health worker: medium skin tone
+U+1F468 U+1F3FE U+200D U+2695 U+FE0F # man health worker: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+2695 U+FE0F # man health worker: dark skin tone
+U+1F469 U+200D U+2695 U+FE0F # woman health worker
+U+1F469 U+1F3FB U+200D U+2695 U+FE0F # woman health worker: light skin tone
+U+1F469 U+1F3FC U+200D U+2695 U+FE0F # woman health worker: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+2695 U+FE0F # woman health worker: medium skin tone
+U+1F469 U+1F3FE U+200D U+2695 U+FE0F # woman health worker: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+2695 U+FE0F # woman health worker: dark skin tone
+U+1F468 U+200D U+1F393 # man student
+U+1F468 U+1F3FB U+200D U+1F393 # man student: light skin tone
+U+1F468 U+1F3FC U+200D U+1F393 # man student: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+1F393 # man student: medium skin tone
+U+1F468 U+1F3FE U+200D U+1F393 # man student: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+1F393 # man student: dark skin tone
+U+1F469 U+200D U+1F393 # woman student
+U+1F469 U+1F3FB U+200D U+1F393 # woman student: light skin tone
+U+1F469 U+1F3FC U+200D U+1F393 # woman student: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+1F393 # woman student: medium skin tone
+U+1F469 U+1F3FE U+200D U+1F393 # woman student: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+1F393 # woman student: dark skin tone
+U+1F468 U+200D U+1F3EB # man teacher
+U+1F468 U+1F3FB U+200D U+1F3EB # man teacher: light skin tone
+U+1F468 U+1F3FC U+200D U+1F3EB # man teacher: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+1F3EB # man teacher: medium skin tone
+U+1F468 U+1F3FE U+200D U+1F3EB # man teacher: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+1F3EB # man teacher: dark skin tone
+U+1F469 U+200D U+1F3EB # woman teacher
+U+1F469 U+1F3FB U+200D U+1F3EB # woman teacher: light skin tone
+U+1F469 U+1F3FC U+200D U+1F3EB # woman teacher: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+1F3EB # woman teacher: medium skin tone
+U+1F469 U+1F3FE U+200D U+1F3EB # woman teacher: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+1F3EB # woman teacher: dark skin tone
+U+1F468 U+200D U+2696 U+FE0F # man judge
+U+1F468 U+1F3FB U+200D U+2696 U+FE0F # man judge: light skin tone
+U+1F468 U+1F3FC U+200D U+2696 U+FE0F # man judge: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+2696 U+FE0F # man judge: medium skin tone
+U+1F468 U+1F3FE U+200D U+2696 U+FE0F # man judge: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+2696 U+FE0F # man judge: dark skin tone
+U+1F469 U+200D U+2696 U+FE0F # woman judge
+U+1F469 U+1F3FB U+200D U+2696 U+FE0F # woman judge: light skin tone
+U+1F469 U+1F3FC U+200D U+2696 U+FE0F # woman judge: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+2696 U+FE0F # woman judge: medium skin tone
+U+1F469 U+1F3FE U+200D U+2696 U+FE0F # woman judge: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+2696 U+FE0F # woman judge: dark skin tone
+U+1F468 U+200D U+1F33E # man farmer
+U+1F468 U+1F3FB U+200D U+1F33E # man farmer: light skin tone
+U+1F468 U+1F3FC U+200D U+1F33E # man farmer: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+1F33E # man farmer: medium skin tone
+U+1F468 U+1F3FE U+200D U+1F33E # man farmer: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+1F33E # man farmer: dark skin tone
+U+1F469 U+200D U+1F33E # woman farmer
+U+1F469 U+1F3FB U+200D U+1F33E # woman farmer: light skin tone
+U+1F469 U+1F3FC U+200D U+1F33E # woman farmer: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+1F33E # woman farmer: medium skin tone
+U+1F469 U+1F3FE U+200D U+1F33E # woman farmer: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+1F33E # woman farmer: dark skin tone
+U+1F468 U+200D U+1F373 # man cook
+U+1F468 U+1F3FB U+200D U+1F373 # man cook: light skin tone
+U+1F468 U+1F3FC U+200D U+1F373 # man cook: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+1F373 # man cook: medium skin tone
+U+1F468 U+1F3FE U+200D U+1F373 # man cook: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+1F373 # man cook: dark skin tone
+U+1F469 U+200D U+1F373 # woman cook
+U+1F469 U+1F3FB U+200D U+1F373 # woman cook: light skin tone
+U+1F469 U+1F3FC U+200D U+1F373 # woman cook: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+1F373 # woman cook: medium skin tone
+U+1F469 U+1F3FE U+200D U+1F373 # woman cook: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+1F373 # woman cook: dark skin tone
+U+1F468 U+200D U+1F527 # man mechanic
+U+1F468 U+1F3FB U+200D U+1F527 # man mechanic: light skin tone
+U+1F468 U+1F3FC U+200D U+1F527 # man mechanic: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+1F527 # man mechanic: medium skin tone
+U+1F468 U+1F3FE U+200D U+1F527 # man mechanic: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+1F527 # man mechanic: dark skin tone
+U+1F469 U+200D U+1F527 # woman mechanic
+U+1F469 U+1F3FB U+200D U+1F527 # woman mechanic: light skin tone
+U+1F469 U+1F3FC U+200D U+1F527 # woman mechanic: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+1F527 # woman mechanic: medium skin tone
+U+1F469 U+1F3FE U+200D U+1F527 # woman mechanic: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+1F527 # woman mechanic: dark skin tone
+U+1F468 U+200D U+1F3ED # man factory worker
+U+1F468 U+1F3FB U+200D U+1F3ED # man factory worker: light skin tone
+U+1F468 U+1F3FC U+200D U+1F3ED # man factory worker: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+1F3ED # man factory worker: medium skin tone
+U+1F468 U+1F3FE U+200D U+1F3ED # man factory worker: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+1F3ED # man factory worker: dark skin tone
+U+1F469 U+200D U+1F3ED # woman factory worker
+U+1F469 U+1F3FB U+200D U+1F3ED # woman factory worker: light skin tone
+U+1F469 U+1F3FC U+200D U+1F3ED # woman factory worker: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+1F3ED # woman factory worker: medium skin tone
+U+1F469 U+1F3FE U+200D U+1F3ED # woman factory worker: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+1F3ED # woman factory worker: dark skin tone
+U+1F468 U+200D U+1F4BC # man office worker
+U+1F468 U+1F3FB U+200D U+1F4BC # man office worker: light skin tone
+U+1F468 U+1F3FC U+200D U+1F4BC # man office worker: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+1F4BC # man office worker: medium skin tone
+U+1F468 U+1F3FE U+200D U+1F4BC # man office worker: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+1F4BC # man office worker: dark skin tone
+U+1F469 U+200D U+1F4BC # woman office worker
+U+1F469 U+1F3FB U+200D U+1F4BC # woman office worker: light skin tone
+U+1F469 U+1F3FC U+200D U+1F4BC # woman office worker: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+1F4BC # woman office worker: medium skin tone
+U+1F469 U+1F3FE U+200D U+1F4BC # woman office worker: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+1F4BC # woman office worker: dark skin tone
+U+1F468 U+200D U+1F52C # man scientist
+U+1F468 U+1F3FB U+200D U+1F52C # man scientist: light skin tone
+U+1F468 U+1F3FC U+200D U+1F52C # man scientist: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+1F52C # man scientist: medium skin tone
+U+1F468 U+1F3FE U+200D U+1F52C # man scientist: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+1F52C # man scientist: dark skin tone
+U+1F469 U+200D U+1F52C # woman scientist
+U+1F469 U+1F3FB U+200D U+1F52C # woman scientist: light skin tone
+U+1F469 U+1F3FC U+200D U+1F52C # woman scientist: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+1F52C # woman scientist: medium skin tone
+U+1F469 U+1F3FE U+200D U+1F52C # woman scientist: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+1F52C # woman scientist: dark skin tone
+U+1F468 U+200D U+1F4BB # man technologist
+U+1F468 U+1F3FB U+200D U+1F4BB # man technologist: light skin tone
+U+1F468 U+1F3FC U+200D U+1F4BB # man technologist: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+1F4BB # man technologist: medium skin tone
+U+1F468 U+1F3FE U+200D U+1F4BB # man technologist: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+1F4BB # man technologist: dark skin tone
+U+1F469 U+200D U+1F4BB # woman technologist
+U+1F469 U+1F3FB U+200D U+1F4BB # woman technologist: light skin tone
+U+1F469 U+1F3FC U+200D U+1F4BB # woman technologist: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+1F4BB # woman technologist: medium skin tone
+U+1F469 U+1F3FE U+200D U+1F4BB # woman technologist: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+1F4BB # woman technologist: dark skin tone
+U+1F468 U+200D U+1F3A4 # man singer
+U+1F468 U+1F3FB U+200D U+1F3A4 # man singer: light skin tone
+U+1F468 U+1F3FC U+200D U+1F3A4 # man singer: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+1F3A4 # man singer: medium skin tone
+U+1F468 U+1F3FE U+200D U+1F3A4 # man singer: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+1F3A4 # man singer: dark skin tone
+U+1F469 U+200D U+1F3A4 # woman singer
+U+1F469 U+1F3FB U+200D U+1F3A4 # woman singer: light skin tone
+U+1F469 U+1F3FC U+200D U+1F3A4 # woman singer: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+1F3A4 # woman singer: medium skin tone
+U+1F469 U+1F3FE U+200D U+1F3A4 # woman singer: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+1F3A4 # woman singer: dark skin tone
+U+1F468 U+200D U+1F3A8 # man artist
+U+1F468 U+1F3FB U+200D U+1F3A8 # man artist: light skin tone
+U+1F468 U+1F3FC U+200D U+1F3A8 # man artist: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+1F3A8 # man artist: medium skin tone
+U+1F468 U+1F3FE U+200D U+1F3A8 # man artist: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+1F3A8 # man artist: dark skin tone
+U+1F469 U+200D U+1F3A8 # woman artist
+U+1F469 U+1F3FB U+200D U+1F3A8 # woman artist: light skin tone
+U+1F469 U+1F3FC U+200D U+1F3A8 # woman artist: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+1F3A8 # woman artist: medium skin tone
+U+1F469 U+1F3FE U+200D U+1F3A8 # woman artist: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+1F3A8 # woman artist: dark skin tone
+U+1F468 U+200D U+2708 U+FE0F # man pilot
+U+1F468 U+1F3FB U+200D U+2708 U+FE0F # man pilot: light skin tone
+U+1F468 U+1F3FC U+200D U+2708 U+FE0F # man pilot: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+2708 U+FE0F # man pilot: medium skin tone
+U+1F468 U+1F3FE U+200D U+2708 U+FE0F # man pilot: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+2708 U+FE0F # man pilot: dark skin tone
+U+1F469 U+200D U+2708 U+FE0F # woman pilot
+U+1F469 U+1F3FB U+200D U+2708 U+FE0F # woman pilot: light skin tone
+U+1F469 U+1F3FC U+200D U+2708 U+FE0F # woman pilot: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+2708 U+FE0F # woman pilot: medium skin tone
+U+1F469 U+1F3FE U+200D U+2708 U+FE0F # woman pilot: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+2708 U+FE0F # woman pilot: dark skin tone
+U+1F468 U+200D U+1F680 # man astronaut
+U+1F468 U+1F3FB U+200D U+1F680 # man astronaut: light skin tone
+U+1F468 U+1F3FC U+200D U+1F680 # man astronaut: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+1F680 # man astronaut: medium skin tone
+U+1F468 U+1F3FE U+200D U+1F680 # man astronaut: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+1F680 # man astronaut: dark skin tone
+U+1F469 U+200D U+1F680 # woman astronaut
+U+1F469 U+1F3FB U+200D U+1F680 # woman astronaut: light skin tone
+U+1F469 U+1F3FC U+200D U+1F680 # woman astronaut: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+1F680 # woman astronaut: medium skin tone
+U+1F469 U+1F3FE U+200D U+1F680 # woman astronaut: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+1F680 # woman astronaut: dark skin tone
+U+1F468 U+200D U+1F692 # man firefighter
+U+1F468 U+1F3FB U+200D U+1F692 # man firefighter: light skin tone
+U+1F468 U+1F3FC U+200D U+1F692 # man firefighter: medium-light skin tone
+U+1F468 U+1F3FD U+200D U+1F692 # man firefighter: medium skin tone
+U+1F468 U+1F3FE U+200D U+1F692 # man firefighter: medium-dark skin tone
+U+1F468 U+1F3FF U+200D U+1F692 # man firefighter: dark skin tone
+U+1F469 U+200D U+1F692 # woman firefighter
+U+1F469 U+1F3FB U+200D U+1F692 # woman firefighter: light skin tone
+U+1F469 U+1F3FC U+200D U+1F692 # woman firefighter: medium-light skin tone
+U+1F469 U+1F3FD U+200D U+1F692 # woman firefighter: medium skin tone
+U+1F469 U+1F3FE U+200D U+1F692 # woman firefighter: medium-dark skin tone
+U+1F469 U+1F3FF U+200D U+1F692 # woman firefighter: dark skin tone
+U+1F46E U+200D U+2642 U+FE0F # man police officer
+U+1F46E U+1F3FB U+200D U+2642 U+FE0F # man police officer: light skin tone
+U+1F46E U+1F3FC U+200D U+2642 U+FE0F # man police officer: medium-light skin tone
+U+1F46E U+1F3FD U+200D U+2642 U+FE0F # man police officer: medium skin tone
+U+1F46E U+1F3FE U+200D U+2642 U+FE0F # man police officer: medium-dark skin tone
+U+1F46E U+1F3FF U+200D U+2642 U+FE0F # man police officer: dark skin tone
+U+1F46E U+200D U+2640 U+FE0F # woman police officer
+U+1F46E U+1F3FB U+200D U+2640 U+FE0F # woman police officer: light skin tone
+U+1F46E U+1F3FC U+200D U+2640 U+FE0F # woman police officer: medium-light skin tone
+U+1F46E U+1F3FD U+200D U+2640 U+FE0F # woman police officer: medium skin tone
+U+1F46E U+1F3FE U+200D U+2640 U+FE0F # woman police officer: medium-dark skin tone
+U+1F46E U+1F3FF U+200D U+2640 U+FE0F # woman police officer: dark skin tone
+U+1F575 U+FE0F U+200D U+2642 U+FE0F # man detective
+U+1F575 U+1F3FB U+200D U+2642 U+FE0F # man detective: light skin tone
+U+1F575 U+1F3FC U+200D U+2642 U+FE0F # man detective: medium-light skin tone
+U+1F575 U+1F3FD U+200D U+2642 U+FE0F # man detective: medium skin tone
+U+1F575 U+1F3FE U+200D U+2642 U+FE0F # man detective: medium-dark skin tone
+U+1F575 U+1F3FF U+200D U+2642 U+FE0F # man detective: dark skin tone
+U+1F575 U+FE0F U+200D U+2640 U+FE0F # woman detective
+U+1F575 U+1F3FB U+200D U+2640 U+FE0F # woman detective: light skin tone
+U+1F575 U+1F3FC U+200D U+2640 U+FE0F # woman detective: medium-light skin tone
+U+1F575 U+1F3FD U+200D U+2640 U+FE0F # woman detective: medium skin tone
+U+1F575 U+1F3FE U+200D U+2640 U+FE0F # woman detective: medium-dark skin tone
+U+1F575 U+1F3FF U+200D U+2640 U+FE0F # woman detective: dark skin tone
+U+1F482 U+200D U+2642 U+FE0F # man guard
+U+1F482 U+1F3FB U+200D U+2642 U+FE0F # man guard: light skin tone
+U+1F482 U+1F3FC U+200D U+2642 U+FE0F # man guard: medium-light skin tone
+U+1F482 U+1F3FD U+200D U+2642 U+FE0F # man guard: medium skin tone
+U+1F482 U+1F3FE U+200D U+2642 U+FE0F # man guard: medium-dark skin tone
+U+1F482 U+1F3FF U+200D U+2642 U+FE0F # man guard: dark skin tone
+U+1F482 U+200D U+2640 U+FE0F # woman guard
+U+1F482 U+1F3FB U+200D U+2640 U+FE0F # woman guard: light skin tone
+U+1F482 U+1F3FC U+200D U+2640 U+FE0F # woman guard: medium-light skin tone
+U+1F482 U+1F3FD U+200D U+2640 U+FE0F # woman guard: medium skin tone
+U+1F482 U+1F3FE U+200D U+2640 U+FE0F # woman guard: medium-dark skin tone
+U+1F482 U+1F3FF U+200D U+2640 U+FE0F # woman guard: dark skin tone
+U+1F477 U+200D U+2642 U+FE0F # man construction worker
+U+1F477 U+1F3FB U+200D U+2642 U+FE0F # man construction worker: light skin tone
+U+1F477 U+1F3FC U+200D U+2642 U+FE0F # man construction worker: medium-light skin tone
+U+1F477 U+1F3FD U+200D U+2642 U+FE0F # man construction worker: medium skin tone
+U+1F477 U+1F3FE U+200D U+2642 U+FE0F # man construction worker: medium-dark skin tone
+U+1F477 U+1F3FF U+200D U+2642 U+FE0F # man construction worker: dark skin tone
+U+1F477 U+200D U+2640 U+FE0F # woman construction worker
+U+1F477 U+1F3FB U+200D U+2640 U+FE0F # woman construction worker: light skin tone
+U+1F477 U+1F3FC U+200D U+2640 U+FE0F # woman construction worker: medium-light skin tone
+U+1F477 U+1F3FD U+200D U+2640 U+FE0F # woman construction worker: medium skin tone
+U+1F477 U+1F3FE U+200D U+2640 U+FE0F # woman construction worker: medium-dark skin tone
+U+1F477 U+1F3FF U+200D U+2640 U+FE0F # woman construction worker: dark skin tone
+U+1F473 U+200D U+2642 U+FE0F # man wearing turban
+U+1F473 U+1F3FB U+200D U+2642 U+FE0F # man wearing turban: light skin tone
+U+1F473 U+1F3FC U+200D U+2642 U+FE0F # man wearing turban: medium-light skin tone
+U+1F473 U+1F3FD U+200D U+2642 U+FE0F # man wearing turban: medium skin tone
+U+1F473 U+1F3FE U+200D U+2642 U+FE0F # man wearing turban: medium-dark skin tone
+U+1F473 U+1F3FF U+200D U+2642 U+FE0F # man wearing turban: dark skin tone
+U+1F473 U+200D U+2640 U+FE0F # woman wearing turban
+U+1F473 U+1F3FB U+200D U+2640 U+FE0F # woman wearing turban: light skin tone
+U+1F473 U+1F3FC U+200D U+2640 U+FE0F # woman wearing turban: medium-light skin tone
+U+1F473 U+1F3FD U+200D U+2640 U+FE0F # woman wearing turban: medium skin tone
+U+1F473 U+1F3FE U+200D U+2640 U+FE0F # woman wearing turban: medium-dark skin tone
+U+1F473 U+1F3FF U+200D U+2640 U+FE0F # woman wearing turban: dark skin tone
+U+1F486 U+200D U+2642 U+FE0F # man getting massage
+U+1F486 U+1F3FB U+200D U+2642 U+FE0F # man getting massage: light skin tone
+U+1F486 U+1F3FC U+200D U+2642 U+FE0F # man getting massage: medium-light skin tone
+U+1F486 U+1F3FD U+200D U+2642 U+FE0F # man getting massage: medium skin tone
+U+1F486 U+1F3FE U+200D U+2642 U+FE0F # man getting massage: medium-dark skin tone
+U+1F486 U+1F3FF U+200D U+2642 U+FE0F # man getting massage: dark skin tone
+U+1F486 U+200D U+2640 U+FE0F # woman getting massage
+U+1F486 U+1F3FB U+200D U+2640 U+FE0F # woman getting massage: light skin tone
+U+1F486 U+1F3FC U+200D U+2640 U+FE0F # woman getting massage: medium-light skin tone
+U+1F486 U+1F3FD U+200D U+2640 U+FE0F # woman getting massage: medium skin tone
+U+1F486 U+1F3FE U+200D U+2640 U+FE0F # woman getting massage: medium-dark skin tone
+U+1F486 U+1F3FF U+200D U+2640 U+FE0F # woman getting massage: dark skin tone
+U+1F487 U+200D U+2642 U+FE0F # man getting haircut
+U+1F487 U+1F3FB U+200D U+2642 U+FE0F # man getting haircut: light skin tone
+U+1F487 U+1F3FC U+200D U+2642 U+FE0F # man getting haircut: medium-light skin tone
+U+1F487 U+1F3FD U+200D U+2642 U+FE0F # man getting haircut: medium skin tone
+U+1F487 U+1F3FE U+200D U+2642 U+FE0F # man getting haircut: medium-dark skin tone
+U+1F487 U+1F3FF U+200D U+2642 U+FE0F # man getting haircut: dark skin tone
+U+1F487 U+200D U+2640 U+FE0F # woman getting haircut
+U+1F487 U+1F3FB U+200D U+2640 U+FE0F # woman getting haircut: light skin tone
+U+1F487 U+1F3FC U+200D U+2640 U+FE0F # woman getting haircut: medium-light skin tone
+U+1F487 U+1F3FD U+200D U+2640 U+FE0F # woman getting haircut: medium skin tone
+U+1F487 U+1F3FE U+200D U+2640 U+FE0F # woman getting haircut: medium-dark skin tone
+U+1F487 U+1F3FF U+200D U+2640 U+FE0F # woman getting haircut: dark skin tone
+U+1F6B6 U+200D U+2642 U+FE0F # man walking
+U+1F6B6 U+1F3FB U+200D U+2642 U+FE0F # man walking: light skin tone
+U+1F6B6 U+1F3FC U+200D U+2642 U+FE0F # man walking: medium-light skin tone
+U+1F6B6 U+1F3FD U+200D U+2642 U+FE0F # man walking: medium skin tone
+U+1F6B6 U+1F3FE U+200D U+2642 U+FE0F # man walking: medium-dark skin tone
+U+1F6B6 U+1F3FF U+200D U+2642 U+FE0F # man walking: dark skin tone
+U+1F6B6 U+200D U+2640 U+FE0F # woman walking
+U+1F6B6 U+1F3FB U+200D U+2640 U+FE0F # woman walking: light skin tone
+U+1F6B6 U+1F3FC U+200D U+2640 U+FE0F # woman walking: medium-light skin tone
+U+1F6B6 U+1F3FD U+200D U+2640 U+FE0F # woman walking: medium skin tone
+U+1F6B6 U+1F3FE U+200D U+2640 U+FE0F # woman walking: medium-dark skin tone
+U+1F6B6 U+1F3FF U+200D U+2640 U+FE0F # woman walking: dark skin tone
+U+1F3C3 U+200D U+2642 U+FE0F # man running
+U+1F3C3 U+1F3FB U+200D U+2642 U+FE0F # man running: light skin tone
+U+1F3C3 U+1F3FC U+200D U+2642 U+FE0F # man running: medium-light skin tone
+U+1F3C3 U+1F3FD U+200D U+2642 U+FE0F # man running: medium skin tone
+U+1F3C3 U+1F3FE U+200D U+2642 U+FE0F # man running: medium-dark skin tone
+U+1F3C3 U+1F3FF U+200D U+2642 U+FE0F # man running: dark skin tone
+U+1F3C3 U+200D U+2640 U+FE0F # woman running
+U+1F3C3 U+1F3FB U+200D U+2640 U+FE0F # woman running: light skin tone
+U+1F3C3 U+1F3FC U+200D U+2640 U+FE0F # woman running: medium-light skin tone
+U+1F3C3 U+1F3FD U+200D U+2640 U+FE0F # woman running: medium skin tone
+U+1F3C3 U+1F3FE U+200D U+2640 U+FE0F # woman running: medium-dark skin tone
+U+1F3C3 U+1F3FF U+200D U+2640 U+FE0F # woman running: dark skin tone
+U+1F46F U+200D U+2642 U+FE0F # men with bunny ears
+U+1F46F U+200D U+2640 U+FE0F # women with bunny ears
+U+1F3CC U+FE0F U+200D U+2642 U+FE0F # man golfing
+U+1F3CC U+FE0F U+200D U+2640 U+FE0F # woman golfing
+U+1F3C4 U+200D U+2642 U+FE0F # man surfing
+U+1F3C4 U+1F3FB U+200D U+2642 U+FE0F # man surfing: light skin tone
+U+1F3C4 U+1F3FC U+200D U+2642 U+FE0F # man surfing: medium-light skin tone
+U+1F3C4 U+1F3FD U+200D U+2642 U+FE0F # man surfing: medium skin tone
+U+1F3C4 U+1F3FE U+200D U+2642 U+FE0F # man surfing: medium-dark skin tone
+U+1F3C4 U+1F3FF U+200D U+2642 U+FE0F # man surfing: dark skin tone
+U+1F3C4 U+200D U+2640 U+FE0F # woman surfing
+U+1F3C4 U+1F3FB U+200D U+2640 U+FE0F # woman surfing: light skin tone
+U+1F3C4 U+1F3FC U+200D U+2640 U+FE0F # woman surfing: medium-light skin tone
+U+1F3C4 U+1F3FD U+200D U+2640 U+FE0F # woman surfing: medium skin tone
+U+1F3C4 U+1F3FE U+200D U+2640 U+FE0F # woman surfing: medium-dark skin tone
+U+1F3C4 U+1F3FF U+200D U+2640 U+FE0F # woman surfing: dark skin tone
+U+1F6A3 U+200D U+2642 U+FE0F # man rowing boat
+U+1F6A3 U+1F3FB U+200D U+2642 U+FE0F # man rowing boat: light skin tone
+U+1F6A3 U+1F3FC U+200D U+2642 U+FE0F # man rowing boat: medium-light skin tone
+U+1F6A3 U+1F3FD U+200D U+2642 U+FE0F # man rowing boat: medium skin tone
+U+1F6A3 U+1F3FE U+200D U+2642 U+FE0F # man rowing boat: medium-dark skin tone
+U+1F6A3 U+1F3FF U+200D U+2642 U+FE0F # man rowing boat: dark skin tone
+U+1F6A3 U+200D U+2640 U+FE0F # woman rowing boat
+U+1F6A3 U+1F3FB U+200D U+2640 U+FE0F # woman rowing boat: light skin tone
+U+1F6A3 U+1F3FC U+200D U+2640 U+FE0F # woman rowing boat: medium-light skin tone
+U+1F6A3 U+1F3FD U+200D U+2640 U+FE0F # woman rowing boat: medium skin tone
+U+1F6A3 U+1F3FE U+200D U+2640 U+FE0F # woman rowing boat: medium-dark skin tone
+U+1F6A3 U+1F3FF U+200D U+2640 U+FE0F # woman rowing boat: dark skin tone
+U+1F3CA U+200D U+2642 U+FE0F # man swimming
+U+1F3CA U+1F3FB U+200D U+2642 U+FE0F # man swimming: light skin tone
+U+1F3CA U+1F3FC U+200D U+2642 U+FE0F # man swimming: medium-light skin tone
+U+1F3CA U+1F3FD U+200D U+2642 U+FE0F # man swimming: medium skin tone
+U+1F3CA U+1F3FE U+200D U+2642 U+FE0F # man swimming: medium-dark skin tone
+U+1F3CA U+1F3FF U+200D U+2642 U+FE0F # man swimming: dark skin tone
+U+1F3CA U+200D U+2640 U+FE0F # woman swimming
+U+1F3CA U+1F3FB U+200D U+2640 U+FE0F # woman swimming: light skin tone
+U+1F3CA U+1F3FC U+200D U+2640 U+FE0F # woman swimming: medium-light skin tone
+U+1F3CA U+1F3FD U+200D U+2640 U+FE0F # woman swimming: medium skin tone
+U+1F3CA U+1F3FE U+200D U+2640 U+FE0F # woman swimming: medium-dark skin tone
+U+1F3CA U+1F3FF U+200D U+2640 U+FE0F # woman swimming: dark skin tone
+U+26F9 U+FE0F U+200D U+2642 U+FE0F # man bouncing ball
+U+26F9 U+1F3FB U+200D U+2642 U+FE0F # man bouncing ball: light skin tone
+U+26F9 U+1F3FC U+200D U+2642 U+FE0F # man bouncing ball: medium-light skin tone
+U+26F9 U+1F3FD U+200D U+2642 U+FE0F # man bouncing ball: medium skin tone
+U+26F9 U+1F3FE U+200D U+2642 U+FE0F # man bouncing ball: medium-dark skin tone
+U+26F9 U+1F3FF U+200D U+2642 U+FE0F # man bouncing ball: dark skin tone
+U+26F9 U+FE0F U+200D U+2640 U+FE0F # woman bouncing ball
+U+26F9 U+1F3FB U+200D U+2640 U+FE0F # woman bouncing ball: light skin tone
+U+26F9 U+1F3FC U+200D U+2640 U+FE0F # woman bouncing ball: medium-light skin tone
+U+26F9 U+1F3FD U+200D U+2640 U+FE0F # woman bouncing ball: medium skin tone
+U+26F9 U+1F3FE U+200D U+2640 U+FE0F # woman bouncing ball: medium-dark skin tone
+U+26F9 U+1F3FF U+200D U+2640 U+FE0F # woman bouncing ball: dark skin tone
+U+1F3CB U+FE0F U+200D U+2642 U+FE0F # man lifting weights
+U+1F3CB U+1F3FB U+200D U+2642 U+FE0F # man lifting weights: light skin tone
+U+1F3CB U+1F3FC U+200D U+2642 U+FE0F # man lifting weights: medium-light skin tone
+U+1F3CB U+1F3FD U+200D U+2642 U+FE0F # man lifting weights: medium skin tone
+U+1F3CB U+1F3FE U+200D U+2642 U+FE0F # man lifting weights: medium-dark skin tone
+U+1F3CB U+1F3FF U+200D U+2642 U+FE0F # man lifting weights: dark skin tone
+U+1F3CB U+FE0F U+200D U+2640 U+FE0F # woman lifting weights
+U+1F3CB U+1F3FB U+200D U+2640 U+FE0F # woman lifting weights: light skin tone
+U+1F3CB U+1F3FC U+200D U+2640 U+FE0F # woman lifting weights: medium-light skin tone
+U+1F3CB U+1F3FD U+200D U+2640 U+FE0F # woman lifting weights: medium skin tone
+U+1F3CB U+1F3FE U+200D U+2640 U+FE0F # woman lifting weights: medium-dark skin tone
+U+1F3CB U+1F3FF U+200D U+2640 U+FE0F # woman lifting weights: dark skin tone
+U+1F6B4 U+200D U+2642 U+FE0F # man biking
+U+1F6B4 U+1F3FB U+200D U+2642 U+FE0F # man biking: light skin tone
+U+1F6B4 U+1F3FC U+200D U+2642 U+FE0F # man biking: medium-light skin tone
+U+1F6B4 U+1F3FD U+200D U+2642 U+FE0F # man biking: medium skin tone
+U+1F6B4 U+1F3FE U+200D U+2642 U+FE0F # man biking: medium-dark skin tone
+U+1F6B4 U+1F3FF U+200D U+2642 U+FE0F # man biking: dark skin tone
+U+1F6B4 U+200D U+2640 U+FE0F # woman biking
+U+1F6B4 U+1F3FB U+200D U+2640 U+FE0F # woman biking: light skin tone
+U+1F6B4 U+1F3FC U+200D U+2640 U+FE0F # woman biking: medium-light skin tone
+U+1F6B4 U+1F3FD U+200D U+2640 U+FE0F # woman biking: medium skin tone
+U+1F6B4 U+1F3FE U+200D U+2640 U+FE0F # woman biking: medium-dark skin tone
+U+1F6B4 U+1F3FF U+200D U+2640 U+FE0F # woman biking: dark skin tone
+U+1F6B5 U+200D U+2642 U+FE0F # man mountain biking
+U+1F6B5 U+1F3FB U+200D U+2642 U+FE0F # man mountain biking: light skin tone
+U+1F6B5 U+1F3FC U+200D U+2642 U+FE0F # man mountain biking: medium-light skin tone
+U+1F6B5 U+1F3FD U+200D U+2642 U+FE0F # man mountain biking: medium skin tone
+U+1F6B5 U+1F3FE U+200D U+2642 U+FE0F # man mountain biking: medium-dark skin tone
+U+1F6B5 U+1F3FF U+200D U+2642 U+FE0F # man mountain biking: dark skin tone
+U+1F6B5 U+200D U+2640 U+FE0F # woman mountain biking
+U+1F6B5 U+1F3FB U+200D U+2640 U+FE0F # woman mountain biking: light skin tone
+U+1F6B5 U+1F3FC U+200D U+2640 U+FE0F # woman mountain biking: medium-light skin tone
+U+1F6B5 U+1F3FD U+200D U+2640 U+FE0F # woman mountain biking: medium skin tone
+U+1F6B5 U+1F3FE U+200D U+2640 U+FE0F # woman mountain biking: medium-dark skin tone
+U+1F6B5 U+1F3FF U+200D U+2640 U+FE0F # woman mountain biking: dark skin tone
+U+1F938 U+200D U+2642 U+FE0F # man cartwheeling
+U+1F938 U+1F3FB U+200D U+2642 U+FE0F # man cartwheeling: light skin tone
+U+1F938 U+1F3FC U+200D U+2642 U+FE0F # man cartwheeling: medium-light skin tone
+U+1F938 U+1F3FD U+200D U+2642 U+FE0F # man cartwheeling: medium skin tone
+U+1F938 U+1F3FE U+200D U+2642 U+FE0F # man cartwheeling: medium-dark skin tone
+U+1F938 U+1F3FF U+200D U+2642 U+FE0F # man cartwheeling: dark skin tone
+U+1F938 U+200D U+2640 U+FE0F # woman cartwheeling
+U+1F938 U+1F3FB U+200D U+2640 U+FE0F # woman cartwheeling: light skin tone
+U+1F938 U+1F3FC U+200D U+2640 U+FE0F # woman cartwheeling: medium-light skin tone
+U+1F938 U+1F3FD U+200D U+2640 U+FE0F # woman cartwheeling: medium skin tone
+U+1F938 U+1F3FE U+200D U+2640 U+FE0F # woman cartwheeling: medium-dark skin tone
+U+1F938 U+1F3FF U+200D U+2640 U+FE0F # woman cartwheeling: dark skin tone
+U+1F93C U+200D U+2642 U+FE0F # men wrestling
+U+1F93C U+200D U+2640 U+FE0F # women wrestling
+U+1F93D U+200D U+2642 U+FE0F # man playing water polo
+U+1F93D U+1F3FB U+200D U+2642 U+FE0F # man playing water polo: light skin tone
+U+1F93D U+1F3FC U+200D U+2642 U+FE0F # man playing water polo: medium-light skin tone
+U+1F93D U+1F3FD U+200D U+2642 U+FE0F # man playing water polo: medium skin tone
+U+1F93D U+1F3FE U+200D U+2642 U+FE0F # man playing water polo: medium-dark skin tone
+U+1F93D U+1F3FF U+200D U+2642 U+FE0F # man playing water polo: dark skin tone
+U+1F93D U+200D U+2640 U+FE0F # woman playing water polo
+U+1F93D U+1F3FB U+200D U+2640 U+FE0F # woman playing water polo: light skin tone
+U+1F93D U+1F3FC U+200D U+2640 U+FE0F # woman playing water polo: medium-light skin tone
+U+1F93D U+1F3FD U+200D U+2640 U+FE0F # woman playing water polo: medium skin tone
+U+1F93D U+1F3FE U+200D U+2640 U+FE0F # woman playing water polo: medium-dark skin tone
+U+1F93D U+1F3FF U+200D U+2640 U+FE0F # woman playing water polo: dark skin tone
+U+1F93E U+200D U+2642 U+FE0F # man playing handball
+U+1F93E U+1F3FB U+200D U+2642 U+FE0F # man playing handball: light skin tone
+U+1F93E U+1F3FC U+200D U+2642 U+FE0F # man playing handball: medium-light skin tone
+U+1F93E U+1F3FD U+200D U+2642 U+FE0F # man playing handball: medium skin tone
+U+1F93E U+1F3FE U+200D U+2642 U+FE0F # man playing handball: medium-dark skin tone
+U+1F93E U+1F3FF U+200D U+2642 U+FE0F # man playing handball: dark skin tone
+U+1F93E U+200D U+2640 U+FE0F # woman playing handball
+U+1F93E U+1F3FB U+200D U+2640 U+FE0F # woman playing handball: light skin tone
+U+1F93E U+1F3FC U+200D U+2640 U+FE0F # woman playing handball: medium-light skin tone
+U+1F93E U+1F3FD U+200D U+2640 U+FE0F # woman playing handball: medium skin tone
+U+1F93E U+1F3FE U+200D U+2640 U+FE0F # woman playing handball: medium-dark skin tone
+U+1F93E U+1F3FF U+200D U+2640 U+FE0F # woman playing handball: dark skin tone
+U+1F939 U+200D U+2642 U+FE0F # man juggling
+U+1F939 U+1F3FB U+200D U+2642 U+FE0F # man juggling: light skin tone
+U+1F939 U+1F3FC U+200D U+2642 U+FE0F # man juggling: medium-light skin tone
+U+1F939 U+1F3FD U+200D U+2642 U+FE0F # man juggling: medium skin tone
+U+1F939 U+1F3FE U+200D U+2642 U+FE0F # man juggling: medium-dark skin tone
+U+1F939 U+1F3FF U+200D U+2642 U+FE0F # man juggling: dark skin tone
+U+1F939 U+200D U+2640 U+FE0F # woman juggling
+U+1F939 U+1F3FB U+200D U+2640 U+FE0F # woman juggling: light skin tone
+U+1F939 U+1F3FC U+200D U+2640 U+FE0F # woman juggling: medium-light skin tone
+U+1F939 U+1F3FD U+200D U+2640 U+FE0F # woman juggling: medium skin tone
+U+1F939 U+1F3FE U+200D U+2640 U+FE0F # woman juggling: medium-dark skin tone
+U+1F939 U+1F3FF U+200D U+2640 U+FE0F # woman juggling: dark skin tone
+U+1F468 U+200D U+1F469 U+200D U+1F466 # family: man, woman, boy
+U+1F468 U+200D U+1F466 # family: man, boy
+U+1F468 U+200D U+1F466 U+200D U+1F466 # family: man, boy, boy
+U+1F468 U+200D U+1F467 # family: man, girl
+U+1F468 U+200D U+1F467 U+200D U+1F466 # family: man, girl, boy
+U+1F468 U+200D U+1F467 U+200D U+1F467 # family: man, girl, girl
+U+1F469 U+200D U+1F466 # family: woman, boy
+U+1F469 U+200D U+1F466 U+200D U+1F466 # family: woman, boy, boy
+U+1F469 U+200D U+1F467 # family: woman, girl
+U+1F469 U+200D U+1F467 U+200D U+1F466 # family: woman, girl, boy
+U+1F469 U+200D U+1F467 U+200D U+1F467 # family: woman, girl, girl
+U+2640 U+FE0F # female sign
+U+2642 U+FE0F # male sign
+U+2695 U+FE0F # medical symbol
+U+1F3F3 U+FE0F U+200D U+1F308 # rainbow flag
+# Above emojis are supported from Android 7.1 (API level 25)
+
+@24 # Below emojis are supported from Android 7.0 (API level 24)
+U+1F923 # rolling on the floor laughing
+U+1F925 # lying face
+U+1F924 # drooling face
+U+1F922 # nauseated face
+U+1F927 # sneezing face
+U+1F920 # cowboy hat face
+U+1F921 # clown face
+U+1F5A4 # black heart
+U+1F44B U+1F3FB # waving hand: light skin tone
+U+1F44B U+1F3FC # waving hand: medium-light skin tone
+U+1F44B U+1F3FD # waving hand: medium skin tone
+U+1F44B U+1F3FE # waving hand: medium-dark skin tone
+U+1F44B U+1F3FF # waving hand: dark skin tone
+U+1F91A # raised back of hand
+U+1F91A U+1F3FB # raised back of hand: light skin tone
+U+1F91A U+1F3FC # raised back of hand: medium-light skin tone
+U+1F91A U+1F3FD # raised back of hand: medium skin tone
+U+1F91A U+1F3FE # raised back of hand: medium-dark skin tone
+U+1F91A U+1F3FF # raised back of hand: dark skin tone
+U+1F590 U+1F3FB # hand with fingers splayed: light skin tone
+U+1F590 U+1F3FC # hand with fingers splayed: medium-light skin tone
+U+1F590 U+1F3FD # hand with fingers splayed: medium skin tone
+U+1F590 U+1F3FE # hand with fingers splayed: medium-dark skin tone
+U+1F590 U+1F3FF # hand with fingers splayed: dark skin tone
+U+270B U+1F3FB # raised hand: light skin tone
+U+270B U+1F3FC # raised hand: medium-light skin tone
+U+270B U+1F3FD # raised hand: medium skin tone
+U+270B U+1F3FE # raised hand: medium-dark skin tone
+U+270B U+1F3FF # raised hand: dark skin tone
+U+1F596 U+1F3FB # vulcan salute: light skin tone
+U+1F596 U+1F3FC # vulcan salute: medium-light skin tone
+U+1F596 U+1F3FD # vulcan salute: medium skin tone
+U+1F596 U+1F3FE # vulcan salute: medium-dark skin tone
+U+1F596 U+1F3FF # vulcan salute: dark skin tone
+U+1F44C U+1F3FB # ok hand: light skin tone
+U+1F44C U+1F3FC # ok hand: medium-light skin tone
+U+1F44C U+1F3FD # ok hand: medium skin tone
+U+1F44C U+1F3FE # ok hand: medium-dark skin tone
+U+1F44C U+1F3FF # ok hand: dark skin tone
+U+270C U+1F3FB # victory hand: light skin tone
+U+270C U+1F3FC # victory hand: medium-light skin tone
+U+270C U+1F3FD # victory hand: medium skin tone
+U+270C U+1F3FE # victory hand: medium-dark skin tone
+U+270C U+1F3FF # victory hand: dark skin tone
+U+1F91E # crossed fingers
+U+1F91E U+1F3FB # crossed fingers: light skin tone
+U+1F91E U+1F3FC # crossed fingers: medium-light skin tone
+U+1F91E U+1F3FD # crossed fingers: medium skin tone
+U+1F91E U+1F3FE # crossed fingers: medium-dark skin tone
+U+1F91E U+1F3FF # crossed fingers: dark skin tone
+U+1F918 U+1F3FB # sign of the horns: light skin tone
+U+1F918 U+1F3FC # sign of the horns: medium-light skin tone
+U+1F918 U+1F3FD # sign of the horns: medium skin tone
+U+1F918 U+1F3FE # sign of the horns: medium-dark skin tone
+U+1F918 U+1F3FF # sign of the horns: dark skin tone
+U+1F919 # call me hand
+U+1F919 U+1F3FB # call me hand: light skin tone
+U+1F919 U+1F3FC # call me hand: medium-light skin tone
+U+1F919 U+1F3FD # call me hand: medium skin tone
+U+1F919 U+1F3FE # call me hand: medium-dark skin tone
+U+1F919 U+1F3FF # call me hand: dark skin tone
+U+1F448 U+1F3FB # backhand index pointing left: light skin tone
+U+1F448 U+1F3FC # backhand index pointing left: medium-light skin tone
+U+1F448 U+1F3FD # backhand index pointing left: medium skin tone
+U+1F448 U+1F3FE # backhand index pointing left: medium-dark skin tone
+U+1F448 U+1F3FF # backhand index pointing left: dark skin tone
+U+1F449 U+1F3FB # backhand index pointing right: light skin tone
+U+1F449 U+1F3FC # backhand index pointing right: medium-light skin tone
+U+1F449 U+1F3FD # backhand index pointing right: medium skin tone
+U+1F449 U+1F3FE # backhand index pointing right: medium-dark skin tone
+U+1F449 U+1F3FF # backhand index pointing right: dark skin tone
+U+1F446 U+1F3FB # backhand index pointing up: light skin tone
+U+1F446 U+1F3FC # backhand index pointing up: medium-light skin tone
+U+1F446 U+1F3FD # backhand index pointing up: medium skin tone
+U+1F446 U+1F3FE # backhand index pointing up: medium-dark skin tone
+U+1F446 U+1F3FF # backhand index pointing up: dark skin tone
+U+1F595 U+1F3FB # middle finger: light skin tone
+U+1F595 U+1F3FC # middle finger: medium-light skin tone
+U+1F595 U+1F3FD # middle finger: medium skin tone
+U+1F595 U+1F3FE # middle finger: medium-dark skin tone
+U+1F595 U+1F3FF # middle finger: dark skin tone
+U+1F447 U+1F3FB # backhand index pointing down: light skin tone
+U+1F447 U+1F3FC # backhand index pointing down: medium-light skin tone
+U+1F447 U+1F3FD # backhand index pointing down: medium skin tone
+U+1F447 U+1F3FE # backhand index pointing down: medium-dark skin tone
+U+1F447 U+1F3FF # backhand index pointing down: dark skin tone
+U+261D U+1F3FB # index pointing up: light skin tone
+U+261D U+1F3FC # index pointing up: medium-light skin tone
+U+261D U+1F3FD # index pointing up: medium skin tone
+U+261D U+1F3FE # index pointing up: medium-dark skin tone
+U+261D U+1F3FF # index pointing up: dark skin tone
+U+1F44D U+1F3FB # thumbs up: light skin tone
+U+1F44D U+1F3FC # thumbs up: medium-light skin tone
+U+1F44D U+1F3FD # thumbs up: medium skin tone
+U+1F44D U+1F3FE # thumbs up: medium-dark skin tone
+U+1F44D U+1F3FF # thumbs up: dark skin tone
+U+1F44E U+1F3FB # thumbs down: light skin tone
+U+1F44E U+1F3FC # thumbs down: medium-light skin tone
+U+1F44E U+1F3FD # thumbs down: medium skin tone
+U+1F44E U+1F3FE # thumbs down: medium-dark skin tone
+U+1F44E U+1F3FF # thumbs down: dark skin tone
+U+270A U+1F3FB # raised fist: light skin tone
+U+270A U+1F3FC # raised fist: medium-light skin tone
+U+270A U+1F3FD # raised fist: medium skin tone
+U+270A U+1F3FE # raised fist: medium-dark skin tone
+U+270A U+1F3FF # raised fist: dark skin tone
+U+1F44A U+1F3FB # oncoming fist: light skin tone
+U+1F44A U+1F3FC # oncoming fist: medium-light skin tone
+U+1F44A U+1F3FD # oncoming fist: medium skin tone
+U+1F44A U+1F3FE # oncoming fist: medium-dark skin tone
+U+1F44A U+1F3FF # oncoming fist: dark skin tone
+U+1F91B # left-facing fist
+U+1F91B U+1F3FB # left-facing fist: light skin tone
+U+1F91B U+1F3FC # left-facing fist: medium-light skin tone
+U+1F91B U+1F3FD # left-facing fist: medium skin tone
+U+1F91B U+1F3FE # left-facing fist: medium-dark skin tone
+U+1F91B U+1F3FF # left-facing fist: dark skin tone
+U+1F91C # right-facing fist
+U+1F91C U+1F3FB # right-facing fist: light skin tone
+U+1F91C U+1F3FC # right-facing fist: medium-light skin tone
+U+1F91C U+1F3FD # right-facing fist: medium skin tone
+U+1F91C U+1F3FE # right-facing fist: medium-dark skin tone
+U+1F91C U+1F3FF # right-facing fist: dark skin tone
+U+1F44F U+1F3FB # clapping hands: light skin tone
+U+1F44F U+1F3FC # clapping hands: medium-light skin tone
+U+1F44F U+1F3FD # clapping hands: medium skin tone
+U+1F44F U+1F3FE # clapping hands: medium-dark skin tone
+U+1F44F U+1F3FF # clapping hands: dark skin tone
+U+1F64C U+1F3FB # raising hands: light skin tone
+U+1F64C U+1F3FC # raising hands: medium-light skin tone
+U+1F64C U+1F3FD # raising hands: medium skin tone
+U+1F64C U+1F3FE # raising hands: medium-dark skin tone
+U+1F64C U+1F3FF # raising hands: dark skin tone
+U+1F450 U+1F3FB # open hands: light skin tone
+U+1F450 U+1F3FC # open hands: medium-light skin tone
+U+1F450 U+1F3FD # open hands: medium skin tone
+U+1F450 U+1F3FE # open hands: medium-dark skin tone
+U+1F450 U+1F3FF # open hands: dark skin tone
+U+1F91D # handshake
+U+1F64F U+1F3FB # folded hands: light skin tone
+U+1F64F U+1F3FC # folded hands: medium-light skin tone
+U+1F64F U+1F3FD # folded hands: medium skin tone
+U+1F64F U+1F3FE # folded hands: medium-dark skin tone
+U+1F64F U+1F3FF # folded hands: dark skin tone
+U+270D U+1F3FB # writing hand: light skin tone
+U+270D U+1F3FC # writing hand: medium-light skin tone
+U+270D U+1F3FD # writing hand: medium skin tone
+U+270D U+1F3FE # writing hand: medium-dark skin tone
+U+270D U+1F3FF # writing hand: dark skin tone
+U+1F485 U+1F3FB # nail polish: light skin tone
+U+1F485 U+1F3FC # nail polish: medium-light skin tone
+U+1F485 U+1F3FD # nail polish: medium skin tone
+U+1F485 U+1F3FE # nail polish: medium-dark skin tone
+U+1F485 U+1F3FF # nail polish: dark skin tone
+U+1F933 # selfie
+U+1F933 U+1F3FB # selfie: light skin tone
+U+1F933 U+1F3FC # selfie: medium-light skin tone
+U+1F933 U+1F3FD # selfie: medium skin tone
+U+1F933 U+1F3FE # selfie: medium-dark skin tone
+U+1F933 U+1F3FF # selfie: dark skin tone
+U+1F4AA U+1F3FB # flexed biceps: light skin tone
+U+1F4AA U+1F3FC # flexed biceps: medium-light skin tone
+U+1F4AA U+1F3FD # flexed biceps: medium skin tone
+U+1F4AA U+1F3FE # flexed biceps: medium-dark skin tone
+U+1F4AA U+1F3FF # flexed biceps: dark skin tone
+U+1F442 U+1F3FB # ear: light skin tone
+U+1F442 U+1F3FC # ear: medium-light skin tone
+U+1F442 U+1F3FD # ear: medium skin tone
+U+1F442 U+1F3FE # ear: medium-dark skin tone
+U+1F442 U+1F3FF # ear: dark skin tone
+U+1F443 U+1F3FB # nose: light skin tone
+U+1F443 U+1F3FC # nose: medium-light skin tone
+U+1F443 U+1F3FD # nose: medium skin tone
+U+1F443 U+1F3FE # nose: medium-dark skin tone
+U+1F443 U+1F3FF # nose: dark skin tone
+U+1F476 U+1F3FB # baby: light skin tone
+U+1F476 U+1F3FC # baby: medium-light skin tone
+U+1F476 U+1F3FD # baby: medium skin tone
+U+1F476 U+1F3FE # baby: medium-dark skin tone
+U+1F476 U+1F3FF # baby: dark skin tone
+U+1F466 U+1F3FB # boy: light skin tone
+U+1F466 U+1F3FC # boy: medium-light skin tone
+U+1F466 U+1F3FD # boy: medium skin tone
+U+1F466 U+1F3FE # boy: medium-dark skin tone
+U+1F466 U+1F3FF # boy: dark skin tone
+U+1F467 U+1F3FB # girl: light skin tone
+U+1F467 U+1F3FC # girl: medium-light skin tone
+U+1F467 U+1F3FD # girl: medium skin tone
+U+1F467 U+1F3FE # girl: medium-dark skin tone
+U+1F467 U+1F3FF # girl: dark skin tone
+U+1F471 U+1F3FB # person: light skin tone, blond hair
+U+1F471 U+1F3FC # person: medium-light skin tone, blond hair
+U+1F471 U+1F3FD # person: medium skin tone, blond hair
+U+1F471 U+1F3FE # person: medium-dark skin tone, blond hair
+U+1F471 U+1F3FF # person: dark skin tone, blond hair
+U+1F468 U+1F3FB # man: light skin tone
+U+1F468 U+1F3FC # man: medium-light skin tone
+U+1F468 U+1F3FD # man: medium skin tone
+U+1F468 U+1F3FE # man: medium-dark skin tone
+U+1F468 U+1F3FF # man: dark skin tone
+U+1F469 U+1F3FB # woman: light skin tone
+U+1F469 U+1F3FC # woman: medium-light skin tone
+U+1F469 U+1F3FD # woman: medium skin tone
+U+1F469 U+1F3FE # woman: medium-dark skin tone
+U+1F469 U+1F3FF # woman: dark skin tone
+U+1F474 U+1F3FB # old man: light skin tone
+U+1F474 U+1F3FC # old man: medium-light skin tone
+U+1F474 U+1F3FD # old man: medium skin tone
+U+1F474 U+1F3FE # old man: medium-dark skin tone
+U+1F474 U+1F3FF # old man: dark skin tone
+U+1F475 U+1F3FB # old woman: light skin tone
+U+1F475 U+1F3FC # old woman: medium-light skin tone
+U+1F475 U+1F3FD # old woman: medium skin tone
+U+1F475 U+1F3FE # old woman: medium-dark skin tone
+U+1F475 U+1F3FF # old woman: dark skin tone
+U+1F64D U+1F3FB # person frowning: light skin tone
+U+1F64D U+1F3FC # person frowning: medium-light skin tone
+U+1F64D U+1F3FD # person frowning: medium skin tone
+U+1F64D U+1F3FE # person frowning: medium-dark skin tone
+U+1F64D U+1F3FF # person frowning: dark skin tone
+U+1F64E U+1F3FB # person pouting: light skin tone
+U+1F64E U+1F3FC # person pouting: medium-light skin tone
+U+1F64E U+1F3FD # person pouting: medium skin tone
+U+1F64E U+1F3FE # person pouting: medium-dark skin tone
+U+1F64E U+1F3FF # person pouting: dark skin tone
+U+1F645 U+1F3FB # person gesturing no: light skin tone
+U+1F645 U+1F3FC # person gesturing no: medium-light skin tone
+U+1F645 U+1F3FD # person gesturing no: medium skin tone
+U+1F645 U+1F3FE # person gesturing no: medium-dark skin tone
+U+1F645 U+1F3FF # person gesturing no: dark skin tone
+U+1F646 U+1F3FB # person gesturing ok: light skin tone
+U+1F646 U+1F3FC # person gesturing ok: medium-light skin tone
+U+1F646 U+1F3FD # person gesturing ok: medium skin tone
+U+1F646 U+1F3FE # person gesturing ok: medium-dark skin tone
+U+1F646 U+1F3FF # person gesturing ok: dark skin tone
+U+1F481 U+1F3FB # person tipping hand: light skin tone
+U+1F481 U+1F3FC # person tipping hand: medium-light skin tone
+U+1F481 U+1F3FD # person tipping hand: medium skin tone
+U+1F481 U+1F3FE # person tipping hand: medium-dark skin tone
+U+1F481 U+1F3FF # person tipping hand: dark skin tone
+U+1F64B U+1F3FB # person raising hand: light skin tone
+U+1F64B U+1F3FC # person raising hand: medium-light skin tone
+U+1F64B U+1F3FD # person raising hand: medium skin tone
+U+1F64B U+1F3FE # person raising hand: medium-dark skin tone
+U+1F64B U+1F3FF # person raising hand: dark skin tone
+U+1F647 U+1F3FB # person bowing: light skin tone
+U+1F647 U+1F3FC # person bowing: medium-light skin tone
+U+1F647 U+1F3FD # person bowing: medium skin tone
+U+1F647 U+1F3FE # person bowing: medium-dark skin tone
+U+1F647 U+1F3FF # person bowing: dark skin tone
+U+1F926 # person facepalming
+U+1F926 U+1F3FB # person facepalming: light skin tone
+U+1F926 U+1F3FC # person facepalming: medium-light skin tone
+U+1F926 U+1F3FD # person facepalming: medium skin tone
+U+1F926 U+1F3FE # person facepalming: medium-dark skin tone
+U+1F926 U+1F3FF # person facepalming: dark skin tone
+U+1F937 # person shrugging
+U+1F937 U+1F3FB # person shrugging: light skin tone
+U+1F937 U+1F3FC # person shrugging: medium-light skin tone
+U+1F937 U+1F3FD # person shrugging: medium skin tone
+U+1F937 U+1F3FE # person shrugging: medium-dark skin tone
+U+1F937 U+1F3FF # person shrugging: dark skin tone
+U+1F46E U+1F3FB # police officer: light skin tone
+U+1F46E U+1F3FC # police officer: medium-light skin tone
+U+1F46E U+1F3FD # police officer: medium skin tone
+U+1F46E U+1F3FE # police officer: medium-dark skin tone
+U+1F46E U+1F3FF # police officer: dark skin tone
+U+1F575 U+1F3FB # detective: light skin tone
+U+1F575 U+1F3FC # detective: medium-light skin tone
+U+1F575 U+1F3FD # detective: medium skin tone
+U+1F575 U+1F3FE # detective: medium-dark skin tone
+U+1F575 U+1F3FF # detective: dark skin tone
+U+1F482 U+1F3FB # guard: light skin tone
+U+1F482 U+1F3FC # guard: medium-light skin tone
+U+1F482 U+1F3FD # guard: medium skin tone
+U+1F482 U+1F3FE # guard: medium-dark skin tone
+U+1F482 U+1F3FF # guard: dark skin tone
+U+1F477 U+1F3FB # construction worker: light skin tone
+U+1F477 U+1F3FC # construction worker: medium-light skin tone
+U+1F477 U+1F3FD # construction worker: medium skin tone
+U+1F477 U+1F3FE # construction worker: medium-dark skin tone
+U+1F477 U+1F3FF # construction worker: dark skin tone
+U+1F934 # prince
+U+1F934 U+1F3FB # prince: light skin tone
+U+1F934 U+1F3FC # prince: medium-light skin tone
+U+1F934 U+1F3FD # prince: medium skin tone
+U+1F934 U+1F3FE # prince: medium-dark skin tone
+U+1F934 U+1F3FF # prince: dark skin tone
+U+1F478 U+1F3FB # princess: light skin tone
+U+1F478 U+1F3FC # princess: medium-light skin tone
+U+1F478 U+1F3FD # princess: medium skin tone
+U+1F478 U+1F3FE # princess: medium-dark skin tone
+U+1F478 U+1F3FF # princess: dark skin tone
+U+1F473 U+1F3FB # person wearing turban: light skin tone
+U+1F473 U+1F3FC # person wearing turban: medium-light skin tone
+U+1F473 U+1F3FD # person wearing turban: medium skin tone
+U+1F473 U+1F3FE # person wearing turban: medium-dark skin tone
+U+1F473 U+1F3FF # person wearing turban: dark skin tone
+U+1F472 U+1F3FB # person with skullcap: light skin tone
+U+1F472 U+1F3FC # person with skullcap: medium-light skin tone
+U+1F472 U+1F3FD # person with skullcap: medium skin tone
+U+1F472 U+1F3FE # person with skullcap: medium-dark skin tone
+U+1F472 U+1F3FF # person with skullcap: dark skin tone
+U+1F935 # person in tuxedo
+U+1F935 U+1F3FB # person in tuxedo: light skin tone
+U+1F935 U+1F3FC # person in tuxedo: medium-light skin tone
+U+1F935 U+1F3FD # person in tuxedo: medium skin tone
+U+1F935 U+1F3FE # person in tuxedo: medium-dark skin tone
+U+1F935 U+1F3FF # person in tuxedo: dark skin tone
+U+1F470 U+1F3FB # person with veil: light skin tone
+U+1F470 U+1F3FC # person with veil: medium-light skin tone
+U+1F470 U+1F3FD # person with veil: medium skin tone
+U+1F470 U+1F3FE # person with veil: medium-dark skin tone
+U+1F470 U+1F3FF # person with veil: dark skin tone
+U+1F930 # pregnant woman
+U+1F930 U+1F3FB # pregnant woman: light skin tone
+U+1F930 U+1F3FC # pregnant woman: medium-light skin tone
+U+1F930 U+1F3FD # pregnant woman: medium skin tone
+U+1F930 U+1F3FE # pregnant woman: medium-dark skin tone
+U+1F930 U+1F3FF # pregnant woman: dark skin tone
+U+1F47C U+1F3FB # baby angel: light skin tone
+U+1F47C U+1F3FC # baby angel: medium-light skin tone
+U+1F47C U+1F3FD # baby angel: medium skin tone
+U+1F47C U+1F3FE # baby angel: medium-dark skin tone
+U+1F47C U+1F3FF # baby angel: dark skin tone
+U+1F385 U+1F3FB # santa claus: light skin tone
+U+1F385 U+1F3FC # santa claus: medium-light skin tone
+U+1F385 U+1F3FD # santa claus: medium skin tone
+U+1F385 U+1F3FE # santa claus: medium-dark skin tone
+U+1F385 U+1F3FF # santa claus: dark skin tone
+U+1F936 # mrs. claus
+U+1F936 U+1F3FB # mrs. claus: light skin tone
+U+1F936 U+1F3FC # mrs. claus: medium-light skin tone
+U+1F936 U+1F3FD # mrs. claus: medium skin tone
+U+1F936 U+1F3FE # mrs. claus: medium-dark skin tone
+U+1F936 U+1F3FF # mrs. claus: dark skin tone
+U+1F486 U+1F3FB # person getting massage: light skin tone
+U+1F486 U+1F3FC # person getting massage: medium-light skin tone
+U+1F486 U+1F3FD # person getting massage: medium skin tone
+U+1F486 U+1F3FE # person getting massage: medium-dark skin tone
+U+1F486 U+1F3FF # person getting massage: dark skin tone
+U+1F487 U+1F3FB # person getting haircut: light skin tone
+U+1F487 U+1F3FC # person getting haircut: medium-light skin tone
+U+1F487 U+1F3FD # person getting haircut: medium skin tone
+U+1F487 U+1F3FE # person getting haircut: medium-dark skin tone
+U+1F487 U+1F3FF # person getting haircut: dark skin tone
+U+1F6B6 U+1F3FB # person walking: light skin tone
+U+1F6B6 U+1F3FC # person walking: medium-light skin tone
+U+1F6B6 U+1F3FD # person walking: medium skin tone
+U+1F6B6 U+1F3FE # person walking: medium-dark skin tone
+U+1F6B6 U+1F3FF # person walking: dark skin tone
+U+1F3C3 U+1F3FB # person running: light skin tone
+U+1F3C3 U+1F3FC # person running: medium-light skin tone
+U+1F3C3 U+1F3FD # person running: medium skin tone
+U+1F3C3 U+1F3FE # person running: medium-dark skin tone
+U+1F3C3 U+1F3FF # person running: dark skin tone
+U+1F483 U+1F3FB # woman dancing: light skin tone
+U+1F483 U+1F3FC # woman dancing: medium-light skin tone
+U+1F483 U+1F3FD # woman dancing: medium skin tone
+U+1F483 U+1F3FE # woman dancing: medium-dark skin tone
+U+1F483 U+1F3FF # woman dancing: dark skin tone
+U+1F57A # man dancing
+U+1F57A U+1F3FB # man dancing: light skin tone
+U+1F57A U+1F3FC # man dancing: medium-light skin tone
+U+1F57A U+1F3FD # man dancing: medium skin tone
+U+1F57A U+1F3FE # man dancing: medium-dark skin tone
+U+1F57A U+1F3FF # man dancing: dark skin tone
+U+1F93A # person fencing
+U+1F3C4 U+1F3FB # person surfing: light skin tone
+U+1F3C4 U+1F3FC # person surfing: medium-light skin tone
+U+1F3C4 U+1F3FD # person surfing: medium skin tone
+U+1F3C4 U+1F3FE # person surfing: medium-dark skin tone
+U+1F3C4 U+1F3FF # person surfing: dark skin tone
+U+1F6A3 U+1F3FB # person rowing boat: light skin tone
+U+1F6A3 U+1F3FC # person rowing boat: medium-light skin tone
+U+1F6A3 U+1F3FD # person rowing boat: medium skin tone
+U+1F6A3 U+1F3FE # person rowing boat: medium-dark skin tone
+U+1F6A3 U+1F3FF # person rowing boat: dark skin tone
+U+1F3CA U+1F3FB # person swimming: light skin tone
+U+1F3CA U+1F3FC # person swimming: medium-light skin tone
+U+1F3CA U+1F3FD # person swimming: medium skin tone
+U+1F3CA U+1F3FE # person swimming: medium-dark skin tone
+U+1F3CA U+1F3FF # person swimming: dark skin tone
+U+26F9 U+1F3FB # person bouncing ball: light skin tone
+U+26F9 U+1F3FC # person bouncing ball: medium-light skin tone
+U+26F9 U+1F3FD # person bouncing ball: medium skin tone
+U+26F9 U+1F3FE # person bouncing ball: medium-dark skin tone
+U+26F9 U+1F3FF # person bouncing ball: dark skin tone
+U+1F3CB U+1F3FB # person lifting weights: light skin tone
+U+1F3CB U+1F3FC # person lifting weights: medium-light skin tone
+U+1F3CB U+1F3FD # person lifting weights: medium skin tone
+U+1F3CB U+1F3FE # person lifting weights: medium-dark skin tone
+U+1F3CB U+1F3FF # person lifting weights: dark skin tone
+U+1F6B4 U+1F3FB # person biking: light skin tone
+U+1F6B4 U+1F3FC # person biking: medium-light skin tone
+U+1F6B4 U+1F3FD # person biking: medium skin tone
+U+1F6B4 U+1F3FE # person biking: medium-dark skin tone
+U+1F6B4 U+1F3FF # person biking: dark skin tone
+U+1F6B5 U+1F3FB # person mountain biking: light skin tone
+U+1F6B5 U+1F3FC # person mountain biking: medium-light skin tone
+U+1F6B5 U+1F3FD # person mountain biking: medium skin tone
+U+1F6B5 U+1F3FE # person mountain biking: medium-dark skin tone
+U+1F6B5 U+1F3FF # person mountain biking: dark skin tone
+U+1F938 # person cartwheeling
+U+1F938 U+1F3FB # person cartwheeling: light skin tone
+U+1F938 U+1F3FC # person cartwheeling: medium-light skin tone
+U+1F938 U+1F3FD # person cartwheeling: medium skin tone
+U+1F938 U+1F3FE # person cartwheeling: medium-dark skin tone
+U+1F938 U+1F3FF # person cartwheeling: dark skin tone
+U+1F93C # people wrestling
+U+1F93D # person playing water polo
+U+1F93D U+1F3FB # person playing water polo: light skin tone
+U+1F93D U+1F3FC # person playing water polo: medium-light skin tone
+U+1F93D U+1F3FD # person playing water polo: medium skin tone
+U+1F93D U+1F3FE # person playing water polo: medium-dark skin tone
+U+1F93D U+1F3FF # person playing water polo: dark skin tone
+U+1F93E # person playing handball
+U+1F93E U+1F3FB # person playing handball: light skin tone
+U+1F93E U+1F3FC # person playing handball: medium-light skin tone
+U+1F93E U+1F3FD # person playing handball: medium skin tone
+U+1F93E U+1F3FE # person playing handball: medium-dark skin tone
+U+1F93E U+1F3FF # person playing handball: dark skin tone
+U+1F939 # person juggling
+U+1F939 U+1F3FB # person juggling: light skin tone
+U+1F939 U+1F3FC # person juggling: medium-light skin tone
+U+1F939 U+1F3FD # person juggling: medium skin tone
+U+1F939 U+1F3FE # person juggling: medium-dark skin tone
+U+1F939 U+1F3FF # person juggling: dark skin tone
+U+1F6C0 U+1F3FB # person taking bath: light skin tone
+U+1F6C0 U+1F3FC # person taking bath: medium-light skin tone
+U+1F6C0 U+1F3FD # person taking bath: medium skin tone
+U+1F6C0 U+1F3FE # person taking bath: medium-dark skin tone
+U+1F6C0 U+1F3FF # person taking bath: dark skin tone
+U+1F3FB # light skin tone
+U+1F3FC # medium-light skin tone
+U+1F3FD # medium skin tone
+U+1F3FE # medium-dark skin tone
+U+1F3FF # dark skin tone
+U+1F98D # gorilla
+U+1F98A # fox
+U+1F98C # deer
+U+1F98F # rhinoceros
+U+1F987 # bat
+U+1F985 # eagle
+U+1F986 # duck
+U+1F989 # owl
+U+1F98E # lizard
+U+1F988 # shark
+U+1F98B # butterfly
+U+1F940 # wilted flower
+U+1F95D # kiwi fruit
+U+1F951 # avocado
+U+1F954 # potato
+U+1F955 # carrot
+U+1F952 # cucumber
+U+1F95C # peanuts
+U+1F950 # croissant
+U+1F956 # baguette bread
+U+1F95E # pancakes
+U+1F953 # bacon
+U+1F959 # stuffed flatbread
+U+1F95A # egg
+U+1F958 # shallow pan of food
+U+1F957 # green salad
+U+1F990 # shrimp
+U+1F991 # squid
+U+1F95B # glass of milk
+U+1F942 # clinking glasses
+U+1F943 # tumbler glass
+U+1F944 # spoon
+U+1F6F5 # motor scooter
+U+1F6F4 # kick scooter
+U+1F6D1 # stop sign
+U+1F6F6 # canoe
+U+1F947 # 1st place medal
+U+1F948 # 2nd place medal
+U+1F949 # 3rd place medal
+U+1F94A # boxing glove
+U+1F94B # martial arts uniform
+U+1F945 # goal net
+U+1F941 # drum
+U+1F6D2 # shopping cart
+U+1F1E6 U+1F1E8 # flag: ascension island
+U+1F1E6 U+1F1F6 # flag: antarctica
+U+1F1E7 U+1F1FB # flag: bouvet island
+U+1F1E8 U+1F1F5 # flag: clipperton island
+U+1F1ED U+1F1F2 # flag: heard & mcdonald islands
+U+1F1EE U+1F1E8 # flag: canary islands
+U+1F1F8 U+1F1ED # flag: st. helena
+U+1F1F8 U+1F1EF # flag: svalbard & jan mayen
+U+1F1F9 U+1F1E6 # flag: tristan da cunha
+U+1F1FA U+1F1F2 # flag: u.s. outlying islands
+# Above emojis are supported from Android 7.0 (API level 24)
+
+@23 # Below emojis are supported from Android 6.0.1 (API level 23)
+U+1F642 # slightly smiling face
+U+1F643 # upside-down face
+U+1F911 # money-mouth face
+U+1F917 # smiling face with open hands
+U+1F914 # thinking face
+U+1F910 # zipper-mouth face
+U+1F644 # face with rolling eyes
+U+1F912 # face with thermometer
+U+1F915 # face with head-bandage
+U+1F913 # nerd face
+U+1F641 # slightly frowning face
+U+2639 U+FE0F # frowning face
+U+2620 U+FE0F # skull and crossbones
+U+1F916 # robot
+U+2763 U+FE0F # heart exclamation
+U+1F573 U+FE0F # hole
+U+1F441 U+FE0F U+200D U+1F5E8 U+FE0F # eye in speech bubble
+U+1F5E8 U+FE0F # left speech bubble
+U+1F5EF U+FE0F # right anger bubble
+U+1F590 U+FE0F # hand with fingers splayed
+U+1F596 # vulcan salute
+U+1F918 # sign of the horns
+U+1F595 # middle finger
+U+270D U+FE0F # writing hand
+U+1F441 U+FE0F # eye
+U+1F575 U+FE0F # detective
+U+1F574 U+FE0F # person in suit levitating
+U+26F7 U+FE0F # skier
+U+1F3CC U+FE0F # person golfing
+U+26F9 U+FE0F # person bouncing ball
+U+1F3CB U+FE0F # person lifting weights
+U+1F6CC # person in bed
+U+1F468 U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F468 # kiss: man, man
+U+1F469 U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 # kiss: woman, woman
+U+1F468 U+200D U+2764 U+FE0F U+200D U+1F468 # couple with heart: man, man
+U+1F469 U+200D U+2764 U+FE0F U+200D U+1F469 # couple with heart: woman, woman
+U+1F468 U+200D U+1F469 U+200D U+1F467 # family: man, woman, girl
+U+1F468 U+200D U+1F469 U+200D U+1F467 U+200D U+1F466 # family: man, woman, girl, boy
+U+1F468 U+200D U+1F469 U+200D U+1F466 U+200D U+1F466 # family: man, woman, boy, boy
+U+1F468 U+200D U+1F469 U+200D U+1F467 U+200D U+1F467 # family: man, woman, girl, girl
+U+1F468 U+200D U+1F468 U+200D U+1F466 # family: man, man, boy
+U+1F468 U+200D U+1F468 U+200D U+1F467 # family: man, man, girl
+U+1F468 U+200D U+1F468 U+200D U+1F467 U+200D U+1F466 # family: man, man, girl, boy
+U+1F468 U+200D U+1F468 U+200D U+1F466 U+200D U+1F466 # family: man, man, boy, boy
+U+1F468 U+200D U+1F468 U+200D U+1F467 U+200D U+1F467 # family: man, man, girl, girl
+U+1F469 U+200D U+1F469 U+200D U+1F466 # family: woman, woman, boy
+U+1F469 U+200D U+1F469 U+200D U+1F467 # family: woman, woman, girl
+U+1F469 U+200D U+1F469 U+200D U+1F467 U+200D U+1F466 # family: woman, woman, girl, boy
+U+1F469 U+200D U+1F469 U+200D U+1F466 U+200D U+1F466 # family: woman, woman, boy, boy
+U+1F469 U+200D U+1F469 U+200D U+1F467 U+200D U+1F467 # family: woman, woman, girl, girl
+U+1F5E3 U+FE0F # speaking head
+U+1F981 # lion
+U+1F984 # unicorn
+U+1F43F U+FE0F # chipmunk
+U+1F983 # turkey
+U+1F54A U+FE0F # dove
+U+1F577 U+FE0F # spider
+U+1F578 U+FE0F # spider web
+U+1F982 # scorpion
+U+1F3F5 U+FE0F # rosette
+U+2618 U+FE0F # shamrock
+U+1F336 U+FE0F # hot pepper
+U+1F9C0 # cheese wedge
+U+1F32D # hot dog
+U+1F32E # taco
+U+1F32F # burrito
+U+1F37F # popcorn
+U+1F980 # crab
+U+1F37E # bottle with popping cork
+U+1F37D U+FE0F # fork and knife with plate
+U+1F3FA # amphora
+U+1F5FA U+FE0F # world map
+U+1F3D4 U+FE0F # snow-capped mountain
+U+26F0 U+FE0F # mountain
+U+1F3D5 U+FE0F # camping
+U+1F3D6 U+FE0F # beach with umbrella
+U+1F3DC U+FE0F # desert
+U+1F3DD U+FE0F # desert island
+U+1F3DE U+FE0F # national park
+U+1F3DF U+FE0F # stadium
+U+1F3DB U+FE0F # classical building
+U+1F3D7 U+FE0F # building construction
+U+1F3D8 U+FE0F # houses
+U+1F3DA U+FE0F # derelict house
+U+1F54C # mosque
+U+1F54D # synagogue
+U+26E9 U+FE0F # shinto shrine
+U+1F54B # kaaba
+U+1F3D9 U+FE0F # cityscape
+U+1F3CE U+FE0F # racing car
+U+1F3CD U+FE0F # motorcycle
+U+1F6E3 U+FE0F # motorway
+U+1F6E4 U+FE0F # railway track
+U+1F6E2 U+FE0F # oil drum
+U+1F6F3 U+FE0F # passenger ship
+U+26F4 U+FE0F # ferry
+U+1F6E5 U+FE0F # motor boat
+U+1F6E9 U+FE0F # small airplane
+U+1F6EB # airplane departure
+U+1F6EC # airplane arrival
+U+1F6F0 U+FE0F # satellite
+U+1F6CE U+FE0F # bellhop bell
+U+23F1 U+FE0F # stopwatch
+U+23F2 U+FE0F # timer clock
+U+1F570 U+FE0F # mantelpiece clock
+U+1F321 U+FE0F # thermometer
+U+26C8 U+FE0F # cloud with lightning and rain
+U+1F324 U+FE0F # sun behind small cloud
+U+1F325 U+FE0F # sun behind large cloud
+U+1F326 U+FE0F # sun behind rain cloud
+U+1F327 U+FE0F # cloud with rain
+U+1F328 U+FE0F # cloud with snow
+U+1F329 U+FE0F # cloud with lightning
+U+1F32A U+FE0F # tornado
+U+1F32B U+FE0F # fog
+U+1F32C U+FE0F # wind face
+U+2602 U+FE0F # umbrella
+U+26F1 U+FE0F # umbrella on ground
+U+2603 U+FE0F # snowman
+U+2604 U+FE0F # comet
+U+1F397 U+FE0F # reminder ribbon
+U+1F39F U+FE0F # admission tickets
+U+1F396 U+FE0F # military medal
+U+1F3C5 # sports medal
+U+1F3D0 # volleyball
+U+1F3CF # cricket game
+U+1F3D1 # field hockey
+U+1F3D2 # ice hockey
+U+1F3D3 # ping pong
+U+1F3F8 # badminton
+U+26F8 U+FE0F # ice skate
+U+1F579 U+FE0F # joystick
+U+1F5BC U+FE0F # framed picture
+U+1F576 U+FE0F # sunglasses
+U+1F6CD U+FE0F # shopping bags
+U+26D1 U+FE0F # rescue worker's helmet
+U+1F4FF # prayer beads
+U+1F399 U+FE0F # studio microphone
+U+1F39A U+FE0F # level slider
+U+1F39B U+FE0F # control knobs
+U+1F5A5 U+FE0F # desktop computer
+U+1F5A8 U+FE0F # printer
+U+2328 U+FE0F # keyboard
+U+1F5B1 U+FE0F # computer mouse
+U+1F5B2 U+FE0F # trackball
+U+1F39E U+FE0F # film frames
+U+1F4FD U+FE0F # film projector
+U+1F4F8 # camera with flash
+U+1F56F U+FE0F # candle
+U+1F5DE U+FE0F # rolled-up newspaper
+U+1F3F7 U+FE0F # label
+U+1F5F3 U+FE0F # ballot box with ballot
+U+1F58B U+FE0F # fountain pen
+U+1F58A U+FE0F # pen
+U+1F58C U+FE0F # paintbrush
+U+1F58D U+FE0F # crayon
+U+1F5C2 U+FE0F # card index dividers
+U+1F5D2 U+FE0F # spiral notepad
+U+1F5D3 U+FE0F # spiral calendar
+U+1F587 U+FE0F # linked paperclips
+U+1F5C3 U+FE0F # card file box
+U+1F5C4 U+FE0F # file cabinet
+U+1F5D1 U+FE0F # wastebasket
+U+1F5DD U+FE0F # old key
+U+26CF U+FE0F # pick
+U+2692 U+FE0F # hammer and pick
+U+1F6E0 U+FE0F # hammer and wrench
+U+1F5E1 U+FE0F # dagger
+U+2694 U+FE0F # crossed swords
+U+1F3F9 # bow and arrow
+U+1F6E1 U+FE0F # shield
+U+2699 U+FE0F # gear
+U+1F5DC U+FE0F # clamp
+U+2696 U+FE0F # balance scale
+U+26D3 U+FE0F # chains
+U+2697 U+FE0F # alembic
+U+1F6CF U+FE0F # bed
+U+1F6CB U+FE0F # couch and lamp
+U+26B0 U+FE0F # coffin
+U+26B1 U+FE0F # funeral urn
+U+2622 U+FE0F # radioactive
+U+2623 U+FE0F # biohazard
+U+1F6D0 # place of worship
+U+269B U+FE0F # atom symbol
+U+1F549 U+FE0F # om
+U+2721 U+FE0F # star of david
+U+2638 U+FE0F # wheel of dharma
+U+262F U+FE0F # yin yang
+U+271D U+FE0F # latin cross
+U+2626 U+FE0F # orthodox cross
+U+262A U+FE0F # star and crescent
+U+262E U+FE0F # peace symbol
+U+1F54E # menorah
+U+23ED U+FE0F # next track button
+U+23EF U+FE0F # play or pause button
+U+23EE U+FE0F # last track button
+U+23F8 U+FE0F # pause button
+U+23F9 U+FE0F # stop button
+U+23FA U+FE0F # record button
+U+23CF U+FE0F # eject button
+U+269C U+FE0F # fleur-de-lis
+U+002A U+FE0F U+20E3 # keycap asterisk
+U+1F3F4 # black flag
+U+1F3F3 U+FE0F # white flag
+# Above emojis are supported from Android 6.0.1 (API level 23)
+
+@21 # Below emojis are supported from Android 5.0 (API level 21)
+U+0023 U+FE0F U+20E3 # keycap number sign
+U+0030 U+FE0F U+20E3 # keycap digit zero
+U+0031 U+FE0F U+20E3 # keycap digit one
+U+0032 U+FE0F U+20E3 # keycap digit two
+U+0033 U+FE0F U+20E3 # keycap digit three
+U+0034 U+FE0F U+20E3 # keycap digit four
+U+0035 U+FE0F U+20E3 # keycap digit five
+U+0036 U+FE0F U+20E3 # keycap digit six
+U+0037 U+FE0F U+20E3 # keycap digit seven
+U+0038 U+FE0F U+20E3 # keycap digit eight
+U+0039 U+FE0F U+20E3 # keycap digit nine
+U+1F1E6 U+1F1E9 # flag: andorra
+U+1F1E6 U+1F1EA # flag: united arab emirates
+U+1F1E6 U+1F1EB # flag: afghanistan
+U+1F1E6 U+1F1EC # flag: antigua & barbuda
+U+1F1E6 U+1F1EE # flag: anguilla
+U+1F1E6 U+1F1F1 # flag: albania
+U+1F1E6 U+1F1F2 # flag: armenia
+U+1F1E6 U+1F1F4 # flag: angola
+U+1F1E6 U+1F1F7 # flag: argentina
+U+1F1E6 U+1F1F8 # flag: american samoa
+U+1F1E6 U+1F1F9 # flag: austria
+U+1F1E6 U+1F1FA # flag: australia
+U+1F1E6 U+1F1FC # flag: aruba
+U+1F1E6 U+1F1FD # flag: Åland islands
+U+1F1E6 U+1F1FF # flag: azerbaijan
+U+1F1E7 U+1F1E6 # flag: bosnia & herzegovina
+U+1F1E7 U+1F1E7 # flag: barbados
+U+1F1E7 U+1F1E9 # flag: bangladesh
+U+1F1E7 U+1F1EA # flag: belgium
+U+1F1E7 U+1F1EB # flag: burkina faso
+U+1F1E7 U+1F1EC # flag: bulgaria
+U+1F1E7 U+1F1ED # flag: bahrain
+U+1F1E7 U+1F1EE # flag: burundi
+U+1F1E7 U+1F1EF # flag: benin
+U+1F1E7 U+1F1F2 # flag: bermuda
+U+1F1E7 U+1F1F3 # flag: brunei
+U+1F1E7 U+1F1F4 # flag: bolivia
+U+1F1E7 U+1F1F7 # flag: brazil
+U+1F1E7 U+1F1F8 # flag: bahamas
+U+1F1E7 U+1F1F9 # flag: bhutan
+U+1F1E7 U+1F1FC # flag: botswana
+U+1F1E7 U+1F1FE # flag: belarus
+U+1F1E7 U+1F1FF # flag: belize
+U+1F1E8 U+1F1E6 # flag: canada
+U+1F1E8 U+1F1E8 # flag: cocos (keeling) islands
+U+1F1E8 U+1F1E9 # flag: congo - kinshasa
+U+1F1E8 U+1F1EB # flag: central african republic
+U+1F1E8 U+1F1EC # flag: congo - brazzaville
+U+1F1E8 U+1F1ED # flag: switzerland
+U+1F1E8 U+1F1EE # flag: côte d'ivoire
+U+1F1E8 U+1F1F0 # flag: cook islands
+U+1F1E8 U+1F1F1 # flag: chile
+U+1F1E8 U+1F1F2 # flag: cameroon
+U+1F1E8 U+1F1F3 # flag: china
+U+1F1E8 U+1F1F4 # flag: colombia
+U+1F1E8 U+1F1F7 # flag: costa rica
+U+1F1E8 U+1F1FA # flag: cuba
+U+1F1E8 U+1F1FB # flag: cape verde
+U+1F1E8 U+1F1FC # flag: curaçao
+U+1F1E8 U+1F1FD # flag: christmas island
+U+1F1E8 U+1F1FE # flag: cyprus
+U+1F1E8 U+1F1FF # flag: czechia
+U+1F1E9 U+1F1EA # flag: germany
+U+1F1E9 U+1F1EF # flag: djibouti
+U+1F1E9 U+1F1F0 # flag: denmark
+U+1F1E9 U+1F1F2 # flag: dominica
+U+1F1E9 U+1F1F4 # flag: dominican republic
+U+1F1E9 U+1F1FF # flag: algeria
+U+1F1EA U+1F1E8 # flag: ecuador
+U+1F1EA U+1F1EA # flag: estonia
+U+1F1EA U+1F1EC # flag: egypt
+U+1F1EA U+1F1F7 # flag: eritrea
+U+1F1EA U+1F1F8 # flag: spain
+U+1F1EA U+1F1F9 # flag: ethiopia
+U+1F1EA U+1F1FA # flag: european union
+U+1F1EB U+1F1EE # flag: finland
+U+1F1EB U+1F1EF # flag: fiji
+U+1F1EB U+1F1F2 # flag: micronesia
+U+1F1EB U+1F1F4 # flag: faroe islands
+U+1F1EB U+1F1F7 # flag: france
+U+1F1EC U+1F1E6 # flag: gabon
+U+1F1EC U+1F1E7 # flag: united kingdom
+U+1F1EC U+1F1E9 # flag: grenada
+U+1F1EC U+1F1EA # flag: georgia
+U+1F1EC U+1F1EC # flag: guernsey
+U+1F1EC U+1F1ED # flag: ghana
+U+1F1EC U+1F1EE # flag: gibraltar
+U+1F1EC U+1F1F1 # flag: greenland
+U+1F1EC U+1F1F2 # flag: gambia
+U+1F1EC U+1F1F3 # flag: guinea
+U+1F1EC U+1F1F6 # flag: equatorial guinea
+U+1F1EC U+1F1F7 # flag: greece
+U+1F1EC U+1F1F9 # flag: guatemala
+U+1F1EC U+1F1FA # flag: guam
+U+1F1EC U+1F1FC # flag: guinea-bissau
+U+1F1EC U+1F1FE # flag: guyana
+U+1F1ED U+1F1F0 # flag: hong kong sar china
+U+1F1ED U+1F1F3 # flag: honduras
+U+1F1ED U+1F1F7 # flag: croatia
+U+1F1ED U+1F1F9 # flag: haiti
+U+1F1ED U+1F1FA # flag: hungary
+U+1F1EE U+1F1E9 # flag: indonesia
+U+1F1EE U+1F1EA # flag: ireland
+U+1F1EE U+1F1F1 # flag: israel
+U+1F1EE U+1F1F2 # flag: isle of man
+U+1F1EE U+1F1F3 # flag: india
+U+1F1EE U+1F1F4 # flag: british indian ocean territory
+U+1F1EE U+1F1F6 # flag: iraq
+U+1F1EE U+1F1F7 # flag: iran
+U+1F1EE U+1F1F8 # flag: iceland
+U+1F1EE U+1F1F9 # flag: italy
+U+1F1EF U+1F1EA # flag: jersey
+U+1F1EF U+1F1F2 # flag: jamaica
+U+1F1EF U+1F1F4 # flag: jordan
+U+1F1EF U+1F1F5 # flag: japan
+U+1F1F0 U+1F1EA # flag: kenya
+U+1F1F0 U+1F1EC # flag: kyrgyzstan
+U+1F1F0 U+1F1ED # flag: cambodia
+U+1F1F0 U+1F1EE # flag: kiribati
+U+1F1F0 U+1F1F2 # flag: comoros
+U+1F1F0 U+1F1F3 # flag: st. kitts & nevis
+U+1F1F0 U+1F1F5 # flag: north korea
+U+1F1F0 U+1F1F7 # flag: south korea
+U+1F1F0 U+1F1FC # flag: kuwait
+U+1F1F0 U+1F1FE # flag: cayman islands
+U+1F1F0 U+1F1FF # flag: kazakhstan
+U+1F1F1 U+1F1E6 # flag: laos
+U+1F1F1 U+1F1E7 # flag: lebanon
+U+1F1F1 U+1F1E8 # flag: st. lucia
+U+1F1F1 U+1F1EE # flag: liechtenstein
+U+1F1F1 U+1F1F0 # flag: sri lanka
+U+1F1F1 U+1F1F7 # flag: liberia
+U+1F1F1 U+1F1F8 # flag: lesotho
+U+1F1F1 U+1F1F9 # flag: lithuania
+U+1F1F1 U+1F1FA # flag: luxembourg
+U+1F1F1 U+1F1FB # flag: latvia
+U+1F1F1 U+1F1FE # flag: libya
+U+1F1F2 U+1F1E6 # flag: morocco
+U+1F1F2 U+1F1E8 # flag: monaco
+U+1F1F2 U+1F1E9 # flag: moldova
+U+1F1F2 U+1F1EA # flag: montenegro
+U+1F1F2 U+1F1EC # flag: madagascar
+U+1F1F2 U+1F1ED # flag: marshall islands
+U+1F1F2 U+1F1F0 # flag: north macedonia
+U+1F1F2 U+1F1F1 # flag: mali
+U+1F1F2 U+1F1F2 # flag: myanmar (burma)
+U+1F1F2 U+1F1F3 # flag: mongolia
+U+1F1F2 U+1F1F4 # flag: macao sar china
+U+1F1F2 U+1F1F5 # flag: northern mariana islands
+U+1F1F2 U+1F1F7 # flag: mauritania
+U+1F1F2 U+1F1F8 # flag: montserrat
+U+1F1F2 U+1F1F9 # flag: malta
+U+1F1F2 U+1F1FA # flag: mauritius
+U+1F1F2 U+1F1FB # flag: maldives
+U+1F1F2 U+1F1FC # flag: malawi
+U+1F1F2 U+1F1FD # flag: mexico
+U+1F1F2 U+1F1FE # flag: malaysia
+U+1F1F2 U+1F1FF # flag: mozambique
+U+1F1F3 U+1F1E6 # flag: namibia
+U+1F1F3 U+1F1EA # flag: niger
+U+1F1F3 U+1F1EB # flag: norfolk island
+U+1F1F3 U+1F1EC # flag: nigeria
+U+1F1F3 U+1F1EE # flag: nicaragua
+U+1F1F3 U+1F1F1 # flag: netherlands
+U+1F1F3 U+1F1F4 # flag: norway
+U+1F1F3 U+1F1F5 # flag: nepal
+U+1F1F3 U+1F1F7 # flag: nauru
+U+1F1F3 U+1F1FA # flag: niue
+U+1F1F3 U+1F1FF # flag: new zealand
+U+1F1F4 U+1F1F2 # flag: oman
+U+1F1F5 U+1F1E6 # flag: panama
+U+1F1F5 U+1F1EA # flag: peru
+U+1F1F5 U+1F1EB # flag: french polynesia
+U+1F1F5 U+1F1EC # flag: papua new guinea
+U+1F1F5 U+1F1ED # flag: philippines
+U+1F1F5 U+1F1F0 # flag: pakistan
+U+1F1F5 U+1F1F1 # flag: poland
+U+1F1F5 U+1F1F3 # flag: pitcairn islands
+U+1F1F5 U+1F1F7 # flag: puerto rico
+U+1F1F5 U+1F1F8 # flag: palestinian territories
+U+1F1F5 U+1F1F9 # flag: portugal
+U+1F1F5 U+1F1FC # flag: palau
+U+1F1F5 U+1F1FE # flag: paraguay
+U+1F1F6 U+1F1E6 # flag: qatar
+U+1F1F7 U+1F1F4 # flag: romania
+U+1F1F7 U+1F1F8 # flag: serbia
+U+1F1F7 U+1F1FA # flag: russia
+U+1F1F7 U+1F1FC # flag: rwanda
+U+1F1F8 U+1F1E6 # flag: saudi arabia
+U+1F1F8 U+1F1E7 # flag: solomon islands
+U+1F1F8 U+1F1E8 # flag: seychelles
+U+1F1F8 U+1F1E9 # flag: sudan
+U+1F1F8 U+1F1EA # flag: sweden
+U+1F1F8 U+1F1EC # flag: singapore
+U+1F1F8 U+1F1EE # flag: slovenia
+U+1F1F8 U+1F1F0 # flag: slovakia
+U+1F1F8 U+1F1F1 # flag: sierra leone
+U+1F1F8 U+1F1F2 # flag: san marino
+U+1F1F8 U+1F1F3 # flag: senegal
+U+1F1F8 U+1F1F4 # flag: somalia
+U+1F1F8 U+1F1F7 # flag: suriname
+U+1F1F8 U+1F1F8 # flag: south sudan
+U+1F1F8 U+1F1F9 # flag: são tomé & príncipe
+U+1F1F8 U+1F1FB # flag: el salvador
+U+1F1F8 U+1F1FD # flag: sint maarten
+U+1F1F8 U+1F1FE # flag: syria
+U+1F1F8 U+1F1FF # flag: eswatini
+U+1F1F9 U+1F1E8 # flag: turks & caicos islands
+U+1F1F9 U+1F1E9 # flag: chad
+U+1F1F9 U+1F1EC # flag: togo
+U+1F1F9 U+1F1ED # flag: thailand
+U+1F1F9 U+1F1EF # flag: tajikistan
+U+1F1F9 U+1F1F0 # flag: tokelau
+U+1F1F9 U+1F1F1 # flag: timor-leste
+U+1F1F9 U+1F1F2 # flag: turkmenistan
+U+1F1F9 U+1F1F3 # flag: tunisia
+U+1F1F9 U+1F1F4 # flag: tonga
+U+1F1F9 U+1F1F7 # flag: turkey
+U+1F1F9 U+1F1F9 # flag: trinidad & tobago
+U+1F1F9 U+1F1FB # flag: tuvalu
+U+1F1F9 U+1F1FC # flag: taiwan
+U+1F1F9 U+1F1FF # flag: tanzania
+U+1F1FA U+1F1E6 # flag: ukraine
+U+1F1FA U+1F1EC # flag: uganda
+U+1F1FA U+1F1F8 # flag: united states
+U+1F1FA U+1F1FE # flag: uruguay
+U+1F1FA U+1F1FF # flag: uzbekistan
+U+1F1FB U+1F1E6 # flag: vatican city
+U+1F1FB U+1F1E8 # flag: st. vincent & grenadines
+U+1F1FB U+1F1EA # flag: venezuela
+U+1F1FB U+1F1EC # flag: british virgin islands
+U+1F1FB U+1F1EE # flag: u.s. virgin islands
+U+1F1FB U+1F1F3 # flag: vietnam
+U+1F1FB U+1F1FA # flag: vanuatu
+U+1F1FC U+1F1F8 # flag: samoa
+U+1F1FE U+1F1EA # flag: yemen
+U+1F1FF U+1F1E6 # flag: south africa
+U+1F1FF U+1F1F2 # flag: zambia
+U+1F1FF U+1F1FC # flag: zimbabwe
+# Above emojis are supported from Android 5.0 (API level 21)
+
+@19 # Below emojis are supported from Android 4.4 (API level 19)
+U+1F600 # grinning face
+U+1F603 # grinning face with big eyes
+U+1F604 # grinning face with smiling eyes
+U+1F601 # beaming face with smiling eyes
+U+1F606 # grinning squinting face
+U+1F605 # grinning face with sweat
+U+1F602 # face with tears of joy
+U+1F609 # winking face
+U+1F60A # smiling face with smiling eyes
+U+1F607 # smiling face with halo
+U+1F60D # smiling face with heart-eyes
+U+1F618 # face blowing a kiss
+U+1F617 # kissing face
+U+263A U+FE0F # smiling face
+U+1F61A # kissing face with closed eyes
+U+1F619 # kissing face with smiling eyes
+U+1F60B # face savoring food
+U+1F61B # face with tongue
+U+1F61C # winking face with tongue
+U+1F61D # squinting face with tongue
+U+1F610 # neutral face
+U+1F611 # expressionless face
+U+1F636 # face without mouth
+U+1F60F # smirking face
+U+1F612 # unamused face
+U+1F62C # grimacing face
+U+1F60C # relieved face
+U+1F614 # pensive face
+U+1F62A # sleepy face
+U+1F634 # sleeping face
+U+1F637 # face with medical mask
+U+1F635 # face with crossed-out eyes
+U+1F60E # smiling face with sunglasses
+U+1F615 # confused face
+U+1F61F # worried face
+U+1F62E # face with open mouth
+U+1F62F # hushed face
+U+1F632 # astonished face
+U+1F633 # flushed face
+U+1F626 # frowning face with open mouth
+U+1F627 # anguished face
+U+1F628 # fearful face
+U+1F630 # anxious face with sweat
+U+1F625 # sad but relieved face
+U+1F622 # crying face
+U+1F62D # loudly crying face
+U+1F631 # face screaming in fear
+U+1F616 # confounded face
+U+1F623 # persevering face
+U+1F61E # disappointed face
+U+1F613 # downcast face with sweat
+U+1F629 # weary face
+U+1F62B # tired face
+U+1F624 # face with steam from nose
+U+1F621 # pouting face
+U+1F620 # angry face
+U+1F608 # smiling face with horns
+U+1F47F # angry face with horns
+U+1F480 # skull
+U+1F4A9 # pile of poo
+U+1F479 # ogre
+U+1F47A # goblin
+U+1F47B # ghost
+U+1F47D # alien
+U+1F47E # alien monster
+U+1F63A # grinning cat
+U+1F638 # grinning cat with smiling eyes
+U+1F639 # cat with tears of joy
+U+1F63B # smiling cat with heart-eyes
+U+1F63C # cat with wry smile
+U+1F63D # kissing cat
+U+1F640 # weary cat
+U+1F63F # crying cat
+U+1F63E # pouting cat
+U+1F648 # see-no-evil monkey
+U+1F649 # hear-no-evil monkey
+U+1F64A # speak-no-evil monkey
+U+1F48B # kiss mark
+U+1F48C # love letter
+U+1F498 # heart with arrow
+U+1F49D # heart with ribbon
+U+1F496 # sparkling heart
+U+1F497 # growing heart
+U+1F493 # beating heart
+U+1F49E # revolving hearts
+U+1F495 # two hearts
+U+1F49F # heart decoration
+U+1F494 # broken heart
+U+2764 U+FE0F # red heart
+U+1F49B # yellow heart
+U+1F49A # green heart
+U+1F499 # blue heart
+U+1F49C # purple heart
+U+1F4AF # hundred points
+U+1F4A2 # anger symbol
+U+1F4A5 # collision
+U+1F4AB # dizzy
+U+1F4A6 # sweat droplets
+U+1F4A8 # dashing away
+U+1F4A3 # bomb
+U+1F4AC # speech balloon
+U+1F4AD # thought balloon
+U+1F4A4 # zzz
+U+1F44B # waving hand
+U+270B # raised hand
+U+1F44C # ok hand
+U+270C U+FE0F # victory hand
+U+1F448 # backhand index pointing left
+U+1F449 # backhand index pointing right
+U+1F446 # backhand index pointing up
+U+1F447 # backhand index pointing down
+U+261D U+FE0F # index pointing up
+U+1F44D # thumbs up
+U+1F44E # thumbs down
+U+270A # raised fist
+U+1F44A # oncoming fist
+U+1F44F # clapping hands
+U+1F64C # raising hands
+U+1F450 # open hands
+U+1F64F # folded hands
+U+1F485 # nail polish
+U+1F4AA # flexed biceps
+U+1F442 # ear
+U+1F443 # nose
+U+1F440 # eyes
+U+1F445 # tongue
+U+1F444 # mouth
+U+1F476 # baby
+U+1F466 # boy
+U+1F467 # girl
+U+1F471 # person: blond hair
+U+1F468 # man
+U+1F469 # woman
+U+1F474 # old man
+U+1F475 # old woman
+U+1F64D # person frowning
+U+1F64E # person pouting
+U+1F645 # person gesturing no
+U+1F646 # person gesturing ok
+U+1F481 # person tipping hand
+U+1F64B # person raising hand
+U+1F647 # person bowing
+U+1F46E # police officer
+U+1F482 # guard
+U+1F477 # construction worker
+U+1F478 # princess
+U+1F473 # person wearing turban
+U+1F472 # person with skullcap
+U+1F470 # person with veil
+U+1F47C # baby angel
+U+1F385 # santa claus
+U+1F486 # person getting massage
+U+1F487 # person getting haircut
+U+1F6B6 # person walking
+U+1F3C3 # person running
+U+1F483 # woman dancing
+U+1F46F # people with bunny ears
+U+1F3C7 # horse racing
+U+1F3C2 # snowboarder
+U+1F3C4 # person surfing
+U+1F6A3 # person rowing boat
+U+1F3CA # person swimming
+U+1F6B4 # person biking
+U+1F6B5 # person mountain biking
+U+1F6C0 # person taking bath
+U+1F46D # women holding hands
+U+1F46B # woman and man holding hands
+U+1F46C # men holding hands
+U+1F48F # kiss
+U+1F491 # couple with heart
+U+1F46A # family
+U+1F464 # bust in silhouette
+U+1F465 # busts in silhouette
+U+1F463 # footprints
+U+1F435 # monkey face
+U+1F412 # monkey
+U+1F436 # dog face
+U+1F415 # dog
+U+1F429 # poodle
+U+1F43A # wolf
+U+1F431 # cat face
+U+1F408 # cat
+U+1F42F # tiger face
+U+1F405 # tiger
+U+1F406 # leopard
+U+1F434 # horse face
+U+1F40E # horse
+U+1F42E # cow face
+U+1F402 # ox
+U+1F403 # water buffalo
+U+1F404 # cow
+U+1F437 # pig face
+U+1F416 # pig
+U+1F417 # boar
+U+1F43D # pig nose
+U+1F40F # ram
+U+1F411 # ewe
+U+1F410 # goat
+U+1F42A # camel
+U+1F42B # two-hump camel
+U+1F418 # elephant
+U+1F42D # mouse face
+U+1F401 # mouse
+U+1F400 # rat
+U+1F439 # hamster
+U+1F430 # rabbit face
+U+1F407 # rabbit
+U+1F43B # bear
+U+1F428 # koala
+U+1F43C # panda
+U+1F43E # paw prints
+U+1F414 # chicken
+U+1F413 # rooster
+U+1F423 # hatching chick
+U+1F424 # baby chick
+U+1F425 # front-facing baby chick
+U+1F426 # bird
+U+1F427 # penguin
+U+1F438 # frog
+U+1F40A # crocodile
+U+1F422 # turtle
+U+1F40D # snake
+U+1F432 # dragon face
+U+1F409 # dragon
+U+1F433 # spouting whale
+U+1F40B # whale
+U+1F42C # dolphin
+U+1F41F # fish
+U+1F420 # tropical fish
+U+1F421 # blowfish
+U+1F419 # octopus
+U+1F41A # spiral shell
+U+1F40C # snail
+U+1F41B # bug
+U+1F41C # ant
+U+1F41D # honeybee
+U+1F41E # lady beetle
+U+1F490 # bouquet
+U+1F338 # cherry blossom
+U+1F4AE # white flower
+U+1F339 # rose
+U+1F33A # hibiscus
+U+1F33B # sunflower
+U+1F33C # blossom
+U+1F337 # tulip
+U+1F331 # seedling
+U+1F332 # evergreen tree
+U+1F333 # deciduous tree
+U+1F334 # palm tree
+U+1F335 # cactus
+U+1F33E # sheaf of rice
+U+1F33F # herb
+U+1F340 # four leaf clover
+U+1F341 # maple leaf
+U+1F342 # fallen leaf
+U+1F343 # leaf fluttering in wind
+U+1F347 # grapes
+U+1F348 # melon
+U+1F349 # watermelon
+U+1F34A # tangerine
+U+1F34B # lemon
+U+1F34C # banana
+U+1F34D # pineapple
+U+1F34E # red apple
+U+1F34F # green apple
+U+1F350 # pear
+U+1F351 # peach
+U+1F352 # cherries
+U+1F353 # strawberry
+U+1F345 # tomato
+U+1F346 # eggplant
+U+1F33D # ear of corn
+U+1F344 # mushroom
+U+1F330 # chestnut
+U+1F35E # bread
+U+1F356 # meat on bone
+U+1F357 # poultry leg
+U+1F354 # hamburger
+U+1F35F # french fries
+U+1F355 # pizza
+U+1F373 # cooking
+U+1F372 # pot of food
+U+1F371 # bento box
+U+1F358 # rice cracker
+U+1F359 # rice ball
+U+1F35A # cooked rice
+U+1F35B # curry rice
+U+1F35C # steaming bowl
+U+1F35D # spaghetti
+U+1F360 # roasted sweet potato
+U+1F362 # oden
+U+1F363 # sushi
+U+1F364 # fried shrimp
+U+1F365 # fish cake with swirl
+U+1F361 # dango
+U+1F366 # soft ice cream
+U+1F367 # shaved ice
+U+1F368 # ice cream
+U+1F369 # doughnut
+U+1F36A # cookie
+U+1F382 # birthday cake
+U+1F370 # shortcake
+U+1F36B # chocolate bar
+U+1F36C # candy
+U+1F36D # lollipop
+U+1F36E # custard
+U+1F36F # honey pot
+U+1F37C # baby bottle
+U+2615 # hot beverage
+U+1F375 # teacup without handle
+U+1F376 # sake
+U+1F377 # wine glass
+U+1F378 # cocktail glass
+U+1F379 # tropical drink
+U+1F37A # beer mug
+U+1F37B # clinking beer mugs
+U+1F374 # fork and knife
+U+1F52A # kitchen knife
+U+1F30D # globe showing europe-africa
+U+1F30E # globe showing americas
+U+1F30F # globe showing asia-australia
+U+1F310 # globe with meridians
+U+1F5FE # map of japan
+U+1F30B # volcano
+U+1F5FB # mount fuji
+U+1F3E0 # house
+U+1F3E1 # house with garden
+U+1F3E2 # office building
+U+1F3E3 # japanese post office
+U+1F3E4 # post office
+U+1F3E5 # hospital
+U+1F3E6 # bank
+U+1F3E8 # hotel
+U+1F3E9 # love hotel
+U+1F3EA # convenience store
+U+1F3EB # school
+U+1F3EC # department store
+U+1F3ED # factory
+U+1F3EF # japanese castle
+U+1F3F0 # castle
+U+1F492 # wedding
+U+1F5FC # tokyo tower
+U+1F5FD # statue of liberty
+U+26EA # church
+U+26F2 # fountain
+U+26FA # tent
+U+1F301 # foggy
+U+1F303 # night with stars
+U+1F304 # sunrise over mountains
+U+1F305 # sunrise
+U+1F306 # cityscape at dusk
+U+1F307 # sunset
+U+1F309 # bridge at night
+U+2668 U+FE0F # hot springs
+U+1F3A0 # carousel horse
+U+1F3A1 # ferris wheel
+U+1F3A2 # roller coaster
+U+1F488 # barber pole
+U+1F3AA # circus tent
+U+1F682 # locomotive
+U+1F683 # railway car
+U+1F684 # high-speed train
+U+1F685 # bullet train
+U+1F686 # train
+U+1F687 # metro
+U+1F688 # light rail
+U+1F689 # station
+U+1F68A # tram
+U+1F69D # monorail
+U+1F69E # mountain railway
+U+1F68B # tram car
+U+1F68C # bus
+U+1F68D # oncoming bus
+U+1F68E # trolleybus
+U+1F690 # minibus
+U+1F691 # ambulance
+U+1F692 # fire engine
+U+1F693 # police car
+U+1F694 # oncoming police car
+U+1F695 # taxi
+U+1F696 # oncoming taxi
+U+1F697 # automobile
+U+1F698 # oncoming automobile
+U+1F699 # sport utility vehicle
+U+1F69A # delivery truck
+U+1F69B # articulated lorry
+U+1F69C # tractor
+U+1F6B2 # bicycle
+U+1F68F # bus stop
+U+26FD # fuel pump
+U+1F6A8 # police car light
+U+1F6A5 # horizontal traffic light
+U+1F6A6 # vertical traffic light
+U+1F6A7 # construction
+U+2693 # anchor
+U+26F5 # sailboat
+U+1F6A4 # speedboat
+U+1F6A2 # ship
+U+2708 U+FE0F # airplane
+U+1F4BA # seat
+U+1F681 # helicopter
+U+1F69F # suspension railway
+U+1F6A0 # mountain cableway
+U+1F6A1 # aerial tramway
+U+1F680 # rocket
+U+231B # hourglass done
+U+23F3 # hourglass not done
+U+231A # watch
+U+23F0 # alarm clock
+U+1F55B # twelve o'clock
+U+1F567 # twelve-thirty
+U+1F550 # one o'clock
+U+1F55C # one-thirty
+U+1F551 # two o'clock
+U+1F55D # two-thirty
+U+1F552 # three o'clock
+U+1F55E # three-thirty
+U+1F553 # four o'clock
+U+1F55F # four-thirty
+U+1F554 # five o'clock
+U+1F560 # five-thirty
+U+1F555 # six o'clock
+U+1F561 # six-thirty
+U+1F556 # seven o'clock
+U+1F562 # seven-thirty
+U+1F557 # eight o'clock
+U+1F563 # eight-thirty
+U+1F558 # nine o'clock
+U+1F564 # nine-thirty
+U+1F559 # ten o'clock
+U+1F565 # ten-thirty
+U+1F55A # eleven o'clock
+U+1F566 # eleven-thirty
+U+1F311 # new moon
+U+1F312 # waxing crescent moon
+U+1F313 # first quarter moon
+U+1F314 # waxing gibbous moon
+U+1F315 # full moon
+U+1F316 # waning gibbous moon
+U+1F317 # last quarter moon
+U+1F318 # waning crescent moon
+U+1F319 # crescent moon
+U+1F31A # new moon face
+U+1F31B # first quarter moon face
+U+1F31C # last quarter moon face
+U+2600 U+FE0F # sun
+U+1F31D # full moon face
+U+1F31E # sun with face
+U+2B50 # star
+U+1F31F # glowing star
+U+1F320 # shooting star
+U+1F30C # milky way
+U+2601 U+FE0F # cloud
+U+26C5 # sun behind cloud
+U+1F300 # cyclone
+U+1F308 # rainbow
+U+1F302 # closed umbrella
+U+2614 # umbrella with rain drops
+U+26A1 # high voltage
+U+2744 U+FE0F # snowflake
+U+26C4 # snowman without snow
+U+1F525 # fire
+U+1F4A7 # droplet
+U+1F30A # water wave
+U+1F383 # jack-o-lantern
+U+1F384 # christmas tree
+U+1F386 # fireworks
+U+1F387 # sparkler
+U+2728 # sparkles
+U+1F388 # balloon
+U+1F389 # party popper
+U+1F38A # confetti ball
+U+1F38B # tanabata tree
+U+1F38D # pine decoration
+U+1F38E # japanese dolls
+U+1F38F # carp streamer
+U+1F390 # wind chime
+U+1F391 # moon viewing ceremony
+U+1F380 # ribbon
+U+1F381 # wrapped gift
+U+1F3AB # ticket
+U+1F3C6 # trophy
+U+26BD # soccer ball
+U+26BE # baseball
+U+1F3C0 # basketball
+U+1F3C8 # american football
+U+1F3C9 # rugby football
+U+1F3BE # tennis
+U+1F3B3 # bowling
+U+26F3 # flag in hole
+U+1F3A3 # fishing pole
+U+1F3BD # running shirt
+U+1F3BF # skis
+U+1F3AF # bullseye
+U+1F3B1 # pool 8 ball
+U+1F52E # crystal ball
+U+1F3AE # video game
+U+1F3B0 # slot machine
+U+1F3B2 # game die
+U+2660 U+FE0F # spade suit
+U+2665 U+FE0F # heart suit
+U+2666 U+FE0F # diamond suit
+U+2663 U+FE0F # club suit
+U+1F0CF # joker
+U+1F004 # mahjong red dragon
+U+1F3B4 # flower playing cards
+U+1F3AD # performing arts
+U+1F3A8 # artist palette
+U+1F453 # glasses
+U+1F454 # necktie
+U+1F455 # t-shirt
+U+1F456 # jeans
+U+1F457 # dress
+U+1F458 # kimono
+U+1F459 # bikini
+U+1F45A # woman's clothes
+U+1F45B # purse
+U+1F45C # handbag
+U+1F45D # clutch bag
+U+1F392 # backpack
+U+1F45E # man's shoe
+U+1F45F # running shoe
+U+1F460 # high-heeled shoe
+U+1F461 # woman's sandal
+U+1F462 # woman's boot
+U+1F451 # crown
+U+1F452 # woman's hat
+U+1F3A9 # top hat
+U+1F393 # graduation cap
+U+1F484 # lipstick
+U+1F48D # ring
+U+1F48E # gem stone
+U+1F507 # muted speaker
+U+1F508 # speaker low volume
+U+1F509 # speaker medium volume
+U+1F50A # speaker high volume
+U+1F4E2 # loudspeaker
+U+1F4E3 # megaphone
+U+1F4EF # postal horn
+U+1F514 # bell
+U+1F515 # bell with slash
+U+1F3BC # musical score
+U+1F3B5 # musical note
+U+1F3B6 # musical notes
+U+1F3A4 # microphone
+U+1F3A7 # headphone
+U+1F4FB # radio
+U+1F3B7 # saxophone
+U+1F3B8 # guitar
+U+1F3B9 # musical keyboard
+U+1F3BA # trumpet
+U+1F3BB # violin
+U+1F4F1 # mobile phone
+U+1F4F2 # mobile phone with arrow
+U+260E U+FE0F # telephone
+U+1F4DE # telephone receiver
+U+1F4DF # pager
+U+1F4E0 # fax machine
+U+1F50B # battery
+U+1F50C # electric plug
+U+1F4BB # laptop
+U+1F4BD # computer disk
+U+1F4BE # floppy disk
+U+1F4BF # optical disk
+U+1F4C0 # dvd
+U+1F3A5 # movie camera
+U+1F3AC # clapper board
+U+1F4FA # television
+U+1F4F7 # camera
+U+1F4F9 # video camera
+U+1F4FC # videocassette
+U+1F50D # magnifying glass tilted left
+U+1F50E # magnifying glass tilted right
+U+1F4A1 # light bulb
+U+1F526 # flashlight
+U+1F3EE # red paper lantern
+U+1F4D4 # notebook with decorative cover
+U+1F4D5 # closed book
+U+1F4D6 # open book
+U+1F4D7 # green book
+U+1F4D8 # blue book
+U+1F4D9 # orange book
+U+1F4DA # books
+U+1F4D3 # notebook
+U+1F4D2 # ledger
+U+1F4C3 # page with curl
+U+1F4DC # scroll
+U+1F4C4 # page facing up
+U+1F4F0 # newspaper
+U+1F4D1 # bookmark tabs
+U+1F516 # bookmark
+U+1F4B0 # money bag
+U+1F4B4 # yen banknote
+U+1F4B5 # dollar banknote
+U+1F4B6 # euro banknote
+U+1F4B7 # pound banknote
+U+1F4B8 # money with wings
+U+1F4B3 # credit card
+U+1F4B9 # chart increasing with yen
+U+2709 U+FE0F # envelope
+U+1F4E7 # e-mail
+U+1F4E8 # incoming envelope
+U+1F4E9 # envelope with arrow
+U+1F4E4 # outbox tray
+U+1F4E5 # inbox tray
+U+1F4E6 # package
+U+1F4EB # closed mailbox with raised flag
+U+1F4EA # closed mailbox with lowered flag
+U+1F4EC # open mailbox with raised flag
+U+1F4ED # open mailbox with lowered flag
+U+1F4EE # postbox
+U+270F U+FE0F # pencil
+U+2712 U+FE0F # black nib
+U+1F4DD # memo
+U+1F4BC # briefcase
+U+1F4C1 # file folder
+U+1F4C2 # open file folder
+U+1F4C5 # calendar
+U+1F4C6 # tear-off calendar
+U+1F4C7 # card index
+U+1F4C8 # chart increasing
+U+1F4C9 # chart decreasing
+U+1F4CA # bar chart
+U+1F4CB # clipboard
+U+1F4CC # pushpin
+U+1F4CD # round pushpin
+U+1F4CE # paperclip
+U+1F4CF # straight ruler
+U+1F4D0 # triangular ruler
+U+2702 U+FE0F # scissors
+U+1F512 # locked
+U+1F513 # unlocked
+U+1F50F # locked with pen
+U+1F510 # locked with key
+U+1F511 # key
+U+1F528 # hammer
+U+1F52B # water pistol
+U+1F527 # wrench
+U+1F529 # nut and bolt
+U+1F517 # link
+U+1F52C # microscope
+U+1F52D # telescope
+U+1F4E1 # satellite antenna
+U+1F489 # syringe
+U+1F48A # pill
+U+1F6AA # door
+U+1F6BD # toilet
+U+1F6BF # shower
+U+1F6C1 # bathtub
+U+1F6AC # cigarette
+U+1F5FF # moai
+U+1F3E7 # atm sign
+U+1F6AE # litter in bin sign
+U+1F6B0 # potable water
+U+267F # wheelchair symbol
+U+1F6B9 # men's room
+U+1F6BA # women's room
+U+1F6BB # restroom
+U+1F6BC # baby symbol
+U+1F6BE # water closet
+U+1F6C2 # passport control
+U+1F6C3 # customs
+U+1F6C4 # baggage claim
+U+1F6C5 # left luggage
+U+26A0 U+FE0F # warning
+U+1F6B8 # children crossing
+U+26D4 # no entry
+U+1F6AB # prohibited
+U+1F6B3 # no bicycles
+U+1F6AD # no smoking
+U+1F6AF # no littering
+U+1F6B1 # non-potable water
+U+1F6B7 # no pedestrians
+U+1F4F5 # no mobile phones
+U+1F51E # no one under eighteen
+U+2B06 U+FE0F # up arrow
+U+2197 U+FE0F # up-right arrow
+U+27A1 U+FE0F # right arrow
+U+2198 U+FE0F # down-right arrow
+U+2B07 U+FE0F # down arrow
+U+2199 U+FE0F # down-left arrow
+U+2B05 U+FE0F # left arrow
+U+2196 U+FE0F # up-left arrow
+U+2195 U+FE0F # up-down arrow
+U+2194 U+FE0F # left-right arrow
+U+21A9 U+FE0F # right arrow curving left
+U+21AA U+FE0F # left arrow curving right
+U+2934 U+FE0F # right arrow curving up
+U+2935 U+FE0F # right arrow curving down
+U+1F503 # clockwise vertical arrows
+U+1F504 # counterclockwise arrows button
+U+1F519 # back arrow
+U+1F51A # end arrow
+U+1F51B # on! arrow
+U+1F51C # soon arrow
+U+1F51D # top arrow
+U+1F52F # dotted six-pointed star
+U+2648 # aries
+U+2649 # taurus
+U+264A # gemini
+U+264B # cancer
+U+264C # leo
+U+264D # virgo
+U+264E # libra
+U+264F # scorpio
+U+2650 # sagittarius
+U+2651 # capricorn
+U+2652 # aquarius
+U+2653 # pisces
+U+26CE # ophiuchus
+U+1F500 # shuffle tracks button
+U+1F501 # repeat button
+U+1F502 # repeat single button
+U+25B6 U+FE0F # play button
+U+23E9 # fast-forward button
+U+25C0 U+FE0F # reverse button
+U+23EA # fast reverse button
+U+1F53C # upwards button
+U+23EB # fast up button
+U+1F53D # downwards button
+U+23EC # fast down button
+U+1F3A6 # cinema
+U+1F505 # dim button
+U+1F506 # bright button
+U+1F4F6 # antenna bars
+U+1F4F3 # vibration mode
+U+1F4F4 # mobile phone off
+U+2716 U+FE0F # multiply
+U+2795 # plus
+U+2796 # minus
+U+2797 # divide
+U+203C U+FE0F # double exclamation mark
+U+2049 U+FE0F # exclamation question mark
+U+2753 # red question mark
+U+2754 # white question mark
+U+2755 # white exclamation mark
+U+2757 # red exclamation mark
+U+3030 U+FE0F # wavy dash
+U+1F4B1 # currency exchange
+U+1F4B2 # heavy dollar sign
+U+267B U+FE0F # recycling symbol
+U+1F531 # trident emblem
+U+1F4DB # name badge
+U+1F530 # japanese symbol for beginner
+U+2B55 # hollow red circle
+U+2705 # check mark button
+U+2611 U+FE0F # check box with check
+U+2714 U+FE0F # check mark
+U+274C # cross mark
+U+274E # cross mark button
+U+27B0 # curly loop
+U+27BF # double curly loop
+U+303D U+FE0F # part alternation mark
+U+2733 U+FE0F # eight-spoked asterisk
+U+2734 U+FE0F # eight-pointed star
+U+2747 U+FE0F # sparkle
+U+00A9 U+FE0F # copyright
+U+00AE U+FE0F # registered
+U+2122 U+FE0F # trade mark
+U+1F51F # keycap: 10
+U+1F520 # input latin uppercase
+U+1F521 # input latin lowercase
+U+1F522 # input numbers
+U+1F523 # input symbols
+U+1F524 # input latin letters
+U+1F170 U+FE0F # a button (blood type)
+U+1F18E # ab button (blood type)
+U+1F171 U+FE0F # b button (blood type)
+U+1F191 # cl button
+U+1F192 # cool button
+U+1F193 # free button
+U+2139 U+FE0F # information
+U+1F194 # id button
+U+24C2 U+FE0F # circled m
+U+1F195 # new button
+U+1F196 # ng button
+U+1F17E U+FE0F # o button (blood type)
+U+1F197 # ok button
+U+1F17F U+FE0F # p button
+U+1F198 # sos button
+U+1F199 # up! button
+U+1F19A # vs button
+U+1F201 # japanese "here" button
+U+1F202 U+FE0F # japanese "service charge" button
+U+1F237 U+FE0F # japanese "monthly amount" button
+U+1F236 # japanese "not free of charge" button
+U+1F22F # japanese "reserved" button
+U+1F250 # japanese "bargain" button
+U+1F239 # japanese "discount" button
+U+1F21A # japanese "free of charge" button
+U+1F232 # japanese "prohibited" button
+U+1F251 # japanese "acceptable" button
+U+1F238 # japanese "application" button
+U+1F234 # japanese "passing grade" button
+U+1F233 # japanese "vacancy" button
+U+3297 U+FE0F # japanese "congratulations" button
+U+3299 U+FE0F # japanese "secret" button
+U+1F23A # japanese "open for business" button
+U+1F235 # japanese "no vacancy" button
+U+1F534 # red circle
+U+1F535 # blue circle
+U+26AB # black circle
+U+26AA # white circle
+U+2B1B # black large square
+U+2B1C # white large square
+U+25FC U+FE0F # black medium square
+U+25FB U+FE0F # white medium square
+U+25FE # black medium-small square
+U+25FD # white medium-small square
+U+25AA U+FE0F # black small square
+U+25AB U+FE0F # white small square
+U+1F536 # large orange diamond
+U+1F537 # large blue diamond
+U+1F538 # small orange diamond
+U+1F539 # small blue diamond
+U+1F53A # red triangle pointed up
+U+1F53B # red triangle pointed down
+U+1F4A0 # diamond with a dot
+U+1F518 # radio button
+U+1F533 # white square button
+U+1F532 # black square button
+U+1F3C1 # chequered flag
+U+1F6A9 # triangular flag
+U+1F38C # crossed flags
+U+1F1E6 # regional indicator symbol letter a
+U+1F1E7 # regional indicator symbol letter b
+U+1F1E8 # regional indicator symbol letter c
+U+1F1E9 # regional indicator symbol letter d
+U+1F1EA # regional indicator symbol letter e
+U+1F1EB # regional indicator symbol letter f
+U+1F1EC # regional indicator symbol letter g
+U+1F1ED # regional indicator symbol letter h
+U+1F1EE # regional indicator symbol letter i
+U+1F1EF # regional indicator symbol letter j
+U+1F1F0 # regional indicator symbol letter k
+U+1F1F1 # regional indicator symbol letter l
+U+1F1F2 # regional indicator symbol letter m
+U+1F1F3 # regional indicator symbol letter n
+U+1F1F4 # regional indicator symbol letter o
+U+1F1F5 # regional indicator symbol letter p
+U+1F1F6 # regional indicator symbol letter q
+U+1F1F7 # regional indicator symbol letter r
+U+1F1F8 # regional indicator symbol letter s
+U+1F1F9 # regional indicator symbol letter t
+U+1F1FA # regional indicator symbol letter u
+U+1F1FB # regional indicator symbol letter v
+U+1F1FC # regional indicator symbol letter w
+U+1F1FD # regional indicator symbol letter x
+U+1F1FE # regional indicator symbol letter y
+U+1F1FF # regional indicator symbol letter z
+# Above emojis are supported from Android 4.4 (API level 19)
+
