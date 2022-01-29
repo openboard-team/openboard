@@ -16,6 +16,7 @@
 
 package org.dslul.openboard.inputmethod.latin.settings;
 
+import android.app.ActionBar;
 import android.app.backup.BackupManager;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -129,6 +130,16 @@ public abstract class SubScreenFragment extends PreferenceFragment
         };
         getSharedPreferences().registerOnSharedPreferenceChangeListener(
                 mSharedPreferenceChangeListener);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        final ActionBar actionBar = getActivity().getActionBar();
+        final CharSequence screenTitle = getPreferenceScreen().getTitle();
+        if (actionBar != null && screenTitle != null) {
+            actionBar.setTitle(screenTitle);
+        }
     }
 
     @Override
