@@ -25,6 +25,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.util.Log;
@@ -47,8 +48,14 @@ public abstract class SubScreenFragment extends PreferenceFragment
 
     static void removePreference(final String prefKey, final PreferenceScreen screen) {
         final Preference preference = screen.findPreference(prefKey);
-        if (preference != null) {
-            screen.removePreference(preference);
+        if (preference != null && !screen.removePreference(preference)) {
+            final int count = screen.getPreferenceCount();
+            for (int i = 0; i < count; i++) {
+                final Preference pref = screen.getPreference(i);
+                if (pref instanceof PreferenceCategory
+                        && ((PreferenceCategory) pref).removePreference(preference))
+                    break;
+            }
         }
     }
 

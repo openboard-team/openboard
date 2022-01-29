@@ -17,39 +17,70 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/settings_screen_correction"
     android:key="screen_correction">
+
     <PreferenceScreen
-        android:key="edit_personal_dictionary"
-        android:title="@string/edit_personal_dictionary">
+            android:key="edit_personal_dictionary"
+            android:title="@string/edit_personal_dictionary">
         <intent android:action="android.settings.USER_DICTIONARY_SETTINGS" />
     </PreferenceScreen>
-    <CheckBoxPreference
-        android:key="pref_key_block_potentially_offensive"
-        android:title="@string/prefs_block_potentially_offensive_title"
-        android:summary="@string/prefs_block_potentially_offensive_summary"
-        android:defaultValue="@bool/config_block_potentially_offensive"
-        android:persistent="true" />
-    <CheckBoxPreference
-        android:key="pref_key_auto_correction"
-        android:title="@string/auto_correction"
-        android:summary="@string/auto_correction_summary"
-        android:defaultValue="true"
-        android:persistent="true" />
-    <CheckBoxPreference
-        android:key="show_suggestions"
-        android:summary="@string/prefs_show_suggestions_summary"
-        android:title="@string/prefs_show_suggestions"
-        android:defaultValue="true"
-        android:persistent="true" />
-    <CheckBoxPreference
-        android:key="pref_key_use_personalized_dicts"
-        android:title="@string/use_personalized_dicts"
-        android:summary="@string/use_personalized_dicts_summary"
-        android:defaultValue="true"
-        android:persistent="true" />
-    <CheckBoxPreference
-        android:key="next_word_prediction"
-        android:title="@string/bigram_prediction"
-        android:summary="@string/bigram_prediction_summary"
-        android:defaultValue="true"
-        android:persistent="true" />
+
+    <PreferenceCategory
+        android:title="@string/settings_category_correction">
+
+        <CheckBoxPreference
+            android:key="pref_key_block_potentially_offensive"
+            android:title="@string/prefs_block_potentially_offensive_title"
+            android:summary="@string/prefs_block_potentially_offensive_summary"
+            android:defaultValue="@bool/config_block_potentially_offensive"
+            android:persistent="true" />
+
+        <CheckBoxPreference
+            android:key="pref_key_auto_correction"
+            android:title="@string/auto_correction"
+            android:summary="@string/auto_correction_summary"
+            android:defaultValue="true"
+            android:persistent="true" />
+
+        <CheckBoxPreference
+            android:key="auto_cap"
+            android:title="@string/auto_cap"
+            android:summary="@string/auto_cap_summary"
+            android:defaultValue="true"
+            android:persistent="true" />
+
+        <CheckBoxPreference
+            android:key="pref_key_use_double_space_period"
+            android:title="@string/use_double_space_period"
+            android:summary="@string/use_double_space_period_summary"
+            android:defaultValue="true"
+            android:persistent="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/settings_category_suggestions">
+
+        <CheckBoxPreference
+            android:key="show_suggestions"
+            android:summary="@string/prefs_show_suggestions_summary"
+            android:title="@string/prefs_show_suggestions"
+            android:defaultValue="true"
+            android:persistent="true" />
+
+        <CheckBoxPreference
+            android:key="pref_key_use_personalized_dicts"
+            android:title="@string/use_personalized_dicts"
+            android:summary="@string/use_personalized_dicts_summary"
+            android:defaultValue="true"
+            android:persistent="true" />
+
+        <CheckBoxPreference
+            android:key="next_word_prediction"
+            android:title="@string/bigram_prediction"
+            android:summary="@string/bigram_prediction_summary"
+            android:defaultValue="true"
+            android:persistent="true" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

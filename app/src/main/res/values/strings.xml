@@ -606,4 +606,17 @@ disposition rather than other common dispositions for Latin languages. [CHAR LIM
     <string name="prefs_force_incognito_mode_summary">Disable learning of new words</string>
     <string name="show_emoji_key">Show emoji key</string>
     <string name="show_emoji_key_summary">Show a separate emoji key. When disabled, the emoji keyboard is still accessible by long-pressing the ENTER button.</string>
+    <string name="settings_category_input">Input</string>
+    <string name="settings_category_additional_keys">Additional keys</string>
+    <string name="settings_category_correction">Corrections</string>
+    <string name="settings_category_suggestions">Suggestions</string>
+    <string name="settings_category_experimental">Experimental</string>
+    <string name="settings_category_miscellaneous">Miscellaneous</string>
+    <string name="theme_family">Theme family</string>
+    <string name="theme_variant">Theme variant</string>
+    <string name="key_borders">Key borders</string>
+    <string name="day_night_mode">Auto day/night mode</string>
+    <string name="day_night_mode_summary">Appearance will follow system settings</string>
+    <string name="amoled_mode">Deep black backgrounds</string>
+    <string name="amoled_mode_summary">Can reduce power usage depending on the device’s screen technology</string>
 </resources>
