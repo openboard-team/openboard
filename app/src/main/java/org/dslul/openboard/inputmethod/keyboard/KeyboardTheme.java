@@ -211,27 +211,7 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
 
     public static KeyboardTheme getKeyboardTheme(final Context context) {
         final SharedPreferences prefs = DeviceProtectedUtils.getSharedPreferences(context);
-        final KeyboardTheme[] availableThemeArray = getAvailableThemeArray(context);
-        return getKeyboardTheme(prefs, Build.VERSION.SDK_INT, availableThemeArray);
-    }
-
-    /* package private for testing */
-    static KeyboardTheme[] getAvailableThemeArray(final Context context) {
-        if (AVAILABLE_KEYBOARD_THEMES == null) {
-            final int[] availableThemeIdStringArray = context.getResources().getIntArray(
-                    R.array.keyboard_theme_ids);
-            final ArrayList<KeyboardTheme> availableThemeList = new ArrayList<>();
-            for (final int id : availableThemeIdStringArray) {
-                final KeyboardTheme theme = searchKeyboardThemeById(id, KEYBOARD_THEMES);
-                if (theme != null) {
-                    availableThemeList.add(theme);
-                }
-            }
-            AVAILABLE_KEYBOARD_THEMES = availableThemeList.toArray(
-                    new KeyboardTheme[availableThemeList.size()]);
-            Arrays.sort(AVAILABLE_KEYBOARD_THEMES);
-        }
-        return AVAILABLE_KEYBOARD_THEMES;
+        return getKeyboardTheme(prefs, Build.VERSION.SDK_INT, KEYBOARD_THEMES);
     }
 
     /* package private for testing */
