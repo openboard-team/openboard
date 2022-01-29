@@ -23,9 +23,9 @@
     <!-- Name of Android spell checker service. AOSP(Android Open Source Project) should not be translated.
          This resource should be copied from msgid="511950477199948048" -->
     <string name="spell_checker_service_name">OpenBoard Spell Checker</string>
-    <!-- Title for Android Keyboard settings screen. AOSP(Android Open Source Project) should not be translated.
+    <!-- Title for IME settings screen.
          This resource should be copied from msgid="423615877174850267" -->
-    <string name="english_ime_settings">OpenBoard Settings</string>
+    <string name="ime_settings">OpenBoard Settings</string>
     <!-- Title for the spell checking service settings screen. AOSP(Android Open Source Project) should not be translated.
          This resource should be copied from msgid="2970535894327288421" -->
     <string name="android_spell_checker_settings">OpenBoard Spell Checker Settings</string>
