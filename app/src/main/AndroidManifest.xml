@@ -106,6 +106,7 @@
         <activity android:name=".settings.SettingsActivity"
                 android:theme="@style/platformActivityTheme"
                 android:label="@string/english_ime_settings"
+                android:excludeFromRecents="true"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
