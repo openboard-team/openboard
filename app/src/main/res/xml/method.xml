@@ -32,7 +32,7 @@
     bg: Bulgarian/bulgarian_bekl
     bn_BD: Bengali (Bangladesh)/bengali_unijoy
     bn_IN: Bengali (India)/bengali
-    ca: Catalan/spanish
+    ca: Catalan/spanish_euro
     cs: Czech/qwertz
     da: Danish/nordic
     de: German/qwertz
@@ -44,14 +44,14 @@
     en_US: English (United States)/qwerty
     en_GB: English (Great Britain)/qwerty
     eo: Esperanto/spanish
-    es: Spanish/spanish
+    es: Spanish/spanish_euro
     es_US: Spanish (United States)/spanish
     es_419: Spanish (Latin America)/spanish
     et_EE: Estonian (Estonia)/nordic
-    eu_ES: Basque (Spain)/spanish
+    eu_ES: Basque (Spain)/spanish_euro
     fa: Persian/farsi
-    fi: Finnish/nordic
-    fr: French/azerty
+    fi: Finnish/finnish
+    fr: French/azerty_euro
     fr_CA: French (Canada)/qwerty
     fr_CH: French (Switzerland)/swiss
     gl_ES: Galician (Spain)/spanish
@@ -64,7 +64,7 @@
     hy_AM: Armenian (Armenia) Phonetic/armenian_phonetic
     in: Indonesian/qwerty    # "id" is the official language code of Indonesian.
     is: Icelandic/qwerty
-    it: Italian/qwerty
+    it: Italian/qwerty_euro
     it_CH: Italian (Switzerland)/swiss
     iw: Hebrew/hebrew        # "he" is the official language code of Hebrew.
     ka_GE: Georgian (Georgia)/georgian
@@ -83,11 +83,11 @@
     nb: Norwegian Bokmål/nordic
     ne_NP: Nepali (Nepal) Romanized/nepali_romanized
     ne_NP: Nepali (Nepal) Traditional/nepali_traditional
-    nl: Dutch/qwerty
-    nl_BE: Dutch (Belgium)/azerty
+    nl: Dutch/qwerty_euro
+    nl_BE: Dutch (Belgium)/azerty_euro
     pl: Polish/qwerty
     pt_BR: Portuguese (Brazil)/qwerty
-    pt_PT: Portuguese (Portugal)/qwerty
+    pt_PT: Portuguese (Portugal)/qwerty_euro
     ro: Romanian/qwerty
     ru: Russian/east_slavic
     si_LK: Sinhala (Sri Lanka)/sinhala # This is a preliminary keyboard layout.
