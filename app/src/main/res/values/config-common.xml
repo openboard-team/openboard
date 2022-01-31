@@ -136,6 +136,10 @@
     <!-- Common configuration of Emoji keyboard -->
     <dimen name="config_emoji_category_page_id_height">2dp</dimen>
 
+    <!-- Common configuration of clipboard keyboard -->
+    <dimen name="config_clipboard_divider_height">1.5dp</dimen>
+    <dimen name="config_clipboard_pinned_icon_size">18dp</dimen>
+
     <!-- Inset used in Accessibility mode to avoid accidental key presses when a finger slides off the screen. -->
     <dimen name="config_accessibility_edge_slop">8dp</dimen>
 

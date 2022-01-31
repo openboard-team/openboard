@@ -22,6 +22,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -95,8 +96,9 @@ public final class CustomInputStyleSettingsFragment extends PreferenceFragment
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getPreferenceManager().setStorageDeviceProtected();
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            getPreferenceManager().setStorageDeviceProtected();
+        }
         mPrefs = getPreferenceManager().getSharedPreferences();
         RichInputMethodManager.init(getActivity());
         mRichImm = RichInputMethodManager.getInstance();

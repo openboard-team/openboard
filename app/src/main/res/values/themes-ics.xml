@@ -25,6 +25,7 @@
         <item name="keyboardViewStyle">@style/KeyboardView.ICS</item>
         <item name="mainKeyboardViewStyle">@style/MainKeyboardView.ICS</item>
         <item name="emojiPalettesViewStyle">@style/EmojiPalettesView.ICS</item>
+        <item name="clipboardHistoryViewStyle">@style/ClipboardHistoryView.ICS</item>
         <item name="moreKeysKeyboardStyle">@style/MoreKeysKeyboard.ICS</item>
         <!-- Note: ICS theme uses the same style for both general more keys and action more keys. -->
         <item name="moreKeysKeyboardViewStyle">@style/MoreKeysKeyboardView.ICS</item>
@@ -97,6 +98,13 @@
         <item name="iconEmojiCategory8Tab">@drawable/ic_emoji_symbols_holo_dark</item>
         <item name="iconEmojiCategory9Tab">@drawable/ic_emoji_flags_holo_dark</item>
         <item name="iconEmojiCategory10Tab">@drawable/ic_emoji_emoticons_holo_dark</item>
+    </style>
+    <style
+            name="ClipboardHistoryView.ICS"
+            parent="MainKeyboardView.ICS"
+            >
+        <item name="iconPinnedClip">@drawable/ic_clipboard_pin_holo_dark</item>
+        <item name="dividerBackground">@color/emoji_tab_page_indicator_background_holo</item>
     </style>
     <style
         name="MoreKeysKeyboard.ICS"
