@@ -219,4 +219,7 @@
     <string name="prefs_resize_keyboard">Autoriser le redimensionnement du clavier</string>
     <string name="subtype_no_language_workman">Alphabet (Workman)</string>
     <string name="subtype_no_language_colemak_dh">Alphabet (Colemak Mod-DH)</string>
+    <string name="show_clipboard_key">Touche du presse-papier</string>
+    <string name="show_emoji_key">Touche d\'accès aux emoji</string>
+    <string name="settings_category_additional_keys">Touches supplémentaires</string>
 </resources>
