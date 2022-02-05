@@ -106,7 +106,7 @@
     <string name="subtype_no_language_dvorak" msgid="1564494667584718094">"Alphabet latin (Dvorak)"</string>
     <string name="subtype_no_language_colemak" msgid="5837418400010302623">"Alphabet latin (Colemak)"</string>
     <string name="subtype_no_language_pcqwerty" msgid="5354918232046200018">"Alphabet latin (PC)"</string>
-    <string name="subtype_emoji" msgid="7483586578074549196">"Emoji"</string>
+    <string name="subtype_emoji" msgid="7483586578074549196">Émoji</string>
     <string name="keyboard_theme" msgid="4909551808526178852">"Thème du clavier"</string>
     <string name="custom_input_styles_title" msgid="8429952441821251512">"Styles saisie perso"</string>
     <string name="add_style" msgid="6163126614514489951">"Ajouter style"</string>
@@ -122,7 +122,7 @@
     <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Durée de vibration des touches"</string>
     <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Volume son pression de touche"</string>
     <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Délai d\'appui prolongé"</string>
-    <string name="prefs_enable_emoji_alt_physical_key" msgid="5963640002335470112">"Emoji pour clavier physique"</string>
+    <string name="prefs_enable_emoji_alt_physical_key" msgid="5963640002335470112">Émoji pour clavier physique</string>
     <string name="prefs_enable_emoji_alt_physical_key_summary" msgid="5259484820941627827">La touche Alt physique permet d\'afficher la palette d\'émoji</string>
     <string name="button_default" msgid="3988017840431881491">"Par défaut"</string>
     <string name="setup_welcome_title" msgid="6112821709832031715">"Bienvenue dans <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
@@ -198,7 +198,7 @@
     <string name="settings_category_input">Saisie</string>
     <string name="settings_category_correction">Corrections</string>
     <string name="settings_category_suggestions">Suggestions</string>
-    <string name="settings_category_experimental">Éxpérimental</string>
+    <string name="settings_category_experimental">Expérimental</string>
     <string name="settings_category_miscellaneous">Divers</string>
     <string name="prefs_force_incognito_mode_summary">Désactiver l\'apprentissage de nouveaux mots</string>
     <string name="more_keys_strip_description">Touches supplémentaires</string>
@@ -220,6 +220,6 @@
     <string name="subtype_no_language_workman">Alphabet (Workman)</string>
     <string name="subtype_no_language_colemak_dh">Alphabet (Colemak Mod-DH)</string>
     <string name="show_clipboard_key">Touche du presse-papier</string>
-    <string name="show_emoji_key">Touche d\'accès aux emoji</string>
+    <string name="show_emoji_key">Touche d\'accès aux émoji</string>
     <string name="settings_category_additional_keys">Touches supplémentaires</string>
 </resources>
