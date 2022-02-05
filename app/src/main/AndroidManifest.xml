@@ -15,7 +15,6 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        coreApp="true"
         package="org.dslul.openboard.inputmethod.latin">
 
     <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
@@ -104,8 +103,9 @@
         </activity>
 
         <activity android:name=".settings.SettingsActivity"
-                android:theme="@style/platformSettingsTheme"
-                android:label="@string/english_ime_settings"
+                android:theme="@style/platformActivityTheme"
+                android:label="@string/ime_settings"
+                android:excludeFromRecents="true"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -113,7 +113,7 @@
         </activity>
 
         <activity android:name=".spellcheck.SpellCheckerSettingsActivity"
-                  android:theme="@style/platformSettingsTheme"
+                  android:theme="@style/platformActivityTheme"
                   android:label="@string/android_spell_checker_settings"
                 android:exported="true">
             <intent-filter>

@@ -53,6 +53,11 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_VIBRATE_ON = "vibrate_on";
     public static final String PREF_SOUND_ON = "sound_on";
     public static final String PREF_POPUP_ON = "popup_on";
+    public static final String PREF_THEME_FAMILY = "theme_family";
+    public static final String PREF_THEME_VARIANT = "theme_variant";
+    public static final String PREF_THEME_KEY_BORDERS = "theme_key_borders";
+    public static final String PREF_THEME_DAY_NIGHT = "theme_auto_day_night";
+    public static final String PREF_THEME_AMOLED_MODE = "theme_amoled_mode";
     // PREF_VOICE_MODE_OBSOLETE is obsolete. Use PREF_VOICE_INPUT_KEY instead.
     public static final String PREF_VOICE_MODE_OBSOLETE = "voice_mode";
     public static final String PREF_VOICE_INPUT_KEY = "pref_voice_input_key";

@@ -23,9 +23,9 @@
     <!-- Name of Android spell checker service. AOSP(Android Open Source Project) should not be translated.
          This resource should be copied from msgid="511950477199948048" -->
     <string name="spell_checker_service_name">OpenBoard Spell Checker</string>
-    <!-- Title for Android Keyboard settings screen. AOSP(Android Open Source Project) should not be translated.
+    <!-- Title for IME settings screen.
          This resource should be copied from msgid="423615877174850267" -->
-    <string name="english_ime_settings">OpenBoard Settings</string>
+    <string name="ime_settings">OpenBoard Settings</string>
     <!-- Title for the spell checking service settings screen. AOSP(Android Open Source Project) should not be translated.
          This resource should be copied from msgid="2970535894327288421" -->
     <string name="android_spell_checker_settings">OpenBoard Spell Checker Settings</string>
@@ -64,6 +64,19 @@
     <!-- Settings screen title for keyboard theme settings [CHAR LIMIT=33] -->
     <string name="settings_screen_theme">Theme</string>
 
+    <!-- Settings category title for Preference/Input settings [CHAR LIMIT=33] -->
+    <string name="settings_category_input">Input</string>
+    <!-- Settings category title for Preference/Additional keys settings [CHAR LIMIT=33] -->
+    <string name="settings_category_additional_keys">Additional keys</string>
+    <!-- Settings category title for Text correction/Corrections [CHAR LIMIT=33] -->
+    <string name="settings_category_correction">Corrections</string>
+    <!-- Settings category title for Text correction/Suggestions [CHAR LIMIT=33] -->
+    <string name="settings_category_suggestions">Suggestions</string>
+    <!-- Settings category title for Advanced/Experimental [CHAR LIMIT=33] -->
+    <string name="settings_category_experimental">Experimental</string>
+    <!-- Settings category title for Appearance & Layout/Misc [CHAR LIMIT=33] -->
+    <string name="settings_category_miscellaneous">Miscellaneous</string>
+
     <!--  Option for enabling or disabling the split keyboard layout. [CHAR LIMIT=65]-->
     <string name="enable_split_keyboard">Enable split keyboard</string>
 
@@ -88,6 +101,9 @@
     <string name="show_language_switch_key">Language switch key</string>
     <!-- Option summary for showing language switch key [CHAR LIMIT=65] -->
     <string name="show_language_switch_key_summary">Show when multiple input languages are enabled</string>
+
+    <!-- Option to show shortcut key to emoji palettes -->
+    <string name="show_emoji_key">Emoji key</string>
 
     <!-- Option for the dismiss delay of the key popup [CHAR LIMIT=25] -->
     <string name="key_preview_popup_dismiss_delay">Key popup dismiss delay</string>
@@ -179,9 +195,26 @@
     <!-- The summary text to describe the reason why the "Voice input key" option is disabled. [CHAR LIMIT=100] -->
     <string name="voice_input_disabled_summary">No voice input methods enabled. Check Languages&#160;&amp; input settings.</string>
 
-    <!-- Preferences item for enabling pasting from keyboard -->
+    <!-- Preferences item for enabling clipboard key -->
     <string name="show_clipboard_key">Clipboard key</string>
-    <string name="show_clipboard_key_summary">Press to copy, long-press to paste.</string>
+
+    <!-- Preferences item for enabling swipe deletion -->
+    <string name="delete_swipe">Delete swipe</string>
+    <!-- Description for "delete_swipe" option. -->
+    <string name="delete_swipe_summary">Perform a swipe from the delete key to select and remove bigger portions of text at once</string>
+
+    <!-- Preferences item for enabling trackpad space key -->
+    <string name="space_trackpad">Space bar trackpad</string>
+    <!-- Description for "space_trackpad" option. -->
+    <string name="space_trackpad_summary">Swipe on the spacebar to move the cursor</string>
+
+    <!-- Preferences item for disabling word learning -->
+    <string name="prefs_force_incognito_mode">Force incognito mode</string>
+    <!-- Description for "prefs_force_incognito_mode" option. -->
+    <string name="prefs_force_incognito_mode_summary">Disable learning of new words</string>
+
+    <!-- Content description for "more keys" suggestions view -->
+    <string name="more_keys_strip_description">More keys</string>
 
     <!-- Title for configuring input method settings [CHAR LIMIT=35] -->
     <string name="configure_input_method">Configure input methods</string>
@@ -217,8 +250,10 @@
     <!-- Description of the settings to show hints -->
     <string name="show_hints_summary">Show long-press hints</string>
 
-    <!-- Title of the settings to disable long press space to change language -->
-    <string name="prefs_long_press_keyboard_to_change_lang">Long press to change lang</string>
+    <!-- Title of the settings enbaling long press on space key to change IME -->
+    <string name="prefs_long_press_keyboard_to_change_lang">Change input method with space key</string>
+    <!-- Description of the settings to change IME indicating long press triggers change. -->
+    <string name="prefs_long_press_keyboard_to_change_lang_summary">Long pressing space key will prompt input method selection menu</string>
 
     <!-- Title of the settings to enable keyboard resizing -->
     <string name="prefs_resize_keyboard">Enable keyboard resizing</string>
@@ -374,26 +409,6 @@ disposition rather than other common dispositions for Latin languages. [CHAR LIM
 
     <!-- Title of the preference settings for switching keyboard theme [CHAR LIMIT=35] -->
     <string name="keyboard_theme">Keyboard theme</string>
-    <!-- The keyboard theme name, Holo White. This is marked as translatable="false" because this is a proper name of system-wide UI Theme. -->
-    <string name="keyboard_theme_holo_white" translatable="false">Holo White</string>
-    <!-- The keyboard theme name, Holo Blue. This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
-    <string name="keyboard_theme_holo_blue" translatable="false">Holo Blue</string>
-    <!-- The keyboard theme name, Material (Auto). This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
-    <string name="keyboard_theme_material_auto" translatable="false">Material Auto</string>
-    <!-- The keyboard theme name, Material (Auto) (AMOLED). This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
-    <string name="keyboard_theme_material_auto_amoled" translatable="false">Material Auto (AMOLED)</string>
-    <!-- The keyboard theme name, Material Dark. This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
-    <string name="keyboard_theme_material_dark" translatable="false">Material Dark</string>
-    <!-- The keyboard theme name, Material Dark (AMOLED). This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
-    <string name="keyboard_theme_material_dark_amoled" translatable="false">Material Dark (AMOLED)</string>
-    <!-- The keyboard theme name, Material Light. This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
-    <string name="keyboard_theme_material_light" translatable="false">Material Light</string>
-    <!-- The keyboard theme name, Material Border (Auto). This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
-    <string name="keyboard_theme_auto_border" translatable="false">Material Auto Border</string>
-    <!-- The keyboard theme name, Material Dark Border. This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
-    <string name="keyboard_theme_dark_border" translatable="false">Material Dark Border</string>
-    <!-- The keyboard theme name, Material Light Border. This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
-    <string name="keyboard_theme_light_border" translatable="false">Material Light Border</string>
 
     <!-- Title of the preference settings for custom input styles (language and keyboard layout pairs) [CHAR LIMIT=35]-->
     <string name="custom_input_styles_title">Custom input styles</string>
@@ -597,13 +612,20 @@ disposition rather than other common dispositions for Latin languages. [CHAR LIM
          This resource is copied from packages/apps/Settings/res/values/strings.xml -->
     <!-- This resource is corresponding to msgid="5433275485499039199" -->
     <string name="user_dict_fast_scroll_alphabet">\u0020ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
-    <string name="delete_swipe">Delete swipe</string>
-    <string name="space_trackpad">Space bar trackpad</string>
-    <string name="delete_swipe_summary">Perform a swipe from the delete key to select and remove bigger portions of text at once</string>
-    <string name="space_trackpad_summary">Swipe on the spacebar to move the cursor</string>
-    <string name="more_keys_strip_description">More keys</string>
-    <string name="prefs_force_incognito_mode">Force incognito mode</string>
-    <string name="prefs_force_incognito_mode_summary">Disable learning of new words</string>
-    <string name="show_emoji_key">Show emoji key</string>
-    <string name="show_emoji_key_summary">Show a separate emoji key. When disabled, the emoji keyboard is still accessible by long-pressing the ENTER button.</string>
+
+    <!-- Option for choosing theme family [CHAR LIMIT=33] -->
+    <string name="theme_family">Theme family</string>
+    <!-- Option for choosing theme family variant [CHAR LIMIT=33] -->
+    <string name="theme_variant">Theme variant</string>
+    <!-- Option for choosing whether we use a theme that provides borders to keys [CHAR LIMIT=33] -->
+    <string name="key_borders">Key borders</string>
+    <!-- Option for choosing auto day/night theme switch [CHAR LIMIT=33] -->
+    <string name="day_night_mode">Auto day/night mode</string>
+    <!-- Description for "day_night_mode" option. -->
+    <string name="day_night_mode_summary">Appearance will follow system settings</string>
+    <!-- Option for enabling AMOLED mode [CHAR LIMIT=33] -->
+    <string name="amoled_mode">Deep black backgrounds</string>
+    <!-- Description indicating amoled mode can lower power usage depending on the screen of the device. -->
+    <string name="amoled_mode_summary">Can reduce power usage depending on the device’s screen technology</string>
+
 </resources>

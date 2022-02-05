@@ -16,6 +16,7 @@
 
 package org.dslul.openboard.inputmethod.latin.settings;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -29,6 +30,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -104,6 +106,15 @@ public final class CustomInputStyleSettingsFragment extends PreferenceFragment
         mRichImm = RichInputMethodManager.getInstance();
         addPreferencesFromResource(R.xml.additional_subtype_settings);
         setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        final ActionBar actionBar = getActivity().getActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.custom_input_styles_title);
+        }
     }
 
     @Override
@@ -304,6 +315,11 @@ public final class CustomInputStyleSettingsFragment extends PreferenceFragment
     @Override
     public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
         inflater.inflate(R.menu.add_style, menu);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            final TypedValue value = new TypedValue();
+            getActivity().getTheme().resolveAttribute(android.R.attr.colorForeground, value, true);
+            menu.findItem(R.id.action_add_style).getIcon().setTint(value.data);
+        }
     }
 
     @Override
