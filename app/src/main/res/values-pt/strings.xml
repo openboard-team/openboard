@@ -188,7 +188,7 @@
     <string name="user_dict_settings_delete" msgid="110413335187193859">Eliminar</string>
     <string name="user_dict_fast_scroll_alphabet" msgid="5431919401558285473">" ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
     <string name="spell_checker_service_name">Verificação ortográfica OpenBoard</string>
-    <string name="android_spell_checker_settings"></string>
+    <string name="android_spell_checker_settings">Definições de verificação ortográfica OpenBoard</string>
     <string name="show_clipboard_key">Tecla da área de transferência</string>
     <string name="number_row">Número de linha</string>
     <string name="number_row_summary">Mostrar sempre n.º de linha</string>
@@ -221,4 +221,5 @@
     <string name="day_night_mode_summary">Aparência usa as definições do sistema</string>
     <string name="day_night_mode">Modo diurno/noturno automático</string>
     <string name="prefs_long_press_keyboard_to_change_lang">Alterar método de introdução com a tecla Espaço</string>
+    <string name="space_trackpad">\'Trackpad\' na barra de espaço</string>
 </resources>
