@@ -24,6 +24,8 @@ import android.service.textservice.SpellCheckerService.Session;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.LruCache;
+import android.view.inputmethod.InputMethodManager;
+import android.view.inputmethod.InputMethodSubtype;
 import android.view.textservice.SuggestionsInfo;
 import android.view.textservice.TextInfo;
 
@@ -110,12 +112,47 @@ public abstract class AndroidWordLevelSpellCheckerSession extends Session {
         cres.registerContentObserver(Words.CONTENT_URI, true, mObserver);
     }
 
+    private void updateLocale() {
+        final String localeString = getLocale();
+
+        if (mLocale == null || !mLocale.toString().equals(localeString)) {
+            final String oldLocal = mLocale == null ? "null" : mLocale.toString();
+            Log.d(TAG, "Updating locale from " + oldLocal + " to " + localeString);
+
+            mLocale = (null == localeString) ? null
+                    : LocaleUtils.constructLocaleFromString(localeString);
+            mScript = ScriptUtils.getScriptFromSpellCheckerLocale(mLocale);
+        }
+    }
+
     @Override
     public void onCreate() {
-        final String localeString = getLocale();
-        mLocale = (null == localeString) ? null
-                : LocaleUtils.constructLocaleFromString(localeString);
-        mScript = ScriptUtils.getScriptFromSpellCheckerLocale(mLocale);
+        updateLocale();
+    }
+
+    @Override
+    public String getLocale() {
+        // This function was taken from https://github.com/LineageOS/android_frameworks_base/blob/1235c24a0f092d0e41fd8e86f332f8dc03896a7b/services/core/java/com/android/server/TextServicesManagerService.java#L544 and slightly adopted.
+
+        final InputMethodManager imm;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            imm = mService.getApplicationContext()
+                    .getSystemService(InputMethodManager.class);
+            if (imm != null) {
+                final InputMethodSubtype currentInputMethodSubtype =
+                        imm.getCurrentInputMethodSubtype();
+                if (currentInputMethodSubtype != null) {
+                    final String localeString = currentInputMethodSubtype.getLocale();
+                    if (!TextUtils.isEmpty(localeString)) {
+                        // Use keyboard locale if available in the spell checker
+                        return localeString;
+                    }
+                }
+            }
+        }
+
+        // Fallback to system locale
+        return super.getLocale();
     }
 
     @Override
@@ -222,6 +259,7 @@ public abstract class AndroidWordLevelSpellCheckerSession extends Session {
     protected SuggestionsInfo onGetSuggestionsInternal(
             final TextInfo textInfo, final NgramContext ngramContext, final int suggestionsLimit) {
         try {
+            updateLocale();
             final String text = textInfo.getText().
                     replaceAll(AndroidSpellCheckerService.APOSTROPHE,
                             AndroidSpellCheckerService.SINGLE_QUOTE).
