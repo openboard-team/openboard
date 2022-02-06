@@ -155,7 +155,7 @@
     <string name="dictionary_downloading" msgid="2982650524622620983">Téléchargement en cours</string>
     <string name="dictionary_installed" msgid="8081558343559342962">"Installé"</string>
     <string name="dictionary_disabled" msgid="8950383219564621762">"Installé, désactivé"</string>
-    <string name="cannot_connect_to_dict_service" msgid="9216933695765732398">Problème de connexion au dictionnaire</string>
+    <string name="cannot_connect_to_dict_service" msgid="9216933695765732398">Problème de connexion au service de dictionnaire</string>
     <string name="no_dictionaries_available" msgid="8039920716566132611">"Aucun dictionnaire"</string>
     <string name="check_for_updates_now" msgid="8087688440916388581">"Actualiser"</string>
     <string name="last_update" msgid="730467549913588780">"Dernière mise à jour"</string>
@@ -193,28 +193,28 @@
     <string name="delete_swipe">Balayage de la touche Effacer</string>
     <string name="delete_swipe_summary">Effectuez un glissement sur la touche de suppression pour sélectionner et supprimer de plus grandes portions de texte en une seule fois</string>
     <string name="space_trackpad_summary">Glisser sur la barre d\'espace pour déplacer le curseur</string>
-    <string name="space_trackpad">Trackpad barre d\'espace</string>
-    <string name="ime_settings">Paramètres OpenBoard</string>
+    <string name="space_trackpad">Trackpad sur la barre d\'espace</string>
+    <string name="ime_settings">Paramètres d\'OpenBoard</string>
     <string name="settings_category_input">Saisie</string>
     <string name="settings_category_correction">Corrections</string>
     <string name="settings_category_suggestions">Suggestions</string>
     <string name="settings_category_experimental">Éxpérimental</string>
     <string name="settings_category_miscellaneous">Divers</string>
-    <string name="prefs_force_incognito_mode_summary">Désactiver l\'apprentissage de nouveau mots</string>
-    <string name="more_keys_strip_description">Plus de touches</string>
+    <string name="prefs_force_incognito_mode_summary">Désactiver l\'apprentissage de nouveaux mots</string>
+    <string name="more_keys_strip_description">Touches supplémentaires</string>
     <string name="number_row_summary">Toujours afficher la ligne de chiffres</string>
     <string name="prefs_long_press_keyboard_to_change_lang">Changer le mode de saisie avec la barre d\'esspace</string>
-    <string name="prefs_long_press_keyboard_to_change_lang_summary">Un appui long sur la barre d\'espace fera apparaître le menu de sélection de la méthode de saisie.</string>
+    <string name="prefs_long_press_keyboard_to_change_lang_summary">Un appui long sur la barre d\'espace fera apparaître le menu de sélection de la méthode de saisie</string>
     <string name="show_hints_summary">Afficher les caractères alternatifs lors d\'un appui long</string>
     <string name="show_hints">Afficher les caractères alternatifs</string>
     <string name="prefs_keyboard_height_scale">Échelle de hauteur du clavier</string>
-    <string name="theme_variant">Variant de thème</string>
+    <string name="theme_variant">Variante de thème</string>
     <string name="day_night_mode_summary">L\'apparence suivra les paramètres système</string>
-    <string name="amoled_mode">Arrière-plans noir intense</string>
+    <string name="amoled_mode">Arrière-plans noir profond</string>
     <string name="prefs_force_incognito_mode">Forcer le mode incognito</string>
     <string name="theme_family">Famille de thème</string>
     <string name="key_borders">Bordures de touche</string>
-    <string name="day_night_mode">Mode jour/nuit auto</string>
+    <string name="day_night_mode">Mode jour/nuit automatique</string>
     <string name="amoled_mode_summary">Peut réduire la consommation d\'énergie en fonction de la technologie d\'écran de l\'appareil</string>
     <string name="prefs_resize_keyboard">Autoriser le redimensionnement du clavier</string>
     <string name="subtype_no_language_workman">Alphabet (Workman)</string>
