@@ -226,7 +226,6 @@ public abstract class AndroidWordLevelSpellCheckerSession extends Session {
      *  version of it "text" and the capitalized version of it "Text".
      */
     private boolean isInDictForAnyCapitalization(final String text, final int capitalizeType) {
-        updateLocale();
         // If the word is in there as is, then it's in the dictionary. If not, we'll test lower
         // case versions, but only if the word is not already all-lower case or mixed case.
         if (mService.isValidWord(mLocale, text)) return true;
