@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- 
 /*
 **
@@ -16,10 +16,7 @@
 ** See the License for the specific language governing permissions and
 ** limitations under the License.
 */
- -->
-
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+ --><resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="english_ime_input_options" msgid="3909945612939668554">"ইনপুট বিকল্পগুলি"</string>
     <string name="use_contacts_for_spellchecking_option_title" msgid="5374120998125353898">"পরিচিতি নাম খুঁজুন"</string>
     <string name="use_contacts_for_spellchecking_option_summary" msgid="8754413382543307713">"বানান পরীক্ষক আপনার পরিচিতি তালিকা থেকে এন্ট্রি ব্যবহার করে"</string>
@@ -190,4 +187,21 @@
     <string name="user_dict_settings_more_languages" msgid="7131268499685180461">"আরও ভাষা..."</string>
     <string name="user_dict_settings_delete" msgid="110413335187193859">"মুছুন"</string>
     <string name="user_dict_fast_scroll_alphabet" msgid="5431919401558285473">" ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
+    <string name="settings_category_input">প্রদেয়</string>
+    <string name="settings_category_suggestions">পরামর্শ</string>
+    <string name="show_clipboard_key">ক্লিপবোর্ড বোতাম</string>
+    <string name="number_row">নম্বর সারি</string>
+    <string name="theme_family">রঙ পরিবার</string>
+    <string name="subtype_no_language_workman">আলফাবেট (ওয়ার্কম্যান)</string>
+    <string name="spell_checker_service_name">ওপেনবোর্ড বানান পরীক্ষক</string>
+    <string name="show_emoji_key">আবেগ বোতাম</string>
+    <string name="ime_settings">ওপেনবোর্ড পছন্দসমূহ</string>
+    <string name="settings_category_correction">সংশোধন</string>
+    <string name="settings_category_experimental">পরীক্ষামূলক</string>
+    <string name="settings_category_miscellaneous">বিবিধ</string>
+    <string name="settings_category_additional_keys">আরো বোতাম</string>
+    <string name="more_keys_strip_description">আরো বোতাম</string>
+    <string name="show_hints">বোতামের পরামর্শ দেখাও</string>
+    <string name="theme_variant">রঙের ধরণ</string>
+    <string name="key_borders">বোতামের পরিধি</string>
 </resources>
