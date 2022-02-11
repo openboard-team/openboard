@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- 
 /*
 **
@@ -16,10 +16,7 @@
 ** See the License for the specific language governing permissions and
 ** limitations under the License.
 */
- -->
-
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+ --><resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="english_ime_input_options" msgid="3909945612939668554">"Opciones entrada texto"</string>
     <string name="use_contacts_for_spellchecking_option_title" msgid="5374120998125353898">"Nombres de contactos"</string>
     <string name="use_contacts_for_spellchecking_option_summary" msgid="8754413382543307713">"Añadir nombres de tu lista de contactos al corrector"</string>
@@ -190,4 +187,10 @@
     <string name="user_dict_settings_more_languages" msgid="7131268499685180461">"Más idiomas…"</string>
     <string name="user_dict_settings_delete" msgid="110413335187193859">"Eliminar"</string>
     <string name="user_dict_fast_scroll_alphabet" msgid="5431919401558285473">" ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"</string>
+    <string name="subtype_no_language_colemak_dh">Alfabeto (Colemak Mod-DH)</string>
+    <string name="day_night_mode_summary">Apariencia seguirá los ajustes del sistema</string>
+    <string name="subtype_no_language_workman">Alfabeto (Workman)</string>
+    <string name="number_row_summary">Mostrar siempre fila de números</string>
+    <string name="amoled_mode_summary">Puede reducir el uso de energía dependiendo de la tecnología de su pantalla</string>
+    <string name="settings_category_additional_keys">Teclas adicionales</string>
 </resources>
