@@ -67,7 +67,7 @@ class ClipboardAdapter(
         }
 
         fun setContent(historyEntry: ClipboardHistoryEntry?) {
-            itemView.tag = historyEntry?.id
+            itemView.tag = historyEntry?.timeStamp
             contentView.text = historyEntry?.content
             pinnedIconView.visibility = if (historyEntry?.isPinned == true) View.VISIBLE else View.GONE
         }

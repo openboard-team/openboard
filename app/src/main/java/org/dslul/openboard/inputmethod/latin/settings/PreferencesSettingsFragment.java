@@ -60,9 +60,8 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
 
         setupKeypressVibrationDurationSettings();
         setupKeypressSoundVolumeSettings();
-        setupKeyLongpressTimeoutSettings();
-        refreshEnablingsOfKeypressSoundAndVibrationSettings();
-        refreshEnablingsOfKeypressSoundAndVibrationSettings();
+        setupHistoryRetentionTimeSettings();
+        refreshEnablingsOfKeypressSoundAndVibrationAndHistRetentionSettings();
     }
 
     @Override
@@ -79,16 +78,18 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
 
     @Override
     public void onSharedPreferenceChanged(final SharedPreferences prefs, final String key) {
-        refreshEnablingsOfKeypressSoundAndVibrationSettings();
+        refreshEnablingsOfKeypressSoundAndVibrationAndHistRetentionSettings();
     }
 
-    private void refreshEnablingsOfKeypressSoundAndVibrationSettings() {
+    private void refreshEnablingsOfKeypressSoundAndVibrationAndHistRetentionSettings() {
         final SharedPreferences prefs = getSharedPreferences();
         final Resources res = getResources();
         setPreferenceEnabled(Settings.PREF_VIBRATION_DURATION_SETTINGS,
                 Settings.readVibrationEnabled(prefs, res));
         setPreferenceEnabled(Settings.PREF_KEYPRESS_SOUND_VOLUME,
                 Settings.readKeypressSoundEnabled(prefs, res));
+        setPreferenceEnabled(Settings.PREF_CLIPBOARD_HISTORY_RETENTION_TIME,
+                Settings.readClipboardHistoryEnabled(prefs));
     }
 
     private void setupKeypressVibrationDurationSettings() {
@@ -191,11 +192,11 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
         });
     }
 
-    private void setupKeyLongpressTimeoutSettings() {
+    private void setupHistoryRetentionTimeSettings() {
         final SharedPreferences prefs = getSharedPreferences();
         final Resources res = getResources();
         final SeekBarDialogPreference pref = (SeekBarDialogPreference)findPreference(
-                Settings.PREF_KEY_LONGPRESS_TIMEOUT);
+                Settings.PREF_CLIPBOARD_HISTORY_RETENTION_TIME);
         if (pref == null) {
             return;
         }
@@ -212,17 +213,20 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
 
             @Override
             public int readValue(final String key) {
-                return Settings.readKeyLongpressTimeout(prefs, res);
+                return Settings.readClipboardHistoryRetentionTime(prefs, res);
             }
 
             @Override
             public int readDefaultValue(final String key) {
-                return Settings.readDefaultKeyLongpressTimeout(res);
+                return Settings.readDefaultClipboardHistoryRetentionTime(res);
             }
 
             @Override
             public String getValueText(final int value) {
-                return res.getString(R.string.abbreviation_unit_milliseconds, value);
+                if (value <= 0) {
+                    return res.getString(R.string.settings_no_limit);
+                }
+                return res.getString(R.string.abbreviation_unit_minutes, value);
             }
 
             @Override

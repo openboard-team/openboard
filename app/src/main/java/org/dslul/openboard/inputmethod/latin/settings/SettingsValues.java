@@ -80,6 +80,8 @@ public class SettingsValues {
     public final boolean mBlockPotentiallyOffensive;
     public final boolean mSpaceTrackpadEnabled;
     public final boolean mDeleteSwipeEnabled;
+    public final boolean mClipboardHistoryEnabled;
+    public final long mClipboardHistoryRetentionTime;
     // Use bigrams to predict the next word when there is no input for it yet
     public final boolean mBigramPredictionEnabled;
     public final boolean mGestureInputEnabled;
@@ -233,6 +235,8 @@ public class SettingsValues {
         }
         mSpaceTrackpadEnabled = Settings.readSpaceTrackpadEnabled(prefs);
         mDeleteSwipeEnabled = Settings.readDeleteSwipeEnabled(prefs);
+        mClipboardHistoryEnabled = Settings.readClipboardHistoryEnabled(prefs);
+        mClipboardHistoryRetentionTime = Settings.readClipboardHistoryRetentionTime(prefs, res);
     }
 
     public boolean isMetricsLoggingEnabled() {

@@ -693,8 +693,17 @@ public final class InputLogic {
                 // handled in {@link KeyboardState#onEvent(Event,int)}.
                 break;
             case Constants.CODE_CLIPBOARD:
-                // Note: Switching clipboard keyboard is being handled in
-                // {@link KeyboardState#onEvent(Event,int)}.
+                // Note: If clipboard history is enabled, switching to clipboard keyboard
+                // is being handled in {@link KeyboardState#onEvent(Event,int)}.
+                // If disabled, current clipboard content is committed.
+                if (!inputTransaction.getMSettingsValues().mClipboardHistoryEnabled) {
+                    final CharSequence content = mLatinIME.getClipboardHistoryManager()
+                            .retrieveClipboardContent();
+                    if (!TextUtils.isEmpty(content)) {
+                        mConnection.commitText(content, 1);
+                        inputTransaction.setDidAffectContents();
+                    }
+                }
                 break;
             case Constants.CODE_ALPHA_FROM_CLIPBOARD:
                 // Note: Switching back from clipboard keyboard to the main keyboard is being

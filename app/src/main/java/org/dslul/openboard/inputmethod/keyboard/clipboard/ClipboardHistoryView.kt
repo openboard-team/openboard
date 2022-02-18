@@ -136,6 +136,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
             keyVisualAttr: KeyVisualAttributes?,
             iconSet: KeyboardIconsSet
     ) {
+        historyManager.prepareClipboardHistory()
         historyManager.setHistoryChangeListener(this)
         clipboardHistoryManager = historyManager
         clipboardAdapter.clipboardHistoryManager = historyManager

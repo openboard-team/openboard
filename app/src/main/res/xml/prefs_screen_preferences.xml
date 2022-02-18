@@ -93,4 +93,20 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="@string/settings_category_clipboard_history">
+
+        <CheckBoxPreference
+            android:key="pref_enable_clipboard_history"
+            android:title="@string/enable_clipboard_history"
+            android:summary="@string/enable_clipboard_history_summary"
+            android:defaultValue="true"
+            android:persistent="true" />
+
+        <org.dslul.openboard.inputmethod.latin.settings.SeekBarDialogPreference
+            android:key="pref_clipboard_history_retention_time"
+            android:title="@string/clipboard_history_retention_time"
+            latin:maxValue="120" /> <!-- minutes -->
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

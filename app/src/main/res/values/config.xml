@@ -22,6 +22,9 @@
 <resources>
     <bool name="config_use_fullscreen_mode">false</bool>
 
+    <!-- Maximum time for a clipboard history entry to be kept, in minutes. -->
+    <integer name="config_clipboard_history_retention_time">10</integer>
+
     <dimen name="config_key_hysteresis_distance">8.0dp</dimen>
 
     <!-- Preferable keyboard height in absolute scale: 1.285in -->
