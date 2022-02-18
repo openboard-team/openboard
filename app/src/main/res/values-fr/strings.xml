@@ -222,4 +222,10 @@
     <string name="show_clipboard_key">Touche du presse-papier</string>
     <string name="show_emoji_key">Touche d\'accès aux émoji</string>
     <string name="settings_category_additional_keys">Touches supplémentaires</string>
+    <string name="settings_category_clipboard_history">Historique du presse-papier</string>
+    <string name="settings_no_limit">Sans limite</string>
+    <string name="clipboard_history_retention_time">Temps de rétention de l\'historique</string>
+    <string name="enable_clipboard_history_summary">Si désactivé, l\'appui sur la touche presse-papier collera l’éventuel contenu du presse-papier</string>
+    <string name="enable_clipboard_history">Activer l\'historique</string>
+    <string name="abbreviation_unit_minutes"><xliff:g id="MINUTES">%s</xliff:g>min.</string>
 </resources>
