@@ -142,7 +142,7 @@ public final class JsonUtils {
             writer.beginArray();
             for (final ClipboardHistoryEntry e : entries) {
                 writer.beginObject();
-                writer.name(CLIPBOARD_HISTORY_ENTRY_ID_KEY).value(e.getId());
+                writer.name(CLIPBOARD_HISTORY_ENTRY_ID_KEY).value(e.getTimeStamp());
                 writer.name(CLIPBOARD_HISTORY_ENTRY_CONTENT_KEY).value(e.getContent().toString());
                 writer.endObject();
             }

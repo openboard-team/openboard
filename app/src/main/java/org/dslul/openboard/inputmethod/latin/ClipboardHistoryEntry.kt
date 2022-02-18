@@ -1,13 +1,13 @@
 package org.dslul.openboard.inputmethod.latin
 
 data class ClipboardHistoryEntry (
-        var id: Long,
+        var timeStamp: Long,
         val content: CharSequence,
         var isPinned: Boolean = false
 ) : Comparable<ClipboardHistoryEntry> {
 
     override fun compareTo(other: ClipboardHistoryEntry): Int {
         val result = other.isPinned.compareTo(isPinned)
-        return if (result != 0) result else other.id.compareTo(id)
+        return if (result != 0) result else other.timeStamp.compareTo(timeStamp)
     }
 }

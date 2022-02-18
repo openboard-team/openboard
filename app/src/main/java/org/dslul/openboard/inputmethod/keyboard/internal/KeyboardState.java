@@ -21,6 +21,7 @@ import android.util.Log;
 
 import org.dslul.openboard.inputmethod.event.Event;
 import org.dslul.openboard.inputmethod.latin.common.Constants;
+import org.dslul.openboard.inputmethod.latin.settings.Settings;
 import org.dslul.openboard.inputmethod.latin.utils.CapsModeUtils;
 import org.dslul.openboard.inputmethod.latin.utils.RecapitalizeStatus;
 
@@ -689,7 +690,11 @@ public final class KeyboardState {
         } else if (code == Constants.CODE_ALPHA_FROM_EMOJI) {
             setAlphabetKeyboard(autoCapsFlags, recapitalizeMode);
         } else if (code == Constants.CODE_CLIPBOARD) {
-            setClipboardKeyboard();
+            // Note: Printing clipboard content is handled in
+            // {@link InputLogic#handleFunctionalEvent(Event,InputTransaction,int,LatinIME.UIHandler)}.
+            if (Settings.getInstance().getCurrent().mClipboardHistoryEnabled) {
+                setClipboardKeyboard();
+            }
         } else if (code == Constants.CODE_ALPHA_FROM_CLIPBOARD) {
             setAlphabetKeyboard(autoCapsFlags, recapitalizeMode);
         }

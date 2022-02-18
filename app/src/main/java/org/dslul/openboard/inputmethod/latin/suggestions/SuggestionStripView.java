@@ -443,8 +443,9 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
             return;
         }
         if (view == mClipboardKey) {
-            final KeyboardSwitcher switcher = KeyboardSwitcher.getInstance();
-            switcher.onToggleKeyboard(KeyboardSwitcher.KeyboardSwitchState.CLIPBOARD);
+            mListener.onCodeInput(Constants.CODE_CLIPBOARD,
+                    Constants.SUGGESTION_STRIP_COORDINATE, Constants.SUGGESTION_STRIP_COORDINATE,
+                    false /* isKeyRepeat */);
             return;
         }
 

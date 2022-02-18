@@ -118,6 +118,9 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
 
     public static final String PREF_SPACE_TO_CHANGE_LANG = "prefs_long_press_keyboard_to_change_lang";
 
+    public static final String PREF_ENABLE_CLIPBOARD_HISTORY = "pref_enable_clipboard_history";
+    public static final String PREF_CLIPBOARD_HISTORY_RETENTION_TIME = "pref_clipboard_history_retention_time";
+
     // This preference key is deprecated. Use {@link #PREF_SHOW_LANGUAGE_SWITCH_KEY} instead.
     // This is being used only for the backward compatibility.
     private static final String PREF_SUPPRESS_LANGUAGE_SWITCH_KEY =
@@ -347,6 +350,22 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
                                                       final String prefKey, final int defaultValue) {
         final int milliseconds = prefs.getInt(prefKey, UNDEFINED_PREFERENCE_VALUE_INT);
         return (milliseconds != UNDEFINED_PREFERENCE_VALUE_INT) ? milliseconds : defaultValue;
+    }
+
+    public static boolean readClipboardHistoryEnabled(final SharedPreferences prefs) {
+        return prefs.getBoolean(PREF_ENABLE_CLIPBOARD_HISTORY, true);
+    }
+
+    public static int readClipboardHistoryRetentionTime(final SharedPreferences prefs,
+                                              final Resources res) {
+        final int minutes = prefs.getInt(
+                PREF_CLIPBOARD_HISTORY_RETENTION_TIME, UNDEFINED_PREFERENCE_VALUE_INT);
+        return (minutes != UNDEFINED_PREFERENCE_VALUE_INT) ? minutes
+                : readDefaultClipboardHistoryRetentionTime(res);
+    }
+
+    public static int readDefaultClipboardHistoryRetentionTime(final Resources res) {
+        return res.getInteger(R.integer.config_clipboard_history_retention_time);
     }
     
     public static boolean readShowsNumberRow(final SharedPreferences prefs) {

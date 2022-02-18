@@ -2,11 +2,9 @@ package org.dslul.openboard.inputmethod.latin
 
 import android.content.ClipboardManager
 import android.content.Context
-import android.os.Build
 import android.text.TextUtils
 import android.util.Base64
 import android.util.Log
-import androidx.annotation.RequiresApi
 import org.dslul.openboard.inputmethod.compat.ClipboardManagerCompat
 import org.dslul.openboard.inputmethod.latin.utils.JsonUtils
 import java.io.File
@@ -44,7 +42,12 @@ class ClipboardHistoryManager(
         clipboardManager.removePrimaryClipChangedListener(this)
     }
 
-    override fun onPrimaryClipChanged() = fetchPrimaryClip()
+    override fun onPrimaryClipChanged() {
+        // Make sure we read clipboard content only if history settings is set
+        if (latinIME.mSettings.current?.mClipboardHistoryEnabled == true) {
+            fetchPrimaryClip()
+        }
+    }
 
     private fun fetchPrimaryClip() {
         val clipData = clipboardManager.primaryClip ?: return
@@ -53,14 +56,14 @@ class ClipboardHistoryManager(
             // Starting from API 30, onPrimaryClipChanged() can be called multiple times
             // for the same clip. We can identify clips with their timestamps since API 26.
             // We use that to prevent unwanted duplicates.
-            val id = ClipboardManagerCompat.getClipTimestamp(clipData)?.also { stamp ->
-                if (historyEntries.any { it.id == stamp }) return
+            val timeStamp = ClipboardManagerCompat.getClipTimestamp(clipData)?.also { stamp ->
+                if (historyEntries.any { it.timeStamp == stamp }) return
             } ?: System.currentTimeMillis()
 
             val content = clipItem.coerceToText(latinIME)
             if (TextUtils.isEmpty(content)) return
 
-            val entry = ClipboardHistoryEntry(id, content)
+            val entry = ClipboardHistoryEntry(timeStamp, content)
             historyEntries.add(entry)
             sortHistoryEntries()
             val at = historyEntries.indexOf(entry)
@@ -68,10 +71,10 @@ class ClipboardHistoryManager(
         }
     }
 
-    fun toggleClipPinned(clipId: Long) {
-        val from = historyEntries.indexOfFirst { it.id == clipId }
+    fun toggleClipPinned(ts: Long) {
+        val from = historyEntries.indexOfFirst { it.timeStamp == ts }
         val historyEntry = historyEntries[from].apply {
-            id = System.currentTimeMillis()
+            timeStamp = System.currentTimeMillis()
             isPinned = !isPinned
         }
         sortHistoryEntries()
@@ -94,14 +97,32 @@ class ClipboardHistoryManager(
         historyEntries.sort()
     }
 
+    private fun checkClipRetentionElapsed() {
+        val mins = latinIME.mSettings.current.mClipboardHistoryRetentionTime
+        if (mins <= 0) return // No retention limit
+        val maxClipRetentionTime = mins * 60 * 1000L
+        val now = System.currentTimeMillis()
+        historyEntries.removeAll { !it.isPinned && (now - it.timeStamp) > maxClipRetentionTime }
+    }
+
+    // We do not want to update history while user is visualizing it, so we check retention only
+    // when history is about to be shown
+    fun prepareClipboardHistory() = checkClipRetentionElapsed()
+
     fun getHistorySize() = historyEntries.size
 
     fun getHistoryEntry(position: Int) = historyEntries[position]
 
-    fun getHistoryEntryContent(id: Long) = historyEntries.first { it.id == id }
+    fun getHistoryEntryContent(timeStamp: Long) = historyEntries.first { it.timeStamp == timeStamp }
 
     fun setHistoryChangeListener(l: OnHistoryChangeListener?) {
         onHistoryChangeListener = l
+    }
+
+    fun retrieveClipboardContent(): CharSequence {
+        val clipData = clipboardManager.primaryClip ?: return ""
+        if (clipData.itemCount == 0) return ""
+        return clipData.getItemAt(0)?.coerceToText(latinIME) ?: ""
     }
 
     private fun startLoadPinnedClipsFromDisk() {
