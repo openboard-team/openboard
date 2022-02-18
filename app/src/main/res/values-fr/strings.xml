@@ -227,4 +227,5 @@
     <string name="clipboard_history_retention_time">Temps de rétention de l\'historique</string>
     <string name="enable_clipboard_history_summary">Si désactivé, l\'appui sur la touche presse-papier collera l’éventuel contenu du presse-papier</string>
     <string name="enable_clipboard_history">Activer l\'historique</string>
+    <string name="abbreviation_unit_minutes">&lt;xliff:g xmlns:xliff=\"urn:oasis:names:tc:xliff:document:1.2\" id=\"MINUTES\"&gt;min.</string>
 </resources>
