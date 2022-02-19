@@ -27,6 +27,6 @@
 >
     <GridRows
         latin:codesArray="@array/emoji_objects"
-        latin:keyLabelFlags="fontNormal|alignLabelOffCenter"
+        latin:keyLabelFlags="fontNormal"
         latin:backgroundType="empty" />
 </Keyboard>

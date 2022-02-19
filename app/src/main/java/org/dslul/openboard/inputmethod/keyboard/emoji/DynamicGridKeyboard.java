@@ -45,6 +45,7 @@ final class DynamicGridKeyboard extends Keyboard {
 
     private final SharedPreferences mPrefs;
     private final int mHorizontalStep;
+    private final int mHorizontalGap;
     private final int mVerticalStep;
     private final int mColumnsNum;
     private final int mMaxKeyCount;
@@ -59,7 +60,8 @@ final class DynamicGridKeyboard extends Keyboard {
         super(templateKeyboard);
         final Key key0 = getTemplateKey(TEMPLATE_KEY_CODE_0);
         final Key key1 = getTemplateKey(TEMPLATE_KEY_CODE_1);
-        mHorizontalStep = Math.abs(key1.getX() - key0.getX());
+        mHorizontalGap = Math.abs(key1.getX() - key0.getX()) - key0.getWidth();
+        mHorizontalStep = key0.getWidth() + mHorizontalGap;
         mVerticalStep = key0.getHeight() + mVerticalGap;
         mColumnsNum = mBaseWidth / mHorizontalStep;
         mMaxKeyCount = maxKeyCount;
@@ -208,12 +210,12 @@ final class DynamicGridKeyboard extends Keyboard {
 
     private int getKeyX0(final int index) {
         final int column = index % mColumnsNum;
-        return column * mHorizontalStep;
+        return column * mHorizontalStep + mHorizontalGap / 2;
     }
 
     private int getKeyX1(final int index) {
         final int column = index % mColumnsNum + 1;
-        return column * mHorizontalStep;
+        return column * mHorizontalStep + mHorizontalGap / 2;
     }
 
     private int getKeyY0(final int index) {
