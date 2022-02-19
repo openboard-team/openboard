@@ -31,6 +31,7 @@
     bg: Bulgarian/bulgarian_bds
     bg: Bulgarian/bulgarian_bekl
     bn_BD: Bengali (Bangladesh)/bengali_unijoy
+    bn_BD: Bengali (Bangladesh) (Akkhor)/bengali_akkhor
     bn_IN: Bengali (India)/bengali
     ca: Catalan/spanish
     cs: Czech/qwertz
@@ -217,6 +218,14 @@
             android:imeSubtypeLocale="bn_BD"
             android:imeSubtypeMode="keyboard"
             android:imeSubtypeExtraValue="KeyboardLayoutSet=bengali_unijoy,EmojiCapable"
+            android:isAsciiCapable="false"
+    />
+    <subtype android:icon="@drawable/ic_ime_switcher_dark"
+            android:label="@string/subtype_with_layout_bn_BD"
+            android:subtypeId="0xa2144b0d"
+            android:imeSubtypeLocale="bn_BD"
+            android:imeSubtypeMode="keyboard"
+            android:imeSubtypeExtraValue="KeyboardLayoutSet=bengali_akkhor,EmojiCapable"
             android:isAsciiCapable="false"
     />
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
