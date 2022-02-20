@@ -228,4 +228,5 @@
     <string name="enable_clipboard_history_summary">Si désactivé, l\'appui sur la touche presse-papier collera l’éventuel contenu du presse-papier</string>
     <string name="enable_clipboard_history">Activer l\'historique</string>
     <string name="abbreviation_unit_minutes"><xliff:g id="MINUTES">%s</xliff:g>min.</string>
+    <string name="subtype_with_layout_bn_BD"><xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Akkhor)</string>
 </resources>
