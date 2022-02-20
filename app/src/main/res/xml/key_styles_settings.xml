@@ -35,36 +35,36 @@
             latin:languageSwitchKeyEnabled="true"
         >
             <key-style
-                    latin:styleName="settingsMoreKeysStyle"
-                    latin:keyLabelFlags="hasPopupHint"
-                    latin:additionalMoreKeys="!text/keyspec_settings,!text/keyspec_clipboard_normal_key"
-                    latin:backgroundType="functional" />
+                latin:styleName="settingsMoreKeysStyle"
+                latin:keyLabelFlags="hasPopupHint"
+                latin:additionalMoreKeys="!text/keyspec_settings,!text/keyspec_clipboard_normal_key,!text/keyspec_start_onehanded_mode"
+                latin:backgroundType="functional" />
         </case>
         <case
             latin:emojiKeyEnabled="false"
             latin:languageSwitchKeyEnabled="true"
         >
             <key-style
-                    latin:styleName="settingsMoreKeysStyle"
-                    latin:keyLabelFlags="hasPopupHint"
-                    latin:additionalMoreKeys="!text/keyspec_settings,!text/keyspec_clipboard_normal_key,!text/keyspec_emoji_normal_key"
-                    latin:backgroundType="functional" />
+                latin:styleName="settingsMoreKeysStyle"
+                latin:keyLabelFlags="hasPopupHint"
+                latin:additionalMoreKeys="!text/keyspec_settings,!text/keyspec_clipboard_normal_key,!text/keyspec_emoji_normal_key,!text/keyspec_start_onehanded_mode"
+                latin:backgroundType="functional" />
         </case>
         <case
             latin:emojiKeyEnabled="true"
             latin:languageSwitchKeyEnabled="false"
         >
             <key-style
-                    latin:styleName="settingsMoreKeysStyle"
-                    latin:keyLabelFlags="hasPopupHint"
-                    latin:additionalMoreKeys="!text/keyspec_settings,!icon/language_switch_key|!code/key_language_switch,!text/keyspec_clipboard_normal_key"
-                    latin:backgroundType="functional" />
+                latin:styleName="settingsMoreKeysStyle"
+                latin:keyLabelFlags="hasPopupHint"
+                latin:additionalMoreKeys="!text/keyspec_settings,!icon/language_switch_key|!code/key_language_switch,!text/keyspec_clipboard_normal_key,!text/keyspec_start_onehanded_mode"
+                latin:backgroundType="functional" />
         </case>
         <default>
             <key-style
                 latin:styleName="settingsMoreKeysStyle"
                 latin:keyLabelFlags="hasPopupHint"
-                latin:additionalMoreKeys="!text/keyspec_settings,!icon/language_switch_key|!code/key_language_switch,!text/keyspec_clipboard_normal_key,!text/keyspec_emoji_normal_key"
+                latin:additionalMoreKeys="!text/keyspec_settings,!icon/language_switch_key|!code/key_language_switch,!text/keyspec_clipboard_normal_key,!text/keyspec_emoji_normal_key,!text/keyspec_start_onehanded_mode"
                 latin:backgroundType="functional" />
         </default>
     </switch>
