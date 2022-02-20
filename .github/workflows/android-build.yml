@@ -25,13 +25,13 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew assembleDebug
 
-      - name: Upload our APK
+      - name: Upload APK
         uses: actions/upload-artifact@v2.2.0
         with:
           name: APK
-          path: app/build/outputs/apk/release/app-release-unsigned.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
 
       - name: Upload lint report
         uses: actions/upload-artifact@v2.2.0
