@@ -228,4 +228,5 @@
     <string name="theme_variant">Variasi tema</string>
     <string name="theme_family">Keluarga tema</string>
     <string name="enable_clipboard_history_summary">Jika dinonaktifkan, menekan tombol ikon clipboard akan menempelkan konten yang disalin</string>
+    <string name="subtype_with_layout_bn_BD"><xliff:g id="LANGUAGE_NAME" example="Bangla">%s</xliff:g> (Akkhor)</string>
 </resources>
