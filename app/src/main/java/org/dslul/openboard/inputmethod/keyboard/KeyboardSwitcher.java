@@ -129,10 +129,12 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         builder.setEmojiKeyEnabled(settingsValues.mShowsEmojiKey);
         builder.setSplitLayoutEnabledByUser(ProductionFlags.IS_SPLIT_KEYBOARD_SUPPORTED
                 && settingsValues.mIsSplitKeyboardEnabled);
+        final boolean oneHandedModeEnabled = settingsValues.mOneHandedModeEnabled;
+        builder.setOneHandedModeEnabled(oneHandedModeEnabled);
         mKeyboardLayoutSet = builder.build();
         try {
             mState.onLoadKeyboard(currentAutoCapsState, currentRecapitalizeState,
-                    settingsValues.mOneHandedModeEnabled);
+                    oneHandedModeEnabled);
             mKeyboardTextsSet.setLocale(mRichImm.getCurrentSubtypeLocale(), mThemeContext);
         } catch (KeyboardLayoutSetException e) {
             Log.w(TAG, "loading keyboard failed: " + e.mKeyboardId, e.getCause());
