@@ -204,4 +204,9 @@
     <string name="show_hints">বোতামের পরামর্শ দেখাও</string>
     <string name="theme_variant">রঙের ধরণ</string>
     <string name="key_borders">বোতামের পরিধি</string>
+    <string name="settings_category_clipboard_history">ক্লিপবোর্ডের ইতিহাস</string>
+    <string name="abbreviation_unit_minutes"><xliff:g id="MINUTES">%s</xliff:g>মি.</string>
+    <string name="settings_no_limit">কোনও সীমা নেই</string>
+    <string name="enable_clipboard_history">ক্লিপবোর্ড ইতিহাস সক্ষম করুন</string>
+    <string name="android_spell_checker_settings">ওপেনবোর্ড বানান পরীক্ষক পছন্দসমূহ</string>
 </resources>
