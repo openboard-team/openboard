@@ -19,6 +19,7 @@ package org.dslul.openboard.inputmethod.latin.settings;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.preference.Preference;
 
@@ -26,17 +27,6 @@ import org.dslul.openboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.RichInputMethodManager;
 
-/**
- * "Preferences" settings sub screen.
- *
- * This settings sub screen handles the following input preferences.
- * - Auto-capitalization
- * - Double-space period
- * - Vibrate on keypress
- * - Sound on keypress
- * - Popup on keypress
- * - Voice input key
- */
 public final class PreferencesSettingsFragment extends SubScreenFragment {
 
     private static final boolean VOICE_IME_ENABLED =
@@ -62,12 +52,16 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
         }
         if (!AudioAndHapticFeedbackManager.getInstance().hasVibrator()) {
             removePreference(Settings.PREF_VIBRATE_ON);
+            removePreference(Settings.PREF_VIBRATION_DURATION_SETTINGS);
         }
         if (!Settings.readFromBuildConfigIfToShowKeyPreviewPopupOption(res)) {
             removePreference(Settings.PREF_POPUP_ON);
         }
 
-        refreshEnablingsOfKeypressSoundAndVibrationSettings();
+        setupKeypressVibrationDurationSettings();
+        setupKeypressSoundVolumeSettings();
+        setupHistoryRetentionTimeSettings();
+        refreshEnablingsOfKeypressSoundAndVibrationAndHistRetentionSettings();
     }
 
     @Override
@@ -84,15 +78,159 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
 
     @Override
     public void onSharedPreferenceChanged(final SharedPreferences prefs, final String key) {
-        refreshEnablingsOfKeypressSoundAndVibrationSettings();
+        refreshEnablingsOfKeypressSoundAndVibrationAndHistRetentionSettings();
     }
 
-    private void refreshEnablingsOfKeypressSoundAndVibrationSettings() {
+    private void refreshEnablingsOfKeypressSoundAndVibrationAndHistRetentionSettings() {
         final SharedPreferences prefs = getSharedPreferences();
         final Resources res = getResources();
         setPreferenceEnabled(Settings.PREF_VIBRATION_DURATION_SETTINGS,
                 Settings.readVibrationEnabled(prefs, res));
         setPreferenceEnabled(Settings.PREF_KEYPRESS_SOUND_VOLUME,
                 Settings.readKeypressSoundEnabled(prefs, res));
+        setPreferenceEnabled(Settings.PREF_CLIPBOARD_HISTORY_RETENTION_TIME,
+                Settings.readClipboardHistoryEnabled(prefs));
+    }
+
+    private void setupKeypressVibrationDurationSettings() {
+        final SeekBarDialogPreference pref = (SeekBarDialogPreference)findPreference(
+                Settings.PREF_VIBRATION_DURATION_SETTINGS);
+        if (pref == null) {
+            return;
+        }
+        final SharedPreferences prefs = getSharedPreferences();
+        final Resources res = getResources();
+        pref.setInterface(new SeekBarDialogPreference.ValueProxy() {
+            @Override
+            public void writeValue(final int value, final String key) {
+                prefs.edit().putInt(key, value).apply();
+            }
+
+            @Override
+            public void writeDefaultValue(final String key) {
+                prefs.edit().remove(key).apply();
+            }
+
+            @Override
+            public int readValue(final String key) {
+                return Settings.readKeypressVibrationDuration(prefs, res);
+            }
+
+            @Override
+            public int readDefaultValue(final String key) {
+                return Settings.readDefaultKeypressVibrationDuration(res);
+            }
+
+            @Override
+            public void feedbackValue(final int value) {
+                AudioAndHapticFeedbackManager.getInstance().vibrate(value);
+            }
+
+            @Override
+            public String getValueText(final int value) {
+                if (value < 0) {
+                    return res.getString(R.string.settings_system_default);
+                }
+                return res.getString(R.string.abbreviation_unit_milliseconds, value);
+            }
+        });
+    }
+
+    private void setupKeypressSoundVolumeSettings() {
+        final SeekBarDialogPreference pref = (SeekBarDialogPreference)findPreference(
+                Settings.PREF_KEYPRESS_SOUND_VOLUME);
+        if (pref == null) {
+            return;
+        }
+        final SharedPreferences prefs = getSharedPreferences();
+        final Resources res = getResources();
+        final AudioManager am = (AudioManager)getActivity().getSystemService(Context.AUDIO_SERVICE);
+        pref.setInterface(new SeekBarDialogPreference.ValueProxy() {
+            private static final float PERCENTAGE_FLOAT = 100.0f;
+
+            private float getValueFromPercentage(final int percentage) {
+                return percentage / PERCENTAGE_FLOAT;
+            }
+
+            private int getPercentageFromValue(final float floatValue) {
+                return (int)(floatValue * PERCENTAGE_FLOAT);
+            }
+
+            @Override
+            public void writeValue(final int value, final String key) {
+                prefs.edit().putFloat(key, getValueFromPercentage(value)).apply();
+            }
+
+            @Override
+            public void writeDefaultValue(final String key) {
+                prefs.edit().remove(key).apply();
+            }
+
+            @Override
+            public int readValue(final String key) {
+                return getPercentageFromValue(Settings.readKeypressSoundVolume(prefs, res));
+            }
+
+            @Override
+            public int readDefaultValue(final String key) {
+                return getPercentageFromValue(Settings.readDefaultKeypressSoundVolume(res));
+            }
+
+            @Override
+            public String getValueText(final int value) {
+                if (value < 0) {
+                    return res.getString(R.string.settings_system_default);
+                }
+                return Integer.toString(value);
+            }
+
+            @Override
+            public void feedbackValue(final int value) {
+                am.playSoundEffect(
+                        AudioManager.FX_KEYPRESS_STANDARD, getValueFromPercentage(value));
+            }
+        });
+    }
+
+    private void setupHistoryRetentionTimeSettings() {
+        final SharedPreferences prefs = getSharedPreferences();
+        final Resources res = getResources();
+        final SeekBarDialogPreference pref = (SeekBarDialogPreference)findPreference(
+                Settings.PREF_CLIPBOARD_HISTORY_RETENTION_TIME);
+        if (pref == null) {
+            return;
+        }
+        pref.setInterface(new SeekBarDialogPreference.ValueProxy() {
+            @Override
+            public void writeValue(final int value, final String key) {
+                prefs.edit().putInt(key, value).apply();
+            }
+
+            @Override
+            public void writeDefaultValue(final String key) {
+                prefs.edit().remove(key).apply();
+            }
+
+            @Override
+            public int readValue(final String key) {
+                return Settings.readClipboardHistoryRetentionTime(prefs, res);
+            }
+
+            @Override
+            public int readDefaultValue(final String key) {
+                return Settings.readDefaultClipboardHistoryRetentionTime(res);
+            }
+
+            @Override
+            public String getValueText(final int value) {
+                if (value <= 0) {
+                    return res.getString(R.string.settings_no_limit);
+                }
+                return res.getString(R.string.abbreviation_unit_minutes, value);
+            }
+
+            @Override
+            public void feedbackValue(final int value) {}
+        });
     }
 }

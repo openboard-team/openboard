@@ -16,6 +16,7 @@
 
 package org.dslul.openboard.inputmethod.latin.settings;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
@@ -47,6 +48,7 @@ public final class SettingsFragment extends InputMethodSettingsFragment {
         setHasOptionsMenu(true);
         setInputMethodSettingsCategoryTitle(R.string.language_selection_title);
         setSubtypeEnablerTitle(R.string.select_language);
+        setSubtypeEnablerIcon(R.drawable.ic_settings_languages);
         addPreferencesFromResource(R.xml.prefs);
         final PreferenceScreen preferenceScreen = getPreferenceScreen();
         preferenceScreen.setTitle(
@@ -54,6 +56,16 @@ public final class SettingsFragment extends InputMethodSettingsFragment {
         if (!JniUtils.sHaveGestureLib) {
             final Preference gesturePreference = findPreference(Settings.SCREEN_GESTURE);
             preferenceScreen.removePreference(gesturePreference);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        final ActionBar actionBar = getActivity().getActionBar();
+        final CharSequence screenTitle = getPreferenceScreen().getTitle();
+        if (actionBar != null && screenTitle != null) {
+            actionBar.setTitle(screenTitle);
         }
     }
 

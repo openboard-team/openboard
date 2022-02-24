@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- 
 /*
 **
@@ -16,13 +16,10 @@
 ** See the License for the specific language governing permissions and
 ** limitations under the License.
 */
- -->
-
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+ --><resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="english_ime_input_options" msgid="3909945612939668554">"Options de saisie"</string>
     <string name="use_contacts_for_spellchecking_option_title" msgid="5374120998125353898">"Rechercher les noms de contacts"</string>
-    <string name="use_contacts_for_spellchecking_option_summary" msgid="8754413382543307713">"Le correcteur orthographique utilise les noms des contacts."</string>
+    <string name="use_contacts_for_spellchecking_option_summary" msgid="8754413382543307713">Le correcteur orthographique utilise les noms des contacts</string>
     <string name="vibrate_on_keypress" msgid="5258079494276955460">"Vibrer à chaque touche"</string>
     <string name="sound_on_keypress" msgid="6093592297198243644">"Émettre un son à chaque touche"</string>
     <string name="popup_on_keypress" msgid="123894815723512944">"Agrandir les caractères"</string>
@@ -35,7 +32,7 @@
     <string name="settings_screen_theme" msgid="2137262503543943871">"Thème"</string>
     <string name="enable_split_keyboard" msgid="4177264923999493614">"Activer le clavier en deux parties"</string>
     <string name="include_other_imes_in_language_switch_list" msgid="4533689960308565519">"Autres modes de saisie"</string>
-    <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">"La touche de sélection de langue couvre d\'autres modes de saisie."</string>
+    <string name="include_other_imes_in_language_switch_list_summary" msgid="840637129103317635">La touche de sélection de langue couvre d\'autres modes de saisie</string>
     <string name="show_language_switch_key" msgid="5915478828318774384">"Touche de sélection de langue"</string>
     <string name="show_language_switch_key_summary" msgid="7343403647474265713">"Afficher lorsque plusieurs langues de saisie sont activées"</string>
     <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"Masquer touche agrandie"</string>
@@ -48,7 +45,7 @@
     <string name="use_personalized_dicts" msgid="5167396352105467626">"Suggestions personnalisées"</string>
     <string name="enable_metrics_logging" msgid="5506372337118822837">"Améliorer <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
     <string name="use_double_space_period" msgid="8781529969425082860">"Point et espace"</string>
-    <string name="use_double_space_period_summary" msgid="6532892187247952799">"Appuyez deux fois sur la barre d\'espace pour insérer un point et un espace."</string>
+    <string name="use_double_space_period_summary" msgid="6532892187247952799">Appuyez deux fois sur la barre d\'espace pour insérer un point et un espace</string>
     <string name="auto_cap" msgid="1719746674854628252">"Majuscules auto"</string>
     <string name="auto_cap_summary" msgid="7934452761022946874">"Majuscule au premier mot de chaque phrase"</string>
     <string name="edit_personal_dictionary" msgid="3996910038952940420">"Dictionnaire personnel"</string>
@@ -77,7 +74,7 @@
     <string name="voice_input_disabled_summary" msgid="6323489602945135165">"Aucun mode de saisie vocale activé. Activez les paramètres de langues et de saisie."</string>
     <string name="configure_input_method" msgid="373356270290742459">"Configurer les modes de saisie"</string>
     <string name="language_selection_title" msgid="3666971864764478269">"Langues"</string>
-    <string name="help_and_feedback" msgid="5328219371839879161">"Aide et commentaires"</string>
+    <string name="help_and_feedback" msgid="5328219371839879161">Aide &amp; commentaires</string>
     <string name="select_language" msgid="5709487854987078367">"Langues"</string>
     <string name="hint_add_to_dictionary" msgid="2645988432867033007">"Appuyer de nouveau pour enregistrer"</string>
     <string name="hint_add_to_dictionary_without_word" msgid="6710206006427574423">"Appuyer ici pour enregistrer"</string>
@@ -95,9 +92,9 @@
     <string name="subtype_es_US" msgid="5583145191430180200">"Espagnol (États-Unis)"</string>
     <string name="subtype_hi_ZZ" msgid="8860448146262798623">"Hindi/Anglais"</string>
     <string name="subtype_sr_ZZ" msgid="9059219552986034343">"Serbe (latin)"</string>
-    <string name="subtype_with_layout_en_GB" msgid="1931018968641592304">"anglais (Royaume-Uni) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_en_US" msgid="8809311287529805422">"anglais (États-Unis) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_es_US" msgid="510930471167541338">"espagnol (États-Unis) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_en_GB" msgid="1931018968641592304">Anglais (Royaume-Uni) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)</string>
+    <string name="subtype_with_layout_en_US" msgid="8809311287529805422">Anglais (États-Unis) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)</string>
+    <string name="subtype_with_layout_es_US" msgid="510930471167541338">Espagnol (États-Unis) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)</string>
     <string name="subtype_with_layout_hi_ZZ" msgid="6827402953860547044">"Hindi/Anglais (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ" msgid="2859024772719772407">"Serbe (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (traditionnel)"</string>
@@ -109,7 +106,7 @@
     <string name="subtype_no_language_dvorak" msgid="1564494667584718094">"Alphabet latin (Dvorak)"</string>
     <string name="subtype_no_language_colemak" msgid="5837418400010302623">"Alphabet latin (Colemak)"</string>
     <string name="subtype_no_language_pcqwerty" msgid="5354918232046200018">"Alphabet latin (PC)"</string>
-    <string name="subtype_emoji" msgid="7483586578074549196">"Emoji"</string>
+    <string name="subtype_emoji" msgid="7483586578074549196">Émoji</string>
     <string name="keyboard_theme" msgid="4909551808526178852">"Thème du clavier"</string>
     <string name="custom_input_styles_title" msgid="8429952441821251512">"Styles saisie perso"</string>
     <string name="add_style" msgid="6163126614514489951">"Ajouter style"</string>
@@ -121,12 +118,12 @@
     <string name="custom_input_style_note_message" msgid="8826731320846363423">"Vous devez activer votre style de saisie personnalisé avant de l\'utiliser. Voulez-vous le faire maintenant ?"</string>
     <string name="enable" msgid="5031294444630523247">"Activer"</string>
     <string name="not_now" msgid="6172462888202790482">"Pas maintenant"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"Le style de saisie suivant existe déjà : <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>."</string>
+    <string name="custom_input_style_already_exists" msgid="8008728952215449707">Le style de saisie suivant existe déjà: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g></string>
     <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Durée de vibration des touches"</string>
     <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Volume son pression de touche"</string>
     <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Délai d\'appui prolongé"</string>
-    <string name="prefs_enable_emoji_alt_physical_key" msgid="5963640002335470112">"Emoji pour clavier physique"</string>
-    <string name="prefs_enable_emoji_alt_physical_key_summary" msgid="5259484820941627827">"La touche Alt physique permet d\'afficher la palette d\'emoji."</string>
+    <string name="prefs_enable_emoji_alt_physical_key" msgid="5963640002335470112">Émoji pour clavier physique</string>
+    <string name="prefs_enable_emoji_alt_physical_key_summary" msgid="5259484820941627827">La touche Alt physique permet d\'afficher la palette d\'émoji</string>
     <string name="button_default" msgid="3988017840431881491">"Par défaut"</string>
     <string name="setup_welcome_title" msgid="6112821709832031715">"Bienvenue dans <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
     <string name="setup_welcome_additional_description" msgid="8150252008545768953">"avec la saisie gestuelle"</string>
@@ -135,12 +132,12 @@
     <string name="setup_steps_title" msgid="6400373034871816182">"Configurer <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
     <string name="setup_step1_title" msgid="3147967630253462315">"Activer <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
     <string name="setup_step1_instruction" msgid="4295448056733329661">"Sous \"Langues et saisie\", veuillez cocher \"<xliff:g id="APPLICATION_NAME">%s</xliff:g>\" pour autoriser son exécution sur l\'appareil."</string>
-    <string name="setup_step1_finished_instruction" msgid="8701441895377434947">"L\'application \"<xliff:g id="APPLICATION_NAME">%s</xliff:g>\" est déjà activée dans vos paramètres \"Langues et saisie\". Passez à l\'étape suivante."</string>
+    <string name="setup_step1_finished_instruction" msgid="8701441895377434947">L\'application \"<xliff:g id="APPLICATION_NAME">%s</xliff:g>\" est déjà activée dans vos paramètres \"Langues et saisie\". Passez à l\'étape suivante!</string>
     <string name="setup_step1_action" msgid="4366513534999901728">"Activer le clavier dans les paramètres"</string>
     <string name="setup_step2_title" msgid="6860725447906690594">"Basculer vers <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
     <string name="setup_step2_instruction" msgid="9141481964870023336">"Sélectionnez ensuite \"<xliff:g id="APPLICATION_NAME">%s</xliff:g>\" comme mode de saisie actif."</string>
     <string name="setup_step2_action" msgid="1660330307159824337">"Changer de mode de saisie"</string>
-    <string name="setup_step3_title" msgid="3154757183631490281">"Félicitations, l\'opération est terminée"</string>
+    <string name="setup_step3_title" msgid="3154757183631490281">Félicitations, l\'opération est terminée!</string>
     <string name="setup_step3_instruction" msgid="8025981829605426000">"Avec <xliff:g id="APPLICATION_NAME">%s</xliff:g>, vous pouvez saisir du texte dans toutes vos applications préférées."</string>
     <string name="setup_step3_action" msgid="600879797256942259">"Configurer des langues supplémentaires"</string>
     <string name="setup_finish_action" msgid="276559243409465389">"OK"</string>
@@ -155,14 +152,14 @@
     <string name="user_dictionaries" msgid="3582332055892252845">"Dictionnaires personnels"</string>
     <string name="default_user_dict_pref_name" msgid="1625055720489280530">"Dictionnaire personnel"</string>
     <string name="dictionary_available" msgid="4728975345815214218">"Dictionnaire disponible"</string>
-    <string name="dictionary_downloading" msgid="2982650524622620983">"Téléchargement en cours…"</string>
+    <string name="dictionary_downloading" msgid="2982650524622620983">Téléchargement en cours</string>
     <string name="dictionary_installed" msgid="8081558343559342962">"Installé"</string>
     <string name="dictionary_disabled" msgid="8950383219564621762">"Installé, désactivé"</string>
-    <string name="cannot_connect_to_dict_service" msgid="9216933695765732398">"Pas de service dico."</string>
+    <string name="cannot_connect_to_dict_service" msgid="9216933695765732398">Problème de connexion au service de dictionnaire</string>
     <string name="no_dictionaries_available" msgid="8039920716566132611">"Aucun dictionnaire"</string>
     <string name="check_for_updates_now" msgid="8087688440916388581">"Actualiser"</string>
     <string name="last_update" msgid="730467549913588780">"Dernière mise à jour"</string>
-    <string name="message_updating" msgid="4457761393932375219">"Recherche de mises à jour en cours…"</string>
+    <string name="message_updating" msgid="4457761393932375219">Recherche de mises à jour en cours</string>
     <string name="message_loading" msgid="5638680861387748936">"Chargement en cours…"</string>
     <string name="main_dict_description" msgid="3072821352793492143">"Dictionnaire principal"</string>
     <string name="cancel" msgid="6830980399865683324">"Annuler"</string>
@@ -190,4 +187,45 @@
     <string name="user_dict_settings_more_languages" msgid="7131268499685180461">"Plus de langues…"</string>
     <string name="user_dict_settings_delete" msgid="110413335187193859">"Supprimer"</string>
     <string name="user_dict_fast_scroll_alphabet" msgid="5431919401558285473">" ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
+    <string name="spell_checker_service_name">Vérificateur d\'orthographe OpenBoard</string>
+    <string name="android_spell_checker_settings">Parmètres du vérificateur d\'orthographe OpenBoard</string>
+    <string name="number_row">Ligne de chiffres</string>
+    <string name="delete_swipe">Balayage de la touche Effacer</string>
+    <string name="delete_swipe_summary">Effectuez un glissement sur la touche de suppression pour sélectionner et supprimer de plus grandes portions de texte en une seule fois</string>
+    <string name="space_trackpad_summary">Glisser sur la barre d\'espace pour déplacer le curseur</string>
+    <string name="space_trackpad">Trackpad sur la barre d\'espace</string>
+    <string name="ime_settings">Paramètres d\'OpenBoard</string>
+    <string name="settings_category_input">Saisie</string>
+    <string name="settings_category_correction">Corrections</string>
+    <string name="settings_category_suggestions">Suggestions</string>
+    <string name="settings_category_experimental">Expérimental</string>
+    <string name="settings_category_miscellaneous">Divers</string>
+    <string name="prefs_force_incognito_mode_summary">Désactiver l\'apprentissage de nouveaux mots</string>
+    <string name="more_keys_strip_description">Touches supplémentaires</string>
+    <string name="number_row_summary">Toujours afficher la ligne de chiffres</string>
+    <string name="prefs_long_press_keyboard_to_change_lang">Changer le mode de saisie avec la barre d\'esspace</string>
+    <string name="prefs_long_press_keyboard_to_change_lang_summary">Un appui long sur la barre d\'espace fera apparaître le menu de sélection de la méthode de saisie</string>
+    <string name="show_hints_summary">Afficher les caractères alternatifs lors d\'un appui long</string>
+    <string name="show_hints">Afficher les caractères alternatifs</string>
+    <string name="prefs_keyboard_height_scale">Échelle de hauteur du clavier</string>
+    <string name="theme_variant">Variante de thème</string>
+    <string name="day_night_mode_summary">L\'apparence suivra les paramètres système</string>
+    <string name="amoled_mode">Arrière-plans noir profond</string>
+    <string name="prefs_force_incognito_mode">Forcer le mode incognito</string>
+    <string name="theme_family">Famille de thème</string>
+    <string name="key_borders">Bordures de touche</string>
+    <string name="day_night_mode">Mode jour/nuit automatique</string>
+    <string name="amoled_mode_summary">Peut réduire la consommation d\'énergie en fonction de la technologie d\'écran de l\'appareil</string>
+    <string name="prefs_resize_keyboard">Autoriser le redimensionnement du clavier</string>
+    <string name="subtype_no_language_workman">Alphabet (Workman)</string>
+    <string name="subtype_no_language_colemak_dh">Alphabet (Colemak Mod-DH)</string>
+    <string name="show_clipboard_key">Touche du presse-papier</string>
+    <string name="show_emoji_key">Touche d\'accès aux émoji</string>
+    <string name="settings_category_additional_keys">Touches supplémentaires</string>
+    <string name="settings_category_clipboard_history">Historique du presse-papier</string>
+    <string name="settings_no_limit">Sans limite</string>
+    <string name="clipboard_history_retention_time">Temps de rétention de l\'historique</string>
+    <string name="enable_clipboard_history_summary">Si désactivé, l\'appui sur la touche presse-papier collera l’éventuel contenu du presse-papier</string>
+    <string name="enable_clipboard_history">Activer l\'historique</string>
+    <string name="abbreviation_unit_minutes"><xliff:g id="MINUTES">%s</xliff:g>min.</string>
 </resources>

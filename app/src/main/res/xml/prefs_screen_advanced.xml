@@ -19,51 +19,63 @@
     xmlns:latin="http://schemas.android.com/apk/res-auto"
     android:title="@string/settings_screen_advanced"
     android:key="screen_advanced">
+
     <CheckBoxPreference
         android:key="pref_always_incognito_mode"
         android:title="@string/prefs_force_incognito_mode"
         android:summary="@string/prefs_force_incognito_mode_summary"
         android:defaultValue="false" />
-    <org.dslul.openboard.inputmethod.latin.settings.SeekBarDialogPreference
-        android:key="pref_vibration_duration_settings"
-        android:title="@string/prefs_keypress_vibration_duration_settings"
-        latin:maxValue="@integer/config_max_vibration_duration" />
-    <org.dslul.openboard.inputmethod.latin.settings.SeekBarDialogPreference
-        android:key="pref_keypress_sound_volume"
-        android:title="@string/prefs_keypress_sound_volume_settings"
-        latin:maxValue="100" /> <!-- percent -->
+
     <org.dslul.openboard.inputmethod.latin.settings.SeekBarDialogPreference
         android:key="pref_key_longpress_timeout"
         android:title="@string/prefs_key_longpress_timeout_settings"
         latin:minValue="@integer/config_min_longpress_timeout"
         latin:maxValue="@integer/config_max_longpress_timeout"
         latin:stepValue="@integer/config_longpress_timeout_step" />
+
+    <CheckBoxPreference
+        android:key="prefs_long_press_keyboard_to_change_lang"
+        android:title="@string/prefs_long_press_keyboard_to_change_lang"
+        android:summary="@string/prefs_long_press_keyboard_to_change_lang_summary"
+        android:persistent="true"
+        android:defaultValue="true" />
+
     <CheckBoxPreference
         android:key="pref_enable_emoji_alt_physical_key"
         android:title="@string/prefs_enable_emoji_alt_physical_key"
         android:summary="@string/prefs_enable_emoji_alt_physical_key_summary"
         android:defaultValue="true"
         android:persistent="true" />
+
     <CheckBoxPreference
         android:key="pref_show_setup_wizard_icon"
         android:title="@string/show_setup_wizard_icon"
         android:summary="@string/show_setup_wizard_icon_summary"
         android:defaultValue="true"
         android:persistent="true" />
-    <CheckBoxPreference
-        android:key="pref_space_trackpad"
-        android:title="@string/space_trackpad"
-        android:summary="@string/space_trackpad_summary"
-        android:defaultValue="true" />
-    <CheckBoxPreference
-        android:key="pref_delete_swipe"
-        android:title="@string/delete_swipe"
-        android:summary="@string/delete_swipe_summary"
-        android:defaultValue="true" />
+
     <PreferenceScreen
-        android:fragment="org.dslul.openboard.inputmethod.latin.settings.DebugSettingsFragment"
-        android:key="screen_debug"
-        android:title="Debug settings"
-        android:defaultValue="false"
-        android:persistent="true" />
+            android:fragment="org.dslul.openboard.inputmethod.latin.settings.DebugSettingsFragment"
+            android:key="screen_debug"
+            android:title="Debug settings"
+            android:defaultValue="false"
+            android:persistent="true" />
+
+    <PreferenceCategory
+        android:title="@string/settings_category_experimental">
+
+        <CheckBoxPreference
+            android:key="pref_space_trackpad"
+            android:title="@string/space_trackpad"
+            android:summary="@string/space_trackpad_summary"
+            android:defaultValue="true" />
+
+        <CheckBoxPreference
+            android:key="pref_delete_swipe"
+            android:title="@string/delete_swipe"
+            android:summary="@string/delete_swipe_summary"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

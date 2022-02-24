@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- 
 /*
 **
@@ -16,10 +16,7 @@
 ** See the License for the specific language governing permissions and
 ** limitations under the License.
 */
- -->
-
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+ --><resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="english_ime_input_options" msgid="3909945612939668554">"Input options"</string>
     <string name="use_contacts_for_spellchecking_option_title" msgid="5374120998125353898">"Look up contact names"</string>
     <string name="use_contacts_for_spellchecking_option_summary" msgid="8754413382543307713">"Spell checker uses entries from your contact list"</string>
@@ -85,7 +82,7 @@
     <string name="keyboard_layout" msgid="8451164783510487501">"Keyboard theme"</string>
     <string name="switch_accounts" msgid="3321216593719006162">"Change accounts"</string>
     <string name="no_accounts_selected" msgid="2073821619103904330">"No accounts selected"</string>
-    <string name="account_selected" msgid="2846876462199625974">"Currently using <xliff:g id="EMAIL_ADDRESS">%1$s</xliff:g>"</string>
+    <string name="account_selected" msgid="2846876462199625974">Currently using <xliff:g id="EMAIL_ADDRESS">%1$s</xliff:g></string>
     <string name="account_select_ok" msgid="9141195141763227797">"OK"</string>
     <string name="account_select_cancel" msgid="5181012062618504340">"Cancel"</string>
     <string name="account_select_sign_out" msgid="3299651159390187933">"Sign out"</string>
@@ -135,7 +132,7 @@
     <string name="setup_steps_title" msgid="6400373034871816182">"Setting up <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
     <string name="setup_step1_title" msgid="3147967630253462315">"Enable <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
     <string name="setup_step1_instruction" msgid="4295448056733329661">"Please tick \"<xliff:g id="APPLICATION_NAME">%s</xliff:g>\" in your Languages &amp; input settings. This will authorise it to run on your device."</string>
-    <string name="setup_step1_finished_instruction" msgid="8701441895377434947">"<xliff:g id="APPLICATION_NAME">%s</xliff:g> is already enabled in your Languages &amp; input settings, so this step is complete. On to the next one."</string>
+    <string name="setup_step1_finished_instruction" msgid="8701441895377434947"><xliff:g id="APPLICATION_NAME">%s</xliff:g> is already enabled in your Languages &amp; input settings, so this step is complete. On to the next one!</string>
     <string name="setup_step1_action" msgid="4366513534999901728">"Enable in Settings"</string>
     <string name="setup_step2_title" msgid="6860725447906690594">"Switch to <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
     <string name="setup_step2_instruction" msgid="9141481964870023336">"Next, select \"<xliff:g id="APPLICATION_NAME">%s</xliff:g>\" as your active text-input method."</string>
@@ -190,4 +187,39 @@
     <string name="user_dict_settings_more_languages" msgid="7131268499685180461">"More languages…"</string>
     <string name="user_dict_settings_delete" msgid="110413335187193859">"Delete"</string>
     <string name="user_dict_fast_scroll_alphabet" msgid="5431919401558285473">" ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
+    <string name="spell_checker_service_name">OpenBoard Spell Checker</string>
+    <string name="android_spell_checker_settings">OpenBoard Spell Checker Settings</string>
+    <string name="show_clipboard_key">Clipboard key</string>
+    <string name="number_row_summary">Always show number row</string>
+    <string name="delete_swipe">Delete swipe</string>
+    <string name="prefs_force_incognito_mode_summary">Disable learning of new words</string>
+    <string name="show_emoji_key">Emoji key</string>
+    <string name="prefs_force_incognito_mode">Force incognito mode</string>
+    <string name="more_keys_strip_description">More keys</string>
+    <string name="delete_swipe_summary">Perform a swipe from the delete key to select and remove bigger portions of text at once</string>
+    <string name="space_trackpad">Space bar trackpad</string>
+    <string name="space_trackpad_summary">Swipe on the spacebar to move the cursor</string>
+    <string name="settings_category_correction">Corrections</string>
+    <string name="settings_category_experimental">Experimental</string>
+    <string name="settings_category_input">Input</string>
+    <string name="settings_category_miscellaneous">Miscellaneous</string>
+    <string name="ime_settings">OpenBoard Settings</string>
+    <string name="settings_category_suggestions">Suggestions</string>
+    <string name="number_row">Number row</string>
+    <string name="show_hints">Show key hints</string>
+    <string name="show_hints_summary">Show long-press hints</string>
+    <string name="prefs_keyboard_height_scale">Keyboard height scale</string>
+    <string name="day_night_mode">Auto day/night mode</string>
+    <string name="amoled_mode">Deep black backgrounds</string>
+    <string name="key_borders">Key borders</string>
+    <string name="theme_family">Theme family</string>
+    <string name="theme_variant">Theme variant</string>
+    <string name="settings_category_additional_keys">Additional keys</string>
+    <string name="subtype_no_language_colemak_dh">Alphabet (Colemak Mod-DH)</string>
+    <string name="subtype_no_language_workman">Alphabet (Workman)</string>
+    <string name="day_night_mode_summary">Appearance will follow system settings</string>
+    <string name="amoled_mode_summary">Can reduce power usage depending on the device’s screen technology</string>
+    <string name="prefs_long_press_keyboard_to_change_lang">Change input method with space key</string>
+    <string name="prefs_resize_keyboard">Enable keyboard resizing</string>
+    <string name="prefs_long_press_keyboard_to_change_lang_summary">Long pressing space key will prompt input method selection menu</string>
 </resources>

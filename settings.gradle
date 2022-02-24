@@ -1,1 +1,3 @@
 include ':app'
+include ':tools:make-keyboard-text'
+include ':tools:make-emoji-keys'

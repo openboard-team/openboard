@@ -204,5 +204,4 @@
     <string name="prefs_force_incognito_mode">"Режим инкогнито"</string>
     <string name="prefs_force_incognito_mode_summary">"Не запоминать новые слова."</string>
     <string name="show_emoji_key">"Клавиша смайликов"</string>
-    <string name="show_emoji_key_summary">"Показать отдельную клавишу для смайликов. Если отключено, смайлики доступны по долгому нажатию на клавишу ENTER."</string>
 </resources>

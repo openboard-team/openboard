@@ -21,6 +21,7 @@ import android.util.Log;
 
 import org.dslul.openboard.inputmethod.event.Event;
 import org.dslul.openboard.inputmethod.latin.common.Constants;
+import org.dslul.openboard.inputmethod.latin.settings.Settings;
 import org.dslul.openboard.inputmethod.latin.utils.CapsModeUtils;
 import org.dslul.openboard.inputmethod.latin.utils.RecapitalizeStatus;
 
@@ -50,6 +51,7 @@ public final class KeyboardState {
         void setAlphabetShiftLockedKeyboard();
         void setAlphabetShiftLockShiftedKeyboard();
         void setEmojiKeyboard();
+        void setClipboardKeyboard();
         void setSymbolsKeyboard();
         void setSymbolsShiftedKeyboard();
 
@@ -81,10 +83,11 @@ public final class KeyboardState {
     private static final int SWITCH_STATE_MOMENTARY_ALPHA_SHIFT = 5;
     private int mSwitchState = SWITCH_STATE_ALPHA;
 
-    // TODO: Consolidate these two mode booleans into one integer to distinguish between alphabet,
-    // symbols, and emoji mode.
-    private boolean mIsAlphabetMode;
-    private boolean mIsEmojiMode;
+    private static final int MODE_ALPHABET = 0;
+    private static final int MODE_SYMBOLS = 1;
+    private static final int MODE_EMOJI = 2;
+    private static final int MODE_CLIPBOARD = 3;
+    private int mMode = MODE_ALPHABET;
     private AlphabetShiftState mAlphabetShiftState = new AlphabetShiftState();
     private boolean mIsSymbolShifted;
     private boolean mPrevMainKeyboardWasShiftLocked;
@@ -99,9 +102,8 @@ public final class KeyboardState {
 
     static final class SavedKeyboardState {
         public boolean mIsValid;
-        public boolean mIsAlphabetMode;
         public boolean mIsAlphabetShiftLocked;
-        public boolean mIsEmojiMode;
+        public int mMode;
         public int mShiftMode;
 
         @Override
@@ -109,12 +111,15 @@ public final class KeyboardState {
             if (!mIsValid) {
                 return "INVALID";
             }
-            if (mIsAlphabetMode) {
+            if (mMode == MODE_ALPHABET) {
                 return mIsAlphabetShiftLocked ? "ALPHABET_SHIFT_LOCKED"
                         : "ALPHABET_" + shiftModeToString(mShiftMode);
             }
-            if (mIsEmojiMode) {
+            if (mMode == MODE_EMOJI) {
                 return "EMOJI";
+            }
+            if (mMode == MODE_CLIPBOARD) {
+                return "CLIPBOARD";
             }
             return "SYMBOLS_" + shiftModeToString(mShiftMode);
         }
@@ -152,9 +157,8 @@ public final class KeyboardState {
 
     public void onSaveKeyboardState() {
         final SavedKeyboardState state = mSavedKeyboardState;
-        state.mIsAlphabetMode = mIsAlphabetMode;
-        state.mIsEmojiMode = mIsEmojiMode;
-        if (mIsAlphabetMode) {
+        state.mMode = mMode;
+        if (mMode == MODE_ALPHABET) {
             state.mIsAlphabetShiftLocked = mAlphabetShiftState.isShiftLocked();
             state.mShiftMode = mAlphabetShiftState.isAutomaticShifted() ? AUTOMATIC_SHIFT
                     : (mAlphabetShiftState.isShiftedOrShiftLocked() ? MANUAL_SHIFT : UNSHIFT);
@@ -175,7 +179,7 @@ public final class KeyboardState {
                     + " " + stateToString(autoCapsFlags, recapitalizeMode));
         }
         mPrevMainKeyboardWasShiftLocked = state.mIsAlphabetShiftLocked;
-        if (state.mIsAlphabetMode) {
+        if (state.mMode == MODE_ALPHABET) {
             setAlphabetKeyboard(autoCapsFlags, recapitalizeMode);
             setShiftLocked(state.mIsAlphabetShiftLocked);
             if (!state.mIsAlphabetShiftLocked) {
@@ -183,8 +187,12 @@ public final class KeyboardState {
             }
             return;
         }
-        if (state.mIsEmojiMode) {
+        if (state.mMode == MODE_EMOJI) {
             setEmojiKeyboard();
+            return;
+        }
+        if (state.mMode == MODE_CLIPBOARD) {
+            setClipboardKeyboard();
             return;
         }
         // Symbol mode
@@ -199,7 +207,7 @@ public final class KeyboardState {
         if (DEBUG_INTERNAL_ACTION) {
             Log.d(TAG, "setShifted: shiftMode=" + shiftModeToString(shiftMode) + " " + this);
         }
-        if (!mIsAlphabetMode) return;
+        if (mMode != MODE_ALPHABET) return;
         final int prevShiftMode;
         if (mAlphabetShiftState.isAutomaticShifted()) {
             prevShiftMode = AUTOMATIC_SHIFT;
@@ -238,7 +246,7 @@ public final class KeyboardState {
         if (DEBUG_INTERNAL_ACTION) {
             Log.d(TAG, "setShiftLocked: shiftLocked=" + shiftLocked + " " + this);
         }
-        if (!mIsAlphabetMode) return;
+        if (mMode != MODE_ALPHABET) return;
         if (shiftLocked && (!mAlphabetShiftState.isShiftLocked()
                 || mAlphabetShiftState.isShiftLockShifted())) {
             mSwitchActions.setAlphabetShiftLockedKeyboard();
@@ -254,7 +262,7 @@ public final class KeyboardState {
             Log.d(TAG, "toggleAlphabetAndSymbols: "
                     + stateToString(autoCapsFlags, recapitalizeMode));
         }
-        if (mIsAlphabetMode) {
+        if (mMode == MODE_ALPHABET) {
             mPrevMainKeyboardWasShiftLocked = mAlphabetShiftState.isShiftLocked();
             if (mPrevSymbolsKeyboardWasShifted) {
                 setSymbolsShiftedKeyboard();
@@ -279,7 +287,7 @@ public final class KeyboardState {
             Log.d(TAG, "resetKeyboardStateToAlphabet: "
                     + stateToString(autoCapsFlags, recapitalizeMode));
         }
-        if (mIsAlphabetMode) return;
+        if (mMode == MODE_ALPHABET) return;
 
         mPrevSymbolsKeyboardWasShifted = mIsSymbolShifted;
         setAlphabetKeyboard(autoCapsFlags, recapitalizeMode);
@@ -303,8 +311,7 @@ public final class KeyboardState {
         }
 
         mSwitchActions.setAlphabetKeyboard();
-        mIsAlphabetMode = true;
-        mIsEmojiMode = false;
+        mMode = MODE_ALPHABET;
         mIsSymbolShifted = false;
         mRecapitalizeMode = RecapitalizeStatus.NOT_A_RECAPITALIZE_MODE;
         mSwitchState = SWITCH_STATE_ALPHA;
@@ -316,7 +323,7 @@ public final class KeyboardState {
             Log.d(TAG, "setSymbolsKeyboard");
         }
         mSwitchActions.setSymbolsKeyboard();
-        mIsAlphabetMode = false;
+        mMode = MODE_SYMBOLS;
         mIsSymbolShifted = false;
         mRecapitalizeMode = RecapitalizeStatus.NOT_A_RECAPITALIZE_MODE;
         // Reset alphabet shift state.
@@ -329,7 +336,7 @@ public final class KeyboardState {
             Log.d(TAG, "setSymbolsShiftedKeyboard");
         }
         mSwitchActions.setSymbolsShiftedKeyboard();
-        mIsAlphabetMode = false;
+        mMode = MODE_SYMBOLS;
         mIsSymbolShifted = true;
         mRecapitalizeMode = RecapitalizeStatus.NOT_A_RECAPITALIZE_MODE;
         // Reset alphabet shift state.
@@ -341,13 +348,24 @@ public final class KeyboardState {
         if (DEBUG_INTERNAL_ACTION) {
             Log.d(TAG, "setEmojiKeyboard");
         }
-        mIsAlphabetMode = false;
-        mIsEmojiMode = true;
+        mMode = MODE_EMOJI;
         mRecapitalizeMode = RecapitalizeStatus.NOT_A_RECAPITALIZE_MODE;
         // Remember caps lock mode and reset alphabet shift state.
         mPrevMainKeyboardWasShiftLocked = mAlphabetShiftState.isShiftLocked();
         mAlphabetShiftState.setShiftLocked(false);
         mSwitchActions.setEmojiKeyboard();
+    }
+
+    private void setClipboardKeyboard() {
+        if (DEBUG_INTERNAL_ACTION) {
+            Log.d(TAG, "setClipboardKeyboard");
+        }
+        mMode = MODE_CLIPBOARD;
+        mRecapitalizeMode = RecapitalizeStatus.NOT_A_RECAPITALIZE_MODE;
+        // Remember caps lock mode and reset alphabet shift state.
+        mPrevMainKeyboardWasShiftLocked = mAlphabetShiftState.isShiftLocked();
+        mAlphabetShiftState.setShiftLocked(false);
+        mSwitchActions.setClipboardKeyboard();
     }
 
     public void onPressKey(final int code, final boolean isSinglePointer, final int autoCapsFlags,
@@ -379,7 +397,7 @@ public final class KeyboardState {
             // As for #3, please note that it's required to check even when the auto caps mode is
             // off because, for example, we may be in the #1 state within the manual temporary
             // shifted mode.
-            if (!isSinglePointer && mIsAlphabetMode
+            if (!isSinglePointer && mMode == MODE_ALPHABET
                     && autoCapsFlags != TextUtils.CAP_MODE_CHARACTERS) {
                 final boolean needsToResetAutoCaps = mAlphabetShiftState.isAutomaticShifted()
                         || (mAlphabetShiftState.isManualShifted() && mShiftKeyState.isReleasing());
@@ -463,7 +481,7 @@ public final class KeyboardState {
     }
 
     private void updateAlphabetShiftState(final int autoCapsFlags, final int recapitalizeMode) {
-        if (!mIsAlphabetMode) return;
+        if (mMode != MODE_ALPHABET) return;
         if (RecapitalizeStatus.NOT_A_RECAPITALIZE_MODE != recapitalizeMode) {
             // We are recapitalizing. Match the keyboard to the current recapitalize state.
             updateShiftStateForRecapitalize(recapitalizeMode);
@@ -490,7 +508,7 @@ public final class KeyboardState {
         if (RecapitalizeStatus.NOT_A_RECAPITALIZE_MODE != mRecapitalizeMode) {
             return;
         }
-        if (mIsAlphabetMode) {
+        if (mMode == MODE_ALPHABET) {
             mIsInDoubleTapShiftKey = mSwitchActions.isInDoubleTapShiftKeyTimeout();
             if (!mIsInDoubleTapShiftKey) {
                 // This is first tap.
@@ -541,7 +559,7 @@ public final class KeyboardState {
             // We are recapitalizing. We should match the keyboard state to the recapitalize
             // state in priority.
             updateShiftStateForRecapitalize(mRecapitalizeMode);
-        } else if (mIsAlphabetMode) {
+        } else if (mMode == MODE_ALPHABET) {
             final boolean isShiftLocked = mAlphabetShiftState.isShiftLocked();
             mIsInAlphabetUnshiftedFromShifted = false;
             if (mIsInDoubleTapShiftKey) {
@@ -629,7 +647,7 @@ public final class KeyboardState {
         case SWITCH_STATE_MOMENTARY_ALPHA_AND_SYMBOL:
             if (code == Constants.CODE_SWITCH_ALPHA_SYMBOL) {
                 // Detected only the mode change key has been pressed, and then released.
-                if (mIsAlphabetMode) {
+                if (mMode == MODE_ALPHABET) {
                     mSwitchState = SWITCH_STATE_ALPHA;
                 } else {
                     mSwitchState = SWITCH_STATE_SYMBOL_BEGIN;
@@ -644,8 +662,8 @@ public final class KeyboardState {
             }
             break;
         case SWITCH_STATE_SYMBOL_BEGIN:
-            if (mIsEmojiMode) {
-                // When in the Emoji keyboard, we don't want to switch back to the main layout even
+            if (mMode == MODE_EMOJI || mMode == MODE_CLIPBOARD) {
+                // When in the Emoji keyboard or clipboard one, we don't want to switch back to the main layout even
                 // after the user hits an emoji letter followed by an enter or a space.
                 break;
             }
@@ -670,6 +688,14 @@ public final class KeyboardState {
         } else if (code == Constants.CODE_EMOJI) {
             setEmojiKeyboard();
         } else if (code == Constants.CODE_ALPHA_FROM_EMOJI) {
+            setAlphabetKeyboard(autoCapsFlags, recapitalizeMode);
+        } else if (code == Constants.CODE_CLIPBOARD) {
+            // Note: Printing clipboard content is handled in
+            // {@link InputLogic#handleFunctionalEvent(Event,InputTransaction,int,LatinIME.UIHandler)}.
+            if (Settings.getInstance().getCurrent().mClipboardHistoryEnabled) {
+                setClipboardKeyboard();
+            }
+        } else if (code == Constants.CODE_ALPHA_FROM_CLIPBOARD) {
             setAlphabetKeyboard(autoCapsFlags, recapitalizeMode);
         }
     }
@@ -697,7 +723,7 @@ public final class KeyboardState {
 
     @Override
     public String toString() {
-        return "[keyboard=" + (mIsAlphabetMode ? mAlphabetShiftState.toString()
+        return "[keyboard=" + (mMode == MODE_ALPHABET ? mAlphabetShiftState.toString()
                 : (mIsSymbolShifted ? "SYMBOLS_SHIFTED" : "SYMBOLS"))
                 + " shift=" + mShiftKeyState
                 + " symbol=" + mSymbolKeyState

@@ -22,6 +22,9 @@
 <resources>
     <bool name="config_use_fullscreen_mode">false</bool>
 
+    <!-- Maximum time for a clipboard history entry to be kept, in minutes. -->
+    <integer name="config_clipboard_history_retention_time">10</integer>
+
     <dimen name="config_key_hysteresis_distance">8.0dp</dimen>
 
     <!-- Preferable keyboard height in absolute scale: 1.285in -->
@@ -92,6 +95,9 @@
     <fraction name="config_emoji_keyboard_key_letter_size">78%p</fraction>
     <fraction name="config_emoji_keyboard_key_label_size">78%p</fraction>
     <integer name="config_emoji_keyboard_max_recents_key_count">32</integer>
+
+    <!-- Clipboard keyboard -->
+    <integer name="config_clipboard_keyboard_col_count">2</integer>
 
     <!-- Key codes of hardware keys that can be used to toggle the Emoji layout.
          Each array defines a comma-separated tuple containing:

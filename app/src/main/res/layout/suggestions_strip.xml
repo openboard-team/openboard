@@ -20,34 +20,44 @@
 
 <merge
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Provide audio and haptic feedback by ourselves based on the keyboard settings.
-         We just need to ignore the system's audio and haptic feedback settings. -->
     <LinearLayout
-        android:id="@+id/suggestions_strip"
+        android:id="@+id/suggestions_strip_wrapper"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/config_suggestions_strip_horizontal_margin"
-        android:layout_marginRight="@dimen/config_suggestions_strip_horizontal_margin"
         android:hapticFeedbackEnabled="false"
-        android:soundEffectsEnabled="false" />
-    <!-- Provide audio and haptic feedback by ourselves based on the keyboard settings.
-         We just need to ignore the system's audio and haptic feedback settings. -->
-    <ImageButton
-        android:id="@+id/suggestions_strip_other_key"
-        android:layout_width="@dimen/config_suggestions_strip_edge_key_width"
-        android:layout_height="fill_parent"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        style="?attr/suggestionWordStyle"
-        android:contentDescription="@string/more_keys_strip_description" />
-    <ImageButton
-        android:id="@+id/suggestions_strip_voice_key"
-        android:layout_width="@dimen/config_suggestions_strip_edge_key_width"
-        android:layout_height="fill_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:contentDescription="@string/spoken_description_mic"
-        style="?attr/suggestionWordStyle" />
+        android:soundEffectsEnabled="false">
+        <!-- Provide audio and haptic feedback by ourselves based on the keyboard settings.
+             We just need to ignore the system's audio and haptic feedback settings. -->
+        <ImageButton
+            android:id="@+id/suggestions_strip_other_key"
+            android:layout_width="@dimen/config_suggestions_strip_edge_key_width"
+            android:layout_height="fill_parent"
+            android:layout_weight="0"
+            style="?attr/suggestionWordStyle"
+            android:contentDescription="@string/more_keys_strip_description" />
+        <!-- Provide audio and haptic feedback by ourselves based on the keyboard settings.
+             We just need to ignore the system's audio and haptic feedback settings. -->
+        <LinearLayout
+            android:id="@+id/suggestions_strip"
+            android:orientation="horizontal"
+            android:maxWidth="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hapticFeedbackEnabled="false"
+            android:soundEffectsEnabled="false" />
+        <ImageButton
+            android:id="@+id/suggestions_strip_voice_key"
+            android:layout_width="@dimen/config_suggestions_strip_edge_key_width"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/spoken_description_mic"
+            style="?attr/suggestionWordStyle" />
+        <ImageButton
+            android:id="@+id/suggestions_strip_clipboard_key"
+            android:layout_width="@dimen/config_suggestions_strip_edge_key_width"
+            android:scaleType="fitCenter"
+            android:layout_height="fill_parent"
+            style="?attr/suggestionWordStyle" />
+    </LinearLayout>
 </merge>

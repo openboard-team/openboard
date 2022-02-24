@@ -15,60 +15,98 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/settings_screen_preferences">
-    <CheckBoxPreference
-        android:key="auto_cap"
-        android:title="@string/auto_cap"
-        android:summary="@string/auto_cap_summary"
-        android:defaultValue="true"
-        android:persistent="true" />
-    <CheckBoxPreference
-        android:key="pref_show_number_row"
-        android:title="@string/number_row"
-        android:summary="@string/number_row_summary"
-        android:defaultValue="false"
-        android:persistent="true" />
-    <CheckBoxPreference
-        android:key="pref_show_hints"
-        android:title="@string/show_hints"
-        android:summary="@string/show_hints_summary"
-        android:defaultValue="true"
-        android:persistent="true" />
-    <CheckBoxPreference
-        android:key="pref_show_language_switch_key"
-        android:title="@string/show_language_switch_key"
-        android:defaultValue="false"
-        android:persistent="true" />
-    <CheckBoxPreference
-        android:key="pref_show_emoji_key"
-        android:title="@string/show_emoji_key"
-        android:summary="@string/show_emoji_key_summary"
-        android:defaultValue="false"
-        android:persistent="true" />
-    <CheckBoxPreference
-        android:key="pref_key_use_double_space_period"
-        android:title="@string/use_double_space_period"
-        android:summary="@string/use_double_space_period_summary"
-        android:defaultValue="true"
-        android:persistent="true" />
-    <CheckBoxPreference
-        android:key="vibrate_on"
-        android:title="@string/vibrate_on_keypress"
-        android:defaultValue="@bool/config_default_vibration_enabled"
-        android:persistent="true" />
-    <CheckBoxPreference
-        android:key="sound_on"
-        android:title="@string/sound_on_keypress"
-        android:defaultValue="@bool/config_default_sound_enabled"
-        android:persistent="true" />
+      xmlns:latin="http://schemas.android.com/apk/res-auto"
+      android:title="@string/settings_screen_preferences">
+
+    <PreferenceCategory android:title="@string/settings_category_input">
+
+        <CheckBoxPreference
+            android:key="pref_show_hints"
+            android:title="@string/show_hints"
+            android:summary="@string/show_hints_summary"
+            android:defaultValue="true"
+            android:persistent="true" />
+
+        <CheckBoxPreference
+            android:key="vibrate_on"
+            android:title="@string/vibrate_on_keypress"
+            android:defaultValue="@bool/config_default_vibration_enabled"
+            android:persistent="true" />
+
+        <org.dslul.openboard.inputmethod.latin.settings.SeekBarDialogPreference
+            android:key="pref_vibration_duration_settings"
+            android:title="@string/prefs_keypress_vibration_duration_settings"
+            latin:maxValue="@integer/config_max_vibration_duration" />
+
+        <CheckBoxPreference
+            android:key="sound_on"
+            android:title="@string/sound_on_keypress"
+            android:defaultValue="@bool/config_default_sound_enabled"
+            android:persistent="true" />
+
+        <org.dslul.openboard.inputmethod.latin.settings.SeekBarDialogPreference
+            android:key="pref_keypress_sound_volume"
+            android:title="@string/prefs_keypress_sound_volume_settings"
+            latin:maxValue="100" /> <!-- percent -->
+
+    </PreferenceCategory>
+
     <CheckBoxPreference
         android:key="popup_on"
         android:title="@string/popup_on_keypress"
         android:defaultValue="@bool/config_default_key_preview_popup"
         android:persistent="true" />
-    <CheckBoxPreference
-        android:key="pref_voice_input_key"
-        android:title="@string/voice_input"
-        android:defaultValue="true"
-        android:persistent="true" />
+
+    <PreferenceCategory
+        android:title="@string/settings_category_additional_keys">
+
+        <CheckBoxPreference
+            android:key="pref_show_number_row"
+            android:title="@string/number_row"
+            android:summary="@string/number_row_summary"
+            android:defaultValue="false"
+            android:persistent="true" />
+
+        <CheckBoxPreference
+            android:key="pref_show_language_switch_key"
+            android:title="@string/show_language_switch_key"
+            android:defaultValue="false"
+            android:persistent="true" />
+
+        <CheckBoxPreference
+            android:key="pref_show_emoji_key"
+            android:title="@string/show_emoji_key"
+            android:defaultValue="false"
+            android:persistent="true" />
+
+        <CheckBoxPreference
+            android:key="pref_voice_input_key"
+            android:title="@string/voice_input"
+            android:defaultValue="true"
+            android:persistent="true" />
+
+        <CheckBoxPreference
+            android:key="pref_show_clipboard_key"
+            android:title="@string/show_clipboard_key"
+            android:defaultValue="false"
+            android:persistent="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_category_clipboard_history">
+
+        <CheckBoxPreference
+            android:key="pref_enable_clipboard_history"
+            android:title="@string/enable_clipboard_history"
+            android:summary="@string/enable_clipboard_history_summary"
+            android:defaultValue="true"
+            android:persistent="true" />
+
+        <org.dslul.openboard.inputmethod.latin.settings.SeekBarDialogPreference
+            android:key="pref_clipboard_history_retention_time"
+            android:title="@string/clipboard_history_retention_time"
+            latin:maxValue="120" /> <!-- minutes -->
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
