@@ -294,7 +294,7 @@ public final class MoreKeySpec {
             // Append remained additional more keys to the tail of more keys.
             out = CollectionUtils.arrayAsList(moreKeys, 0, moreKeysCount);
             for (int i = additionalIndex; i < additionalCount; i++) {
-                out.add(additionalMoreKeys[additionalIndex]);
+                out.add(additionalMoreKeys[i]);
             }
         }
         if (out == null && moreKeysCount > 0) {
