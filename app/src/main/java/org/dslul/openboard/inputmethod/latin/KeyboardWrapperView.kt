@@ -63,8 +63,9 @@ class KeyboardWrapperView @JvmOverloads constructor(
         switchOneHandedModeBtn.visibility = if (oneHandedModeEnabled) VISIBLE else GONE
     }
 
+    @SuppressLint("RtlHardcoded")
     private fun updateSwitchButtonSide() {
-        switchOneHandedModeBtn.scaleX = if (oneHandedGravity == Gravity.RIGHT) -1f else 1f
+        switchOneHandedModeBtn.scaleX = if (oneHandedGravity == Gravity.LEFT) -1f else 1f
     }
 
     override fun onClick(view: View) {
