@@ -32,6 +32,7 @@ import org.dslul.openboard.inputmethod.keyboard.emoji.EmojiPalettesView;
 import org.dslul.openboard.inputmethod.keyboard.internal.KeyboardState;
 import org.dslul.openboard.inputmethod.keyboard.internal.KeyboardTextsSet;
 import org.dslul.openboard.inputmethod.latin.InputView;
+import org.dslul.openboard.inputmethod.latin.KeyboardWrapperView;
 import org.dslul.openboard.inputmethod.latin.LatinIME;
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.RichInputMethodManager;
@@ -51,6 +52,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
     private static final String TAG = KeyboardSwitcher.class.getSimpleName();
 
     private InputView mCurrentInputView;
+    private KeyboardWrapperView mKeyboardViewWrapper;
     private View mMainKeyboardFrame;
     private MainKeyboardView mKeyboardView;
     private EmojiPalettesView mEmojiPalettesView;
@@ -117,7 +119,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         final KeyboardLayoutSet.Builder builder = new KeyboardLayoutSet.Builder(
                 mThemeContext, editorInfo);
         final Resources res = mThemeContext.getResources();
-        final int keyboardWidth = ResourceUtils.getDefaultKeyboardWidth(res);
+        final int keyboardWidth = ResourceUtils.getKeyboardWidth(res, settingsValues);
         final int keyboardHeight = ResourceUtils.getKeyboardHeight(res, settingsValues);
         builder.setKeyboardGeometry(keyboardWidth, keyboardHeight);
         builder.setSubtype(mRichImm.getCurrentSubtype());
@@ -127,9 +129,12 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         builder.setEmojiKeyEnabled(settingsValues.mShowsEmojiKey);
         builder.setSplitLayoutEnabledByUser(ProductionFlags.IS_SPLIT_KEYBOARD_SUPPORTED
                 && settingsValues.mIsSplitKeyboardEnabled);
+        final boolean oneHandedModeEnabled = settingsValues.mOneHandedModeEnabled;
+        builder.setOneHandedModeEnabled(oneHandedModeEnabled);
         mKeyboardLayoutSet = builder.build();
         try {
-            mState.onLoadKeyboard(currentAutoCapsState, currentRecapitalizeState);
+            mState.onLoadKeyboard(currentAutoCapsState, currentRecapitalizeState,
+                    oneHandedModeEnabled);
             mKeyboardTextsSet.setLocale(mRichImm.getCurrentSubtypeLocale(), mThemeContext);
         } catch (KeyboardLayoutSetException e) {
             Log.w(TAG, "loading keyboard failed: " + e.mKeyboardId, e.getCause());
@@ -426,6 +431,30 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
 
     // Implements {@link KeyboardState.SwitchActions}.
     @Override
+    public void setOneHandedModeEnabled(boolean enabled) {
+        if (mKeyboardViewWrapper.getOneHandedModeEnabled() == enabled) {
+            return;
+        }
+        final Settings settings = Settings.getInstance();
+        mKeyboardViewWrapper.setOneHandedModeEnabled(enabled);
+        mKeyboardViewWrapper.setOneHandedGravity(settings.getCurrent().mOneHandedModeGravity);
+
+        settings.writeOneHandedModeEnabled(enabled);
+
+        // Reload the entire keyboard set with the same parameters
+        loadKeyboard(mLatinIME.getCurrentInputEditorInfo(), settings.getCurrent(),
+                mLatinIME.getCurrentAutoCapsState(), mLatinIME.getCurrentRecapitalizeState());
+    }
+
+    // Implements {@link KeyboardState.SwitchActions}.
+    @Override
+    public void switchOneHandedMode() {
+        mKeyboardViewWrapper.switchOneHandedModeSide();
+        Settings.getInstance().writeOneHandedModeGravity(mKeyboardViewWrapper.getOneHandedGravity());
+    }
+
+    // Implements {@link KeyboardState.SwitchActions}.
+    @Override
     public boolean isInDoubleTapShiftKeyTimeout() {
         if (DEBUG_TIMER_ACTION) {
             Log.d(TAG, "isInDoubleTapShiftKeyTimeout");
@@ -476,7 +505,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         } else if (isShowingClipboardHistory()) {
             return mClipboardHistoryView;
         }
-        return mKeyboardView;
+        return mKeyboardViewWrapper;
     }
 
     public MainKeyboardView getMainKeyboardView() {
@@ -509,6 +538,8 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         mEmojiPalettesView = mCurrentInputView.findViewById(R.id.emoji_palettes_view);
         mClipboardHistoryView = mCurrentInputView.findViewById(R.id.clipboard_history_view);
 
+        mKeyboardViewWrapper = mCurrentInputView.findViewById(R.id.keyboard_view_wrapper);
+        mKeyboardViewWrapper.setKeyboardActionListener(mLatinIME);
         mKeyboardView = mCurrentInputView.findViewById(R.id.keyboard_view);
         mKeyboardView.setHardwareAcceleratedDrawingEnabled(isHardwareAcceleratedDrawingEnabled);
         mKeyboardView.setKeyboardActionListener(mLatinIME);

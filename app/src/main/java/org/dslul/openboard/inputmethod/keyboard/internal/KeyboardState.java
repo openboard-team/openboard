@@ -30,7 +30,7 @@ import org.dslul.openboard.inputmethod.latin.utils.RecapitalizeStatus;
  *
  * This class contains all keyboard state transition logic.
  *
- * The input events are {@link #onLoadKeyboard(int, int)}, {@link #onSaveKeyboardState()},
+ * The input events are {@link #onLoadKeyboard(int, int, boolean)}, {@link #onSaveKeyboardState()},
  * {@link #onPressKey(int,boolean,int,int)}, {@link #onReleaseKey(int,boolean,int,int)},
  * {@link #onEvent(Event,int,int)}, {@link #onFinishSlidingInput(int,int)},
  * {@link #onUpdateShiftState(int,int)}, {@link #onResetKeyboardStateToAlphabet(int,int)}.
@@ -65,6 +65,9 @@ public final class KeyboardState {
         void startDoubleTapShiftKeyTimer();
         boolean isInDoubleTapShiftKeyTimeout();
         void cancelDoubleTapShiftKeyTimer();
+
+        void setOneHandedModeEnabled(boolean enabled);
+        void switchOneHandedMode();
     }
 
     private final SwitchActions mSwitchActions;
@@ -130,7 +133,8 @@ public final class KeyboardState {
         mRecapitalizeMode = RecapitalizeStatus.NOT_A_RECAPITALIZE_MODE;
     }
 
-    public void onLoadKeyboard(final int autoCapsFlags, final int recapitalizeMode) {
+    public void onLoadKeyboard(final int autoCapsFlags, final int recapitalizeMode,
+                   final boolean onHandedModeEnabled) {
         if (DEBUG_EVENT) {
             Log.d(TAG, "onLoadKeyboard: " + stateToString(autoCapsFlags, recapitalizeMode));
         }
@@ -147,6 +151,7 @@ public final class KeyboardState {
             // Reset keyboard to alphabet mode.
             setAlphabetKeyboard(autoCapsFlags, recapitalizeMode);
         }
+        mSwitchActions.setOneHandedModeEnabled(onHandedModeEnabled);
     }
 
     // Constants for {@link SavedKeyboardState#mShiftMode} and {@link #setShifted(int)}.
@@ -366,6 +371,20 @@ public final class KeyboardState {
         mPrevMainKeyboardWasShiftLocked = mAlphabetShiftState.isShiftLocked();
         mAlphabetShiftState.setShiftLocked(false);
         mSwitchActions.setClipboardKeyboard();
+    }
+
+    private void setOneHandedModeEnabled(boolean enabled) {
+        if (DEBUG_INTERNAL_ACTION) {
+            Log.d(TAG, "setOneHandedModeEnabled");
+        }
+        mSwitchActions.setOneHandedModeEnabled(enabled);
+    }
+
+    private void switchOneHandedMode() {
+        if (DEBUG_INTERNAL_ACTION) {
+            Log.d(TAG, "switchOneHandedMode");
+        }
+        mSwitchActions.switchOneHandedMode();
     }
 
     public void onPressKey(final int code, final boolean isSinglePointer, final int autoCapsFlags,
@@ -697,6 +716,12 @@ public final class KeyboardState {
             }
         } else if (code == Constants.CODE_ALPHA_FROM_CLIPBOARD) {
             setAlphabetKeyboard(autoCapsFlags, recapitalizeMode);
+        } else if (code == Constants.CODE_START_ONE_HANDED_MODE) {
+            setOneHandedModeEnabled(true);
+        } else if (code == Constants.CODE_STOP_ONE_HANDED_MODE) {
+            setOneHandedModeEnabled(false);
+        } else if (code == Constants.CODE_SWITCH_ONE_HANDED_MODE) {
+            switchOneHandedMode();
         }
     }
 

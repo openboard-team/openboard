@@ -290,6 +290,9 @@
         <attr name="iconClipboardActionKey" format="reference" />
         <attr name="iconClipboardNormalKey" format="reference" />
         <attr name="iconClearClipboardKey" format="reference" />
+        <attr name="iconStartOneHandedMode" format="reference" />
+        <attr name="iconStopOneHandedMode" format="reference" />
+        <attr name="iconSwitchOneHandedMode" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="Keyboard_GridRows">
@@ -512,6 +515,7 @@
         <attr name="hasShortcutKey" format="boolean" />
         <attr name="languageSwitchKeyEnabled" format="boolean" />
         <attr name="emojiKeyEnabled" format="boolean" />
+        <attr name="oneHandedModeEnabled" format="boolean" />
         <attr name="numberRowEnabled" format="boolean" />
         <attr name="isMultiLine" format="boolean" />
         <attr name="imeAction" format="enum">

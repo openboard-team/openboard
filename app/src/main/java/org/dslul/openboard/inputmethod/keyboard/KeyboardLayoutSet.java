@@ -122,6 +122,7 @@ public final class KeyboardLayoutSet {
         boolean mNumberRowEnabled;
         boolean mLanguageSwitchKeyEnabled;
         boolean mEmojiKeyEnabled;
+        boolean mOneHandedModeEnabled;
         RichInputMethodSubtype mSubtype;
         boolean mIsSpellChecker;
         int mKeyboardWidth;
@@ -348,6 +349,11 @@ public final class KeyboardLayoutSet {
 
         public Builder setSplitLayoutEnabledByUser(final boolean enabled) {
             mParams.mIsSplitLayoutEnabledByUser = enabled;
+            return this;
+        }
+
+        public Builder setOneHandedModeEnabled(boolean enabled) {
+            mParams.mOneHandedModeEnabled = enabled;
             return this;
         }
 

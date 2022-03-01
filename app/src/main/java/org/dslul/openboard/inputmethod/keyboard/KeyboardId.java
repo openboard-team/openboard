@@ -85,6 +85,7 @@ public final class KeyboardId {
     public final String mCustomActionLabel;
     public final boolean mHasShortcutKey;
     public final boolean mIsSplitLayout;
+    public final boolean mOneHandedModeEnabled;
 
     private final int mHashCode;
 
@@ -103,6 +104,7 @@ public final class KeyboardId {
                 ? mEditorInfo.actionLabel.toString() : null;
         mHasShortcutKey = params.mVoiceInputKeyEnabled;
         mIsSplitLayout = params.mIsSplitLayoutEnabled;
+        mOneHandedModeEnabled = params.mOneHandedModeEnabled;
 
         mHashCode = computeHashCode(this);
     }

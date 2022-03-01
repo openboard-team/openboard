@@ -717,6 +717,15 @@ public final class InputLogic {
                 // line, so that does affect the contents of the editor.
                 inputTransaction.setDidAffectContents();
                 break;
+            case Constants.CODE_START_ONE_HANDED_MODE:
+            case Constants.CODE_STOP_ONE_HANDED_MODE:
+                // Note: One-handed mode activation is being
+                // handled in {@link KeyboardState#onEvent(Event,int)}.
+                break;
+            case Constants.CODE_SWITCH_ONE_HANDED_MODE:
+                // Note: Switching one-handed side is being
+                // handled in {@link KeyboardState#onEvent(Event,int)}.
+                break;
             default:
                 throw new RuntimeException("Unknown key code : " + event.getMKeyCode());
         }

@@ -32,7 +32,6 @@
         <default>
             <Key
                 latin:keyStyle="emojiKeyStyle"
-                latin:backgroundType="action"
                 latin:keyWidth="fillRight" />
         </default>
     </switch>

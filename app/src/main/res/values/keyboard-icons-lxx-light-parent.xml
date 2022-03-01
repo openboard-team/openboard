@@ -46,5 +46,8 @@
         <item name="iconClipboardActionKey">@drawable/sym_keyboard_clipboard_lxx_dark</item>
         <item name="iconClipboardNormalKey">@drawable/sym_keyboard_clipboard_lxx_light</item>
         <item name="iconClearClipboardKey">@drawable/sym_keyboard_clear_clipboard_lxx_light</item>
+        <item name="iconStartOneHandedMode">@drawable/sym_keyboard_start_onehanded_lxx_light</item>
+        <item name="iconStopOneHandedMode">@drawable/sym_keyboard_stop_onehanded_lxx_light</item>
+        <item name="iconSwitchOneHandedMode">@drawable/sym_keyboard_switch_onehanded_lxx_light</item>
     </style>
 </resources>
