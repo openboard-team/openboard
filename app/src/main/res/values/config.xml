@@ -25,7 +25,7 @@
     <dimen name="config_key_hysteresis_distance">8.0dp</dimen>
 
     <!-- Amount of width reduction in one-handed mode -->
-    <fraction name="config_one_handed_mode_width_ratio">86%</fraction>
+    <fraction name="config_one_handed_mode_width">86%</fraction>
 
     <!-- Preferable keyboard height in absolute scale: 1.285in -->
     <!-- This config_default_keyboard_height value should match with keyboard-heights.xml -->
