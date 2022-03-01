@@ -56,7 +56,6 @@
         <ImageButton
             android:id="@+id/suggestions_strip_clipboard_key"
             android:layout_width="@dimen/config_suggestions_strip_edge_key_width"
-            android:scaleType="fitCenter"
             android:layout_height="fill_parent"
             style="?attr/suggestionWordStyle" />
     </LinearLayout>
