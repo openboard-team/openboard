@@ -209,4 +209,13 @@
     <string name="settings_no_limit">কোনও সীমা নেই</string>
     <string name="enable_clipboard_history">ক্লিপবোর্ড ইতিহাস সক্ষম করুন</string>
     <string name="android_spell_checker_settings">ওপেনবোর্ড বানান পরীক্ষক পছন্দসমূহ</string>
+    <string name="enable_clipboard_history_summary">বন্ধ থাকলে ক্লিপবোর্ড বোতাম ক্লিপবোর্ডে থাকা আধেয় পেস্ট করবে।</string>
+    <string name="clipboard_history_retention_time">ইতিহাস ধারণের সময়সীমা</string>
+    <string name="prefs_force_incognito_mode_summary">নতুন শব্দ শেখা বন্ধ করুন</string>
+    <string name="prefs_long_press_keyboard_to_change_lang">স্পেস বোতামের সাহায্যে ইনপুট মেথড পরিবর্তন করুন</string>
+    <string name="delete_swipe">ডিলিট সোয়াইপ</string>
+    <string name="space_trackpad">স্পেসবার ট্রাকপ্যাড</string>
+    <string name="delete_swipe_summary">কোনো লেখার বড়ো অংশ একেবারে সিলেক্ট এবং মুছে ফেলার জন্য সোয়াইপ করুন</string>
+    <string name="number_row_summary">সবসময় নম্বর সারি দেখান</string>
+    <string name="space_trackpad_summary">কার্সর সরানোর জন্য স্পেসবারে সোয়াইপ করুন</string>
 </resources>
