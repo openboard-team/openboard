@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- 
 /*
 **
@@ -16,10 +16,7 @@
 ** See the License for the specific language governing permissions and
 ** limitations under the License.
 */
- -->
-
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+ --><resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="english_ime_input_options" msgid="3909945612939668554">"Opcje wprowadzania"</string>
     <string name="use_contacts_for_spellchecking_option_title" msgid="5374120998125353898">"Przeszukaj kontakty"</string>
     <string name="use_contacts_for_spellchecking_option_summary" msgid="8754413382543307713">"Sprawdzanie pisowni bierze pod uwagę wpisy z listy kontaktów."</string>
@@ -190,4 +187,46 @@
     <string name="user_dict_settings_more_languages" msgid="7131268499685180461">"Więcej języków…"</string>
     <string name="user_dict_settings_delete" msgid="110413335187193859">"Usuń"</string>
     <string name="user_dict_fast_scroll_alphabet" msgid="5431919401558285473">" ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
+    <string name="settings_category_correction">Korekty</string>
+    <string name="settings_category_miscellaneous">Różnorodne</string>
+    <string name="abbreviation_unit_minutes"><xliff:g id="MINUTES">%s</xliff:g>min.</string>
+    <string name="settings_no_limit">Bez limitu</string>
+    <string name="prefs_force_incognito_mode_summary">Wyłącz naukę nowych słów</string>
+    <string name="more_keys_strip_description">Więcej klawiszy</string>
+    <string name="number_row">Rząd numeryczny</string>
+    <string name="prefs_resize_keyboard">Włącz zmianę rozmiaru klawiatury</string>
+    <string name="show_emoji_key">Klawisz Emoji</string>
+    <string name="theme_variant">Wariant motywu</string>
+    <string name="theme_family">Rodzina motywów</string>
+    <string name="spell_checker_service_name">Sprawdzanie pisowni OpenBoard</string>
+    <string name="android_spell_checker_settings">Ustawienia sprawdzania pisowni OpenBoard</string>
+    <string name="settings_category_clipboard_history">Historia schowka</string>
+    <string name="enable_clipboard_history">Włącz historię schowka</string>
+    <string name="prefs_force_incognito_mode">Wymuś tryb incognito</string>
+    <string name="clipboard_history_retention_time">Czas przechowywania historii</string>
+    <string name="show_clipboard_key">Klawisz schowka</string>
+    <string name="number_row_summary">Zawsze pokazuj rząd numeryczny</string>
+    <string name="prefs_long_press_keyboard_to_change_lang">Zmień metodę wprowadzania za pomocą spacji</string>
+    <string name="show_hints_summary">Pokazuj wskazówki dotyczące długiego naciśnięcia przycisku</string>
+    <string name="subtype_no_language_colemak_dh">Alfabet (Colemak Mod-DH)</string>
+    <string name="delete_swipe_summary">Przesuń palcem od klawisza usuwania, aby zaznaczyć i usunąć większe fragmenty tekstu za jednym razem</string>
+    <string name="enable_clipboard_history_summary">Po wyłączeniu, klawisz schowka będzie wklejał zawartość schowka, jeśli taka istnieje</string>
+    <string name="delete_swipe">Gest usunięcia</string>
+    <string name="space_trackpad_summary">Przesuń palcem po klawiszu spacji, aby przesunąć kursor</string>
+    <string name="prefs_long_press_keyboard_to_change_lang_summary">Długie naciśnięcie klawisza spacji spowoduje wyświetlenie menu wyboru metody wprowadzania tekstu</string>
+    <string name="show_hints">Pokazuj wskazówki klawiszy</string>
+    <string name="prefs_keyboard_height_scale">Skala wysokości klawiatury</string>
+    <string name="subtype_no_language_workman">Alfabet (Workman)</string>
+    <string name="space_trackpad">Gładzik ze spacją</string>
+    <string name="subtype_with_layout_bn_BD"><xliff:g id="LANGUAGE_NAME" example="Bangla">%s</xliff:g> (Akkhor)</string>
+    <string name="ime_settings">Ustawienia OpenBoard</string>
+    <string name="settings_category_additional_keys">Dodatkowe klawisze</string>
+    <string name="settings_category_input">Wprowadzanie</string>
+    <string name="settings_category_suggestions">Sugestie</string>
+    <string name="settings_category_experimental">Eksperymentalne</string>
+    <string name="key_borders">Obramowanie klawiszy</string>
+    <string name="day_night_mode">Automatyczny tryb dzienny/nocny</string>
+    <string name="day_night_mode_summary">Wygląd będzie zgodny z ustawieniami systemu</string>
+    <string name="amoled_mode">Głęboka czerń tła</string>
+    <string name="amoled_mode_summary">Może zmniejszyć zużycie energii w zależności od technologii ekranu urządzenia</string>
 </resources>
