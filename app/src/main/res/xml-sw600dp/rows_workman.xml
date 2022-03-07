@@ -25,6 +25,8 @@
         latin:keyboardLayout="@xml/key_styles_common" />
          Ideally just the keyWidth should be different and the spacer should adjust to fill
          the available space. -->
+    <include
+        latin:keyboardLayout="@xml/row_optional_number_row" />
     <!-- First row -->
     <Row>
         <include

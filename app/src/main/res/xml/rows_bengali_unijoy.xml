@@ -19,24 +19,32 @@
 -->
 
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto">
-    <include latin:keyboardLayout="@xml/key_styles_common" />
-    <switch>
-        <case latin:numberRowEnabled="true">
-            <Row latin:keyWidth="10%p">
-                <include latin:keyboardLayout="@xml/rowkeys_symbols1" />
-            </Row>
-        </case>
-    </switch>
-    <Row latin:keyLabelFlags="fontNormal" latin:keyWidth="10%p">
-        <include latin:keyboardLayout="@xml/rowkeys_bengali_unijoy1" />
+    <include latin:keyboardLayout="@xml/key_styles_common"/>
+    <include latin:keyboardLayout="@xml/row_optional_number_row" />
+    <Row
+        latin:keyLabelFlags="fontNormal"
+        latin:keyWidth="10%p">
+        <include latin:keyboardLayout="@xml/rowkeys_bengali_unijoy1"/>
     </Row>
-    <Row latin:keyLabelFlags="fontNormal" latin:keyWidth="10%p">
-        <include latin:keyboardLayout="@xml/rowkeys_bengali_unijoy2" latin:keyXPos="5%p" />
+    <Row
+        latin:keyLabelFlags="fontNormal"
+        latin:keyWidth="10%p">
+        <include
+            latin:keyboardLayout="@xml/rowkeys_bengali_unijoy2"
+            latin:keyXPos="5%p"/>
     </Row>
-    <Row latin:keyLabelFlags="fontNormal" latin:keyWidth="10%p">
-        <Key latin:keyStyle="shiftKeyStyle" latin:keyWidth="15%p" latin:visualInsetsRight="1%p" />
-        <include latin:keyboardLayout="@xml/rowkeys_bengali_unijoy3" />
-        <Key latin:keyStyle="deleteKeyStyle" latin:keyWidth="fillRight" latin:visualInsetsLeft="1%p" />
+    <Row
+        latin:keyLabelFlags="fontNormal"
+        latin:keyWidth="10%p">
+        <Key
+            latin:keyStyle="shiftKeyStyle"
+            latin:keyWidth="15%p"
+            latin:visualInsetsRight="1%p"/>
+        <include latin:keyboardLayout="@xml/rowkeys_bengali_unijoy3"/>
+        <Key
+            latin:keyStyle="deleteKeyStyle"
+            latin:keyWidth="fillRight"
+            latin:visualInsetsLeft="1%p"/>
     </Row>
-    <include latin:keyboardLayout="@xml/row_qwerty4" />
+    <include latin:keyboardLayout="@xml/row_qwerty4"/>
 </merge>
