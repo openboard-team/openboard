@@ -25,4 +25,6 @@
     <string name="keylabel_to_alpha">&#x0E81;&#x0E82;&#x0E84;</string>
     <!-- U+20AD: "₭" KIP SIGN -->
     <string name="keyspec_currency">&#x20AD;</string>
+    <!-- U+20AD: "₭" KIP SIGN -->
+    <string name="keyhintlabel_alphabet_currency">&#x20AD;</string>
 </resources>

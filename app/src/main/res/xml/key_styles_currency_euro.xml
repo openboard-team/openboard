@@ -41,4 +41,8 @@
     <key-style
         latin:styleName="moreCurrency4KeyStyle"
         latin:keySpec="&#x00A2;" />
+    <key-style
+        latin:styleName="alphabetMoreKeyCurrencyKeyStyle"
+        latin:keyHintLabel="€"
+        latin:additionalMoreKeys="€"/>
 </merge>

@@ -33,8 +33,7 @@
         latin:moreKeys="!text/morekeys_s" />
     <Key
         latin:keySpec="h"
-        latin:keyHintLabel="$"
-        latin:additionalMoreKeys="$"
+        latin:keyStyle="alphabetMoreKeyCurrencyKeyStyle"
         latin:moreKeys="!text/morekeys_d" />
     <Key
         latin:keySpec="t"

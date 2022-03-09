@@ -54,4 +54,6 @@
     <string name="double_quotes">!text/double_rqm_9qm</string>
     <!-- U+20AA: "₪" NEW SHEQEL SIGN -->
     <string name="keyspec_currency">&#x20AA;</string>
+    <!-- U+20AA: "₪" NEW SHEQEL SIGN -->
+    <string name="keyhintlabel_alphabet_currency">&#x20AA;</string>
 </resources>

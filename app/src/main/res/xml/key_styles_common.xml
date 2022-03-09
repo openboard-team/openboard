@@ -37,6 +37,8 @@
     </switch>
     <include
         latin:keyboardLayout="@xml/key_styles_settings" />
+    <include
+        latin:keyboardLayout="@xml/key_styles_currency" />
     <!-- Functional key styles -->
     <!-- Base style for shift key. A single space is used for dummy label in moreKeys. -->
     <key-style

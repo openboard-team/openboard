@@ -25,6 +25,8 @@
     <string name="keylabel_to_alpha">&#x0995;&#x0996;&#x0997;</string>
     <!-- U+09F3: "৳" BENGALI RUPEE SIGN -->
     <string name="keyspec_currency">&#x09F3;</string>
+    <!-- U+09F3: "৳" BENGALI RUPEE SIGN -->
+    <string name="keyhintlabel_alphabet_currency">&#x09F3;</string>
     <!-- U+0967: "১" BENGALI DIGIT ONE -->
     <string name="keyspec_symbols_1">&#x09E7;</string>
     <!-- U+0968: "২" BENGALI DIGIT TWO -->

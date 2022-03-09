@@ -57,4 +57,6 @@
     <string name="additional_morekeys_symbols_0">0</string>
     <!-- U+20B9: "₹" INDIAN RUPEE SIGN -->
     <string name="keyspec_currency">&#x20B9;</string>
+    <!-- U+20B9: "₹" INDIAN RUPEE SIGN -->
+    <string name="keyhintlabel_alphabet_currency">&#x20B9;</string>
 </resources>

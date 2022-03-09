@@ -20,6 +20,8 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- U+20B9: "₹" INDIAN RUPEE SIGN -->
     <string name="keyspec_currency">&#x20B9;</string>
+    <!-- U+20B9: "₹" INDIAN RUPEE SIGN -->
+    <string name="keyhintlabel_alphabet_currency">&#x20B9;</string>
     <string name="label_go_key">Go</string>
     <string name="label_send_key">Send</string>
     <string name="label_next_key">Next</string>

@@ -25,4 +25,6 @@
     <string name="keylabel_to_alpha">&#x0410;&#x0411;&#x0412;</string>
     <!-- U+20AE: "₮" TUGRIK SIGN -->
     <string name="keyspec_currency">&#x20AE;</string>
+    <!-- U+20AE: "₮" TUGRIK SIGN -->
+    <string name="keyhintlabel_alphabet_currency">&#x20AE;</string>
 </resources>

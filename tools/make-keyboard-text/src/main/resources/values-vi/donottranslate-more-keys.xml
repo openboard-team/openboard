@@ -94,4 +94,6 @@
     <string name="morekeys_d">&#x0111;</string>
     <!-- U+20AB: "₫" DONG SIGN -->
     <string name="keyspec_currency">&#x20AB;</string>
+    <!-- U+20AB: "₫" DONG SIGN -->
+    <string name="keyhintlabel_alphabet_currency">&#x20AB;</string>
 </resources>

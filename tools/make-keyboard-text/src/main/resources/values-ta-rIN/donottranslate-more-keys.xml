@@ -25,4 +25,6 @@
     <string name="keylabel_to_alpha">&#x0BA4;&#x0BAE;&#x0BBF;&#x0BB4;&#x0BCD;</string>
     <!-- U+0BF9: "௹" TAMIL RUPEE SIGN -->
     <string name="keyspec_currency">&#x0BF9;</string>
+    <!-- U+0BF9: "௹" TAMIL RUPEE SIGN -->
+    <string name="keyhintlabel_alphabet_currency">&#x0BF9;</string>
 </resources>

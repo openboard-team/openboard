@@ -34,6 +34,8 @@
     <string name="morekeys_cyrillic_soft_sign">&#x044A;</string>
     <!-- U+20B4: "₴" HRYVNIA SIGN -->
     <string name="keyspec_currency">&#x20B4;</string>
+    <!-- U+20B4: "₴" HRYVNIA SIGN -->
+    <string name="keyhintlabel_alphabet_currency">&#x20B4;</string>
     <!-- Label for "switch to alphabetic" key.
          U+0410: "А" CYRILLIC CAPITAL LETTER A
          U+0411: "Б" CYRILLIC CAPITAL LETTER BE

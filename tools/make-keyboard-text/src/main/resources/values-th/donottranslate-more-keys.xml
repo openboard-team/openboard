@@ -25,4 +25,6 @@
     <string name="keylabel_to_alpha">&#x0E01;&#x0E02;&#x0E04;</string>
     <!-- U+0E3F: "฿" THAI CURRENCY SYMBOL BAHT -->
     <string name="keyspec_currency">&#x0E3F;</string>
+    <!-- U+0E3F: "฿" THAI CURRENCY SYMBOL BAHT -->
+    <string name="keyhintlabel_alphabet_currency">&#x0E3F;</string>
 </resources>

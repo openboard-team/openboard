@@ -23,4 +23,6 @@
     <string name="keylabel_to_alpha">&#x0D05;</string>
     <!-- U+20B9: "₹" INDIAN RUPEE SIGN -->
     <string name="keyspec_currency">&#x20B9;</string>
+    <!-- U+20B9: "₹" INDIAN RUPEE SIGN -->
+    <string name="keyhintlabel_alphabet_currency">&#x20B9;</string>
 </resources>
