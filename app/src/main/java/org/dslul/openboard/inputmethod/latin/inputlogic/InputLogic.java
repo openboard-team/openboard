@@ -998,6 +998,10 @@ public final class InputLogic {
                 mSpaceState = SpaceState.PHANTOM;
             }
 
+            if (mSpaceState == SpaceState.NONE && wasComposingWord && settingsValues.isUsuallyFollowedBySpace(codePoint)) {
+                mSpaceState = SpaceState.PHANTOM;
+            }
+
             sendKeyCodePoint(settingsValues, codePoint);
 
             // Set punctuation right away. onUpdateSelection will fire but tests whether it is
