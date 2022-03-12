@@ -69,6 +69,8 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
     private static final int CAPITALIZED_FORM_MAX_PROBABILITY_FOR_INSERT = 140;
 
     private DictionaryGroup mDictionaryGroup = new DictionaryGroup();
+    private DictionaryGroup mSecondaryDictionaryGroup = new DictionaryGroup();
+    private Locale mSecondaryLocale = Locale.GERMAN;
     private volatile CountDownLatch mLatchForWaitingLoadingMainDictionaries = new CountDownLatch(0);
     // To synchronize assigning mDictionaryGroup to ensure closing dictionaries.
     private final Object mLock = new Object();
@@ -336,6 +338,7 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         }
 
         final Map<String, ExpandableBinaryDictionary> subDicts = new HashMap<>();
+        final Map<String, ExpandableBinaryDictionary> secondarySubDicts = new HashMap<>();
         for (final String subDictType : subDictTypesToUse) {
             final ExpandableBinaryDictionary subDict;
             if (noExistingDictsForThisLocale
@@ -349,9 +352,13 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
                 dictTypesToCleanupForLocale.remove(subDictType);
             }
             subDicts.put(subDictType, subDict);
+            // what is dictNamePrefix? apparently empty string...
+            secondarySubDicts.put(subDictType, getSubDict(subDictType, context, mSecondaryLocale, null, dictNamePrefix, account));
         }
         DictionaryGroup newDictionaryGroup =
                 new DictionaryGroup(newLocale, mainDict, account, subDicts);
+        mSecondaryDictionaryGroup = new DictionaryGroup(mSecondaryLocale, null, account, secondarySubDicts);
+        mSecondaryDictionaryGroup.setMainDict(DictionaryFactory.createMainDictionaryFromManager(context, mSecondaryLocale));
 
         // Replace Dictionaries.
         final DictionaryGroup oldDictionaryGroup;
@@ -502,6 +509,33 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         putWordIntoValidSpellingWordCache("addToUserHistory", suggestion);
 
         final String[] words = suggestion.split(Constants.WORD_SEPARATOR);
+        if (words.length == 1) {
+            // TODO: searching through dictionaries after every word may be bad for performance
+            //  takes 0-13 ms on S4 mini, ca 3 ms average
+            //  so actually not that bad, and negligible compared to the additional suggestions
+            // still, maybe could use the lru cache, or try getting locale info from
+            //  suggested words (current one is might be one of the suggestions)
+            String[] checkDictionaries = new String[] {Dictionary.TYPE_MAIN, Dictionary.TYPE_USER};
+            if (isValidWord(suggestion, checkDictionaries, mDictionaryGroup))
+                mDictionaryGroup.mConfidence += 1;
+            else mDictionaryGroup.mConfidence = 0;
+            if (isValidWord(suggestion, checkDictionaries, mSecondaryDictionaryGroup))
+                mSecondaryDictionaryGroup.mConfidence += 1;
+            else mSecondaryDictionaryGroup.mConfidence = 0;
+
+            // switch mDictionaryGroup and mSecondaryDictionaryGroup if we are confident enough
+            //  means: switching "main" language
+            // TODO: decide when to switch, and how easy switching back soon should be
+            //  because user might only want to type 1 or 2 words in other language
+            if (mSecondaryDictionaryGroup.mConfidence > mDictionaryGroup.mConfidence + 1) {
+                final DictionaryGroup tempGroup = mDictionaryGroup;
+                mDictionaryGroup = mSecondaryDictionaryGroup;
+                mSecondaryDictionaryGroup = tempGroup;
+                // clear lru caches?
+                // mValidSpellingWordReadCache appears to be read, but never written
+                // mValidSpellingWordWriteCache appears to be written, but never read
+            }
+        }
         NgramContext ngramContextForCurrentWord = ngramContext;
         for (int i = 0; i < words.length; i++) {
             final String currentWord = words[i];
@@ -625,8 +659,32 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
             final Dictionary dictionary = mDictionaryGroup.getDict(dictType);
             if (null == dictionary) continue;
             final float weightForLocale = composedData.mIsBatchMode
+                    // TODO: tune, should depend on mConfidence of both dictionaries (maybe?)
                     ? mDictionaryGroup.mWeightForGesturingInLocale
                     : mDictionaryGroup.mWeightForTypingInLocale;
+            final ArrayList<SuggestedWordInfo> dictionarySuggestions =
+                    dictionary.getSuggestions(composedData, ngramContext,
+                            proximityInfoHandle, settingsValuesForSuggestion, sessionId,
+                            weightForLocale, weightOfLangModelVsSpatialModel);
+            if (null == dictionarySuggestions) continue;
+            suggestionResults.addAll(dictionarySuggestions);
+            if (null != suggestionResults.mRawSuggestions) {
+                suggestionResults.mRawSuggestions.addAll(dictionarySuggestions);
+            }
+        }
+        // now same for secondary dictionary group
+        // todo: performance... second check is usually faster than 1st one
+        //  (or is is just dictionary size)
+        //  but still may add up to 100 ms on S4 mini (average ca 30)
+        //  relative: +70% compared to only one dictionary group
+        for (final String dictType : ALL_DICTIONARY_TYPES) {
+            final Dictionary dictionary = mSecondaryDictionaryGroup.getDict(dictType);
+            if (null == dictionary) continue;
+            final float weightForLocale = (composedData.mIsBatchMode
+                    // set lower weight for secondary locale
+                    // TODO: tune, should depend on mConfidence of both dictionaries
+                    ? mSecondaryDictionaryGroup.WEIGHT_FOR_GESTURING_IN_NOT_MOST_PROBABLE_LANGUAGE
+                    : mSecondaryDictionaryGroup.WEIGHT_FOR_TYPING_IN_NOT_MOST_PROBABLE_LANGUAGE) * 0.9f;
             final ArrayList<SuggestedWordInfo> dictionarySuggestions =
                     dictionary.getSuggestions(composedData, ngramContext,
                             proximityInfoHandle, settingsValuesForSuggestion, sessionId,
@@ -648,22 +706,22 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
             }
         }
 
-        return isValidWord(word, ALL_DICTIONARY_TYPES);
+        return isValidWord(word, ALL_DICTIONARY_TYPES, mDictionaryGroup);
     }
 
     public boolean isValidSuggestionWord(final String word) {
-        return isValidWord(word, ALL_DICTIONARY_TYPES);
+        return isValidWord(word, ALL_DICTIONARY_TYPES, mDictionaryGroup);
     }
 
-    private boolean isValidWord(final String word, final String[] dictionariesToCheck) {
+    private boolean isValidWord(final String word, final String[] dictionariesToCheck, final DictionaryGroup dictionaryGroup) {
         if (TextUtils.isEmpty(word)) {
             return false;
         }
-        if (mDictionaryGroup.mLocale == null) {
+        if (dictionaryGroup.mLocale == null) {
             return false;
         }
         for (final String dictType : dictionariesToCheck) {
-            final Dictionary dictionary = mDictionaryGroup.getDict(dictType);
+            final Dictionary dictionary = dictionaryGroup.getDict(dictType);
             // Ideally the passed map would come out of a {@link java.util.concurrent.Future} and
             // would be immutable once it's finished initializing, but concretely a null test is
             // probably good enough for the time being.
