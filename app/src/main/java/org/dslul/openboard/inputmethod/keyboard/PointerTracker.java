@@ -16,6 +16,8 @@
 
 package org.dslul.openboard.inputmethod.keyboard;
 
+import static java.lang.Math.abs;
+
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.SystemClock;
@@ -907,7 +909,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element,
         if (oldKey != null && oldKey.getCode() == Constants.CODE_SPACE && Settings.getInstance().getCurrent().mSpaceTrackpadEnabled) {
             //Pointer slider
             int steps = (x - mStartX) / sPointerStep;
-            final int longpressTimeout = Settings.getInstance().getCurrent().mKeyLongpressTimeout / MULTIPLIER_FOR_LONG_PRESS_TIMEOUT_IN_SLIDING_INPUT;
+            final int longpressTimeout = 2 * Settings.getInstance().getCurrent().mKeyLongpressTimeout / MULTIPLIER_FOR_LONG_PRESS_TIMEOUT_IN_SLIDING_INPUT;
             if (steps != 0 && mStartTime + longpressTimeout < System.currentTimeMillis()) {
                 mCursorMoved = true;
                 mStartX += steps * sPointerStep;
@@ -919,7 +921,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element,
         if (oldKey != null && oldKey.getCode() == Constants.CODE_DELETE && Settings.getInstance().getCurrent().mDeleteSwipeEnabled) {
             //Delete slider
             int steps = (x - mStartX) / sPointerStep;
-            if (steps != 0) {
+            if (abs(steps) > 2 || (mCursorMoved && steps != 0)) {
                 sTimerProxy.cancelKeyTimersOf(this);
                 mCursorMoved = true;
                 mStartX += steps * sPointerStep;
