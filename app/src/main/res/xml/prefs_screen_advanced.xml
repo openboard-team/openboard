@@ -76,6 +76,12 @@
             android:summary="@string/delete_swipe_summary"
             android:defaultValue="true" />
 
+        <CheckBoxPreference
+            android:key="pref_insert_more_spaces"
+            android:title="@string/insert_more_spaces"
+            android:summary="@string/insert_more_spaces_summary"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
