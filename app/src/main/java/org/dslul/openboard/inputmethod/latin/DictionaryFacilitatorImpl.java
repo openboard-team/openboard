@@ -134,6 +134,9 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         public static final float WEIGHT_FOR_GESTURING_IN_NOT_MOST_PROBABLE_LANGUAGE = 0.95f;
         public static final float WEIGHT_FOR_TYPING_IN_NOT_MOST_PROBABLE_LANGUAGE = 0.6f;
 
+        private static final int MAX_CONFIDENCE = 2;
+        private static final int MIN_CONFIDENCE = 0;
+
         /**
          * The locale associated with the dictionary group.
          */
@@ -147,8 +150,29 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         @Nullable private Dictionary mMainDict;
         // Confidence that the most probable language is actually the language the user is
         // typing in. For now, this is simply the number of times a word from this language
-        // has been committed in a row.
+        // has been committed in a row, with an exception when typing a single word not contained
+        // in this language.
         private int mConfidence = 0;
+
+        // allow to go above max confidence for better determination of current preferred language
+        // but when decreasing confidence or getting weight factor, limit to maximum
+        public void increaseConfidence() {
+                mConfidence += 1;
+        }
+
+        public void decreaseConfidence() {
+            if (mConfidence > MAX_CONFIDENCE)
+                mConfidence = MAX_CONFIDENCE - 1;
+            else if (mConfidence > MIN_CONFIDENCE)
+                mConfidence -= 1;
+        }
+
+        // needs to be adjusted to min and max confidence
+        public float getLocaleWeightFactor() {
+            if (mConfidence >= MAX_CONFIDENCE)
+                return 1f;
+            return (8f + mConfidence) / 10f;
+        }
 
         public float mWeightForTypingInLocale = WEIGHT_FOR_MOST_PROBABLE_LANGUAGE;
         public float mWeightForGesturingInLocale = WEIGHT_FOR_MOST_PROBABLE_LANGUAGE;
@@ -537,12 +561,21 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
             //  takes 0-13 ms on S4 mini, ca 3 ms average
             //  so actually not that bad, and negligible compared to the additional suggestions
             String[] checkDictionaries = new String[] {Dictionary.TYPE_MAIN, Dictionary.TYPE_USER};
-            if (isValidWord(suggestion, checkDictionaries, mDictionaryGroup))
-                mDictionaryGroup.mConfidence += 1;
-            else mDictionaryGroup.mConfidence = 0;
-            if (isValidWord(suggestion, checkDictionaries, mSecondaryDictionaryGroup))
-                mSecondaryDictionaryGroup.mConfidence += 1;
-            else mSecondaryDictionaryGroup.mConfidence = 0;
+            // if suggestion was auto-capitalized, get the initial state
+            //  don't make entire word lowercase, as it may have unwanted side effects
+            final String decapitalizedSuggestion;
+            if (wasAutoCapitalized)
+                decapitalizedSuggestion = suggestion.substring(0, 1).toLowerCase() + suggestion.substring(1);
+            else
+                decapitalizedSuggestion = suggestion;
+            if ((wasAutoCapitalized && isValidWord(decapitalizedSuggestion, checkDictionaries, mDictionaryGroup))
+                || isValidWord(suggestion, checkDictionaries, mDictionaryGroup))
+                mDictionaryGroup.increaseConfidence();
+            else mDictionaryGroup.decreaseConfidence();
+            if ((wasAutoCapitalized && isValidWord(decapitalizedSuggestion, checkDictionaries, mSecondaryDictionaryGroup))
+                    || isValidWord(suggestion, checkDictionaries, mSecondaryDictionaryGroup))
+                mSecondaryDictionaryGroup.increaseConfidence();
+            else mSecondaryDictionaryGroup.decreaseConfidence();
         }
         NgramContext ngramContextForCurrentWord = ngramContext;
         for (int i = 0; i < words.length; i++) {
@@ -594,10 +627,10 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         final String lowerCasedWord = word.toLowerCase(dictionaryGroup.mLocale);
         final String secondWord;
         if (wasAutoCapitalized) {
-            // use isValidWord instead of isValidSuggestionWord because we only want to check
-            //  against current dictionary group
-            // this doesn't use the LRU cache, but the cache is apparently useless anyway
-            if (isValidWord(word, ALL_DICTIONARY_TYPES, dictionaryGroup) && !isValidWord(word, ALL_DICTIONARY_TYPES, dictionaryGroup)) {
+            // used word with lower-case first letter instead of all lower-case, as auto-capitalize
+            // does not affect the other letters
+            final String decapitalizedWord = word.substring(0, 1).toLowerCase(dictionaryGroup.mLocale) + word.substring(1);
+            if (isValidWord(word, ALL_DICTIONARY_TYPES, dictionaryGroup) && !isValidWord(decapitalizedWord, ALL_DICTIONARY_TYPES, dictionaryGroup)) {
                 // If the word was auto-capitalized and exists only as a capitalized word in the
                 // dictionary, then we must not downcase it before registering it. For example,
                 // the name of the contacts in start-of-sentence position would come here with the
@@ -605,9 +638,9 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
                 // of that contact's name which would end up popping in suggestions.
                 secondWord = word;
             } else {
-                // If however the word is not in the dictionary, or exists as a lower-case word
+                // If however the word is not in the dictionary, or exists as a de-capitalized word
                 // only, then we consider that was a lower-case word that had been auto-capitalized.
-                secondWord = lowerCasedWord;
+                secondWord = decapitalizedWord;
             }
         } else {
             // HACK: We'd like to avoid adding the capitalized form of common words to the User
@@ -679,16 +712,9 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         for (final String dictType : ALL_DICTIONARY_TYPES) {
             final Dictionary dictionary = mDictionaryGroup.getDict(dictType);
             if (null == dictionary) continue;
-            float localeWeightFactor; // very simple for now, should be tuned some more
-            if (mSecondaryDictionaryGroup == null || mDictionaryGroup.mConfidence > 1)
-                localeWeightFactor = 1f;
-            else if (mDictionaryGroup.mConfidence == 1)
-                localeWeightFactor = 0.9f;
-            else
-                localeWeightFactor = 0.8f;
             final float weightForLocale = (composedData.mIsBatchMode
                     ? mDictionaryGroup.mWeightForGesturingInLocale
-                    : mDictionaryGroup.mWeightForTypingInLocale) * localeWeightFactor;
+                    : mDictionaryGroup.mWeightForTypingInLocale) * mDictionaryGroup.getLocaleWeightFactor();
             final ArrayList<SuggestedWordInfo> dictionarySuggestions =
                     dictionary.getSuggestions(composedData, ngramContext,
                             proximityInfoHandle, settingsValuesForSuggestion, sessionId,
@@ -708,16 +734,9 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
             for (final String dictType : ALL_DICTIONARY_TYPES) {
                 final Dictionary dictionary = mSecondaryDictionaryGroup.getDict(dictType);
                 if (null == dictionary) continue;
-                float localeWeightFactor; // very simple for now, should be tuned some more
-                if (mSecondaryDictionaryGroup.mConfidence > 1)
-                    localeWeightFactor = 1f;
-                else if (mSecondaryDictionaryGroup.mConfidence == 1)
-                    localeWeightFactor = 0.9f;
-                else
-                    localeWeightFactor = 0.8f;
                 final float weightForLocale = (composedData.mIsBatchMode
                         ? mSecondaryDictionaryGroup.mWeightForGesturingInLocale
-                        : mSecondaryDictionaryGroup.mWeightForTypingInLocale) * localeWeightFactor;
+                        : mSecondaryDictionaryGroup.mWeightForTypingInLocale) * mSecondaryDictionaryGroup.getLocaleWeightFactor();
                 final ArrayList<SuggestedWordInfo> dictionarySuggestions =
                         dictionary.getSuggestions(composedData, ngramContext,
                                 proximityInfoHandle, settingsValuesForSuggestion, sessionId,
