@@ -151,7 +151,7 @@ public class DictionaryInfoUtils {
     /**
      * Helper method to get the top level cache directory.
      */
-    private static String getWordListCacheDirectory(final Context context) {
+    public static String getWordListCacheDirectory(final Context context) {
         return context.getFilesDir() + File.separator + "dicts";
     }
 
@@ -242,7 +242,7 @@ public class DictionaryInfoUtils {
         // An id is supposed to be in format category:locale, so splitting on the separator
         // should yield a 2-elements array
         if (2 != idArray.length) {
-            return false;
+            return id.startsWith(BinaryDictionaryGetter.MAIN_DICTIONARY_CATEGORY);
         }
         return BinaryDictionaryGetter.MAIN_DICTIONARY_CATEGORY.equals(idArray[0]);
     }
