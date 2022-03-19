@@ -54,6 +54,8 @@ public class DictionaryInfoUtils {
     public static final String RESOURCE_PACKAGE_NAME = R.class.getPackage().getName();
     private static final String DEFAULT_MAIN_DICT = "main";
     private static final String MAIN_DICT_PREFIX = "main_";
+    public static final String MAIN_DICTIONARY_INTERNAL_FILE_NAME = DEFAULT_MAIN_DICT + ".dict";
+    public static final String MAIN_DICTIONARY_USER_FILE_NAME = MAIN_DICT_PREFIX + "user.dict";
     private static final String DECODER_DICT_SUFFIX = DecoderSpecificConstants.DECODER_DICT_SUFFIX;
     // 6 digits - unicode is limited to 21 bits
     private static final int MAX_HEX_DIGITS_FOR_CODEPOINT = 6;

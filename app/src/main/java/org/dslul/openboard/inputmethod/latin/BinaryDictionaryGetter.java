@@ -21,6 +21,7 @@ import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.util.Log;
 
+import org.dslul.openboard.inputmethod.latin.common.FileUtils;
 import org.dslul.openboard.inputmethod.latin.common.LocaleUtils;
 import org.dslul.openboard.inputmethod.latin.define.DecoderSpecificConstants;
 import org.dslul.openboard.inputmethod.latin.makedict.DictionaryHeader;
@@ -29,9 +30,7 @@ import org.dslul.openboard.inputmethod.latin.utils.BinaryDictionaryUtils;
 import org.dslul.openboard.inputmethod.latin.utils.DictionaryInfoUtils;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.BufferUnderflowException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,7 +63,6 @@ final public class BinaryDictionaryGetter {
     public static final String MAIN_DICTIONARY_CATEGORY = "main";
     public static final String ID_CATEGORY_SEPARATOR = ":";
 
-    public static final String MAIN_DICTIONARY_FILE_NAME = MAIN_DICTIONARY_CATEGORY + ".dict";
     public static final String ASSETS_DICTIONARY_FOLDER = "dicts";
 
     // The key considered to read the version attribute in a dictionary file.
@@ -319,23 +317,13 @@ final public class BinaryDictionaryGetter {
         if (bestMatchName == null) return null;
 
         // we have a match, now copy contents of the dictionary to "cached" word lists folder
-        File outfile = new File(DictionaryInfoUtils.getWordListCacheDirectory(context) +
-                File.separator + extractLocaleFromAssetsDictionaryFile(bestMatchName) + File.separator +
-                BinaryDictionaryGetter.MAIN_DICTIONARY_FILE_NAME);
-        File parentFile = outfile.getParentFile();
-        if (parentFile == null || (!parentFile.exists() && !parentFile.mkdirs())) {
-            return null;
-        }
+        File dictFile = new File(DictionaryInfoUtils.getCacheDirectoryForLocale(bestMatchName, context) +
+                File.separator + DictionaryInfoUtils.MAIN_DICTIONARY_INTERNAL_FILE_NAME);
         try {
-            InputStream in = context.getAssets().open(ASSETS_DICTIONARY_FOLDER + File.separator + bestMatchName);
-            FileOutputStream out = new FileOutputStream(outfile);
-            byte[] buf = new byte[1024];
-            int len;
-            while ((len = in.read(buf)) > 0) {
-                out.write(buf, 0, len);
-            }
-            out.flush();
-            return outfile;
+            FileUtils.copyStreamToNewFile(
+                    context.getAssets().open(ASSETS_DICTIONARY_FOLDER + File.separator + bestMatchName),
+                    dictFile);
+            return dictFile;
         } catch (IOException e) {
             Log.e(TAG, "exception while looking for locale " + locale, e);
             return null;
