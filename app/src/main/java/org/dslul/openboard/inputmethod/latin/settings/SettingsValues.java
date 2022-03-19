@@ -84,6 +84,7 @@ public class SettingsValues {
     public final long mClipboardHistoryRetentionTime;
     public final boolean mOneHandedModeEnabled;
     public final int mOneHandedModeGravity;
+    public final Locale mSecondaryLocale;
     // Use bigrams to predict the next word when there is no input for it yet
     public final boolean mBigramPredictionEnabled;
     public final boolean mGestureInputEnabled;
@@ -241,6 +242,7 @@ public class SettingsValues {
         mClipboardHistoryRetentionTime = Settings.readClipboardHistoryRetentionTime(prefs, res);
         mOneHandedModeEnabled = Settings.readOneHandedModeEnabled(prefs);
         mOneHandedModeGravity = Settings.readOneHandedModeGravity(prefs);
+        mSecondaryLocale = Settings.readSecondaryLocale(prefs);
     }
 
     public boolean isMetricsLoggingEnabled() {

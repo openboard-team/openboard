@@ -29,6 +29,7 @@ import android.view.Gravity;
 import org.dslul.openboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import org.dslul.openboard.inputmethod.latin.InputAttributes;
 import org.dslul.openboard.inputmethod.latin.R;
+import org.dslul.openboard.inputmethod.latin.common.LocaleUtils;
 import org.dslul.openboard.inputmethod.latin.common.StringUtils;
 import org.dslul.openboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
 import org.dslul.openboard.inputmethod.latin.utils.DeviceProtectedUtils;
@@ -125,6 +126,8 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
 
     public static final String PREF_ENABLE_CLIPBOARD_HISTORY = "pref_enable_clipboard_history";
     public static final String PREF_CLIPBOARD_HISTORY_RETENTION_TIME = "pref_clipboard_history_retention_time";
+
+    public static final String PREF_SECONDARY_LOCALE = "pref_secondary_locale";
 
     // This preference key is deprecated. Use {@link #PREF_SHOW_LANGUAGE_SWITCH_KEY} instead.
     // This is being used only for the backward compatibility.
@@ -507,6 +510,13 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static int readLastShownEmojiCategoryPageId(
             final SharedPreferences prefs, final int defValue) {
         return prefs.getInt(PREF_LAST_SHOWN_EMOJI_CATEGORY_PAGE_ID, defValue);
+    }
+
+    public static Locale readSecondaryLocale(final SharedPreferences prefs) {
+        final String localeString = prefs.getString(PREF_SECONDARY_LOCALE, "");
+        if (localeString.isEmpty())
+            return null;
+        return LocaleUtils.constructLocaleFromString(localeString);
     }
 
     private void upgradeAutocorrectionSettings(final SharedPreferences prefs, final Resources res) {

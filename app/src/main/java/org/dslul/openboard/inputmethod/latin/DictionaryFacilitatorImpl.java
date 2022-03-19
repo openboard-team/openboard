@@ -31,8 +31,10 @@ import org.dslul.openboard.inputmethod.latin.common.Constants;
 import org.dslul.openboard.inputmethod.latin.common.StringUtils;
 import org.dslul.openboard.inputmethod.latin.permissions.PermissionsUtil;
 import org.dslul.openboard.inputmethod.latin.personalization.UserHistoryDictionary;
+import org.dslul.openboard.inputmethod.latin.settings.Settings;
 import org.dslul.openboard.inputmethod.latin.settings.SettingsValuesForSuggestion;
 import org.dslul.openboard.inputmethod.latin.utils.ExecutorUtils;
+import org.dslul.openboard.inputmethod.latin.utils.ScriptUtils;
 import org.dslul.openboard.inputmethod.latin.utils.SuggestionResults;
 
 import java.io.File;
@@ -70,7 +72,6 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
 
     private DictionaryGroup mDictionaryGroup = new DictionaryGroup();
     private DictionaryGroup mSecondaryDictionaryGroup = new DictionaryGroup();
-    private Locale mSecondaryLocale = Locale.GERMAN;
     private volatile CountDownLatch mLatchForWaitingLoadingMainDictionaries = new CountDownLatch(0);
     // To synchronize assigning mDictionaryGroup to ensure closing dictionaries.
     private final Object mLock = new Object();
@@ -152,17 +153,17 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         // typing in. For now, this is simply the number of times a word from this language
         // has been committed in a row, with an exception when typing a single word not contained
         // in this language.
-        private int mConfidence = 0;
+        private int mConfidence = 1;
 
         // allow to go above max confidence for better determination of current preferred language
         // but when decreasing confidence or getting weight factor, limit to maximum
         public void increaseConfidence() {
-                mConfidence += 1;
+            mConfidence += 1;
         }
 
         public void decreaseConfidence() {
             if (mConfidence > MAX_CONFIDENCE)
-                mConfidence = MAX_CONFIDENCE - 1;
+                mConfidence = MAX_CONFIDENCE;
             else if (mConfidence > MIN_CONFIDENCE)
                 mConfidence -= 1;
         }
@@ -392,14 +393,9 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
                 dictTypesToCleanupForLocale.remove(subDictType);
             }
             subDicts.put(subDictType, subDict);
-            // what is dictNamePrefix? apparently empty string...
-            secondarySubDicts.put(subDictType, getSubDict(subDictType, context, mSecondaryLocale, null, dictNamePrefix, account));
         }
         DictionaryGroup newDictionaryGroup =
                 new DictionaryGroup(newLocale, mainDict, account, subDicts);
-        // TODO: get secondary locale from prefs or whatever (context!)
-        mSecondaryDictionaryGroup = new DictionaryGroup(mSecondaryLocale, null, account, secondarySubDicts);
-        mSecondaryDictionaryGroup.setMainDict(DictionaryFactory.createMainDictionaryFromManager(context, mSecondaryLocale));
 
         // Replace Dictionaries.
         final DictionaryGroup oldDictionaryGroup;
@@ -412,6 +408,21 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         }
         if (listener != null) {
             listener.onUpdateMainDictionaryAvailability(hasAtLeastOneInitializedMainDictionary());
+        }
+
+        // create / load secondary dictionary
+        final Locale secondaryLocale = Settings.getInstance().getCurrent().mSecondaryLocale;
+        if (secondaryLocale != null && mainDict != null &&
+                ScriptUtils.getScriptFromSpellCheckerLocale(secondaryLocale) == ScriptUtils.getScriptFromSpellCheckerLocale(mainDict.mLocale)) {
+            for (final String subDictType : subDictTypesToUse) {
+                final ExpandableBinaryDictionary subDict =
+                        getSubDict(subDictType, context, newLocale, null, dictNamePrefix, account);
+                secondarySubDicts.put(subDictType, subDict);
+            }
+            mSecondaryDictionaryGroup = new DictionaryGroup(secondaryLocale, null, account, secondarySubDicts);
+            mSecondaryDictionaryGroup.setMainDict(DictionaryFactory.createMainDictionaryFromManager(context, secondaryLocale));
+        } else {
+            mSecondaryDictionaryGroup = null;
         }
 
         // Clean up old dictionaries.
