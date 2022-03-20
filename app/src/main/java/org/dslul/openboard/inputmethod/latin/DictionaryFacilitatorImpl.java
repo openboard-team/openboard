@@ -412,8 +412,8 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
 
         // create / load secondary dictionary
         final Locale secondaryLocale = Settings.getInstance().getCurrent().mSecondaryLocale;
-        if (secondaryLocale != null && mainDict != null &&
-                ScriptUtils.getScriptFromSpellCheckerLocale(secondaryLocale) == ScriptUtils.getScriptFromSpellCheckerLocale(mainDict.mLocale)) {
+        if (secondaryLocale != null && mDictionaryGroup != null && mDictionaryGroup.mLocale != null &&
+                ScriptUtils.getScriptFromSpellCheckerLocale(secondaryLocale) == ScriptUtils.getScriptFromSpellCheckerLocale(mDictionaryGroup.mLocale)) {
             for (final String subDictType : subDictTypesToUse) {
                 final ExpandableBinaryDictionary subDict =
                         getSubDict(subDictType, context, newLocale, null, dictNamePrefix, account);
