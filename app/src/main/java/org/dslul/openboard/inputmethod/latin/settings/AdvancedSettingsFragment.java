@@ -138,23 +138,33 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
     }
 
     private void showSecondaryLocaleDialog() {
-        // only latin for now
-        final List<String> locales = new ArrayList<String>(getAvailableDictionaryLocalesForScript(ScriptUtils.SCRIPT_LATIN));
+        // only allow same script of main locale for now
+        // TODO: how to get enabled keyboard locales? then setting a secondary locale per
+        //  main locale would be rather simple
+        final SettingsValues settingsValues = Settings.getInstance().getCurrent();
+        final int scriptOfCurrentLocale = ScriptUtils.getScriptFromSpellCheckerLocale(settingsValues.mLocale);
+        final List<String> locales = new ArrayList<String>(getAvailableDictionaryLocalesForScript(scriptOfCurrentLocale));
         final AlertDialog.Builder builder = new AlertDialog.Builder(
                 DialogUtils.getPlatformDialogThemeContext(getActivity()))
                 .setTitle(R.string.select_language)
                 .setPositiveButton(android.R.string.ok, null);
+
         if (locales.isEmpty()) {
             builder.setMessage(R.string.no_secondary_locales)
                     .show();
             return;
         }
+
+        // add "no secondary language" option
         locales.add(getResources().getString(R.string.secondary_locale_none));
+
         final CharSequence[] titles = locales.toArray(new CharSequence[0]);
-        for (int i = 0; i < titles.length -1 ; i++) {
-            titles[i] = LocaleUtils.constructLocaleFromString(titles[i].toString()).getDisplayLanguage();
+        for (int i = 0; i < titles.length - 1 ; i++) {
+            final Locale loc = LocaleUtils.constructLocaleFromString(titles[i].toString());
+            titles[i] = loc.getDisplayLanguage(settingsValues.mLocale);
         }
-        Locale currentSecondaryLocale = Settings.getInstance().getCurrent().mSecondaryLocale;
+
+        Locale currentSecondaryLocale = settingsValues.mSecondaryLocale;
         int checkedItem;
         if (currentSecondaryLocale == null)
             checkedItem = locales.size() - 1;
@@ -163,7 +173,7 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
 
         builder.setSingleChoiceItems(titles, checkedItem, (dialogInterface, i) -> {
             String locale = locales.get(i);
-            if (locale.equals(getResources().getString(R.string.secondary_locale_none)))
+            if (i == locales.size() - 1)
                 locale = "";
             getSharedPreferences().edit().putString(Settings.PREF_SECONDARY_LOCALE, locale).apply();
             final Intent newDictBroadcast = new Intent(DictionaryPackConstants.NEW_DICTIONARY_INTENT_ACTION);
