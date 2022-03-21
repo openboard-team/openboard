@@ -24,10 +24,6 @@
         <intent android:action="android.settings.USER_DICTIONARY_SETTINGS" />
     </PreferenceScreen>
 
-    <Preference
-        android:key="add_dictionary"
-        android:title="@string/configure_dictionaries_title" />
-
     <PreferenceCategory
         android:title="@string/settings_category_correction">
 
