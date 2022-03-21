@@ -184,6 +184,16 @@
     <string name="delete_swipe_summary">Perform a swipe from the delete key to select and remove bigger portions of text at once</string>
     <!-- Preferences item for enabling trackpad space key -->
     <string name="space_trackpad">Space bar trackpad</string>
+    <!-- Preferences item for choosing secondary language -->
+    <string name="secondary_locale">Multilingual typing</string>
+    <!-- Description for "secondary_locale" option. -->
+    <string name="secondary_locale_summary">Select a secondary dictionary to use alongside main language</string>
+    <!-- Text when no secondary locale chosen -->
+    <string name="select_main_locale">Select keyboard for secondary dictionary</string>
+    <!-- Text when no secondary locale chosen -->
+    <string name="secondary_locale_none">None</string>
+    <!-- Message shown when no secondary locales available -->
+    <string name="no_secondary_locales">No secondary dictionaries available</string>
     <!-- Description for "space_trackpad" option. -->
     <string name="space_trackpad_summary">Swipe on the spacebar to move the cursor</string>
     <!-- Preferences item for disabling word learning -->

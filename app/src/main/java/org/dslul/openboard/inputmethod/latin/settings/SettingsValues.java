@@ -36,6 +36,7 @@ import org.dslul.openboard.inputmethod.latin.utils.TargetPackageInfoGetterTask;
 
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -84,6 +85,8 @@ public class SettingsValues {
     public final long mClipboardHistoryRetentionTime;
     public final boolean mOneHandedModeEnabled;
     public final int mOneHandedModeGravity;
+    public final Locale mSecondaryLocale;
+//    public final Map<Locale, Locale> mSecondaryLocales;
     // Use bigrams to predict the next word when there is no input for it yet
     public final boolean mBigramPredictionEnabled;
     public final boolean mGestureInputEnabled;
@@ -241,6 +244,7 @@ public class SettingsValues {
         mClipboardHistoryRetentionTime = Settings.readClipboardHistoryRetentionTime(prefs, res);
         mOneHandedModeEnabled = Settings.readOneHandedModeEnabled(prefs);
         mOneHandedModeGravity = Settings.readOneHandedModeGravity(prefs);
+        mSecondaryLocale = Settings.getSecondaryLocale(prefs, RichInputMethodManager.getInstance().getCurrentSubtypeLocale().toString());
     }
 
     public boolean isMetricsLoggingEnabled() {

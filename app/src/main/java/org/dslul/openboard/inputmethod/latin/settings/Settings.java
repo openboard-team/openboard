@@ -29,15 +29,18 @@ import android.view.Gravity;
 import org.dslul.openboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import org.dslul.openboard.inputmethod.latin.InputAttributes;
 import org.dslul.openboard.inputmethod.latin.R;
+import org.dslul.openboard.inputmethod.latin.common.LocaleUtils;
 import org.dslul.openboard.inputmethod.latin.common.StringUtils;
 import org.dslul.openboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
 import org.dslul.openboard.inputmethod.latin.utils.DeviceProtectedUtils;
 import org.dslul.openboard.inputmethod.latin.utils.JniUtils;
 import org.dslul.openboard.inputmethod.latin.utils.ResourceUtils;
 import org.dslul.openboard.inputmethod.latin.utils.RunInLocale;
+import org.dslul.openboard.inputmethod.latin.utils.ScriptUtils;
 import org.dslul.openboard.inputmethod.latin.utils.StatsUtils;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
@@ -125,6 +128,8 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
 
     public static final String PREF_ENABLE_CLIPBOARD_HISTORY = "pref_enable_clipboard_history";
     public static final String PREF_CLIPBOARD_HISTORY_RETENTION_TIME = "pref_clipboard_history_retention_time";
+
+    public static final String PREF_SECONDARY_LOCALES = "pref_secondary_locales";
 
     // This preference key is deprecated. Use {@link #PREF_SHOW_LANGUAGE_SWITCH_KEY} instead.
     // This is being used only for the backward compatibility.
@@ -507,6 +512,16 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static int readLastShownEmojiCategoryPageId(
             final SharedPreferences prefs, final int defValue) {
         return prefs.getInt(PREF_LAST_SHOWN_EMOJI_CATEGORY_PAGE_ID, defValue);
+    }
+
+    public static Locale getSecondaryLocale(final SharedPreferences prefs, final String mainLocaleString) {
+        final Set<String> encodedLocales = prefs.getStringSet(PREF_SECONDARY_LOCALES, new HashSet<>());
+        for (String loc : encodedLocales) {
+            String[] locales = loc.split("§");
+            if (locales.length == 2 && locales[0].equals(mainLocaleString.toLowerCase(Locale.ENGLISH)))
+                return LocaleUtils.constructLocaleFromString(locales[1]);
+        }
+        return null;
     }
 
     private void upgradeAutocorrectionSettings(final SharedPreferences prefs, final Resources res) {

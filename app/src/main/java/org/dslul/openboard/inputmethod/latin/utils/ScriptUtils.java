@@ -201,6 +201,9 @@ public class ScriptUtils {
      * {@see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes}
      */
     public static int getScriptFromSpellCheckerLocale(final Locale locale) {
+        // need special treatment of serbian latin, which would get detected as cyrillic
+        if (locale.toString().toLowerCase(Locale.ENGLISH).equals("sr_zz"))
+            return ScriptUtils.SCRIPT_LATIN;
         String language = locale.getLanguage();
         Integer script = mLanguageCodeToScriptCode.get(language);
         if (script == null) {

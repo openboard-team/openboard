@@ -31,8 +31,10 @@ import org.dslul.openboard.inputmethod.latin.common.Constants;
 import org.dslul.openboard.inputmethod.latin.common.StringUtils;
 import org.dslul.openboard.inputmethod.latin.permissions.PermissionsUtil;
 import org.dslul.openboard.inputmethod.latin.personalization.UserHistoryDictionary;
+import org.dslul.openboard.inputmethod.latin.settings.Settings;
 import org.dslul.openboard.inputmethod.latin.settings.SettingsValuesForSuggestion;
 import org.dslul.openboard.inputmethod.latin.utils.ExecutorUtils;
+import org.dslul.openboard.inputmethod.latin.utils.ScriptUtils;
 import org.dslul.openboard.inputmethod.latin.utils.SuggestionResults;
 
 import java.io.File;
@@ -69,6 +71,7 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
     private static final int CAPITALIZED_FORM_MAX_PROBABILITY_FOR_INSERT = 140;
 
     private DictionaryGroup mDictionaryGroup = new DictionaryGroup();
+    private DictionaryGroup mSecondaryDictionaryGroup = new DictionaryGroup();
     private volatile CountDownLatch mLatchForWaitingLoadingMainDictionaries = new CountDownLatch(0);
     // To synchronize assigning mDictionaryGroup to ensure closing dictionaries.
     private final Object mLock = new Object();
@@ -86,6 +89,9 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
     private static final Class<?>[] DICT_FACTORY_METHOD_ARG_TYPES =
             new Class[] { Context.class, Locale.class, File.class, String.class, String.class };
 
+    // these caches are never even set, as the corresponding functions are not called...
+    // and even if they were set, one is only written, but never read, and the other one
+    //  is only read and thus empty and useless
     private LruCache<String, Boolean> mValidSpellingWordReadCache;
     private LruCache<String, Boolean> mValidSpellingWordWriteCache;
 
@@ -102,6 +108,11 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
     @Override
     public boolean isForLocale(final Locale locale) {
         return locale != null && locale.equals(mDictionaryGroup.mLocale);
+    }
+
+    private boolean hasLocale(final Locale locale) {
+        return locale != null && (locale.equals(mDictionaryGroup.mLocale) ||
+                (mSecondaryDictionaryGroup != null && locale.equals(mSecondaryDictionaryGroup.mLocale)));
     }
 
     /**
@@ -124,6 +135,9 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         public static final float WEIGHT_FOR_GESTURING_IN_NOT_MOST_PROBABLE_LANGUAGE = 0.95f;
         public static final float WEIGHT_FOR_TYPING_IN_NOT_MOST_PROBABLE_LANGUAGE = 0.6f;
 
+        private static final int MAX_CONFIDENCE = 2;
+        private static final int MIN_CONFIDENCE = 0;
+
         /**
          * The locale associated with the dictionary group.
          */
@@ -137,8 +151,29 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         @Nullable private Dictionary mMainDict;
         // Confidence that the most probable language is actually the language the user is
         // typing in. For now, this is simply the number of times a word from this language
-        // has been committed in a row.
-        private int mConfidence = 0;
+        // has been committed in a row, with an exception when typing a single word not contained
+        // in this language.
+        private int mConfidence = 1;
+
+        // allow to go above max confidence for better determination of current preferred language
+        // but when decreasing confidence or getting weight factor, limit to maximum
+        public void increaseConfidence() {
+            mConfidence += 1;
+        }
+
+        public void decreaseConfidence() {
+            if (mConfidence > MAX_CONFIDENCE)
+                mConfidence = MAX_CONFIDENCE;
+            else if (mConfidence > MIN_CONFIDENCE)
+                mConfidence -= 1;
+        }
+
+        // needs to be adjusted to min and max confidence
+        public float getLocaleWeightFactor() {
+            if (mConfidence >= MAX_CONFIDENCE)
+                return 1f;
+            return (8f + mConfidence) / 10f;
+        }
 
         public float mWeightForTypingInLocale = WEIGHT_FOR_MOST_PROBABLE_LANGUAGE;
         public float mWeightForGesturingInLocale = WEIGHT_FOR_MOST_PROBABLE_LANGUAGE;
@@ -229,6 +264,11 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
             Dictionary dict = mDictionaryGroup.getDict(dictType);
             if (dict != null) dict.onFinishInput();
         }
+        if (mSecondaryDictionaryGroup != null)
+            for (final String dictType : ALL_DICTIONARY_TYPES) {
+                Dictionary dict = mSecondaryDictionaryGroup.getDict(dictType);
+                if (dict != null) dict.onFinishInput();
+            }
     }
 
     @Override
@@ -280,6 +320,9 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
     }
 
     @Override
+    // TODO: what if secondary locale changes, but main remains same?
+    //  current reset doesn't consider this (not here, and not in other places where locales
+    //  are checked against current locale)
     public void resetDictionaries(
             final Context context,
             final Locale newLocale,
@@ -336,6 +379,7 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         }
 
         final Map<String, ExpandableBinaryDictionary> subDicts = new HashMap<>();
+        final Map<String, ExpandableBinaryDictionary> secondarySubDicts = new HashMap<>();
         for (final String subDictType : subDictTypesToUse) {
             final ExpandableBinaryDictionary subDict;
             if (noExistingDictsForThisLocale
@@ -364,6 +408,21 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         }
         if (listener != null) {
             listener.onUpdateMainDictionaryAvailability(hasAtLeastOneInitializedMainDictionary());
+        }
+
+        // create / load secondary dictionary
+        final Locale secondaryLocale = Settings.getInstance().getCurrent().mSecondaryLocale;
+        if (secondaryLocale != null && mDictionaryGroup != null && mDictionaryGroup.mLocale != null &&
+                ScriptUtils.getScriptFromSpellCheckerLocale(secondaryLocale) == ScriptUtils.getScriptFromSpellCheckerLocale(mDictionaryGroup.mLocale)) {
+            for (final String subDictType : subDictTypesToUse) {
+                final ExpandableBinaryDictionary subDict =
+                        getSubDict(subDictType, context, newLocale, null, dictNamePrefix, account);
+                secondarySubDicts.put(subDictType, subDict);
+            }
+            mSecondaryDictionaryGroup = new DictionaryGroup(secondaryLocale, null, account, secondarySubDicts);
+            mSecondaryDictionaryGroup.setMainDict(DictionaryFactory.createMainDictionaryFromManager(context, secondaryLocale));
+        } else {
+            mSecondaryDictionaryGroup = null;
         }
 
         // Clean up old dictionaries.
@@ -453,13 +512,19 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
     }
 
     public void closeDictionaries() {
-        final DictionaryGroup dictionaryGroupToClose;
+        final DictionaryGroup mainDictionaryGroupToClose;
+        final DictionaryGroup secondaryDictionaryGroupToClose;
         synchronized (mLock) {
-            dictionaryGroupToClose = mDictionaryGroup;
+            mainDictionaryGroupToClose = mDictionaryGroup;
+            secondaryDictionaryGroupToClose = mSecondaryDictionaryGroup;
             mDictionaryGroup = new DictionaryGroup();
+            if (mSecondaryDictionaryGroup != null)
+                mSecondaryDictionaryGroup = new DictionaryGroup();
         }
         for (final String dictType : ALL_DICTIONARY_TYPES) {
-            dictionaryGroupToClose.closeDict(dictType);
+            mainDictionaryGroupToClose.closeDict(dictType);
+            if (secondaryDictionaryGroupToClose != null)
+                secondaryDictionaryGroupToClose.closeDict(dictType);
         }
     }
 
@@ -502,11 +567,32 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         putWordIntoValidSpellingWordCache("addToUserHistory", suggestion);
 
         final String[] words = suggestion.split(Constants.WORD_SEPARATOR);
+        if (mSecondaryDictionaryGroup != null && words.length == 1) {
+            // TODO: searching through dictionaries after every word may be bad for performance
+            //  takes 0-13 ms on S4 mini, ca 3 ms average
+            //  so actually not that bad, and negligible compared to the additional suggestions
+            String[] checkDictionaries = new String[] {Dictionary.TYPE_MAIN, Dictionary.TYPE_USER};
+            // if suggestion was auto-capitalized, get the initial state
+            //  don't make entire word lowercase, as it may have unwanted side effects
+            final String decapitalizedSuggestion;
+            if (wasAutoCapitalized)
+                decapitalizedSuggestion = suggestion.substring(0, 1).toLowerCase() + suggestion.substring(1);
+            else
+                decapitalizedSuggestion = suggestion;
+            if ((wasAutoCapitalized && isValidWord(decapitalizedSuggestion, checkDictionaries, mDictionaryGroup))
+                || isValidWord(suggestion, checkDictionaries, mDictionaryGroup))
+                mDictionaryGroup.increaseConfidence();
+            else mDictionaryGroup.decreaseConfidence();
+            if ((wasAutoCapitalized && isValidWord(decapitalizedSuggestion, checkDictionaries, mSecondaryDictionaryGroup))
+                    || isValidWord(suggestion, checkDictionaries, mSecondaryDictionaryGroup))
+                mSecondaryDictionaryGroup.increaseConfidence();
+            else mSecondaryDictionaryGroup.decreaseConfidence();
+        }
         NgramContext ngramContextForCurrentWord = ngramContext;
         for (int i = 0; i < words.length; i++) {
             final String currentWord = words[i];
             final boolean wasCurrentWordAutoCapitalized = (i == 0) && wasAutoCapitalized;
-            addWordToUserHistory(mDictionaryGroup, ngramContextForCurrentWord, currentWord,
+            addWordToUserHistory(getCurrentlyPreferredDictionaryGroup(), ngramContextForCurrentWord, currentWord,
                     wasCurrentWordAutoCapitalized, (int) timeStampInSeconds,
                     blockPotentiallyOffensive);
             ngramContextForCurrentWord =
@@ -542,17 +628,20 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
             final int timeStampInSeconds, final boolean blockPotentiallyOffensive) {
         final ExpandableBinaryDictionary userHistoryDictionary =
                 dictionaryGroup.getSubDict(Dictionary.TYPE_USER_HISTORY);
-        if (userHistoryDictionary == null || !isForLocale(userHistoryDictionary.mLocale)) {
+        if (userHistoryDictionary == null || !hasLocale(userHistoryDictionary.mLocale)) {
             return;
         }
-        final int maxFreq = getFrequency(word);
+        final int maxFreq = getFrequency(word, dictionaryGroup);
         if (maxFreq == 0 && blockPotentiallyOffensive) {
             return;
         }
         final String lowerCasedWord = word.toLowerCase(dictionaryGroup.mLocale);
         final String secondWord;
         if (wasAutoCapitalized) {
-            if (isValidSuggestionWord(word) && !isValidSuggestionWord(lowerCasedWord)) {
+            // used word with lower-case first letter instead of all lower-case, as auto-capitalize
+            // does not affect the other letters
+            final String decapitalizedWord = word.substring(0, 1).toLowerCase(dictionaryGroup.mLocale) + word.substring(1);
+            if (isValidWord(word, ALL_DICTIONARY_TYPES, dictionaryGroup) && !isValidWord(decapitalizedWord, ALL_DICTIONARY_TYPES, dictionaryGroup)) {
                 // If the word was auto-capitalized and exists only as a capitalized word in the
                 // dictionary, then we must not downcase it before registering it. For example,
                 // the name of the contacts in start-of-sentence position would come here with the
@@ -560,9 +649,9 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
                 // of that contact's name which would end up popping in suggestions.
                 secondWord = word;
             } else {
-                // If however the word is not in the dictionary, or exists as a lower-case word
+                // If however the word is not in the dictionary, or exists as a de-capitalized word
                 // only, then we consider that was a lower-case word that had been auto-capitalized.
-                secondWord = lowerCasedWord;
+                secondWord = decapitalizedWord;
             }
         } else {
             // HACK: We'd like to avoid adding the capitalized form of common words to the User
@@ -588,8 +677,18 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
                 isValid, timeStampInSeconds);
     }
 
+    private DictionaryGroup getCurrentlyPreferredDictionaryGroup() {
+        final DictionaryGroup dictGroup;
+        if (mSecondaryDictionaryGroup == null || mSecondaryDictionaryGroup.mConfidence <= mDictionaryGroup.mConfidence)
+            dictGroup = mDictionaryGroup;
+        else
+            dictGroup = mSecondaryDictionaryGroup;
+        return dictGroup;
+    }
+
     private void removeWord(final String dictName, final String word) {
-        final ExpandableBinaryDictionary dictionary = mDictionaryGroup.getSubDict(dictName);
+        // TODO: can this end up in the wrong dictionary?
+        final ExpandableBinaryDictionary dictionary = getCurrentlyPreferredDictionaryGroup().getSubDict(dictName);
         if (dictionary != null) {
             dictionary.removeUnigramEntryDynamically(word);
         }
@@ -624,9 +723,9 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         for (final String dictType : ALL_DICTIONARY_TYPES) {
             final Dictionary dictionary = mDictionaryGroup.getDict(dictType);
             if (null == dictionary) continue;
-            final float weightForLocale = composedData.mIsBatchMode
+            final float weightForLocale = (composedData.mIsBatchMode
                     ? mDictionaryGroup.mWeightForGesturingInLocale
-                    : mDictionaryGroup.mWeightForTypingInLocale;
+                    : mDictionaryGroup.mWeightForTypingInLocale) * mDictionaryGroup.getLocaleWeightFactor();
             final ArrayList<SuggestedWordInfo> dictionarySuggestions =
                     dictionary.getSuggestions(composedData, ngramContext,
                             proximityInfoHandle, settingsValuesForSuggestion, sessionId,
@@ -637,9 +736,38 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
                 suggestionResults.mRawSuggestions.addAll(dictionarySuggestions);
             }
         }
+        // now same for secondary dictionary group
+        // todo: performance... second check is usually faster than 1st one
+        //  (or it's just dictionary size)
+        //  but still may add up to 100 ms on S4 mini (average ca 30)
+        //  relative: +70% compared to only one dictionary group
+        if (mSecondaryDictionaryGroup != null)
+            for (final String dictType : ALL_DICTIONARY_TYPES) {
+                final Dictionary dictionary = mSecondaryDictionaryGroup.getDict(dictType);
+                if (null == dictionary) continue;
+                final float weightForLocale = (composedData.mIsBatchMode
+                        ? mSecondaryDictionaryGroup.mWeightForGesturingInLocale
+                        : mSecondaryDictionaryGroup.mWeightForTypingInLocale) * mSecondaryDictionaryGroup.getLocaleWeightFactor();
+                final ArrayList<SuggestedWordInfo> dictionarySuggestions =
+                        dictionary.getSuggestions(composedData, ngramContext,
+                                proximityInfoHandle, settingsValuesForSuggestion, sessionId,
+                                weightForLocale, weightOfLangModelVsSpatialModel);
+                if (null == dictionarySuggestions) continue;
+                suggestionResults.addAll(dictionarySuggestions);
+                if (null != suggestionResults.mRawSuggestions) {
+                    suggestionResults.mRawSuggestions.addAll(dictionarySuggestions);
+                }
+            }
         return suggestionResults;
     }
 
+    // only called in addToUserHistory -> putWordIntoValidSpellingWordCache and by AndroidSpellCheckerService
+    //  but actually not in putWordIntoValidSpellingWordCache because cache is always null
+    // spell checker has its own instance of DictionaryFacilitatorImpl, so for now simply
+    //  return true if word is in any of both locales
+    // TODO: maybe add some getCurrentlyPreferredLocale, so spell checker can add new words to
+    //  correct locale dictionary
+    //  this means we basically HAVE to adjust confidence based on which dictionary returns true
     public boolean isValidSpellingWord(final String word) {
         if (mValidSpellingWordReadCache != null) {
             final Boolean cachedValue = mValidSpellingWordReadCache.get(word);
@@ -648,22 +776,23 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
             }
         }
 
-        return isValidWord(word, ALL_DICTIONARY_TYPES);
+        return isValidWord(word, ALL_DICTIONARY_TYPES, mDictionaryGroup) ||
+                (mSecondaryDictionaryGroup != null && isValidWord(word, ALL_DICTIONARY_TYPES, mSecondaryDictionaryGroup));
     }
 
     public boolean isValidSuggestionWord(final String word) {
-        return isValidWord(word, ALL_DICTIONARY_TYPES);
+        return isValidWord(word, ALL_DICTIONARY_TYPES, mDictionaryGroup);
     }
 
-    private boolean isValidWord(final String word, final String[] dictionariesToCheck) {
+    private boolean isValidWord(final String word, final String[] dictionariesToCheck, final DictionaryGroup dictionaryGroup) {
         if (TextUtils.isEmpty(word)) {
             return false;
         }
-        if (mDictionaryGroup.mLocale == null) {
+        if (dictionaryGroup.mLocale == null) {
             return false;
         }
         for (final String dictType : dictionariesToCheck) {
-            final Dictionary dictionary = mDictionaryGroup.getDict(dictType);
+            final Dictionary dictionary = dictionaryGroup.getDict(dictType);
             // Ideally the passed map would come out of a {@link java.util.concurrent.Future} and
             // would be immutable once it's finished initializing, but concretely a null test is
             // probably good enough for the time being.
@@ -675,13 +804,14 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         return false;
     }
 
-    private int getFrequency(final String word) {
+    // called from addWordToUserHistory with a specified dictionary, so provide this dictionary
+    private int getFrequency(final String word, DictionaryGroup dictGroup) {
         if (TextUtils.isEmpty(word)) {
             return Dictionary.NOT_A_PROBABILITY;
         }
         int maxFreq = Dictionary.NOT_A_PROBABILITY;
         for (final String dictType : ALL_DICTIONARY_TYPES) {
-            final Dictionary dictionary = mDictionaryGroup.getDict(dictType);
+            final Dictionary dictionary = dictGroup.getDict(dictType);
             if (dictionary == null) continue;
             final int tempFreq = dictionary.getFrequency(word);
             if (tempFreq >= maxFreq) {
@@ -697,6 +827,12 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
             return false;
         }
         dictionary.clear();
+        // called when not using personalized dictionaries, so should also reset secondary user history
+        if (mSecondaryDictionaryGroup != null) {
+            final ExpandableBinaryDictionary secondaryDictionary = mSecondaryDictionaryGroup.getSubDict(dictName);
+            if (secondaryDictionary != null)
+                secondaryDictionary.clear();
+        }
         return true;
     }
 
