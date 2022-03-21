@@ -55,7 +55,7 @@ public final class SecondaryLocaleSettingsFragment extends SubScreenFragment {
         mRichImm.refreshSubtypeCaches();
         getPreferenceScreen().removeAll();
         final Context context = getActivity();
-        List<InputMethodSubtype> subtypes = mRichImm.getMyEnabledInputMethodSubtypeList(false);
+        List<InputMethodSubtype> subtypes = mRichImm.getMyEnabledInputMethodSubtypeList(true);
 
         for (InputMethodSubtype subtype : subtypes) {
             final Locale secondaryLocale = Settings.getSecondaryLocale(getSharedPreferences(), subtype.getLocale());
@@ -150,6 +150,21 @@ public final class SecondaryLocaleSettingsFragment extends SubScreenFragment {
 
         // TODO: also get locales from assets
         //   need merged "compress" PR
+        // for testing: add some latin locales
+        if (asciiCapable) {
+            locales.add("da");
+            locales.add("de");
+            locales.add("en");
+            locales.add("es");
+            locales.add("fr");
+            locales.add("hu");
+            locales.add("it");
+            locales.add("nl");
+            locales.add("pl");
+            locales.add("ro");
+            locales.add("tr");
+            locales.add("sv");
+        }
         final File[] directoryList = DictionaryInfoUtils.getCachedDirectoryList(getActivity());
         for (File directory : directoryList) {
             if (!directory.isDirectory()) continue;
