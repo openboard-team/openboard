@@ -136,14 +136,17 @@ public final class SecondaryLocaleSettingsFragment extends SubScreenFragment {
     // get locales with same script as main locale, but different language
     private Set<String> getAvailableDictionaryLocales(String mainLocale, boolean asciiCapable) {
         final Locale mainL = LocaleUtils.constructLocaleFromString(mainLocale);
+        final Set<String> locales = new HashSet<>();
         final int mainScript;
         if (asciiCapable)
             mainScript = ScriptUtils.SCRIPT_LATIN;
         else
             mainScript = ScriptUtils.getScriptFromSpellCheckerLocale(mainL);
-        // TODO: does this really return latin for persian? might need that huge map from somewhere github
-
-        final Set<String> locales = new HashSet<>();
+        // ScriptUtils.getScriptFromSpellCheckerLocale may return latin when it should not
+        //  e.g. for persian or chinese
+        // workaround: don't allow secondary locales for these locales
+        if (!asciiCapable && mainScript == ScriptUtils.SCRIPT_LATIN)
+            return locales;
 
         // TODO: also get locales from assets
         //   need merged "compress" PR
