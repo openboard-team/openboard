@@ -94,7 +94,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_KEYBOARD_HEIGHT_SCALE = "pref_keyboard_height_scale";
     public static final String PREF_SPACE_TRACKPAD = "pref_space_trackpad";
     public static final String PREF_DELETE_SWIPE = "pref_delete_swipe";
-    public static final String PREF_INSERT_MORE_SPACES = "pref_insert_more_spaces";
+    public static final String PREF_AUTOSPACE_AFTER_PUNCTUATION = "pref_autospace_after_punctuation";
     public static final String PREF_ALWAYS_INCOGNITO_MODE =
             "pref_always_incognito_mode";
     public static final String PREF_BIGRAM_PREDICTIONS = "next_word_prediction";
@@ -393,8 +393,8 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         return prefs.getBoolean(PREF_DELETE_SWIPE, true);
     }
 
-    public static boolean readInsertMoreSpacesEnabled(final SharedPreferences prefs) {
-        return prefs.getBoolean(PREF_INSERT_MORE_SPACES, false);
+    public static boolean readAutospaceAfterPunctuationEnabled(final SharedPreferences prefs) {
+        return prefs.getBoolean(PREF_AUTOSPACE_AFTER_PUNCTUATION, false);
     }
 
     public static boolean readUseFullscreenMode(final Resources res) {
