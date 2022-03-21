@@ -80,7 +80,7 @@ public class SettingsValues {
     public final boolean mBlockPotentiallyOffensive;
     public final boolean mSpaceTrackpadEnabled;
     public final boolean mDeleteSwipeEnabled;
-    public final boolean mInsertMoreSpacesEnabled;
+    public final boolean mAutospaceAfterPunctuationEnabled;
     public final boolean mClipboardHistoryEnabled;
     public final long mClipboardHistoryRetentionTime;
     public final boolean mOneHandedModeEnabled;
@@ -238,7 +238,7 @@ public class SettingsValues {
         }
         mSpaceTrackpadEnabled = Settings.readSpaceTrackpadEnabled(prefs);
         mDeleteSwipeEnabled = Settings.readDeleteSwipeEnabled(prefs);
-        mInsertMoreSpacesEnabled = Settings.readInsertMoreSpacesEnabled(prefs);
+        mAutospaceAfterPunctuationEnabled = Settings.readAutospaceAfterPunctuationEnabled(prefs);
         mClipboardHistoryEnabled = Settings.readClipboardHistoryEnabled(prefs);
         mClipboardHistoryRetentionTime = Settings.readClipboardHistoryRetentionTime(prefs, res);
         mOneHandedModeEnabled = Settings.readOneHandedModeEnabled(prefs);

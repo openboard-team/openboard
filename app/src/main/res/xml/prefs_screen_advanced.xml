@@ -77,9 +77,9 @@
             android:defaultValue="true" />
 
         <CheckBoxPreference
-            android:key="pref_insert_more_spaces"
-            android:title="@string/insert_more_spaces"
-            android:summary="@string/insert_more_spaces_summary"
+            android:key="pref_autospace_after_punctuation"
+            android:title="@string/autospace_after_punctuation"
+            android:summary="@string/autospace_after_punctuation_summary"
             android:defaultValue="false" />
 
     </PreferenceCategory>

@@ -1003,7 +1003,7 @@ public final class InputLogic {
                 // phantom space state when typing decimal numbers, with the drawback of not
                 // setting phantom space state after ending a sentence with a non-word.
                 if (wasComposingWord
-                    && settingsValues.mInsertMoreSpacesEnabled
+                    && settingsValues.mAutospaceAfterPunctuationEnabled
                     && settingsValues.isUsuallyFollowedBySpace(codePoint)) {
                 mSpaceState = SpaceState.PHANTOM;
             }
