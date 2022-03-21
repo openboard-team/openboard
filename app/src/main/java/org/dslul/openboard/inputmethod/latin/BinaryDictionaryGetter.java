@@ -21,6 +21,7 @@ import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.util.Log;
 
+import org.dslul.openboard.inputmethod.latin.common.FileUtils;
 import org.dslul.openboard.inputmethod.latin.common.LocaleUtils;
 import org.dslul.openboard.inputmethod.latin.define.DecoderSpecificConstants;
 import org.dslul.openboard.inputmethod.latin.makedict.DictionaryHeader;
@@ -61,6 +62,8 @@ final public class BinaryDictionaryGetter {
     // Name of the category for the main dictionary
     public static final String MAIN_DICTIONARY_CATEGORY = "main";
     public static final String ID_CATEGORY_SEPARATOR = ":";
+
+    public static final String ASSETS_DICTIONARY_FOLDER = "dicts";
 
     // The key considered to read the version attribute in a dictionary file.
     private static String VERSION_KEY = "version";
@@ -265,14 +268,83 @@ final public class BinaryDictionaryGetter {
         }
 
         if (!foundMainDict && dictPackSettings.isWordListActive(mainDictId)) {
-            final int fallbackResId =
-                    DictionaryInfoUtils.getMainDictionaryResourceId(context.getResources(), locale);
-            final AssetFileAddress fallbackAsset = loadFallbackResource(context, fallbackResId);
+            final File dict = loadDictionaryFromAssets(locale.toString(), context);
+            final AssetFileAddress fallbackAsset;
+            if (dict == null) {
+                // fall back to the old way (maybe remove? will not work if files are compressed)
+                final int fallbackResId =
+                        DictionaryInfoUtils.getMainDictionaryResourceId(context.getResources(), locale);
+                fallbackAsset = loadFallbackResource(context, fallbackResId);
+            } else {
+                fallbackAsset = AssetFileAddress.makeFromFileName(dict.getPath());
+            }
             if (null != fallbackAsset) {
                 fileList.add(fallbackAsset);
             }
         }
 
         return fileList;
+    }
+
+    /**
+     * Returns the best matching main dictionary from assets.
+     *
+     * Actually copies the dictionary to cache folder, and then returns that file. This allows
+     * the dictionaries to be stored in a compressed way, reducing APK size.
+     * On next load, the dictionary in cache folder is found by getCachedWordLists
+     *
+     * Returns null on IO errors or if no matching dictionary is found
+     */
+    public static File loadDictionaryFromAssets(final String locale, final Context context) {
+        final String[] dictionaryList;
+        try {
+            dictionaryList = context.getAssets().list(ASSETS_DICTIONARY_FOLDER);
+        } catch (IOException e) {
+            return null;
+        }
+        if (null == dictionaryList) return null;
+        String bestMatchName = null;
+        int bestMatchLevel = 0;
+        for (String dictionary : dictionaryList) {
+            final String dictLocale =
+                    extractLocaleFromAssetsDictionaryFile(dictionary);
+            if (dictLocale == null) continue;
+            final int matchLevel = LocaleUtils.getMatchLevel(dictLocale, locale);
+            if (LocaleUtils.isMatch(matchLevel) && matchLevel > bestMatchLevel) {
+                bestMatchName = dictionary;
+            }
+        }
+        if (bestMatchName == null) return null;
+
+        // we have a match, now copy contents of the dictionary to "cached" word lists folder
+        File dictFile = new File(DictionaryInfoUtils.getCacheDirectoryForLocale(bestMatchName, context) +
+                File.separator + DictionaryInfoUtils.MAIN_DICTIONARY_INTERNAL_FILE_NAME);
+        try {
+            FileUtils.copyStreamToNewFile(
+                    context.getAssets().open(ASSETS_DICTIONARY_FOLDER + File.separator + bestMatchName),
+                    dictFile);
+            return dictFile;
+        } catch (IOException e) {
+            Log.e(TAG, "exception while looking for locale " + locale, e);
+            return null;
+        }
+    }
+
+    /**
+     * Returns the locale for a dictionary file name stored in assets.
+     *
+     * Assumes file name main_[locale].dict
+     *
+     * Returns the locale, or null if file name does not match the pattern
+     */
+    private static String extractLocaleFromAssetsDictionaryFile(final String dictionaryFileName) {
+        if (dictionaryFileName.startsWith(BinaryDictionaryGetter.MAIN_DICTIONARY_CATEGORY)
+                && dictionaryFileName.endsWith(".dict")) {
+            return dictionaryFileName.substring(
+                    BinaryDictionaryGetter.MAIN_DICTIONARY_CATEGORY.length() + 1,
+                    dictionaryFileName.lastIndexOf('.')
+            );
+        }
+        return null;
     }
 }

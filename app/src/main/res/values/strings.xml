@@ -461,6 +461,20 @@ disposition rather than other common dispositions for Latin languages. [CHAR LIM
     <string name="dictionary_settings_title">Add-on dictionaries</string>
     <!-- Title for the prompt dialog which informs the user that a dictionary is available for the current language and asks to decide whether to download it over 3g -->
     <string name="dictionary_settings_summary">Settings for dictionaries</string>
+    <!-- Title for the user dictionary selection dialog -->
+    <string name="dictionary_selection_title">"Choose dictionary file"</string>
+    <!-- Message for the user dictionary selection dialog. This string will be interpreted as HTML -->
+    <string name="dictionary_selection_message">"Select a dictionary to replace the main dictionary of the same locale. Dictionaries can be downloaded at %s."</string>
+    <!-- Title of the link to the download page inserted into selection message -->
+    <string name="dictionary_selection_link_text">"the project repository"</string>
+    <!-- Button text for dictionary file selection -->
+    <string name="dictionary_selection_load_file">"Load dictionary"</string>
+    <!-- Toast text shown when dictionary file was added successfully -->
+    <string name="dictionary_selection_load_success">"Dictionary for locale \"%s\" added"</string>
+    <!-- Text shown when dictionary file could not be read -->
+    <string name="dictionary_selection_file_error">"Error: Selected file is not a valid dictionary file"</string>
+    <!-- Text shown on other errors when loading dictionary file -->
+    <string name="dictionary_selection_error">"Error loading dictionary file"</string>
     <!-- Name of the user dictionaries settings category -->
     <string name="user_dictionaries">User dictionaries</string>
     <!-- Name for the "user dictionary" preference item when there is only one -->
