@@ -149,7 +149,7 @@ public class SettingsValues {
         mKeyPreviewPopupOn = Settings.readKeyPreviewPopupEnabled(prefs, res);
         mSlidingKeyInputPreviewEnabled = prefs.getBoolean(
                 DebugSettings.PREF_SLIDING_KEY_INPUT_PREVIEW, true);
-        mShowsVoiceInputKey = needsToShowVoiceInputKey(prefs, res) && mInputAttributes.mShouldShowVoiceInputKey;
+        mShowsVoiceInputKey = needsToShowVoiceInputKey(prefs, res) && mInputAttributes.mShouldShowVoiceInputKey && RichInputMethodManager.getInstance().hasShortcutIme();
         mIncludesOtherImesInLanguageSwitchList = !Settings.ENABLE_SHOW_LANGUAGE_SWITCH_KEY_SETTINGS || prefs.getBoolean(Settings.PREF_INCLUDE_OTHER_IMES_IN_LANGUAGE_SWITCH_LIST, false) /* forcibly */;
         mShowsNumberRow = prefs.getBoolean(Settings.PREF_SHOW_NUMBER_ROW, false);
         mShowsHints = prefs.getBoolean(Settings.PREF_SHOW_HINTS, true);
