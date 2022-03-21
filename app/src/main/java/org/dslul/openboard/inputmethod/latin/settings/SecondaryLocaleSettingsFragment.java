@@ -67,7 +67,7 @@ public final class SecondaryLocaleSettingsFragment extends SubScreenFragment {
             pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    showSecondaryLocaleDialog(subtype.getLocale(), subtype.isAsciiCapable());
+                    showSecondaryLocaleDialog(subtype.getLocale().toLowerCase(Locale.ENGLISH), subtype.isAsciiCapable());
                     return true;
                 }
             });

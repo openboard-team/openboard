@@ -202,7 +202,7 @@ public class ScriptUtils {
      */
     public static int getScriptFromSpellCheckerLocale(final Locale locale) {
         // need special treatment of serbian latin, which would get detected as cyrillic
-        if (locale.toString().equals("sr_ZZ"))
+        if (locale.toString().toLowerCase(Locale.ENGLISH).equals("sr_zz"))
             return ScriptUtils.SCRIPT_LATIN;
         String language = locale.getLanguage();
         Integer script = mLanguageCodeToScriptCode.get(language);

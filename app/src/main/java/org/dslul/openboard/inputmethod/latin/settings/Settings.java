@@ -514,12 +514,11 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         return prefs.getInt(PREF_LAST_SHOWN_EMOJI_CATEGORY_PAGE_ID, defValue);
     }
 
-    // TODO: test whether this gets updated on keyboard language switch!
     public static Locale getSecondaryLocale(final SharedPreferences prefs, final String mainLocaleString) {
         final Set<String> encodedLocales = prefs.getStringSet(PREF_SECONDARY_LOCALES, new HashSet<>());
         for (String loc : encodedLocales) {
             String[] locales = loc.split("§");
-            if (locales.length == 2 && locales[0].equals(mainLocaleString))
+            if (locales.length == 2 && locales[0].equals(mainLocaleString.toLowerCase(Locale.ENGLISH)))
                 return LocaleUtils.constructLocaleFromString(locales[1]);
         }
         return null;
