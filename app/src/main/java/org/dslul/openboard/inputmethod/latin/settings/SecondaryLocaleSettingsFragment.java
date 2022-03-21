@@ -19,7 +19,6 @@ package org.dslul.openboard.inputmethod.latin.settings;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.view.inputmethod.InputMethodSubtype;
@@ -42,7 +41,6 @@ import java.util.Set;
 
 public final class SecondaryLocaleSettingsFragment extends SubScreenFragment {
     private RichInputMethodManager mRichImm;
-    private SharedPreferences mPrefs;
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
@@ -54,6 +52,7 @@ public final class SecondaryLocaleSettingsFragment extends SubScreenFragment {
     }
 
     private void resetKeyboardLocales() {
+        mRichImm.refreshSubtypeCaches();
         getPreferenceScreen().removeAll();
         final Context context = getActivity();
         List<InputMethodSubtype> subtypes = mRichImm.getMyEnabledInputMethodSubtypeList(false);
@@ -78,11 +77,6 @@ public final class SecondaryLocaleSettingsFragment extends SubScreenFragment {
     }
 
     private void showSecondaryLocaleDialog(String mainLocale, boolean asciiCapable) {
-        final SettingsValues settingsValues = Settings.getInstance().getCurrent();
-        // TODO: does this really return latin for persian? might need that huge map from somewhere github
-        //  or maybe extend the script map, also with exception for sr_ZZ
-        //  but: could this break other things?
-
         final List<String> locales = new ArrayList<>(getAvailableDictionaryLocales(mainLocale, asciiCapable));
         final AlertDialog.Builder builder = new AlertDialog.Builder(
                 DialogUtils.getPlatformDialogThemeContext(getActivity()))
@@ -98,13 +92,14 @@ public final class SecondaryLocaleSettingsFragment extends SubScreenFragment {
         // add "no secondary language" option
         locales.add(getResources().getString(R.string.secondary_locale_none));
 
+        final Locale displayLocale = getResources().getConfiguration().locale;
         final CharSequence[] titles = locales.toArray(new CharSequence[0]);
         for (int i = 0; i < titles.length - 1 ; i++) {
             final Locale loc = LocaleUtils.constructLocaleFromString(titles[i].toString());
-            titles[i] = loc.getDisplayLanguage(settingsValues.mLocale);
+            titles[i] = loc.getDisplayLanguage(displayLocale);
         }
 
-        Locale currentSecondaryLocale = settingsValues.mSecondaryLocale;
+        Locale currentSecondaryLocale = Settings.getSecondaryLocale(getSharedPreferences(), mainLocale);
         int checkedItem;
         if (currentSecondaryLocale == null)
             checkedItem = locales.size() - 1;
@@ -130,7 +125,6 @@ public final class SecondaryLocaleSettingsFragment extends SubScreenFragment {
             if (!updated)
                 encodedLocales.add(mainLocale + "§" + locale);
             getSharedPreferences().edit().putStringSet(Settings.PREF_SECONDARY_LOCALES, encodedLocales).apply();
- //           getSharedPreferences().edit().putString(Settings.PREF_SECONDARY_LOCALE, locale).apply();
             final Intent newDictBroadcast = new Intent(DictionaryPackConstants.NEW_DICTIONARY_INTENT_ACTION);
             getActivity().sendBroadcast(newDictBroadcast);
             resetKeyboardLocales();
@@ -147,6 +141,7 @@ public final class SecondaryLocaleSettingsFragment extends SubScreenFragment {
             mainScript = ScriptUtils.SCRIPT_LATIN;
         else
             mainScript = ScriptUtils.getScriptFromSpellCheckerLocale(mainL);
+        // TODO: does this really return latin for persian? might need that huge map from somewhere github
 
         final Set<String> locales = new HashSet<>();
 
