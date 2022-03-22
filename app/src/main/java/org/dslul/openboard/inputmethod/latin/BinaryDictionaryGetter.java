@@ -296,12 +296,7 @@ final public class BinaryDictionaryGetter {
      * Returns null on IO errors or if no matching dictionary is found
      */
     public static File loadDictionaryFromAssets(final String locale, final Context context) {
-        final String[] dictionaryList;
-        try {
-            dictionaryList = context.getAssets().list(ASSETS_DICTIONARY_FOLDER);
-        } catch (IOException e) {
-            return null;
-        }
+        final String[] dictionaryList = getAssetsDictionaryList(context);
         if (null == dictionaryList) return null;
         String bestMatchName = null;
         int bestMatchLevel = 0;
@@ -309,15 +304,19 @@ final public class BinaryDictionaryGetter {
             final String dictLocale =
                     extractLocaleFromAssetsDictionaryFile(dictionary);
             if (dictLocale == null) continue;
-            final int matchLevel = LocaleUtils.getMatchLevel(dictLocale, locale);
+            // assets files may contain the locale in lowercase, but dictionary headers usually
+            //  have an upper case country code, so we compare lowercase here
+            final int matchLevel = LocaleUtils.getMatchLevel(dictLocale.toLowerCase(Locale.ENGLISH), locale.toLowerCase(Locale.ENGLISH));
             if (LocaleUtils.isMatch(matchLevel) && matchLevel > bestMatchLevel) {
                 bestMatchName = dictionary;
             }
         }
         if (bestMatchName == null) return null;
 
-        // we have a match, now copy contents of the dictionary to "cached" word lists folder
-        File dictFile = new File(DictionaryInfoUtils.getCacheDirectoryForLocale(bestMatchName, context) +
+        // we have a match, now copy contents of the dictionary to cached word lists folder
+        // but take care to use the correct case, as it will need to match with locale.toString()
+        final String bestMatchCaseCorrected = LocaleUtils.constructLocaleFromString(bestMatchName).toString();
+        File dictFile = new File(DictionaryInfoUtils.getCacheDirectoryForLocale(bestMatchCaseCorrected, context) +
                 File.separator + DictionaryInfoUtils.MAIN_DICTIONARY_INTERNAL_FILE_NAME);
         try {
             FileUtils.copyStreamToNewFile(
@@ -337,7 +336,7 @@ final public class BinaryDictionaryGetter {
      *
      * Returns the locale, or null if file name does not match the pattern
      */
-    private static String extractLocaleFromAssetsDictionaryFile(final String dictionaryFileName) {
+    public static String extractLocaleFromAssetsDictionaryFile(final String dictionaryFileName) {
         if (dictionaryFileName.startsWith(BinaryDictionaryGetter.MAIN_DICTIONARY_CATEGORY)
                 && dictionaryFileName.endsWith(".dict")) {
             return dictionaryFileName.substring(
@@ -346,5 +345,15 @@ final public class BinaryDictionaryGetter {
             );
         }
         return null;
+    }
+
+    public static String[] getAssetsDictionaryList(final Context context) {
+        final String[] dictionaryList;
+        try {
+            dictionaryList = context.getAssets().list(ASSETS_DICTIONARY_FOLDER);
+        } catch (IOException e) {
+            return null;
+        }
+        return dictionaryList;
     }
 }
