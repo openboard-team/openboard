@@ -166,16 +166,18 @@ public final class SecondaryLocaleSettingsFragment extends SubScreenFragment {
             locales.add("sv");
         }
         final File[] directoryList = DictionaryInfoUtils.getCachedDirectoryList(getActivity());
-        for (File directory : directoryList) {
-            if (!directory.isDirectory()) continue;
-            final String dirLocale =
-                    DictionaryInfoUtils.getWordListIdFromFileName(directory.getName());
-            if (dirLocale.equals(mainLocale)) continue;
-            final Locale locale = LocaleUtils.constructLocaleFromString(dirLocale);
-            if (locale.getLanguage().equals(mainL.getLanguage())) continue;
-            int localeScript = ScriptUtils.getScriptFromSpellCheckerLocale(locale);
-            if (localeScript != mainScript) continue;
-            locales.add(locale.toString());
+        if (directoryList != null) {
+            for (File directory : directoryList) {
+                if (!directory.isDirectory()) continue;
+                final String dirLocale =
+                        DictionaryInfoUtils.getWordListIdFromFileName(directory.getName());
+                if (dirLocale.equals(mainLocale)) continue;
+                final Locale locale = LocaleUtils.constructLocaleFromString(dirLocale);
+                if (locale.getLanguage().equals(mainL.getLanguage())) continue;
+                int localeScript = ScriptUtils.getScriptFromSpellCheckerLocale(locale);
+                if (localeScript != mainScript) continue;
+                locales.add(locale.toString());
+            }
         }
         return locales;
     }
