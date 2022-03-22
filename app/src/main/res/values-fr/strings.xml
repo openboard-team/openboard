@@ -118,7 +118,7 @@
     <string name="custom_input_style_note_message" msgid="8826731320846363423">"Vous devez activer votre style de saisie personnalisé avant de l\'utiliser. Voulez-vous le faire maintenant ?"</string>
     <string name="enable" msgid="5031294444630523247">"Activer"</string>
     <string name="not_now" msgid="6172462888202790482">"Pas maintenant"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">Le style de saisie suivant existe déjà: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g></string>
+    <string name="custom_input_style_already_exists" msgid="8008728952215449707">Le style de saisie suivant existe déjà : &lt;xliff :g xmlns :xliff=\"urn :oasis :names :tc :xliff :document :1.2\" id=\"INPUT_STYLE_NAME\"&gt;%s&lt;/xliff :g&gt;</string>
     <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Durée de vibration des touches"</string>
     <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Volume son pression de touche"</string>
     <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Délai d\'appui prolongé"</string>
@@ -132,12 +132,12 @@
     <string name="setup_steps_title" msgid="6400373034871816182">"Configurer <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
     <string name="setup_step1_title" msgid="3147967630253462315">"Activer <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
     <string name="setup_step1_instruction" msgid="4295448056733329661">"Sous \"Langues et saisie\", veuillez cocher \"<xliff:g id="APPLICATION_NAME">%s</xliff:g>\" pour autoriser son exécution sur l\'appareil."</string>
-    <string name="setup_step1_finished_instruction" msgid="8701441895377434947">L\'application \"<xliff:g id="APPLICATION_NAME">%s</xliff:g>\" est déjà activée dans vos paramètres \"Langues et saisie\". Passez à l\'étape suivante!</string>
+    <string name="setup_step1_finished_instruction" msgid="8701441895377434947">L\'application \"&lt;xliff :g xmlns :xliff=\"urn :oasis :names :tc :xliff :document :1.2\" id=\"APPLICATION_NAME\"&gt;%s&lt;/xliff :g&gt;\" est déjà activée dans vos paramètres \"Langues et saisie\". Passez à l\'étape suivante !</string>
     <string name="setup_step1_action" msgid="4366513534999901728">"Activer le clavier dans les paramètres"</string>
     <string name="setup_step2_title" msgid="6860725447906690594">"Basculer vers <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
     <string name="setup_step2_instruction" msgid="9141481964870023336">"Sélectionnez ensuite \"<xliff:g id="APPLICATION_NAME">%s</xliff:g>\" comme mode de saisie actif."</string>
     <string name="setup_step2_action" msgid="1660330307159824337">"Changer de mode de saisie"</string>
-    <string name="setup_step3_title" msgid="3154757183631490281">Félicitations, l\'opération est terminée!</string>
+    <string name="setup_step3_title" msgid="3154757183631490281">Félicitations, l\'opération est terminée !</string>
     <string name="setup_step3_instruction" msgid="8025981829605426000">"Avec <xliff:g id="APPLICATION_NAME">%s</xliff:g>, vous pouvez saisir du texte dans toutes vos applications préférées."</string>
     <string name="setup_step3_action" msgid="600879797256942259">"Configurer des langues supplémentaires"</string>
     <string name="setup_finish_action" msgid="276559243409465389">"OK"</string>
@@ -229,4 +229,6 @@
     <string name="enable_clipboard_history">Activer l\'historique</string>
     <string name="abbreviation_unit_minutes"><xliff:g id="MINUTES">%s</xliff:g>min.</string>
     <string name="subtype_with_layout_bn_BD"><xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Akkhor)</string>
+    <string name="autospace_after_punctuation">Espace auto après la ponctuation</string>
+    <string name="autospace_after_punctuation_summary">Insertion automatique d\'un espace après la ponctuation lors de la saisie d\'un nouveau mot</string>
 </resources>
