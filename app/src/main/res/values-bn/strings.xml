@@ -229,4 +229,6 @@
     <string name="amoled_mode">গাঢ় কালো পটভূমি</string>
     <string name="day_night_mode_summary">দৃশ্যপট সিস্টেম সেটিংসকে অনুসরণ করবে</string>
     <string name="subtype_with_layout_bn_BD"><xliff:g id="LANGUAGE_NAME" example="Bangla">%s</xliff:g> (অক্ষর)</string>
+    <string name="autospace_after_punctuation">যতিচিহ্নের পরে স্বয়ংক্রিয় স্পেস</string>
+    <string name="autospace_after_punctuation_summary">নতুন শব্দ লেখার সময় যতিচিহ্নের পরে স্বয়ংক্রিয়ভাবে স্পেস বসবে</string>
 </resources>
