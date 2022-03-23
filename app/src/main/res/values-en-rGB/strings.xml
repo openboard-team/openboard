@@ -229,4 +229,6 @@
     <string name="enable_clipboard_history_summary">If disabled, clipboard key will paste clipboard content if any</string>
     <string name="clipboard_history_retention_time">History retention time</string>
     <string name="subtype_with_layout_bn_BD"><xliff:g id="LANGUAGE_NAME" example="Bangla">%s</xliff:g> (Akkhor)</string>
+    <string name="autospace_after_punctuation">Autospace after punctuation</string>
+    <string name="autospace_after_punctuation_summary">Automatically insert space after punctuation when typing a new word</string>
 </resources>
