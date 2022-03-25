@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.preference.Preference
 import android.text.Html
 import android.text.method.LinkMovementMethod
-import android.util.Log
 import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuInflater
@@ -54,14 +53,14 @@ class DictionarySettingsFragment : SubScreenFragment() {
         val internalDicts = mutableSetOf<Locale>()
         // get available dictionaries
         // cached (internal in use and user dicts)
-        DictionaryInfoUtils.getCachedDirectoryList(activity).forEach { dir ->
+        DictionaryInfoUtils.getCachedDirectoryList(activity)?.forEach { dir ->
             if (!dir.isDirectory)
                 return@forEach
             dir.list()?.forEach {
-                if (it == DictionaryInfoUtils.MAIN_DICTIONARY_INTERNAL_FILE_NAME)
-                    internalDicts.add(dir.name.toLocale())
-                else if (it == DictionaryInfoUtils.MAIN_DICTIONARY_USER_FILE_NAME)
+                if (it == DictionaryInfoUtils.MAIN_DICTIONARY_USER_FILE_NAME)
                     userDicts.add(dir.name.toLocale())
+                else if (it.startsWith(DictionaryInfoUtils.MAIN_DICT_PREFIX))
+                    internalDicts.add(dir.name.toLocale())
             }
         }
         // internal only
@@ -70,7 +69,6 @@ class DictionarySettingsFragment : SubScreenFragment() {
                 internalDicts.add(it.toLocale())
             }
         }
-        Log.i("opb_", "user: $userDicts, internal: $internalDicts")
 
         // TODO: decide sort order: alphabetic? or user and then built-in?
         // split using categories?
@@ -84,7 +82,6 @@ class DictionarySettingsFragment : SubScreenFragment() {
                     // open dialog for update or delete / reset
                     currentDictLocale = dict
                     currentDictState = if (internalDicts.contains(dict)) DICT_INTERNAL_AND_USER else DICT_USER_ONLY
-                    Log.i("opb_", "show for $dict, user: ${userDicts.contains(dict)}, internal: ${internalDicts.contains(dict)}")
                     showUpdateDialog()
                     true
                 }
@@ -100,7 +97,6 @@ class DictionarySettingsFragment : SubScreenFragment() {
                     // open dialog for update, maybe disabling if i can make it work?
                     currentDictLocale = dict
                     currentDictState = DICT_INTERNAL_ONLY
-                    Log.i("opb_", "show for $dict, user: ${userDicts.contains(dict)}, internal: ${internalDicts.contains(dict)}")
                     showUpdateDialog()
                     true
                 }
@@ -118,8 +114,6 @@ class DictionarySettingsFragment : SubScreenFragment() {
         if (currentDictState == null) return
         if (currentDictLocale == null && currentDictState != DICT_NEW)
             return
-
-        Log.i("opb_", "exists for user: $currentDictExistsForUser")
 
         val link = "<a href='$DICTIONARY_URL'>" +
                 resources.getString(R.string.dictionary_link_text) + "</a>"
@@ -291,7 +285,7 @@ class DictionarySettingsFragment : SubScreenFragment() {
         DictionaryInfoUtils.getCacheDirectoryForLocale(this.toString(), activity) + File.separator + DictionaryInfoUtils.MAIN_DICTIONARY_USER_FILE_NAME
 
     private fun Locale.getInternalDictFilename() =
-        DictionaryInfoUtils.getCacheDirectoryForLocale(this.toString(), activity) + File.separator + DictionaryInfoUtils.MAIN_DICTIONARY_INTERNAL_FILE_NAME
+        DictionaryInfoUtils.getCacheDirectoryForLocale(this.toString(), activity) + File.separator + DictionaryInfoUtils.getMainDictFilename(this.toString())
 
     private fun String.displayName() = LocaleUtils.constructLocaleFromString(this)
         .getDisplayName(resources.configuration.locale)
