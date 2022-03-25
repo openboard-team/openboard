@@ -719,45 +719,65 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
                 false /* firstSuggestionExceedsConfidenceThreshold */);
         final float[] weightOfLangModelVsSpatialModel =
                 new float[] { Dictionary.NOT_A_WEIGHT_OF_LANG_MODEL_VS_SPATIAL_MODEL };
+
+        // start getting suggestions for secondary locale first, but in separate thread
+        final ArrayList<SuggestedWordInfo> dictionarySuggestionsSecondary = new ArrayList<>();
+        final CountDownLatch waitForSecondaryDictionary = new CountDownLatch(1);
+        if (mSecondaryDictionaryGroup != null) {
+            ExecutorUtils.getBackgroundExecutor(ExecutorUtils.KEYBOARD).execute(new Runnable() {
+                @Override
+                public void run() {
+                    dictionarySuggestionsSecondary.addAll(getSuggestions(composedData,
+                            ngramContext, settingsValuesForSuggestion, sessionId, proximityInfoHandle,
+                            weightOfLangModelVsSpatialModel, mSecondaryDictionaryGroup));
+                    waitForSecondaryDictionary.countDown();
+                }
+            });
+        }
+
+        // get main locale suggestions
+        final ArrayList<SuggestedWordInfo> dictionarySuggestions = getSuggestions(composedData,
+                ngramContext, settingsValuesForSuggestion, sessionId, proximityInfoHandle,
+                weightOfLangModelVsSpatialModel, mDictionaryGroup);
+        suggestionResults.addAll(dictionarySuggestions);
+        if (null != suggestionResults.mRawSuggestions) {
+            suggestionResults.mRawSuggestions.addAll(dictionarySuggestions);
+        }
+
+        // wait for secondary locale suggestions
+        if (mSecondaryDictionaryGroup != null) {
+            try { waitForSecondaryDictionary.await(); }
+            catch (InterruptedException e) {
+                Log.w(TAG, "Interrupted while trying to get secondary locale suggestions", e);
+            }
+            suggestionResults.addAll(dictionarySuggestionsSecondary);
+            if (null != suggestionResults.mRawSuggestions) {
+                suggestionResults.mRawSuggestions.addAll(dictionarySuggestionsSecondary);
+            }
+        }
+
+        return suggestionResults;
+    }
+
+    private ArrayList<SuggestedWordInfo> getSuggestions(ComposedData composedData,
+                NgramContext ngramContext, SettingsValuesForSuggestion settingsValuesForSuggestion,
+                int sessionId, long proximityInfoHandle, float[] weightOfLangModelVsSpatialModel,
+                DictionaryGroup dictGroup) {
+        final ArrayList<SuggestedWordInfo> suggestions = new ArrayList<>();
         for (final String dictType : ALL_DICTIONARY_TYPES) {
-            final Dictionary dictionary = mDictionaryGroup.getDict(dictType);
+            final Dictionary dictionary = dictGroup.getDict(dictType);
             if (null == dictionary) continue;
             final float weightForLocale = composedData.mIsBatchMode
-                    ? mDictionaryGroup.mWeightForGesturingInLocale
-                    : mDictionaryGroup.mWeightForTypingInLocale;
+                    ? dictGroup.mWeightForGesturingInLocale
+                    : dictGroup.mWeightForTypingInLocale;
             final ArrayList<SuggestedWordInfo> dictionarySuggestions =
                     dictionary.getSuggestions(composedData, ngramContext,
                             proximityInfoHandle, settingsValuesForSuggestion, sessionId,
                             weightForLocale, weightOfLangModelVsSpatialModel);
             if (null == dictionarySuggestions) continue;
-            suggestionResults.addAll(dictionarySuggestions);
-            if (null != suggestionResults.mRawSuggestions) {
-                suggestionResults.mRawSuggestions.addAll(dictionarySuggestions);
-            }
+            suggestions.addAll(dictionarySuggestions);
         }
-        // now same for secondary dictionary group
-        // todo: performance... second check is usually faster than 1st one
-        //  (or it's just dictionary size)
-        //  but still may add up to 100 ms on S4 mini (average ca 30)
-        //  relative: +70% compared to only one dictionary group
-        if (mSecondaryDictionaryGroup != null)
-            for (final String dictType : ALL_DICTIONARY_TYPES) {
-                final Dictionary dictionary = mSecondaryDictionaryGroup.getDict(dictType);
-                if (null == dictionary) continue;
-                final float weightForLocale = composedData.mIsBatchMode
-                        ? mSecondaryDictionaryGroup.mWeightForGesturingInLocale
-                        : mSecondaryDictionaryGroup.mWeightForTypingInLocale;
-                final ArrayList<SuggestedWordInfo> dictionarySuggestions =
-                        dictionary.getSuggestions(composedData, ngramContext,
-                                proximityInfoHandle, settingsValuesForSuggestion, sessionId,
-                                weightForLocale, weightOfLangModelVsSpatialModel);
-                if (null == dictionarySuggestions) continue;
-                suggestionResults.addAll(dictionarySuggestions);
-                if (null != suggestionResults.mRawSuggestions) {
-                    suggestionResults.mRawSuggestions.addAll(dictionarySuggestions);
-                }
-            }
-        return suggestionResults;
+        return suggestions;
     }
 
     // Spell checker is using this, and has its own instance of DictionaryFacilitatorImpl,
