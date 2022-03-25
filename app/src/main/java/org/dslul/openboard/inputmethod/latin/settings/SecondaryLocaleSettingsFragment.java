@@ -98,12 +98,12 @@ public final class SecondaryLocaleSettingsFragment extends SubScreenFragment {
             return;
         }
 
-        // add "no secondary language" option
-        locales.add(getResources().getString(R.string.secondary_locale_none));
+        // insert "no secondary language" option on top
+        locales.add(0, getResources().getString(R.string.secondary_locale_none));
 
         final Locale displayLocale = getResources().getConfiguration().locale;
         final CharSequence[] titles = locales.toArray(new CharSequence[0]);
-        for (int i = 0; i < titles.length - 1 ; i++) {
+        for (int i = 1; i < titles.length ; i++) {
             final Locale loc = LocaleUtils.constructLocaleFromString(titles[i].toString());
             titles[i] = loc.getDisplayName(displayLocale);
         }
@@ -111,13 +111,13 @@ public final class SecondaryLocaleSettingsFragment extends SubScreenFragment {
         Locale currentSecondaryLocale = Settings.getSecondaryLocale(getSharedPreferences(), mainLocale);
         int checkedItem;
         if (currentSecondaryLocale == null)
-            checkedItem = locales.size() - 1;
+            checkedItem = 0;
         else
             checkedItem = locales.indexOf(currentSecondaryLocale.toString());
 
         builder.setSingleChoiceItems(titles, checkedItem, (dialogInterface, i) -> {
             String locale = locales.get(i);
-            if (i == locales.size() - 1)
+            if (i == 0)
                 locale = "";
             final Set<String> encodedLocales = new HashSet<>();
             boolean updated = false;
