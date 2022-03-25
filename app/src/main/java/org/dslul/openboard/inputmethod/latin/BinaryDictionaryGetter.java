@@ -173,8 +173,8 @@ final public class BinaryDictionaryGetter {
         for (File directory : directoryList) {
             if (!directory.isDirectory()) continue;
             final String dirLocale =
-                    DictionaryInfoUtils.getWordListIdFromFileName(directory.getName());
-            final int matchLevel = LocaleUtils.getMatchLevel(dirLocale, locale);
+                    DictionaryInfoUtils.getWordListIdFromFileName(directory.getName()).toLowerCase(Locale.ENGLISH);
+            final int matchLevel = LocaleUtils.getMatchLevel(dirLocale, locale.toLowerCase(Locale.ENGLISH));
             if (LocaleUtils.isMatch(matchLevel)) {
                 final File[] wordLists = directory.listFiles();
                 if (null != wordLists) {
@@ -314,10 +314,9 @@ final public class BinaryDictionaryGetter {
         if (bestMatchName == null) return null;
 
         // we have a match, now copy contents of the dictionary to cached word lists folder
-        // but take care to use the correct case, as it will need to match with locale.toString()
-        final String bestMatchCaseCorrected = LocaleUtils.constructLocaleFromString(bestMatchName).toString();
-        File dictFile = new File(DictionaryInfoUtils.getCacheDirectoryForLocale(bestMatchCaseCorrected, context) +
-                File.separator + DictionaryInfoUtils.MAIN_DICTIONARY_INTERNAL_FILE_NAME);
+        final String bestMatchLocale = extractLocaleFromAssetsDictionaryFile(bestMatchName);
+        File dictFile = new File(DictionaryInfoUtils.getCacheDirectoryForLocale(bestMatchLocale, context) +
+                File.separator + DictionaryInfoUtils.getMainDictFilename(bestMatchLocale));
         try {
             FileUtils.copyStreamToNewFile(
                     context.getAssets().open(ASSETS_DICTIONARY_FOLDER + File.separator + bestMatchName),
@@ -337,10 +336,10 @@ final public class BinaryDictionaryGetter {
      * Returns the locale, or null if file name does not match the pattern
      */
     public static String extractLocaleFromAssetsDictionaryFile(final String dictionaryFileName) {
-        if (dictionaryFileName.startsWith(BinaryDictionaryGetter.MAIN_DICTIONARY_CATEGORY)
+        if (dictionaryFileName.startsWith(DictionaryInfoUtils.MAIN_DICT_PREFIX)
                 && dictionaryFileName.endsWith(".dict")) {
             return dictionaryFileName.substring(
-                    BinaryDictionaryGetter.MAIN_DICTIONARY_CATEGORY.length() + 1,
+                    DictionaryInfoUtils.MAIN_DICT_PREFIX.length(),
                     dictionaryFileName.lastIndexOf('.')
             );
         }

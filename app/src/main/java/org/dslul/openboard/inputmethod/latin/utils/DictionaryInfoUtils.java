@@ -53,9 +53,9 @@ public class DictionaryInfoUtils {
     private static final String TAG = DictionaryInfoUtils.class.getSimpleName();
     public static final String RESOURCE_PACKAGE_NAME = R.class.getPackage().getName();
     private static final String DEFAULT_MAIN_DICT = "main";
-    private static final String MAIN_DICT_PREFIX = "main_";
-    public static final String MAIN_DICTIONARY_INTERNAL_FILE_NAME = DEFAULT_MAIN_DICT + ".dict";
+    public static final String MAIN_DICT_PREFIX = DEFAULT_MAIN_DICT + "_";
     public static final String MAIN_DICTIONARY_USER_FILE_NAME = MAIN_DICT_PREFIX + "user.dict";
+    private static final String DICTIONARY_CATEGORY_SEPARATOR_EXPRESSION = "[" + BinaryDictionaryGetter.ID_CATEGORY_SEPARATOR + "_]";
     private static final String DECODER_DICT_SUFFIX = DecoderSpecificConstants.DECODER_DICT_SUFFIX;
     // 6 digits - unicode is limited to 21 bits
     private static final int MAX_HEX_DIGITS_FOR_CODEPOINT = 6;
@@ -214,10 +214,12 @@ public class DictionaryInfoUtils {
     @Nullable
     public static String getCategoryFromFileName(@Nonnull final String fileName) {
         final String id = getWordListIdFromFileName(fileName);
-        final String[] idArray = id.split(BinaryDictionaryGetter.ID_CATEGORY_SEPARATOR);
+        final String[] idArray = id.split(DICTIONARY_CATEGORY_SEPARATOR_EXPRESSION);
         // An id is supposed to be in format category:locale, so splitting on the separator
         // should yield a 2-elements array
-        if (2 != idArray.length) {
+        // Also allow '_' as separator, this is ok for locales like pt_br because
+        // we're interested in the part before first separator anyway
+        if (1 == idArray.length) {
             return null;
         }
         return idArray[0];
@@ -227,7 +229,7 @@ public class DictionaryInfoUtils {
      * Find out the cache directory associated with a specific locale.
      */
     public static String getCacheDirectoryForLocale(final String locale, final Context context) {
-        final String relativeDirectoryName = replaceFileNameDangerousCharacters(locale);
+        final String relativeDirectoryName = replaceFileNameDangerousCharacters(locale).toLowerCase(Locale.ENGLISH);
         final String absoluteDirectoryName = getWordListCacheDirectory(context) + File.separator
                 + relativeDirectoryName;
         final File directory = new File(absoluteDirectoryName);
@@ -240,11 +242,13 @@ public class DictionaryInfoUtils {
     }
 
     public static boolean isMainWordListId(final String id) {
-        final String[] idArray = id.split(BinaryDictionaryGetter.ID_CATEGORY_SEPARATOR);
+        final String[] idArray = id.split(DICTIONARY_CATEGORY_SEPARATOR_EXPRESSION);
         // An id is supposed to be in format category:locale, so splitting on the separator
         // should yield a 2-elements array
-        if (2 != idArray.length) {
-            return id.startsWith(BinaryDictionaryGetter.MAIN_DICTIONARY_CATEGORY);
+        // Also allow '_' as separator, this is ok for locales like pt_br because
+        // we're interested in the part before first separator anyway
+        if (1 == idArray.length) {
+            return false;
         }
         return BinaryDictionaryGetter.MAIN_DICTIONARY_CATEGORY.equals(idArray[0]);
     }
@@ -318,6 +322,10 @@ public class DictionaryInfoUtils {
         // like to use for word lists included in resources, and the following is okay.
         return BinaryDictionaryGetter.MAIN_DICTIONARY_CATEGORY +
                 BinaryDictionaryGetter.ID_CATEGORY_SEPARATOR + locale.toString().toLowerCase();
+    }
+
+    public static String getMainDictFilename(@Nonnull final String locale) {
+        return MAIN_DICT_PREFIX + locale.toLowerCase(Locale.ENGLISH) + ".dict";
     }
 
     public static DictionaryHeader getDictionaryFileHeaderOrNull(final File file,
