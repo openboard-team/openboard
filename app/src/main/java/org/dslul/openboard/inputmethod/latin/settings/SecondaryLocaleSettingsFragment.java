@@ -38,6 +38,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.TreeSet;
 
 public final class SecondaryLocaleSettingsFragment extends SubScreenFragment {
     private RichInputMethodManager mRichImm;
@@ -78,6 +79,14 @@ public final class SecondaryLocaleSettingsFragment extends SubScreenFragment {
 
     private void showSecondaryLocaleDialog(String mainLocale, boolean asciiCapable) {
         final List<String> locales = new ArrayList<>(getAvailableDictionaryLocales(mainLocale, asciiCapable));
+
+        // we don't want to offer mainLocale as a choice, same goes for the language (e.g. en for en_GB)
+        locales.remove(mainLocale);
+        if (mainLocale.contains("_")) {
+            final String mainLanguage = LocaleUtils.constructLocaleFromString(mainLocale).getLanguage();
+            locales.remove(mainLanguage);
+        }
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(
                 DialogUtils.getPlatformDialogThemeContext(getActivity()))
                 .setTitle(R.string.language_selection_title)
@@ -89,26 +98,26 @@ public final class SecondaryLocaleSettingsFragment extends SubScreenFragment {
             return;
         }
 
-        // add "no secondary language" option
-        locales.add(getResources().getString(R.string.secondary_locale_none));
+        // insert "no secondary language" option on top
+        locales.add(0, getResources().getString(R.string.secondary_locale_none));
 
         final Locale displayLocale = getResources().getConfiguration().locale;
         final CharSequence[] titles = locales.toArray(new CharSequence[0]);
-        for (int i = 0; i < titles.length - 1 ; i++) {
+        for (int i = 1; i < titles.length ; i++) {
             final Locale loc = LocaleUtils.constructLocaleFromString(titles[i].toString());
-            titles[i] = loc.getDisplayLanguage(displayLocale);
+            titles[i] = loc.getDisplayName(displayLocale);
         }
 
         Locale currentSecondaryLocale = Settings.getSecondaryLocale(getSharedPreferences(), mainLocale);
         int checkedItem;
         if (currentSecondaryLocale == null)
-            checkedItem = locales.size() - 1;
+            checkedItem = 0;
         else
             checkedItem = locales.indexOf(currentSecondaryLocale.toString());
 
         builder.setSingleChoiceItems(titles, checkedItem, (dialogInterface, i) -> {
             String locale = locales.get(i);
-            if (i == locales.size() - 1)
+            if (i == 0)
                 locale = "";
             final Set<String> encodedLocales = new HashSet<>();
             boolean updated = false;
@@ -136,7 +145,7 @@ public final class SecondaryLocaleSettingsFragment extends SubScreenFragment {
     // get locales with same script as main locale, but different language
     private Set<String> getAvailableDictionaryLocales(String mainLocale, boolean asciiCapable) {
         final Locale mainL = LocaleUtils.constructLocaleFromString(mainLocale);
-        final Set<String> locales = new HashSet<>();
+        final Set<String> locales = new TreeSet<>();
         final int mainScript;
         if (asciiCapable)
             mainScript = ScriptUtils.SCRIPT_LATIN;
