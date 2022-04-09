@@ -319,6 +319,7 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
     @Nullable
     static DictionaryGroup findDictionaryGroupWithLocale(final DictionaryGroup dictionaryGroup,
             final Locale locale) {
+        if (dictionaryGroup == null) return null;
         return locale.equals(dictionaryGroup.mLocale) ? dictionaryGroup : null;
     }
 
@@ -399,41 +400,73 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         DictionaryGroup newDictionaryGroup =
                 new DictionaryGroup(newLocale, mainDict, account, subDicts);
 
+        // create / load secondary dictionary
+        final Locale secondaryLocale = Settings.getInstance().getCurrent().mSecondaryLocale;
+        final DictionaryGroup newSecondaryDictionaryGroup;
+        final Map<String, ExpandableBinaryDictionary> secondarySubDicts = new HashMap<>();
+
+        if (secondaryLocale != null &&
+                ScriptUtils.getScriptFromSpellCheckerLocale(secondaryLocale) == ScriptUtils.getScriptFromSpellCheckerLocale(newLocale)) {
+            final ArrayList<String> dictTypesToCleanUp = new ArrayList<>();
+            for (final String dictType : ALL_DICTIONARY_TYPES) {
+                if (mSecondaryDictionaryGroup != null && mSecondaryDictionaryGroup.hasDict(dictType, account)) {
+                    dictTypesToCleanUp.add(dictType);
+                }
+            }
+            for (final String subDictType : subDictTypesToUse) {
+                final ExpandableBinaryDictionary subDict =
+                        getSubDict(subDictType, context, secondaryLocale, null, dictNamePrefix, account);
+                secondarySubDicts.put(subDictType, subDict);
+                dictTypesToCleanUp.remove(subDictType);
+            }
+            final Dictionary secondaryMainDict;
+            if (forceReloadMainDictionary || findDictionaryGroupWithLocale(mSecondaryDictionaryGroup, secondaryLocale) == null
+                    || !mSecondaryDictionaryGroup.hasDict(Dictionary.TYPE_MAIN, account)) {
+                secondaryMainDict = null;
+            } else {
+                if (mSecondaryDictionaryGroup == null)
+                    secondaryMainDict = null;
+                else
+                    secondaryMainDict = mSecondaryDictionaryGroup.getDict(Dictionary.TYPE_MAIN);
+                dictTypesToCleanUp.remove(Dictionary.TYPE_MAIN);
+            }
+            newSecondaryDictionaryGroup = new DictionaryGroup(secondaryLocale, secondaryMainDict, account, secondarySubDicts);
+
+            // do the cleanup like for main dict: look like this is for removing dictionaries
+            // after user changed enabled types (e.g. disable personalized suggestions)
+            existingDictionariesToCleanup.put(secondaryLocale, dictTypesToCleanUp);
+        } else {
+            newSecondaryDictionaryGroup = null;
+        }
+
         // Replace Dictionaries.
         final DictionaryGroup oldDictionaryGroup;
+        final DictionaryGroup oldSecondaryDictionaryGroup;
         synchronized (mLock) {
             oldDictionaryGroup = mDictionaryGroup;
             mDictionaryGroup = newDictionaryGroup;
+            oldSecondaryDictionaryGroup = mSecondaryDictionaryGroup;
+            mSecondaryDictionaryGroup = newSecondaryDictionaryGroup;
             if (hasAtLeastOneUninitializedMainDictionary()) {
-                asyncReloadUninitializedMainDictionaries(context, newLocale, listener);
+                asyncReloadUninitializedMainDictionaries(context, newLocale,
+                        mSecondaryDictionaryGroup == null ? null : secondaryLocale, listener);
             }
         }
         if (listener != null) {
             listener.onUpdateMainDictionaryAvailability(hasAtLeastOneInitializedMainDictionary());
         }
 
-        // create / load secondary dictionary
-        final Locale secondaryLocale = Settings.getInstance().getCurrent().mSecondaryLocale;
-        final Map<String, ExpandableBinaryDictionary> secondarySubDicts = new HashMap<>();
-        if (secondaryLocale != null && mDictionaryGroup != null && mDictionaryGroup.mLocale != null &&
-                ScriptUtils.getScriptFromSpellCheckerLocale(secondaryLocale) == ScriptUtils.getScriptFromSpellCheckerLocale(mDictionaryGroup.mLocale)) {
-            for (final String subDictType : subDictTypesToUse) {
-                final ExpandableBinaryDictionary subDict =
-                        getSubDict(subDictType, context, secondaryLocale, null, dictNamePrefix, account);
-                secondarySubDicts.put(subDictType, subDict);
-            }
-            mSecondaryDictionaryGroup = new DictionaryGroup(secondaryLocale, null, account, secondarySubDicts);
-            mSecondaryDictionaryGroup.setMainDict(DictionaryFactory.createMainDictionaryFromManager(context, secondaryLocale));
-        } else {
-            mSecondaryDictionaryGroup = null;
-        }
-
         // Clean up old dictionaries.
         for (final Locale localeToCleanUp : existingDictionariesToCleanup.keySet()) {
             final ArrayList<String> dictTypesToCleanUp =
                     existingDictionariesToCleanup.get(localeToCleanUp);
-            final DictionaryGroup dictionarySetToCleanup =
+            DictionaryGroup dictionarySetToCleanup =
                     findDictionaryGroupWithLocale(oldDictionaryGroup, localeToCleanUp);
+            if (dictionarySetToCleanup == null)
+                dictionarySetToCleanup =
+                        findDictionaryGroupWithLocale(oldSecondaryDictionaryGroup, localeToCleanUp);
+            if (dictionarySetToCleanup == null)
+                continue;
             for (final String dictType : dictTypesToCleanUp) {
                 dictionarySetToCleanup.closeDict(dictType);
             }
@@ -445,20 +478,20 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
     }
 
     private void asyncReloadUninitializedMainDictionaries(final Context context,
-            final Locale locale, final DictionaryInitializationListener listener) {
+            final Locale locale, final Locale secondaryLocale, final DictionaryInitializationListener listener) {
         final CountDownLatch latchForWaitingLoadingMainDictionary = new CountDownLatch(1);
         mLatchForWaitingLoadingMainDictionaries = latchForWaitingLoadingMainDictionary;
         ExecutorUtils.getBackgroundExecutor(ExecutorUtils.KEYBOARD).execute(new Runnable() {
             @Override
             public void run() {
                 doReloadUninitializedMainDictionaries(
-                        context, locale, listener, latchForWaitingLoadingMainDictionary);
+                        context, locale, secondaryLocale, listener, latchForWaitingLoadingMainDictionary);
             }
         });
     }
 
     void doReloadUninitializedMainDictionaries(final Context context, final Locale locale,
-            final DictionaryInitializationListener listener,
+            final Locale secondaryLocale, final DictionaryInitializationListener listener,
             final CountDownLatch latchForWaitingLoadingMainDictionary) {
         final DictionaryGroup dictionaryGroup =
                 findDictionaryGroupWithLocale(mDictionaryGroup, locale);
@@ -469,6 +502,18 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         }
         final Dictionary mainDict =
                 DictionaryFactory.createMainDictionaryFromManager(context, locale);
+
+        final DictionaryGroup secondaryDictionaryGroup;
+        if (secondaryLocale == null)
+            secondaryDictionaryGroup = null;
+        else
+            secondaryDictionaryGroup = findDictionaryGroupWithLocale(mSecondaryDictionaryGroup, secondaryLocale);
+        final Dictionary secondaryMainDict;
+        if (secondaryLocale == null)
+            secondaryMainDict = null;
+        else
+            secondaryMainDict = DictionaryFactory.createMainDictionaryFromManager(context, secondaryLocale);
+
         synchronized (mLock) {
             if (locale.equals(dictionaryGroup.mLocale)) {
                 dictionaryGroup.setMainDict(mainDict);
@@ -476,6 +521,10 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
                 // Dictionary facilitator has been reset for another locale.
                 mainDict.close();
             }
+            if (secondaryDictionaryGroup != null && secondaryLocale.equals(secondaryDictionaryGroup.mLocale))
+                secondaryDictionaryGroup.setMainDict(secondaryMainDict);
+            else if (secondaryMainDict != null)
+                secondaryMainDict.close();
         }
         if (listener != null) {
             listener.onUpdateMainDictionaryAvailability(hasAtLeastOneInitializedMainDictionary());
@@ -543,8 +592,14 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         return mainDict != null && mainDict.isInitialized();
     }
 
+    // also checks for main dictionary of secondary locale
     public boolean hasAtLeastOneUninitializedMainDictionary() {
         final Dictionary mainDict = mDictionaryGroup.getDict(Dictionary.TYPE_MAIN);
+        if (mSecondaryDictionaryGroup != null) {
+            final Dictionary secondaryDict = mSecondaryDictionaryGroup.getDict(Dictionary.TYPE_MAIN);
+            if (secondaryDict == null || !secondaryDict.isInitialized())
+                return true;
+        }
         return mainDict == null || !mainDict.isInitialized();
     }
 
