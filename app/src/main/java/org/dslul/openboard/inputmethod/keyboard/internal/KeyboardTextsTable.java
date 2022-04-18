@@ -2169,18 +2169,25 @@ public final class KeyboardTextsTable {
         /* morekeys_nordic_row2_11 ~ */
         null, null, null, null, null, null, null,
         /* ~ morekeys_swiss_row2_11 */
-        // U+055E: "՞" ARMENIAN QUESTION MARK
-        // U+055C: "՜" ARMENIAN EXCLAMATION MARK
-        // U+055A: "՚" ARMENIAN APOSTROPHE
-        // U+0559: "ՙ" ARMENIAN MODIFIER LETTER LEFT HALF RING
-        // U+055D: "՝" ARMENIAN COMMA
-        // U+055B: "՛" ARMENIAN EMPHASIS MARK
-        // U+058A: "֊" ARMENIAN HYPHEN
-        // U+00BB: "»" RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
-        // U+00AB: "«" LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
-        // U+055F: "՟" ARMENIAN ABBREVIATION MARK
-        /* morekeys_punctuation */ "!autoColumnOrder!8,\\,,\u055E,\u055C,.,\u055A,\u0559,?,!,\u055D,\u055B,\u058A,\u00BB,\u00AB,\u055F,;,:",
-        /* keyspec_tablet_comma */ "\u055D",
+        //
+        // &#x0028; U+0028 "(" Բացվող փակագիծ - OPENING PARENTHESES
+        // &#x0029; U+0029 ")" Փակվող փակագիծ - CLOSING PARENTHESES
+        // &#x0027; U+0027 "'" Ապաթարց - APOSTROPHE
+        // &#x2026; U+2026 "…" Կախման կետեր
+        // &#x055E; U+055E "՞" Հարցական - ARMENIAN QUESTION MARK
+        // &#x055C; U+055C "՜" Բացականչական - ARMENIAN EXCLAMATION MARK
+        // &#x055B; U+055B "՛" Շեշտ
+        // &#x055D; U+055D "՝" Բութ
+        // &#x058A; U+058A "֊" Միության գծիկ - ARMENIAN HYPHEN
+        // &#x2015; U+2015 "―" Անջատման գժիկ - ARMENIAN SEPARATION MARK
+        // &#x00AB; U+00AB "«" Բացվող չակերտ - LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
+        // &#x00BB; U+00BB "»" Փակվող չակերտ - RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
+        // &#x002C; U+002C "," Ստօրակետ - ARMENIAN COMMA
+        // &#x0589; U+0589 "։" Վերջակետ - ARMENIAN COLON
+        // &#x2024; U+2024 "․" Միջակետ
+        //
+        /* morekeys_punctuation */ "!autoColumnOrder!8,\\,,\u055E,\u055C,\u2024,\u2026,',=,/,\u055D,\u055B,\u058A,\u00BB,\u00AB,\u2015,),(",
+        /* keyspec_tablet_comma */ ",",
         /* morekeys_star ~ */
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
         /* ~ keyspec_right_single_angle_quote */
@@ -2188,13 +2195,12 @@ public final class KeyboardTextsTable {
         // TODO: Enable this when we have glyph for the following letter
         // <string name="keyspec_currency">&#x058F;</string>
         // 
-        // U+055D: "՝" ARMENIAN COMMA
-        /* keyspec_comma */ "\u055D",
+        // U+002C: "," ARMENIAN COMMA
+        /* keyspec_comma */ ",",
         /* morekeys_tablet_comma */ null,
         /* keyhintlabel_period */ null,
         // U+055E: "՞" ARMENIAN QUESTION MARK
-        // U+00BF: "¿" INVERTED QUESTION MARK
-        /* morekeys_question */ "\u055E,\u00BF",
+        /* morekeys_question */ "\u055E",
         /* morekeys_h ~ */
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
@@ -2202,8 +2208,7 @@ public final class KeyboardTextsTable {
         null, null, null,
         /* ~ morekeys_greater_than */
         // U+055C: "՜" ARMENIAN EXCLAMATION MARK
-        // U+00A1: "¡" INVERTED EXCLAMATION MARK
-        /* morekeys_exclamation */ "\u055C,\u00A1",
+        /* morekeys_exclamation */ "\u055C",
     };
 
     /* Locale is: Icelandic */
