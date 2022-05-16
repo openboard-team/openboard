@@ -82,7 +82,7 @@
     <string name="keyboard_layout" msgid="8451164783510487501">"مظهر لوحة المفاتيح"</string>
     <string name="switch_accounts" msgid="3321216593719006162">"تبديل الحسابات"</string>
     <string name="no_accounts_selected" msgid="2073821619103904330">"لم يتم تحديد أي حساب"</string>
-    <string name="account_selected" msgid="2846876462199625974">"يتم حاليًا استخدام <xliff:g id="EMAIL_ADDRESS">%1$s</xliff:g>"</string>
+    <string name="account_selected" msgid="2846876462199625974">يتم حاليًا استخدام <xliff:g id="EMAIL_ADDRESS" example="someone@example.com">%1$s</xliff:g></string>
     <string name="account_select_ok" msgid="9141195141763227797">"موافق"</string>
     <string name="account_select_cancel" msgid="5181012062618504340">"إلغاء"</string>
     <string name="account_select_sign_out" msgid="3299651159390187933">"الخروج"</string>
@@ -132,12 +132,12 @@
     <string name="setup_steps_title" msgid="6400373034871816182">"إعداد <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
     <string name="setup_step1_title" msgid="3147967630253462315">"تفعيل <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
     <string name="setup_step1_instruction" msgid="4295448056733329661">"يُرجى تحديد \"<xliff:g id="APPLICATION_NAME">%s</xliff:g>\" من خلال إعدادات اللغات والإدخال؛ وذلك للسماح بتشغيل هذا التطبيق على جهازك."</string>
-    <string name="setup_step1_finished_instruction" msgid="8701441895377434947">"تم تفعيل <xliff:g id="APPLICATION_NAME">%s</xliff:g> من قبل في إعدادات اللغات والإدخال، وبالتالي هذه الخطوة مكتملة. انتقل إلى الخطوة التالية."</string>
+    <string name="setup_step1_finished_instruction" msgid="8701441895377434947">تم تفعيل <xliff:g id="APPLICATION_NAME" example="Android Keyboard">%s</xliff:g> من قبل في إعدادات اللغات والإدخال، وبالتالي هذه الخطوة مكتملة. انتقل إلى الخطوة التالية!</string>
     <string name="setup_step1_action" msgid="4366513534999901728">"تفعيل في الإعدادات"</string>
-    <string name="setup_step2_title" msgid="6860725447906690594">"التبديل إلى <xliff:g id="APPLICATION_NAME">%s</xliff:g>."</string>
+    <string name="setup_step2_title" msgid="6860725447906690594">التبديل إلى <xliff:g id="APPLICATION_NAME" example="Android Keyboard">%s</xliff:g></string>
     <string name="setup_step2_instruction" msgid="9141481964870023336">"بعد ذلك، حدد \"<xliff:g id="APPLICATION_NAME">%s</xliff:g>\" باعتباره أسلوب إدخال النص النشط."</string>
     <string name="setup_step2_action" msgid="1660330307159824337">"تبديل أساليب الإدخال"</string>
-    <string name="setup_step3_title" msgid="3154757183631490281">"تهانينا، بهذا تكون قد انتهيت من الإعداد"</string>
+    <string name="setup_step3_title" msgid="3154757183631490281">تهانينا ، لقد انتهيت من الإعداد!</string>
     <string name="setup_step3_instruction" msgid="8025981829605426000">"الآن أصبح بإمكانك الكتابة في جميع تطبيقاتك المفضلة باستخدام <xliff:g id="APPLICATION_NAME">%s</xliff:g>."</string>
     <string name="setup_step3_action" msgid="600879797256942259">"تهيئة اللغات الإضافية"</string>
     <string name="setup_finish_action" msgid="276559243409465389">"إنهاء العملية"</string>
@@ -184,7 +184,29 @@
     <string name="user_dict_settings_context_menu_delete_title" msgid="8142932447689461181">"حذف"</string>
     <string name="user_dict_settings_empty_text" msgid="6889278304342592383">"ليس هناك أي كلمات في قاموس المستخدم. لإضافة كلمة، انقر على زر الإضافة (+)."</string>
     <string name="user_dict_settings_all_languages" msgid="8276126583216298886">"لجميع اللغات"</string>
-    <string name="user_dict_settings_more_languages" msgid="7131268499685180461">"مزيد من اللغات..."</string>
+    <string name="user_dict_settings_more_languages" msgid="7131268499685180461">مزيد من اللغات…</string>
     <string name="user_dict_settings_delete" msgid="110413335187193859">"حذف"</string>
     <string name="user_dict_fast_scroll_alphabet" msgid="5431919401558285473">" أ ب ت ث ج ح خ د ذ ر ز س ش ص ض ط ظ ع غ ف ق ك ل م ن ه و ي"</string>
+    <string name="show_emoji_key">مفتاح النفاذ إلى الرموز التعبيرية</string>
+    <string name="settings_no_limit">بلا حدود</string>
+    <string name="ime_settings">إعدادات OpenBoard</string>
+    <string name="settings_category_input">الادخال</string>
+    <string name="prefs_resize_keyboard">تمكين تغيير حجم لوحة المفاتيح</string>
+    <string name="prefs_force_incognito_mode_summary">تعطيل تعلم الكلمات الجديدة</string>
+    <string name="more_keys_strip_description">المزيد من المفاتيح</string>
+    <string name="amoled_mode">خلفيات سوداء عميقة</string>
+    <string name="prefs_keyboard_height_scale">مقياس ارتفاع لوحة المفاتيح</string>
+    <string name="day_night_mode">وضع النهار / الليل تلقائي</string>
+    <string name="settings_category_correction">التصحيحات</string>
+    <string name="settings_category_suggestions">الاقتراحات</string>
+    <string name="settings_category_experimental">تجريبي</string>
+    <string name="settings_category_miscellaneous">متنوعة</string>
+    <string name="spell_checker_service_name">المدقق الإملائي OpenBoard</string>
+    <string name="android_spell_checker_settings">إعدادات المدقق الإملائي OpenBoard</string>
+    <string name="show_clipboard_key">مفتاح الحافظة</string>
+    <string name="number_row">صف الأرقام</string>
+    <string name="number_row_summary">إظهار صف الأرقام دائما</string>
+    <string name="day_night_mode_summary">سيتبع المظهر إعدادات النظام</string>
+    <string name="prefs_long_press_keyboard_to_change_lang">تغيير طريقة الإدخال باستخدام مفتاح المسافة</string>
+    <string name="settings_category_additional_keys">مفاتيح إضافية</string>
 </resources>
