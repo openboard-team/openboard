@@ -20,10 +20,28 @@
 
 <merge
     xmlns:latin="http://schemas.android.com/apk/res-auto">
-    <!-- a,z,e,r,t -->
-    <include
-        latin:keyboardLayout="@xml/rowkeys_azerty1_left5" />
-    <!-- y,u,i,o,p -->
-    <include
-        latin:keyboardLayout="@xml/rowkeys_azerty1_right5" />
+    <Key
+        latin:keySpec="h"
+        latin:keyHintLabel="-"
+        latin:additionalMoreKeys="-"
+        latin:moreKeys="!text/morekeys_h" />
+    <Key
+        latin:keySpec="j"
+        latin:keyHintLabel="+"
+        latin:additionalMoreKeys="+"
+        latin:moreKeys="!text/morekeys_j" />
+    <Key
+        latin:keySpec="k"
+        latin:keyHintLabel="("
+        latin:additionalMoreKeys="("
+        latin:moreKeys="!text/morekeys_k" />
+    <Key
+        latin:keySpec="l"
+        latin:keyHintLabel=")"
+        latin:additionalMoreKeys=")"
+        latin:moreKeys="!text/morekeys_l" />
+    <Key
+        latin:keySpec="m"
+        latin:keyHintLabel="\?"
+        latin:additionalMoreKeys="\\?" />
 </merge>
