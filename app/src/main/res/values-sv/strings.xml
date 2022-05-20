@@ -209,4 +209,11 @@
     <string name="prefs_force_incognito_mode_summary">Inaktivera inlärning av nya ord</string>
     <string name="settings_category_input">Inmatning</string>
     <string name="show_clipboard_key">Urklippsknapp</string>
+    <string name="enable_clipboard_history">Aktivera urklippshistorik</string>
+    <string name="enable_clipboard_history_summary">Urklippsknappen kommer att klistra in eventuellt urklippsinnehåll om denna är inaktiverad</string>
+    <string name="clipboard_history_retention_time">Lagringstid för historik</string>
+    <string name="delete_swipe">Raderingssvepning</string>
+    <string name="delete_swipe_summary">Gör en svepning från radera-tangenten för att markera och ta bort större mängder text på en gång</string>
+    <string name="space_trackpad_summary">Svep på mellanslagstangenten för att flytta textmarkören</string>
+    <string name="space_trackpad">Styrplatta i mellanslagstangenten</string>
 </resources>
