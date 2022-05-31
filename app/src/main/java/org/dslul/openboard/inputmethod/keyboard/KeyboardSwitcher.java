@@ -24,7 +24,6 @@ import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-
 import org.dslul.openboard.inputmethod.event.Event;
 import org.dslul.openboard.inputmethod.keyboard.KeyboardLayoutSet.KeyboardLayoutSetException;
 import org.dslul.openboard.inputmethod.keyboard.clipboard.ClipboardHistoryView;
@@ -545,6 +544,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         mKeyboardView.setKeyboardActionListener(mLatinIME);
         mEmojiPalettesView.setHardwareAcceleratedDrawingEnabled(
                 isHardwareAcceleratedDrawingEnabled);
+        mEmojiPalettesView.setUiHandler(mLatinIME.mHandler);
         mEmojiPalettesView.setKeyboardActionListener(mLatinIME);
         mClipboardHistoryView.setHardwareAcceleratedDrawingEnabled(
                 isHardwareAcceleratedDrawingEnabled);
