@@ -335,7 +335,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                     latinIme.mClipboardHistoryManager.onPinnedClipsAvailable(entries);
                     break;
                 case MSG_UPDATE_RECENT_EMOJIS:
-                    EmojiPalettesView emojiPalettesView = latinIme.mInputView.findViewById(R.id.emoji_palettes_view);
+                    final EmojiPalettesView emojiPalettesView = switcher.getEmojiPalettesView();
                     if (emojiPalettesView != null) {
                         @SuppressWarnings("unchecked")
                         final SparseArray<RecentEmoji> array = (SparseArray<RecentEmoji>) msg.obj;

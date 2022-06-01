@@ -511,6 +511,10 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         return mKeyboardView;
     }
 
+    public EmojiPalettesView getEmojiPalettesView() {
+        return mEmojiPalettesView;
+    }
+
     public void deallocateMemory() {
         if (mKeyboardView != null) {
             mKeyboardView.cancelAllOngoingEvents();
