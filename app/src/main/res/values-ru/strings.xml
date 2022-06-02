@@ -228,7 +228,7 @@
     <string name="settings_category_correction">Исправления</string>
     <string name="settings_category_input">Настройки ввода</string>
     <string name="settings_category_additional_keys">Дополнительные клавиши</string>
-    <string name="settings_category_suggestions">Предложения для вставки слов</string>
+    <string name="settings_category_suggestions">Предложения</string>
     <string name="prefs_long_press_keyboard_to_change_lang_summary">Долгое нажатие клавиши пробела вызовет меню выбора метода ввода</string>
     <string name="amoled_mode_summary">Экономия заряда батареи для AMOLED-экранов</string>
 </resources>
