@@ -74,11 +74,11 @@
     <string name="voice_input_disabled_summary" msgid="6323489602945135165">Inga röstinmatningsmetoder har aktiverats. Kontrollera Språk och inmatning-inställningarna.</string>
     <string name="configure_input_method" msgid="373356270290742459">"Konfigurera inmatningsmetoder"</string>
     <string name="language_selection_title" msgid="3666971864764478269">"Språk"</string>
-    <string name="help_and_feedback" msgid="5328219371839879161">"Hjälp och feedback"</string>
+    <string name="help_and_feedback" msgid="5328219371839879161">Hjälp &amp; återkoppling</string>
     <string name="select_language" msgid="5709487854987078367">"Språk"</string>
     <string name="hint_add_to_dictionary" msgid="2645988432867033007">Tryck igen för att spara</string>
     <string name="hint_add_to_dictionary_without_word" msgid="6710206006427574423">Tryck här för att spara</string>
-    <string name="has_dictionary" msgid="6071847973466625007">"En ordlista är tillgänglig"</string>
+    <string name="has_dictionary" msgid="6071847973466625007">Ordlista tillgänglig</string>
     <string name="keyboard_layout" msgid="8451164783510487501">"Tangentbordstema"</string>
     <string name="switch_accounts" msgid="3321216593719006162">"Byt konto"</string>
     <string name="no_accounts_selected" msgid="2073821619103904330">"Du har inte valt något konto"</string>
@@ -216,4 +216,7 @@
     <string name="delete_swipe_summary">Gör en svepning från radera-tangenten för att markera och ta bort större mängder text på en gång</string>
     <string name="space_trackpad_summary">Svep på mellanslagstangenten för att flytta textmarkören</string>
     <string name="space_trackpad">Styrplatta i mellanslagstangenten</string>
+    <string name="autospace_after_punctuation_summary">Infoga automatiskt mellanslag efter skiljetecken när ett nytt ord skrivs</string>
+    <string name="autospace_after_punctuation">Automatiskt mellanslag efter skiljetecken</string>
+    <string name="more_keys_strip_description">Fler tangenter</string>
 </resources>
