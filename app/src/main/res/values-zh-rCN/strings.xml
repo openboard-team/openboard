@@ -214,7 +214,7 @@
     <string name="amoled_mode_summary">可大幅减少耗电量（具体取决于设备的屏幕技术）</string>
     <string name="spell_checker_service_name">拼写检查</string>
     <string name="android_spell_checker_settings">拼写检查设置</string>
-    <string name="subtype_with_layout_bn_BD"><xliff:g id="LANGUAGE_NAME" example="Bangla">%s</xliff:g> (Akkhor)</string>
+    <string name="subtype_with_layout_bn_BD"><xliff:g id="LANGUAGE_NAME" example="Bangla">%s</xliff:g> (学校管理模板)</string>
     <string name="subtype_no_language_workman">字母表</string>
     <string name="prefs_force_incognito_mode_summary">禁止学习新单词</string>
     <string name="more_keys_strip_description">切换输入法</string>
