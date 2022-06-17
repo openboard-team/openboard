@@ -131,14 +131,14 @@
     <string name="setup_next_action" msgid="371821437915144603">"下一步"</string>
     <string name="setup_steps_title" msgid="6400373034871816182">设置 <xliff:g id="APPLICATION_NAME" example="Android Keyboard">%s</xliff:g></string>
     <string name="setup_step1_title" msgid="3147967630253462315">启用 <xliff:g id="APPLICATION_NAME" example="Android Keyboard">%s</xliff:g></string>
-    <string name="setup_step1_instruction" msgid="4295448056733329661">"请在“语言和输入法”设置中选中“<xliff:g id="APPLICATION_NAME">%s</xliff:g>”，授权该应用在您的设备上运行。"</string>
-    <string name="setup_step1_finished_instruction" msgid="8701441895377434947">"您已在“语言和输入法”中启用了<xliff:g id="APPLICATION_NAME">%s</xliff:g>，因此这一步骤已完成。继续下一步吧！"</string>
+    <string name="setup_step1_instruction" msgid="4295448056733329661">请在“语言 &amp; 输入法”设置中选中“<xliff:g id="APPLICATION_NAME" example="Android Keyboard">%s</xliff:g>”，授权该应用在您的设备上运行。</string>
+    <string name="setup_step1_finished_instruction" msgid="8701441895377434947">您已在“语言 &amp; 输入法”中启用了<xliff:g id="APPLICATION_NAME" example="Android Keyboard">%s</xliff:g>，因此这一步骤已完成。继续下一步吧！</string>
     <string name="setup_step1_action" msgid="4366513534999901728">"在设置中启用"</string>
-    <string name="setup_step2_title" msgid="6860725447906690594">"切换到 <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
-    <string name="setup_step2_instruction" msgid="9141481964870023336">"接下来，请选择“<xliff:g id="APPLICATION_NAME">%s</xliff:g>”作为您要使用的文字输入法。"</string>
+    <string name="setup_step2_title" msgid="6860725447906690594">切换到 <xliff:g id="APPLICATION_NAME" example="Android Keyboard">%s</xliff:g></string>
+    <string name="setup_step2_instruction" msgid="9141481964870023336">接下来，请选择“<xliff:g id="APPLICATION_NAME" example="Android Keyboard">%s</xliff:g>”作为您要使用的文字输入法。</string>
     <string name="setup_step2_action" msgid="1660330307159824337">"切换输入法"</string>
     <string name="setup_step3_title" msgid="3154757183631490281">"恭喜，您已完成了设置！"</string>
-    <string name="setup_step3_instruction" msgid="8025981829605426000">"现在，您可以在自己喜欢的所有应用中使用 <xliff:g id="APPLICATION_NAME">%s</xliff:g>来输入内容了。"</string>
+    <string name="setup_step3_instruction" msgid="8025981829605426000">现在，您可以在自己喜欢的所有应用中使用 <xliff:g id="APPLICATION_NAME" example="Android Keyboard">%s</xliff:g> 来输入内容了。</string>
     <string name="setup_step3_action" msgid="600879797256942259">"配置其他语言"</string>
     <string name="setup_finish_action" msgid="276559243409465389">"完成"</string>
     <string name="show_setup_wizard_icon" msgid="5008028590593710830">"显示应用图标"</string>
@@ -167,7 +167,7 @@
     <string name="install_dict" msgid="180852772562189365">"安装"</string>
     <string name="cancel_download_dict" msgid="7843340278507019303">"取消"</string>
     <string name="delete_dict" msgid="756853268088330054">"删除"</string>
-    <string name="version_text" msgid="2715354215568469385">"版本：<xliff:g id="VERSION_NUMBER">%1$s</xliff:g>"</string>
+    <string name="version_text" msgid="2715354215568469385">版本 <xliff:g id="VERSION_NUMBER" example="1.0.1864.643521">%1$s</xliff:g></string>
     <string name="user_dict_settings_add_menu_title" msgid="1254195365689387076">"添加"</string>
     <string name="user_dict_settings_add_dialog_title" msgid="4096700390211748168">"添加到字典"</string>
     <string name="user_dict_settings_add_screen_title" msgid="5818914331629278758">"词组"</string>
