@@ -96,9 +96,9 @@
     <string name="subtype_with_layout_en_US" msgid="8809311287529805422">英语（美国）(<xliff:g id="KEYBOARD_LAYOUT" example="QWERTY">%s</xliff:g>)</string>
     <string name="subtype_with_layout_es_US" msgid="510930471167541338">西班牙语（美国）(<xliff:g id="KEYBOARD_LAYOUT" example="QWERTY">%s</xliff:g>)</string>
     <string name="subtype_with_layout_hi_ZZ" msgid="6827402953860547044">英语（印度）(<xliff:g id="KEYBOARD_LAYOUT" example="QWERTY">%s</xliff:g>)</string>
-    <string name="subtype_with_layout_sr_ZZ" msgid="2859024772719772407">塞尔维亚语（<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>）</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g>（传统）"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g>（紧凑型）"</string>
+    <string name="subtype_with_layout_sr_ZZ" msgid="2859024772719772407">塞尔维亚语 (<xliff:g id="KEYBOARD_LAYOUT" example="QWERTY">%s</xliff:g>)</string>
+    <string name="subtype_generic_traditional" msgid="8584594350973800586"><xliff:g id="LANGUAGE_NAME" example="Nepali">%s</xliff:g> (传统)</string>
+    <string name="subtype_generic_compact" msgid="3353673321203202922"><xliff:g id="LANGUAGE_NAME" example="Hindi">%s</xliff:g> (紧凑)</string>
     <string name="subtype_no_language" msgid="7137390094240139495">"无语言（字母）"</string>
     <string name="subtype_no_language_qwerty" msgid="244337630616742604">"字母 (QWERTY)"</string>
     <string name="subtype_no_language_qwertz" msgid="443066912507547976">"字母 (QWERTZ)"</string>
@@ -118,19 +118,19 @@
     <string name="custom_input_style_note_message" msgid="8826731320846363423">"您需要先启用自定义输入样式，然后才能开始使用。要立即启用该样式吗？"</string>
     <string name="enable" msgid="5031294444630523247">"启用"</string>
     <string name="not_now" msgid="6172462888202790482">"以后再说"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"已经存在相同的输入样式：<xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="custom_input_style_already_exists" msgid="8008728952215449707">已经存在相同的输入样式： <xliff:g id="INPUT_STYLE_NAME" example="English (Dvorak)">%s</xliff:g></string>
     <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"按键振动时长"</string>
     <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"按键音量"</string>
     <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"按键长按延迟"</string>
     <string name="prefs_enable_emoji_alt_physical_key" msgid="5963640002335470112">"通过实体键盘启用表情符号"</string>
     <string name="prefs_enable_emoji_alt_physical_key_summary" msgid="5259484820941627827">"按实体键盘上的 Alt 键可显示表情符号面板"</string>
     <string name="button_default" msgid="3988017840431881491">"默认"</string>
-    <string name="setup_welcome_title" msgid="6112821709832031715">"欢迎使用 <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
+    <string name="setup_welcome_title" msgid="6112821709832031715">欢迎使用 <xliff:g id="APPLICATION_NAME" example="Android Keyboard">%s</xliff:g></string>
     <string name="setup_welcome_additional_description" msgid="8150252008545768953">"体验顺畅的滑行输入体验"</string>
     <string name="setup_start_action" msgid="8936036460897347708">"开始"</string>
     <string name="setup_next_action" msgid="371821437915144603">"下一步"</string>
-    <string name="setup_steps_title" msgid="6400373034871816182">"设置 <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
-    <string name="setup_step1_title" msgid="3147967630253462315">"启用 <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
+    <string name="setup_steps_title" msgid="6400373034871816182">设置 <xliff:g id="APPLICATION_NAME" example="Android Keyboard">%s</xliff:g></string>
+    <string name="setup_step1_title" msgid="3147967630253462315">启用 <xliff:g id="APPLICATION_NAME" example="Android Keyboard">%s</xliff:g></string>
     <string name="setup_step1_instruction" msgid="4295448056733329661">"请在“语言和输入法”设置中选中“<xliff:g id="APPLICATION_NAME">%s</xliff:g>”，授权该应用在您的设备上运行。"</string>
     <string name="setup_step1_finished_instruction" msgid="8701441895377434947">"您已在“语言和输入法”中启用了<xliff:g id="APPLICATION_NAME">%s</xliff:g>，因此这一步骤已完成。继续下一步吧！"</string>
     <string name="setup_step1_action" msgid="4366513534999901728">"在设置中启用"</string>
