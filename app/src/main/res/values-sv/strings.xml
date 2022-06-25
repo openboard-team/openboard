@@ -81,24 +81,24 @@
     <string name="has_dictionary" msgid="6071847973466625007">Ordlista tillgänglig</string>
     <string name="keyboard_layout" msgid="8451164783510487501">"Tangentbordstema"</string>
     <string name="switch_accounts" msgid="3321216593719006162">"Byt konto"</string>
-    <string name="no_accounts_selected" msgid="2073821619103904330">"Du har inte valt något konto"</string>
-    <string name="account_selected" msgid="2846876462199625974">"Du använder nu <xliff:g id="EMAIL_ADDRESS">%1$s</xliff:g>"</string>
+    <string name="no_accounts_selected" msgid="2073821619103904330">Inga konton valda</string>
+    <string name="account_selected" msgid="2846876462199625974">Använder nu <xliff:g id="EMAIL_ADDRESS" example="someone@example.com">%1$s</xliff:g></string>
     <string name="account_select_ok" msgid="9141195141763227797">"OK"</string>
     <string name="account_select_cancel" msgid="5181012062618504340">"Avbryt"</string>
     <string name="account_select_sign_out" msgid="3299651159390187933">"Logga ut"</string>
-    <string name="account_select_title" msgid="6279711684772922649">"Välj ett konto"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"Engelska (brittisk)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"Engelska (amerikansk)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"spanska (USA)"</string>
-    <string name="subtype_hi_ZZ" msgid="8860448146262798623">"Hindi/engelska"</string>
+    <string name="account_select_title" msgid="6279711684772922649">Välj ett konto att använda</string>
+    <string name="subtype_en_GB" msgid="88170601942311355">Engelska (UK)</string>
+    <string name="subtype_en_US" msgid="6160452336634534239">Engelska (USA)</string>
+    <string name="subtype_es_US" msgid="5583145191430180200">Spanska (USA)</string>
+    <string name="subtype_hi_ZZ" msgid="8860448146262798623">Hingelska</string>
     <string name="subtype_sr_ZZ" msgid="9059219552986034343">"Serbiska (latinsk)"</string>
-    <string name="subtype_with_layout_en_GB" msgid="1931018968641592304">"Engelska (Storbritannien) <xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>"</string>
-    <string name="subtype_with_layout_en_US" msgid="8809311287529805422">"Engelska (USA) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_es_US" msgid="510930471167541338">"Spanska (USA (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_hi_ZZ" msgid="6827402953860547044">"Hindi/engelska (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_sr_ZZ" msgid="2859024772719772407">"Serbiska (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (traditionell)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompakt)"</string>
+    <string name="subtype_with_layout_en_GB" msgid="1931018968641592304">Engelska (UK) (<xliff:g id="KEYBOARD_LAYOUT" example="QWERTY">%s</xliff:g>)</string>
+    <string name="subtype_with_layout_en_US" msgid="8809311287529805422">Engelska (USA) (<xliff:g id="KEYBOARD_LAYOUT" example="QWERTY">%s</xliff:g>)</string>
+    <string name="subtype_with_layout_es_US" msgid="510930471167541338">Spanska (USA) (<xliff:g id="KEYBOARD_LAYOUT" example="QWERTY">%s</xliff:g>)</string>
+    <string name="subtype_with_layout_hi_ZZ" msgid="6827402953860547044">Hingelska (<xliff:g id="KEYBOARD_LAYOUT" example="QWERTY">%s</xliff:g>)</string>
+    <string name="subtype_with_layout_sr_ZZ" msgid="2859024772719772407">Serbiska (<xliff:g id="KEYBOARD_LAYOUT" example="QWERTY">%s</xliff:g>)</string>
+    <string name="subtype_generic_traditional" msgid="8584594350973800586"><xliff:g id="LANGUAGE_NAME" example="Nepali">%s</xliff:g> (traditionell)</string>
+    <string name="subtype_generic_compact" msgid="3353673321203202922"><xliff:g id="LANGUAGE_NAME" example="Hindi">%s</xliff:g> (kompakt)</string>
     <string name="subtype_no_language" msgid="7137390094240139495">"Inget språk (alfabet)"</string>
     <string name="subtype_no_language_qwerty" msgid="244337630616742604">"Alfabet (QWERTY)"</string>
     <string name="subtype_no_language_qwertz" msgid="443066912507547976">"Alfabet (QWERTZ)"</string>
@@ -193,7 +193,7 @@
     <string name="settings_category_miscellaneous">Diverse</string>
     <string name="abbreviation_unit_minutes"><xliff:g id="MINUTES">%s</xliff:g>min.</string>
     <string name="settings_no_limit">Ingen gräns</string>
-    <string name="prefs_long_press_keyboard_to_change_lang_summary">Långtryck på mellanslagstangenten öppnar menyn för val av inmatningsmetod</string>
+    <string name="prefs_long_press_keyboard_to_change_lang_summary">Långtryckning på mellanslagstangenten öppnar menyn för val av inmatningsmetod</string>
     <string name="prefs_long_press_keyboard_to_change_lang">Ändra inmatningsmetod med mellanslagstangenten</string>
     <string name="spell_checker_service_name">OpenBoards stavningskontroll</string>
     <string name="android_spell_checker_settings">Inställningar för OpenBoards stavningskontroll</string>
@@ -201,7 +201,7 @@
     <string name="number_row_summary">Visa alltid nummerrad</string>
     <string name="show_emoji_key">Emoji-tangent</string>
     <string name="ime_settings">OpenBoard-inställningar</string>
-    <string name="show_hints_summary">Visa tangenttips för långtryckning</string>
+    <string name="show_hints_summary">Visa tips för långtryckning</string>
     <string name="settings_category_additional_keys">Ytterligare tangenter</string>
     <string name="settings_category_clipboard_history">Urklippshistorik</string>
     <string name="show_hints">Visa tangenttips</string>
@@ -219,4 +219,7 @@
     <string name="autospace_after_punctuation_summary">Infoga automatiskt mellanslag efter skiljetecken när ett nytt ord skrivs</string>
     <string name="autospace_after_punctuation">Automatiskt mellanslag efter skiljetecken</string>
     <string name="more_keys_strip_description">Fler tangenter</string>
+    <string name="prefs_resize_keyboard">Aktivera storleksändring av tangentbord</string>
+    <string name="prefs_keyboard_height_scale">Tangentbordets höjdskala</string>
+    <string name="subtype_with_layout_bn_BD"><xliff:g id="LANGUAGE_NAME" example="Bangla">%s</xliff:g> (bengali)</string>
 </resources>
