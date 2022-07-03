@@ -28,13 +28,13 @@
         latin:moreKeys="!text/morekeys_q" />
     <Key
         latin:keySpec="s"
-        latin:keyHintLabel="#"
-        latin:additionalMoreKeys="#"
+        latin:keyHintLabel="&#x1E63;"
+        latin:additionalMoreKeys="#,&#x1E63;"
         latin:moreKeys="!text/morekeys_s" />
     <Key
         latin:keySpec="d"
-        latin:keyHintLabel="$"
-        latin:additionalMoreKeys="$"
+        latin:keyHintLabel="&#x1E0D;"
+        latin:additionalMoreKeys="$,&#x1E0D;"
         latin:moreKeys="!text/morekeys_d" />
     <Key
         latin:keySpec="f"
@@ -42,13 +42,13 @@
         latin:additionalMoreKeys="%" />
     <Key
         latin:keySpec="g"
-        latin:keyHintLabel="&amp;"
-        latin:additionalMoreKeys="&amp;"
+        latin:keyHintLabel="&#x01E7;"
+        latin:additionalMoreKeys="&amp;,&#x01E7;"
         latin:moreKeys="!text/morekeys_g" />
     <Key
         latin:keySpec="h"
-        latin:keyHintLabel="-"
-        latin:additionalMoreKeys="-"
+        latin:keyHintLabel="&#x1E25;"
+        latin:additionalMoreKeys="-,&#x1E25;"
         latin:moreKeys="!text/morekeys_h" />
     <Key
         latin:keySpec="j"

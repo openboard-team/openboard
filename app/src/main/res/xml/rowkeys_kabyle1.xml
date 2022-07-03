@@ -18,13 +18,15 @@
 */
 -->
 
-<merge
-    xmlns:latin="http://schemas.android.com/apk/res-auto"
->
+<merge xmlns:latin="http://schemas.android.com/apk/res-auto">
+	
+	<!-- U+025B: "ɛ" latin small letter open e -->
     <Key
         latin:keySpec="a"
         latin:keyHintLabel="1"
         latin:additionalMoreKeys="1,&#x025B;" />
+	
+	<!-- U+1E93: "ẓ" latin small letter z with dot below -->
     <Key
         latin:keySpec="z"
         latin:keyHintLabel="2"
@@ -33,10 +35,14 @@
         latin:keySpec="e"
         latin:keyHintLabel="3"
         latin:additionalMoreKeys="3" />
+	
+	<!-- U+1E5B: "ṛ" latin small letter r with dot below -->
     <Key
         latin:keySpec="r"
         latin:keyHintLabel="4"
         latin:additionalMoreKeys="4,&#x1E5B;" />
+	
+	<!-- U+1E6D: "ṭ" latin small letter t with dot below -->
     <Key
         latin:keySpec="t"
         latin:keyHintLabel="5"
@@ -53,10 +59,15 @@
         latin:keySpec="i"
         latin:keyHintLabel="8"
         latin:additionalMoreKeys="8" />
+	
+	<!-- U+025B: "ɛ" latin small letter open e -->
     <Key
         latin:keySpec="&#x025B;"
         latin:keyHintLabel="9"
         latin:additionalMoreKeys="9" />
+	
+	<!-- U+0263: "ɣ" latin small letter gamma
+         U+03B3: "γ" greek small letter gamma -->
     <Key
         latin:keySpec="&#x0263;"
         latin:keyHintLabel="0"
