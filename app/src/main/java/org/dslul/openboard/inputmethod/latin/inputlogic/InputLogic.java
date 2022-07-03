@@ -717,6 +717,15 @@ public final class InputLogic {
                 // line, so that does affect the contents of the editor.
                 inputTransaction.setDidAffectContents();
                 break;
+            case Constants.CODE_START_ONE_HANDED_MODE:
+            case Constants.CODE_STOP_ONE_HANDED_MODE:
+                // Note: One-handed mode activation is being
+                // handled in {@link KeyboardState#onEvent(Event,int)}.
+                break;
+            case Constants.CODE_SWITCH_ONE_HANDED_MODE:
+                // Note: Switching one-handed side is being
+                // handled in {@link KeyboardState#onEvent(Event,int)}.
+                break;
             default:
                 throw new RuntimeException("Unknown key code : " + event.getMKeyCode());
         }
@@ -986,6 +995,16 @@ public final class InputLogic {
                 // separator does not normally need a space on the right (that's the difference
                 // between swappers and strippers), so we should not stay in phantom space state if
                 // the separator is a stripper. Hence the additional test above.
+                mSpaceState = SpaceState.PHANTOM;
+            } else
+                // mSpaceState is still SpaceState.NONE, but some characters should typically
+                // be followed by space. Set phantom space state for such characters if the user
+                // enabled the setting and was not composing a word. The latter avoids setting
+                // phantom space state when typing decimal numbers, with the drawback of not
+                // setting phantom space state after ending a sentence with a non-word.
+                if (wasComposingWord
+                    && settingsValues.mAutospaceAfterPunctuationEnabled
+                    && settingsValues.isUsuallyFollowedBySpace(codePoint)) {
                 mSpaceState = SpaceState.PHANTOM;
             }
 

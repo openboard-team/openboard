@@ -20,18 +20,8 @@
 
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto">
     <include latin:keyboardLayout="@xml/key_styles_common" />
-    <switch>
-        <case
-            latin:numberRowEnabled="true"
-            >
-            <Row
-                latin:keyWidth="10%p"
-                >
-                <include
-                    latin:keyboardLayout="@xml/rowkeys_symbols1" />
-            </Row>
-        </case>
-    </switch>
+    <include
+        latin:keyboardLayout="@xml/row_optional_number_row" />
     <Row
         latin:keyWidth="9.091%p"
         latin:keyLabelFlags="fontNormal"

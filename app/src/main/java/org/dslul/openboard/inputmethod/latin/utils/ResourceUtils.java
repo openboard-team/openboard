@@ -182,6 +182,15 @@ public final class ResourceUtils {
         return matchedAll;
     }
 
+    public static int getKeyboardWidth(final Resources res, final SettingsValues settingsValues) {
+        final int defaultKeyboardWidth = getDefaultKeyboardWidth(res);
+        if (settingsValues.mOneHandedModeEnabled) {
+            return (int) res.getFraction(R.fraction.config_one_handed_mode_width,
+                    defaultKeyboardWidth, defaultKeyboardWidth);
+        }
+        return defaultKeyboardWidth;
+    }
+
     public static int getDefaultKeyboardWidth(final Resources res) {
         final DisplayMetrics dm = res.getDisplayMetrics();
         return dm.widthPixels;

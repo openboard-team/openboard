@@ -26,6 +26,8 @@
     <!-- TODO: Consolidate the layout specification between protrait and landscape.
          Ideally just the keyWidth should be different and the spacer should adjust to fill
          the available space. -->
+    <include
+        latin:keyboardLayout="@xml/row_optional_number_row" />
     <!-- First row -->
     <Row
         latin:keyWidth="8.182%p"

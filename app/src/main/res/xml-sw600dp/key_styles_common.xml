@@ -100,7 +100,7 @@
         latin:backgroundType="functional" />
     <key-style
         latin:styleName="languageSwitchKeyStyle"
-        latin:keySpec="!icon/language_switch_key|!code/key_language_switch"
+        latin:keySpec="!text/keyspec_language_switch"
         latin:keyActionFlags="noKeyPreview|altCodeWhileTyping|enableLongPress"
         latin:altCode="!code/key_space"
         latin:backgroundType="functional" />

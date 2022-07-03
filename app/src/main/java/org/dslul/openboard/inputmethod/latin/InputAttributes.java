@@ -105,20 +105,15 @@ public final class InputAttributes {
 
         // TODO: Have a helper method in InputTypeUtils
         // Make sure that passwords are not displayed in {@link SuggestionStripView}.
-        final boolean shouldSuppressSuggestions = mIsPasswordField
-                //|| InputTypeUtils.isEmailVariation(variation)
-                //|| InputType.TYPE_TEXT_VARIATION_URI == variation
-                //|| InputType.TYPE_TEXT_VARIATION_FILTER == variation
-                //|| flagNoSuggestions
-                || flagAutoComplete;
-        mShouldShowSuggestions = !shouldSuppressSuggestions;
+        mShouldShowSuggestions = !(mIsPasswordField || flagNoSuggestions);
 
         mShouldInsertSpacesAutomatically = InputTypeUtils.isAutoSpaceFriendlyType(inputType);
 
         final boolean noMicrophone = mIsPasswordField
                 || InputTypeUtils.isEmailVariation(variation)
                 || InputType.TYPE_TEXT_VARIATION_URI == variation
-                || hasNoMicrophoneKeyOption();
+                || hasNoMicrophoneKeyOption()
+                || !RichInputMethodManager.getInstance().hasShortcutIme();
         mShouldShowVoiceInputKey = !noMicrophone;
 
         mDisableGestureFloatingPreviewText = InputAttributes.inPrivateImeOptions(

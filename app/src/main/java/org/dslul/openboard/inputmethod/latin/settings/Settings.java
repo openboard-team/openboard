@@ -16,6 +16,7 @@
 
 package org.dslul.openboard.inputmethod.latin.settings;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
@@ -24,6 +25,7 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.util.Log;
 
+import android.view.Gravity;
 import org.dslul.openboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import org.dslul.openboard.inputmethod.latin.InputAttributes;
 import org.dslul.openboard.inputmethod.latin.R;
@@ -92,6 +94,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_KEYBOARD_HEIGHT_SCALE = "pref_keyboard_height_scale";
     public static final String PREF_SPACE_TRACKPAD = "pref_space_trackpad";
     public static final String PREF_DELETE_SWIPE = "pref_delete_swipe";
+    public static final String PREF_AUTOSPACE_AFTER_PUNCTUATION = "pref_autospace_after_punctuation";
     public static final String PREF_ALWAYS_INCOGNITO_MODE =
             "pref_always_incognito_mode";
     public static final String PREF_BIGRAM_PREDICTIONS = "next_word_prediction";
@@ -106,6 +109,9 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_GESTURE_FLOATING_PREVIEW_TEXT =
             "pref_gesture_floating_preview_text";
     public static final String PREF_SHOW_SETUP_WIZARD_ICON = "pref_show_setup_wizard_icon";
+
+    public static final String PREF_ONE_HANDED_MODE = "pref_one_handed_mode_enabled";
+    public static final String PREF_ONE_HANDED_GRAVITY = "pref_one_handed_mode_gravity";
 
     public static final String PREF_KEY_IS_INTERNAL = "pref_key_is_internal";
 
@@ -387,6 +393,10 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         return prefs.getBoolean(PREF_DELETE_SWIPE, true);
     }
 
+    public static boolean readAutospaceAfterPunctuationEnabled(final SharedPreferences prefs) {
+        return prefs.getBoolean(PREF_AUTOSPACE_AFTER_PUNCTUATION, false);
+    }
+
     public static boolean readUseFullscreenMode(final Resources res) {
         return res.getBoolean(R.bool.config_use_fullscreen_mode);
     }
@@ -401,6 +411,23 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
             return !isApplicationInSystemImage;
         }
         return prefs.getBoolean(PREF_SHOW_SETUP_WIZARD_ICON, false);
+    }
+
+    public static boolean readOneHandedModeEnabled(final SharedPreferences prefs) {
+        return prefs.getBoolean(PREF_ONE_HANDED_MODE, false);
+    }
+
+    public void writeOneHandedModeEnabled(final boolean enabled) {
+        mPrefs.edit().putBoolean(PREF_ONE_HANDED_MODE, enabled).apply();
+    }
+
+    @SuppressLint("RtlHardcoded")
+    public static int readOneHandedModeGravity(final SharedPreferences prefs) {
+        return prefs.getInt(PREF_ONE_HANDED_GRAVITY, Gravity.LEFT);
+    }
+
+    public void writeOneHandedModeGravity(final int gravity) {
+        mPrefs.edit().putInt(PREF_ONE_HANDED_GRAVITY, gravity).apply();
     }
 
     public static boolean readHasHardwareKeyboard(final Configuration conf) {

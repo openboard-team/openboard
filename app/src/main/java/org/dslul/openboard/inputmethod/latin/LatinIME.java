@@ -1341,11 +1341,11 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
     }
 
-    int getCurrentAutoCapsState() {
+    public int getCurrentAutoCapsState() {
         return mInputLogic.getCurrentAutoCapsState(mSettings.getCurrent());
     }
 
-    int getCurrentRecapitalizeState() {
+    public int getCurrentRecapitalizeState() {
         return mInputLogic.getCurrentRecapitalizeState();
     }
 
@@ -1393,6 +1393,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     @Override
     public void onMovePointer(int steps) {
+        // for RTL languages we want to invert pointer movement
+        if (mRichImm.getCurrentSubtype().isRtlSubtype())
+            steps = -steps;
+            
         mInputLogic.finishInput();
         if (steps < 0) {
             int availableCharacters = mInputLogic.mConnection.getTextBeforeCursor(64, 0).length();

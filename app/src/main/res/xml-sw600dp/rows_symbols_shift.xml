@@ -25,6 +25,8 @@
         latin:keyboardLayout="@xml/key_styles_common" />
     <include
         latin:keyboardLayout="@xml/key_styles_currency" />
+    <include
+        latin:keyboardLayout="@xml/row_optional_number_row" />
     <Row
         latin:keyWidth="9.0%p"
     >

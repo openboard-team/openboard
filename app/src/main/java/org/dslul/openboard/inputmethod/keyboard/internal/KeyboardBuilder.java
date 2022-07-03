@@ -700,13 +700,16 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             final boolean countryCodeMatched = matchCountryCodes(caseAttr, locale);
             final boolean splitLayoutMatched = matchBoolean(caseAttr,
                     R.styleable.Keyboard_Case_isSplitLayout, id.mIsSplitLayout);
+            final boolean oneHandedModeEnabledMatched = matchBoolean(caseAttr,
+                    R.styleable.Keyboard_Case_oneHandedModeEnabled,
+                    id.mOneHandedModeEnabled);
             final boolean selected = keyboardLayoutSetMatched && keyboardLayoutSetElementMatched
                     && keyboardThemeMacthed && modeMatched && navigateNextMatched
                     && navigatePreviousMatched && passwordInputMatched && clobberSettingsKeyMatched
                     && hasShortcutKeyMatched && numberRowEnabledMatched  && languageSwitchKeyEnabledMatched
                     && emojiKeyEnabledMatched && isMultiLineMatched && imeActionMatched && isIconDefinedMatched
                     && localeCodeMatched && languageCodeMatched && countryCodeMatched
-                    && splitLayoutMatched;
+                    && splitLayoutMatched && oneHandedModeEnabledMatched;
 
             if (DEBUG) {
                 startTag("<%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s>%s", TAG_CASE,
@@ -748,6 +751,8 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                                 "languageCode"),
                         textAttr(caseAttr.getString(R.styleable.Keyboard_Case_countryCode),
                                 "countryCode"),
+                        booleanAttr(caseAttr, R.styleable.Keyboard_Case_oneHandedModeEnabled,
+                                "oneHandedModeEnabled"),
                         selected ? "" : " skipped");
             }
 

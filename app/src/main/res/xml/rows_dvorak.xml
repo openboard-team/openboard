@@ -23,6 +23,8 @@
 >
     <include
         latin:keyboardLayout="@xml/key_styles_common" />
+    <include
+        latin:keyboardLayout="@xml/row_optional_number_row" />
     <Row
         latin:keyWidth="10%p"
     >
