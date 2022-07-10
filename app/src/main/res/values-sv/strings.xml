@@ -197,8 +197,8 @@
     <string name="prefs_long_press_keyboard_to_change_lang">Ändra inmatningsmetod med mellanslagstangenten</string>
     <string name="spell_checker_service_name">OpenBoards stavningskontroll</string>
     <string name="android_spell_checker_settings">Inställningar för OpenBoards stavningskontroll</string>
-    <string name="number_row">Nummerrad</string>
-    <string name="number_row_summary">Visa alltid nummerrad</string>
+    <string name="number_row">Sifferrad</string>
+    <string name="number_row_summary">Visa alltid sifferraden</string>
     <string name="show_emoji_key">Emoji-tangent</string>
     <string name="ime_settings">OpenBoard-inställningar</string>
     <string name="show_hints_summary">Visa tips för långtryckning</string>
