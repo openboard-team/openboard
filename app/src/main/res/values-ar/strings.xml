@@ -218,4 +218,5 @@
     <string name="theme_family">سمة العائلة</string>
     <string name="theme_variant">متغير السمة</string>
     <string name="key_borders">الحدود الرئيسية</string>
+    <string name="delete_swipe_summary">قم بإجراء سحب سريع من مفتاح الحذف لتحديد وإزالة أجزاء أكبر من النص مرة واحدة</string>
 </resources>
