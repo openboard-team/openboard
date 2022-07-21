@@ -2169,23 +2169,24 @@ public final class KeyboardTextsTable {
         /* morekeys_nordic_row2_11 ~ */
         null, null, null, null, null, null, null,
         /* ~ morekeys_swiss_row2_11 */
-        //
+        // 
         // &#x0028; U+0028 "(" Բացվող փակագիծ - OPENING PARENTHESES
         // &#x0029; U+0029 ")" Փակվող փակագիծ - CLOSING PARENTHESES
         // &#x0027; U+0027 "'" Ապաթարց - APOSTROPHE
-        // &#x2026; U+2026 "…" Կախման կետեր
+        // &#x2026; U+2026 "…" Կախման կետեր - HORIZONTAL ELLIPSIS
         // &#x055E; U+055E "՞" Հարցական - ARMENIAN QUESTION MARK
         // &#x055C; U+055C "՜" Բացականչական - ARMENIAN EXCLAMATION MARK
-        // &#x055B; U+055B "՛" Շեշտ
-        // &#x055D; U+055D "՝" Բութ
+        // &#x055B; U+055B "՛" Շեշտ - ARMENIAN EMPHASIS MARK
+        // &#x055D; U+055D "՝" Բութ - ARMENIAN COMMA
+        // !! (the unicode name is Armenian Comma, which isn't really accurate since Armenian Comma is U+002C)
         // &#x058A; U+058A "֊" Միության գծիկ - ARMENIAN HYPHEN
         // &#x2015; U+2015 "―" Անջատման գժիկ - ARMENIAN SEPARATION MARK
         // &#x00AB; U+00AB "«" Բացվող չակերտ - LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
         // &#x00BB; U+00BB "»" Փակվող չակերտ - RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
         // &#x002C; U+002C "," Ստօրակետ - ARMENIAN COMMA
         // &#x0589; U+0589 "։" Վերջակետ - ARMENIAN COLON
-        // &#x2024; U+2024 "․" Միջակետ
-        //
+        // &#x2024; U+2024 "․" Միջակետ - One dot leader
+        // 
         /* morekeys_punctuation */ "!autoColumnOrder!8,\\,,\u055E,\u055C,\u2024,\u2026,',=,/,\u055D,\u055B,\u058A,\u00BB,\u00AB,\u2015,),(",
         /* keyspec_tablet_comma */ ",",
         /* morekeys_star ~ */

@@ -67,6 +67,7 @@ public abstract class AndroidWordLevelSpellCheckerSession extends Session {
     private static final Map<Integer, String> scriptToPunctuationRegexMap = new TreeMap<>();
 
     static {
+        // TODO: add other non-English language specific punctuation later.
         scriptToPunctuationRegexMap.put(
             ScriptUtils.SCRIPT_ARMENIAN,
             "(\\u0028|\\u0029|\\u0027|\\u2026|\\u055E|\\u055C|\\u055B|\\u055D|\\u058A|\\u2015|\\u00AB|\\u00BB|\\u002C|\\u0589|\\u2024)"
