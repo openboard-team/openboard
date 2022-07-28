@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- 
 /*
 **
@@ -16,10 +16,7 @@
 ** See the License for the specific language governing permissions and
 ** limitations under the License.
 */
- -->
-
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+ --><resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="english_ime_input_options" msgid="3909945612939668554">"گزینه‌های ورودی"</string>
     <string name="use_contacts_for_spellchecking_option_title" msgid="5374120998125353898">"پیدا کردن نام مخاطبین"</string>
     <string name="use_contacts_for_spellchecking_option_summary" msgid="8754413382543307713">"غلط‌گیر املا از ورودی‌های فهرست مخاطبین شما استفاده می‌کند"</string>
@@ -190,4 +187,18 @@
     <string name="user_dict_settings_more_languages" msgid="7131268499685180461">"زبان‌های بیشتر…"</string>
     <string name="user_dict_settings_delete" msgid="110413335187193859">"حذف"</string>
     <string name="user_dict_fast_scroll_alphabet" msgid="5431919401558285473">" ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
+    <string name="settings_no_limit">بی‌محدودیت</string>
+    <string name="enable_clipboard_history">فعال‌کردن تاریخچهٔ تخته‌گیره</string>
+    <string name="settings_category_clipboard_history">تاریخچهٔ تخته‌گیره</string>
+    <string name="spell_checker_service_name">غلط‌یاب املایی OpenBoard</string>
+    <string name="android_spell_checker_settings">تنظیمات غلط‌یاب املایی OpenBoard</string>
+    <string name="show_clipboard_key">کلید تخته‌گیره</string>
+    <string name="show_emoji_key">دکمهٔ شکلک</string>
+    <string name="ime_settings">تنظیمات OpenBoard</string>
+    <string name="settings_category_additional_keys">کلیدهای افزوده</string>
+    <string name="settings_category_experimental">آزمایشی</string>
+    <string name="settings_category_miscellaneous">متفرقه</string>
+    <string name="settings_category_input">ورودی</string>
+    <string name="settings_category_correction">غلط‌گیری‌ها</string>
+    <string name="settings_category_suggestions">پیشنهاد‌ها</string>
 </resources>
