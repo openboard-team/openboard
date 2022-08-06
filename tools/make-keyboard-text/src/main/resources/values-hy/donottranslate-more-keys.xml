@@ -50,7 +50,7 @@
     <string name="morekeys_exclamation">&#x055C;,&#x00A1;</string>
     <!-- U+058F: "֏" ARMENIAN DRAM SIGN -->
     <!-- TODO: Enable this when we have glyph for the following letter
-        <string name="keyspec_currency">&#x058F;</string>
+         <string name="keyspec_currency">&#x058F;</string>
     -->
     <!-- U+002C: "," ARMENIAN COMMA -->
     <string name="keyspec_comma">&#x002C;</string>
