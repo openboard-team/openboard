@@ -2201,7 +2201,8 @@ public final class KeyboardTextsTable {
         /* morekeys_tablet_comma */ null,
         /* keyhintlabel_period */ null,
         // U+055E: "՞" ARMENIAN QUESTION MARK
-        /* morekeys_question */ "\u055E",
+        // U+00BF: "¿" INVERTED QUESTION MARK
+        /* morekeys_question */ "\u055E,\u00BF",
         /* morekeys_h ~ */
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
@@ -2209,7 +2210,8 @@ public final class KeyboardTextsTable {
         null, null, null,
         /* ~ morekeys_greater_than */
         // U+055C: "՜" ARMENIAN EXCLAMATION MARK
-        /* morekeys_exclamation */ "\u055C",
+        // U+00A1: "¡" INVERTED EXCLAMATION MARK
+        /* morekeys_exclamation */ "\u055C,\u00A1",
     };
 
     /* Locale is: Icelandic */
