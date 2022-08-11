@@ -39,14 +39,14 @@ Join our [matrix] channel [here](https://matrix.to/#/#openboard:matrix.org?via=m
 
 ## Issue reporting
 
-Whether your encountered a bug, or want to see a new feature in OpenBoard, you can contribute to the project by opening a new issue [here](https://github.com/openboard-team/openboard/issues). Your help is always welcomed !
+Whether you encountered a bug, or want to see a new feature in OpenBoard, you can contribute to the project by opening a new issue [here](https://github.com/openboard-team/openboard/issues). Your help is always welcomed !
 
 Before opening a new issue, be sure to check the following :
  - **Does the issue already exist ?** Make sure a similar issue has not been reported by browsing [existing issues](https://github.com/openboard-team/openboard/issues).
  - **Is the issue still relevant ?** Make sure your issue is not already fixed in the latest version of OpenBoard.
- - **Did you use the issue template ?** It is important to make life of our kind contributors easier by avoiding  issues missing key informations to its resolution.
+ - **Did you use the issue template ?** It is important to make life of our kind contributors easier by avoiding  issues that miss key informations to their resolution.
 
-*Please avoid opening issues to ask for a release date, for more activity on the project, for PR reviews/merges, or worth for more contributors. If you have any interrogations on these topics, read [this comment](https://github.com/openboard-team/openboard/issues/619#issuecomment-1179534276) from issue [#619](https://github.com/openboard-team/openboard/issues/619).*
+*Please avoid opening issues to ask for a release date, for PR reviews/merges, for more activity on the project, or worth for more contributors. If you have any interrogations on these topics, read [this comment](https://github.com/openboard-team/openboard/issues/619#issuecomment-1179534276) from issue [#619](https://github.com/openboard-team/openboard/issues/619).*
 
 ## Translation
 You can help in translating OpenBoard in your language through our [Weblate project](https://hosted.weblate.org/engage/openboard/).
@@ -54,7 +54,7 @@ You can help in translating OpenBoard in your language through our [Weblate proj
 [![Translation status](https://hosted.weblate.org/widgets/openboard/-/openboard/287x66-grey.png)](https://hosted.weblate.org/engage/openboard/)
 
 ## Dictionary creation
-To create or update a dictionary for your language, you can use [this tool](https://github.com/remi0s/aosp-dictionary-tools). You will need a wordlist, as described [here](dictionaries/sample.combined). The output .dict file must be put in [res/raw](app/src/main/res/raw), its wordlist in [dictionaries](/dictionaries).
+To create or update a dictionary for your language, you can use [this tool](https://github.com/remi0s/aosp-dictionary-tools). You will need a wordlist, as described [here](dictionaries/sample.combined). The output .dict file must be put in [res/raw](app/src/main/res/raw), and its wordlist in [dictionaries](/dictionaries).
 
 For your dictionary to be merged into OpenBoard, **you must provide the wordlist you used**, as well as its license if any.
 
@@ -69,12 +69,12 @@ Once everything got setted up correctly, you're ready to go !
 ### Guidelines
 
 OpenBoard is a complex application, when contributing, you must take a step back and make sure your contribution :
-- **Uses already in-place mechanism and take advantage of them**. In other terms, does not reinvent the wheel or uses shortcuts than could alter the consistency of the existing code.
-- **Has the lowest footprint possible**. OpenBoard code has been written by android experts, tested and runned on millions of devices, the existing code will always be safer than the new code. The less we alter existing code, the more OpenBoard will stay stable. Especially in the input logic scope.
-- **Does not bring any non-free code or binary blobs**. This also applies to code/binaries with unknown licenses. Make sure you do not introduce any closed-source library from Google.
+- **Uses already in-place mechanism and take advantage of them**. In other terms, does not reinvent the wheel or uses shortcuts that could alter the consistency of the existing code.
+- **Has the lowest footprint possible**. OpenBoard code has been written by android experts (AOSP/Google engineers). It has been tested and runned on millions of devices. Thus, **existing code will always be safer than new code**. The less we alter existing code, the more OpenBoard will stay stable. Especially in the input logic scope.
+- **Does not bring any non-free code or proprietary binary blobs**. This also applies to code/binaries with unknown licenses. Make sure you do not introduce any closed-source library from Google.
 - **Complies with the user privacy principle OpenBoard follows**. 
 
-In addition to previous points, OpenBoard must stick to [F-Droid inclusion guidelines](https://f-droid.org/docs/Inclusion_Policy/).
+In addition to previous elements, OpenBoard must stick to [F-Droid inclusion guidelines](https://f-droid.org/docs/Inclusion_Policy/).
 
 ### Current TODO list
 In no particular order, here is the non-exhaustive list of known wanted features :
