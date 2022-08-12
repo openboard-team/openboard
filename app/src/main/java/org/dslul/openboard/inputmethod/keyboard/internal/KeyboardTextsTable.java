@@ -1139,9 +1139,10 @@ public final class KeyboardTextsTable {
         /* morekeys_c */ null,
         /* double_quotes */ "!text/double_9qm_lqm",
         // U+00DF: "ß" LATIN SMALL LETTER SHARP S
+        // U+1E9E: "ẞ" LATIN CAPITAL LETTER SHARP S
         // U+015B: "ś" LATIN SMALL LETTER S WITH ACUTE
         // U+0161: "š" LATIN SMALL LETTER S WITH CARON
-        /* morekeys_s */ "\u00DF,\u015B,\u0161",
+        /* morekeys_s */ "\u00DF,%,\u1E9E,\u015B,\u0161",
         /* single_quotes */ "!text/single_9qm_lqm",
         /* keyspec_currency ~ */
         null, null, null, null, null, null, null,
@@ -1207,9 +1208,10 @@ public final class KeyboardTextsTable {
         /* morekeys_c */ null,
         /* double_quotes */ "!text/double_9qm_lqm",
         // U+00DF: "ß" LATIN SMALL LETTER SHARP S
+        // U+1E9E: "ẞ" LATIN CAPITAL LETTER SHARP S
         // U+015B: "ś" LATIN SMALL LETTER S WITH ACUTE
         // U+0161: "š" LATIN SMALL LETTER S WITH CARON
-        /* morekeys_s */ "\u00DF,%,\u015B,\u0161",
+        /* morekeys_s */ "\u00DF,%,\u1E9E,\u015B,\u0161",
         /* single_quotes */ "!text/single_9qm_lqm",
         /* keyspec_currency ~ */
         null, null, null, null, null, null, null,
