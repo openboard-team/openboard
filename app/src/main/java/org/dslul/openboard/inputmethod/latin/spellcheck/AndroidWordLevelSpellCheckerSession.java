@@ -303,7 +303,7 @@ public abstract class AndroidWordLevelSpellCheckerSession extends Session {
                     boolean allWordsAreValid = true;
                     // Validate all words on both sides of periods, skip empty tokens due to periods at first/last index
                     for (final String word : splitText) {
-                        if (!word.isEmpty() && !mService.isValidWord(mLocale, word)) {
+                        if (!word.isEmpty() && !mService.isValidWord(mLocale, word) && !mService.isValidWord(mLocale, word.toLowerCase(mLocale))) {
                             allWordsAreValid = false;
                             break;
                         }
