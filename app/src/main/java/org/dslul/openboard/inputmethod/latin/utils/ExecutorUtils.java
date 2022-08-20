@@ -17,7 +17,6 @@
 package org.dslul.openboard.inputmethod.latin.utils;
 
 import android.util.Log;
-
 import org.dslul.openboard.inputmethod.annotations.UsedForTesting;
 
 import java.lang.Thread.UncaughtExceptionHandler;
@@ -35,9 +34,11 @@ public class ExecutorUtils {
 
     public static final String KEYBOARD = "Keyboard";
     public static final String SPELLING = "Spelling";
+    public static final String EMOJIS = "RecentEmojis";
 
     private static ScheduledExecutorService sKeyboardExecutorService = newExecutorService(KEYBOARD);
     private static ScheduledExecutorService sSpellingExecutorService = newExecutorService(SPELLING);
+    private static ScheduledExecutorService sEmojisExecutorService = newExecutorService(EMOJIS);
 
     private static ScheduledExecutorService newExecutorService(final String name) {
         return Executors.newSingleThreadScheduledExecutor(new ExecutorFactory(name));
@@ -89,6 +90,8 @@ public class ExecutorUtils {
                 return sKeyboardExecutorService;
             case SPELLING:
                 return sSpellingExecutorService;
+            case EMOJIS:
+                return sEmojisExecutorService;
             default:
                 throw new IllegalArgumentException("Invalid executor: " + name);
         }
@@ -113,6 +116,8 @@ public class ExecutorUtils {
             case SPELLING:
                 sSpellingExecutorService = newExecutorService(SPELLING);
                 break;
+            case EMOJIS:
+                sEmojisExecutorService = newExecutorService(EMOJIS);
             default:
                 throw new IllegalArgumentException("Invalid executor: " + name);
         }

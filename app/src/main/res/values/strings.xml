@@ -178,6 +178,10 @@
     <string name="enable_clipboard_history_summary">If disabled, clipboard key will paste clipboard content if any</string>
     <!-- Preferences item for enabling clipboard history -->
     <string name="clipboard_history_retention_time">History retention time</string>
+    <!-- Preferences item for enabling emoji usage frequency saving -->
+    <string name="emoji_usage_freq">Save emojis usage frequency</string>
+    <!-- Description for enabling/disabling emoji usage frequency saving mentioning that if disabled, last use order is used. -->
+    <string name="emoji_usage_freq_summary">Allows recent emojis to be sorted accordingly to their frequency of use</string>
     <!-- Preferences item for enabling swipe deletion -->
     <string name="delete_swipe">Delete swipe</string>
     <!-- Description for "delete_swipe" option. -->

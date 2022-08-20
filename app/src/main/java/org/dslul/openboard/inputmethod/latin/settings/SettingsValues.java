@@ -23,22 +23,19 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.Log;
 import android.view.inputmethod.EditorInfo;
-
 import org.dslul.openboard.inputmethod.compat.AppWorkaroundsUtils;
 import org.dslul.openboard.inputmethod.latin.InputAttributes;
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.RichInputMethodManager;
-import org.dslul.openboard.inputmethod.latin.common.StringUtils;
 import org.dslul.openboard.inputmethod.latin.utils.AsyncResultHolder;
 import org.dslul.openboard.inputmethod.latin.utils.ResourceUtils;
 import org.dslul.openboard.inputmethod.latin.utils.ScriptUtils;
 import org.dslul.openboard.inputmethod.latin.utils.TargetPackageInfoGetterTask;
 
-import java.util.Arrays;
-import java.util.Locale;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Locale;
 
 /**
  * When you call the constructor of this class, you may want to change the current system locale by
@@ -93,6 +90,7 @@ public class SettingsValues {
     public final boolean mSlidingKeyInputPreviewEnabled;
     public final int mKeyLongpressTimeout;
     public final boolean mEnableEmojiAltPhysicalKey;
+    public final boolean mEmojiUsageFreqEnabled;
     public final boolean mShowAppIcon;
     public final boolean mIsShowAppIconSettingInPreferences;
     public final boolean mCloudSyncEnabled;
@@ -181,6 +179,7 @@ public class SettingsValues {
         mKeypressSoundVolume = Settings.readKeypressSoundVolume(prefs, res);
         mEnableEmojiAltPhysicalKey = prefs.getBoolean(
                 Settings.PREF_ENABLE_EMOJI_ALT_PHYSICAL_KEY, true);
+        mEmojiUsageFreqEnabled = Settings.readEmojiUsageFrequencyEnabled(prefs);
         mShowAppIcon = Settings.readShowSetupWizardIcon(prefs, context);
         mIsShowAppIconSettingInPreferences = prefs.contains(Settings.PREF_SHOW_SETUP_WIZARD_ICON);
         mAutoCorrectionThreshold = readAutoCorrectionThreshold(res,
