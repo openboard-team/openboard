@@ -65,10 +65,8 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_VOICE_INPUT_KEY = "pref_voice_input_key";
     public static final String PREF_CLIPBOARD_CLIPBOARD_KEY = "pref_clipboard_clipboard_key";
     public static final String PREF_EDIT_PERSONAL_DICTIONARY = "edit_personal_dictionary";
-    // PREF_AUTO_CORRECTION_THRESHOLD_OBSOLETE is obsolete. Use PREF_AUTO_CORRECTION instead.
-    public static final String PREF_AUTO_CORRECTION_THRESHOLD_OBSOLETE =
-            "auto_correction_threshold";
     public static final String PREF_AUTO_CORRECTION = "pref_key_auto_correction";
+    public static final String PREF_AUTO_CORRECTION_CONFIDENCE = "pref_key_auto_correction_confidence";
     // PREF_SHOW_SUGGESTIONS_SETTING_OBSOLETE is obsolete. Use PREF_SHOW_SUGGESTIONS instead.
     public static final String PREF_SHOW_SUGGESTIONS_SETTING_OBSOLETE = "show_suggestions_setting";
     public static final String PREF_SHOW_SUGGESTIONS = "show_suggestions";
@@ -173,7 +171,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         mRes = context.getResources();
         mPrefs = DeviceProtectedUtils.getSharedPreferences(context);
         mPrefs.registerOnSharedPreferenceChangeListener(this);
-        upgradeAutocorrectionSettings(mPrefs, mRes);
     }
 
     public void onDestroy() {
@@ -245,6 +242,12 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static boolean readAutoCorrectEnabled(final SharedPreferences prefs,
                                                  final Resources res) {
         return prefs.getBoolean(PREF_AUTO_CORRECTION, true);
+    }
+
+    public static String readAutoCorrectConfidence(final SharedPreferences prefs,
+                                                   final Resources res) {
+        return prefs.getString(PREF_AUTO_CORRECTION_CONFIDENCE,
+                res.getString(R.string.auto_correction_threshold_mode_index_modest));
     }
 
     public static float readPlausibilityThreshold(final Resources res) {
@@ -512,22 +515,5 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static int readLastShownEmojiCategoryPageId(
             final SharedPreferences prefs, final int defValue) {
         return prefs.getInt(PREF_LAST_SHOWN_EMOJI_CATEGORY_PAGE_ID, defValue);
-    }
-
-    private void upgradeAutocorrectionSettings(final SharedPreferences prefs, final Resources res) {
-        final String thresholdSetting =
-                prefs.getString(PREF_AUTO_CORRECTION_THRESHOLD_OBSOLETE, null);
-        if (thresholdSetting != null) {
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.remove(PREF_AUTO_CORRECTION_THRESHOLD_OBSOLETE);
-            final String autoCorrectionOff =
-                    res.getString(R.string.auto_correction_threshold_mode_index_off);
-            if (thresholdSetting.equals(autoCorrectionOff)) {
-                editor.putBoolean(PREF_AUTO_CORRECTION, false);
-            } else {
-                editor.putBoolean(PREF_AUTO_CORRECTION, true);
-            }
-            editor.commit();
-        }
     }
 }
