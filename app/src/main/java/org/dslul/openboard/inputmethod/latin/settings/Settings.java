@@ -22,10 +22,12 @@ import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Build;
 import android.util.Log;
 
 import android.view.Gravity;
+import org.dslul.openboard.inputmethod.keyboard.KeyboardTheme;
 import org.dslul.openboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import org.dslul.openboard.inputmethod.latin.InputAttributes;
 import org.dslul.openboard.inputmethod.latin.R;
@@ -85,6 +87,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
             "pref_show_language_switch_key";
     public static final String PREF_SHOW_EMOJI_KEY =
             "pref_show_emoji_key";
+    public static final String PREF_KEYBOARD_COLOR = "pref_keyboard_color";
     public static final String PREF_SHOW_CLIPBOARD_KEY =
             "pref_show_clipboard_key";
     public static final String PREF_INCLUDE_OTHER_IMES_IN_LANGUAGE_SWITCH_LIST =
@@ -512,6 +515,23 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static int readLastShownEmojiCategoryPageId(
             final SharedPreferences prefs, final int defValue) {
         return prefs.getInt(PREF_LAST_SHOWN_EMOJI_CATEGORY_PAGE_ID, defValue);
+    }
+
+    public static int readKeyboardColor(final SharedPreferences prefs, final Context context) {
+        return prefs.getInt(PREF_KEYBOARD_COLOR, readKeyboardDefaultColor(context));
+    }
+
+    public static int readKeyboardDefaultColor(final Context context) {
+        final int[] keyboardThemeColors = context.getResources().getIntArray(R.array.keyboard_theme_colors);
+        final int[] keyboardThemeIds = context.getResources().getIntArray(R.array.keyboard_theme_ids);
+        final int themeId = KeyboardTheme.getKeyboardTheme(context).mThemeId;
+        for (int index = 0; index < keyboardThemeIds.length; index++) {
+            if (themeId == keyboardThemeIds[index]) {
+                return keyboardThemeColors[index];
+            }
+        }
+
+        return Color.LTGRAY;
     }
 
     private void upgradeAutocorrectionSettings(final SharedPreferences prefs, final Resources res) {

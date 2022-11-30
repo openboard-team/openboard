@@ -18,6 +18,7 @@ package org.dslul.openboard.inputmethod.latin.utils;
 
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -300,5 +301,19 @@ public final class ResourceUtils {
 
     public static boolean isStringValue(final TypedValue v) {
         return v.type == TypedValue.TYPE_STRING;
+    }
+
+    public static boolean isBrightColor(int color) {
+        if (android.R.color.transparent == color) {
+            return true;
+        }
+        // See http://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
+        boolean bright = false;
+        int[] rgb = {Color.red(color), Color.green(color), Color.blue(color)};
+        int brightness = (int) Math.sqrt(rgb[0] * rgb[0] * .241 + rgb[1] * rgb[1] * .691 + rgb[2] * rgb[2] * .068);
+        if (brightness >= 210) {
+            bright = true;
+        }
+        return bright;
     }
 }
