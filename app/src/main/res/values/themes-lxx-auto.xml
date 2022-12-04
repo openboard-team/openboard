@@ -18,7 +18,60 @@
 */
 -->
 
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <style name="KeyboardTheme.LXX_Auto"
-           parent="KeyboardTheme.LXX_Light"/>
+           parent="KeyboardTheme.LXX_Light"
+            >
+    </style>
+    <style
+        name="Keyboard.LXX_Auto"
+        parent="Keyboard"
+    >
+        <!-- This should be aligned with KeyboardTheme.THEME_ID_* -->
+        <item name="themeId">LXXAuto</item>
+    </style>
+    <style
+        name="KeyboardView.LXX_Auto"
+        parent="KeyboardView.LXX_Light"
+    >
+    </style>
+    <style
+        name="MainKeyboardView.LXX_Auto"
+        parent="MainKeyboardView.LXX_Light"
+    >
+    </style>
+    <!-- Though {@link org.dslul.openboard.inputmethod.keyboard.emoji.EmojiPalettesView} doesn't extend
+         {@link org.dslul.openboard.inputmethod.keyboard.KeyboardView}, some views inside it, for instance
+         delete button, need themed {@link org.dslul.openboard.inputmethod.keyboard.KeyboardView}
+         attributes. -->
+    <style
+        name="EmojiPalettesView.LXX_Auto"
+        parent="EmojiPalettesView.LXX_Light"
+    >
+    </style>
+    <style
+        name="MoreKeysKeyboard.LXX_Auto"
+        parent="MoreKeysKeyboard.LXX_Light"
+    >
+    </style>
+    <style
+        name="MoreKeysKeyboardView.LXX_Auto"
+        parent="MoreKeysKeyboardView.LXX_Light"
+    >
+    </style>
+    <style
+        name="MoreKeysKeyboardView.LXX_Auto.Action"
+        parent="MoreKeysKeyboardView.LXX_Light.Action"
+    >
+    </style>
+    <style
+        name="SuggestionStripView.LXX_Auto"
+        parent="SuggestionStripView.LXX_Light"
+    >
+    </style>
+    <style
+        name="SuggestionWord.LXX_Auto"
+        parent="SuggestionWord.LXX_Light"
+    >
+    </style>
 </resources>
