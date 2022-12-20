@@ -140,6 +140,8 @@
     <string name="auto_correction">Auto-correction</string>
     <!-- Description for auto correction [CHAR LIMIT=65 (two lines) or 30 (fits on one line, preferable)] -->
     <string name="auto_correction_summary">Spacebar and punctuation automatically correct mistyped words</string>
+    <!-- Option to change the confidence level of the auto correction [CHAR LIMIT=20] -->
+    <string name="auto_correction_confidence">Auto-correction confidence</string>
     <!-- Option to disable auto correction. [CHAR LIMIT=20] -->
     <string name="auto_correction_threshold_mode_off">Off</string>
     <!-- Option to suggest auto correction suggestions modestly. Auto-corrects only to a word which has small edit distance from typed word. [CHAR LIMIT=20] -->
