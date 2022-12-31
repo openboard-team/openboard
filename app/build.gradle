@@ -47,6 +47,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    implementation 'me.xdrop:fuzzywuzzy:1.4.0'
 }
 repositories {
     mavenCentral()

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- For keyboard color scheme option dialog. -->
+    <string-array name="keyboard_theme_names" translatable="false">
+        <item>@style/KeyboardTheme.LXX_Light_Border</item>
+        <item>@style/KeyboardTheme.LXX_Dark_Border</item>
+        <item>@style/KeyboardTheme.LXX_Light</item>
+        <item>@style/KeyboardTheme.LXX_Dark</item>
+        <item>@style/KeyboardTheme.LXX_Auto</item>
+        <item>@style/KeyboardTheme.LXX_Auto_Border</item>
+    </string-array>
+
+    <integer-array name="keyboard_theme_ids" translatable="false">
+        <item>5</item> # light border
+        <item>6</item> # dark border
+        <item>3</item> # light
+        <item>7</item> # dark
+    </integer-array>
+
+    <array name="keyboard_theme_colors" translatable="false">
+        <item>@color/keyboard_background_lxx_light_border</item> #material light border
+        <item>@color/keyboard_background_lxx_dark_border</item> #material dark border
+        <item>#ECEFF1</item> #material light
+        <item>#263238</item> # material dark
+        <item>#000000</item> # dark amoled
+    </array>
+</resources>

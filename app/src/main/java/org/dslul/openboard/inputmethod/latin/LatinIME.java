@@ -23,6 +23,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -85,6 +87,7 @@ import org.dslul.openboard.inputmethod.latin.utils.DialogUtils;
 import org.dslul.openboard.inputmethod.latin.utils.IntentUtils;
 import org.dslul.openboard.inputmethod.latin.utils.JniUtils;
 import org.dslul.openboard.inputmethod.latin.utils.LeakGuardHandlerWrapper;
+import org.dslul.openboard.inputmethod.latin.utils.ResourceUtils;
 import org.dslul.openboard.inputmethod.latin.utils.StatsUtils;
 import org.dslul.openboard.inputmethod.latin.utils.StatsUtilsManager;
 import org.dslul.openboard.inputmethod.latin.utils.SubtypeLocaleUtils;
@@ -98,6 +101,7 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nonnull;
+import org.dslul.openboard.inputmethod.latin.emojisearch.EmojiSearch;
 
 import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.FORCE_ASCII;
 import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.NO_MICROPHONE;
@@ -138,6 +142,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     private static final String SCHEME_PACKAGE = "package";
 
     final Settings mSettings;
+    private int mOriginalNavBarColor = 0;
+    private int mOriginalNavBarFlags = 0;
     private final DictionaryFacilitator mDictionaryFacilitator =
             DictionaryFacilitatorProvider.getDictionaryFacilitator(
                     false /* isNeededForSpellChecking */);
@@ -622,6 +628,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         AudioAndHapticFeedbackManager.init(this);
         AccessibilityUtils.init(this);
         mStatsUtilsManager.onCreate(this /* context */, mDictionaryFacilitator);
+		EmojiSearch.init(this);
         super.onCreate();
 
         mClipboardHistoryManager.onCreate();
@@ -1067,7 +1074,9 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     @Override
     public void onWindowShown() {
         super.onWindowShown();
-        setNavigationBarVisibility(isInputViewShown());
+        if (isInputViewShown())
+            setNavigationBarColor();
+        //setNavigationBarVisibility(isInputViewShown());
     }
 
     @Override
@@ -1077,7 +1086,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         if (mainKeyboardView != null) {
             mainKeyboardView.closing();
         }
-        setNavigationBarVisibility(false);
+        //setNavigationBarVisibility(false);
+        clearNavigationBarColor();
     }
 
     void onFinishInputInternal() {
@@ -2015,6 +2025,42 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             // transparent.  For other colors the system uses the default color.
             getWindow().getWindow().setNavigationBarColor(
                     visible ? Color.BLACK : Color.TRANSPARENT);
+        }
+    }
+    private void setNavigationBarColor() {
+
+        // SVDW - TODO For now this is always true
+        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && mSettings.getCurrent().mUseMatchingNavbarColor) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+            final int keyboardColor = Settings.readKeyboardColor(prefs, this);
+            final Window window = getWindow().getWindow();
+            if (window == null) {
+                return;
+            }
+            mOriginalNavBarColor = window.getNavigationBarColor();
+            window.setNavigationBarColor(keyboardColor);
+
+            final View view = window.getDecorView();
+            mOriginalNavBarFlags = view.getSystemUiVisibility();
+            if (ResourceUtils.isBrightColor(keyboardColor)) {
+                view.setSystemUiVisibility(mOriginalNavBarFlags | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+            } else {
+                view.setSystemUiVisibility(mOriginalNavBarFlags & ~View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+            }
+        }
+    }
+
+    private void clearNavigationBarColor() {
+        // SVDW - TODO For now this is always true
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            final Window window = getWindow().getWindow();
+            if (window == null) {
+                return;
+            }
+            window.setNavigationBarColor(mOriginalNavBarColor);
+            final View view = window.getDecorView();
+            view.setSystemUiVisibility(mOriginalNavBarFlags);
         }
     }
 }
