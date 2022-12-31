@@ -33,8 +33,11 @@ import org.dslul.openboard.inputmethod.latin.utils.SuggestionResults;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import org.dslul.openboard.inputmethod.latin.emojisearch.EmojiSearch;
 
 import static org.dslul.openboard.inputmethod.latin.define.DecoderSpecificConstants.SHOULD_AUTO_CORRECT_USING_NON_WHITE_LISTED_SUGGESTION;
 import static org.dslul.openboard.inputmethod.latin.define.DecoderSpecificConstants.SHOULD_REMOVE_PREVIOUSLY_REJECTED_SUGGESTION;
@@ -263,6 +266,20 @@ public final class Suggest {
         if (!TextUtils.isEmpty(typedWordString)) {
             suggestionsContainer.add(0, typedWordInfo);
         }
+		
+		if (!TextUtils.isEmpty(typedWordString)) {
+            List<String> results = EmojiSearch.getInstance().searchExact(typedWordString);
+            if (!results.isEmpty()) {
+                for (int idx = 0; idx < Math.min(2, results.size()); idx++) {
+                    suggestionsContainer.add(idx + 1, new SuggestedWordInfo(results.get(idx),
+                            "", SuggestedWordInfo.MAX_SCORE,
+                            SuggestedWordInfo.KIND_HARDCODED,
+                            Dictionary.DICTIONARY_HARDCODED,
+                            SuggestedWordInfo.NOT_AN_INDEX,
+                            SuggestedWordInfo.NOT_A_CONFIDENCE));
+                }
+            }
+        }
 
         final ArrayList<SuggestedWordInfo> suggestionsList;
         if (DBG && !suggestionsContainer.isEmpty()) {
@@ -333,6 +350,21 @@ public final class Suggest {
         for (int i = suggestionsContainer.size() - 1; i >= 0; --i) {
             if (suggestionsContainer.get(i).mScore < SUPPRESS_SUGGEST_THRESHOLD) {
                 suggestionsContainer.remove(i);
+            }
+        }
+		
+		String typedWordString = wordComposer.getTypedWord();
+        if (!TextUtils.isEmpty(typedWordString)) {
+            List<String> results = EmojiSearch.getInstance().searchExact(typedWordString);
+            if (!results.isEmpty()) {
+                for (int idx = 0; idx < Math.min(3, results.size()); idx++) {
+                    suggestionsContainer.add(idx, new SuggestedWordInfo(results.get(idx),
+                            "", SuggestedWordInfo.MAX_SCORE,
+                            SuggestedWordInfo.KIND_HARDCODED,
+                            Dictionary.DICTIONARY_HARDCODED,
+                            SuggestedWordInfo.NOT_AN_INDEX,
+                            SuggestedWordInfo.NOT_A_CONFIDENCE));
+                }
             }
         }
 
