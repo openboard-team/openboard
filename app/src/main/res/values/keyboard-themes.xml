@@ -6,6 +6,7 @@
         <item>@style/KeyboardTheme.LXX_Dark_Border</item>
         <item>@style/KeyboardTheme.LXX_Light</item>
         <item>@style/KeyboardTheme.LXX_Dark</item>
+        <item>@style/KeyboardTheme.LXX_Dark_Amoled</item>
         <item>@style/KeyboardTheme.LXX_Auto</item>
         <item>@style/KeyboardTheme.LXX_Auto_Border</item>
     </string-array>
@@ -15,6 +16,9 @@
         <item>6</item> # dark border
         <item>3</item> # light
         <item>7</item> # dark
+        <item>4</item> #dark amoled
+        <item>8</item> # auto
+        <item>9</item> #auto border
     </integer-array>
 
     <array name="keyboard_theme_colors" translatable="false">
@@ -23,5 +27,7 @@
         <item>#ECEFF1</item> #material light
         <item>#263238</item> # material dark
         <item>#000000</item> # dark amoled
+        <item>@color/keyboard_background_lxx_light_border</item> #auto border
+        <item>#ECEFF1</item> #auto
     </array>
 </resources>
