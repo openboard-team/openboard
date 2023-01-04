@@ -896,6 +896,14 @@ public final class RichInputConnection implements PrivateCommandPerformer {
         return StringUtils.lastPartLooksLikeURL(mCommittedTextBeforeComposingText);
     }
 
+    public boolean spaceBeforeCursor() {
+        return mCommittedTextBeforeComposingText.indexOf(" ") != -1;
+    }
+
+    public boolean wordBeforeCursorMayBeEmail() {
+        return mCommittedTextBeforeComposingText.lastIndexOf(" ") < mCommittedTextBeforeComposingText.lastIndexOf("@");
+    }
+
     /**
      * Looks at the text just before the cursor to find out if we are inside a double quote.
      *
