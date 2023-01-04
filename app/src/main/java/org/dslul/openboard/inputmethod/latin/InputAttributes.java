@@ -105,13 +105,7 @@ public final class InputAttributes {
 
         // TODO: Have a helper method in InputTypeUtils
         // Make sure that passwords are not displayed in {@link SuggestionStripView}.
-        final boolean shouldSuppressSuggestions = mIsPasswordField
-                || InputTypeUtils.isEmailVariation(variation)
-                || InputType.TYPE_TEXT_VARIATION_URI == variation
-                || InputType.TYPE_TEXT_VARIATION_FILTER == variation
-                //|| flagNoSuggestions
-                || flagAutoComplete;
-        mShouldShowSuggestions = !shouldSuppressSuggestions;
+        mShouldShowSuggestions = !mIsPasswordField;
 
         mShouldInsertSpacesAutomatically = InputTypeUtils.isAutoSpaceFriendlyType(inputType);
 
