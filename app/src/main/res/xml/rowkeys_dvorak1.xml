@@ -48,7 +48,7 @@
                 latin:keySpec="c"
                 latin:moreKeys="!text/morekeys_c" />
             <Key
-                latin:additionalMoreKeys="}"
+                latin:additionalMoreKeys="{"
                 latin:keyHintLabel="{"
                 latin:keySpec="r"
                 latin:moreKeys="!text/morekeys_r" />
