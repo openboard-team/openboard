@@ -25,21 +25,36 @@
         latin:keySpec="q" />
     <Key
         latin:keySpec="j"
+        latin:keyHintLabel="*"
+        latin:additionalMoreKeys="*"
         latin:moreKeys="!text/morekeys_j" />
     <Key
         latin:keySpec="k"
+        latin:keyHintLabel="&quot;"
+        latin:additionalMoreKeys="&quot;"
         latin:moreKeys="!text/morekeys_k" />
     <Key
-        latin:keySpec="x" />
+        latin:keySpec="x"
+        latin:keyHintLabel="'"
+        latin:additionalMoreKeys="'"
+        />
     <Key
-        latin:keySpec="b" />
+        latin:keySpec="b"
+        latin:keyHintLabel=":"
+        latin:additionalMoreKeys=":" />
     <Key
-        latin:keySpec="m" />
+        latin:keySpec="m"
+        latin:keyHintLabel=";"
+        latin:additionalMoreKeys=";" />
     <Key
         latin:keySpec="w"
+        latin:keyHintLabel="!"
+        latin:additionalMoreKeys="!"
         latin:moreKeys="!text/morekeys_w" />
     <Key
         latin:keySpec="v"
+        latin:keyHintLabel="\?"
+        latin:additionalMoreKeys="\?"
         latin:moreKeys="!text/morekeys_v" />
     <Key
         latin:keySpec="z"
