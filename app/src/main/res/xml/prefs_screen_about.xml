@@ -23,7 +23,7 @@
         android:summary="Version 1.4.6"
         android:title="@string/english_ime_name" />
     <PreferenceCategory android:title="100% FOSS keyboard, based on AOSP.">
-        <Preference android:title="@string/about_view_on_github">
+        <Preference android:title="about_github_link">
             <intent android:action="android.intent.action.VIEW"
                 android:data="https://github.com/openboard-team/openboard" />
         </Preference>
