@@ -24,10 +24,10 @@
         android:title="@string/english_ime_name"
         android:summary="100% FOSS keyboard, based on AOSP."/>
     <Preference
-        android:title="Version"
+        android:title="@string/version"
         android:summary="1.4.6"/>
-    <Preference android:title="Open-source license"
-        android:summary="GNU General Public License v3.0">
+    <Preference android:title="@string/license"
+        android:summary="@string/gnu_gpl">
         <intent android:action="android.intent.action.VIEW"
             android:data="https://github.com/openboard-team/openboard/blob/master/LICENSE" />
     </Preference>
