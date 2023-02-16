@@ -14,18 +14,25 @@
      limitations under the License.
 -->
 
+
+
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:latin="http://schemas.android.com/apk/res-auto"
     android:title="@string/settings_screen_about"
     android:key="@string/settings_screen_about">
     <Preference
         android:icon="@mipmap/ic_launcher"
-        android:summary="Version 1.4.6"
-        android:title="@string/english_ime_name" />
-    <PreferenceCategory android:title="100% FOSS keyboard, based on AOSP.">
-        <Preference android:title="about_github_link">
-            <intent android:action="android.intent.action.VIEW"
-                android:data="https://github.com/openboard-team/openboard" />
-        </Preference>
-    </PreferenceCategory>
+        android:title="@string/english_ime_name"
+        android:summary="100% FOSS keyboard, based on AOSP."/>
+    <Preference
+        android:title="Version"
+        android:summary="1.4.6"/>
+    <Preference android:title="Open-source license"
+        android:summary="GNU General Public License v3.0">
+        <intent android:action="android.intent.action.VIEW"
+            android:data="https://github.com/openboard-team/openboard/blob/master/LICENSE" />
+    </Preference>
+    <Preference android:title="@string/about_github_link">
+        <intent android:action="android.intent.action.VIEW"
+            android:data="https://github.com/openboard-team/openboard" />
+    </Preference>
 </PreferenceScreen>
