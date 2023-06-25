@@ -1,3 +1,31 @@
+# OpenBoard upgrade, WIP
+
+This is an attempt to integrate changes / improvements into OpenBoard that have been sitting around for a long time due to low dev activity.
+Might end up on F-Droid...
+
+**consider all releases as beta**
+
+Plan / to do:
+* ~upgrade dependencies~
+* upgrade NDK, https://github.com/openboard-team/openboard/issues/782
+* maybe: rename (package, app, icon), so it can be installed parallel to OpenBoard, and published on F-Droid
+* user-selectable dictionaries, https://github.com/openboard-team/openboard/pull/578
+  * make additional dictionaries available for download, and link from app
+* multi-lingual typing, https://github.com/openboard-team/openboard/pull/593
+* suggestion fixes, https://github.com/openboard-team/openboard/pull/694, https://github.com/openboard-team/openboard/issues/795, https://github.com/openboard-team/openboard/issues/660
+* improve auto-space insertion, https://github.com/openboard-team/openboard/pull/576
+* emoji prediction/search, either https://github.com/openboard-team/openboard/pull/749 or use dictionaries
+* theming, https://github.com/openboard-team/openboard/issues/124
+* delete suggestions, https://github.com/openboard-team/openboard/issues/106
+* glide typing, https://github.com/openboard-team/openboard/issues/3
+  * license issues, maybe allow using an external library
+
+Changes:
+* Updated dependencies
+* Debug version can be installed along OpenBoard
+
+-----
+
 <h1 align="center"><b>OpenBoard</b></h1>
 <h4 align="center">100% FOSS keyboard, based on AOSP.</h4>
 <p align="center"><img src='fastlane/metadata/android/en-US/images/icon.png' height='128'></p>
