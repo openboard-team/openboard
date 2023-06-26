@@ -30,9 +30,10 @@ Changes:
   * add Arabic dictionary for download, from https://github.com/remi0s/aosp-dictionary-tools/blob/master/dictsCreated/WikiAndOpenSubtitles/ar_wordlist.combined / https://github.com/openboard-team/openboard/pull/450
   * add Hebrew dictionary for download, from https://github.com/Hananel-Hazan/aosp-dictionary-tools/blob/master/hebrew-hspell.txt.combined.new / https://github.com/openboard-team/openboard/pull/300
   * add Galician dictionary for download, from https://github.com/chavaone/openboard/blob/master/dictionaries/es_GL_wordlist.combined.gz / https://github.com/openboard-team/openboard/pull/291
-* fix suggestions after some characters, https://github.com/openboard-team/openboard/pull/694, https://github.com/openboard-team/openboard/issues/795
-* fix suggestions sometimes not being shown, https://github.com/openboard-team/openboard/pull/709
+* Fix suggestions after some characters, https://github.com/openboard-team/openboard/pull/694, https://github.com/openboard-team/openboard/issues/795
+* Fix suggestions sometimes not being shown, https://github.com/openboard-team/openboard/pull/709
 * Reduce amount of unwanted automatic space insertions, https://github.com/openboard-team/openboard/pull/576
+* Exit shift-symbol view on space (same as normal symbol view)
 
 -----
 
