@@ -12,7 +12,7 @@ Plan / to do:
 * ~user-selectable dictionaries, https://github.com/openboard-team/openboard/pull/578~
   * ~make additional dictionaries available for download (from OpenBoard PRs)~
 * multi-lingual typing, https://github.com/openboard-team/openboard/pull/593
-* suggestion fixes, https://github.com/openboard-team/openboard/pull/694, https://github.com/openboard-team/openboard/issues/795, https://github.com/openboard-team/openboard/issues/660
+* ~suggestion fixes, https://github.com/openboard-team/openboard/pull/694, https://github.com/openboard-team/openboard/issues/795, https://github.com/openboard-team/openboard/issues/660~
 * improve auto-space insertion, https://github.com/openboard-team/openboard/pull/576
 * emoji prediction/search, either https://github.com/openboard-team/openboard/pull/749 or use dictionaries
 * theming, https://github.com/openboard-team/openboard/issues/124
@@ -30,6 +30,8 @@ Changes:
   * add Arabic dictionary for download, from https://github.com/remi0s/aosp-dictionary-tools/blob/master/dictsCreated/WikiAndOpenSubtitles/ar_wordlist.combined / https://github.com/openboard-team/openboard/pull/450
   * add Hebrew dictionary for download, from https://github.com/Hananel-Hazan/aosp-dictionary-tools/blob/master/hebrew-hspell.txt.combined.new / https://github.com/openboard-team/openboard/pull/300
   * add Galician dictionary for download, from https://github.com/chavaone/openboard/blob/master/dictionaries/es_GL_wordlist.combined.gz / https://github.com/openboard-team/openboard/pull/291
+* fix suggestions after some characters, https://github.com/openboard-team/openboard/pull/694, https://github.com/openboard-team/openboard/issues/795
+* fix suggestions sometimes not being shown, https://github.com/openboard-team/openboard/pull/709
 
 -----
 
