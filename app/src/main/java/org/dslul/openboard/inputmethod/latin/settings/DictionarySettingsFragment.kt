@@ -317,7 +317,7 @@ class DictionarySettingsFragment : SubScreenFragment() {
     companion object {
         private const val DICTIONARY_REQUEST_CODE = 96834
         private const val DICTIONARY_URL =
-            "https://github.com/Helium314/openboard/dictionaries/dict"
+            "https://github.com/Helium314/openboard/tree/new/dictionaries/dict"
         private const val USER_DICTIONARY_SUFFIX = "user.dict"
 
         private const val DICT_INTERNAL_AND_USER = 2
