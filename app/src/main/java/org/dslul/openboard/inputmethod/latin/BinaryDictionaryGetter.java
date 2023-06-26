@@ -253,7 +253,10 @@ final public class BinaryDictionaryGetter {
         // cachedWordLists may not be null, see doc for getCachedDictionaryList
         for (final File f : cachedWordLists) {
             final String wordListId = DictionaryInfoUtils.getWordListIdFromFileName(f.getName());
-            final boolean canUse = f.canRead() && hackCanUseDictionaryFile(f);
+            // remove the hack that requires version 18
+            // danger of getting an old version is rather low, and user-added dictionaries
+            // will usually not work as they will likely start at version 1
+            final boolean canUse = f.canRead(); // && hackCanUseDictionaryFile(f);
             if (canUse && DictionaryInfoUtils.isMainWordListId(wordListId)) {
                 foundMainDict = true;
             }
