@@ -10,7 +10,7 @@ Plan / to do:
 * upgrade NDK, https://github.com/openboard-team/openboard/issues/782
 * maybe: rename (package, app, icon), so it can be installed parallel to OpenBoard, and published on F-Droid
 * ~user-selectable dictionaries, https://github.com/openboard-team/openboard/pull/578~
-  * make additional dictionaries available for download (from OpenBoard PRs)
+  * ~make additional dictionaries available for download (from OpenBoard PRs)~
 * multi-lingual typing, https://github.com/openboard-team/openboard/pull/593
 * suggestion fixes, https://github.com/openboard-team/openboard/pull/694, https://github.com/openboard-team/openboard/issues/795, https://github.com/openboard-team/openboard/issues/660
 * improve auto-space insertion, https://github.com/openboard-team/openboard/pull/576
@@ -25,8 +25,11 @@ Changes:
 * Debug version can be installed along OpenBoard
 * Allow users to add and replace built-in dictionaries
   * modified / improved from https://github.com/openboard-team/openboard/pull/569 and https://github.com/openboard-team/openboard/pull/578
-  * dictionaries are available at https://github.com/Helium314/openboard/dictionaries/dict
+  * dictionaries are available at https://github.com/Helium314/openboard/tree/new/dictionaries/dict
   * dictionary files starting with "main_" replace the built-in dictionary for the language, all other names work as add-on dictionaries
+  * add Arabic dictionary for download, from https://github.com/remi0s/aosp-dictionary-tools/blob/master/dictsCreated/WikiAndOpenSubtitles/ar_wordlist.combined / https://github.com/openboard-team/openboard/pull/450
+  * add Hebrew dictionary for download, from https://github.com/Hananel-Hazan/aosp-dictionary-tools/blob/master/hebrew-hspell.txt.combined.new / https://github.com/openboard-team/openboard/pull/300
+  * add Galician dictionary for download, from https://github.com/chavaone/openboard/blob/master/dictionaries/es_GL_wordlist.combined.gz / https://github.com/openboard-team/openboard/pull/291
 
 -----
 
