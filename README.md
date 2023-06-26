@@ -13,7 +13,7 @@ Plan / to do:
   * ~make additional dictionaries available for download (from OpenBoard PRs)~
 * multi-lingual typing, https://github.com/openboard-team/openboard/pull/593
 * ~suggestion fixes, https://github.com/openboard-team/openboard/pull/694, https://github.com/openboard-team/openboard/issues/795, https://github.com/openboard-team/openboard/issues/660~
-* improve auto-space insertion, https://github.com/openboard-team/openboard/pull/576
+* ~improve auto-space insertion, https://github.com/openboard-team/openboard/pull/576~
 * emoji prediction/search, either https://github.com/openboard-team/openboard/pull/749 or use dictionaries
 * theming, https://github.com/openboard-team/openboard/issues/124
 * delete suggestions, https://github.com/openboard-team/openboard/issues/106
@@ -32,6 +32,7 @@ Changes:
   * add Galician dictionary for download, from https://github.com/chavaone/openboard/blob/master/dictionaries/es_GL_wordlist.combined.gz / https://github.com/openboard-team/openboard/pull/291
 * fix suggestions after some characters, https://github.com/openboard-team/openboard/pull/694, https://github.com/openboard-team/openboard/issues/795
 * fix suggestions sometimes not being shown, https://github.com/openboard-team/openboard/pull/709
+* Reduce amount of unwanted automatic space insertions, https://github.com/openboard-team/openboard/pull/576
 
 -----
 

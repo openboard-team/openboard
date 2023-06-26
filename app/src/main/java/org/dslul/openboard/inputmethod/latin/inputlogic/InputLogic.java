@@ -18,6 +18,7 @@ package org.dslul.openboard.inputmethod.latin.inputlogic;
 
 import android.graphics.Color;
 import android.os.SystemClock;
+import android.text.InputType;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -2045,9 +2046,24 @@ public final class InputLogic {
     private void insertAutomaticSpaceIfOptionsAndTextAllow(final SettingsValues settingsValues) {
         if (settingsValues.shouldInsertSpacesAutomatically()
                 && settingsValues.mSpacingAndPunctuations.mCurrentLanguageHasSpaces
-                && !mConnection.textBeforeCursorLooksLikeURL()) {
+                && !textBeforeCursorMayBeURL()
+                && !(mConnection.getCodePointBeforeCursor() == Constants.CODE_PERIOD && mConnection.wordBeforeCursorMayBeEmail())) {
             sendKeyCodePoint(settingsValues, Constants.CODE_SPACE);
         }
+    }
+
+    private boolean textBeforeCursorMayBeURL() {
+        if (mConnection.textBeforeCursorLooksLikeURL()) return true;
+        // doesn't look like URL, but we may be in URL field and user may want to enter example.com
+        if (mConnection.getCodePointBeforeCursor() != Constants.CODE_PERIOD && mConnection.getCodePointBeforeCursor() != ':')
+            return false;
+        final EditorInfo ei = getCurrentInputEditorInfo();
+        if (ei == null) return false;
+        int inputType = ei.inputType;
+        if ((inputType & InputType.TYPE_TEXT_VARIATION_URI) != 0)
+            return !mConnection.spaceBeforeCursor();
+        else
+            return false;
     }
 
     /**
