@@ -11,7 +11,9 @@ Plan / to do:
 * maybe: rename (package, app, icon), so it can be installed parallel to OpenBoard, and published on F-Droid
 * ~user-selectable dictionaries, https://github.com/openboard-team/openboard/pull/578~
   * ~make additional dictionaries available for download (from OpenBoard PRs)~
-* multi-lingual typing, https://github.com/openboard-team/openboard/pull/593
+* ~multi-lingual typing, https://github.com/openboard-team/openboard/pull/586, https://github.com/openboard-team/openboard/pull/593~
+  * maybe improve way of merging suggestions from both languages
+  * test whether it works reasonably well in non-latin scripts
 * ~suggestion fixes, https://github.com/openboard-team/openboard/pull/694, https://github.com/openboard-team/openboard/issues/795, https://github.com/openboard-team/openboard/issues/660~
 * ~improve auto-space insertion, https://github.com/openboard-team/openboard/pull/576~
 * emoji prediction/search, either https://github.com/openboard-team/openboard/pull/749 or use dictionaries
@@ -19,6 +21,7 @@ Plan / to do:
 * delete suggestions, https://github.com/openboard-team/openboard/issues/106
 * glide typing, https://github.com/openboard-team/openboard/issues/3
   * license issues, maybe allow using an external library
+* re-consider preferring lowercase word for typed history in some cases (DictionaryFacilitatorImpl.addWordToUserHistory)
 
 Changes:
 * Updated dependencies
@@ -34,6 +37,7 @@ Changes:
 * Fix suggestions sometimes not being shown, https://github.com/openboard-team/openboard/pull/709
 * Reduce amount of unwanted automatic space insertions, https://github.com/openboard-team/openboard/pull/576
 * Exit shift-symbol view on space (same as normal symbol view)
+* Add multi-lingual typing, slightly modified from https://github.com/openboard-team/openboard/pull/586, https://github.com/openboard-team/openboard/pull/593
 
 -----
 
