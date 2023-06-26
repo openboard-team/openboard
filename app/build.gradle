@@ -42,7 +42,8 @@ android {
 
     ndkVersion '23.2.8568313'
     androidResources {
-        noCompress 'dict'
+        noCompress 'main.dict'
+        noCompress 'empty.dict'
     }
 }
 
