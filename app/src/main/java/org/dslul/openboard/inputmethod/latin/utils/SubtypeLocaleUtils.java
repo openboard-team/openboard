@@ -43,7 +43,9 @@ public final class SubtypeLocaleUtils {
     static final String TAG = SubtypeLocaleUtils.class.getSimpleName();
 
     // This reference class {@link R} must be located in the same package as LatinIME.java.
-    private static final String RESOURCE_PACKAGE_NAME = R.class.getPackage().getName();
+    // switched to context.getPackageName(), which works with changed debug package name
+    // any reason to prefer original version?
+//    private static final String RESOURCE_PACKAGE_NAME = R.class.getPackage().getName();
 
     // Special language code to represent "no language".
     public static final String NO_LANGUAGE = "zz";
@@ -96,6 +98,7 @@ public final class SubtypeLocaleUtils {
     }
 
     private static void initLocked(final Context context) {
+        final String RESOURCE_PACKAGE_NAME = context.getPackageName();
         final Resources res = context.getResources();
         sResources = res;
 

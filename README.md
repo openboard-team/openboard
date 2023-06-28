@@ -11,6 +11,8 @@ Plan / to do:
 * maybe: rename (package, app, icon), so it can be installed parallel to OpenBoard, and published on F-Droid
 * ~user-selectable dictionaries, https://github.com/openboard-team/openboard/pull/578~
   * ~make additional dictionaries available for download (from OpenBoard PRs)~
+  * more dictionaries
+  * proper icon for preference
 * ~multi-lingual typing, https://github.com/openboard-team/openboard/pull/586, https://github.com/openboard-team/openboard/pull/593~
   * maybe improve way of merging suggestions from both languages
   * test whether it works reasonably well in non-latin scripts

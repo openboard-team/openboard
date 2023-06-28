@@ -530,7 +530,7 @@ abstract public class ExpandableBinaryDictionary extends Dictionary {
                 Thread.sleep(15000);
                 Log.w(TAG, "End stress in loading");
             } catch (InterruptedException e) {
-                Log.w("Interrupted while loading: " + mDictName, e);
+                Log.w(TAG, "Interrupted while loading: " + mDictName, e);
             }
         }
         final BinaryDictionary oldBinaryDictionary = mBinaryDictionary;
