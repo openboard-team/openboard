@@ -38,8 +38,11 @@ import org.dslul.openboard.inputmethod.latin.utils.ScriptUtils;
 import org.dslul.openboard.inputmethod.latin.utils.SuggestionResults;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -47,6 +50,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -154,6 +159,10 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         // has been committed in a row, with an exception when typing a single word not contained
         // in this language.
         private int mConfidence = 1;
+
+        // words cannot be removed from main dictionary, so we use a blacklist instead
+        public String blacklistFileName = null;
+        public Set<String> blacklist = new HashSet<>();
 
         // allow to go above max confidence, for better determination of currently preferred language
         // when decreasing confidence or getting weight factor, limit to maximum
@@ -455,6 +464,20 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
                         mSecondaryDictionaryGroup == null ? null : secondaryLocale, listener);
             }
         }
+
+        // load blacklists
+        mDictionaryGroup.blacklistFileName = context.getFilesDir().getAbsolutePath() + File.separator + "blacklists" + File.separator + newLocale.toString().toLowerCase(Locale.ENGLISH) + ".txt";
+        if (!new File(mDictionaryGroup.blacklistFileName).exists())
+            new File(context.getFilesDir().getAbsolutePath() + File.separator + "blacklists").mkdirs();
+        mDictionaryGroup.blacklist.addAll(readBlacklistFile(mDictionaryGroup.blacklistFileName));
+
+        if (mSecondaryDictionaryGroup != null) {
+            mSecondaryDictionaryGroup.blacklistFileName = context.getFilesDir().getAbsolutePath() + File.separator + "blacklists" + File.separator + secondaryLocale.toString().toLowerCase(Locale.ENGLISH) + ".txt";
+            if (!new File(mSecondaryDictionaryGroup.blacklistFileName).exists())
+                new File(context.getFilesDir().getAbsolutePath() + File.separator + "blacklists").mkdirs();
+            mSecondaryDictionaryGroup.blacklist.addAll(readBlacklistFile(mSecondaryDictionaryGroup.blacklistFileName));
+        }
+
         if (listener != null) {
             listener.onUpdateMainDictionaryAvailability(hasAtLeastOneInitializedMainDictionary());
         }
@@ -655,6 +678,12 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
                     blockPotentiallyOffensive);
             ngramContextForCurrentWord =
                     ngramContextForCurrentWord.getNextNgramContext(new WordInfo(currentWord));
+
+            // remove entered words from blacklist
+            if (mDictionaryGroup.blacklist.remove(currentWord))
+                removeWordFromBlacklistFile(currentWord, mDictionaryGroup.blacklistFileName);
+            if (mSecondaryDictionaryGroup != null && mSecondaryDictionaryGroup.blacklist.remove(currentWord))
+                removeWordFromBlacklistFile(currentWord, mSecondaryDictionaryGroup.blacklistFileName);
         }
     }
 
@@ -834,7 +863,14 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
                             proximityInfoHandle, settingsValuesForSuggestion, sessionId,
                             weightForLocale, weightOfLangModelVsSpatialModel);
             if (null == dictionarySuggestions) continue;
-            suggestions.addAll(dictionarySuggestions);
+
+            // don't add blacklisted words
+            // this may not be the most efficient way, but getting suggestions is much slower anyway
+            for (SuggestedWordInfo info : dictionarySuggestions) {
+                if (!isBlacklisted(info.getWord())) {
+                    suggestions.add(info);
+                }
+             }
         }
         return suggestions;
     }
@@ -865,6 +901,7 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         if (dictionaryGroup.mLocale == null) {
             return false;
         }
+        if (isBlacklisted(word)) return false;
         for (final String dictType : dictionariesToCheck) {
             final Dictionary dictionary = dictionaryGroup.getDict(dictType);
             // Ideally the passed map would come out of a {@link java.util.concurrent.Future} and
@@ -876,6 +913,87 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
             }
         }
         return false;
+    }
+
+    private boolean isBlacklisted(final String word) {
+        if (mDictionaryGroup.blacklist.contains(word))
+            return true;
+        if (mSecondaryDictionaryGroup != null && mSecondaryDictionaryGroup.blacklist.contains(word))
+            return true;
+        return false;
+    }
+
+    @Override
+    public void removeWord(String word) {
+        removeWordFromGroup(word, mDictionaryGroup);
+        if (mSecondaryDictionaryGroup != null)
+            removeWordFromGroup(word, mSecondaryDictionaryGroup);
+    }
+
+    private void removeWordFromGroup(String word, DictionaryGroup group) {
+        // remove from user history
+        final ExpandableBinaryDictionary historyDict = group.getSubDict(Dictionary.TYPE_USER_HISTORY);
+        if (historyDict != null) {
+            historyDict.removeUnigramEntryDynamically(word);
+        }
+        // and from personal dictionary
+        final ExpandableBinaryDictionary userDict = group.getSubDict(Dictionary.TYPE_USER);
+        if (userDict != null) {
+            userDict.removeUnigramEntryDynamically(word);
+        }
+
+        // add to blacklist if in main dictionary
+        if (group.getDict(Dictionary.TYPE_MAIN).isValidWord(word) && group.blacklist.add(word)) {
+            // write to file if word wasn't already in blacklist
+            ExecutorUtils.getBackgroundExecutor(ExecutorUtils.KEYBOARD).execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        FileOutputStream fos = new FileOutputStream(group.blacklistFileName, true);
+                        fos.write((word + "\n").getBytes(StandardCharsets.UTF_8));
+                        fos.close();
+                    } catch (IOException e) {
+                        Log.e(TAG, "Exception while trying to write blacklist", e);
+                    }
+                }
+            });
+        }
+    }
+
+    private ArrayList<String> readBlacklistFile(final String filename) {
+        final ArrayList<String> blacklist = new ArrayList<>();
+        if (filename == null) return blacklist;
+        File blacklistFile = new File(filename);
+        if (!blacklistFile.exists()) return blacklist;
+        try {
+            final Scanner scanner = new Scanner(blacklistFile, StandardCharsets.UTF_8.name()).useDelimiter("\n");
+            while (scanner.hasNext()) {
+                blacklist.add(scanner.next());
+            }
+        } catch (IOException e) {
+            Log.e(TAG, "Exception while reading blacklist", e);
+        }
+        return blacklist;
+    }
+
+    private void removeWordFromBlacklistFile(String word, String filename) {
+        ExecutorUtils.getBackgroundExecutor(ExecutorUtils.KEYBOARD).execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    ArrayList<String> blacklist = readBlacklistFile(filename);
+                    blacklist.remove(word);
+                    FileOutputStream fos = new FileOutputStream(filename);
+                    for (String entry : blacklist) {
+                        fos.write((entry + "\n").getBytes(StandardCharsets.UTF_8));
+                    }
+                    fos.close();
+                } catch (IOException e) {
+                    Log.e(TAG, "Exception while trying to write blacklist" + filename, e);
+                }
+            }
+        });
+
     }
 
     // called from addWordToUserHistory with a specified dictionary, so provide this dictionary

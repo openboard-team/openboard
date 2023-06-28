@@ -396,16 +396,6 @@ public class KeyboardView extends View {
             bgX = -padding.left;
             bgY = -padding.top;
         }
-/*        if (mUserTheme) {
-            // color filter is applied to background, which is re-used
-            // but we don't want it applied to "blue" keys
-            // so we always need to select the color filter dependent on the current key
-            if (key.isActionKey()
-                    || (key.getBackgroundType() == Key.BACKGROUND_TYPE_NORMAL && key.getCode() < 0 && key.getCode() != Constants.CODE_SWITCH_ALPHA_SYMBOL))
-                background.clearColorFilter();
-            else
-                background.setColorFilter(keyBgFilter);
-        }*/
         if (mUserTheme) {
             // color filter is applied to background, which is re-used
             // but we don't want it applied to "blue" keys

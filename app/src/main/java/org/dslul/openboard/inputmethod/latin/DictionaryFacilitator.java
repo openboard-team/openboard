@@ -121,6 +121,8 @@ public interface DictionaryFacilitator {
             final String dictNamePrefix,
             @Nullable final DictionaryInitializationListener listener);
 
+    void removeWord(String word);
+
     @UsedForTesting
     void resetDictionariesForTesting(
             final Context context,

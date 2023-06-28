@@ -5,30 +5,6 @@ Might end up on F-Droid...
 
 **consider all releases as beta**
 
-Plan / to do:
-* ~upgrade dependencies~
-* upgrade NDK, https://github.com/openboard-team/openboard/issues/782
-* maybe: rename (package, app, icon), so it can be installed parallel to OpenBoard, and published on F-Droid
-* ~user-selectable dictionaries, https://github.com/openboard-team/openboard/pull/578~
-  * ~make additional dictionaries available for download (from OpenBoard PRs)~
-  * more dictionaries
-  * proper icon for preference
-* ~multi-lingual typing, https://github.com/openboard-team/openboard/pull/586, https://github.com/openboard-team/openboard/pull/593~
-  * maybe improve way of merging suggestions from both languages
-  * test whether it works reasonably well in non-latin scripts
-* ~suggestion fixes, https://github.com/openboard-team/openboard/pull/694, https://github.com/openboard-team/openboard/issues/795, https://github.com/openboard-team/openboard/issues/660~
-* ~improve auto-space insertion, https://github.com/openboard-team/openboard/pull/576~
-* emoji prediction/search, either https://github.com/openboard-team/openboard/pull/749 (using emoji dictionaries already possible)
-* ~theming, https://github.com/openboard-team/openboard/issues/124~
-  * fix emoji view not themed properly
-  * fix ABC buttons in emoji and clipboard view have wrong text color
-  * fix buttons on long-press action key not themed
-  * allow adjusting colors without requiring manual reload of keyboard 
-* delete suggestions, https://github.com/openboard-team/openboard/issues/106
-* ~gesture typing, https://github.com/openboard-team/openboard/issues/3~
-  * ~license issues, require using an external library~
-* re-consider preferring lowercase word for typed history in some cases (DictionaryFacilitatorImpl.addWordToUserHistory)
-
 Changes:
 * Updated dependencies
 * Debug version can be installed along OpenBoard
@@ -48,6 +24,32 @@ Changes:
   * based on wordmage's work https://github.com/openboard-team/openboard/tree/57d33791d7674e3fe0600eddb72f6b4317b5df00
   * tested with Google libraries and [others](https://github.com/openboard-team/openboard/issues/3#issuecomment-1200456262) (when building with the [rename](https://github.com/openboard-team/openboard/tree/57d33791d7674e3fe0600eddb72f6b4317b5df00))
 * Allow adjusting keyboard colors, https://github.com/openboard-team/openboard/issues/124
+* Remove suggestions by long pressing on suggestion strip while the more suggestions popup is open, https://github.com/openboard-team/openboard/issues/106
+  * suggestions get re-added if they are entered again
+
+Plan / to do:
+* ~upgrade dependencies~
+* upgrade NDK, https://github.com/openboard-team/openboard/issues/782
+* maybe: rename (package, app, icon), so it can be installed parallel to OpenBoard, and published on F-Droid
+* ~user-selectable dictionaries, https://github.com/openboard-team/openboard/pull/578~
+  * ~make additional dictionaries available for download (from OpenBoard PRs)~
+  * more dictionaries
+  * proper icon for preference
+* ~multi-lingual typing, https://github.com/openboard-team/openboard/pull/586, https://github.com/openboard-team/openboard/pull/593~
+  * maybe improve way of merging suggestions from both languages
+  * test whether it works reasonably well in non-latin scripts
+* ~suggestion fixes, https://github.com/openboard-team/openboard/pull/694, https://github.com/openboard-team/openboard/issues/795, https://github.com/openboard-team/openboard/issues/660~
+* ~improve auto-space insertion, https://github.com/openboard-team/openboard/pull/576~
+* emoji prediction/search, either https://github.com/openboard-team/openboard/pull/749 (using emoji dictionaries already possible)
+* ~theming, https://github.com/openboard-team/openboard/issues/124~
+  * fix emoji view not themed properly
+  * fix ABC buttons in emoji and clipboard view have wrong text color
+  * fix buttons on long-press action key not themed
+  * allow adjusting colors without requiring manual reload of keyboard 
+* ~delete suggestions, https://github.com/openboard-team/openboard/issues/106~
+* ~gesture typing, https://github.com/openboard-team/openboard/issues/3~
+  * ~license issues, require using an external library~
+* re-consider preferring lowercase word for typed history in some cases (DictionaryFacilitatorImpl.addWordToUserHistory)
 
 -----
 

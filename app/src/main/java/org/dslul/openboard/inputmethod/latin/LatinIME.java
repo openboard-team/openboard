@@ -1684,6 +1684,11 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         setSuggestedWords(neutralSuggestions);
     }
 
+    @Override
+    public void removeSuggestion(final String word) {
+        mDictionaryFacilitator.removeWord(word);
+    }
+
     // Outside LatinIME, only used by the {@link InputTestsBase} test suite.
     @UsedForTesting
     void loadKeyboard() {
