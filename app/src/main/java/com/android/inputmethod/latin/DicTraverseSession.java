@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.dslul.openboard.inputmethod.latin;
+package com.android.inputmethod.latin;
 
 import org.dslul.openboard.inputmethod.latin.common.NativeSuggestOptions;
 import org.dslul.openboard.inputmethod.latin.define.DecoderSpecificConstants;

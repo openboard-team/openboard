@@ -29,7 +29,7 @@
         name="touch_position_correction_data_default"
         translatable="false"
     >
-        <!-- The default touch position data (See org.dslul.openboard.inputmethod.keyboard.ProximityInfo)
+        <!-- The default touch position data (See com.android.inputmethod.keyboard.ProximityInfo)
              correctionX = 0.0f
              correctionY = 0.0f
              correctionR = DEFAULT_TOUCH_POSITION_CORRECTION_RADIUS
@@ -40,7 +40,7 @@
         name="touch_position_correction_data_holo"
         translatable="false"
     >
-        <!-- The default touch position data (See org.dslul.openboard.inputmethod.keyboard.ProximityInfo)
+        <!-- The default touch position data (See com.android.inputmethod.keyboard.ProximityInfo)
              correctionX = 0.0f
              correctionY = 0.0f
              correctionR = DEFAULT_TOUCH_POSITION_CORRECTION_RADIUS

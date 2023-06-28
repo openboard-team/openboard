@@ -23,6 +23,8 @@ import android.provider.ContactsContract;
 import android.provider.ContactsContract.Contacts;
 import android.util.Log;
 
+import com.android.inputmethod.latin.BinaryDictionary;
+
 import org.dslul.openboard.inputmethod.annotations.ExternallyReferenced;
 import org.dslul.openboard.inputmethod.latin.ContactsManager.ContactsChangedListener;
 import org.dslul.openboard.inputmethod.latin.common.StringUtils;

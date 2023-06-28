@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
-package org.dslul.openboard.inputmethod.latin;
+package com.android.inputmethod.latin;
 
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseArray;
 
 import org.dslul.openboard.inputmethod.annotations.UsedForTesting;
+import org.dslul.openboard.inputmethod.latin.Dictionary;
+import org.dslul.openboard.inputmethod.latin.NgramContext;
 import org.dslul.openboard.inputmethod.latin.SuggestedWords.SuggestedWordInfo;
 import org.dslul.openboard.inputmethod.latin.common.ComposedData;
 import org.dslul.openboard.inputmethod.latin.common.Constants;
@@ -33,9 +35,9 @@ import org.dslul.openboard.inputmethod.latin.makedict.FormatSpec.DictionaryOptio
 import org.dslul.openboard.inputmethod.latin.makedict.UnsupportedFormatException;
 import org.dslul.openboard.inputmethod.latin.makedict.WordProperty;
 import org.dslul.openboard.inputmethod.latin.settings.SettingsValuesForSuggestion;
-import org.dslul.openboard.inputmethod.latin.utils.BinaryDictionaryUtils;
+import com.android.inputmethod.latin.utils.BinaryDictionaryUtils;
 import org.dslul.openboard.inputmethod.latin.utils.JniUtils;
-import org.dslul.openboard.inputmethod.latin.utils.WordInputEventForPersonalization;
+import com.android.inputmethod.latin.utils.WordInputEventForPersonalization;
 
 import java.io.File;
 import java.util.ArrayList;

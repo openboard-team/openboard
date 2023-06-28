@@ -16,11 +16,11 @@ Plan / to do:
   * test whether it works reasonably well in non-latin scripts
 * ~suggestion fixes, https://github.com/openboard-team/openboard/pull/694, https://github.com/openboard-team/openboard/issues/795, https://github.com/openboard-team/openboard/issues/660~
 * ~improve auto-space insertion, https://github.com/openboard-team/openboard/pull/576~
-* emoji prediction/search, either https://github.com/openboard-team/openboard/pull/749 or use dictionaries
+* emoji prediction/search, either https://github.com/openboard-team/openboard/pull/749 (using emoji dictionaries already possible)
 * theming, https://github.com/openboard-team/openboard/issues/124
 * delete suggestions, https://github.com/openboard-team/openboard/issues/106
-* glide typing, https://github.com/openboard-team/openboard/issues/3
-  * license issues, maybe allow using an external library
+* ~gesture typing, https://github.com/openboard-team/openboard/issues/3~
+  * ~license issues, require using an external library~
 * re-consider preferring lowercase word for typed history in some cases (DictionaryFacilitatorImpl.addWordToUserHistory)
 
 Changes:
@@ -38,6 +38,9 @@ Changes:
 * Reduce amount of unwanted automatic space insertions, https://github.com/openboard-team/openboard/pull/576
 * Exit shift-symbol view on space (same as normal symbol view)
 * Add multi-lingual typing, slightly modified from https://github.com/openboard-team/openboard/pull/586, https://github.com/openboard-team/openboard/pull/593
+* Allow loading an external library to enable gesture typing, https://github.com/openboard-team/openboard/issues/3
+  * based on wordmage's work https://github.com/openboard-team/openboard/tree/57d33791d7674e3fe0600eddb72f6b4317b5df00
+  * tested with Google libraries and [others](https://github.com/openboard-team/openboard/issues/3#issuecomment-1200456262) (when building with the [rename](https://github.com/openboard-team/openboard/tree/57d33791d7674e3fe0600eddb72f6b4317b5df00))
 
 -----
 

@@ -16,7 +16,7 @@
 
 #define LOG_TAG "LatinIME: jni: BinaryDictionaryUtils"
 
-#include "org_dslul_openboard_inputmethod_latin_BinaryDictionaryUtils.h"
+#include "com_android_inputmethod_latin_BinaryDictionaryUtils.h"
 
 #include "defines.h"
 #include "dictionary/utils/dict_file_writing_utils.h"
@@ -99,7 +99,7 @@ static const JNINativeMethod sMethods[] = {
 };
 
 int register_BinaryDictionaryUtils(JNIEnv *env) {
-    const char *const kClassPathName = "org/dslul/openboard/inputmethod/latin/utils/BinaryDictionaryUtils";
+    const char *const kClassPathName = "com/android/inputmethod/latin/utils/BinaryDictionaryUtils";
     return registerNativeMethods(env, kClassPathName, sMethods, NELEMS(sMethods));
 }
 } // namespace latinime

@@ -16,7 +16,7 @@
 
 #define LOG_TAG "LatinIME: jni: Session"
 
-#include "org_dslul_openboard_inputmethod_latin_DicTraverseSession.h"
+#include "com_android_inputmethod_latin_DicTraverseSession.h"
 
 #include "defines.h"
 #include "dictionary/property/ngram_context.h"
@@ -74,7 +74,7 @@ static const JNINativeMethod sMethods[] = {
 };
 
 int register_DicTraverseSession(JNIEnv *env) {
-    const char *const kClassPathName = "org/dslul/openboard/inputmethod/latin/DicTraverseSession";
+    const char *const kClassPathName = "com/android/inputmethod/latin/DicTraverseSession";
     return registerNativeMethods(env, kClassPathName, sMethods, NELEMS(sMethods));
 }
 } // namespace latinime

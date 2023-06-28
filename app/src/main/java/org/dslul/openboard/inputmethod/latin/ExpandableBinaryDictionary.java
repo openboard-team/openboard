@@ -19,6 +19,8 @@ package org.dslul.openboard.inputmethod.latin;
 import android.content.Context;
 import android.util.Log;
 
+import com.android.inputmethod.latin.BinaryDictionary;
+
 import org.dslul.openboard.inputmethod.annotations.UsedForTesting;
 import org.dslul.openboard.inputmethod.latin.SuggestedWords.SuggestedWordInfo;
 import org.dslul.openboard.inputmethod.latin.common.ComposedData;
@@ -32,7 +34,7 @@ import org.dslul.openboard.inputmethod.latin.settings.SettingsValuesForSuggestio
 import org.dslul.openboard.inputmethod.latin.utils.AsyncResultHolder;
 import org.dslul.openboard.inputmethod.latin.utils.CombinedFormatUtils;
 import org.dslul.openboard.inputmethod.latin.utils.ExecutorUtils;
-import org.dslul.openboard.inputmethod.latin.utils.WordInputEventForPersonalization;
+import com.android.inputmethod.latin.utils.WordInputEventForPersonalization;
 
 import java.io.File;
 import java.util.ArrayList;

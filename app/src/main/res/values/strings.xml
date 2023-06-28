@@ -194,6 +194,17 @@
     <string name="secondary_locale_none">None</string>
     <!-- Message shown when no secondary locales available -->
     <string name="no_secondary_locales">No secondary dictionaries available</string>
+    <!-- Preferences item for loading an external gesture typing library -->
+    <string name="load_gesture_library">Load gesture typing library</string>
+    <!-- Description for "load_gesture_library" option -->
+    <string name="load_gesture_library_summary">Provide a native library to enable gesture typing</string>
+    <!-- Message in load gesture library dialog -->
+    <string name="load_gesture_library_message">You will need the library for \'%s\'. Incompatible libraries may crash when using gesture typing.
+        \n\nWarning: loading external code can be a security risk. Only use a library from a source you trust.</string>
+    <!-- Button text for loading gesture library -->
+    <string name="load_gesture_library_button_load">Load library</string>
+    <!-- Button text for deleting gesture library -->
+    <string name="load_gesture_library_button_delete">Delete library</string>
     <!-- Description for "space_trackpad" option. -->
     <string name="space_trackpad_summary">Swipe on the spacebar to move the cursor</string>
     <!-- Preferences item for enabling inserting more spaces key -->

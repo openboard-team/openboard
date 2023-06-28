@@ -24,6 +24,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.inputmethod.InputMethodSubtype;
 
+import com.android.inputmethod.latin.utils.BinaryDictionaryUtils;
+
 import org.dslul.openboard.inputmethod.annotations.UsedForTesting;
 import org.dslul.openboard.inputmethod.latin.AssetFileAddress;
 import org.dslul.openboard.inputmethod.latin.BinaryDictionaryGetter;

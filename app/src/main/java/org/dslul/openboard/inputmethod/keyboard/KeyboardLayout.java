@@ -16,6 +16,8 @@
 
 package org.dslul.openboard.inputmethod.keyboard;
 
+import com.android.inputmethod.keyboard.ProximityInfo;
+
 import org.dslul.openboard.inputmethod.annotations.UsedForTesting;
 
 import java.util.ArrayList;
