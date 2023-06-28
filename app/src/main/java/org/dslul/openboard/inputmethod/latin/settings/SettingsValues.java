@@ -108,6 +108,7 @@ public class SettingsValues {
     // Use split layout for keyboard.
     public final boolean mIsSplitKeyboardEnabled;
     public final int mScreenMetrics;
+    public final boolean mAddToPersonalDictionary;
 
     // From the input box
     @Nonnull
@@ -259,6 +260,7 @@ public class SettingsValues {
         mOneHandedModeEnabled = Settings.readOneHandedModeEnabled(prefs);
         mOneHandedModeGravity = Settings.readOneHandedModeGravity(prefs);
         mSecondaryLocale = Settings.getSecondaryLocale(prefs, RichInputMethodManager.getInstance().getCurrentSubtypeLocale().toString());
+
         mUserTheme = KeyboardTheme.getIsUser(KeyboardTheme.getThemeForParameters(
                 prefs.getString(Settings.PREF_THEME_FAMILY, ""),
                 prefs.getString(Settings.PREF_THEME_VARIANT, ""),
@@ -278,6 +280,8 @@ public class SettingsValues {
         mKeyTextColorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(mKeyTextColor, BlendModeCompat.SRC_ATOP);
         mBackgroundColor = prefs.getInt(Settings.PREF_THEME_USER_COLOR_BACKGROUND, Color.DKGRAY);
         mBackgroundColorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(mBackgroundColor, BlendModeCompat.MODULATE);
+
+        mAddToPersonalDictionary = prefs.getBoolean(Settings.PREF_ADD_TO_PERSONAL_DICTIONARY, false);
     }
 
     public boolean isMetricsLoggingEnabled() {

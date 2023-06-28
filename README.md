@@ -26,6 +26,7 @@ Changes:
 * Allow adjusting keyboard colors, https://github.com/openboard-team/openboard/issues/124
 * Remove suggestions by long pressing on suggestion strip while the more suggestions popup is open, https://github.com/openboard-team/openboard/issues/106
   * suggestions get re-added if they are entered again
+* Optionally add typed words to system personal dictionary
 
 Plan / to do:
 * ~upgrade dependencies~
@@ -47,6 +48,7 @@ Plan / to do:
   * fix buttons on long-press action key not themed
   * allow adjusting colors without requiring manual reload of keyboard 
 * ~delete suggestions, https://github.com/openboard-team/openboard/issues/106~
+  * make functionality more discoverable, e.g. add a button to the more suggestions menu
 * ~gesture typing, https://github.com/openboard-team/openboard/issues/3~
   * ~license issues, require using an external library~
 * re-consider preferring lowercase word for typed history in some cases (DictionaryFacilitatorImpl.addWordToUserHistory)

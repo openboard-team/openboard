@@ -136,6 +136,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_CLIPBOARD_HISTORY_RETENTION_TIME = "pref_clipboard_history_retention_time";
 
     public static final String PREF_SECONDARY_LOCALES = "pref_secondary_locales";
+    public static final String PREF_ADD_TO_PERSONAL_DICTIONARY = "add_to_personal_dictionary";
 
     // This preference key is deprecated. Use {@link #PREF_SHOW_LANGUAGE_SWITCH_KEY} instead.
     // This is being used only for the backward compatibility.

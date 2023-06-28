@@ -81,6 +81,7 @@ public final class CorrectionSettingsFragment extends SubScreenFragment
     private void refreshEnabledSettings() {
         setPreferenceEnabled(Settings.PREF_AUTO_CORRECTION_CONFIDENCE,
                 Settings.readAutoCorrectEnabled(getSharedPreferences(), getResources()));
+        setPreferenceEnabled(Settings.PREF_ADD_TO_PERSONAL_DICTIONARY, getSharedPreferences().getBoolean(Settings.PREF_KEY_USE_PERSONALIZED_DICTS, true));
     }
 
     private void overwriteUserDictionaryPreference(final Preference userDictionaryPreference) {

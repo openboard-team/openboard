@@ -18,6 +18,7 @@ package org.dslul.openboard.inputmethod.latin;
 
 import android.Manifest;
 import android.content.Context;
+import android.provider.UserDictionary;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.LruCache;
@@ -652,6 +653,8 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
         final String[] words = suggestion.split(Constants.WORD_SEPARATOR);
 
         // increase / decrease confidence if we have a secondary dictionary group
+        Boolean validMainWord = null;
+        Boolean validSecondaryWord = null;
         if (mSecondaryDictionaryGroup != null && words.length == 1) {
             // if suggestion was auto-capitalized, check against both the suggestion and the de-capitalized suggestion
             final String decapitalizedSuggestion;
@@ -659,15 +662,55 @@ public class DictionaryFacilitatorImpl implements DictionaryFacilitator {
                 decapitalizedSuggestion = suggestion.substring(0, 1).toLowerCase() + suggestion.substring(1);
             else
                 decapitalizedSuggestion = suggestion;
+            validMainWord = isValidWord(suggestion, ALL_DICTIONARY_TYPES, mDictionaryGroup);
             if ((wasAutoCapitalized && isValidWord(decapitalizedSuggestion, ALL_DICTIONARY_TYPES, mDictionaryGroup))
-                || isValidWord(suggestion, ALL_DICTIONARY_TYPES, mDictionaryGroup))
+                || validMainWord)
                 mDictionaryGroup.increaseConfidence();
             else mDictionaryGroup.decreaseConfidence();
+            validSecondaryWord = isValidWord(suggestion, ALL_DICTIONARY_TYPES, mSecondaryDictionaryGroup);
             if ((wasAutoCapitalized && isValidWord(decapitalizedSuggestion, ALL_DICTIONARY_TYPES, mSecondaryDictionaryGroup))
-                    || isValidWord(suggestion, ALL_DICTIONARY_TYPES, mSecondaryDictionaryGroup))
+                    || validSecondaryWord)
                 mSecondaryDictionaryGroup.increaseConfidence();
             else mSecondaryDictionaryGroup.decreaseConfidence();
         }
+
+        // add word to user dictionary if it is in no other dictionary except user history dictionary
+        // reasoning: typing the same word again -> we probably want it in some dictionary permanently
+        // we need a clearly preferred group to assign it to the correct language (in most cases at least...)
+        if (mDictionaryGroup.hasDict(Dictionary.TYPE_USER_HISTORY, mDictionaryGroup.mAccount) // disable if personalized suggestions are off
+                && Settings.getInstance().getCurrent().mAddToPersonalDictionary
+                && (mSecondaryDictionaryGroup == null || mDictionaryGroup.mConfidence != mSecondaryDictionaryGroup.mConfidence)
+                && !wasAutoCapitalized && words.length == 1) {
+            // user history always reports words as invalid, so we need to check isInDictionary instead
+            // also maybe a problem: words added to dictionaries (user and history) are apparently found
+            //  only after some delay. but this is not too bad, it just delays adding
+
+            final DictionaryGroup dictionaryGroup = getCurrentlyPreferredDictionaryGroup();
+            final ExpandableBinaryDictionary userDict = dictionaryGroup.getSubDict(Dictionary.TYPE_USER);
+            final Dictionary userHistoryDict = dictionaryGroup.getSubDict(Dictionary.TYPE_USER_HISTORY);
+            if (userDict != null && userHistoryDict.isInDictionary(suggestion)) {
+                if (validMainWord == null)
+                    validMainWord = isValidWord(suggestion, ALL_DICTIONARY_TYPES, mDictionaryGroup);
+                if (validMainWord)
+                    return;
+                if (mSecondaryDictionaryGroup != null) {
+                    if (validSecondaryWord == null)
+                        validSecondaryWord = isValidWord(suggestion, ALL_DICTIONARY_TYPES, mSecondaryDictionaryGroup);
+                    if (validSecondaryWord)
+                        return;
+                }
+                if (userDict.isInDictionary(suggestion))
+                    return;
+                ExecutorUtils.getBackgroundExecutor(ExecutorUtils.KEYBOARD).execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        UserDictionary.Words.addWord(userDict.mContext, suggestion,
+                                250 /*FREQUENCY_FOR_USER_DICTIONARY_ADDS*/, null, dictionaryGroup.mLocale);
+                    }
+                });
+            }
+        }
+
         NgramContext ngramContextForCurrentWord = ngramContext;
         for (int i = 0; i < words.length; i++) {
             final String currentWord = words[i];
