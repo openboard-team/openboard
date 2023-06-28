@@ -19,6 +19,8 @@ package org.dslul.openboard.inputmethod.keyboard.internal;
 import android.content.res.TypedArray;
 
 import org.dslul.openboard.inputmethod.latin.R;
+import org.dslul.openboard.inputmethod.latin.settings.Settings;
+import org.dslul.openboard.inputmethod.latin.settings.SettingsValues;
 
 /**
  * This class holds parameters to control how a gesture trail is drawn and animated on the screen.
@@ -50,7 +52,8 @@ final class GestureTrailDrawingParams {
     public final int mTrailLingerDuration;
 
     public GestureTrailDrawingParams(final TypedArray mainKeyboardViewAttr) {
-        mTrailColor = mainKeyboardViewAttr.getColor(
+        final SettingsValues sv = Settings.getInstance().getCurrent();
+        mTrailColor = sv.mUserTheme ? sv.mUserThemeColorAccent : mainKeyboardViewAttr.getColor(
                 R.styleable.MainKeyboardView_gestureTrailColor, 0);
         mTrailStartWidth = mainKeyboardViewAttr.getDimension(
                 R.styleable.MainKeyboardView_gestureTrailStartWidth, 0.0f);

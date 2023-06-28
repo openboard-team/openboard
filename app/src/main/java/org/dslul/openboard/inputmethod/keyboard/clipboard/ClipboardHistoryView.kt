@@ -1,6 +1,7 @@
 package org.dslul.openboard.inputmethod.keyboard.clipboard
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.MotionEvent
@@ -9,6 +10,8 @@ import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.graphics.BlendModeColorFilterCompat
+import androidx.core.graphics.BlendModeCompat
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import org.dslul.openboard.inputmethod.keyboard.KeyboardActionListener
 import org.dslul.openboard.inputmethod.keyboard.internal.KeyDrawParams
@@ -17,6 +20,7 @@ import org.dslul.openboard.inputmethod.keyboard.internal.KeyboardIconsSet
 import org.dslul.openboard.inputmethod.latin.ClipboardHistoryManager
 import org.dslul.openboard.inputmethod.latin.R
 import org.dslul.openboard.inputmethod.latin.common.Constants
+import org.dslul.openboard.inputmethod.latin.settings.Settings
 import org.dslul.openboard.inputmethod.latin.utils.ResourceUtils
 
 class ClipboardHistoryView @JvmOverloads constructor(
@@ -89,16 +93,22 @@ class ClipboardHistoryView @JvmOverloads constructor(
         findViewById<FrameLayout>(R.id.clipboard_action_bar)?.apply {
             clipboardLayoutParams.setActionBarProperties(this)
         }
+        val cf = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(Color.CYAN, BlendModeCompat.MODULATE)
+        val settingsValues = Settings.getInstance().current
         alphabetKey = findViewById<TextView>(R.id.clipboard_keyboard_alphabet).apply {
             tag = Constants.CODE_ALPHA_FROM_CLIPBOARD
             setBackgroundResource(functionalKeyBackgroundId)
             setOnTouchListener(this@ClipboardHistoryView)
             setOnClickListener(this@ClipboardHistoryView)
+            background.colorFilter = settingsValues.mKeyBackgroundColorFilter
+            setTextColor(settingsValues.mKeyTextColor)
         }
         clearKey = findViewById<ImageButton>(R.id.clipboard_clear).apply {
             setOnTouchListener(this@ClipboardHistoryView)
             setOnClickListener(this@ClipboardHistoryView)
+            colorFilter = settingsValues.mKeyTextColorFilter
         }
+        background.colorFilter = settingsValues.mBackgroundColorFilter
     }
 
     private fun setupAlphabetKey(key: TextView?, label: String, params: KeyDrawParams) {

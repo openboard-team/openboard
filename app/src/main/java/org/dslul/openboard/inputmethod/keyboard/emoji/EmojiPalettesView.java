@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -34,6 +35,8 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.graphics.BlendModeColorFilterCompat;
+import androidx.core.graphics.BlendModeCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import org.dslul.openboard.inputmethod.compat.TabHostCompat;
@@ -262,6 +265,11 @@ public final class EmojiPalettesView extends LinearLayout
         mSpacebar.setTag(Constants.CODE_SPACE);
         mSpacebar.setOnTouchListener(this);
         mSpacebar.setOnClickListener(this);
+        final ColorFilter cf = Settings.getInstance().getCurrent().mKeyBackgroundColorFilter;
+        mAlphabetKeyLeft.getBackground().setColorFilter(cf);
+        mAlphabetKeyLeft.setTextColor(Settings.getInstance().getCurrent().mKeyTextColor);
+        mSpacebar.getBackground().setColorFilter(cf);
+        mDeleteKey.getBackground().setColorFilter(cf);
         mEmojiLayoutParams.setKeyProperties(mSpacebar);
         mSpacebarIcon = findViewById(R.id.emoji_keyboard_space_icon);
     }

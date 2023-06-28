@@ -508,7 +508,11 @@ final class SuggestionStripLayoutHelper {
             // {@link SuggestionStripView#onClick(View)}.
             wordView.setTag(indexInSuggestedWords);
             wordView.setText(getStyledSuggestedWord(suggestedWords, indexInSuggestedWords));
-            wordView.setTextColor(getSuggestionTextColor(suggestedWords, indexInSuggestedWords));
+            final SettingsValues settingsValues = Settings.getInstance().getCurrent();
+            if (settingsValues.mUserTheme)
+                wordView.setTextColor(settingsValues.mKeyTextColor);
+            else
+                wordView.setTextColor(getSuggestionTextColor(suggestedWords, indexInSuggestedWords));
             if (SuggestionStripView.DBG) {
                 mDebugInfoViews.get(positionInStrip).setText(
                         suggestedWords.getDebugString(indexInSuggestedWords));

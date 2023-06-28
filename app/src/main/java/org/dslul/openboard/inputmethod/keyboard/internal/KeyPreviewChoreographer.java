@@ -20,8 +20,13 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.core.graphics.BlendModeColorFilterCompat;
+import androidx.core.graphics.BlendModeCompat;
+
 import org.dslul.openboard.inputmethod.keyboard.Key;
 import org.dslul.openboard.inputmethod.latin.common.CoordinateUtils;
+import org.dslul.openboard.inputmethod.latin.settings.Settings;
+import org.dslul.openboard.inputmethod.latin.settings.SettingsValues;
 import org.dslul.openboard.inputmethod.latin.utils.ViewLayoutUtils;
 
 import java.util.ArrayDeque;
@@ -117,6 +122,11 @@ public final class KeyPreviewChoreographer {
         }
         final boolean hasMoreKeys = (key.getMoreKeys() != null);
         keyPreviewView.setPreviewBackground(hasMoreKeys, keyPreviewPosition);
+        final SettingsValues settingsValues = Settings.getInstance().getCurrent();
+        if (settingsValues.mUserTheme) {
+            keyPreviewView.getBackground().setColorFilter(settingsValues.mBackgroundColorFilter);
+            keyPreviewView.setTextColor(settingsValues.mKeyTextColor);
+        }
         // The key preview is placed vertically above the top edge of the parent key with an
         // arbitrary offset.
         final int previewY = key.getY() - previewHeight + key.getHeight() - mParams.mPreviewOffset

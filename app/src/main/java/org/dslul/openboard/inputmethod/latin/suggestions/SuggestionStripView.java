@@ -40,7 +40,6 @@ import android.widget.TextView;
 
 import org.dslul.openboard.inputmethod.accessibility.AccessibilityUtils;
 import org.dslul.openboard.inputmethod.keyboard.Keyboard;
-import org.dslul.openboard.inputmethod.keyboard.KeyboardSwitcher;
 import org.dslul.openboard.inputmethod.keyboard.MainKeyboardView;
 import org.dslul.openboard.inputmethod.keyboard.MoreKeysPanel;
 import org.dslul.openboard.inputmethod.latin.AudioAndHapticFeedbackManager;
@@ -177,6 +176,10 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
         mClipboardKey.setOnLongClickListener(this);
 
         mOtherKey.setImageDrawable(iconIncognito);
+
+        final SettingsValues settingsValues = Settings.getInstance().getCurrent();
+        if (settingsValues.mUserTheme)
+            mStripVisibilityGroup.mSuggestionStripView.getBackground().setColorFilter(settingsValues.mBackgroundColorFilter);
     }
 
     /**

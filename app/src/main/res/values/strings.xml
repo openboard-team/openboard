@@ -638,4 +638,20 @@ disposition rather than other common dispositions for Latin languages. [CHAR LIM
     <string name="amoled_mode">Deep black backgrounds</string>
     <!-- Description indicating amoled mode can lower power usage depending on the screen of the device. -->
     <string name="amoled_mode_summary">Can reduce power usage depending on the device’s screen technology</string>
+    <!-- Option for selecting custom theme colors -->
+    <string name="select_user_colors">Adjust theme colors</string>
+    <!-- Description for selection of user-defined colors. -->
+    <string name="select_user_colors_summary">Select colors for text and background</string>
+    <!-- Dialog message when selecting color to adjust. -->
+    <string name="select_color_to_adjust">Select colors to adjust</string>
+    <!-- Selection: background color. -->
+    <string name="select_color_background">Keyboard background</string>
+    <!-- Selection: key text color. -->
+    <string name="select_color_key">Key text</string>
+    <!-- Selection: key hint text color. -->
+    <string name="select_color_key_hint">Key hint text</string>
+    <!-- Selection: key color. -->
+    <string name="select_color_key_background">Key background</string>
+    <!-- Selection: accent color. -->
+    <string name="select_color_accent">Accent</string>
 </resources>

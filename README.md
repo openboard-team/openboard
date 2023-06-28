@@ -19,7 +19,11 @@ Plan / to do:
 * ~suggestion fixes, https://github.com/openboard-team/openboard/pull/694, https://github.com/openboard-team/openboard/issues/795, https://github.com/openboard-team/openboard/issues/660~
 * ~improve auto-space insertion, https://github.com/openboard-team/openboard/pull/576~
 * emoji prediction/search, either https://github.com/openboard-team/openboard/pull/749 (using emoji dictionaries already possible)
-* theming, https://github.com/openboard-team/openboard/issues/124
+* ~theming, https://github.com/openboard-team/openboard/issues/124~
+  * fix emoji view not themed properly
+  * fix ABC buttons in emoji and clipboard view have wrong text color
+  * fix buttons on long-press action key not themed
+  * allow adjusting colors without requiring manual reload of keyboard 
 * delete suggestions, https://github.com/openboard-team/openboard/issues/106
 * ~gesture typing, https://github.com/openboard-team/openboard/issues/3~
   * ~license issues, require using an external library~
@@ -43,6 +47,7 @@ Changes:
 * Allow loading an external library to enable gesture typing, https://github.com/openboard-team/openboard/issues/3
   * based on wordmage's work https://github.com/openboard-team/openboard/tree/57d33791d7674e3fe0600eddb72f6b4317b5df00
   * tested with Google libraries and [others](https://github.com/openboard-team/openboard/issues/3#issuecomment-1200456262) (when building with the [rename](https://github.com/openboard-team/openboard/tree/57d33791d7674e3fe0600eddb72f6b4317b5df00))
+* Allow adjusting keyboard colors, https://github.com/openboard-team/openboard/issues/124
 
 -----
 

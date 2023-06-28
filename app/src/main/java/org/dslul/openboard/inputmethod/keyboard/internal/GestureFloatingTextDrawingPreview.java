@@ -28,6 +28,8 @@ import org.dslul.openboard.inputmethod.keyboard.PointerTracker;
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.SuggestedWords;
 import org.dslul.openboard.inputmethod.latin.common.CoordinateUtils;
+import org.dslul.openboard.inputmethod.latin.settings.Settings;
+import org.dslul.openboard.inputmethod.latin.settings.SettingsValues;
 
 import javax.annotation.Nonnull;
 
@@ -60,13 +62,14 @@ public class GestureFloatingTextDrawingPreview extends AbstractDrawingPreview {
         private static final char[] TEXT_HEIGHT_REFERENCE_CHAR = { 'M' };
 
         public GesturePreviewTextParams(final TypedArray mainKeyboardViewAttr) {
+            final SettingsValues sv = Settings.getInstance().getCurrent();
             mGesturePreviewTextSize = mainKeyboardViewAttr.getDimensionPixelSize(
                     R.styleable.MainKeyboardView_gestureFloatingPreviewTextSize, 0);
-            mGesturePreviewTextColor = mainKeyboardViewAttr.getColor(
+            mGesturePreviewTextColor = sv.mUserTheme ? sv.mKeyTextColor : mainKeyboardViewAttr.getColor(
                     R.styleable.MainKeyboardView_gestureFloatingPreviewTextColor, 0);
             mGesturePreviewTextOffset = mainKeyboardViewAttr.getDimensionPixelOffset(
                     R.styleable.MainKeyboardView_gestureFloatingPreviewTextOffset, 0);
-            mGesturePreviewColor = mainKeyboardViewAttr.getColor(
+            mGesturePreviewColor = sv.mUserTheme ? sv.mBackgroundColor : mainKeyboardViewAttr.getColor(
                     R.styleable.MainKeyboardView_gestureFloatingPreviewColor, 0);
             mGesturePreviewHorizontalPadding = mainKeyboardViewAttr.getDimension(
                     R.styleable.MainKeyboardView_gestureFloatingPreviewHorizontalPadding, 0.0f);

@@ -15,6 +15,7 @@
  */
 package org.dslul.openboard.inputmethod.latin.settings
 
+import android.app.AlertDialog
 import android.os.Build
 import android.os.Bundle
 import android.preference.ListPreference
@@ -38,6 +39,7 @@ class AppearanceSettingsFragment : SubScreenFragment(), Preference.OnPreferenceC
     private lateinit var keyBordersPref: TwoStatePreference
     private lateinit var amoledModePref: TwoStatePreference
     private var dayNightPref: TwoStatePreference? = null
+    private lateinit var userColorsPref: Preference
 
 
     override fun onCreate(icicle: Bundle?) {
@@ -112,11 +114,15 @@ class AppearanceSettingsFragment : SubScreenFragment(), Preference.OnPreferenceC
         amoledModePref.apply {
             isEnabled = !isLegacyFamily && variant != KeyboardTheme.THEME_VARIANT_LIGHT
                     && !KeyboardTheme.getHasKeyBorders(selectedThemeId)
+                    && !KeyboardTheme.getIsUser(selectedThemeId)
             isChecked = !isLegacyFamily && KeyboardTheme.getIsAmoledMode(selectedThemeId)
         }
         dayNightPref?.apply {
             isEnabled = !isLegacyFamily
             isChecked = !isLegacyFamily && KeyboardTheme.getIsDayNight(selectedThemeId)
+        }
+        userColorsPref.apply {
+            isEnabled = KeyboardTheme.getIsUser(selectedThemeId)
         }
     }
 
@@ -157,6 +163,29 @@ class AppearanceSettingsFragment : SubScreenFragment(), Preference.OnPreferenceC
         dayNightPref?.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, value ->
             saveSelectedThemeId(dayNight = value as Boolean)
             updateThemePreferencesState(skipThemeFamily = true)
+            true
+        }
+        userColorsPref = preferenceScreen.findPreference(Settings.PREF_THEME_USER)
+        userColorsPref.onPreferenceClickListener = Preference.OnPreferenceClickListener { _ ->
+            val items = listOf(R.string.select_color_background, R.string.select_color_key, R.string.select_color_key_hint, R.string.select_color_accent, R.string.select_color_key_background)
+                .map { activity.getString(it) }
+            val itemsArray = if (keyBordersPref.isChecked) items.toTypedArray()
+                else items.subList(0, 4).toTypedArray()
+            AlertDialog.Builder(activity)
+                .setPositiveButton(android.R.string.ok, null)
+                .setTitle(R.string.select_color_to_adjust)
+                .setItems(itemsArray) { _, i ->
+                    val pref = when (i) {
+                        0 -> Settings.PREF_THEME_USER_COLOR_BACKGROUND
+                        1 -> Settings.PREF_THEME_USER_COLOR_TEXT
+                        2 -> Settings.PREF_THEME_USER_COLOR_HINT_TEXT
+                        3 -> Settings.PREF_THEME_USER_COLOR_ACCENT
+                        else -> Settings.PREF_THEME_USER_COLOR_KEYS
+                    }
+                    val d = ColorPickerDialog(activity, sharedPreferences, pref)
+                    d.show()
+                }
+                .show()
             true
         }
     }
