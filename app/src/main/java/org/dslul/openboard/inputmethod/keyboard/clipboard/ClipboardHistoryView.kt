@@ -1,7 +1,6 @@
 package org.dslul.openboard.inputmethod.keyboard.clipboard
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.MotionEvent
@@ -10,8 +9,6 @@ import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.graphics.BlendModeColorFilterCompat
-import androidx.core.graphics.BlendModeCompat
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import org.dslul.openboard.inputmethod.keyboard.KeyboardActionListener
 import org.dslul.openboard.inputmethod.keyboard.internal.KeyDrawParams
@@ -93,29 +90,34 @@ class ClipboardHistoryView @JvmOverloads constructor(
         findViewById<FrameLayout>(R.id.clipboard_action_bar)?.apply {
             clipboardLayoutParams.setActionBarProperties(this)
         }
-        val cf = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(Color.CYAN, BlendModeCompat.MODULATE)
         val settingsValues = Settings.getInstance().current
         alphabetKey = findViewById<TextView>(R.id.clipboard_keyboard_alphabet).apply {
             tag = Constants.CODE_ALPHA_FROM_CLIPBOARD
             setBackgroundResource(functionalKeyBackgroundId)
             setOnTouchListener(this@ClipboardHistoryView)
             setOnClickListener(this@ClipboardHistoryView)
-            background.colorFilter = settingsValues.mKeyBackgroundColorFilter
-            setTextColor(settingsValues.mKeyTextColor)
         }
         clearKey = findViewById<ImageButton>(R.id.clipboard_clear).apply {
             setOnTouchListener(this@ClipboardHistoryView)
             setOnClickListener(this@ClipboardHistoryView)
-            colorFilter = settingsValues.mKeyTextColorFilter
         }
-        background.colorFilter = settingsValues.mBackgroundColorFilter
+        if (settingsValues.mUserTheme) {
+            alphabetKey.background.colorFilter = settingsValues.mKeyBackgroundColorFilter
+            alphabetKey.setTextColor(settingsValues.mKeyTextColor)
+            clearKey.colorFilter = settingsValues.mKeyTextColorFilter
+            background.colorFilter = settingsValues.mBackgroundColorFilter
+        }
     }
 
     private fun setupAlphabetKey(key: TextView?, label: String, params: KeyDrawParams) {
         key?.apply {
             text = label
             typeface = params.mTypeface
-            setTextColor(params.mFunctionalTextColor)
+            val settingsValues = Settings.getInstance().current
+            if (settingsValues.mUserTheme)
+                setTextColor(settingsValues.mKeyTextColor)
+            else
+                setTextColor(params.mFunctionalTextColor)
             setTextSize(TypedValue.COMPLEX_UNIT_PX, params.mLabelSize.toFloat())
         }
     }
@@ -124,7 +126,12 @@ class ClipboardHistoryView @JvmOverloads constructor(
         clipboardAdapter.apply {
             itemBackgroundId = keyBackgroundId
             itemTypeFace = params.mTypeface
-            itemTextColor = params.mTextColor
+            val sv = Settings.getInstance().current
+            if (sv.mUserTheme) {
+                itemTextColor = sv.mKeyTextColor
+                itemBackgroundColorFilter = sv.mKeyBackgroundColorFilter
+            } else
+                itemTextColor = params.mTextColor
             itemTextSize = params.mLabelSize.toFloat()
         }
     }

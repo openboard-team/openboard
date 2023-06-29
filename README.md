@@ -43,8 +43,8 @@ Plan / to do:
 * ~improve auto-space insertion, https://github.com/openboard-team/openboard/pull/576~
 * emoji prediction/search, either https://github.com/openboard-team/openboard/pull/749 (using emoji dictionaries already possible)
 * ~theming, https://github.com/openboard-team/openboard/issues/124~
-  * fix emoji view not themed properly
-  * fix ABC buttons in emoji and clipboard view have wrong text color
+  * ~fix emoji view not themed properly~
+  * ~fix ABC buttons in emoji and clipboard view have wrong text color~
   * fix buttons on long-press action key not themed
   * allow adjusting colors without requiring manual reload of keyboard 
 * ~delete suggestions, https://github.com/openboard-team/openboard/issues/106~

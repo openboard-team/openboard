@@ -6,6 +6,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import org.dslul.openboard.inputmethod.latin.settings.Settings
 
 class ClipboardHistoryRecyclerView @JvmOverloads constructor(
         context: Context,
@@ -62,6 +63,9 @@ class ClipboardHistoryRecyclerView @JvmOverloads constructor(
         init {
             paint.color = dividerColor
             paint.strokeWidth = dividerHeight.toFloat()
+            val sv = Settings.getInstance().current
+            if (sv.mUserTheme)
+                paint.colorFilter = sv.mBackgroundColorFilter
         }
 
         override fun onDrawOver(canvas: Canvas, parent: RecyclerView, state: State) {

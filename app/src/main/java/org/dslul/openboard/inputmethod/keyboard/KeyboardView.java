@@ -463,6 +463,8 @@ public class KeyboardView extends View {
                     // set key color only if not in emoji keyboard range
                     if (keyboard != null && (keyboard.mId.mElementId < 10 || keyboard.mId.mElementId > 26))
                         paint.setColorFilter(keyTextColorFilter);
+                    else
+                        paint.setColorFilter(null);
                 }
                 // Set a drop shadow for the text if the shadow radius is positive value.
                 if (mKeyTextShadowRadius > 0.0f) {

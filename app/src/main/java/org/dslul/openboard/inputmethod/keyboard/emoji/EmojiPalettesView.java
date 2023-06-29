@@ -100,6 +100,8 @@ public final class EmojiPalettesView extends LinearLayout
 
     private final EmojiCategory mEmojiCategory;
 
+    private ImageView mCurrentTab = null;
+
     public EmojiPalettesView(final Context context, final AttributeSet attrs) {
         this(context, attrs, R.attr.emojiPalettesViewStyle);
     }
@@ -164,6 +166,11 @@ public final class EmojiPalettesView extends LinearLayout
         // TODO: Replace background color with its own setting rather than using the
         //       category page indicator background as a workaround.
         iconView.setBackgroundColor(mCategoryPageIndicatorBackground);
+        final SettingsValues settingsValues = Settings.getInstance().getCurrent();
+        if (settingsValues.mUserTheme) {
+            iconView.getBackground().setColorFilter(settingsValues.mBackgroundColorFilter);
+            iconView.setColorFilter(settingsValues.mKeyTextColorFilter);
+        }
         iconView.setImageResource(mEmojiCategory.getCategoryTabIcon(categoryId));
         iconView.setContentDescription(mEmojiCategory.getAccessibilityDescription(categoryId));
         tspec.setIndicator(iconView);
@@ -265,11 +272,16 @@ public final class EmojiPalettesView extends LinearLayout
         mSpacebar.setTag(Constants.CODE_SPACE);
         mSpacebar.setOnTouchListener(this);
         mSpacebar.setOnClickListener(this);
-        final ColorFilter cf = Settings.getInstance().getCurrent().mKeyBackgroundColorFilter;
-        mAlphabetKeyLeft.getBackground().setColorFilter(cf);
-        mAlphabetKeyLeft.setTextColor(Settings.getInstance().getCurrent().mKeyTextColor);
-        mSpacebar.getBackground().setColorFilter(cf);
-        mDeleteKey.getBackground().setColorFilter(cf);
+        final SettingsValues settingsValues = Settings.getInstance().getCurrent();
+        if (settingsValues.mUserTheme) {
+            final ColorFilter cf = settingsValues.mKeyBackgroundColorFilter;
+            mAlphabetKeyLeft.getBackground().setColorFilter(cf);
+            mSpacebar.getBackground().setColorFilter(cf);
+            mDeleteKey.getBackground().setColorFilter(cf);
+            getBackground().setColorFilter(cf);
+            mEmojiCategoryPageIndicatorView.setColors(settingsValues.mUserThemeColorAccent, settingsValues.mBackgroundColor);
+            findViewById(R.id.emoji_tab_strip).getBackground().setColorFilter(cf);
+        }
         mEmojiLayoutParams.setKeyProperties(mSpacebar);
         mSpacebarIcon = findViewById(R.id.emoji_keyboard_space_icon);
     }
@@ -290,6 +302,13 @@ public final class EmojiPalettesView extends LinearLayout
         if (categoryId != mEmojiCategory.getCurrentCategoryId()) {
             setCurrentCategoryAndPageId(categoryId, 0, false /* force */);
             updateEmojiCategoryPageIdView();
+        }
+        final SettingsValues settingsValues = Settings.getInstance().getCurrent();
+        if (settingsValues.mUserTheme) {
+            if (mCurrentTab != null)
+                mCurrentTab.setColorFilter(settingsValues.mKeyTextColorFilter);
+            mCurrentTab = (ImageView) mTabHost.getCurrentTabView();
+            mCurrentTab.setColorFilter(settingsValues.mUserThemeColorAccent);
         }
     }
 
@@ -374,7 +393,11 @@ public final class EmojiPalettesView extends LinearLayout
     private static void setupAlphabetKey(final TextView alphabetKey, final String label,
                                          final KeyDrawParams params) {
         alphabetKey.setText(label);
-        alphabetKey.setTextColor(params.mFunctionalTextColor);
+        final SettingsValues settingsValues = Settings.getInstance().getCurrent();
+        if (settingsValues.mUserTheme)
+            alphabetKey.setTextColor(settingsValues.mKeyTextColor);
+        else
+            alphabetKey.setTextColor(params.mFunctionalTextColor);
         alphabetKey.setTextSize(TypedValue.COMPLEX_UNIT_PX, params.mLabelSize);
         alphabetKey.setTypeface(params.mTypeface);
     }

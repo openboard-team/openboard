@@ -126,7 +126,7 @@ public class SettingsValues {
     private final AsyncResultHolder<AppWorkaroundsUtils> mAppWorkarounds;
 
     // User-defined colors
-    public boolean mUserTheme;
+    public final boolean mUserTheme;
     public final ColorFilter mKeyBackgroundColorFilter;
     public final int mBackgroundColor;
     public final ColorFilter mBackgroundColorFilter;
