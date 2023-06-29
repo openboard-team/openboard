@@ -27,6 +27,7 @@ Changes:
 * Remove suggestions by long pressing on suggestion strip while the more suggestions popup is open, https://github.com/openboard-team/openboard/issues/106
   * suggestions get re-added if they are entered again
 * Optionally add typed words to system personal dictionary
+* Allow using contacts for suggestions (enable in spell checker settings), https://github.com/openboard-team/openboard/issues/374
 
 Plan / to do:
 * ~upgrade dependencies~
@@ -52,6 +53,7 @@ Plan / to do:
 * ~gesture typing, https://github.com/openboard-team/openboard/issues/3~
   * ~license issues, require using an external library~
 * re-consider preferring lowercase word for typed history in some cases (DictionaryFacilitatorImpl.addWordToUserHistory)
+* move _use contacts_ setting from well hidden spell checker settings to _text correction_ settings
 
 -----
 

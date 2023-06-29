@@ -737,7 +737,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     private void resetDictionaryFacilitator(final Locale locale) {
         final SettingsValues settingsValues = mSettings.getCurrent();
         mDictionaryFacilitator.resetDictionaries(this /* context */, locale,
-                false, settingsValues.mUsePersonalizedDicts,
+                settingsValues.mUseContactsDictionary, settingsValues.mUsePersonalizedDicts,
                 false /* forceReloadMainDictionary */,
                 settingsValues.mAccount, "" /* dictNamePrefix */,
                 this /* DictionaryInitializationListener */);
@@ -754,7 +754,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     /* package private */ void resetSuggestMainDict() {
         final SettingsValues settingsValues = mSettings.getCurrent();
         mDictionaryFacilitator.resetDictionaries(this /* context */,
-                mDictionaryFacilitator.getLocale(), false,
+                mDictionaryFacilitator.getLocale(), settingsValues.mUseContactsDictionary,
                 settingsValues.mUsePersonalizedDicts,
                 true /* forceReloadMainDictionary */,
                 settingsValues.mAccount, "" /* dictNamePrefix */,
@@ -1945,7 +1945,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     void replaceDictionariesForTest(final Locale locale) {
         final SettingsValues settingsValues = mSettings.getCurrent();
         mDictionaryFacilitator.resetDictionaries(this, locale,
-                false, settingsValues.mUsePersonalizedDicts,
+                settingsValues.mUseContactsDictionary, settingsValues.mUsePersonalizedDicts,
                 false /* forceReloadMainDictionary */,
                 settingsValues.mAccount, "", /* dictionaryNamePrefix */
                 this /* DictionaryInitializationListener */);

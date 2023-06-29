@@ -34,6 +34,7 @@ import org.dslul.openboard.inputmethod.keyboard.KeyboardTheme;
 import org.dslul.openboard.inputmethod.latin.InputAttributes;
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.RichInputMethodManager;
+import org.dslul.openboard.inputmethod.latin.spellcheck.AndroidSpellCheckerService;
 import org.dslul.openboard.inputmethod.latin.utils.AsyncResultHolder;
 import org.dslul.openboard.inputmethod.latin.utils.ResourceUtils;
 import org.dslul.openboard.inputmethod.latin.utils.ScriptUtils;
@@ -109,6 +110,7 @@ public class SettingsValues {
     public final boolean mIsSplitKeyboardEnabled;
     public final int mScreenMetrics;
     public final boolean mAddToPersonalDictionary;
+    public final boolean mUseContactsDictionary;
 
     // From the input box
     @Nonnull
@@ -282,6 +284,7 @@ public class SettingsValues {
         mBackgroundColorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(mBackgroundColor, BlendModeCompat.MODULATE);
 
         mAddToPersonalDictionary = prefs.getBoolean(Settings.PREF_ADD_TO_PERSONAL_DICTIONARY, false);
+        mUseContactsDictionary = prefs.getBoolean(AndroidSpellCheckerService.PREF_USE_CONTACTS_KEY, false);
     }
 
     public boolean isMetricsLoggingEnabled() {
