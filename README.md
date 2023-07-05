@@ -11,6 +11,7 @@ Changes:
 * Allow users to add and replace built-in dictionaries
   * modified / improved from https://github.com/openboard-team/openboard/pull/569 and https://github.com/openboard-team/openboard/pull/578
   * dictionaries are available at https://github.com/Helium314/openboard/tree/new/dictionaries/dict
+    * experimental dictionaries with next-word suggestions created from sentence lists in https://github.com/Helium314/openboard/tree/new/dictionaries/experimental, but they may contain unwanted words, and will suggest offensive words even with the option turned off
   * dictionary files starting with "main_" replace the built-in dictionary for the language, all other names work as add-on dictionaries
   * add Arabic dictionary for download, from https://github.com/remi0s/aosp-dictionary-tools/blob/master/dictsCreated/WikiAndOpenSubtitles/ar_wordlist.combined / https://github.com/openboard-team/openboard/pull/450
   * add Hebrew dictionary for download, from https://github.com/Hananel-Hazan/aosp-dictionary-tools/blob/master/hebrew-hspell.txt.combined.new / https://github.com/openboard-team/openboard/pull/300
