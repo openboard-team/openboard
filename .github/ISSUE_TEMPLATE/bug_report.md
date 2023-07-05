@@ -7,6 +7,8 @@ assignees: ''
 
 ---
 
+**Does it happen in OpenBoard, or is it exclusive to this modified version?**
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 
@@ -22,6 +24,9 @@ A clear and concise description of what you expected to happen.
 
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
+
+**App version**
+Which exact version of this fork is affected?
 
 **Smartphone (please complete the following information):**
  - Device: [e.g. Samsung Galaxy S9]
