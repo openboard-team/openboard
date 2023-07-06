@@ -581,4 +581,14 @@ disposition rather than other common dispositions for Latin languages. [CHAR LIM
     <string name="amoled_mode">Deep black backgrounds</string>
     <!-- Description indicating amoled mode can lower power usage depending on the screen of the device. -->
     <string name="amoled_mode_summary">Can reduce power usage depending on the device’s screen technology</string>
+    <!-- Settings screen title for about [CHAR LIMIT=33]-->
+    <string name="settings_screen_about">About</string>
+    <!-- version for about screen-->
+    <string name="version">Version</string>
+    <!-- github repo link for about screen-->
+    <string name="about_github_link" >View on GitHub</string>
+    <!-- license for about screen-->
+    <string name="license" >Open-source license</string>
+    <!-- license link for about screen-->
+    <string name="gnu_gpl" >GNU General Public License v3.0</string>
 </resources>
