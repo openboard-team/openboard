@@ -25,10 +25,12 @@ Changes:
   * based on wordmage's work https://github.com/openboard-team/openboard/tree/57d33791d7674e3fe0600eddb72f6b4317b5df00
   * tested with Google libraries and [others](https://github.com/openboard-team/openboard/issues/3#issuecomment-1200456262) (when building with the [rename](https://github.com/openboard-team/openboard/tree/57d33791d7674e3fe0600eddb72f6b4317b5df00))
 * Allow adjusting keyboard colors, https://github.com/openboard-team/openboard/issues/124
+  * Optionally make the navigation bar follow current theme, https://github.com/Helium314/openboard/issues/4
 * Remove suggestions by long pressing on suggestion strip while the more suggestions popup is open, https://github.com/openboard-team/openboard/issues/106
   * suggestions get re-added if they are entered again
 * Optionally add typed words to system personal dictionary
 * Allow using contacts for suggestions (enable in spell checker settings), https://github.com/openboard-team/openboard/issues/374
+* Re-arranged comma-long-press-menu, https://github.com/Helium314/openboard/pull/7
 
 Plan / to do:
 * ~upgrade dependencies~

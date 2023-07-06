@@ -644,6 +644,8 @@ disposition rather than other common dispositions for Latin languages. [CHAR LIM
     <string name="amoled_mode">Deep black backgrounds</string>
     <!-- Description indicating amoled mode can lower power usage depending on the screen of the device. -->
     <string name="amoled_mode_summary">Can reduce power usage depending on the device’s screen technology</string>
+    <!-- Option for setting navbar to follow keyboard color -->
+    <string name="theme_navbar">Color navigation bar</string>
     <!-- Option for selecting custom theme colors -->
     <string name="select_user_colors">Adjust theme colors</string>
     <!-- Description for selection of user-defined colors. -->

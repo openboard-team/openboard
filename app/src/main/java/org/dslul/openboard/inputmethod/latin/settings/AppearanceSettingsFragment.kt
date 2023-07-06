@@ -51,6 +51,9 @@ class AppearanceSettingsFragment : SubScreenFragment(), Preference.OnPreferenceC
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             removePreference(Settings.PREF_THEME_DAY_NIGHT)
         }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            removePreference(Settings.PREF_NAVBAR_COLOR)
+        }
         setupTheme()
 
         if (!ProductionFlags.IS_SPLIT_KEYBOARD_SUPPORTED ||
