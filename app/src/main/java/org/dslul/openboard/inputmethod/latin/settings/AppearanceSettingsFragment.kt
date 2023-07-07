@@ -185,7 +185,7 @@ class AppearanceSettingsFragment : SubScreenFragment(), Preference.OnPreferenceC
                         3 -> Settings.PREF_THEME_USER_COLOR_ACCENT
                         else -> Settings.PREF_THEME_USER_COLOR_KEYS
                     }
-                    val d = ColorPickerDialog(activity, sharedPreferences, pref)
+                    val d = ColorPickerDialog(activity, items[i], sharedPreferences, pref)
                     d.show()
                 }
                 .show()
