@@ -45,18 +45,18 @@ Plan / to do:
   * test whether it works reasonably well in non-latin scripts
 * ~suggestion fixes, https://github.com/openboard-team/openboard/pull/694, https://github.com/openboard-team/openboard/issues/795, https://github.com/openboard-team/openboard/issues/660~
 * ~improve auto-space insertion, https://github.com/openboard-team/openboard/pull/576~
-* emoji prediction/search, either https://github.com/openboard-team/openboard/pull/749 (using emoji dictionaries already possible)
+* ~emoji prediction/search, https://github.com/openboard-team/openboard/pull/749 (better use emoji dictionaries, this is more flexible)~
 * ~theming, https://github.com/openboard-team/openboard/issues/124~
   * ~fix emoji view not themed properly~
   * ~fix ABC buttons in emoji and clipboard view have wrong text color~
   * fix buttons on long-press action key not themed
-  * allow adjusting colors without requiring manual reload of keyboard 
+  * allow adjusting colors without requiring manual reload of keyboard
 * ~delete suggestions, https://github.com/openboard-team/openboard/issues/106~
-  * make functionality more discoverable, e.g. add a button to the more suggestions menu
+  * make functionality more discoverable, e.g. add a button to the _more suggestions_ menu
 * ~gesture typing, https://github.com/openboard-team/openboard/issues/3~
   * ~license issues, require using an external library~
 * re-consider preferring lowercase word for typed history in some cases (DictionaryFacilitatorImpl.addWordToUserHistory)
-* move _use contacts_ setting from well hidden spell checker settings to _text correction_ settings
+* ~move/copy _use contacts_ setting from well hidden spell checker settings to _text correction_ settings~
 
 -----
 
