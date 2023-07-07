@@ -10,20 +10,20 @@ Changes:
 * Debug version can be installed along OpenBoard
 * Allow users to add and replace built-in dictionaries
   * modified / improved from https://github.com/openboard-team/openboard/pull/569 and https://github.com/openboard-team/openboard/pull/578
-  * dictionaries are available at https://github.com/Helium314/openboard/tree/new/dictionaries/dict
-    * experimental dictionaries with next-word suggestions created from sentence lists in https://github.com/Helium314/openboard/tree/new/dictionaries/experimental, but they may contain unwanted words, and will suggest offensive words even with the option turned off
+  * some AOSP dictionaries are available [here](dictionaries/dict)
+    * experimental dictionaries with next-word suggestions created from sentence lists [are also available](dictionaries/experimental), but they may contain unwanted words, and may be missing other features
   * dictionary files starting with "main_" replace the built-in dictionary for the language, all other names work as add-on dictionaries
-  * add Arabic dictionary for download, from https://github.com/remi0s/aosp-dictionary-tools/blob/master/dictsCreated/WikiAndOpenSubtitles/ar_wordlist.combined / https://github.com/openboard-team/openboard/pull/450
-  * add Hebrew dictionary for download, from https://github.com/Hananel-Hazan/aosp-dictionary-tools/blob/master/hebrew-hspell.txt.combined.new / https://github.com/openboard-team/openboard/pull/300
-  * add Galician dictionary for download, from https://github.com/chavaone/openboard/blob/master/dictionaries/es_GL_wordlist.combined.gz / https://github.com/openboard-team/openboard/pull/291
+  * add [Arabic dictionary](https://github.com/remi0s/aosp-dictionary-tools/blob/master/dictsCreated/WikiAndOpenSubtitles/ar_wordlist.combined) for download, from https://github.com/openboard-team/openboard/pull/450
+  * add [Hebrew dictionary](https://github.com/Hananel-Hazan/aosp-dictionary-tools/blob/master/hebrew-hspell.txt.combined.new) for download, from https://github.com/openboard-team/openboard/pull/300
+  * add [Galician dictionary](https://github.com/chavaone/openboard/blob/master/dictionaries/es_GL_wordlist.combined.g) for download, from https://github.com/openboard-team/openboard/pull/291
 * Fix suggestions after some characters, https://github.com/openboard-team/openboard/pull/694, https://github.com/openboard-team/openboard/issues/795
 * Fix suggestions sometimes not being shown, https://github.com/openboard-team/openboard/pull/709
 * Reduce amount of unwanted automatic space insertions, https://github.com/openboard-team/openboard/pull/576
 * Exit shift-symbol view on space (same as normal symbol view)
 * Add multi-lingual typing, slightly modified from https://github.com/openboard-team/openboard/pull/586, https://github.com/openboard-team/openboard/pull/593
 * Allow loading an external library to enable gesture typing, https://github.com/openboard-team/openboard/issues/3
-  * based on wordmage's work https://github.com/openboard-team/openboard/tree/57d33791d7674e3fe0600eddb72f6b4317b5df00
-  * tested with Google libraries and [others](https://github.com/openboard-team/openboard/issues/3#issuecomment-1200456262) (when building with the [rename](https://github.com/openboard-team/openboard/tree/57d33791d7674e3fe0600eddb72f6b4317b5df00))
+  * based on [wordmage's work](https://github.com/openboard-team/openboard/tree/57d33791d7674e3fe0600eddb72f6b4317b5df00)
+  * tested with [Google libraries](https://github.com/erkserkserks/openboard/tree/master/app/src/main/jniLibs) and [others](https://github.com/openboard-team/openboard/issues/3#issuecomment-1200456262) (when building with the [rename](https://github.com/openboard-team/openboard/tree/57d33791d7674e3fe0600eddb72f6b4317b5df00))
 * Allow adjusting keyboard colors, https://github.com/openboard-team/openboard/issues/124
   * Optionally make the navigation bar follow current theme, https://github.com/Helium314/openboard/issues/4
 * Remove suggestions by long pressing on suggestion strip while the more suggestions popup is open, https://github.com/openboard-team/openboard/issues/106
