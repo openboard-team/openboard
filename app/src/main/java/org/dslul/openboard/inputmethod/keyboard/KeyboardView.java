@@ -42,6 +42,7 @@ import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.common.Constants;
 import org.dslul.openboard.inputmethod.latin.settings.Settings;
 import org.dslul.openboard.inputmethod.latin.settings.SettingsValues;
+import org.dslul.openboard.inputmethod.latin.suggestions.MoreSuggestionsView;
 import org.dslul.openboard.inputmethod.latin.utils.TypefaceUtils;
 
 import java.util.HashSet;
@@ -402,7 +403,7 @@ public class KeyboardView extends View {
             // so we always need to select the color filter dependent on the current key
             if (key.isActionKey())
                 background.setColorFilter(accentColorFilter);
-            else if (key.getBackgroundType() == Key.BACKGROUND_TYPE_NORMAL && key.getCode() < 0 && key.getCode() != Constants.CODE_SWITCH_ALPHA_SYMBOL)
+            else if (key.getBackgroundType() == Key.BACKGROUND_TYPE_NORMAL && key.getCode() < 0 && key.getCode() != Constants.CODE_SWITCH_ALPHA_SYMBOL && key.getCode() != Constants.CODE_OUTPUT_TEXT)
                 background.clearColorFilter();
             else
                 background.setColorFilter(keyBgFilter);
@@ -462,8 +463,10 @@ public class KeyboardView extends View {
                 if (mUserTheme) {
                     // set key color only if not in emoji keyboard range
                     if (keyboard != null
-                            && (keyboard.mId.mElementId < 10 || keyboard.mId.mElementId > 26) // not showing emoji keyboard
-                            && !containsEmoji(key.getLabel())) // doesn't contain emoji, necessary for more suggestions view (but doesn't find all)
+                            && (this.getClass() == MoreSuggestionsView.class ?
+                                !containsEmoji(key.getLabel()) : // doesn't contain emoji (all can happen in MoreSuggestionsView)
+                                (keyboard.mId.mElementId < 10 || keyboard.mId.mElementId > 26) // not showing emoji keyboard (no emojis visible on main keyboard otherwise)
+                            ))
                         paint.setColorFilter(keyTextColorFilter);
                     else
                         paint.setColorFilter(null);
