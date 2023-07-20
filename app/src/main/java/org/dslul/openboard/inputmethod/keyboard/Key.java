@@ -1108,7 +1108,7 @@ public class Key implements Comparable<Key> {
             @Nonnull final Drawable functionalKeyBackground,
             @Nonnull final Drawable spacebarBackground) {
         final Drawable background;
-        if (mBackgroundType == BACKGROUND_TYPE_FUNCTIONAL) {
+        if (mBackgroundType == BACKGROUND_TYPE_FUNCTIONAL || mBackgroundType == BACKGROUND_TYPE_STICKY_OFF || mBackgroundType == BACKGROUND_TYPE_STICKY_ON) {
             background = functionalKeyBackground;
         } else if (mBackgroundType == BACKGROUND_TYPE_SPACEBAR) {
             background = spacebarBackground;

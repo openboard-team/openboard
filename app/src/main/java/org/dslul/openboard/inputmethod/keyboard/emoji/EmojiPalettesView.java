@@ -272,13 +272,12 @@ public final class EmojiPalettesView extends LinearLayout
         mSpacebar.setOnClickListener(this);
         final SettingsValues settingsValues = Settings.getInstance().getCurrent();
         if (settingsValues.mCustomTheme) {
-            final ColorFilter cf = settingsValues.mCustomKeyBackgroundColorFilter;
-            mAlphabetKeyLeft.getBackground().setColorFilter(cf);
-            mSpacebar.getBackground().setColorFilter(cf);
-            mDeleteKey.getBackground().setColorFilter(cf);
-            getBackground().setColorFilter(cf);
+            mAlphabetKeyLeft.getBackground().setColorFilter(settingsValues.mCustomFunctionalKeyBackgroundColorFilter);
+            mSpacebar.getBackground().setColorFilter(settingsValues.mCustomSpaceBarBackgroundColorFilter);
+            mDeleteKey.getBackground().setColorFilter(settingsValues.mCustomFunctionalKeyBackgroundColorFilter);
+            getBackground().setColorFilter(settingsValues.mBackgroundColorFilter);
             mEmojiCategoryPageIndicatorView.setColors(settingsValues.mCustomThemeColorAccent, settingsValues.mBackgroundColor);
-            findViewById(R.id.emoji_tab_strip).getBackground().setColorFilter(cf);
+            findViewById(R.id.emoji_tab_strip).getBackground().setColorFilter(settingsValues.mBackgroundColorFilter);
         }
         mEmojiLayoutParams.setKeyProperties(mSpacebar);
         mSpacebarIcon = findViewById(R.id.emoji_keyboard_space_icon);

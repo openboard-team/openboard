@@ -182,8 +182,10 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
         mOtherKey.setImageDrawable(iconIncognito);
 
         final SettingsValues settingsValues = Settings.getInstance().getCurrent();
-        if (settingsValues.mCustomTheme)
+        if (settingsValues.mCustomTheme) {
             mStripVisibilityGroup.mSuggestionStripView.getBackground().setColorFilter(settingsValues.mBackgroundColorFilter);
+            mClipboardKey.setColorFilter(settingsValues.mCustomKeyTextColor);
+        }
     }
 
     /**

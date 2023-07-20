@@ -131,6 +131,8 @@ public class SettingsValues {
     // User-defined colors
     public final boolean mCustomTheme;
     public final ColorFilter mCustomKeyBackgroundColorFilter;
+    public final ColorFilter mCustomFunctionalKeyBackgroundColorFilter;
+    public final ColorFilter mCustomSpaceBarBackgroundColorFilter;
     public final int mBackgroundColor;
     public final ColorFilter mBackgroundColorFilter;
     public final ColorFilter mCustomKeyTextColorFilter;
@@ -280,6 +282,8 @@ public class SettingsValues {
             keyBgColor = prefs.getInt(Settings.PREF_THEME_USER_COLOR_BACKGROUND, Color.DKGRAY);
         mCustomKeyBackgroundColorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(keyBgColor, BlendModeCompat.MODULATE);
         mCustomHintTextColorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(prefs.getInt(Settings.PREF_THEME_USER_COLOR_HINT_TEXT, Color.WHITE), BlendModeCompat.SRC_ATOP);
+        mCustomFunctionalKeyBackgroundColorFilter = mCustomKeyBackgroundColorFilter;
+        mCustomSpaceBarBackgroundColorFilter = mCustomKeyBackgroundColorFilter;
         mCustomKeyTextColor = prefs.getInt(Settings.PREF_THEME_USER_COLOR_TEXT, Color.WHITE);
         mCustomKeyTextColorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(mCustomKeyTextColor, BlendModeCompat.SRC_ATOP);
         if (mCustomTheme) {

@@ -188,6 +188,8 @@ public class KeyboardView extends View {
             keyHintTextColorFilter = settingsValues.mCustomHintTextColorFilter;
             keyTextColorFilter = settingsValues.mCustomKeyTextColorFilter;
             accentColorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(settingsValues.mCustomThemeColorAccent, BlendModeCompat.SRC_ATOP);
+            mSpacebarBackground.setColorFilter(settingsValues.mCustomSpaceBarBackgroundColorFilter);
+            mFunctionalKeyBackground.setColorFilter(settingsValues.mCustomFunctionalKeyBackgroundColorFilter);
         } else {
             keyHintTextColorFilter = null;
             keyTextColorFilter = null;
@@ -400,13 +402,10 @@ public class KeyboardView extends View {
         }
         if (mCustomTheme) {
             // color filter is applied to background, which is re-used
-            // but we don't want it applied to "blue" keys
-            // so we always need to select the color filter dependent on the current key
+            // action key and normal key share the same background drawable, so we need to select the correct color filter
             if (key.isActionKey())
                 background.setColorFilter(accentColorFilter);
-            else if (key.getBackgroundType() == Key.BACKGROUND_TYPE_NORMAL && key.getCode() < 0 && key.getCode() != Constants.CODE_SWITCH_ALPHA_SYMBOL && key.getCode() != Constants.CODE_OUTPUT_TEXT)
-                background.clearColorFilter();
-            else
+            else if (key.getBackgroundType() == Key.BACKGROUND_TYPE_NORMAL)
                 background.setColorFilter(keyBgFilter);
         }
         background.setBounds(0, 0, bgWidth, bgHeight);
