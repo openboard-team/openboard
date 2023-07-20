@@ -101,10 +101,10 @@ class ClipboardHistoryView @JvmOverloads constructor(
             setOnTouchListener(this@ClipboardHistoryView)
             setOnClickListener(this@ClipboardHistoryView)
         }
-        if (settingsValues.mUserTheme) {
-            alphabetKey.background.colorFilter = settingsValues.mKeyBackgroundColorFilter
-            alphabetKey.setTextColor(settingsValues.mKeyTextColor)
-            clearKey.colorFilter = settingsValues.mKeyTextColorFilter
+        if (settingsValues.mCustomTheme) {
+            alphabetKey.background.colorFilter = settingsValues.mCustomKeyBackgroundColorFilter
+            alphabetKey.setTextColor(settingsValues.mCustomKeyTextColor)
+            clearKey.colorFilter = settingsValues.mCustomKeyTextColorFilter
             background.colorFilter = settingsValues.mBackgroundColorFilter
         }
     }
@@ -114,8 +114,8 @@ class ClipboardHistoryView @JvmOverloads constructor(
             text = label
             typeface = params.mTypeface
             val settingsValues = Settings.getInstance().current
-            if (settingsValues.mUserTheme)
-                setTextColor(settingsValues.mKeyTextColor)
+            if (settingsValues.mCustomTheme)
+                setTextColor(settingsValues.mCustomKeyTextColor)
             else
                 setTextColor(params.mFunctionalTextColor)
             setTextSize(TypedValue.COMPLEX_UNIT_PX, params.mLabelSize.toFloat())
@@ -127,9 +127,9 @@ class ClipboardHistoryView @JvmOverloads constructor(
             itemBackgroundId = keyBackgroundId
             itemTypeFace = params.mTypeface
             val sv = Settings.getInstance().current
-            if (sv.mUserTheme) {
-                itemTextColor = sv.mKeyTextColor
-                itemBackgroundColorFilter = sv.mKeyBackgroundColorFilter
+            if (sv.mCustomTheme) {
+                itemTextColor = sv.mCustomKeyTextColor
+                itemBackgroundColorFilter = sv.mCustomKeyBackgroundColorFilter
             } else
                 itemTextColor = params.mTextColor
             itemTextSize = params.mLabelSize.toFloat()

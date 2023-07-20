@@ -64,7 +64,7 @@ class ClipboardHistoryRecyclerView @JvmOverloads constructor(
             paint.color = dividerColor
             paint.strokeWidth = dividerHeight.toFloat()
             val sv = Settings.getInstance().current
-            if (sv.mUserTheme)
+            if (sv.mCustomTheme)
                 paint.colorFilter = sv.mBackgroundColorFilter
         }
 

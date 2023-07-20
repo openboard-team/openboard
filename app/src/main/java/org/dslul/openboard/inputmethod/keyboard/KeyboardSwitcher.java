@@ -552,7 +552,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
 
         // set background color here, otherwise there is a narrow white line between keyboard and suggestion strip
         final SettingsValues settingsValues = Settings.getInstance().getCurrent();
-        if (settingsValues.mUserTheme)
+        if (settingsValues.mCustomTheme)
             mKeyboardViewWrapper.getBackground().setColorFilter(settingsValues.mBackgroundColorFilter);
 
         return mCurrentInputView;

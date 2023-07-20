@@ -107,7 +107,7 @@ public class KeyboardView extends View {
     private final ColorFilter keyTextColorFilter;
     private final ColorFilter keyBgFilter;
     private final ColorFilter accentColorFilter;
-    private final boolean mUserTheme;
+    private final boolean mCustomTheme;
 
     // The maximum key label width in the proportion to the key width.
     private static final float MAX_LABEL_RATIO = 0.90f;
@@ -180,14 +180,14 @@ public class KeyboardView extends View {
         mPaint.setAntiAlias(true);
 
         final SettingsValues settingsValues = Settings.getInstance().getCurrent();
-        mUserTheme = settingsValues.mUserTheme;
-        if (mUserTheme) {
+        mCustomTheme = settingsValues.mCustomTheme;
+        if (mCustomTheme) {
             getBackground().setColorFilter(settingsValues.mBackgroundColorFilter);
 
-            keyBgFilter = settingsValues.mKeyBackgroundColorFilter;
-            keyHintTextColorFilter = settingsValues.mHintTextColorFilter;
-            keyTextColorFilter = settingsValues.mKeyTextColorFilter;
-            accentColorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(settingsValues.mUserThemeColorAccent, BlendModeCompat.SRC_ATOP);
+            keyBgFilter = settingsValues.mCustomKeyBackgroundColorFilter;
+            keyHintTextColorFilter = settingsValues.mCustomHintTextColorFilter;
+            keyTextColorFilter = settingsValues.mCustomKeyTextColorFilter;
+            accentColorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(settingsValues.mCustomThemeColorAccent, BlendModeCompat.SRC_ATOP);
         } else {
             keyHintTextColorFilter = null;
             keyTextColorFilter = null;
@@ -398,7 +398,7 @@ public class KeyboardView extends View {
             bgX = -padding.left;
             bgY = -padding.top;
         }
-        if (mUserTheme) {
+        if (mCustomTheme) {
             // color filter is applied to background, which is re-used
             // but we don't want it applied to "blue" keys
             // so we always need to select the color filter dependent on the current key
@@ -461,7 +461,7 @@ public class KeyboardView extends View {
 
             if (key.isEnabled()) {
                 paint.setColor(key.selectTextColor(params));
-                if (mUserTheme) {
+                if (mCustomTheme) {
                     // set key color only if not in emoji keyboard range
                     if (keyboard != null
                             && (this.getClass() == MoreSuggestionsView.class ?
@@ -495,7 +495,7 @@ public class KeyboardView extends View {
         if (hintLabel != null && mShowsHints) {
             paint.setTextSize(key.selectHintTextSize(params));
             paint.setColor(key.selectHintTextColor(params));
-            if (mUserTheme)
+            if (mCustomTheme)
                 paint.setColorFilter(keyHintTextColorFilter);
             // TODO: Should add a way to specify type face for hint letters
             paint.setTypeface(Typeface.DEFAULT_BOLD);
@@ -549,7 +549,7 @@ public class KeyboardView extends View {
                 iconY = (keyHeight - iconHeight) / 2; // Align vertically center.
             }
             final int iconX = (keyWidth - iconWidth) / 2; // Align horizontally center.
-            if (mUserTheme && key.getBackgroundType() != Key.BACKGROUND_TYPE_NORMAL && !key.isActionKey() && !key.isShift())
+            if (mCustomTheme && key.getBackgroundType() != Key.BACKGROUND_TYPE_NORMAL && !key.isActionKey() && !key.isShift())
                 // no color for shift (because of state indicator) and accent color keys (action and popup)
                 icon.setColorFilter(keyTextColorFilter);
             drawIcon(canvas, icon, iconX, iconY, iconWidth, iconHeight);

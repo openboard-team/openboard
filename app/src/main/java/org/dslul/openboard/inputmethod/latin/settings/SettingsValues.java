@@ -129,14 +129,14 @@ public class SettingsValues {
     private final AsyncResultHolder<AppWorkaroundsUtils> mAppWorkarounds;
 
     // User-defined colors
-    public final boolean mUserTheme;
-    public final ColorFilter mKeyBackgroundColorFilter;
+    public final boolean mCustomTheme;
+    public final ColorFilter mCustomKeyBackgroundColorFilter;
     public final int mBackgroundColor;
     public final ColorFilter mBackgroundColorFilter;
-    public final ColorFilter mKeyTextColorFilter;
-    public final ColorFilter mHintTextColorFilter;
-    public final int mUserThemeColorAccent;
-    public final int mKeyTextColor;
+    public final ColorFilter mCustomKeyTextColorFilter;
+    public final ColorFilter mCustomHintTextColorFilter;
+    public final int mCustomThemeColorAccent;
+    public final int mCustomKeyTextColor;
 
     // Debug settings
     public final boolean mIsInternal;
@@ -271,18 +271,18 @@ public class SettingsValues {
                 prefs.getBoolean(Settings.PREF_THEME_DAY_NIGHT, false),
                 prefs.getBoolean(Settings.PREF_THEME_AMOLED_MODE, false)
         );
-        mUserTheme = KeyboardTheme.getIsUser(keyboardThemeId);
-        mUserThemeColorAccent = prefs.getInt(Settings.PREF_THEME_USER_COLOR_ACCENT, Color.BLUE);
+        mCustomTheme = KeyboardTheme.getIsUser(keyboardThemeId);
+        mCustomThemeColorAccent = prefs.getInt(Settings.PREF_THEME_USER_COLOR_ACCENT, Color.BLUE);
         final int keyBgColor;
         if (prefs.getBoolean(Settings.PREF_THEME_KEY_BORDERS, false))
             keyBgColor = prefs.getInt(Settings.PREF_THEME_USER_COLOR_KEYS, Color.LTGRAY);
         else
             keyBgColor = prefs.getInt(Settings.PREF_THEME_USER_COLOR_BACKGROUND, Color.DKGRAY);
-        mKeyBackgroundColorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(keyBgColor, BlendModeCompat.MODULATE);
-        mHintTextColorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(prefs.getInt(Settings.PREF_THEME_USER_COLOR_HINT_TEXT, Color.WHITE), BlendModeCompat.SRC_ATOP);
-        mKeyTextColor = prefs.getInt(Settings.PREF_THEME_USER_COLOR_TEXT, Color.WHITE);
-        mKeyTextColorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(mKeyTextColor, BlendModeCompat.SRC_ATOP);
-        if (mUserTheme) {
+        mCustomKeyBackgroundColorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(keyBgColor, BlendModeCompat.MODULATE);
+        mCustomHintTextColorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(prefs.getInt(Settings.PREF_THEME_USER_COLOR_HINT_TEXT, Color.WHITE), BlendModeCompat.SRC_ATOP);
+        mCustomKeyTextColor = prefs.getInt(Settings.PREF_THEME_USER_COLOR_TEXT, Color.WHITE);
+        mCustomKeyTextColorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(mCustomKeyTextColor, BlendModeCompat.SRC_ATOP);
+        if (mCustomTheme) {
             mBackgroundColor = prefs.getInt(Settings.PREF_THEME_USER_COLOR_BACKGROUND, Color.DKGRAY);
         } else if (KeyboardTheme.THEME_VARIANT_LIGHT.equals(KeyboardTheme.getThemeVariant(keyboardThemeId))) {
             mBackgroundColor = Color.rgb(236, 239, 241);

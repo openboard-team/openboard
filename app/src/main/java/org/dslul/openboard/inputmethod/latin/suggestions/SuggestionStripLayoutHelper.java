@@ -509,8 +509,8 @@ final class SuggestionStripLayoutHelper {
             wordView.setTag(indexInSuggestedWords);
             wordView.setText(getStyledSuggestedWord(suggestedWords, indexInSuggestedWords));
             final SettingsValues settingsValues = Settings.getInstance().getCurrent();
-            if (settingsValues.mUserTheme)
-                wordView.setTextColor(settingsValues.mKeyTextColor);
+            if (settingsValues.mCustomTheme)
+                wordView.setTextColor(settingsValues.mCustomKeyTextColor);
             else
                 wordView.setTextColor(getSuggestionTextColor(suggestedWords, indexInSuggestedWords));
             if (SuggestionStripView.DBG) {

@@ -2023,7 +2023,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP || !settingsValues.mNavBarColor)
             return;
         final int color;
-        if (settingsValues.mUserTheme) {
+        if (settingsValues.mCustomTheme) {
             final int c = settingsValues.mBackgroundColor;
             // slightly adjust so color is same as keyboard background
             color = Color.rgb((int) (Color.red(c) * 0.925), (int) (Color.green(c) * 0.9379), (int) (Color.blue(c) * 0.945));

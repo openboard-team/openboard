@@ -53,7 +53,7 @@ final class GestureTrailDrawingParams {
 
     public GestureTrailDrawingParams(final TypedArray mainKeyboardViewAttr) {
         final SettingsValues sv = Settings.getInstance().getCurrent();
-        mTrailColor = sv.mUserTheme ? sv.mUserThemeColorAccent : mainKeyboardViewAttr.getColor(
+        mTrailColor = sv.mCustomTheme ? sv.mCustomThemeColorAccent : mainKeyboardViewAttr.getColor(
                 R.styleable.MainKeyboardView_gestureTrailColor, 0);
         mTrailStartWidth = mainKeyboardViewAttr.getDimension(
                 R.styleable.MainKeyboardView_gestureTrailStartWidth, 0.0f);
