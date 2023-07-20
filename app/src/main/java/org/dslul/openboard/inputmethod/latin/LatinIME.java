@@ -2018,17 +2018,30 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     // slightly modified from Simple Keyboard: https://github.com/rkkr/simple-keyboard/blob/master/app/src/main/java/rkr/simplekeyboard/inputmethod/latin/LatinIME.java
+    // todo: this is currently broken, make it work again (and consider dayNight themes)
+    /*
+            final int background; // need to return correct background color for navBar, other colors not used
+            if (KeyboardTheme.THEME_VARIANT_LIGHT.equals(KeyboardTheme.getThemeVariant(keyboardThemeId))) {
+                background = Color.rgb(236, 239, 241);
+            } else if (keyboardThemeId == KeyboardTheme.THEME_ID_LXX_DARK) {
+                background = Color.rgb(38, 50, 56);
+            } else {
+                // dark border is 13/13/13, but that's ok
+                background = Color.BLACK;
+            }
+
+     */
     private void setNavigationBarColor() {
         final SettingsValues settingsValues = mSettings.getCurrent();
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP || !settingsValues.mNavBarColor)
             return;
         final int color;
         if (settingsValues.mCustomTheme) {
-            final int c = settingsValues.mBackgroundColor;
+            final int c = settingsValues.mCustomBackgroundColor;
             // slightly adjust so color is same as keyboard background
             color = Color.rgb((int) (Color.red(c) * 0.925), (int) (Color.green(c) * 0.9379), (int) (Color.blue(c) * 0.945));
         } else
-            color = settingsValues.mBackgroundColor;
+            color = settingsValues.mCustomBackgroundColor;
         final Window window = getWindow().getWindow();
         if (window == null)
             return;

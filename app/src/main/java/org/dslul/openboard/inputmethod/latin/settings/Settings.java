@@ -22,10 +22,12 @@ import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Build;
 import android.util.Log;
 
 import android.view.Gravity;
+import org.dslul.openboard.inputmethod.keyboard.KeyboardTheme;
 import org.dslul.openboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import org.dslul.openboard.inputmethod.latin.InputAttributes;
 import org.dslul.openboard.inputmethod.latin.R;
@@ -36,7 +38,6 @@ import org.dslul.openboard.inputmethod.latin.utils.DeviceProtectedUtils;
 import org.dslul.openboard.inputmethod.latin.utils.JniUtils;
 import org.dslul.openboard.inputmethod.latin.utils.ResourceUtils;
 import org.dslul.openboard.inputmethod.latin.utils.RunInLocale;
-import org.dslul.openboard.inputmethod.latin.utils.ScriptUtils;
 import org.dslul.openboard.inputmethod.latin.utils.StatsUtils;
 
 import java.util.Collections;
@@ -541,4 +542,59 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         return null;
     }
 
+    public static CustomColors getCustomColors(final SharedPreferences prefs) {
+        final int keyboardThemeId = KeyboardTheme.getThemeForParameters(
+                prefs.getString(Settings.PREF_THEME_FAMILY, ""),
+                prefs.getString(Settings.PREF_THEME_VARIANT, ""),
+                prefs.getBoolean(Settings.PREF_THEME_KEY_BORDERS, false),
+                prefs.getBoolean(Settings.PREF_THEME_DAY_NIGHT, false),
+                prefs.getBoolean(Settings.PREF_THEME_AMOLED_MODE, false)
+        );
+        if (!KeyboardTheme.getIsCustom(keyboardThemeId))
+            return new CustomColors();
+
+        // we have a custom theme, which is user only (at the moment)
+        final int accent = prefs.getInt(Settings.PREF_THEME_USER_COLOR_ACCENT, Color.BLUE);
+        final int keyBgColor = prefs.getInt(Settings.PREF_THEME_USER_COLOR_KEYS, Color.LTGRAY);
+        final int keyTextColor = prefs.getInt(Settings.PREF_THEME_USER_COLOR_TEXT, Color.WHITE);
+        final int hintTextColor = prefs.getInt(Settings.PREF_THEME_USER_COLOR_HINT_TEXT, Color.WHITE);
+        final int background = prefs.getInt(Settings.PREF_THEME_USER_COLOR_BACKGROUND, Color.DKGRAY);
+
+        return new CustomColors(accent, background, keyBgColor, keyBgColor, keyBgColor, keyTextColor, hintTextColor);
+    }
+
+}
+
+// class for forwarding custom colors to SettingsValues
+// (kotlin data class could be 3 lines...)
+// actually this could contain the color filters too, which would allow more flexibility (only do if needed)
+class CustomColors {
+    boolean isCustom;
+    int accent;
+    int background;
+    int keyBackground;
+    int functionalKey; // this color will appear darker than set, as it is applied using a color filter in modulate mode
+    int spaceBar;
+    int keyText;
+    int keyHintText;
+    public CustomColors(int acc, int bg, int k, int fun, int space, int kt, int kht) {
+        isCustom = true;
+        accent = acc;
+        background = bg;
+        keyBackground = k;
+        functionalKey = fun;
+        spaceBar = space;
+        keyText = kt;
+        keyHintText = kht;
+    }
+    public CustomColors() {
+        isCustom = false;
+        accent = 0;
+        background = 0;
+        keyBackground = 0;
+        functionalKey = 0;
+        spaceBar = 0;
+        keyText = 0;
+        keyHintText = 0;
+    }
 }

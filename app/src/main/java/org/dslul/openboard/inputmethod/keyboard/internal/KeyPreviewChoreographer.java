@@ -121,7 +121,7 @@ public final class KeyPreviewChoreographer {
         keyPreviewView.setPreviewBackground(hasMoreKeys, keyPreviewPosition);
         final SettingsValues settingsValues = Settings.getInstance().getCurrent();
         if (settingsValues.mCustomTheme) {
-            keyPreviewView.getBackground().setColorFilter(settingsValues.mBackgroundColorFilter);
+            keyPreviewView.getBackground().setColorFilter(settingsValues.mCustomBackgroundColorFilter);
             keyPreviewView.setTextColor(settingsValues.mCustomKeyTextColor);
         }
         // The key preview is placed vertically above the top edge of the parent key with an

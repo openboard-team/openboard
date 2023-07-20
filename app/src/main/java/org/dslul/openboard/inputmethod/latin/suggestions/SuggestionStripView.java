@@ -183,7 +183,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
 
         final SettingsValues settingsValues = Settings.getInstance().getCurrent();
         if (settingsValues.mCustomTheme) {
-            mStripVisibilityGroup.mSuggestionStripView.getBackground().setColorFilter(settingsValues.mBackgroundColorFilter);
+            mStripVisibilityGroup.mSuggestionStripView.getBackground().setColorFilter(settingsValues.mCustomBackgroundColorFilter);
             mClipboardKey.setColorFilter(settingsValues.mCustomKeyTextColor);
         }
     }

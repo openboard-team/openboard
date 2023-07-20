@@ -105,7 +105,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
             alphabetKey.background.colorFilter = settingsValues.mCustomFunctionalKeyBackgroundColorFilter
             alphabetKey.setTextColor(settingsValues.mCustomKeyTextColor)
             clearKey.colorFilter = settingsValues.mCustomKeyTextColorFilter
-            background.colorFilter = settingsValues.mBackgroundColorFilter
+            background.colorFilter = settingsValues.mCustomBackgroundColorFilter
         }
     }
 

@@ -182,7 +182,7 @@ public class KeyboardView extends View {
         final SettingsValues settingsValues = Settings.getInstance().getCurrent();
         mCustomTheme = settingsValues.mCustomTheme;
         if (mCustomTheme) {
-            getBackground().setColorFilter(settingsValues.mBackgroundColorFilter);
+            getBackground().setColorFilter(settingsValues.mCustomBackgroundColorFilter);
 
             keyBgFilter = settingsValues.mCustomKeyBackgroundColorFilter;
             keyHintTextColorFilter = settingsValues.mCustomHintTextColorFilter;

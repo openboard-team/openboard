@@ -20,7 +20,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.ColorFilter;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -166,7 +165,7 @@ public final class EmojiPalettesView extends LinearLayout
         iconView.setBackgroundColor(mCategoryPageIndicatorBackground);
         final SettingsValues settingsValues = Settings.getInstance().getCurrent();
         if (settingsValues.mCustomTheme) {
-            iconView.getBackground().setColorFilter(settingsValues.mBackgroundColorFilter);
+            iconView.getBackground().setColorFilter(settingsValues.mCustomBackgroundColorFilter);
             iconView.setColorFilter(settingsValues.mCustomKeyTextColorFilter);
         }
         iconView.setImageResource(mEmojiCategory.getCategoryTabIcon(categoryId));
@@ -275,9 +274,9 @@ public final class EmojiPalettesView extends LinearLayout
             mAlphabetKeyLeft.getBackground().setColorFilter(settingsValues.mCustomFunctionalKeyBackgroundColorFilter);
             mSpacebar.getBackground().setColorFilter(settingsValues.mCustomSpaceBarBackgroundColorFilter);
             mDeleteKey.getBackground().setColorFilter(settingsValues.mCustomFunctionalKeyBackgroundColorFilter);
-            getBackground().setColorFilter(settingsValues.mBackgroundColorFilter);
-            mEmojiCategoryPageIndicatorView.setColors(settingsValues.mCustomThemeColorAccent, settingsValues.mBackgroundColor);
-            findViewById(R.id.emoji_tab_strip).getBackground().setColorFilter(settingsValues.mBackgroundColorFilter);
+            getBackground().setColorFilter(settingsValues.mCustomBackgroundColorFilter);
+            mEmojiCategoryPageIndicatorView.setColors(settingsValues.mCustomThemeColorAccent, settingsValues.mCustomBackgroundColor);
+            findViewById(R.id.emoji_tab_strip).getBackground().setColorFilter(settingsValues.mCustomBackgroundColorFilter);
         }
         mEmojiLayoutParams.setKeyProperties(mSpacebar);
         mSpacebarIcon = findViewById(R.id.emoji_keyboard_space_icon);
