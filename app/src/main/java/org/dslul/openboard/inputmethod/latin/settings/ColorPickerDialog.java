@@ -30,7 +30,7 @@ import android.widget.TextView;
 import org.dslul.openboard.inputmethod.latin.R;
 
 public class ColorPickerDialog extends AlertDialog implements SeekBar.OnSeekBarChangeListener {
-    protected ColorPickerDialog(Context context, String title, SharedPreferences prefs, String colorPref) {
+    protected ColorPickerDialog(Context context, String title, SharedPreferences prefs, String colorPref, Runnable onChanged) {
         super(context);
         setTitle(title);
         View view = getLayoutInflater().inflate(R.layout.color_dialog, null);
@@ -80,6 +80,7 @@ public class ColorPickerDialog extends AlertDialog implements SeekBar.OnSeekBarC
                         mSeekBarGreen.getProgress(),
                         mSeekBarBlue.getProgress());
                 prefs.edit().putInt(colorPref, value).apply();
+                onChanged.run();
                 dismiss();
             }
         });

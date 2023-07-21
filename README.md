@@ -52,11 +52,12 @@ Plan / to do:
 * ~theming, https://github.com/openboard-team/openboard/issues/124~
   * ~fix emoji view not themed properly~
   * ~fix ABC buttons in emoji and clipboard view have wrong text color~
+  * ~allow adjusting colors without requiring manual reload of keyboard~
+  * ~fix issues in _more suggestions_ view, https://github.com/Helium314/openboard/issues/9#issuecomment-1626932543~ (not 100% fixed, but should not be noticeable)
   * fix buttons on long-press action key not themed
-  * allow adjusting colors without requiring manual reload of keyboard
-  * fix issues in _more suggestions_ view, https://github.com/Helium314/openboard/issues/9#issuecomment-1626932543
+  * fix icons on long-press comma key not themed
 * ~delete suggestions, https://github.com/openboard-team/openboard/issues/106~
-  * make functionality more discoverable, e.g. add a button to the _more suggestions_ menu
+  * make functionality more discoverable, e.g. add a button to the _more suggestions_ menu, or replace long-press menu and show more suggestions by scrolling suggestion strip
 * ~gesture typing, https://github.com/openboard-team/openboard/issues/3~
   * ~license issues, require using an external library~
 * ~move/copy _use contacts_ setting from well hidden spell checker settings to _text correction_ settings~

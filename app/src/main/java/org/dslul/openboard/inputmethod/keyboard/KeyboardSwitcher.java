@@ -100,6 +100,10 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         }
     }
 
+    public void forceUpdateKeyboardTheme() {
+        mLatinIME.setInputView(onCreateInputView(mIsHardwareAcceleratedDrawingEnabled));
+    }
+
     private boolean updateKeyboardThemeAndContextThemeWrapper(final Context context,
             final KeyboardTheme keyboardTheme) {
         final boolean nightModeChanged = (mCurrentUiMode & Configuration.UI_MODE_NIGHT_MASK)

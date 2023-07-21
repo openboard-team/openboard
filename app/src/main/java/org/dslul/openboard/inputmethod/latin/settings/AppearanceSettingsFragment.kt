@@ -21,6 +21,7 @@ import android.os.Bundle
 import android.preference.ListPreference
 import android.preference.Preference
 import android.preference.TwoStatePreference
+import org.dslul.openboard.inputmethod.keyboard.KeyboardSwitcher
 import org.dslul.openboard.inputmethod.keyboard.KeyboardTheme
 import org.dslul.openboard.inputmethod.latin.R
 import org.dslul.openboard.inputmethod.latin.common.Constants
@@ -33,6 +34,7 @@ import java.util.*
 class AppearanceSettingsFragment : SubScreenFragment(), Preference.OnPreferenceChangeListener {
 
     private var selectedThemeId = 0
+    private var needsReload = false
 
     private lateinit var themeFamilyPref: ListPreference
     private lateinit var themeVariantPref: ListPreference
@@ -69,6 +71,13 @@ class AppearanceSettingsFragment : SubScreenFragment(), Preference.OnPreferenceC
         updateThemePreferencesState()
         CustomInputStyleSettingsFragment.updateCustomInputStylesSummary(
                 findPreference(Settings.PREF_CUSTOM_INPUT_STYLES))
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (needsReload)
+            KeyboardSwitcher.getInstance().forceUpdateKeyboardTheme()
+        needsReload = false
     }
 
     override fun onPreferenceChange(preference: Preference, value: Any?): Boolean {
@@ -185,7 +194,7 @@ class AppearanceSettingsFragment : SubScreenFragment(), Preference.OnPreferenceC
                         3 -> Settings.PREF_THEME_USER_COLOR_ACCENT
                         else -> Settings.PREF_THEME_USER_COLOR_KEYS
                     }
-                    val d = ColorPickerDialog(activity, items[i], sharedPreferences, pref)
+                    val d = ColorPickerDialog(activity, items[i], sharedPreferences, pref) { needsReload = true}
                     d.show()
                 }
                 .show()
