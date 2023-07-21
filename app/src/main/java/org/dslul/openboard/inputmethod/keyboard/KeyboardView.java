@@ -44,6 +44,7 @@ import org.dslul.openboard.inputmethod.latin.common.StringUtils;
 import org.dslul.openboard.inputmethod.latin.settings.Settings;
 import org.dslul.openboard.inputmethod.latin.settings.SettingsValues;
 import org.dslul.openboard.inputmethod.latin.suggestions.MoreSuggestionsView;
+import org.dslul.openboard.inputmethod.latin.utils.ColorUtils;
 import org.dslul.openboard.inputmethod.latin.utils.TypefaceUtils;
 
 import java.util.HashSet;
@@ -548,9 +549,22 @@ public class KeyboardView extends View {
                 iconY = (keyHeight - iconHeight) / 2; // Align vertically center.
             }
             final int iconX = (keyWidth - iconWidth) / 2; // Align horizontally center.
-            if (mCustomTheme && key.getBackgroundType() != Key.BACKGROUND_TYPE_NORMAL && !key.isActionKey() && !key.isShift())
-                // no color for shift (because of state indicator) and accent color keys (action and popup)
-                icon.setColorFilter(keyTextColorFilter);
+            if (mCustomTheme) {
+                if (key.isActionKey()) {
+                    // the white icon may not have enough contrast, and can't be adjusted by the user
+                    if (ColorUtils.isBrightColor(Settings.getInstance().getCurrent().mCustomThemeColorAccent))
+                        icon.setColorFilter(Color.DKGRAY, PorterDuff.Mode.SRC_ATOP);
+                    else
+                        icon.clearColorFilter();
+                } else if (key.isShift()) {
+                    if (keyboard.mId.mElementId == KeyboardId.ELEMENT_ALPHABET_MANUAL_SHIFTED || keyboard.mId.mElementId == KeyboardId.ELEMENT_ALPHABET_SHIFT_LOCKED)
+                        icon.setColorFilter(accentColorFilter);
+                    else
+                        icon.setColorFilter(keyTextColorFilter);
+                } else if (key.getBackgroundType() != Key.BACKGROUND_TYPE_NORMAL) {
+                    icon.setColorFilter(keyTextColorFilter);
+                }
+            }
             drawIcon(canvas, icon, iconX, iconY, iconWidth, iconHeight);
         }
 

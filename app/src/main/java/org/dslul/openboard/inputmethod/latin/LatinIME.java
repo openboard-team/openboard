@@ -25,7 +25,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.inputmethodservice.InputMethodService;
 import android.media.AudioManager;
 import android.os.Build;
@@ -102,6 +101,7 @@ import javax.annotation.Nonnull;
 import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.FORCE_ASCII;
 import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.NO_MICROPHONE;
 import static org.dslul.openboard.inputmethod.latin.common.Constants.ImeOption.NO_MICROPHONE_COMPAT;
+import static org.dslul.openboard.inputmethod.latin.utils.ColorUtils.isBrightColor;
 
 /**
  * Input method implementation for Qwerty'ish keyboard.
@@ -2056,17 +2056,4 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         view.setSystemUiVisibility(mOriginalNavBarFlags);
     }
 
-    private static boolean isBrightColor(int color) {
-        if (android.R.color.transparent == color) {
-            return true;
-        }
-        // See http://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
-        boolean bright = false;
-        int[] rgb = {Color.red(color), Color.green(color), Color.blue(color)};
-        int brightness = (int) Math.sqrt(rgb[0] * rgb[0] * .241 + rgb[1] * rgb[1] * .691 + rgb[2] * rgb[2] * .068);
-        if (brightness >= 210) {
-            bright = true;
-        }
-        return bright;
-    }
 }
