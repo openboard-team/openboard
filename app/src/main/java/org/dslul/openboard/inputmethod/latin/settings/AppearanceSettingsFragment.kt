@@ -121,8 +121,8 @@ class AppearanceSettingsFragment : SubScreenFragment(), Preference.OnPreferenceC
             isChecked = !isLegacyFamily && KeyboardTheme.getIsAmoledMode(selectedThemeId)
         }
         dayNightPref?.apply {
-            isEnabled = !isLegacyFamily
-            isChecked = !isLegacyFamily && KeyboardTheme.getIsDayNight(selectedThemeId)
+            isEnabled = !isLegacyFamily && !KeyboardTheme.getIsCustom(selectedThemeId)
+            isChecked = !isLegacyFamily && !KeyboardTheme.getIsCustom(selectedThemeId) && KeyboardTheme.getIsDayNight(selectedThemeId)
         }
         userColorsPref.apply {
             isEnabled = KeyboardTheme.getIsCustom(selectedThemeId)

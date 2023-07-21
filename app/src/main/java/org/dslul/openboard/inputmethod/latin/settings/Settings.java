@@ -542,7 +542,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         return null;
     }
 
-    public static CustomColors getCustomColors(final SharedPreferences prefs) {
+    public static Colors getColors(final Configuration configuration, final SharedPreferences prefs) {
         final int keyboardThemeId = KeyboardTheme.getThemeForParameters(
                 prefs.getString(Settings.PREF_THEME_FAMILY, ""),
                 prefs.getString(Settings.PREF_THEME_VARIANT, ""),
@@ -551,7 +551,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
                 prefs.getBoolean(Settings.PREF_THEME_AMOLED_MODE, false)
         );
         if (!KeyboardTheme.getIsCustom(keyboardThemeId))
-            return new CustomColors();
+            return new Colors(keyboardThemeId, configuration.uiMode & Configuration.UI_MODE_NIGHT_MASK);
 
         // we have a custom theme, which is user only (at the moment)
         final int accent = prefs.getInt(Settings.PREF_THEME_USER_COLOR_ACCENT, Color.BLUE);
@@ -560,7 +560,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         final int hintTextColor = prefs.getInt(Settings.PREF_THEME_USER_COLOR_HINT_TEXT, Color.WHITE);
         final int background = prefs.getInt(Settings.PREF_THEME_USER_COLOR_BACKGROUND, Color.DKGRAY);
 
-        return new CustomColors(accent, background, keyBgColor, keyBgColor, keyBgColor, keyTextColor, hintTextColor);
+        return new Colors(accent, background, keyBgColor, keyBgColor, keyBgColor, keyTextColor, hintTextColor);
     }
 
 }
@@ -568,8 +568,9 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
 // class for forwarding custom colors to SettingsValues
 // (kotlin data class could be 3 lines...)
 // actually this could contain the color filters too, which would allow more flexibility (only do if needed)
-class CustomColors {
+class Colors {
     boolean isCustom;
+    int navBar;
     int accent;
     int background;
     int keyBackground;
@@ -577,7 +578,7 @@ class CustomColors {
     int spaceBar;
     int keyText;
     int keyHintText;
-    public CustomColors(int acc, int bg, int k, int fun, int space, int kt, int kht) {
+    public Colors(int acc, int bg, int k, int fun, int space, int kt, int kht) {
         isCustom = true;
         accent = acc;
         background = bg;
@@ -586,9 +587,29 @@ class CustomColors {
         spaceBar = space;
         keyText = kt;
         keyHintText = kht;
+        // slightly adjust color so it matches keyboard background (actually it's a little off)
+        // todo: remove this weird not-really-white? i.e. set actually white background
+        //  then the default themes could simply be replaced by a set of colors...
+        //  but: this needs to work for the auto-theme too!
+        navBar = Color.rgb((int) (Color.red(background) * 0.925), (int) (Color.green(background) * 0.9379), (int) (Color.blue(background) * 0.945));
     }
-    public CustomColors() {
+    public Colors(int themeId, int nightModeFlags) {
         isCustom = false;
+        if (KeyboardTheme.getIsDayNight(themeId)) {
+            if (nightModeFlags == Configuration.UI_MODE_NIGHT_NO)
+                navBar = Color.rgb(236, 239, 241);
+            else if (themeId == KeyboardTheme.THEME_ID_LXX_DARK)
+                navBar = Color.rgb(38, 50, 56);
+            else
+                navBar = Color.BLACK;
+        } else if (KeyboardTheme.THEME_VARIANT_LIGHT.equals(KeyboardTheme.getThemeVariant(themeId))) {
+            navBar = Color.rgb(236, 239, 241);
+        } else if (themeId == KeyboardTheme.THEME_ID_LXX_DARK) {
+            navBar = Color.rgb(38, 50, 56);
+        } else {
+            // dark border is 13/13/13, but that's ok
+            navBar = Color.BLACK;
+        }
         accent = 0;
         background = 0;
         keyBackground = 0;

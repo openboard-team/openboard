@@ -109,7 +109,7 @@ public class SettingsValues {
     public final int mScreenMetrics;
     public final boolean mAddToPersonalDictionary;
     public final boolean mUseContactsDictionary;
-    public final boolean mNavBarColor;
+    public final boolean mCustomNavBarColor;
 
     // From the input box
     @Nonnull
@@ -137,6 +137,7 @@ public class SettingsValues {
     public final ColorFilter mCustomHintTextColorFilter;
     public final int mCustomThemeColorAccent;
     public final int mCustomKeyTextColor;
+    public final int mNavBarColor;
 
     // Debug settings
     public final boolean mIsInternal;
@@ -264,7 +265,8 @@ public class SettingsValues {
         mOneHandedModeGravity = Settings.readOneHandedModeGravity(prefs);
         mSecondaryLocale = Settings.getSecondaryLocale(prefs, RichInputMethodManager.getInstance().getCurrentSubtypeLocale().toString());
 
-        final CustomColors colors = Settings.getCustomColors(prefs);
+        final Colors colors = Settings.getColors(context.getResources().getConfiguration(), prefs);
+        mNavBarColor = colors.navBar;
         mCustomTheme = colors.isCustom;
         mCustomThemeColorAccent = colors.accent;
         mCustomKeyTextColor = colors.keyText;
@@ -285,7 +287,7 @@ public class SettingsValues {
 
         mAddToPersonalDictionary = prefs.getBoolean(Settings.PREF_ADD_TO_PERSONAL_DICTIONARY, false);
         mUseContactsDictionary = prefs.getBoolean(AndroidSpellCheckerService.PREF_USE_CONTACTS_KEY, false);
-        mNavBarColor = prefs.getBoolean(Settings.PREF_NAVBAR_COLOR, false);
+        mCustomNavBarColor = prefs.getBoolean(Settings.PREF_NAVBAR_COLOR, false);
     }
 
     public boolean isMetricsLoggingEnabled() {
