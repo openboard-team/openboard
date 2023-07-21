@@ -34,6 +34,10 @@ Changes:
 * Make Bengali spell check work, https://github.com/Helium314/openboard/pull/11
 * Fix azerty layout in landscape mode on tablets, https://github.com/openboard-team/openboard/pull/791
 * Improve issues with emoji deletion (still happens with delete gesture), https://github.com/Helium314/openboard/issues/22
+* Add Unicode 15 emojis, https://github.com/openboard-team/openboard/issues/25
+* Improved experimental emoji dictionary for download
+* Better currency selection, https://github.com/Helium314/openboard/pull/21 / https://github.com/Helium314/openboard/commit/0d1106649f95ecbd7d8f6d950428547666059564
+* Improved user-defined theming
 
 Plan / to do:
 * ~upgrade dependencies~
