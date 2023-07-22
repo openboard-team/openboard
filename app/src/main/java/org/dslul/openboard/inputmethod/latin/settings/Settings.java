@@ -70,6 +70,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_THEME_USER_COLOR_BACKGROUND = "theme_color_background";
     public static final String PREF_THEME_USER_COLOR_KEYS = "theme_color_keys";
     public static final String PREF_THEME_USER_COLOR_ACCENT = "theme_color_accent";
+    public static final String PREF_KEYBOARD_COLOR = "pref_keyboard_color";
     // PREF_VOICE_MODE_OBSOLETE is obsolete. Use PREF_VOICE_INPUT_KEY instead.
     public static final String PREF_VOICE_MODE_OBSOLETE = "voice_mode";
     public static final String PREF_VOICE_INPUT_KEY = "pref_voice_input_key";
@@ -401,6 +402,21 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         final float percentage = prefs.getFloat(
                 Settings.PREF_KEYBOARD_HEIGHT_SCALE, UNDEFINED_PREFERENCE_VALUE_FLOAT);
         return (percentage != UNDEFINED_PREFERENCE_VALUE_FLOAT) ? percentage : defaultValue;
+    }
+
+    public static int readKeyboardColor(final SharedPreferences prefs, final Context context) {
+        return prefs.getInt(PREF_KEYBOARD_COLOR, readKeyboardDefaultColor(context));
+    }
+    public static int readKeyboardDefaultColor(final Context context) {
+        final int[] keyboardThemeColors = context.getResources().getIntArray(R.array.keyboard_theme_colors);
+        final int[] keyboardThemeIds = context.getResources().getIntArray(R.array.keyboard_theme_ids);
+        final int themeId = KeyboardTheme.getKeyboardTheme(context).mThemeId;
+        for (int index = 0; index < keyboardThemeIds.length; index++) {
+            if (themeId == keyboardThemeIds[index]) {
+                return keyboardThemeColors[index];
+            }
+        }
+        return Color.LTGRAY;
     }
 
     public static boolean readSpaceTrackpadEnabled(final SharedPreferences prefs) {

@@ -23,6 +23,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.inputmethodservice.InputMethodService;
@@ -2023,17 +2025,23 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP || !settingsValues.mCustomNavBarColor)
             return;
         final int color = settingsValues.mNavBarColor;
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        final int keyboardColor = Settings.readKeyboardColor(prefs, this);
         final Window window = getWindow().getWindow();
         if (window == null)
             return;
         mOriginalNavBarColor = window.getNavigationBarColor();
-        window.setNavigationBarColor(color);
+        if (settingsValues.mCustomTheme) {
+            window.setNavigationBarColor(color);
+        } else {
+            window.setNavigationBarColor(keyboardColor);
+        }
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O)
             return;
         final View view = window.getDecorView();
         mOriginalNavBarFlags = view.getSystemUiVisibility();
-        if (isBrightColor(color)) {
+        if (isBrightColor(color) || isBrightColor(keyboardColor)) {
             view.setSystemUiVisibility(mOriginalNavBarFlags | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
         } else {
             view.setSystemUiVisibility(mOriginalNavBarFlags & ~View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
