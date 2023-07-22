@@ -17,7 +17,10 @@
 package org.dslul.openboard.inputmethod.latin.common;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FilenameFilter;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * A simple class to help with removing directories recursively.
@@ -58,4 +61,19 @@ public class FileUtils {
         toFile.delete();
         return fromFile.renameTo(toFile);
     }
+
+    public static void copyStreamToNewFile(InputStream in, File outfile) throws IOException {
+        File parentFile = outfile.getParentFile();
+        if (parentFile == null || (!parentFile.exists() && !parentFile.mkdirs())) {
+            throw new IOException("could not create parent folder");
+        }
+        FileOutputStream out = new FileOutputStream(outfile);
+        byte[] buf = new byte[1024];
+        int len;
+        while ((len = in.read(buf)) > 0) {
+            out.write(buf, 0, len);
+        }
+        out.flush();
+    }
+
 }

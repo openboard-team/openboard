@@ -140,4 +140,6 @@
         <item>tr:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
         <item>qwerty</item>
     </string-array>
+    <!-- permission name as string to avoid issues with debug build -->
+    <string name="hide_soft_input_permission">org.dslul.openboard.inputmethod.latin.HIDE_SOFT_INPUT</string>
 </resources>

@@ -18,6 +18,8 @@ package org.dslul.openboard.inputmethod.keyboard;
 
 import android.util.SparseArray;
 
+import com.android.inputmethod.keyboard.ProximityInfo;
+
 import org.dslul.openboard.inputmethod.keyboard.internal.KeyVisualAttributes;
 import org.dslul.openboard.inputmethod.keyboard.internal.KeyboardIconsSet;
 import org.dslul.openboard.inputmethod.keyboard.internal.KeyboardParams;

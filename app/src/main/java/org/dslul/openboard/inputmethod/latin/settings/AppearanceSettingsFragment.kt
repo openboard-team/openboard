@@ -15,11 +15,14 @@
  */
 package org.dslul.openboard.inputmethod.latin.settings
 
+import android.app.AlertDialog
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.preference.ListPreference
 import android.preference.Preference
 import android.preference.TwoStatePreference
+import org.dslul.openboard.inputmethod.keyboard.KeyboardSwitcher
 import org.dslul.openboard.inputmethod.keyboard.KeyboardTheme
 import org.dslul.openboard.inputmethod.latin.R
 import org.dslul.openboard.inputmethod.latin.common.Constants
@@ -32,12 +35,14 @@ import java.util.*
 class AppearanceSettingsFragment : SubScreenFragment(), Preference.OnPreferenceChangeListener {
 
     private var selectedThemeId = 0
+    private var needsReload = false
 
     private lateinit var themeFamilyPref: ListPreference
     private lateinit var themeVariantPref: ListPreference
     private lateinit var keyBordersPref: TwoStatePreference
     private lateinit var amoledModePref: TwoStatePreference
     private var dayNightPref: TwoStatePreference? = null
+    private lateinit var userColorsPref: Preference
 
 
     override fun onCreate(icicle: Bundle?) {
@@ -48,6 +53,9 @@ class AppearanceSettingsFragment : SubScreenFragment(), Preference.OnPreferenceC
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             removePreference(Settings.PREF_THEME_DAY_NIGHT)
+        }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            removePreference(Settings.PREF_NAVBAR_COLOR)
         }
         setupTheme()
 
@@ -64,6 +72,13 @@ class AppearanceSettingsFragment : SubScreenFragment(), Preference.OnPreferenceC
         updateThemePreferencesState()
         CustomInputStyleSettingsFragment.updateCustomInputStylesSummary(
                 findPreference(Settings.PREF_CUSTOM_INPUT_STYLES))
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (needsReload)
+            KeyboardSwitcher.getInstance().forceUpdateKeyboardTheme()
+        needsReload = false
     }
 
     override fun onPreferenceChange(preference: Preference, value: Any?): Boolean {
@@ -112,11 +127,21 @@ class AppearanceSettingsFragment : SubScreenFragment(), Preference.OnPreferenceC
         amoledModePref.apply {
             isEnabled = !isLegacyFamily && variant != KeyboardTheme.THEME_VARIANT_LIGHT
                     && !KeyboardTheme.getHasKeyBorders(selectedThemeId)
+                    && !KeyboardTheme.getIsCustom(selectedThemeId)
+                    && variant != KeyboardTheme.THEME_VARIANT_BLUE && variant != KeyboardTheme.THEME_VARIANT_BLUE_GREY
+                    && variant != KeyboardTheme.THEME_VARIANT_BROWN && variant != KeyboardTheme.THEME_VARIANT_GREEN
+                    && variant != KeyboardTheme.THEME_VARIANT_GREY && variant != KeyboardTheme.THEME_VARIANT_INDIGO
+                    && variant != KeyboardTheme.THEME_VARIANT_ORANGE && variant != KeyboardTheme.THEME_VARIANT_RED
+                    && variant != KeyboardTheme.THEME_VARIANT_PINK  && variant != KeyboardTheme.THEME_VARIANT_PURPLE
+                    && variant != KeyboardTheme.THEME_VARIANT_YELLOW
             isChecked = !isLegacyFamily && KeyboardTheme.getIsAmoledMode(selectedThemeId)
         }
         dayNightPref?.apply {
-            isEnabled = !isLegacyFamily
-            isChecked = !isLegacyFamily && KeyboardTheme.getIsDayNight(selectedThemeId)
+            isEnabled = !isLegacyFamily && !KeyboardTheme.getIsCustom(selectedThemeId)
+            isChecked = !isLegacyFamily && !KeyboardTheme.getIsCustom(selectedThemeId) && KeyboardTheme.getIsDayNight(selectedThemeId)
+        }
+        userColorsPref.apply {
+            isEnabled = KeyboardTheme.getIsCustom(selectedThemeId)
         }
     }
 
@@ -157,6 +182,29 @@ class AppearanceSettingsFragment : SubScreenFragment(), Preference.OnPreferenceC
         dayNightPref?.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, value ->
             saveSelectedThemeId(dayNight = value as Boolean)
             updateThemePreferencesState(skipThemeFamily = true)
+            true
+        }
+        userColorsPref = preferenceScreen.findPreference(Settings.PREF_THEME_USER)
+        userColorsPref.onPreferenceClickListener = Preference.OnPreferenceClickListener { _ ->
+            val items = listOf(R.string.select_color_background, R.string.select_color_key, R.string.select_color_key_hint, R.string.select_color_accent, R.string.select_color_key_background)
+                .map { activity.getString(it) }
+            val itemsArray = if (keyBordersPref.isChecked) items.toTypedArray()
+                else items.subList(0, 4).toTypedArray()
+            AlertDialog.Builder(activity)
+                .setPositiveButton(android.R.string.ok, null)
+                .setTitle(R.string.select_color_to_adjust)
+                .setItems(itemsArray) { _, i ->
+                    val (pref, default) = when (i) {
+                        0 -> Settings.PREF_THEME_USER_COLOR_BACKGROUND to Color.DKGRAY
+                        1 -> Settings.PREF_THEME_USER_COLOR_TEXT to Color.WHITE
+                        2 -> Settings.PREF_THEME_USER_COLOR_HINT_TEXT to Color.WHITE
+                        3 -> Settings.PREF_THEME_USER_COLOR_ACCENT to Color.BLUE
+                        else -> Settings.PREF_THEME_USER_COLOR_KEYS to Color.LTGRAY
+                    }
+                    val d = ColorPickerDialog(activity, items[i], sharedPreferences, pref, default) { needsReload = true}
+                    d.show()
+                }
+                .show()
             true
         }
     }

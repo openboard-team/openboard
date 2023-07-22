@@ -24,10 +24,6 @@ task makeEmoji(type: JavaExec, dependsOn: ['jar']) {
             File.separator + 'main' + File.separator + 'res'
 }
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

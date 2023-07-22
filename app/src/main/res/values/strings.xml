@@ -111,6 +111,10 @@
     <string name="use_contacts_dict_summary">Use contact names for suggestions and corrections</string>
     <!-- Option name for enabling the use by the keyboards of sent/received messages, e-mail and typing history to improve suggestion accuracy [CHAR LIMIT=25] -->
     <string name="use_personalized_dicts">Personalized suggestions</string>
+    <!-- Option name for adding learned words to personal dictionary -->
+    <string name="add_to_personal_dictionary">Add words to user dictionary</string>
+    <!-- Description for option to add learned words to system-wide user dictionary -->
+    <string name="add_to_personal_dictionary_summary">Use device personal dictionary to store learned words</string>
     <!-- Option to enable sending usage statistics -->
     <string name="enable_metrics_logging">"Improve <xliff:g id="APPLICATION_NAME" example="Android Keyboard">%s</xliff:g>"</string>
     <!-- Option name for enabling or disabling the double-space period feature that lets double tap on spacebar insert a period followed by a space [CHAR LIMIT=30] -->
@@ -154,6 +158,8 @@
     <string name="bigram_prediction">Next-word suggestions</string>
     <!-- Description for "next word suggestion" option. This displays suggestions even when there is no input, based on the previous word. -->
     <string name="bigram_prediction_summary">Use the previous word in making suggestions</string>
+    <!-- Menu item for removing a suggestion-->
+    <string name="remove_suggestions">Remove suggestion</string>
     <!-- Option to enable gesture input. The user can input a word by tracing the letters of a word without releasing the finger from the screen. [CHAR LIMIT=30]-->
     <string name="gesture_input">Enable gesture typing</string>
     <!-- Description for "gesture_input" option. The user can input a word by tracing the letters of a word without releasing the finger from the screen. [CHAR LIMIT=65]-->
@@ -186,6 +192,25 @@
     <string name="delete_swipe_summary">Perform a swipe from the delete key to select and remove bigger portions of text at once</string>
     <!-- Preferences item for enabling trackpad space key -->
     <string name="space_trackpad">Space bar trackpad</string>
+    <!-- Preferences item for choosing secondary language -->
+    <string name="secondary_locale">Multilingual typing</string>
+    <!-- Description for "secondary_locale" option. -->
+    <string name="secondary_locale_summary">Select a secondary dictionary to use alongside main language</string>
+    <!-- Text when no secondary locale chosen -->
+    <string name="secondary_locale_none">None</string>
+    <!-- Message shown when no secondary locales available -->
+    <string name="no_secondary_locales">No secondary dictionaries available</string>
+    <!-- Preferences item for loading an external gesture typing library -->
+    <string name="load_gesture_library">Load gesture typing library</string>
+    <!-- Description for "load_gesture_library" option -->
+    <string name="load_gesture_library_summary">Provide a native library to enable gesture typing</string>
+    <!-- Message in load gesture library dialog -->
+    <string name="load_gesture_library_message">You will need the library for \'%s\'. Incompatible libraries may crash when using gesture typing.
+        \n\nWarning: loading external code can be a security risk. Only use a library from a source you trust.</string>
+    <!-- Button text for loading gesture library -->
+    <string name="load_gesture_library_button_load">Load library</string>
+    <!-- Button text for deleting gesture library -->
+    <string name="load_gesture_library_button_delete">Delete library</string>
     <!-- Description for "space_trackpad" option. -->
     <string name="space_trackpad_summary">Swipe on the spacebar to move the cursor</string>
     <!-- Preferences item for enabling inserting more spaces key -->
@@ -467,6 +492,44 @@ disposition rather than other common dispositions for Latin languages. [CHAR LIM
     <string name="dictionary_settings_title">Add-on dictionaries</string>
     <!-- Title for the prompt dialog which informs the user that a dictionary is available for the current language and asks to decide whether to download it over 3g -->
     <string name="dictionary_settings_summary">Settings for dictionaries</string>
+    <!-- Title for dictionaries preference screen -->
+    <string name="dictionary_settings_category">Dictionaries</string>
+    <!-- Summary text for dictionary added by user -->
+    <string name="user_dictionary_summary">User-added dictionary</string>
+    <!-- Summary text for built-in dictionary -->
+    <string name="internal_dictionary_summary">Built-in dictionary</string>
+    <!-- Title for the adding new user dictionary dialog -->
+    <string name="add_new_dictionary_title">"Add dictionary from file"</string>
+    <!-- Message for user dictionary replacement dialog -->
+    <string name="replace_dictionary_message">"Really replace existing user-added dictionary for %s?"</string>
+    <!-- Message when trying to replace user dictionary with older version -->
+    <string name="overwrite_old_dicitonary_messsage">"New dictionary file contains older version code than current file. Really replace current dictionary for %s?"</string>
+    <!-- Title and confirm button text for user dictionary replacement dialog -->
+    <string name="replace_dictionary">"Replace dictionary"</string>
+    <!-- Message for user dictionary remove dialog -->
+    <string name="remove_dictionary_message">"Really remove user-added dictionary \"%1$s\" for %2$s?"</string>
+    <!-- Title for user dictionary remove dialog -->
+    <string name="remove_dictionary_title">"Remove dictionary"</string>
+    <!-- Button text in user dictionary remove dialog for resetting to default -->
+    <string name="reset_dictionary">"Reset to default"</string>
+    <!-- Message for the user dictionary selection dialog. This string will be interpreted as HTML -->
+    <string name="add_dictionary">"Select a dictionary to add. Dictionaries can be downloaded at %s."</string>
+    <!-- Message above list of user-added dictionaries -->
+    <string name="existing_dictionaries">"User-added dictionaries, click to remove:"</string>
+    <!-- Title of the link to the download page inserted into selection message (above) -->
+    <string name="dictionary_link_text">"project repository"</string>
+    <!-- Button text for dictionary file selection -->
+    <string name="load_dictionary_file">"Load dictionary"</string>
+    <!-- Toast text shown when dictionary file for a locale was added successfully -->
+    <string name="dictionary_load_success">"Dictionary for %s added"</string>
+    <!-- Text shown when dictionary file could not be read -->
+    <string name="dictionary_file_error">"Error: Selected file is not a valid dictionary file"</string>
+    <!-- Text shown when dictionary file is not for the selected locale -->
+    <string name="dictionary_file_wrong_locale">"The selected file is for %1$s, but %2$s was expected. Still use it for %2$s?"</string>
+    <!-- Button text for confirm / yes to the dictionary_file_wrong_locale message (above) -->
+    <string name="dictionary_file_wrong_locale_ok">"Still use"</string>
+    <!-- Text shown on other errors when loading dictionary file -->
+    <string name="dictionary_load_error">"Error loading dictionary file"</string>
     <!-- Name of the user dictionaries settings category -->
     <string name="user_dictionaries">User dictionaries</string>
     <!-- Name for the "user dictionary" preference item when there is only one -->
@@ -581,4 +644,34 @@ disposition rather than other common dispositions for Latin languages. [CHAR LIM
     <string name="amoled_mode">Deep black backgrounds</string>
     <!-- Description indicating amoled mode can lower power usage depending on the screen of the device. -->
     <string name="amoled_mode_summary">Can reduce power usage depending on the device’s screen technology</string>
+    <!-- Option for setting navbar to follow keyboard color -->
+    <string name="theme_navbar">Color navigation bar</string>
+    <!-- Option for selecting custom theme colors -->
+    <string name="select_user_colors">Adjust theme colors</string>
+    <!-- Description for selection of user-defined colors. -->
+    <string name="select_user_colors_summary">Select colors for text and background</string>
+    <!-- Dialog message when selecting color to adjust. -->
+    <string name="select_color_to_adjust">Select colors to adjust</string>
+    <!-- Selection: background color. -->
+    <string name="select_color_background">Keyboard background</string>
+    <!-- Selection: key text color. -->
+    <string name="select_color_key">Key text</string>
+    <!-- Selection: key hint text color. -->
+    <string name="select_color_key_hint">Key hint text</string>
+    <!-- Selection: key color. -->
+    <string name="select_color_key_background">Key background</string>
+    <!-- Selection: accent color. -->
+    <string name="select_color_accent">Accent</string>
+    <!-- Settings screen title for about [CHAR LIMIT=33]-->
+    <string name="settings_screen_about">About</string>
+    <!-- version for about screen-->
+    <string name="version">Version</string>
+    <!-- github repo link for about screen-->
+    <string name="about_github_link" >View on GitHub</string>
+    <!-- license for about screen-->
+    <string name="license" >Open-source license</string>
+    <!-- license link for about screen-->
+    <string name="gnu_gpl" >GNU General Public License v3.0</string>
+    <!-- App slogan-->
+    <string name="app_slogan" >100% FOSS keyboard, based on AOSP.</string>
 </resources>

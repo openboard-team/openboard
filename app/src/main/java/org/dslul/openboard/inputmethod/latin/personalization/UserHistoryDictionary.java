@@ -20,7 +20,7 @@ import android.content.Context;
 
 import org.dslul.openboard.inputmethod.annotations.ExternallyReferenced;
 import org.dslul.openboard.inputmethod.annotations.UsedForTesting;
-import org.dslul.openboard.inputmethod.latin.BinaryDictionary;
+import com.android.inputmethod.latin.BinaryDictionary;
 import org.dslul.openboard.inputmethod.latin.Dictionary;
 import org.dslul.openboard.inputmethod.latin.ExpandableBinaryDictionary;
 import org.dslul.openboard.inputmethod.latin.NgramContext;

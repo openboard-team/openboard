@@ -17,6 +17,7 @@ import org.dslul.openboard.inputmethod.keyboard.internal.KeyboardIconsSet
 import org.dslul.openboard.inputmethod.latin.ClipboardHistoryManager
 import org.dslul.openboard.inputmethod.latin.R
 import org.dslul.openboard.inputmethod.latin.common.Constants
+import org.dslul.openboard.inputmethod.latin.settings.Settings
 import org.dslul.openboard.inputmethod.latin.utils.ResourceUtils
 
 class ClipboardHistoryView @JvmOverloads constructor(
@@ -89,6 +90,7 @@ class ClipboardHistoryView @JvmOverloads constructor(
         findViewById<FrameLayout>(R.id.clipboard_action_bar)?.apply {
             clipboardLayoutParams.setActionBarProperties(this)
         }
+        val settingsValues = Settings.getInstance().current
         alphabetKey = findViewById<TextView>(R.id.clipboard_keyboard_alphabet).apply {
             tag = Constants.CODE_ALPHA_FROM_CLIPBOARD
             setBackgroundResource(functionalKeyBackgroundId)
@@ -99,13 +101,23 @@ class ClipboardHistoryView @JvmOverloads constructor(
             setOnTouchListener(this@ClipboardHistoryView)
             setOnClickListener(this@ClipboardHistoryView)
         }
+        if (settingsValues.mCustomTheme) {
+            alphabetKey.background.colorFilter = settingsValues.mCustomFunctionalKeyBackgroundColorFilter
+            alphabetKey.setTextColor(settingsValues.mCustomKeyTextColor)
+            clearKey.colorFilter = settingsValues.mCustomKeyTextColorFilter
+            background.colorFilter = settingsValues.mCustomBackgroundColorFilter
+        }
     }
 
     private fun setupAlphabetKey(key: TextView?, label: String, params: KeyDrawParams) {
         key?.apply {
             text = label
             typeface = params.mTypeface
-            setTextColor(params.mFunctionalTextColor)
+            val settingsValues = Settings.getInstance().current
+            if (settingsValues.mCustomTheme)
+                setTextColor(settingsValues.mCustomKeyTextColor)
+            else
+                setTextColor(params.mFunctionalTextColor)
             setTextSize(TypedValue.COMPLEX_UNIT_PX, params.mLabelSize.toFloat())
         }
     }
@@ -114,7 +126,12 @@ class ClipboardHistoryView @JvmOverloads constructor(
         clipboardAdapter.apply {
             itemBackgroundId = keyBackgroundId
             itemTypeFace = params.mTypeface
-            itemTextColor = params.mTextColor
+            val settingsValues = Settings.getInstance().current
+            if (settingsValues.mCustomTheme) {
+                itemTextColor = settingsValues.mCustomKeyTextColor
+                itemBackgroundColorFilter = settingsValues.mCustomKeyBackgroundColorFilter
+            } else
+                itemTextColor = params.mTextColor
             itemTextSize = params.mLabelSize.toFloat()
         }
     }

@@ -16,6 +16,8 @@
 
 package org.dslul.openboard.inputmethod.latin;
 
+import com.android.inputmethod.latin.BinaryDictionary;
+
 import org.dslul.openboard.inputmethod.latin.SuggestedWords.SuggestedWordInfo;
 import org.dslul.openboard.inputmethod.latin.common.ComposedData;
 import org.dslul.openboard.inputmethod.latin.settings.SettingsValuesForSuggestion;

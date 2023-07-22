@@ -679,6 +679,12 @@ public final class KeyboardState {
                 // released.
                 mSwitchState = SWITCH_STATE_SYMBOL_BEGIN;
             }
+            // Switch back to alpha keyboard mode if user types one or more non-space/enter
+            // characters followed by a space/enter.
+            if (isSpaceOrEnter(code)) {
+                toggleAlphabetAndSymbols(autoCapsFlags, recapitalizeMode);
+                mPrevSymbolsKeyboardWasShifted = false;
+            }
             break;
         case SWITCH_STATE_SYMBOL_BEGIN:
             if (mMode == MODE_EMOJI || mMode == MODE_CLIPBOARD) {
@@ -689,6 +695,12 @@ public final class KeyboardState {
             if (!isSpaceOrEnter(code) && (Constants.isLetterCode(code)
                     || code == Constants.CODE_OUTPUT_TEXT)) {
                 mSwitchState = SWITCH_STATE_SYMBOL;
+            }
+            // Switch back to alpha keyboard mode if user types one or more non-space/enter
+            // characters followed by a space/enter.
+            if (isSpaceOrEnter(code)) {
+                toggleAlphabetAndSymbols(autoCapsFlags, recapitalizeMode);
+                mPrevSymbolsKeyboardWasShifted = false;
             }
             break;
         case SWITCH_STATE_SYMBOL:

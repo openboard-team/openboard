@@ -55,10 +55,12 @@ import org.dslul.openboard.inputmethod.latin.SuggestedWords;
 import org.dslul.openboard.inputmethod.latin.common.Constants;
 import org.dslul.openboard.inputmethod.latin.common.CoordinateUtils;
 import org.dslul.openboard.inputmethod.latin.settings.DebugSettings;
+import org.dslul.openboard.inputmethod.latin.settings.Settings;
 import org.dslul.openboard.inputmethod.latin.utils.DeviceProtectedUtils;
 import org.dslul.openboard.inputmethod.latin.utils.LanguageOnSpacebarUtils;
 import org.dslul.openboard.inputmethod.latin.utils.TypefaceUtils;
 
+import java.util.Locale;
 import java.util.WeakHashMap;
 
 import javax.annotation.Nonnull;
@@ -838,6 +840,25 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
     private String layoutLanguageOnSpacebar(final Paint paint,
             final RichInputMethodSubtype subtype, final int width) {
         // Choose appropriate language name to fit into the width.
+
+        final Locale secondaryLocale = Settings.getInstance().getCurrent().mSecondaryLocale;
+        if (secondaryLocale != null
+                // avoid showing same language twice
+                && !secondaryLocale.getLanguage().equals(subtype.getLocale().getLanguage())
+        ) {
+            final Locale displayLocale = getResources().getConfiguration().locale;
+            final String full = subtype.getMiddleDisplayName() + " - " +
+                    secondaryLocale.getDisplayLanguage(displayLocale);
+            if (fitsTextIntoWidth(width, full, paint)) {
+                return full;
+            }
+            final String middle = subtype.getLocale().getLanguage().toUpperCase(displayLocale) +
+                    " - " + secondaryLocale.getLanguage().toUpperCase(displayLocale);
+            if (fitsTextIntoWidth(width, middle, paint)) {
+                return middle;
+            }
+        }
+
         if (mLanguageOnSpacebarFormatType == LanguageOnSpacebarUtils.FORMAT_TYPE_FULL_LOCALE) {
             final String fullText = subtype.getFullDisplayName();
             if (fitsTextIntoWidth(width, fullText, paint)) {

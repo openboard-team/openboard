@@ -1,5 +1,6 @@
 package org.dslul.openboard.inputmethod.keyboard.clipboard
 
+import android.graphics.ColorFilter
 import android.graphics.Typeface
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -22,6 +23,7 @@ class ClipboardAdapter(
 
     var pinnedIconResId = 0
     var itemBackgroundId = 0
+    var itemBackgroundColorFilter: ColorFilter? = null
     var itemTypeFace: Typeface? = null
     var itemTextColor = 0
     var itemTextSize = 0f
@@ -53,6 +55,7 @@ class ClipboardAdapter(
                 setOnTouchListener(this@ViewHolder)
                 setOnLongClickListener(this@ViewHolder)
                 setBackgroundResource(itemBackgroundId)
+                background.colorFilter = itemBackgroundColorFilter
             }
             pinnedIconView = view.findViewById<ImageView>(R.id.clipboard_entry_pinned_icon).apply {
                 visibility = View.GONE

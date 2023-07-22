@@ -16,10 +16,6 @@ task makeText(type: JavaExec, dependsOn: ['jar']) {
             File.separator + 'main' + File.separator + 'java'
 }
 
-repositories {
-    mavenCentral()
-}
-
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8

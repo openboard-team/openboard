@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hide_soft_input_permission">org.dslul.openboard.inputmethod.latin.debug.HIDE_SOFT_INPUT</string>
+</resources>

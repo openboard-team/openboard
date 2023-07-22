@@ -16,14 +16,25 @@
 
 package org.dslul.openboard.inputmethod.latin.settings;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
+import android.preference.Preference;
 
 import org.dslul.openboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import org.dslul.openboard.inputmethod.latin.R;
 import org.dslul.openboard.inputmethod.latin.SystemBroadcastReceiver;
+import org.dslul.openboard.inputmethod.latin.define.JniLibName;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * "Advanced" settings sub screen.
@@ -37,6 +48,8 @@ import org.dslul.openboard.inputmethod.latin.SystemBroadcastReceiver;
  * - Debug settings
  */
 public final class AdvancedSettingsFragment extends SubScreenFragment {
+    private final int REQUEST_CODE_GESTURE_LIBRARY = 570289;
+    File libfile = null;
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
@@ -57,6 +70,66 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
         }
 
         setupKeyLongpressTimeoutSettings();
+        final Preference bla = findPreference("load_gesture_library");
+        if (bla != null) {
+            bla.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    // get architecture for telling user which file to use
+                    String abi;
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                        abi = Build.SUPPORTED_ABIS[0];
+                    } else {
+                        abi = Build.CPU_ABI;
+                    }
+                    // show delete / add dialog
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(context)
+                            .setTitle(R.string.load_gesture_library)
+                            .setMessage(context.getString(R.string.load_gesture_library_message, abi))
+                            .setPositiveButton(R.string.load_gesture_library_button_load, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    final Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT)
+                                            .addCategory(Intent.CATEGORY_OPENABLE)
+                                            .setType("application/octet-stream");
+                                    startActivityForResult(intent, REQUEST_CODE_GESTURE_LIBRARY);
+                                }
+                            })
+                            .setNegativeButton(android.R.string.cancel, null);
+                    libfile = new File(context.getFilesDir().getAbsolutePath() + File.separator + JniLibName.JNI_LIB_IMPORT_FILE_NAME);
+                    if (libfile.exists())
+                        builder.setNeutralButton(R.string.load_gesture_library_button_delete, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                libfile.delete();
+                                Runtime.getRuntime().exit(0);
+                            }
+                        });
+                    builder.show();
+                    return true;
+                }
+            });
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent resultData) {
+        if (requestCode != REQUEST_CODE_GESTURE_LIBRARY || resultCode != Activity.RESULT_OK || resultData == null) return;
+        if (resultData.getData() != null && libfile != null) {
+            try {
+                FileOutputStream out = new FileOutputStream(libfile);
+                final InputStream in = getActivity().getContentResolver().openInputStream(resultData.getData());
+                byte[] buf = new byte[1024];
+                int len;
+                while ((len = in.read(buf)) > 0) {
+                    out.write(buf, 0, len);
+                }
+                out.flush();
+                Runtime.getRuntime().exit(0);
+            } catch (IOException e) {
+                // should inform user
+            }
+        }
     }
 
 

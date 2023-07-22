@@ -18,6 +18,8 @@ package org.dslul.openboard.inputmethod.latin.utils;
 
 import android.util.Log;
 
+import com.android.inputmethod.latin.utils.BinaryDictionaryUtils;
+
 import org.dslul.openboard.inputmethod.latin.SuggestedWords.SuggestedWordInfo;
 import org.dslul.openboard.inputmethod.latin.define.DebugFlags;
 

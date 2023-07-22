@@ -27,6 +27,7 @@
     style="?attr/emojiPalettesViewStyle"
 >
     <LinearLayout
+        android:id="@+id/emoji_tab_strip"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="@dimen/config_suggestions_strip_height"

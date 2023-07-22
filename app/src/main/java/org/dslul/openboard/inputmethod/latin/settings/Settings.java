@@ -22,13 +22,16 @@ import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Build;
 import android.util.Log;
 
 import android.view.Gravity;
+import org.dslul.openboard.inputmethod.keyboard.KeyboardTheme;
 import org.dslul.openboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import org.dslul.openboard.inputmethod.latin.InputAttributes;
 import org.dslul.openboard.inputmethod.latin.R;
+import org.dslul.openboard.inputmethod.latin.common.LocaleUtils;
 import org.dslul.openboard.inputmethod.latin.common.StringUtils;
 import org.dslul.openboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
 import org.dslul.openboard.inputmethod.latin.utils.DeviceProtectedUtils;
@@ -38,6 +41,7 @@ import org.dslul.openboard.inputmethod.latin.utils.RunInLocale;
 import org.dslul.openboard.inputmethod.latin.utils.StatsUtils;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
@@ -60,11 +64,19 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_THEME_KEY_BORDERS = "theme_key_borders";
     public static final String PREF_THEME_DAY_NIGHT = "theme_auto_day_night";
     public static final String PREF_THEME_AMOLED_MODE = "theme_amoled_mode";
+    public static final String PREF_THEME_USER = "theme_select_colors";
+    public static final String PREF_THEME_USER_COLOR_TEXT = "theme_color_text";
+    public static final String PREF_THEME_USER_COLOR_HINT_TEXT = "theme_color_hint_text";
+    public static final String PREF_THEME_USER_COLOR_BACKGROUND = "theme_color_background";
+    public static final String PREF_THEME_USER_COLOR_KEYS = "theme_color_keys";
+    public static final String PREF_THEME_USER_COLOR_ACCENT = "theme_color_accent";
+    public static final String PREF_KEYBOARD_COLOR = "pref_keyboard_color";
     // PREF_VOICE_MODE_OBSOLETE is obsolete. Use PREF_VOICE_INPUT_KEY instead.
     public static final String PREF_VOICE_MODE_OBSOLETE = "voice_mode";
     public static final String PREF_VOICE_INPUT_KEY = "pref_voice_input_key";
     public static final String PREF_CLIPBOARD_CLIPBOARD_KEY = "pref_clipboard_clipboard_key";
     public static final String PREF_EDIT_PERSONAL_DICTIONARY = "edit_personal_dictionary";
+    public static final String PREF_ADD_DICTIONARY = "add_dictionary";
     public static final String PREF_AUTO_CORRECTION = "pref_key_auto_correction";
     public static final String PREF_AUTO_CORRECTION_CONFIDENCE = "pref_key_auto_correction_confidence";
     // PREF_SHOW_SUGGESTIONS_SETTING_OBSOLETE is obsolete. Use PREF_SHOW_SUGGESTIONS instead.
@@ -124,6 +136,10 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
 
     public static final String PREF_ENABLE_CLIPBOARD_HISTORY = "pref_enable_clipboard_history";
     public static final String PREF_CLIPBOARD_HISTORY_RETENTION_TIME = "pref_clipboard_history_retention_time";
+
+    public static final String PREF_SECONDARY_LOCALES = "pref_secondary_locales";
+    public static final String PREF_ADD_TO_PERSONAL_DICTIONARY = "add_to_personal_dictionary";
+    public static final String PREF_NAVBAR_COLOR = "navbar_color";
 
     // This preference key is deprecated. Use {@link #PREF_SHOW_LANGUAGE_SWITCH_KEY} instead.
     // This is being used only for the backward compatibility.
@@ -388,6 +404,21 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         return (percentage != UNDEFINED_PREFERENCE_VALUE_FLOAT) ? percentage : defaultValue;
     }
 
+    public static int readKeyboardColor(final SharedPreferences prefs, final Context context) {
+        return prefs.getInt(PREF_KEYBOARD_COLOR, readKeyboardDefaultColor(context));
+    }
+    public static int readKeyboardDefaultColor(final Context context) {
+        final int[] keyboardThemeColors = context.getResources().getIntArray(R.array.keyboard_theme_colors);
+        final int[] keyboardThemeIds = context.getResources().getIntArray(R.array.keyboard_theme_ids);
+        final int themeId = KeyboardTheme.getKeyboardTheme(context).mThemeId;
+        for (int index = 0; index < keyboardThemeIds.length; index++) {
+            if (themeId == keyboardThemeIds[index]) {
+                return keyboardThemeColors[index];
+            }
+        }
+        return Color.LTGRAY;
+    }
+
     public static boolean readSpaceTrackpadEnabled(final SharedPreferences prefs) {
         return prefs.getBoolean(PREF_SPACE_TRACKPAD, true);
     }
@@ -515,5 +546,92 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static int readLastShownEmojiCategoryPageId(
             final SharedPreferences prefs, final int defValue) {
         return prefs.getInt(PREF_LAST_SHOWN_EMOJI_CATEGORY_PAGE_ID, defValue);
+    }
+
+    public static Locale getSecondaryLocale(final SharedPreferences prefs, final String mainLocaleString) {
+        final Set<String> encodedLocales = prefs.getStringSet(PREF_SECONDARY_LOCALES, new HashSet<>());
+        for (String loc : encodedLocales) {
+            String[] locales = loc.split("§");
+            if (locales.length == 2 && locales[0].equals(mainLocaleString.toLowerCase(Locale.ENGLISH)))
+                return LocaleUtils.constructLocaleFromString(locales[1]);
+        }
+        return null;
+    }
+
+    public static Colors getColors(final Configuration configuration, final SharedPreferences prefs) {
+        final int keyboardThemeId = KeyboardTheme.getThemeForParameters(
+                prefs.getString(Settings.PREF_THEME_FAMILY, ""),
+                prefs.getString(Settings.PREF_THEME_VARIANT, ""),
+                prefs.getBoolean(Settings.PREF_THEME_KEY_BORDERS, false),
+                prefs.getBoolean(Settings.PREF_THEME_DAY_NIGHT, false),
+                prefs.getBoolean(Settings.PREF_THEME_AMOLED_MODE, false)
+        );
+        if (!KeyboardTheme.getIsCustom(keyboardThemeId))
+            return new Colors(keyboardThemeId, configuration.uiMode & Configuration.UI_MODE_NIGHT_MASK);
+
+        // we have a custom theme, which is user only (at the moment)
+        final int accent = prefs.getInt(Settings.PREF_THEME_USER_COLOR_ACCENT, Color.BLUE);
+        final int keyBgColor = prefs.getInt(Settings.PREF_THEME_USER_COLOR_KEYS, Color.LTGRAY);
+        final int keyTextColor = prefs.getInt(Settings.PREF_THEME_USER_COLOR_TEXT, Color.WHITE);
+        final int hintTextColor = prefs.getInt(Settings.PREF_THEME_USER_COLOR_HINT_TEXT, Color.WHITE);
+        final int background = prefs.getInt(Settings.PREF_THEME_USER_COLOR_BACKGROUND, Color.DKGRAY);
+
+        return new Colors(accent, background, keyBgColor, keyBgColor, keyBgColor, keyTextColor, hintTextColor);
+    }
+
+}
+
+// class for forwarding custom colors to SettingsValues
+// (kotlin data class could be 3 lines...)
+// actually this could contain the color filters too, which would allow more flexibility (only do if needed)
+class Colors {
+    boolean isCustom;
+    int navBar;
+    int accent;
+    int background;
+    int keyBackground;
+    int functionalKey; // this color will appear darker than set, as it is applied using a color filter in modulate mode
+    int spaceBar;
+    int keyText;
+    int keyHintText;
+    public Colors(int acc, int bg, int k, int fun, int space, int kt, int kht) {
+        isCustom = true;
+        accent = acc;
+        background = bg;
+        keyBackground = k;
+        functionalKey = fun;
+        spaceBar = space;
+        keyText = kt;
+        keyHintText = kht;
+        // slightly adjust color so it matches keyboard background (actually it's a little off)
+        // todo: remove this weird not-really-white? i.e. set actually white background
+        //  then the default themes could simply be replaced by a set of colors...
+        //  but: this needs to work for the auto-theme too!
+        navBar = Color.rgb((int) (Color.red(background) * 0.925), (int) (Color.green(background) * 0.9379), (int) (Color.blue(background) * 0.945));
+    }
+    public Colors(int themeId, int nightModeFlags) {
+        isCustom = false;
+        if (KeyboardTheme.getIsDayNight(themeId)) {
+            if (nightModeFlags == Configuration.UI_MODE_NIGHT_NO)
+                navBar = Color.rgb(236, 239, 241);
+            else if (themeId == KeyboardTheme.THEME_ID_LXX_DARK)
+                navBar = Color.rgb(38, 50, 56);
+            else
+                navBar = Color.BLACK;
+        } else if (KeyboardTheme.THEME_VARIANT_LIGHT.equals(KeyboardTheme.getThemeVariant(themeId))) {
+            navBar = Color.rgb(236, 239, 241);
+        } else if (themeId == KeyboardTheme.THEME_ID_LXX_DARK) {
+            navBar = Color.rgb(38, 50, 56);
+        } else {
+            // dark border is 13/13/13, but that's ok
+            navBar = Color.BLACK;
+        }
+        accent = 0;
+        background = 0;
+        keyBackground = 0;
+        functionalKey = 0;
+        spaceBar = 0;
+        keyText = 0;
+        keyHintText = 0;
     }
 }

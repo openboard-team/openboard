@@ -18,6 +18,7 @@ package org.dslul.openboard.inputmethod.latin.inputlogic;
 
 import android.graphics.Color;
 import android.os.SystemClock;
+import android.text.InputType;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -1186,24 +1187,30 @@ public final class InputLogic {
                     }
                     final int lengthToDelete =
                             Character.isSupplementaryCodePoint(codePointBeforeCursor) ? 2 : 1;
-                    mConnection.deleteTextBeforeCursor(lengthToDelete);
-                    int totalDeletedLength = lengthToDelete;
-                    if (mDeleteCount > Constants.DELETE_ACCELERATE_AT) {
-                        // If this is an accelerated (i.e., double) deletion, then we need to
-                        // consider unlearning here because we may have already reached
-                        // the previous word, and will lose it after next deletion.
-                        hasUnlearnedWordBeingDeleted |= unlearnWordBeingDeleted(
-                                inputTransaction.getMSettingsValues(), currentKeyboardScriptId);
-                        final int codePointBeforeCursorToDeleteAgain =
-                                mConnection.getCodePointBeforeCursor();
-                        if (codePointBeforeCursorToDeleteAgain != Constants.NOT_A_CODE) {
-                            final int lengthToDeleteAgain = Character.isSupplementaryCodePoint(
-                                    codePointBeforeCursorToDeleteAgain) ? 2 : 1;
-                            mConnection.deleteTextBeforeCursor(lengthToDeleteAgain);
-                            totalDeletedLength += lengthToDeleteAgain;
+                    if (StringUtils.probablyIsEmojiCodePoint(codePointBeforeCursor)) {
+                        // emoji length varies, so we'd need to find out length to delete correctly
+                        // this is not optimal, but a reasonable workaround for issues when trying to delete emojis
+                        sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
+                    } else {
+                        mConnection.deleteTextBeforeCursor(lengthToDelete);
+                        int totalDeletedLength = lengthToDelete;
+                        if (mDeleteCount > Constants.DELETE_ACCELERATE_AT) {
+                            // If this is an accelerated (i.e., double) deletion, then we need to
+                            // consider unlearning here because we may have already reached
+                            // the previous word, and will lose it after next deletion.
+                            hasUnlearnedWordBeingDeleted |= unlearnWordBeingDeleted(
+                                    inputTransaction.getMSettingsValues(), currentKeyboardScriptId);
+                            final int codePointBeforeCursorToDeleteAgain =
+                                    mConnection.getCodePointBeforeCursor();
+                            if (codePointBeforeCursorToDeleteAgain != Constants.NOT_A_CODE) {
+                                final int lengthToDeleteAgain = Character.isSupplementaryCodePoint(
+                                        codePointBeforeCursorToDeleteAgain) ? 2 : 1;
+                                mConnection.deleteTextBeforeCursor(lengthToDeleteAgain);
+                                totalDeletedLength += lengthToDeleteAgain;
+                            }
                         }
+                        StatsUtils.onBackspacePressed(totalDeletedLength);
                     }
-                    StatsUtils.onBackspacePressed(totalDeletedLength);
                 }
             }
             if (!hasUnlearnedWordBeingDeleted) {
@@ -2045,9 +2052,24 @@ public final class InputLogic {
     private void insertAutomaticSpaceIfOptionsAndTextAllow(final SettingsValues settingsValues) {
         if (settingsValues.shouldInsertSpacesAutomatically()
                 && settingsValues.mSpacingAndPunctuations.mCurrentLanguageHasSpaces
-                && !mConnection.textBeforeCursorLooksLikeURL()) {
+                && !textBeforeCursorMayBeURL()
+                && !(mConnection.getCodePointBeforeCursor() == Constants.CODE_PERIOD && mConnection.wordBeforeCursorMayBeEmail())) {
             sendKeyCodePoint(settingsValues, Constants.CODE_SPACE);
         }
+    }
+
+    private boolean textBeforeCursorMayBeURL() {
+        if (mConnection.textBeforeCursorLooksLikeURL()) return true;
+        // doesn't look like URL, but we may be in URL field and user may want to enter example.com
+        if (mConnection.getCodePointBeforeCursor() != Constants.CODE_PERIOD && mConnection.getCodePointBeforeCursor() != ':')
+            return false;
+        final EditorInfo ei = getCurrentInputEditorInfo();
+        if (ei == null) return false;
+        int inputType = ei.inputType;
+        if ((inputType & InputType.TYPE_TEXT_VARIATION_URI) != 0)
+            return !mConnection.spaceBeforeCursor();
+        else
+            return false;
     }
 
     /**

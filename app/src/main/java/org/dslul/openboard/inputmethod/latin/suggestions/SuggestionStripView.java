@@ -27,6 +27,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,12 +36,12 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.dslul.openboard.inputmethod.accessibility.AccessibilityUtils;
 import org.dslul.openboard.inputmethod.keyboard.Keyboard;
-import org.dslul.openboard.inputmethod.keyboard.KeyboardSwitcher;
 import org.dslul.openboard.inputmethod.keyboard.MainKeyboardView;
 import org.dslul.openboard.inputmethod.keyboard.MoreKeysPanel;
 import org.dslul.openboard.inputmethod.latin.AudioAndHapticFeedbackManager;
@@ -52,6 +53,7 @@ import org.dslul.openboard.inputmethod.latin.define.DebugFlags;
 import org.dslul.openboard.inputmethod.latin.settings.Settings;
 import org.dslul.openboard.inputmethod.latin.settings.SettingsValues;
 import org.dslul.openboard.inputmethod.latin.suggestions.MoreSuggestionsView.MoreSuggestionsListener;
+import org.dslul.openboard.inputmethod.latin.utils.DialogUtils;
 
 import java.util.ArrayList;
 
@@ -63,6 +65,7 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
         void pickSuggestionManually(SuggestedWordInfo word);
         void onCodeInput(int primaryCode, int x, int y, boolean isKeyRepeat);
         void onTextInput(final String rawText);
+        void removeSuggestion(final String word);
         CharSequence getSelection();
     }
 
@@ -177,6 +180,12 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
         mClipboardKey.setOnLongClickListener(this);
 
         mOtherKey.setImageDrawable(iconIncognito);
+
+        final SettingsValues settingsValues = Settings.getInstance().getCurrent();
+        if (settingsValues.mCustomTheme) {
+            mStripVisibilityGroup.mSuggestionStripView.getBackground().setColorFilter(settingsValues.mCustomBackgroundColorFilter);
+            mClipboardKey.setColorFilter(settingsValues.mCustomKeyTextColor);
+        }
     }
 
     /**
@@ -287,7 +296,57 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
         }
         AudioAndHapticFeedbackManager.getInstance().performHapticAndAudioFeedback(
                 Constants.NOT_A_CODE, this);
-        return showMoreSuggestions();
+        if (isShowingMoreSuggestionPanel() || !showMoreSuggestions()) {
+            for (int i = 0; i < mStartIndexOfMoreSuggestions; i++) {
+                if (view == mWordViews.get(i)) {
+                    showDeleteSuggestionDialog(mWordViews.get(i));
+                    return true;
+                }
+            }
+        }
+        return true;
+    }
+
+    private void showDeleteSuggestionDialog(final TextView wordView) {
+        final String word = wordView.getText().toString();
+
+        final PopupMenu menu = new PopupMenu(DialogUtils.getPlatformDialogThemeContext(getContext()), wordView);
+        menu.getMenu().add(R.string.remove_suggestions);
+        menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                mListener.removeSuggestion(word);
+                mMoreSuggestionsView.dismissMoreKeysPanel();
+                // show suggestions, but without the removed word
+                final ArrayList<SuggestedWordInfo> sw = new ArrayList<SuggestedWordInfo>();
+                for (int i = 0; i < mSuggestedWords.size(); i ++) {
+                    final SuggestedWordInfo info = mSuggestedWords.getInfo(i);
+                    if (!info.getWord().equals(word))
+                        sw.add(info);
+                }
+                ArrayList<SuggestedWordInfo> rs = null;
+                if (mSuggestedWords.mRawSuggestions != null) {
+                    rs = mSuggestedWords.mRawSuggestions;
+                    for (int i = 0; i < rs.size(); i ++) {
+                        if (rs.get(i).getWord().equals(word)) {
+                            rs.remove(i);
+                            break;
+                        }
+                    }
+                }
+                // copied code from setSuggestions, but without the Rtl part
+                clear();
+                mSuggestedWords = new SuggestedWords(sw, rs, mSuggestedWords.getTypedWordInfo(),
+                        mSuggestedWords.mTypedWordValid, mSuggestedWords.mWillAutoCorrect,
+                        mSuggestedWords.mIsObsoleteSuggestions, mSuggestedWords.mInputStyle,
+                        mSuggestedWords.mSequenceNumber);
+                mStartIndexOfMoreSuggestions = mLayoutHelper.layoutAndReturnStartIndexOfMoreSuggestions(
+                        getContext(), mSuggestedWords, mSuggestionsStrip, SuggestionStripView.this);
+                mStripVisibilityGroup.showSuggestionsStrip();
+                return true;
+            }
+        });
+        menu.show();
     }
 
     boolean showMoreSuggestions() {
