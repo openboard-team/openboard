@@ -128,6 +128,12 @@ class AppearanceSettingsFragment : SubScreenFragment(), Preference.OnPreferenceC
             isEnabled = !isLegacyFamily && variant != KeyboardTheme.THEME_VARIANT_LIGHT
                     && !KeyboardTheme.getHasKeyBorders(selectedThemeId)
                     && !KeyboardTheme.getIsCustom(selectedThemeId)
+                    && variant != KeyboardTheme.THEME_VARIANT_BLUE && variant != KeyboardTheme.THEME_VARIANT_BLUE_GREY
+                    && variant != KeyboardTheme.THEME_VARIANT_BROWN && variant != KeyboardTheme.THEME_VARIANT_GREEN
+                    && variant != KeyboardTheme.THEME_VARIANT_GREY && variant != KeyboardTheme.THEME_VARIANT_INDIGO
+                    && variant != KeyboardTheme.THEME_VARIANT_ORANGE && variant != KeyboardTheme.THEME_VARIANT_RED
+                    && variant != KeyboardTheme.THEME_VARIANT_PINK  && variant != KeyboardTheme.THEME_VARIANT_PURPLE
+                    && variant != KeyboardTheme.THEME_VARIANT_YELLOW
             isChecked = !isLegacyFamily && KeyboardTheme.getIsAmoledMode(selectedThemeId)
         }
         dayNightPref?.apply {
