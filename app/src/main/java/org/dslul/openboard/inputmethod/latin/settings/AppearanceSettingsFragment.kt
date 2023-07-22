@@ -16,6 +16,7 @@
 package org.dslul.openboard.inputmethod.latin.settings
 
 import android.app.AlertDialog
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.preference.ListPreference
@@ -187,14 +188,14 @@ class AppearanceSettingsFragment : SubScreenFragment(), Preference.OnPreferenceC
                 .setPositiveButton(android.R.string.ok, null)
                 .setTitle(R.string.select_color_to_adjust)
                 .setItems(itemsArray) { _, i ->
-                    val pref = when (i) {
-                        0 -> Settings.PREF_THEME_USER_COLOR_BACKGROUND
-                        1 -> Settings.PREF_THEME_USER_COLOR_TEXT
-                        2 -> Settings.PREF_THEME_USER_COLOR_HINT_TEXT
-                        3 -> Settings.PREF_THEME_USER_COLOR_ACCENT
-                        else -> Settings.PREF_THEME_USER_COLOR_KEYS
+                    val (pref, default) = when (i) {
+                        0 -> Settings.PREF_THEME_USER_COLOR_BACKGROUND to Color.DKGRAY
+                        1 -> Settings.PREF_THEME_USER_COLOR_TEXT to Color.WHITE
+                        2 -> Settings.PREF_THEME_USER_COLOR_HINT_TEXT to Color.WHITE
+                        3 -> Settings.PREF_THEME_USER_COLOR_ACCENT to Color.BLUE
+                        else -> Settings.PREF_THEME_USER_COLOR_KEYS to Color.LTGRAY
                     }
-                    val d = ColorPickerDialog(activity, items[i], sharedPreferences, pref) { needsReload = true}
+                    val d = ColorPickerDialog(activity, items[i], sharedPreferences, pref, default) { needsReload = true}
                     d.show()
                 }
                 .show()

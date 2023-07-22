@@ -19,7 +19,6 @@ package org.dslul.openboard.inputmethod.latin.settings;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -30,7 +29,8 @@ import android.widget.TextView;
 import org.dslul.openboard.inputmethod.latin.R;
 
 public class ColorPickerDialog extends AlertDialog implements SeekBar.OnSeekBarChangeListener {
-    protected ColorPickerDialog(Context context, String title, SharedPreferences prefs, String colorPref, Runnable onChanged) {
+    protected ColorPickerDialog(final Context context, final String title, final SharedPreferences prefs,
+                                final String colorPref, final int defaultColor, Runnable onChanged) {
         super(context);
         setTitle(title);
         View view = getLayoutInflater().inflate(R.layout.color_dialog, null);
@@ -54,42 +54,31 @@ public class ColorPickerDialog extends AlertDialog implements SeekBar.OnSeekBarC
 
         // init with correct values
         // using onShowListener?
-        setOnShowListener(new OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialogInterface) {
-                int color = prefs.getInt(colorPref, 0);
-                mSeekBarRed.setProgress(Color.red(color));
-                mSeekBarGreen.setProgress(Color.green(color));
-                mSeekBarBlue.setProgress(Color.blue(color));
-                setHeaderText(color);
-            }
+        setOnShowListener(dialogInterface -> {
+            int color = prefs.getInt(colorPref, defaultColor);
+            mSeekBarRed.setProgress(Color.red(color));
+            mSeekBarGreen.setProgress(Color.green(color));
+            mSeekBarBlue.setProgress(Color.blue(color));
+            setHeaderText(color);
         });
 
         // set on ok and on cancel listeners
-        setButton(BUTTON_NEGATIVE, context.getText(android.R.string.cancel), new OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dismiss();
-                    }
-                });
-        setButton(BUTTON_POSITIVE, context.getText(android.R.string.ok), new OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                final int value = Color.rgb(
-                        mSeekBarRed.getProgress(),
-                        mSeekBarGreen.getProgress(),
-                        mSeekBarBlue.getProgress());
-                prefs.edit().putInt(colorPref, value).apply();
-                onChanged.run();
-                dismiss();
-            }
+        setButton(BUTTON_NEGATIVE, context.getText(android.R.string.cancel), (dialogInterface, i) -> dismiss());
+        setButton(BUTTON_POSITIVE, context.getText(android.R.string.ok), (dialogInterface, i) -> {
+            final int value = Color.rgb(
+                    mSeekBarRed.getProgress(),
+                    mSeekBarGreen.getProgress(),
+                    mSeekBarBlue.getProgress());
+            prefs.edit().putInt(colorPref, value).apply();
+            onChanged.run();
+            dismiss();
         });
     }
 
-    private TextView mValueView;
-    private SeekBar mSeekBarRed;
-    private SeekBar mSeekBarGreen;
-    private SeekBar mSeekBarBlue;
+    private final TextView mValueView;
+    private final SeekBar mSeekBarRed;
+    private final SeekBar mSeekBarGreen;
+    private final SeekBar mSeekBarBlue;
 
     @Override
     public void onProgressChanged(final SeekBar seekBar, final int progress, final boolean fromUser) {

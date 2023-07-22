@@ -557,7 +557,11 @@ public class KeyboardView extends View {
                     else
                         icon.clearColorFilter();
                 } else if (key.isShift()) {
-                    if (keyboard.mId.mElementId == KeyboardId.ELEMENT_ALPHABET_MANUAL_SHIFTED || keyboard.mId.mElementId == KeyboardId.ELEMENT_ALPHABET_SHIFT_LOCKED)
+                    if (keyboard.mId.mElementId == KeyboardId.ELEMENT_ALPHABET_MANUAL_SHIFTED
+                            || keyboard.mId.mElementId == KeyboardId.ELEMENT_ALPHABET_SHIFT_LOCKED
+                            || keyboard.mId.mElementId == KeyboardId.ELEMENT_ALPHABET_AUTOMATIC_SHIFTED
+                            || keyboard.mId.mElementId == KeyboardId.ELEMENT_ALPHABET_SHIFT_LOCK_SHIFTED
+                    )
                         icon.setColorFilter(accentColorFilter);
                     else
                         icon.setColorFilter(keyTextColorFilter);
