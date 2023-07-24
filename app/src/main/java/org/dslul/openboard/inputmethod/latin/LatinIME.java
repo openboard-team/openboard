@@ -42,6 +42,7 @@ import android.util.SparseArray;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Display;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
@@ -165,6 +166,9 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     // Working variable for {@link #startShowingInputView()} and
     // {@link #onEvaluateInputViewShown()}.
     private boolean mIsExecutingStartShowingInputView;
+
+    // Used for re-initialize keyboard layout after onConfigurationChange.
+     @Nullable private Context mDisplayContext;	
 
     // Object for reacting to adding/removing a dictionary pack.
     private final BroadcastReceiver mDictionaryPackInstallReceiver =
@@ -626,6 +630,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         KeyboardSwitcher.init(this);
         AudioAndHapticFeedbackManager.init(this);
         AccessibilityUtils.init(this);
+	mDisplayContext = getDisplayContext();
         mStatsUtilsManager.onCreate(this /* context */, mDictionaryFacilitator);
 		EmojiSearch.init(this);
         super.onCreate();
@@ -823,6 +828,44 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         mKeyboardSwitcher.updateKeyboardTheme();
         super.onConfigurationChanged(conf);
     }
+
+    @Override
+     public void onInitializeInterface() {
+     mDisplayContext = getDisplayContext();
+         mKeyboardSwitcher.updateKeyboardTheme(mDisplayContext);
+     }
+
+     /**
+      * Returns the context object whose resources are adjusted to match the metrics of the display.
+      *
+      * Note that before {@link android.os.Build.VERSION_CODES#KITKAT}, there is no way to support
+      * multi-display scenarios, so the context object will just return the IME context itself.
+      *
+      * With initiating multi-display APIs from {@link android.os.Build.VERSION_CODES#KITKAT}, the
+      * context object has to return with re-creating the display context according the metrics
+      * of the display in runtime.
+      *
+      * Starts from {@link android.os.Build.VERSION_CODES#S_V2}, the returning context object has
+      * became to IME context self since it ends up capable of updating its resources internally.
+      *
+      * @see android.content.Context#createDisplayContext(Display)
+      */
+     private @NonNull Context getDisplayContext() {
+         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+             // createDisplayContext is not available.
+             return this;
+         }
+         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S_V2) {
+             // IME context sources is now managed by WindowProviderService from Android 12L.
+             return this;
+         }
+         // An issue in Q that non-activity components Resources / DisplayMetrics in
+         // Context doesn't well updated when the IME window moving to external display.
+         // Currently we do a workaround is to create new display context directly and re-init
+         // keyboard layout with this context.
+         final WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+         return createDisplayContext(wm.getDefaultDisplay());
+     }
 
     @Override
     public View onCreateInputView() {
