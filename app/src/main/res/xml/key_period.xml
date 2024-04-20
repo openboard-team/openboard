@@ -24,7 +24,15 @@
     <switch>
         <case
             latin:keyboardLayoutSet="dvorak"
-        >
+            >
+            <Key
+                latin:keySpec="z"
+                latin:keyLabelFlags="hasPopupHint"
+                latin:moreKeys="!text/morekeys_punctuation,!text/morekeys_z" />
+        </case>
+        <case
+            latin:keyboardLayoutSet="br_nativo"
+            >
             <Key
                 latin:keySpec="z"
                 latin:keyLabelFlags="hasPopupHint"

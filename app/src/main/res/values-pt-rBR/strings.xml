@@ -164,6 +164,7 @@
     <string name="subtype_with_layout_en_GB">Inglês (Reino Unido) <xliff:g id="KEYBOARD_LAYOUT" example="QWERTY">%s</xliff:g></string>
     <string name="subtype_with_layout_en_US">Inglês (EUA) <xliff:g id="KEYBOARD_LAYOUT" example="QWERTY">%s</xliff:g></string>
     <string name="subtype_with_layout_hi_ZZ">Hindi-inglês <xliff:g id="KEYBOARD_LAYOUT" example="QWERTY">%s</xliff:g></string>
+    <string name="subtype_with_layout_pt_BRNT"><xliff:g id="KEYBOARD_LAYOUT" example="QWERTY">%s</xliff:g> (Nativo)</string>
     <string name="subtype_no_language">Nenhum idioma (Alfabeto)</string>
     <string name="subtype_no_language_qwerty">Alfabeto (QWERTY)</string>
     <string name="setup_step1_finished_instruction"><xliff:g id="APPLICATION_NAME" example="Android Keyboard">%s</xliff:g> já está ativado nas configurações de \'Idiomas e Entrada\'. Esta etapa já está concluída. Vamos avançar para a próxima!</string>

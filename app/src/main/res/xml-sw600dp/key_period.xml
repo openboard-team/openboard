@@ -26,7 +26,14 @@
     <switch>
         <case
             latin:keyboardLayoutSet="dvorak"
-        >
+            >
+            <Key
+                latin:keySpec="\?"
+                latin:moreKeys="!text/morekeys_tablet_period,!text/morekeys_question" />
+        </case>
+        <case
+            latin:keyboardLayoutSet="br_nativo"
+            >
             <Key
                 latin:keySpec="\?"
                 latin:moreKeys="!text/morekeys_tablet_period,!text/morekeys_question" />

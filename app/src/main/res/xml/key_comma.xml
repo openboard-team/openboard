@@ -24,10 +24,19 @@
     <switch>
         <case
             latin:keyboardLayoutSet="dvorak"
-        >
+            >
             <Key
                 latin:keySpec="q"
                 latin:moreKeys="!text/morekeys_q,%"
+                latin:backgroundType="normal"
+                latin:keyStyle="settingsMoreKeysStyle" />
+        </case>
+        <case
+            latin:keyboardLayoutSet="br_nativo"
+            >
+            <Key
+                latin:keySpec="y"
+                latin:moreKeys="!text/morekeys_y,%"
                 latin:backgroundType="normal"
                 latin:keyStyle="settingsMoreKeysStyle" />
         </case>

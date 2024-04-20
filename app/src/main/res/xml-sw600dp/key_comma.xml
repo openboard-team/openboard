@@ -38,7 +38,15 @@
         </case>
         <case
             latin:keyboardLayoutSet="dvorak"
-        >
+            >
+            <Key
+                latin:keySpec="!"
+                latin:moreKeys="!text/morekeys_exclamation,%"
+                latin:keyStyle="settingsMoreKeysStyle" />
+        </case>
+        <case
+            latin:keyboardLayoutSet="br_nativo"
+            >
             <Key
                 latin:keySpec="!"
                 latin:moreKeys="!text/morekeys_exclamation,%"
