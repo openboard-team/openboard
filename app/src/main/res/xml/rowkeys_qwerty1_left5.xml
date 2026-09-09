@@ -24,10 +24,12 @@
     <switch>
         <case
             latin:numberRowEnabled="true">
+            <!-- "%" is already available on the "f" key (row 2); offer the otherwise
+                 missing "_" here instead. -->
             <Key
                 latin:keySpec="!text/keyspec_q"
-                latin:keyHintLabel="%"
-                latin:additionalMoreKeys="%"
+                latin:keyHintLabel="_"
+                latin:additionalMoreKeys="_"
                 latin:moreKeys="!text/morekeys_q"/>
             <Key
                 latin:keySpec="!text/keyspec_w"

@@ -19,10 +19,12 @@
     <switch>
         <case
             latin:numberRowEnabled="true">
+            <!-- "%" is already available on a row 2 key; offer the otherwise
+                 missing "_" here instead. -->
             <Key
                 latin:keySpec="b"
-                latin:keyHintLabel="%"
-                latin:additionalMoreKeys="%"/>
+                latin:keyHintLabel="_"
+                latin:additionalMoreKeys="_"/>
             <Key
                 latin:keySpec="&#xE9;"
                 latin:keyHintLabel="\\"
