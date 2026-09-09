@@ -21,8 +21,17 @@
 <merge
     xmlns:latin="http://schemas.android.com/apk/res-auto"
 >
-    <Key
-        latin:keySpec="!text/keyspec_south_slavic_row3_1" />
+    <switch>
+        <!-- The Serbian alphabet has exactly 30 letters, all of which are already
+             present on the other keys of this layout: ѕ (Dze) belongs to Macedonian
+             only, so Serbian gets no key here (issue #299). -->
+        <case
+            latin:languageCode="sr" />
+        <default>
+            <Key
+                latin:keySpec="!text/keyspec_south_slavic_row3_1" />
+        </default>
+    </switch>
     <!-- U+045F: "џ" CYRILLIC SMALL LETTER DZHE -->
     <Key
         latin:keySpec="&#x045F;" />
