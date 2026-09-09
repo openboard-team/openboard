@@ -107,13 +107,19 @@ public final class SubtypeLocaleUtils {
             sKeyboardLayoutToDisplayNameMap.put(layoutName, layoutDisplayNames[i]);
             final String resourceName = SUBTYPE_NAME_RESOURCE_GENERIC_PREFIX + layoutName;
             final int resId = res.getIdentifier(resourceName, null, RESOURCE_PACKAGE_NAME);
-            sKeyboardLayoutToNameIdsMap.put(layoutName, resId);
+            // A resource id of 0 means the string doesn't exist; don't register it so callers
+            // fall back to a generated display name instead of crashing on getString(0).
+            if (resId != 0) {
+                sKeyboardLayoutToNameIdsMap.put(layoutName, resId);
+            }
             // Register subtype name resource id of "No language" with key "zz_<layout>"
             final String noLanguageResName = SUBTYPE_NAME_RESOURCE_NO_LANGUAGE_PREFIX + layoutName;
             final int noLanguageResId = res.getIdentifier(
                     noLanguageResName, null, RESOURCE_PACKAGE_NAME);
             final String key = getNoLanguageLayoutKey(layoutName);
-            sKeyboardLayoutToNameIdsMap.put(key, noLanguageResId);
+            if (noLanguageResId != 0) {
+                sKeyboardLayoutToNameIdsMap.put(key, noLanguageResId);
+            }
         }
 
         final String[] exceptionalLocaleInRootLocale = res.getStringArray(
@@ -122,7 +128,9 @@ public final class SubtypeLocaleUtils {
             final String localeString = exceptionalLocaleInRootLocale[i];
             final String resourceName = SUBTYPE_NAME_RESOURCE_IN_ROOT_LOCALE_PREFIX + localeString;
             final int resId = res.getIdentifier(resourceName, null, RESOURCE_PACKAGE_NAME);
-            sExceptionalLocaleDisplayedInRootLocale.put(localeString, resId);
+            if (resId != 0) {
+                sExceptionalLocaleDisplayedInRootLocale.put(localeString, resId);
+            }
         }
 
         final String[] exceptionalLocales = res.getStringArray(
@@ -131,12 +139,18 @@ public final class SubtypeLocaleUtils {
             final String localeString = exceptionalLocales[i];
             final String resourceName = SUBTYPE_NAME_RESOURCE_PREFIX + localeString;
             final int resId = res.getIdentifier(resourceName, null, RESOURCE_PACKAGE_NAME);
-            sExceptionalLocaleToNameIdsMap.put(localeString, resId);
             final String resourceNameWithLayout =
                     SUBTYPE_NAME_RESOURCE_WITH_LAYOUT_PREFIX + localeString;
             final int resIdWithLayout = res.getIdentifier(
                     resourceNameWithLayout, null, RESOURCE_PACKAGE_NAME);
-            sExceptionalLocaleToWithLayoutNameIdsMap.put(localeString, resIdWithLayout);
+            // Only treat a locale as exceptional when both of its dedicated name strings
+            // exist. isExceptionalLocale() checks sExceptionalLocaleToNameIdsMap while
+            // getSubtypeNameId() reads sExceptionalLocaleToWithLayoutNameIdsMap, so the two
+            // maps must stay in sync to avoid crashes on missing resources.
+            if (resId != 0 && resIdWithLayout != 0) {
+                sExceptionalLocaleToNameIdsMap.put(localeString, resId);
+                sExceptionalLocaleToWithLayoutNameIdsMap.put(localeString, resIdWithLayout);
+            }
         }
 
         final String[] keyboardLayoutSetMap = res.getStringArray(
@@ -220,7 +234,7 @@ public final class SubtypeLocaleUtils {
         }
 
         final String displayName;
-        if (exceptionalNameResId != null) {
+        if (exceptionalNameResId != null && exceptionalNameResId != 0) {
             final RunInLocale<String> getExceptionalName = new RunInLocale<String>() {
                 @Override
                 protected String job(final Resources res) {
