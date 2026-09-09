@@ -1458,10 +1458,13 @@ public final class InputLogic {
 
     private void performAdditionToUserHistoryDictionary(final SettingsValues settingsValues,
             final String suggestion, @Nonnull final NgramContext ngramContext) {
-        // If correction is not enabled, we don't add words to the user history dictionary.
-        // That's to avoid unintended additions in some sensitive fields, or fields that
-        // expect to receive non-words.
-        if (!settingsValues.mAutoCorrectionEnabledPerUserSettings
+        // Only add words to the user history dictionary when the user benefits from it,
+        // i.e. when auto-correction or suggestions are enabled. This keeps the old
+        // behaviour of not learning in sensitive fields or fields that expect to receive
+        // non-words (both disable suggestions), while still learning new words when the
+        // user has turned off auto-correction but kept suggestions on (issue #726).
+        if ((!settingsValues.mAutoCorrectionEnabledPerUserSettings
+                && !settingsValues.isSuggestionsEnabledPerUserSettings())
             || settingsValues.mIncognitoModeEnabled)
             return;
         if (mConnection.hasSlowInputConnection()) {
