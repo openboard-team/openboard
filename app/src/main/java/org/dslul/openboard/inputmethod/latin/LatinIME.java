@@ -828,6 +828,12 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public void setInputView(final View view) {
         super.setInputView(view);
         mInputView = view;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            // The keyboard has its own light/dark themes; without this opt-out the
+            // system's Force Dark inverts the light themes' colors and renders the
+            // keyboard unusable (issue #202).
+            view.setForceDarkAllowed(false);
+        }
         mInsetsUpdater = ViewOutlineProviderCompatUtils.setInsetsOutlineProvider(view);
         updateSoftInputWindowLayoutParameters();
         mSuggestionStripView = view.findViewById(R.id.suggestion_strip_view);
