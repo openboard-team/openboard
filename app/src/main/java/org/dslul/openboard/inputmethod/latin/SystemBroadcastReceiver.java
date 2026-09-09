@@ -23,6 +23,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Process;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
@@ -107,9 +108,14 @@ public final class SystemBroadcastReceiver extends BroadcastReceiver {
             Log.i(TAG, "toggleAppIcon() : FLAG_SYSTEM = " + isSystemApp);
         }
         final SharedPreferences prefs = DeviceProtectedUtils.getSharedPreferences(context);
+        // Since Android 10 launchers show a synthesized entry for apps that disable their
+        // only launcher activity, so hiding the icon has no effect. Force the component
+        // back on there, which also repairs a state left behind by older versions.
+        final boolean showIcon = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+                || Settings.readShowSetupWizardIcon(prefs, context);
         context.getPackageManager().setComponentEnabledSetting(
                 new ComponentName(context, SetupActivity.class),
-                Settings.readShowSetupWizardIcon(prefs, context)
+                showIcon
                         ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
                         : PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                 PackageManager.DONT_KILL_APP);

@@ -19,6 +19,7 @@ package org.dslul.openboard.inputmethod.latin.settings;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 
 import org.dslul.openboard.inputmethod.latin.AudioAndHapticFeedbackManager;
@@ -54,6 +55,13 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
 
         if (!Settings.isInternal(prefs)) {
             removePreference(Settings.SCREEN_DEBUG);
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            // Since Android 10 the platform ignores attempts of non-system apps to hide
+            // their own launcher icon: the launcher shows a synthesized entry instead.
+            // The toggle would do nothing, so don't offer it.
+            removePreference(Settings.PREF_SHOW_SETUP_WIZARD_ICON);
         }
 
         setupKeyLongpressTimeoutSettings();
@@ -101,7 +109,8 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
 
     @Override
     public void onSharedPreferenceChanged(final SharedPreferences prefs, final String key) {
-        if (key.equals(Settings.PREF_SHOW_SETUP_WIZARD_ICON)) {
+        if (key.equals(Settings.PREF_SHOW_SETUP_WIZARD_ICON)
+                && Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             SystemBroadcastReceiver.toggleAppIcon(getActivity());
         }
     }
