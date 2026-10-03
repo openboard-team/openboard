@@ -2,6 +2,7 @@ package org.dslul.openboard.inputmethod.latin.ciphers;
 
 /** Adds or removes deterministic Zalgo combining marks. */
 public final class ZalgoCipher implements MessageCipher {
+    private static final int MAX_INTENSITY = 4096;
     private static final char[] MARKS = {
             '\u030d', '\u030e', '\u0304', '\u0305', '\u033f', '\u0311', '\u0306', '\u0310',
             '\u0352', '\u0357', '\u0351', '\u0307', '\u0308', '\u030a', '\u0342', '\u0343',
@@ -18,21 +19,23 @@ public final class ZalgoCipher implements MessageCipher {
     private final int mIntensity;
 
     public ZalgoCipher(final int intensity) {
-        mIntensity = Math.max(0, intensity);
+        mIntensity = Math.min(MAX_INTENSITY, Math.max(0, intensity));
     }
 
     @Override
     public String encrypt(final String input) {
-        final StringBuilder output = new StringBuilder(
-                input.length() * Math.max(1, mIntensity));
-        for (int i = 0; i < input.length(); i++) {
-            final char c = input.charAt(i);
-            output.append(c);
-            if (Character.isWhitespace(c) || isCombiningMark(c)) {
+        final StringBuilder output = new StringBuilder(input.length());
+        int characterIndex = 0;
+        for (int offset = 0; offset < input.length(); characterIndex++) {
+            final int codePoint = input.codePointAt(offset);
+            output.appendCodePoint(codePoint);
+            offset += Character.charCount(codePoint);
+            if (Character.isWhitespace(codePoint) || isCombiningMark(codePoint)) {
                 continue;
             }
             for (int markIndex = 0; markIndex < mIntensity; markIndex++) {
-                output.append(MARKS[Math.abs(c + i * 31 + markIndex * 17) % MARKS.length]);
+                output.append(MARKS[Math.floorMod(
+                        codePoint + characterIndex * 31 + markIndex * 17, MARKS.length)]);
             }
         }
         return output.toString();
@@ -41,17 +44,18 @@ public final class ZalgoCipher implements MessageCipher {
     @Override
     public String decrypt(final String input) {
         final StringBuilder output = new StringBuilder(input.length());
-        for (int i = 0; i < input.length(); i++) {
-            final char c = input.charAt(i);
-            if (!isCombiningMark(c)) {
-                output.append(c);
+        for (int offset = 0; offset < input.length();) {
+            final int codePoint = input.codePointAt(offset);
+            offset += Character.charCount(codePoint);
+            if (!isCombiningMark(codePoint)) {
+                output.appendCodePoint(codePoint);
             }
         }
         return output.toString();
     }
 
-    private static boolean isCombiningMark(final char c) {
-        final int type = Character.getType(c);
+    private static boolean isCombiningMark(final int codePoint) {
+        final int type = Character.getType(codePoint);
         return type == Character.NON_SPACING_MARK
                 || type == Character.COMBINING_SPACING_MARK
                 || type == Character.ENCLOSING_MARK;

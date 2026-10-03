@@ -1571,7 +1571,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             recordDirectCipherAdvance(false);
             return null;
         }
-        final String input = String.valueOf((char)codePoint);
+        final String input = new String(Character.toChars(codePoint));
         final String output = transformDirectCipherInput(mode, input);
         final boolean advancePosition = shouldAdvanceDirectCipherPosition(mode, codePoint);
         if (advancePosition) {

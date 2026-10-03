@@ -12,7 +12,8 @@ import javax.crypto.spec.SecretKeySpec;
 
 /** Password-based AES-256-GCM authenticated encryption for arbitrary Unicode messages. */
 public final class AesGcmCipher implements MessageCipher {
-    private static final String PREFIX = "OB-AES-GCM-1:";
+    private static final String PREFIX = "STEG-AES-GCM-1:";
+    private static final String LEGACY_PREFIX = "OB-AES-GCM-1:";
     private static final int SALT_BYTES = 16;
     private static final int NONCE_BYTES = 12;
     private static final int KEY_BITS = 256;
@@ -46,11 +47,12 @@ public final class AesGcmCipher implements MessageCipher {
 
     @Override
     public String decrypt(final String input) {
-        if (input == null || !input.startsWith(PREFIX)) {
-            throw new IllegalArgumentException("Not an OpenBoard AES-GCM message");
+        final String prefix = getPrefix(input);
+        if (prefix == null) {
+            throw new IllegalArgumentException("Not a Steganographia AES-GCM message");
         }
         try {
-            final byte[] payload = CipherBase64.decode(input.substring(PREFIX.length()));
+            final byte[] payload = CipherBase64.decode(input.substring(prefix.length()));
             if (payload.length < SALT_BYTES + NONCE_BYTES + TAG_BITS / 8) {
                 throw new IllegalArgumentException("AES-GCM message is truncated");
             }
@@ -65,6 +67,13 @@ public final class AesGcmCipher implements MessageCipher {
             throw new IllegalArgumentException("Wrong password or damaged AES-GCM message",
                     exception);
         }
+    }
+
+    private static String getPrefix(final String input) {
+        if (input != null && input.startsWith(PREFIX)) {
+            return PREFIX;
+        }
+        return input != null && input.startsWith(LEGACY_PREFIX) ? LEGACY_PREFIX : null;
     }
 
     private SecretKeySpec deriveKey(final byte[] salt) throws GeneralSecurityException {
