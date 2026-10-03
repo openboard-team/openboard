@@ -65,6 +65,24 @@ import org.dslul.openboard.inputmethod.keyboard.KeyboardSwitcher;
 import org.dslul.openboard.inputmethod.keyboard.MainKeyboardView;
 import org.dslul.openboard.inputmethod.latin.Suggest.OnGetSuggestedWordsCallback;
 import org.dslul.openboard.inputmethod.latin.SuggestedWords.SuggestedWordInfo;
+import org.dslul.openboard.inputmethod.latin.ciphers.A1Z26Cipher;
+import org.dslul.openboard.inputmethod.latin.ciphers.AffineCipher;
+import org.dslul.openboard.inputmethod.latin.ciphers.AtbashCipher;
+import org.dslul.openboard.inputmethod.latin.ciphers.BaconianCipher;
+import org.dslul.openboard.inputmethod.latin.ciphers.CaesarCipher;
+import org.dslul.openboard.inputmethod.latin.ciphers.EnigmaCipher;
+import org.dslul.openboard.inputmethod.latin.ciphers.GronsfeldCipher;
+import org.dslul.openboard.inputmethod.latin.ciphers.DiplomaticRedCipher;
+import org.dslul.openboard.inputmethod.latin.ciphers.MessageCipher;
+import org.dslul.openboard.inputmethod.latin.ciphers.MorseCipher;
+import org.dslul.openboard.inputmethod.latin.ciphers.PolybiusSquareCipher;
+import org.dslul.openboard.inputmethod.latin.ciphers.PositionedMessageCipher;
+import org.dslul.openboard.inputmethod.latin.ciphers.PurpleCipher;
+import org.dslul.openboard.inputmethod.latin.ciphers.QuagmireCipher;
+import org.dslul.openboard.inputmethod.latin.ciphers.Rot47Cipher;
+import org.dslul.openboard.inputmethod.latin.ciphers.TrithemiusCipher;
+import org.dslul.openboard.inputmethod.latin.ciphers.VigenereCipher;
+import org.dslul.openboard.inputmethod.latin.ciphers.ZalgoCipher;
 import org.dslul.openboard.inputmethod.latin.common.Constants;
 import org.dslul.openboard.inputmethod.latin.common.CoordinateUtils;
 import org.dslul.openboard.inputmethod.latin.common.InputPointers;
@@ -206,6 +224,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     final RestartAfterDeviceUnlockReceiver mRestartAfterDeviceUnlockReceiver = new RestartAfterDeviceUnlockReceiver();
 
     private AlertDialog mOptionsDialog;
+    private int mDirectCipherPosition;
+    private int mDirectCipherExpectedCursorPosition = -1;
+    private String mDirectCipherMode;
+    private final ArrayList<Boolean> mDirectCipherAdvanceHistory = new ArrayList<>();
 
     private final boolean mIsHardwareAcceleratedDrawingEnabled;
 
@@ -879,6 +901,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     void onStartInputInternal(final EditorInfo editorInfo, final boolean restarting) {
         super.onStartInput(editorInfo, restarting);
+        resetDirectCipherState();
+        if (mSuggestionStripView != null) {
+            mSuggestionStripView.dismissCipherPopup();
+        }
 
         // If the primary hint language does not match the current subtype language, then try
         // to switch to the primary hint language.
@@ -1082,6 +1108,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     void onFinishInputInternal() {
         super.onFinishInput();
+        resetDirectCipherState();
+        if (mSuggestionStripView != null) {
+            mSuggestionStripView.dismissCipherPopup();
+        }
 
         mDictionaryFacilitator.onFinishInput(this);
         final MainKeyboardView mainKeyboardView = mKeyboardSwitcher.getMainKeyboardView();
@@ -1475,11 +1505,312 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         // TODO: We should reconsider which coordinate system should be used to represent
         // keyboard event. Also we should pull this up -- LatinIME has no business doing
         // this transformation, it should be done already before calling onEvent.
+        if (hasSuggestionStripView() && mSuggestionStripView.handleCipherCodeInput(codePoint)) {
+            return;
+        }
+        if (codePoint == Constants.CODE_DELETE) {
+            rewindDirectCipherStateForDelete();
+        } else if (codePoint == Constants.CODE_ENTER) {
+            resetDirectCipherState();
+        }
         final int keyX = mainKeyboardView.getKeyX(x);
         final int keyY = mainKeyboardView.getKeyY(y);
-        final Event event = createSoftwareKeypressEvent(getCodePointForKeyboard(codePoint),
-                keyX, keyY, isKeyRepeat);
+        final int directCipherCursorBeforeInput =
+                mInputLogic.mConnection.getExpectedSelectionStart();
+        if (codePoint > 0 && mDirectCipherExpectedCursorPosition >= 0
+                && directCipherCursorBeforeInput != mDirectCipherExpectedCursorPosition) {
+            resetDirectCipherState();
+        }
+        final String directCipherText = getDirectCipherText(codePoint);
+        if (directCipherText != null) {
+            onTextInput(directCipherText);
+            if (directCipherCursorBeforeInput >= 0) {
+                mDirectCipherExpectedCursorPosition = directCipherCursorBeforeInput
+                        + directCipherText.length();
+            }
+            return;
+        }
+        final Event event = createSoftwareKeypressEvent(
+                getCodePointForKeyboard(codePoint), keyX, keyY, isKeyRepeat);
         onEvent(event);
+        if (codePoint > 0 && directCipherCursorBeforeInput >= 0
+                && Settings.getInstance().getSharedPreferences()
+                        .getBoolean(Settings.PREF_CIPHER_DIRECT_INPUT, false)) {
+            mDirectCipherExpectedCursorPosition = directCipherCursorBeforeInput
+                    + Character.charCount(codePoint);
+        }
+    }
+
+    private String getDirectCipherText(final int codePoint) {
+        if (codePoint <= 0) {
+            return null;
+        }
+        if (!Settings.getInstance().getSharedPreferences()
+                .getBoolean(Settings.PREF_CIPHER_DIRECT_INPUT, false)) {
+            resetDirectCipherState();
+            return null;
+        }
+        final String storedMode = Settings.getInstance().getSharedPreferences()
+                .getString(Settings.PREF_CIPHER_DIRECT_MODE, Settings.CIPHER_MODE_CAESAR);
+        final String mode = getSupportedDirectCipherMode(storedMode);
+        if (!mode.equals(storedMode)) {
+            Settings.getInstance().getSharedPreferences().edit()
+                    .putString(Settings.PREF_CIPHER_DIRECT_MODE, mode).apply();
+        }
+        if (!mode.equals(mDirectCipherMode)) {
+            resetDirectCipherState();
+            mDirectCipherMode = mode;
+        }
+        if (codePoint == Constants.CODE_SPACE
+                && (Settings.CIPHER_MODE_MORSE.equals(mode)
+                        || Settings.CIPHER_MODE_BACONIAN.equals(mode))) {
+            recordDirectCipherAdvance(false);
+            return " / ";
+        }
+        if (!isDirectCipherConsumedCodePoint(mode, codePoint)) {
+            recordDirectCipherAdvance(false);
+            return null;
+        }
+        final String input = new String(Character.toChars(codePoint));
+        final String output = transformDirectCipherInput(mode, input);
+        final boolean advancePosition = shouldAdvanceDirectCipherPosition(mode, codePoint);
+        if (advancePosition) {
+            mDirectCipherPosition++;
+        }
+        recordDirectCipherAdvance(advancePosition);
+        return output;
+    }
+
+    private void resetDirectCipherState() {
+        mDirectCipherPosition = 0;
+        mDirectCipherExpectedCursorPosition = -1;
+        mDirectCipherAdvanceHistory.clear();
+    }
+
+    private String getSupportedDirectCipherMode(final String mode) {
+        if (Settings.CIPHER_MODE_RAIL_FENCE.equals(mode)
+                || Settings.CIPHER_MODE_COLUMNAR.equals(mode)
+                || Settings.CIPHER_MODE_AUTOKEY.equals(mode)
+                || Settings.CIPHER_MODE_BEAUFORT.equals(mode)
+                || Settings.CIPHER_MODE_SCYTALE.equals(mode)
+                || Settings.CIPHER_MODE_PLAYFAIR.equals(mode)
+                || Settings.CIPHER_MODE_BIFID.equals(mode)) {
+            return Settings.CIPHER_MODE_CAESAR;
+        }
+        return mode;
+    }
+
+    private void recordDirectCipherAdvance(final boolean advanced) {
+        mDirectCipherAdvanceHistory.add(advanced);
+    }
+
+    private void rewindDirectCipherStateForDelete() {
+        if (mInputLogic.mConnection.hasSelection()) {
+            resetDirectCipherState();
+            return;
+        }
+        final int cursorPosition = mInputLogic.mConnection.getExpectedSelectionStart();
+        if (mDirectCipherExpectedCursorPosition >= 0
+                && cursorPosition != mDirectCipherExpectedCursorPosition) {
+            resetDirectCipherState();
+            return;
+        }
+        if (mDirectCipherAdvanceHistory.isEmpty()) {
+            return;
+        }
+        final boolean advanced = mDirectCipherAdvanceHistory.remove(
+                mDirectCipherAdvanceHistory.size() - 1);
+        if (advanced) {
+            mDirectCipherPosition = Math.max(0, mDirectCipherPosition - 1);
+        }
+        if (cursorPosition >= 0) {
+            mDirectCipherExpectedCursorPosition = Math.max(0, cursorPosition - 1);
+        }
+    }
+
+    private boolean isDirectCipherConsumedCodePoint(final String mode, final int codePoint) {
+        if (Settings.CIPHER_MODE_MORSE.equals(mode)) {
+            return isAsciiLetter(codePoint) || (codePoint >= '0' && codePoint <= '9');
+        }
+        if (Settings.CIPHER_MODE_ROT47.equals(mode)) {
+            return codePoint >= '!' && codePoint <= '~';
+        }
+        if (Settings.CIPHER_MODE_ZALGO.equals(mode)) {
+            return codePoint > 0 && !Character.isWhitespace(codePoint);
+        }
+        if (Settings.CIPHER_MODE_CAESAR.equals(mode)) {
+            return CaesarCipher.supports(codePoint);
+        }
+        if (Settings.CIPHER_MODE_ATBASH.equals(mode)) {
+            return AtbashCipher.supports(codePoint);
+        }
+        if (Settings.CIPHER_MODE_VIGENERE.equals(mode)
+                || Settings.CIPHER_MODE_GRONSFELD.equals(mode)
+                || Settings.CIPHER_MODE_TRITHEMIUS.equals(mode)) {
+            return CaesarCipher.supports(codePoint);
+        }
+        return isAsciiLetter(codePoint);
+    }
+
+    private boolean shouldAdvanceDirectCipherPosition(final String mode, final int codePoint) {
+        if (!isAsciiLetter(codePoint)
+                && !Settings.CIPHER_MODE_VIGENERE.equals(mode)
+                && !Settings.CIPHER_MODE_GRONSFELD.equals(mode)
+                && !Settings.CIPHER_MODE_TRITHEMIUS.equals(mode)) {
+            return false;
+        }
+        return Settings.CIPHER_MODE_ENIGMA_M3.equals(mode)
+                || Settings.CIPHER_MODE_ENIGMA_M4.equals(mode)
+                || Settings.CIPHER_MODE_VIGENERE.equals(mode)
+                || Settings.CIPHER_MODE_QUAGMIRE_I.equals(mode)
+                || Settings.CIPHER_MODE_QUAGMIRE_II.equals(mode)
+                || Settings.CIPHER_MODE_QUAGMIRE_III.equals(mode)
+                || Settings.CIPHER_MODE_QUAGMIRE_IV.equals(mode)
+                || Settings.CIPHER_MODE_PURPLE.equals(mode)
+                || Settings.CIPHER_MODE_GRONSFELD.equals(mode)
+                || Settings.CIPHER_MODE_TRITHEMIUS.equals(mode);
+    }
+
+    private static boolean isAsciiLetter(final int codePoint) {
+        return (codePoint >= 'A' && codePoint <= 'Z') || (codePoint >= 'a' && codePoint <= 'z');
+    }
+
+    private String transformDirectCipherInput(final String mode, final String input) {
+        if (Settings.CIPHER_MODE_ENIGMA_M3.equals(mode)) {
+            return transformStatefulDirectCipher(createDirectEnigmaM3Cipher(), input);
+        }
+        if (Settings.CIPHER_MODE_ENIGMA_M4.equals(mode)) {
+            return transformStatefulDirectCipher(createDirectEnigmaM4Cipher(), input);
+        }
+        if (Settings.CIPHER_MODE_BACONIAN.equals(mode)) {
+            return new BaconianCipher().encrypt(input) + " ";
+        }
+        if (Settings.CIPHER_MODE_MORSE.equals(mode)) {
+            return new MorseCipher().encrypt(input) + " ";
+        }
+        if (Settings.CIPHER_MODE_QUAGMIRE_I.equals(mode)) {
+            return transformStatefulDirectCipher(createDirectQuagmireCipher(
+                    QuagmireCipher.Variant.I), input);
+        }
+        if (Settings.CIPHER_MODE_QUAGMIRE_II.equals(mode)) {
+            return transformStatefulDirectCipher(createDirectQuagmireCipher(
+                    QuagmireCipher.Variant.II), input);
+        }
+        if (Settings.CIPHER_MODE_QUAGMIRE_III.equals(mode)) {
+            return transformStatefulDirectCipher(createDirectQuagmireCipher(
+                    QuagmireCipher.Variant.III), input);
+        }
+        if (Settings.CIPHER_MODE_QUAGMIRE_IV.equals(mode)) {
+            return transformStatefulDirectCipher(createDirectQuagmireCipher(
+                    QuagmireCipher.Variant.IV), input);
+        }
+        if (Settings.CIPHER_MODE_ATBASH.equals(mode)) {
+            return new AtbashCipher().encrypt(input);
+        }
+        if (Settings.CIPHER_MODE_VIGENERE.equals(mode)) {
+            return transformStatefulDirectCipher(new VigenereCipher(
+                    Settings.getInstance().getSharedPreferences().getString(
+                            Settings.PREF_VIGENERE_KEYWORD, "KEY")), input);
+        }
+        if (Settings.CIPHER_MODE_AFFINE.equals(mode)) {
+            return new AffineCipher(
+                    Settings.getInstance().getSharedPreferences().getInt(Settings.PREF_AFFINE_A, 5),
+                    Settings.getInstance().getSharedPreferences().getInt(Settings.PREF_AFFINE_B, 8))
+                    .encrypt(input);
+        }
+        if (Settings.CIPHER_MODE_A1Z26.equals(mode)) {
+            return new A1Z26Cipher().encrypt(input) + " ";
+        }
+        if (Settings.CIPHER_MODE_POLYBIUS.equals(mode)) {
+            return new PolybiusSquareCipher(Settings.getInstance().getSharedPreferences()
+                    .getString(Settings.PREF_POLYBIUS_KEYWORD, "")).encrypt(input) + " ";
+        }
+        if (Settings.CIPHER_MODE_GRONSFELD.equals(mode)) {
+            return transformStatefulDirectCipher(new GronsfeldCipher(Settings.getInstance()
+                    .getSharedPreferences().getString(Settings.PREF_GRONSFELD_KEY, "31415")),
+                    input);
+        }
+        if (Settings.CIPHER_MODE_ROT47.equals(mode)) {
+            return new Rot47Cipher().encrypt(input);
+        }
+        if (Settings.CIPHER_MODE_TRITHEMIUS.equals(mode)) {
+            return transformStatefulDirectCipher(new TrithemiusCipher(), input);
+        }
+        if (Settings.CIPHER_MODE_ZALGO.equals(mode)) {
+            return new ZalgoCipher(Math.max(0, readInt(Settings.getInstance()
+                    .getSharedPreferences().getString(Settings.PREF_ZALGO_INTENSITY, "9"), 9)))
+                    .encrypt(input);
+        }
+        if (Settings.CIPHER_MODE_DIPLOMATIC_RED.equals(mode)) {
+            return new DiplomaticRedCipher(Settings.getInstance().getSharedPreferences()
+                    .getString(Settings.PREF_DIPLOMATIC_RED_KEYWORD, "DIPLOMATICRED"))
+                    .encrypt(input);
+        }
+        if (Settings.CIPHER_MODE_PURPLE.equals(mode)) {
+            return transformStatefulDirectCipher(new PurpleCipher(
+                    Settings.getInstance().getSharedPreferences().getString(
+                            Settings.PREF_PURPLE_PLUGBOARD, ""),
+                    Settings.getInstance().getSharedPreferences().getInt(
+                            Settings.PREF_PURPLE_POSITION, 0)), input);
+        }
+        final int shift = Settings.getInstance().getSharedPreferences()
+                .getInt(Settings.PREF_CAESAR_CIPHER_SHIFT, 3);
+        return new CaesarCipher(shift).encrypt(input);
+    }
+
+    private int readInt(final String input, final int defaultValue) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException ignored) {
+            return defaultValue;
+        }
+    }
+
+    private String transformStatefulDirectCipher(final MessageCipher cipher, final String input) {
+        if (cipher instanceof PositionedMessageCipher) {
+            return ((PositionedMessageCipher)cipher).encrypt(input, mDirectCipherPosition);
+        }
+        return cipher.encrypt(input);
+    }
+
+    private EnigmaCipher createDirectEnigmaM3Cipher() {
+        return EnigmaCipher.createM3(
+                Settings.getInstance().getSharedPreferences().getString(
+                        Settings.PREF_ENIGMA_M3_ROTORS, "I II III"),
+                Settings.getInstance().getSharedPreferences().getString(
+                        Settings.PREF_ENIGMA_M3_REFLECTOR, "B"),
+                Settings.getInstance().getSharedPreferences().getString(
+                        Settings.PREF_ENIGMA_M3_POSITIONS, "AAA"),
+                Settings.getInstance().getSharedPreferences().getString(
+                        Settings.PREF_ENIGMA_M3_RINGS, "AAA"),
+                Settings.getInstance().getSharedPreferences().getString(
+                        Settings.PREF_ENIGMA_M3_PLUGBOARD, ""));
+    }
+
+    private EnigmaCipher createDirectEnigmaM4Cipher() {
+        return EnigmaCipher.createM4(
+                Settings.getInstance().getSharedPreferences().getString(
+                        Settings.PREF_ENIGMA_M4_THIN_ROTOR, "Beta"),
+                Settings.getInstance().getSharedPreferences().getString(
+                        Settings.PREF_ENIGMA_M4_ROTORS, "I II III"),
+                Settings.getInstance().getSharedPreferences().getString(
+                        Settings.PREF_ENIGMA_M4_REFLECTOR, "B Thin"),
+                Settings.getInstance().getSharedPreferences().getString(
+                        Settings.PREF_ENIGMA_M4_POSITIONS, "AAAA"),
+                Settings.getInstance().getSharedPreferences().getString(
+                        Settings.PREF_ENIGMA_M4_RINGS, "AAAA"),
+                Settings.getInstance().getSharedPreferences().getString(
+                        Settings.PREF_ENIGMA_M4_PLUGBOARD, ""));
+    }
+
+    private QuagmireCipher createDirectQuagmireCipher(final QuagmireCipher.Variant variant) {
+        return new QuagmireCipher(variant,
+                Settings.getInstance().getSharedPreferences().getString(
+                        Settings.PREF_QUAGMIRE_PLAIN_KEYWORD, "KEYWORD"),
+                Settings.getInstance().getSharedPreferences().getString(
+                        Settings.PREF_QUAGMIRE_CIPHER_KEYWORD, "CIPHER"),
+                Settings.getInstance().getSharedPreferences().getString(
+                        Settings.PREF_QUAGMIRE_INDICATOR_KEYWORD, "KEY"));
     }
 
     // This method is public for testability of LatinIME, but also in the future it should
@@ -1608,10 +1939,13 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                         && currentSettingsValues.isSuggestionsEnabledPerUserSettings();
         final boolean shouldShowSuggestionsStripUnlessPassword = currentSettingsValues.mShowsVoiceInputKey
                 || currentSettingsValues.mShowsClipboardKey
+                || currentSettingsValues.mShowsCipherKey
                 || shouldShowSuggestionCandidates
                 || currentSettingsValues.isApplicationSpecifiedCompletionsOn();
         final boolean shouldShowSuggestionsStrip = shouldShowSuggestionsStripUnlessPassword
-                && (!currentSettingsValues.mInputAttributes.mIsPasswordField || currentSettingsValues.mShowsClipboardKey);
+                && (!currentSettingsValues.mInputAttributes.mIsPasswordField
+                        || currentSettingsValues.mShowsClipboardKey
+                        || currentSettingsValues.mShowsCipherKey);
         mSuggestionStripView.updateVisibility(shouldShowSuggestionsStrip, isFullscreenMode());
         if (!shouldShowSuggestionsStrip) {
             return;
@@ -1824,7 +2158,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         if (!ProductionFlags.IS_HARDWARE_KEYBOARD_SUPPORTED) {
             return super.onKeyUp(keyCode, keyEvent);
         }
-        final long keyIdentifier = keyEvent.getDeviceId() << 32 + keyEvent.getKeyCode();
+        final long keyIdentifier = ((long)keyEvent.getDeviceId() << 32)
+                | (keyEvent.getKeyCode() & 0xFFFFFFFFL);
         if (mInputLogic.mCurrentlyPressedHardwareKeys.remove(keyIdentifier)) {
             return true;
         }

@@ -190,8 +190,8 @@
     <string name="enable_clipboard_history">Habilitar historial del portapapeles</string>
     <string name="clipboard_history_retention_time">Tiempo para mantener el historial</string>
     <string name="abbreviation_unit_minutes"><xliff:g id="MINUTES">%s</xliff:g>min.</string>
-    <string name="spell_checker_service_name">Corrector ortográfico de OpenBoard</string>
-    <string name="android_spell_checker_settings">Ajustes del corrector ortográfico de OpenBoard</string>
+    <string name="spell_checker_service_name">Corrector ortográfico de Steganographia</string>
+    <string name="android_spell_checker_settings">Ajustes del corrector ortográfico de Steganographia</string>
     <string name="show_clipboard_key">Tecla de portapapeles</string>
     <string name="prefs_resize_keyboard">Habilitar cambiar de tamaño al teclado</string>
     <string name="prefs_keyboard_height_scale">Escala de altura del teclado</string>
@@ -224,7 +224,7 @@
     <string name="day_night_mode">Modo claro/oscuro automático</string>
     <string name="amoled_mode">Fondo oscuro (AMOLED)</string>
     <string name="amoled_mode_summary">Puede reducir el uso de energía dependiendo de la tecnología de pantalla del dispositivo</string>
-    <string name="ime_settings">Ajustes de OpenBoard</string>
+    <string name="ime_settings">Ajustes de Steganographia</string>
     <string name="settings_category_input">Entrada</string>
     <string name="settings_category_additional_keys">Teclas adicionales</string>
     <string name="settings_category_correction">Correcciones</string>

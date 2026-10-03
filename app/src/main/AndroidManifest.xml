@@ -14,8 +14,7 @@
      limitations under the License.
 -->
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="org.dslul.openboard.inputmethod.latin">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -26,17 +25,17 @@
          To use this, add the following line into calling application's AndroidManifest.xml
          <pre>
          {@code
-         <uses-permission android:name="org.dslul.openboard.inputmethod.latin.HIDE_SOFT_INPUT"/>
+         <uses-permission android:name="com.steganographia.keyboard.HIDE_SOFT_INPUT"/>
          }
          </pre>
          then call {@link android.content.Context#sendBroadcast(Intent)} as follows:
          <pre>
          {@code
-         sendBroadcast(new Intent("org.dslul.openboard.inputmethod.latin.HIDE_SOFT_INPUT")
-                 .setPackage("org.dslul.openboard.inputmethod.latin"));
+         sendBroadcast(new Intent("com.steganographia.keyboard.HIDE_SOFT_INPUT")
+                 .setPackage("com.steganographia.keyboard"));
          }
          </pre> -->
-    <permission android:name="org.dslul.openboard.inputmethod.latin.HIDE_SOFT_INPUT"
+    <permission android:name="com.steganographia.keyboard.HIDE_SOFT_INPUT"
                 android:protectionLevel="signature" />
 
     <application android:label="@string/english_ime_name"
@@ -138,7 +137,7 @@
 
         <receiver android:name="DictionaryPackInstallBroadcastReceiver" android:exported="false">
             <intent-filter>
-                <action android:name="org.dslul.openboard.inputmethod.dictionarypack.aosp.UNKNOWN_CLIENT" />
+                <action android:name="com.steganographia.keyboard.dictionarypack.UNKNOWN_CLIENT" />
             </intent-filter>
         </receiver>
 

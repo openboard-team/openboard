@@ -58,6 +58,42 @@
                     android:visibility="gone" />
             </FrameLayout>
         </org.dslul.openboard.inputmethod.compat.TabHostCompat>
+        <TextView
+            android:id="@+id/emoji_search_toggle"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/emoji_search_button"
+            android:textSize="22sp"
+            android:contentDescription="@string/emoji_search_hint" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/emoji_search_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="4dp"
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/emoji_search_query"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:hint="@string/emoji_search_hint"
+            android:textSize="18sp" />
+        <LinearLayout
+            android:id="@+id/emoji_search_results"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:orientation="horizontal" />
+        <LinearLayout
+            android:id="@+id/emoji_search_keyboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/emoji_keyboard_list"

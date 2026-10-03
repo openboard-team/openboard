@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="ime_settings">Configurações do OpenBoard</string>
+    <string name="ime_settings">Configurações do Steganographia</string>
     <string name="english_ime_input_options">Opções de entrada</string>
     <string name="vibrate_on_keypress">Vibrar ao tocar nas teclas</string>
     <string name="sound_on_keypress">Som ao tocar nas teclas</string>
@@ -130,8 +130,8 @@
     <string name="key_borders">Borda em teclas</string>
     <string name="amoled_mode">Fundo muito escuro</string>
     <string name="amoled_mode_summary">Reduzir o uso de energia (dependendo da tecnologia de tela do dispositivo)</string>
-    <string name="spell_checker_service_name">Corretor Ortográfico do OpenBoard</string>
-    <string name="android_spell_checker_settings">Configurar corretor ortográfico do OpenBoard</string>
+    <string name="spell_checker_service_name">Corretor Ortográfico do Steganographia</string>
+    <string name="android_spell_checker_settings">Configurar corretor ortográfico do Steganographia</string>
     <string name="use_contacts_for_spellchecking_option_title">Procurar nomes de contatos</string>
     <string name="settings_screen_accounts">Contas e Privacidade</string>
     <string name="popup_on_keypress">Mostrar pop-up ao tocar em teclas</string>

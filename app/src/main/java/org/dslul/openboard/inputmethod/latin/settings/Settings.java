@@ -85,6 +85,101 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
             "pref_show_emoji_key";
     public static final String PREF_SHOW_CLIPBOARD_KEY =
             "pref_show_clipboard_key";
+    public static final String PREF_SHOW_CIPHER_KEY =
+            "pref_show_cipher_key";
+    public static final String PREF_CAESAR_CIPHER_SHIFT =
+            "pref_caesar_cipher_shift";
+    public static final String PREF_CIPHER_DIRECT_INPUT =
+            "pref_cipher_direct_input";
+    public static final String PREF_CIPHER_DIRECT_MODE =
+            "pref_cipher_direct_mode";
+    public static final String CIPHER_MODE_CAESAR = "caesar";
+    public static final String CIPHER_MODE_ENIGMA_M3 = "enigma_m3";
+    public static final String CIPHER_MODE_ENIGMA_M4 = "enigma_m4";
+    public static final String CIPHER_MODE_BACONIAN = "baconian";
+    public static final String CIPHER_MODE_MORSE = "morse";
+    public static final String CIPHER_MODE_QUAGMIRE_I = "quagmire_i";
+    public static final String CIPHER_MODE_QUAGMIRE_II = "quagmire_ii";
+    public static final String CIPHER_MODE_QUAGMIRE_III = "quagmire_iii";
+    public static final String CIPHER_MODE_QUAGMIRE_IV = "quagmire_iv";
+    public static final String CIPHER_MODE_ATBASH = "atbash";
+    public static final String CIPHER_MODE_VIGENERE = "vigenere";
+    public static final String CIPHER_MODE_AFFINE = "affine";
+    public static final String CIPHER_MODE_DIPLOMATIC_RED = "diplomatic_red";
+    public static final String CIPHER_MODE_PURPLE = "purple";
+    public static final String CIPHER_MODE_A1Z26 = "a1z26";
+    public static final String CIPHER_MODE_RAIL_FENCE = "rail_fence";
+    public static final String CIPHER_MODE_COLUMNAR = "columnar";
+    public static final String CIPHER_MODE_POLYBIUS = "polybius";
+    public static final String CIPHER_MODE_AUTOKEY = "autokey";
+    public static final String CIPHER_MODE_BEAUFORT = "beaufort";
+    public static final String CIPHER_MODE_GRONSFELD = "gronsfeld";
+    public static final String CIPHER_MODE_SCYTALE = "scytale";
+    public static final String CIPHER_MODE_ROT47 = "rot47";
+    public static final String CIPHER_MODE_TRITHEMIUS = "trithemius";
+    public static final String CIPHER_MODE_PLAYFAIR = "playfair";
+    public static final String CIPHER_MODE_BIFID = "bifid";
+    public static final String CIPHER_MODE_ZALGO = "zalgo";
+    public static final String PREF_VIGENERE_KEYWORD =
+            "pref_vigenere_keyword";
+    public static final String PREF_AFFINE_A =
+            "pref_affine_a";
+    public static final String PREF_AFFINE_B =
+            "pref_affine_b";
+    public static final String PREF_RAIL_FENCE_RAILS =
+            "pref_rail_fence_rails";
+    public static final String PREF_COLUMNAR_KEYWORD =
+            "pref_columnar_keyword";
+    public static final String PREF_POLYBIUS_KEYWORD =
+            "pref_polybius_keyword";
+    public static final String PREF_AUTOKEY_KEYWORD =
+            "pref_autokey_keyword";
+    public static final String PREF_BEAUFORT_KEYWORD =
+            "pref_beaufort_keyword";
+    public static final String PREF_GRONSFELD_KEY =
+            "pref_gronsfeld_key";
+    public static final String PREF_SCYTALE_COLUMNS =
+            "pref_scytale_columns";
+    public static final String PREF_PLAYFAIR_KEYWORD =
+            "pref_playfair_keyword";
+    public static final String PREF_BIFID_KEYWORD =
+            "pref_bifid_keyword";
+    public static final String PREF_ZALGO_INTENSITY =
+            "pref_zalgo_intensity";
+    public static final String PREF_DIPLOMATIC_RED_KEYWORD =
+            "pref_diplomatic_red_keyword";
+    public static final String PREF_PURPLE_PLUGBOARD =
+            "pref_purple_plugboard";
+    public static final String PREF_PURPLE_POSITION =
+            "pref_purple_position";
+    public static final String PREF_ENIGMA_M3_ROTORS =
+            "pref_enigma_m3_rotors";
+    public static final String PREF_ENIGMA_M3_REFLECTOR =
+            "pref_enigma_m3_reflector";
+    public static final String PREF_ENIGMA_M3_POSITIONS =
+            "pref_enigma_m3_positions";
+    public static final String PREF_ENIGMA_M3_RINGS =
+            "pref_enigma_m3_rings";
+    public static final String PREF_ENIGMA_M3_PLUGBOARD =
+            "pref_enigma_m3_plugboard";
+    public static final String PREF_ENIGMA_M4_THIN_ROTOR =
+            "pref_enigma_m4_thin_rotor";
+    public static final String PREF_ENIGMA_M4_ROTORS =
+            "pref_enigma_m4_rotors";
+    public static final String PREF_ENIGMA_M4_REFLECTOR =
+            "pref_enigma_m4_reflector";
+    public static final String PREF_ENIGMA_M4_POSITIONS =
+            "pref_enigma_m4_positions";
+    public static final String PREF_ENIGMA_M4_RINGS =
+            "pref_enigma_m4_rings";
+    public static final String PREF_ENIGMA_M4_PLUGBOARD =
+            "pref_enigma_m4_plugboard";
+    public static final String PREF_QUAGMIRE_PLAIN_KEYWORD =
+            "pref_quagmire_plain_keyword";
+    public static final String PREF_QUAGMIRE_CIPHER_KEYWORD =
+            "pref_quagmire_cipher_keyword";
+    public static final String PREF_QUAGMIRE_INDICATOR_KEYWORD =
+            "pref_quagmire_indicator_keyword";
     public static final String PREF_INCLUDE_OTHER_IMES_IN_LANGUAGE_SWITCH_LIST =
             "pref_include_other_imes_in_language_switch_list";
     public static final String PREF_CUSTOM_INPUT_STYLES = "custom_input_styles";
@@ -210,6 +305,10 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         } finally {
             mSettingsValuesLock.unlock();
         }
+    }
+
+    public SharedPreferences getSharedPreferences() {
+        return mPrefs;
     }
 
     // TODO: Remove this method and add proxy method to SettingsValues.

@@ -1,8 +1,5 @@
-OpenBoard è una tastiera che rispetta la tua privacy, basata su AOSP e priva di dipendenze da binari Google.
+Steganographia è una tastiera Android orientata alla privacy con strumenti di cifratura integrati, digitazione trasformata diretta, ricerca emoji e layout alternativi.
 
-Ha le seguenti funzionalità:
- - correzione del testo
- - temi
- - emoji
+Include cifrari classici a scopo educativo e cifratura autenticata basata su password per messaggi completi. L'elaborazione avviene sul dispositivo.
 
-È possibile trovare il codice sorgente al seguente indirizzo: https://github.com/openboard-team/openboard
+Questa applicazione libera e open source incorpora materiali modificati da OpenBoard e AOSP LatinIME. Non è affiliata al progetto OpenBoard.

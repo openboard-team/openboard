@@ -1,1 +1,1 @@
-An opensource keyboard that does not spy on you!
+A privacy-focused keyboard with integrated cipher and encoding tools.

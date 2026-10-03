@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
+    namespace 'org.dslul.openboard.inputmethod.latin'
     compileSdkVersion 31
 
     defaultConfig {
-        applicationId "org.dslul.openboard.inputmethod.latin"
+        applicationId "com.steganographia.keyboard"
         minSdkVersion 19
         targetSdkVersion 31
         versionCode 19

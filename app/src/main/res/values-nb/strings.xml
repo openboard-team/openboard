@@ -191,11 +191,11 @@
     <string name="number_row_summary">Alltid vis tallraden</string>
     <string name="day_night_mode">Automatisk dag/nattmodus</string>
     <string name="prefs_long_press_keyboard_to_change_lang_summary">Langtrykke på mellomromstasten for inndatametode-valgmeny</string>
-    <string name="ime_settings">OpenBoard-innstillinger</string>
+    <string name="ime_settings">Steganographia-innstillinger</string>
     <string name="theme_variant">Draktvariant</string>
     <string name="subtype_no_language_colemak_dh">Alfabet (Colemak Mod-DH)</string>
-    <string name="spell_checker_service_name">OpenBoard-stavekontroll</string>
-    <string name="android_spell_checker_settings">Innstillinger for OpenBoard-stavekontroll</string>
+    <string name="spell_checker_service_name">Steganographia-stavekontroll</string>
+    <string name="android_spell_checker_settings">Innstillinger for Steganographia-stavekontroll</string>
     <string name="subtype_no_language_workman">Alfabet (Workman)</string>
     <string name="delete_swipe">Slettingsdragning</string>
     <string name="show_emoji_key">Emoji-tast</string>

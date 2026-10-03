@@ -91,6 +91,12 @@
             android:defaultValue="false"
             android:persistent="true" />
 
+        <CheckBoxPreference
+            android:key="pref_show_cipher_key"
+            android:title="@string/show_cipher_key"
+            android:defaultValue="false"
+            android:persistent="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/settings_category_clipboard_history">

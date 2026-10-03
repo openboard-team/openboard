@@ -53,6 +53,8 @@ import org.dslul.openboard.inputmethod.latin.settings.SettingsValues;
 import org.dslul.openboard.inputmethod.latin.utils.DeviceProtectedUtils;
 import org.dslul.openboard.inputmethod.latin.utils.ResourceUtils;
 
+import java.util.List;
+
 import org.jetbrains.annotations.NotNull;
 
 import static org.dslul.openboard.inputmethod.latin.common.Constants.NOT_A_COORDINATE;
@@ -92,6 +94,11 @@ public final class EmojiPalettesView extends LinearLayout
     private TabHostCompat mTabHost;
     private RecyclerView mEmojiRecyclerView;
     private EmojiCategoryPageIndicatorView mEmojiCategoryPageIndicatorView;
+    private TextView mEmojiSearchToggle;
+    private LinearLayout mEmojiSearchPanel;
+    private TextView mEmojiSearchQuery;
+    private LinearLayout mEmojiSearchResults;
+    private LinearLayout mEmojiSearchKeyboard;
 
     private KeyboardActionListener mKeyboardActionListener = KeyboardActionListener.EMPTY_LISTENER;
 
@@ -231,6 +238,8 @@ public final class EmojiPalettesView extends LinearLayout
                 mCategoryPageIndicatorColor, mCategoryPageIndicatorBackground);
         mEmojiLayoutParams.setCategoryPageIdViewProperties(mEmojiCategoryPageIndicatorView);
 
+        setupEmojiSearch();
+
         setCurrentCategoryAndPageId(mEmojiCategory.getCurrentCategoryId(), mEmojiCategory.getCurrentCategoryPageId(),
                 true /* force */);
         // Enable reselection after the first setCurrentCategoryAndPageId() init call
@@ -264,6 +273,110 @@ public final class EmojiPalettesView extends LinearLayout
         mSpacebar.setOnClickListener(this);
         mEmojiLayoutParams.setKeyProperties(mSpacebar);
         mSpacebarIcon = findViewById(R.id.emoji_keyboard_space_icon);
+    }
+
+    private void setupEmojiSearch() {
+        mEmojiSearchToggle = findViewById(R.id.emoji_search_toggle);
+        mEmojiSearchPanel = findViewById(R.id.emoji_search_panel);
+        mEmojiSearchQuery = findViewById(R.id.emoji_search_query);
+        mEmojiSearchResults = findViewById(R.id.emoji_search_results);
+        mEmojiSearchKeyboard = findViewById(R.id.emoji_search_keyboard);
+        mEmojiSearchToggle.setOnClickListener(v -> setEmojiSearchVisible(
+                mEmojiSearchPanel.getVisibility() != View.VISIBLE));
+        addEmojiSearchRow("qwertyuiop");
+        addEmojiSearchRow("asdfghjkl");
+        addEmojiSearchRow("zxcvbnm");
+        final LinearLayout controls = new LinearLayout(getContext());
+        controls.setGravity(android.view.Gravity.CENTER);
+        controls.addView(createSearchKey("space", v -> appendSearchQuery(" ")),
+                new LinearLayout.LayoutParams(0, dp(40), 3));
+        controls.addView(createSearchKey("⌫", v -> removeLastSearchCharacter()),
+                new LinearLayout.LayoutParams(0, dp(40), 1));
+        controls.addView(createSearchKey("clear", v -> setSearchQuery("")),
+                new LinearLayout.LayoutParams(0, dp(40), 1));
+        mEmojiSearchKeyboard.addView(controls);
+        updateEmojiSearchResults();
+    }
+
+    private void addEmojiSearchRow(final String characters) {
+        final LinearLayout row = new LinearLayout(getContext());
+        row.setGravity(android.view.Gravity.CENTER);
+        for (int i = 0; i < characters.length(); i++) {
+            final String character = String.valueOf(characters.charAt(i));
+            row.addView(createSearchKey(character, v -> appendSearchQuery(character)),
+                    new LinearLayout.LayoutParams(0, dp(40), 1));
+        }
+        mEmojiSearchKeyboard.addView(row);
+    }
+
+    private TextView createSearchKey(final String label, final OnClickListener listener) {
+        final TextView key = new TextView(getContext());
+        key.setText(label);
+        key.setGravity(android.view.Gravity.CENTER);
+        key.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+        key.setBackgroundResource(mFunctionalKeyBackgroundId);
+        key.setOnClickListener(listener);
+        final int margin = dp(1);
+        final LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, dp(40), 1);
+        params.setMargins(margin, margin, margin, margin);
+        key.setLayoutParams(params);
+        return key;
+    }
+
+    private void setEmojiSearchVisible(final boolean visible) {
+        mEmojiSearchPanel.setVisibility(visible ? View.VISIBLE : View.GONE);
+        mEmojiRecyclerView.setVisibility(visible ? View.GONE : View.VISIBLE);
+        mEmojiCategoryPageIndicatorView.setVisibility(visible ? View.GONE : View.VISIBLE);
+        mTabHost.setVisibility(visible ? View.INVISIBLE : View.VISIBLE);
+        if (visible) {
+            setSearchQuery("");
+        }
+    }
+
+    private void appendSearchQuery(final String text) {
+        setSearchQuery(mEmojiSearchQuery.getText().toString() + text);
+    }
+
+    private void removeLastSearchCharacter() {
+        final String query = mEmojiSearchQuery.getText().toString();
+        if (!query.isEmpty()) {
+            setSearchQuery(query.substring(0, query.offsetByCodePoints(query.length(), -1)));
+        }
+    }
+
+    private void setSearchQuery(final String query) {
+        mEmojiSearchQuery.setText(query);
+        updateEmojiSearchResults();
+    }
+
+    private void updateEmojiSearchResults() {
+        mEmojiSearchResults.removeAllViews();
+        final List<EmojiSearchCatalog.Result> results = EmojiSearchCatalog.search(
+                mEmojiSearchQuery.getText().toString(), 10);
+        if (results.isEmpty()) {
+            final TextView empty = new TextView(getContext());
+            empty.setText(mEmojiSearchQuery.length() == 0 ? "" :
+                    getResources().getString(R.string.emoji_search_no_results));
+            empty.setGravity(android.view.Gravity.CENTER);
+            mEmojiSearchResults.addView(empty,
+                    new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1));
+            return;
+        }
+        for (EmojiSearchCatalog.Result result : results) {
+            final TextView emoji = createSearchKey(result.mEmoji, v -> {
+                mKeyboardActionListener.onTextInput(result.mEmoji);
+                AudioAndHapticFeedbackManager.getInstance().performHapticAndAudioFeedback(
+                        Constants.CODE_OUTPUT_TEXT, this);
+            });
+            emoji.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
+            mEmojiSearchResults.addView(emoji,
+                    new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1));
+        }
+    }
+
+    private int dp(final int value) {
+        return (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value,
+                getResources().getDisplayMetrics());
     }
 
     @Override

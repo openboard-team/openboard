@@ -1,8 +1,5 @@
-OpenBoard is a 100% foss keyboard based on AOSP, with no dependency on Google binaries, that respects your privacy.
+Steganographia is a privacy-focused Android keyboard with integrated cipher tools, direct transformed typing, emoji search, and alternative keyboard layouts.
 
-Features:
- - Spell correction
- - Themes
- - Emojis
+It includes educational classical ciphers and authenticated password-based encryption for complete messages. Processing is performed on the device.
 
-This app is opensource, the code is available here: https://github.com/openboard-team/openboard
+This free and open-source application incorporates modified materials from OpenBoard and AOSP LatinIME. It is not affiliated with the OpenBoard project.

@@ -58,5 +58,12 @@
             android:layout_width="@dimen/config_suggestions_strip_edge_key_width"
             android:layout_height="fill_parent"
             style="?attr/suggestionWordStyle" />
+        <Button
+            android:id="@+id/suggestions_strip_cipher_key"
+            android:layout_width="@dimen/config_suggestions_strip_edge_key_width"
+            android:layout_height="fill_parent"
+            android:text="@string/cipher_key_label"
+            android:contentDescription="@string/open_cipher_tools"
+            style="?attr/suggestionWordStyle" />
     </LinearLayout>
 </merge>

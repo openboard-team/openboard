@@ -197,8 +197,8 @@
     <string name="enable_clipboard_history_summary">Indien gedeaktiveerd, sal knipbord sleutel plak as dit inhoud het</string>
     <string name="clipboard_history_retention_time">Geskiedenis behou tyd</string>
     <string name="key_borders">Sleutelgrense</string>
-    <string name="spell_checker_service_name">OpenBoard Spell Checker</string>
-    <string name="android_spell_checker_settings">OpenBoard Spell Checker Settings</string>
+    <string name="spell_checker_service_name">Steganographia Spell Checker</string>
+    <string name="android_spell_checker_settings">Steganographia Spell Checker Settings</string>
     <string name="show_clipboard_key">Knipbord sleutel</string>
     <string name="number_row">Nommers ry</string>
     <string name="number_row_summary">Wys altyd die nommers ry</string>
@@ -222,7 +222,7 @@
     <string name="subtype_no_language_workman">Alphabet (Workman)</string>
     <string name="subtype_no_language_colemak_dh">Alphabet (Colemak Mod-DH)</string>
     <string name="theme_variant">Tema variant</string>
-    <string name="ime_settings">OpenBoard Instellings</string>
+    <string name="ime_settings">Steganographia Instellings</string>
     <string name="settings_category_input">Invoer</string>
     <string name="settings_category_additional_keys">Bykomende Sleutels</string>
     <string name="settings_category_correction">Regstellings</string>

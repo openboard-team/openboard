@@ -17,16 +17,16 @@
 ** limitations under the License.
 */
 --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_name" translatable="false">OpenBoard</string>
+    <string name="english_ime_name" translatable="false">Steganographia: hoc est, ars per occultam scripturam animi voluntatem absentibus aperiendi certa</string>
     <!-- Name of Android spell checker service. AOSP(Android Open Source Project) should not be translated.
          This resource should be copied from msgid="511950477199948048" -->
-    <string name="spell_checker_service_name">OpenBoard Spell Checker</string>
+    <string name="spell_checker_service_name">Steganographia Spell Checker</string>
     <!-- Title for IME settings screen.
          This resource should be copied from msgid="423615877174850267" -->
-    <string name="ime_settings">OpenBoard Settings</string>
+    <string name="ime_settings">Steganographia Settings</string>
     <!-- Title for the spell checking service settings screen. AOSP(Android Open Source Project) should not be translated.
          This resource should be copied from msgid="2970535894327288421" -->
-    <string name="android_spell_checker_settings">OpenBoard Spell Checker Settings</string>
+    <string name="android_spell_checker_settings">Steganographia Spell Checker Settings</string>
     <!-- Title for Latin keyboard input options dialog [CHAR LIMIT=25] -->
     <string name="english_ime_input_options">Input options</string>
     <!-- Title for the spell checker option to turn on/off contact names lookup [CHAR LIMIT=25] -->
@@ -174,6 +174,113 @@
     <string name="voice_input_disabled_summary">No voice input methods enabled. Check Languages &amp; input settings.</string>
     <!-- Preferences item for enabling clipboard key -->
     <string name="show_clipboard_key">Clipboard key</string>
+    <string name="show_cipher_key">Cipher key</string>
+    <string name="cipher_key_label" translatable="false">🔐</string>
+    <string name="open_cipher_tools">Open cipher tools</string>
+    <string name="cipher_tools_title">Cipher tools</string>
+    <string name="cipher_direct_input">Encrypt typed letters directly</string>
+    <string name="cipher_direct_mode">Direct typing cipher</string>
+    <string name="emoji_search_button" translatable="false">🔎</string>
+    <string name="emoji_search_hint">Search emoji</string>
+    <string name="emoji_search_no_results">No matching emoji</string>
+    <string name="cipher_message_hint">Message</string>
+    <string name="caesar_cipher">Caesar cipher</string>
+    <string name="caesar_shift">Shift</string>
+    <string name="encrypt">Encrypt</string>
+    <string name="decrypt">Decrypt</string>
+    <string name="close">Close</string>
+    <string name="enigma_m3">Enigma M3</string>
+    <string name="enigma_m4">Enigma M4</string>
+    <string name="enigma_rotors_hint">Rotors, left to right (I II III)</string>
+    <string name="enigma_thin_rotor_hint">Thin rotor (Beta or Gamma)</string>
+    <string name="enigma_reflector_hint">Reflector (B/C or B Thin/C Thin)</string>
+    <string name="enigma_positions_hint">Start positions (AAA or AAAA)</string>
+    <string name="enigma_rings_hint">Ring settings (AAA or AAAA)</string>
+    <string name="enigma_plugboard_hint">Plugboard pairs (AB CD EF)</string>
+    <string name="baconian_cipher">Baconian cipher</string>
+    <string name="morse_code">Morse code</string>
+    <string name="quagmire_i">Quagmire I</string>
+    <string name="quagmire_ii">Quagmire II</string>
+    <string name="quagmire_iii">Quagmire III</string>
+    <string name="quagmire_iv">Quagmire IV</string>
+    <string name="quagmire_plain_keyword_hint">Plain alphabet keyword</string>
+    <string name="quagmire_cipher_keyword_hint">Cipher alphabet keyword</string>
+    <string name="quagmire_indicator_keyword_hint">Indicator keyword</string>
+    <string name="atbash_cipher">Atbash cipher</string>
+    <string name="vigenere_cipher">Vigenere cipher</string>
+    <string name="affine_cipher">Affine cipher</string>
+    <string name="diplomatic_red_cipher">Diplomatic Red</string>
+    <string name="purple_cipher">Purple</string>
+    <string name="a1z26_cipher">A1Z26</string>
+    <string name="rail_fence_cipher">Rail fence</string>
+    <string name="columnar_transposition_cipher">Columnar transposition</string>
+    <string name="polybius_square_cipher">Polybius square</string>
+    <string name="autokey_cipher">Autokey cipher</string>
+    <string name="beaufort_cipher">Beaufort cipher</string>
+    <string name="gronsfeld_cipher">Gronsfeld cipher</string>
+    <string name="scytale_cipher">Scytale</string>
+    <string name="rot47_cipher">ROT47</string>
+    <string name="trithemius_cipher">Trithemius cipher</string>
+    <string name="playfair_cipher">Playfair cipher</string>
+    <string name="bifid_cipher">Bifid cipher</string>
+    <string name="zalgo_cipher">Zalgo</string>
+    <string name="aes_gcm_cipher">AES-256-GCM</string>
+    <string name="aes_cbc_hmac_cipher">AES-256-CBC + HMAC</string>
+    <string name="cipher_password_hint">Password (not saved)</string>
+    <string name="modern_cipher_notice">Authenticated encryption for messages in any language. Share the password separately. Direct typing is unavailable because secure encryption requires a complete message.</string>
+    <string name="cipher_keyword_hint">Keyword</string>
+    <string name="affine_a_hint">A multiplier (coprime with 26)</string>
+    <string name="affine_b_hint">B shift</string>
+    <string name="rail_fence_rails_hint">Rails</string>
+    <string name="polybius_keyword_hint">Polybius keyword (I/J share a cell)</string>
+    <string name="gronsfeld_key_hint">Numeric key</string>
+    <string name="scytale_columns_hint">Columns</string>
+    <string name="zalgo_intensity_hint">Intensity (try 9 or 1000)</string>
+    <string name="purple_position_hint">Purple switch start (0-2)</string>
+    <string-array name="cipher_direct_mode_labels">
+        <item>@string/caesar_cipher</item>
+        <item>@string/enigma_m3</item>
+        <item>@string/enigma_m4</item>
+        <item>@string/baconian_cipher</item>
+        <item>@string/morse_code</item>
+        <item>@string/quagmire_i</item>
+        <item>@string/quagmire_ii</item>
+        <item>@string/quagmire_iii</item>
+        <item>@string/quagmire_iv</item>
+        <item>@string/atbash_cipher</item>
+        <item>@string/vigenere_cipher</item>
+        <item>@string/affine_cipher</item>
+        <item>@string/a1z26_cipher</item>
+        <item>@string/polybius_square_cipher</item>
+        <item>@string/gronsfeld_cipher</item>
+        <item>@string/rot47_cipher</item>
+        <item>@string/trithemius_cipher</item>
+        <item>@string/zalgo_cipher</item>
+        <item>@string/diplomatic_red_cipher</item>
+        <item>@string/purple_cipher</item>
+    </string-array>
+    <string-array name="cipher_direct_mode_values" translatable="false">
+        <item>caesar</item>
+        <item>enigma_m3</item>
+        <item>enigma_m4</item>
+        <item>baconian</item>
+        <item>morse</item>
+        <item>quagmire_i</item>
+        <item>quagmire_ii</item>
+        <item>quagmire_iii</item>
+        <item>quagmire_iv</item>
+        <item>atbash</item>
+        <item>vigenere</item>
+        <item>affine</item>
+        <item>a1z26</item>
+        <item>polybius</item>
+        <item>gronsfeld</item>
+        <item>rot47</item>
+        <item>trithemius</item>
+        <item>zalgo</item>
+        <item>diplomatic_red</item>
+        <item>purple</item>
+    </string-array>
     <!-- Preferences item for enabling clipboard history -->
     <string name="enable_clipboard_history">Enable clipboard history</string>
     <!-- Description for enabling/disabling clipboard history mentioning that if disabled, clipboard content is pasted -->
@@ -363,6 +470,7 @@ language among those that use the Latin alphabet. This keyboard is laid out in t
 disposition that offers additional keys, but smaller keys compared to other common dispositions for
 mobile devices. [CHAR LIMIT=25] -->
     <string name="subtype_no_language_colemak_dh">Alphabet (Colemak Mod-DH)</string>
+    <string name="subtype_no_language_norman">Alphabet (Norman)</string>
     <!-- This string is displayed in the description for a keyboard type. It refers specifically to
 the Latin alphabet, as opposed to Cyrillic, Arabic, Hebrew or other scripts.
 When the device is configured to use a language using a script other than the Latin alphabet, the

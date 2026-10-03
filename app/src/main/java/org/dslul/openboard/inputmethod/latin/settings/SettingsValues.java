@@ -76,6 +76,7 @@ public class SettingsValues {
     public final boolean mShowsLanguageSwitchKey;
     public final boolean mShowsEmojiKey;
     public final boolean mShowsClipboardKey;
+    public final boolean mShowsCipherKey;
     public final boolean mUsePersonalizedDicts;
     public final boolean mUseDoubleSpacePeriod;
     public final boolean mBlockPotentiallyOffensive;
@@ -159,6 +160,7 @@ public class SettingsValues {
         mShowsLanguageSwitchKey = prefs.getBoolean(Settings.PREF_SHOW_LANGUAGE_SWITCH_KEY, false);
         mShowsEmojiKey = prefs.getBoolean(Settings.PREF_SHOW_EMOJI_KEY, false);
         mShowsClipboardKey = prefs.getBoolean(Settings.PREF_SHOW_CLIPBOARD_KEY, false);
+        mShowsCipherKey = prefs.getBoolean(Settings.PREF_SHOW_CIPHER_KEY, false);
         mUsePersonalizedDicts = prefs.getBoolean(Settings.PREF_KEY_USE_PERSONALIZED_DICTS, true);
         mUseDoubleSpacePeriod = prefs.getBoolean(Settings.PREF_KEY_USE_DOUBLE_SPACE_PERIOD, true)
                 && inputAttributes.mIsGeneralTextInput;

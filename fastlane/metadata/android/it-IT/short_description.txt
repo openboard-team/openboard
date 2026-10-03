@@ -1,1 +1,1 @@
-Una tastiera opensource che non ti spia!
+Tastiera orientata alla privacy con strumenti di cifratura integrati.
